@@ -1,17 +1,10 @@
-using TMPro;
 using UnityEngine;
 
-public class InteractableObject : MonoBehaviour, IInteractable
+public abstract class InteractableObject : MonoBehaviour, IInteractable
 {
-    [SerializeField] TextMeshProUGUI interactableText;
+    public bool isInteractable { get ; set ;}
 
-    public void ActivateInteraction()
-    {
-        //Message
-        //+= Interact;
-    }
-    public void Interact()
-    {
+    public abstract void ActivateInteraction();
 
-    }
+    public abstract void Interact();
 }

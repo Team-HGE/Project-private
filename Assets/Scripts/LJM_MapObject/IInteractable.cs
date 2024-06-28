@@ -1,6 +1,8 @@
 public interface IInteractable
 {
-    void Interact();
+    bool isInteractable { get; set; }
 
-    void ActivateInteraction(); // 메세지 출력과 Interact 이벤트 등록 처리
+    void Interact(); // 상호작용할 오브젝트의 실행 내용
+
+    void ActivateInteraction(); // 메세지 출력
 }

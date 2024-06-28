@@ -1,8 +1,9 @@
+using TMPro;
 using UnityEngine;
 
 public class GameManager : SingletonManager<GameManager>
 {
-    [SerializeField] PlayerInteractable player;
+    public PlayerInteractable player;
 
     protected override void Awake()
     {
