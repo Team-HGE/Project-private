@@ -6,7 +6,8 @@ public class DoorObject : InteractableObject
     public override void ActivateInteraction()
     {
         if (isInteractable) return;
-        GameManager.Instance.player.interactableText.gameObject.SetActive(true);
+
+        GameManager.Instance.player.playerInteraction.SetActive(true);
         GameManager.Instance.player.interactableText.text = "[E] DoorOpen";
     }
 

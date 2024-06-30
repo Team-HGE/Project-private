@@ -2,20 +2,24 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerInteractable : MonoBehaviour
 {
     [Header("public")]
     public GameObject curInteractableGameObject;
+    public GameObject playerInteraction;
     public TextMeshProUGUI interactableText;
+    public Image interactionImage;
+    public Image fillAmountImage;
+    public float holdTime = 2.0f;
 
     [Header("SerializeField")]
     [SerializeField] float interactionRange = 2.0f;
     [SerializeField] float holdDuration = 0f;
-    [SerializeField] float holdTime = 2.0f;
     [SerializeField] LayerMask layerMask;
     [SerializeField] Camera camera;
-
+    
     IInteractable curInteractable;
     float checkRate = 0.05f;
     float lastCheckTime;
@@ -35,13 +39,19 @@ public class PlayerInteractable : MonoBehaviour
         if (curInteractable != null && Input.GetKey(KeyCode.E)&& !curInteractable.isInteractable)
         {
             holdDuration += Time.deltaTime;
+            fillAmountImage.fillAmount = Mathf.Clamp01(holdDuration / holdTime); // 1과 0사이 수 리턴
             if (holdDuration >= holdTime)
             {
                 Interact();
-                holdDuration = 0f;
             }
         }
         Debug.DrawRay(transform.position, transform.forward, Color.red, interactionRange);
+
+        if (Input.GetKeyUp(KeyCode.E))
+        {
+            holdDuration = 0f;
+            fillAmountImage.fillAmount = 0f;
+        }
     }
 
     void InteractWithObject()
@@ -59,9 +69,12 @@ public class PlayerInteractable : MonoBehaviour
         }
         else
         {
+            Debug.Log("??");
             curInteractableGameObject = null;
             curInteractable = null;
-            interactableText.gameObject.SetActive(false);
+            playerInteraction.SetActive(false);
+            holdDuration = 0f;
+            fillAmountImage.fillAmount = 0f;
         }
     }
 
@@ -72,7 +85,9 @@ public class PlayerInteractable : MonoBehaviour
             curInteractable.Interact();
             curInteractableGameObject = null;
             curInteractable = null;
-            interactableText.gameObject.SetActive(false);
+            playerInteraction.SetActive(false);
+            holdDuration = 0f;
+            fillAmountImage.fillAmount = 0f;
         }
     }
 
@@ -83,7 +98,16 @@ public class PlayerInteractable : MonoBehaviour
             curInteractable.Interact();
             curInteractableGameObject = null;
             curInteractable = null;
-            interactableText.gameObject.SetActive(false);
+            playerInteraction.SetActive(false);
+            holdDuration = 0f;
+            fillAmountImage.fillAmount = 0f;
         }
+    }
+
+    public void InteractionActiveSelf()
+    {
+        interactableText.gameObject.SetActive(!interactableText.gameObject.activeSelf);
+        interactionImage.gameObject.SetActive(!interactionImage.gameObject.activeSelf);
+        fillAmountImage.gameObject.SetActive(!fillAmountImage.gameObject.activeSelf);
     }
 }
