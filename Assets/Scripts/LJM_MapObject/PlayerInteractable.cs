@@ -11,6 +11,8 @@ public class PlayerInteractable : MonoBehaviour
 
     [Header("SerializeField")]
     [SerializeField] float interactionRange = 2.0f;
+    [SerializeField] float holdDuration = 0f;
+    [SerializeField] float holdTime = 2.0f;
     [SerializeField] LayerMask layerMask;
     [SerializeField] Camera camera;
 
@@ -30,9 +32,14 @@ public class PlayerInteractable : MonoBehaviour
             lastCheckTime = Time.time;
             InteractWithObject();
         }
-        if (Input.GetKeyDown(KeyCode.E))
+        if (curInteractable != null && Input.GetKey(KeyCode.E)&& !curInteractable.isInteractable)
         {
-            Interact();
+            holdDuration += Time.deltaTime;
+            if (holdDuration >= holdTime)
+            {
+                Interact();
+                holdDuration = 0f;
+            }
         }
         Debug.DrawRay(transform.position, transform.forward, Color.red, interactionRange);
     }
