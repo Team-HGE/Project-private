@@ -1,7 +1,7 @@
-using System.Text;
+﻿using System.Text;
 using TMPro;
 
-public class SBSetting
+public class UtilSB
 {
     public static void ClearText(TextMeshProUGUI tmp, StringBuilder sb)
     {
