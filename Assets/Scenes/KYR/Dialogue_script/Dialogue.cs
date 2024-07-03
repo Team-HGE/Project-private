@@ -18,6 +18,7 @@ public class Dialogue : MonoBehaviour
     private StringBuilder sbBody = new StringBuilder();
     
     private IEnumerator curPrintLine;
+    private bool nowTalking = false;
 
     public void Init()
     {
@@ -31,6 +32,9 @@ public class Dialogue : MonoBehaviour
 
     public void StartDialogue()
     {
+        if (nowTalking) return;
+        nowTalking = true;
+
         OpenDialogue();
         InitSOData(dialogueSO);
         StartCoroutine(PrintDialogue());
@@ -43,7 +47,7 @@ public class Dialogue : MonoBehaviour
 
         portrait.sprite = null;
 
-        for(int i = 0; i< dialogueSO.bodyTexts.Length; i++)
+        for(int i = 0; i < dialogueSO.bodyTexts.Length; i++)
         {
             UtilSB.SetText(titleText, sbTitle, dialogueSO.speakers[0]);
 
@@ -55,13 +59,21 @@ public class Dialogue : MonoBehaviour
             curPrintLine = TextEffect.Typing(bodyText, sbBody, dialogueSO.bodyTexts[i]);
             yield return StartCoroutine(curPrintLine);
 
-            UtilSB.SetText(bodyText, sbBody, dialogueSO.bodyTexts[0]);
+            if (i == dialogueSO.bodyTexts.Length - 1)
+            {
+                yield return new WaitUntil(() => Input.anyKey);
+            }
 
             yield return new WaitForSeconds(0.1f);
+            Debug.Log("대화를 종료하려면 아무 키나 누르세요.");
 
             ClearDialogue();
         }
 
+        CloseDialogue();
+
+        nowTalking = false;
+        
         yield return null;
     }
 

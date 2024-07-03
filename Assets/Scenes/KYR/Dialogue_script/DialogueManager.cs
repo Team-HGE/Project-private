@@ -23,7 +23,17 @@ public class DialogueManager : MonoBehaviour
     {
         dialogue = GetComponent<Dialogue>();
         dialogue.Init();
-        dialogue.StartDialogue();
+
+        Debug.Log("E 키를 눌러서 대화를 시작하세요");
+    }
+
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.E))
+        {
+            Debug.Log("NPC와 대화 시작");
+            dialogue.StartDialogue();
+        }
     }
 
     // TODO: 다이얼로그 초기화, 다이얼로그 활성화/비활성화
