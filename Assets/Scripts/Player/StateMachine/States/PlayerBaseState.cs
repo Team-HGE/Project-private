@@ -15,32 +15,37 @@ public class PlayerBaseState : IState
 
     public virtual void Enter()
     {
+        // 이벤트 등록
         AddInputActionsCallbacks();
     }
 
     public virtual void Exit()
     {
+        // 이벤트 해제
         RemoveInputActionsCallbacks();
     }
 
-    // 입력 이벤트 등록
     protected virtual void AddInputActionsCallbacks()
     {
         PlayerController input = stateMachine.Player.Input;
-        input.PlayerActions.Movement.canceled += OnMovementCanceled;
-        input.PlayerActions.Run.performed += OnRunPerformed;
-        input.PlayerActions.Run.canceled += OnRunCanceled;
-        input.PlayerActions.Jump.started += OnJumpStarted;
+        input.playerActions.Movement.canceled += OnMovementCanceled;
+        input.playerActions.Run.performed += OnRunPerformed;
+        input.playerActions.Run.canceled += OnRunCanceled;
+        input.playerActions.Crouch.performed += OnCrouchPerformed;
+        input.playerActions.Crouch.canceled += OnCrouchCanceled;
+        // 점프 이벤트
+        //input.playerActions.Jump.started += OnJumpStarted;//추가 구현사항***
     }
 
-    // 입력 이벤트 해지
     protected virtual void RemoveInputActionsCallbacks()
     {
         PlayerController input = stateMachine.Player.Input;
-        input.PlayerActions.Movement.canceled -= OnMovementCanceled;
-        input.PlayerActions.Run.performed -= OnRunPerformed;
-        input.PlayerActions.Run.canceled -= OnRunCanceled;
-        input.PlayerActions.Jump.started -= OnJumpStarted;
+        input.playerActions.Movement.canceled -= OnMovementCanceled;
+        input.playerActions.Run.performed -= OnRunPerformed;
+        input.playerActions.Run.canceled -= OnRunCanceled;
+        input.playerActions.Crouch.performed -= OnCrouchPerformed;
+        input.playerActions.Crouch.canceled -= OnCrouchCanceled;
+        //input.playerActions.Jump.started -= OnJumpStarted;
     }
 
     public virtual void HandleInput()
@@ -55,8 +60,7 @@ public class PlayerBaseState : IState
 
     private void ReadMovementInput()
     {
-        // 이동키 입력
-        stateMachine.Player.InputsData.MovementInput = stateMachine.Player.Input.PlayerActions.Movement.ReadValue<Vector2>();
+        stateMachine.Player.InputsData.MovementInput = stateMachine.Player.Input.playerActions.Movement.ReadValue<Vector2>();
     }
 
     private void Move()
@@ -82,7 +86,6 @@ public class PlayerBaseState : IState
     {
         float movementSpeed = GetMovementSpeed();
 
-
         stateMachine.Player.Controller.Move
             (
                 ((direction * movementSpeed) + stateMachine.Player.ForceReceiver.Movement) * Time.deltaTime
@@ -95,7 +98,25 @@ public class PlayerBaseState : IState
         return movementSpeed;
     }
 
-    
+    protected virtual void OnRunPerformed(InputAction.CallbackContext context)
+    {
+        stateMachine.IsRuning = true;
+    }
+
+    protected virtual void OnRunCanceled(InputAction.CallbackContext context)
+    {
+        stateMachine.IsRuning = false;
+    }
+
+    protected virtual void OnCrouchPerformed(InputAction.CallbackContext context)
+    {
+        stateMachine.IsCrouch = true;
+    }
+
+    protected virtual void OnCrouchCanceled(InputAction.CallbackContext context)
+    {
+        stateMachine.IsCrouch = false;
+    }
 
 
 
@@ -107,27 +128,13 @@ public class PlayerBaseState : IState
     // 자식 클래스에서 재정의 할 메서드
     public virtual void PhysicsUpdate()
     {
-        // 상속받는 곳에서 재정의
     }
 
     protected virtual void OnMovementCanceled(InputAction.CallbackContext context)
     {
-        // 상속받는 곳에서 재정의
-    }
-
-    protected virtual void OnRunPerformed(InputAction.CallbackContext context)
-    {
-        // 상속받는 곳에서 재정의
-    }
-
-    protected virtual void OnRunCanceled(InputAction.CallbackContext context)
-    {
-        // 상속받는 곳에서 재정의
     }
 
     protected virtual void OnJumpStarted(InputAction.CallbackContext context)
     {
-        // 상속받는 곳에서 재정의
     }
-
 }

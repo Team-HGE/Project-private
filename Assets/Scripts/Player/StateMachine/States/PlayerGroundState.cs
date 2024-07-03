@@ -26,11 +26,11 @@ public class PlayerGroundState : PlayerBaseState
     {
         base.PhysicsUpdate();
 
-        // 땅에 붙어있는 상태였다가 -> 땅이 아닌 공중으로 이동되었을때 (걷가가 절벽으로 떨어진 경우)
+        // 땅에 붙어있는 상태였다가 -> 추락 (걷가가 절벽으로 떨어진 경우)
         if (!stateMachine.Player.Controller.isGrounded
         && stateMachine.Player.Controller.velocity.y < Physics.gravity.y * Time.fixedDeltaTime)
         {
-            // 추락 이후에 소음이 발생 구현 예정**
+            // 추락 이후에 소음이 발생 구현 예정 추가 구현 사항***
             return;
         }
     }
@@ -50,15 +50,11 @@ public class PlayerGroundState : PlayerBaseState
     protected override void OnRunPerformed(InputAction.CallbackContext context)
     {
         base.OnRunPerformed(context);
-
-        stateMachine.IsRuning = true;
     }
 
     protected override void OnRunCanceled(InputAction.CallbackContext context)
     {
         base.OnRunCanceled(context);
-
-        stateMachine.IsRuning = false;
     }
 
 
@@ -66,7 +62,19 @@ public class PlayerGroundState : PlayerBaseState
     {
         base.OnJumpStarted(context);
 
-        // JumpState 로 전환 - 추가 구현 예정***
+        // JumpState 로 전환 - 추가 구현 사항***
         //stateMachine.ChangeState(stateMachine.JumpState);
+    }
+
+    protected override void OnCrouchPerformed(InputAction.CallbackContext context)
+    {
+        base.OnCrouchPerformed(context);
+
+        stateMachine.ChangeState(stateMachine.CrouchState);
+    }
+
+    protected override void OnCrouchCanceled(InputAction.CallbackContext context)
+    {
+        base.OnCrouchCanceled(context);
     }
 }
