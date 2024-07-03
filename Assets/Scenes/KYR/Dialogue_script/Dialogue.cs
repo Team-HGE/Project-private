@@ -9,7 +9,7 @@ public class Dialogue : MonoBehaviour
 {
     public DialogueSO dialogueSO;
 
-    public GameObject DialogueCanvas;
+    public GameObject dialogueCanvas;
     public TextMeshProUGUI titleText;
     public TextMeshProUGUI bodyText;
     public Image portrait;
@@ -89,11 +89,11 @@ public class Dialogue : MonoBehaviour
 
     public void OpenDialogue()
     {
-        DialogueCanvas.SetActive(true);
+        dialogueCanvas.SetActive(true);
     }
     public void CloseDialogue()
     {
-        DialogueCanvas.SetActive(false);
+        dialogueCanvas.SetActive(false);
     }
 
     public void SetImage(Image image, Sprite sprite)

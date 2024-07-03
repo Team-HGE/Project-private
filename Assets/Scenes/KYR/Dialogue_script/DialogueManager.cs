@@ -5,6 +5,8 @@ public class DialogueManager : MonoBehaviour
     // 임시 싱글톤 
     private static DialogueManager Instance;
     private Dialogue dialogue;
+    private SystemMsg systemMsg;
+
 
     private void Awake()
     {
@@ -22,7 +24,11 @@ public class DialogueManager : MonoBehaviour
     private void Start()
     {
         dialogue = GetComponent<Dialogue>();
+        systemMsg = GetComponent<SystemMsg>();
+
         dialogue.Init();
+        systemMsg.Init();
+        systemMsg.UpdateMessage();
 
         Debug.Log("E 키를 눌러서 대화를 시작하세요");
     }
@@ -35,6 +41,4 @@ public class DialogueManager : MonoBehaviour
             dialogue.StartDialogue();
         }
     }
-
-    // TODO: 다이얼로그 초기화, 다이얼로그 활성화/비활성화
 }
