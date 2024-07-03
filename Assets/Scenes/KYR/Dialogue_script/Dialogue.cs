@@ -64,7 +64,7 @@ public class Dialogue : MonoBehaviour
                 yield return new WaitUntil(() => Input.anyKey);
             }
 
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(1f);
             Debug.Log("대화를 종료하려면 아무 키나 누르세요.");
 
             ClearDialogue();

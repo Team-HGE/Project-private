@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Text;
 using TMPro;
 using UnityEngine;
@@ -12,22 +13,41 @@ public class SystemMsg: MonoBehaviour
     private GameObject msgPrefab;
     private TextMeshProUGUI msgText;
 
+    private bool isUpdating = false;
+
     public void Init()
     {
         objectPool = GetComponent<ObjectPool>();
     }
 
-    private void InitSOData(SystemMsgSO _message)
-    {
-        systemMsgSO = _message;
-    }
-
     public void UpdateMessage()
     {
-        msgPrefab = objectPool.GetObject();
+        if (isUpdating) return;
+        isUpdating = true;
 
-        sb.Append(systemMsgSO.messages[0]);
-        msgText = msgPrefab.GetComponent<TextMeshProUGUI>();
-        msgText.text = sb.ToString();
+        StartCoroutine(PopMessage());
+
+    }
+
+    private IEnumerator PopMessage()
+    {
+        yield return new WaitForSeconds(1f);
+
+        for (int i = 0; i < systemMsgSO.messages.Length; i++)
+        {
+            msgPrefab = objectPool.GetObject();
+            msgText = msgPrefab.GetComponent<TextMeshProUGUI>();
+
+            sb.Append(systemMsgSO.messages[i]);
+            msgText.text = "SYSTEM: " + sb.ToString();
+
+            StartCoroutine(TextEffect.FadeOut(msgText));
+            sb.Clear();
+
+            yield return new WaitForSeconds(1f);
+        }
+
+        isUpdating = false;
+        yield return null;
     }
 }
