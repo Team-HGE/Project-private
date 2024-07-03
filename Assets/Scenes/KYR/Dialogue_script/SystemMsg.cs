@@ -26,7 +26,6 @@ public class SystemMsg: MonoBehaviour
         isUpdating = true;
 
         StartCoroutine(PopMessage());
-
     }
 
     private IEnumerator PopMessage()
@@ -39,14 +38,16 @@ public class SystemMsg: MonoBehaviour
             msgText = msgPrefab.GetComponent<TextMeshProUGUI>();
 
             sb.Append(systemMsgSO.messages[i]);
+            TextEffect.Highlight(msgText, Color.red);
             msgText.text = "SYSTEM: " + sb.ToString();
 
             StartCoroutine(TextEffect.FadeOut(msgText));
             sb.Clear();
 
+            Debug.Log(msgPrefab);
+
             yield return new WaitForSeconds(1f);
         }
-
         isUpdating = false;
         yield return null;
     }

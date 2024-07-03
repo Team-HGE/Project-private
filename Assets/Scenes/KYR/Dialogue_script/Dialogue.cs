@@ -10,6 +10,8 @@ public class Dialogue : MonoBehaviour
     public DialogueSO dialogueSO;
 
     public GameObject dialogueCanvas;
+    public Image titleBG;
+
     public TextMeshProUGUI titleText;
     public TextMeshProUGUI bodyText;
     public Image portrait;
@@ -35,6 +37,8 @@ public class Dialogue : MonoBehaviour
         if (nowTalking) return;
         nowTalking = true;
 
+        Debug.Log("NPC와 대화 시작");
+
         OpenDialogue();
         InitSOData(dialogueSO);
         StartCoroutine(PrintDialogue());
@@ -54,18 +58,18 @@ public class Dialogue : MonoBehaviour
             SetImage(portrait, dialogueSO.images[0]);
 
             if (portrait.sprite == null) portrait.transform.localScale = Vector3.zero;
-            else { portrait.transform.localScale = Vector3.one; }
+            else 
+            { 
+                portrait.transform.localScale = Vector3.one;
+            }
 
             curPrintLine = TextEffect.Typing(bodyText, sbBody, dialogueSO.bodyTexts[i]);
             yield return StartCoroutine(curPrintLine);
 
-            if (i == dialogueSO.bodyTexts.Length - 1)
-            {
-                yield return new WaitUntil(() => Input.anyKey);
-            }
+            Debug.Log("E 키로 진행하세요");
+            yield return new WaitUntil(() => Input.GetKey(KeyCode.E));
 
             yield return new WaitForSeconds(1f);
-            Debug.Log("대화를 종료하려면 아무 키나 누르세요.");
 
             ClearDialogue();
         }

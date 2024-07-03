@@ -6,7 +6,7 @@ public class DialogueManager : MonoBehaviour
     private static DialogueManager Instance;
     private Dialogue dialogue;
     private SystemMsg systemMsg;
-
+    private Quest quest;
 
     private void Awake()
     {
@@ -25,9 +25,12 @@ public class DialogueManager : MonoBehaviour
     {
         dialogue = GetComponent<Dialogue>();
         systemMsg = GetComponent<SystemMsg>();
+        quest = GetComponent<Quest>();
 
         dialogue.Init();
         systemMsg.Init();
+
+        quest.UpdateQuest();
         systemMsg.UpdateMessage();
 
         Debug.Log("E 키를 눌러서 대화를 시작하세요");
@@ -37,7 +40,6 @@ public class DialogueManager : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.E))
         {
-            Debug.Log("NPC와 대화 시작");
             dialogue.StartDialogue();
         }
     }

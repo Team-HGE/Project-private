@@ -1,14 +1,15 @@
 ﻿using System.Collections;
+using System.Runtime.CompilerServices;
 using System.Text;
 using TMPro;
 using UnityEngine;
 
 public class TextEffect
 {
-    // TODO: 텍스트 굵게, 노랑 or 빨갛게 강조, 타이핑 효과, 페이드아웃 효과
+    // TODO: 텍스트 노랑 or 빨갛게 강조, 타이핑 효과, 페이드아웃 효과, 취소선
 
     private static float typingPerSeconds = 20f;
-    private static float TextFadeOutSpeed = 0.5f;
+    private static float TextFadeOutSpeed = 1f;
 
     public static IEnumerator Typing(TextMeshProUGUI tmp, StringBuilder sb, string SOstr)
     {
@@ -35,5 +36,16 @@ public class TextEffect
             yield return null;
         }
         yield return null;
+    }
+
+    public static void Highlight(TextMeshProUGUI tmp, Color color)
+    {
+        tmp.fontStyle = FontStyles.Bold;
+        tmp.color = color;
+    }
+
+    public static void CorrectLine(TextMeshProUGUI tmp)
+    {
+
     }
 }
