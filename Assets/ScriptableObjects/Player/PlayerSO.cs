@@ -9,12 +9,19 @@ public class PlayerGroundData
 
     [field: Header("IdleData")]
 
+
     [field: Header("WalkData")]
     [field: SerializeField][field: Range(0f, 2f)] public float WalkSpeedModifier { get; private set; } = 0.5f;
 
     [field: Header("RunData")]
-    [field: SerializeField][field: Range(0f, 2f)] public float RunSpeedModifier { get; private set; } = 1f;
+    [field: SerializeField][field: Range(0f, 2f)] public float RunSpeedModifier { get; private set; } = 1.8f;
+
+    [field: Header("CrouchData")]
+    [field: SerializeField][field: Range(0f, 2f)] public float CrouchSpeedModifier { get; private set; } = 0.3f;
+    [field: SerializeField][field: Range(0f, 1f)] public float CrouchHeight { get; private set; } = 0.75f;
+
 }
+
 
 [Serializable]
 public class PlayerAirData

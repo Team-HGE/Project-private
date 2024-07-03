@@ -2,7 +2,6 @@ public abstract class StateMachine
 {
     protected IState currentState;
 
-    // 상태 전환
     public void ChangeState(IState state)
     {
         currentState?.Exit();

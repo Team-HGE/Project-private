@@ -10,6 +10,7 @@ public class PlayerRunState : PlayerGroundState
     public override void Enter()
     {
         base.Enter();
+        
         stateMachine.MovementSpeedModifier = groundData.RunSpeedModifier;
     }
 
@@ -32,5 +33,10 @@ public class PlayerRunState : PlayerGroundState
             stateMachine.ChangeState(stateMachine.WalkState);
             return;
         }
+    }
+
+    protected override void OnCrouchPerformed(InputAction.CallbackContext context)
+    {
+        base.OnCrouchPerformed(context);
     }
 }
