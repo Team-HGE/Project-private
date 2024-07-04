@@ -3,8 +3,8 @@
 public class DialogueManager : MonoBehaviour
 {
     // 임시 싱글톤 
-    private static DialogueManager Instance;
-    private Dialogue dialogue;
+    public static DialogueManager Instance;
+    public Dialogue dialogue;
     private SystemMsg systemMsg;
     private Quest quest;
 

@@ -24,6 +24,8 @@ public class NPCInteract : InteractableObject
 
         readyToTalk = true;
 
+        DialogueManager.Instance.dialogue.StartDialogue();
+
         Debug.Log($"readyToTalk: {readyToTalk}");
     }
 }
