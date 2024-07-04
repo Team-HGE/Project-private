@@ -11,6 +11,10 @@ public class Monster : MonoBehaviour, INoise
     [field: Header("Animations")]
     [field: SerializeField] public MonsterAnimationData AnimationData { get; private set; }
 
+    [field: Header("Noise")]
+    [field: SerializeField] public NoiseData[] NoiseDatas { get; private set; }
+
+
     public CharacterController Controller { get; private set; }
     public ForceReceiver ForceReceiver { get; private set; }
     public Animator Animator { get; private set; }
@@ -27,6 +31,8 @@ public class Monster : MonoBehaviour, INoise
     public float NoiseMin { get; set; }
     public float NoiseMax { get; set; }
     public float NoiseAmount { get; set; }
+    public float DecreaseSpeed { get; set; }
+
 
     private void Awake()
     {
@@ -49,6 +55,11 @@ public class Monster : MonoBehaviour, INoise
     {
         _stateMachine.HandleInput();
         _stateMachine.Update();
+
+        if (NoiseAmount > 0)
+        {
+            
+        }
     }
 
     private void FixedUpdate()
@@ -70,10 +81,10 @@ public class Monster : MonoBehaviour, INoise
         IsBehavior = !IsBehavior;
     }
 
-    public void MakeNoise(float second = 0)
+    public void MakeNoise(float transitionTime, float min, float max, float speed)
     {
         // 소음 반복
-        if (second > 0)
+        if (transitionTime > 0)
         {
 
         }
