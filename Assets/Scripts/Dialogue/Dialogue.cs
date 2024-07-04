@@ -37,7 +37,7 @@ public class Dialogue : MonoBehaviour
         if (nowTalking) return;
         nowTalking = true;
 
-        Debug.Log("NPC와 대화 시작");
+        //Debug.Log("NPC와 대화 시작");
 
         OpenDialogue();
         InitSOData(dialogueSO);

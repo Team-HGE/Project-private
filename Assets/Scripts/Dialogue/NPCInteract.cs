@@ -26,6 +26,6 @@ public class NPCInteract : InteractableObject
 
         DialogueManager.Instance.dialogue.StartDialogue();
 
-        Debug.Log($"readyToTalk: {readyToTalk}");
+        //Debug.Log($"readyToTalk: {readyToTalk}");
     }
 }

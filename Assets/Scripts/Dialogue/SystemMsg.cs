@@ -44,7 +44,7 @@ public class SystemMsg: MonoBehaviour
             StartCoroutine(TextEffect.FadeOut(msgText));
             sb.Clear();
 
-            Debug.Log(msgPrefab);
+            //Debug.Log(msgPrefab);
 
             yield return new WaitForSeconds(1f);
         }
