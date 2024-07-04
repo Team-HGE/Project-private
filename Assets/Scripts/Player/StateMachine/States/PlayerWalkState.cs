@@ -17,6 +17,12 @@ public class PlayerWalkState : PlayerGroundState
             return;
         }
 
+        if (stateMachine.IsCrouch)
+        {
+            stateMachine.ChangeState(stateMachine.CrouchState);
+            return;
+        }
+
         stateMachine.MovementSpeedModifier = groundData.WalkSpeedModifier;       
     }
 
@@ -30,5 +36,10 @@ public class PlayerWalkState : PlayerGroundState
         base.OnRunPerformed(context);
 
         stateMachine.ChangeState(stateMachine.RunState);
+    }
+
+    protected override void OnCrouchPerformed(InputAction.CallbackContext context)
+    {
+        base.OnCrouchPerformed(context);
     }
 }

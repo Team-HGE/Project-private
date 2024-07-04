@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerIdleState : PlayerGroundState
 {
@@ -9,7 +10,14 @@ public class PlayerIdleState : PlayerGroundState
     public override void Enter()
     {
         base.Enter();
+
         stateMachine.MovementSpeedModifier = 0f;
+
+        if (stateMachine.IsCrouch)
+        {
+            stateMachine.ChangeState(stateMachine.CrouchState);
+            return;
+        }
     }
 
     public override void Exit()
@@ -23,16 +31,19 @@ public class PlayerIdleState : PlayerGroundState
 
         if (stateMachine.Player.InputsData.MovementInput != Vector2.zero)
         {
-            if (stateMachine.IsRuning)
-            {
-                stateMachine.ChangeState(stateMachine.RunState);
-                return;
-            }
-            else 
-            {
-                stateMachine.ChangeState(stateMachine.WalkState);
-                return;
-            }            
+            stateMachine.ChangeState(stateMachine.WalkState);         
         }
+    }
+
+    protected override void OnCrouchPerformed(InputAction.CallbackContext context)
+    {
+        base.OnCrouchPerformed(context);
+    }
+
+    protected override void OnRunPerformed(InputAction.CallbackContext context)
+    {
+        base.OnRunPerformed(context);
+
+        stateMachine.ChangeState(stateMachine.RunState);
     }
 }
