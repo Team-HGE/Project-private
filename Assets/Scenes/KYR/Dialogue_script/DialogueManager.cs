@@ -38,9 +38,9 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.E))
+        //if (Input.GetKey(KeyCode.E))
         {
-            dialogue.StartDialogue();
+          //  dialogue.StartDialogue();
         }
     }
 }
