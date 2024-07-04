@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Monster : MonoBehaviour
+public class Monster : MonoBehaviour, INoise
 {
     [field: Header("Reference")]
     [field: SerializeField] public MonsterSO Data { get; private set; }
@@ -21,7 +21,13 @@ public class Monster : MonoBehaviour
 
     // 행동 관리
     public bool IsBehavior {get; set;} = true;
-    
+
+    // INoise
+    public float NoiseTransitionTime { get; set; }
+    public float NoiseMin { get; set; }
+    public float NoiseMax { get; set; }
+    public float NoiseAmount { get; set; }
+
     private void Awake()
     {
         AnimationData.Initialize();
@@ -51,7 +57,7 @@ public class Monster : MonoBehaviour
     }
     
     // 대기 시간
-    public void WaitForSeconds(float time)
+    public void WaitForBehavior(float time)
     {
         StartCoroutine(ChangeBehavior(time));
     }
@@ -62,5 +68,24 @@ public class Monster : MonoBehaviour
         yield return new WaitForSeconds(time);
 
         IsBehavior = !IsBehavior;
+    }
+
+    public void MakeNoise(float second = 0)
+    {
+        // 소음 반복
+        if (second > 0)
+        {
+
+        }
+        // 소음 한번 발생
+        else 
+        {
+            
+        }
+    }
+
+    public void PlayNoise()
+    {
+        throw new System.NotImplementedException();
     }
 }
