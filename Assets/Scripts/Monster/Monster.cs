@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Monster : MonoBehaviour
+public class Monster : MonoBehaviour, INoise
 {
     [field: Header("Reference")]
     [field: SerializeField] public MonsterSO Data { get; private set; }
 
     [field: Header("Animations")]
     [field: SerializeField] public MonsterAnimationData AnimationData { get; private set; }
+
+    [field: Header("Noise")]
+    [field: SerializeField] public NoiseData[] NoiseDatas { get; private set; }
+
 
     public CharacterController Controller { get; private set; }
     public ForceReceiver ForceReceiver { get; private set; }
@@ -21,7 +25,15 @@ public class Monster : MonoBehaviour
 
     // 행동 관리
     public bool IsBehavior {get; set;} = true;
-    
+
+    // INoise
+    public float NoiseTransitionTime { get; set; }
+    public float NoiseMin { get; set; }
+    public float NoiseMax { get; set; }
+    public float NoiseAmount { get; set; }
+    public float DecreaseSpeed { get; set; }
+
+
     private void Awake()
     {
         AnimationData.Initialize();
@@ -43,6 +55,11 @@ public class Monster : MonoBehaviour
     {
         _stateMachine.HandleInput();
         _stateMachine.Update();
+
+        if (NoiseAmount > 0)
+        {
+            
+        }
     }
 
     private void FixedUpdate()
@@ -51,7 +68,7 @@ public class Monster : MonoBehaviour
     }
     
     // 대기 시간
-    public void WaitForSeconds(float time)
+    public void WaitForBehavior(float time)
     {
         StartCoroutine(ChangeBehavior(time));
     }
@@ -62,5 +79,24 @@ public class Monster : MonoBehaviour
         yield return new WaitForSeconds(time);
 
         IsBehavior = !IsBehavior;
+    }
+
+    public void MakeNoise(float transitionTime, float min, float max, float speed)
+    {
+        // 소음 반복
+        if (transitionTime > 0)
+        {
+
+        }
+        // 소음 한번 발생
+        else 
+        {
+            
+        }
+    }
+
+    public void PlayNoise()
+    {
+        throw new System.NotImplementedException();
     }
 }

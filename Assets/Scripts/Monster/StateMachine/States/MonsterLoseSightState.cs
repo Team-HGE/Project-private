@@ -10,7 +10,7 @@ public class MonsterLoseSightState : MonsterGroundState
 
         stateMachine.Monster.Agent.isStopped = true;
         stateMachine.Monster.IsBehavior = false;
-        stateMachine.Monster.WaitForSeconds(groundData.LoseSightTransitionTime);
+        stateMachine.Monster.WaitForBehavior(groundData.LoseSightTransitionTime);
     }
     public override void Exit()
     {

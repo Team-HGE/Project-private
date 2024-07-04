@@ -15,7 +15,7 @@ public class MonsterFindState : MonsterGroundState
 
         // 플레이어 바라보기
         Rotate(GetMovementDirection());
-        stateMachine.Monster.WaitForSeconds(groundData.FindTransitionTime);      
+        stateMachine.Monster.WaitForBehavior(groundData.FindTransitionTime);      
     }
 
     public override void Exit()
