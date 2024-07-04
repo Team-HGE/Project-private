@@ -17,7 +17,7 @@ public class Quest : MonoBehaviour
     public void UpdateQuest()
     {
         sb.Append(questSO.quests[0]);
-        nowQuestText.text = sb.ToString();
+        nowQuestText.text = "«“¿œ: " + sb.ToString();
     }
 
     public void FinishQuest()

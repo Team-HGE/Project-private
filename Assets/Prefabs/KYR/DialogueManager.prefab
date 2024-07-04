@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 806872961377200098}
   - component: {fileID: 4455518639332731130}
   - component: {fileID: 330832895471244228}
-  - component: {fileID: 7684974264785354294}
-  - component: {fileID: 3923669530779210847}
+  - component: {fileID: 1565557736858896460}
+  - component: {fileID: 1776522802564517765}
   m_Layer: 0
   m_Name: DialogueManager
   m_TagString: Untagged
@@ -82,21 +82,7 @@ MonoBehaviour:
   prefab: {fileID: 8917567243523437211, guid: 42f260626c07f1d47bb398570cce9742, type: 3}
   parrent: {fileID: 0}
   poolSize: 8
---- !u!114 &7684974264785354294
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 833481111887110611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87ed18320ab163642af63ed77b7bc2c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  systemMsgCanvas: {fileID: 0}
-  systemMsgSO: {fileID: 0}
---- !u!114 &3923669530779210847
+--- !u!114 &1565557736858896460
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108,5 +94,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4f029638f0e30642bcfb32dee315c06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questSO: {fileID: 0}
+  questSO: {fileID: 11400000, guid: fa6ed0fe88c386d4ca9456c29433959e, type: 2}
   nowQuestText: {fileID: 0}
+--- !u!114 &1776522802564517765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 833481111887110611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87ed18320ab163642af63ed77b7bc2c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  systemMsgSO: {fileID: 11400000, guid: 655d02bd21be268449ad7bbdc49dbc7d, type: 2}
+  systemMsgCanvas: {fileID: 0}
