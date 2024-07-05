@@ -69,7 +69,7 @@ public class PlayerInteractable : MonoBehaviour
         }
         else
         {
-            Debug.Log("??");
+            //Debug.Log("??");
             curInteractableGameObject = null;
             curInteractable = null;
             playerInteraction.SetActive(false);

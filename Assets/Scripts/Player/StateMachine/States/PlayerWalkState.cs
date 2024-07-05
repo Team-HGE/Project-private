@@ -7,6 +7,11 @@ public class PlayerWalkState : PlayerGroundState
     {
     }
 
+    bool isNoise = false;
+    float delay = 0f;
+    float delayMax = 30f;
+
+
     public override void Enter()
     {        
         base.Enter();
@@ -23,13 +28,32 @@ public class PlayerWalkState : PlayerGroundState
             return;
         }
 
-        stateMachine.MovementSpeedModifier = groundData.WalkSpeedModifier;       
+        stateMachine.MovementSpeedModifier = groundData.WalkSpeedModifier;
+        //SoundManager.Instance.PlayNoise(stateMachine.Player.NoiseDatas.noiseDatas[0].noises[0], "PlayerWalk");//임시코드 수정할것***
+
+
+
+
     }
 
     public override void Exit()
     {
         base.Exit();
     }
+
+
+    public override void Update()
+    {
+        base.Update();
+        delay += 1 * Time.deltaTime;
+
+        if (delay <= delayMax)
+        {
+            delay = 0f;
+        }
+
+    }
+
 
     protected override void OnRunPerformed(InputAction.CallbackContext context)
     {

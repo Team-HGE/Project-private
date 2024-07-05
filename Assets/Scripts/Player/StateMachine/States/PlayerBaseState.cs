@@ -1,4 +1,5 @@
 using System;
+using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -33,9 +34,17 @@ public class PlayerBaseState : IState
         input.playerActions.Run.canceled += OnRunCanceled;
         input.playerActions.Crouch.performed += OnCrouchPerformed;
         input.playerActions.Crouch.canceled += OnCrouchCanceled;
+        input.playerActions.Interaction.started += OnInterationStared;
+        input.playerActions.Interaction.performed += OnInterationPerformed;
+        input.playerActions.Interaction.canceled += OnInterationCanceled;
+
         // 점프 이벤트
         //input.playerActions.Jump.started += OnJumpStarted;//추가 구현사항***
     }
+
+    
+
+
 
     protected virtual void RemoveInputActionsCallbacks()
     {
@@ -45,6 +54,11 @@ public class PlayerBaseState : IState
         input.playerActions.Run.canceled -= OnRunCanceled;
         input.playerActions.Crouch.performed -= OnCrouchPerformed;
         input.playerActions.Crouch.canceled -= OnCrouchCanceled;
+        input.playerActions.Interaction.started -= OnInterationStared;
+        input.playerActions.Interaction.performed -= OnInterationPerformed;
+        input.playerActions.Interaction.canceled -= OnInterationCanceled;
+
+
         //input.playerActions.Jump.started -= OnJumpStarted;
     }
 
@@ -118,10 +132,21 @@ public class PlayerBaseState : IState
         stateMachine.IsCrouch = false;
     }
 
+    protected virtual void OnInterationStared(InputAction.CallbackContext context)
+    {
+        stateMachine.IsInteraction = true;
+    } 
 
+    protected virtual void OnInterationPerformed(InputAction.CallbackContext context)
+    {
+        stateMachine.IsInteraction = true;
+    }
 
+    protected virtual void OnInterationCanceled(InputAction.CallbackContext context)
+    {
+        stateMachine.IsInteraction = false;
 
-
+    }
 
 
 
@@ -137,4 +162,6 @@ public class PlayerBaseState : IState
     protected virtual void OnJumpStarted(InputAction.CallbackContext context)
     {
     }
+
+    
 }

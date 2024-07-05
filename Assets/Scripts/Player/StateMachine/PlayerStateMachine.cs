@@ -16,6 +16,9 @@ public class PlayerStateMachine : StateMachine
     // 상태 전환 조건
     public bool IsRuning { get; set; }
     public bool IsCrouch { get; set; }
+    // 상호작용
+    public bool IsInteraction { get; set; }
+
 
     public float MovementSpeed { get; private set; }
     public float RotationDamping { get; private set; }

@@ -1,12 +1,12 @@
 using UnityEngine;
 
-public class Player : MonoBehaviour, INoise
+public class Player : MonoBehaviour
 {
     [field: Header("References")]
     [field: SerializeField] public PlayerSO Data { get; private set; }
 
     [field: Header("Noise")]
-    [field: SerializeField] public NoiseData[] NoiseDatas { get; private set; }
+    [field: SerializeField] public NoiseDatas NoiseDatas { get; private set; }
 
     public PlayerController Input { get; private set; }
     public CharacterController Controller { get; private set; }
@@ -30,6 +30,12 @@ public class Player : MonoBehaviour, INoise
         InputsData = GetComponent<PlayerInputsData>();
 
         stateMachine = new PlayerStateMachine(this);
+
+        Debug.Log($"{NoiseDatas.noiseDatas.Count}");
+        for (int i = 0; i < NoiseDatas.noiseDatas.Count; i++)
+        {
+            NoisePool.Instance.noiseDatasList.Add(NoiseDatas.noiseDatas[i]);
+        }
     }
 
     private void Start()
@@ -49,22 +55,22 @@ public class Player : MonoBehaviour, INoise
         stateMachine.PhysicsUpdate();
     }
 
-    public void MakeNoise(float transitionTime, float min, float max, float speed)
-    {
-        // 소음 반복
-        if (transitionTime > 0)
-        {
+    //public void MakeNoise(float transitionTime, float min, float max, float speed)
+    //{
+    //    // 소음 반복
+    //    if (transitionTime > 0)
+    //    {
 
-        }
-        // 소음 한번 발생
-        else
-        {
+    //    }
+    //    // 소음 한번 발생
+    //    else
+    //    {
 
-        }
-    }
+    //    }
+    //}
 
-    public void PlayNoise()
-    {
-        throw new System.NotImplementedException();
-    }
+    //public void PlayNoise()
+    //{
+    //    throw new System.NotImplementedException();
+    //}
 }
