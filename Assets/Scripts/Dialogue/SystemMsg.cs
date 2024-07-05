@@ -3,10 +3,10 @@ using System.Text;
 using TMPro;
 using UnityEngine;
 
-public class SystemMsg: MonoBehaviour
+public class SystemMsg : MonoBehaviour
 {
-    public GameObject systemMsgCanvas;
     public SystemMsgSO systemMsgSO;
+    public GameObject systemMsgCanvas;
 
     private ObjectPool objectPool;
     private StringBuilder sb = new StringBuilder();
