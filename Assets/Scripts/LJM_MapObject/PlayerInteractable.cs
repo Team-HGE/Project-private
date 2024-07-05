@@ -36,15 +36,7 @@ public class PlayerInteractable : MonoBehaviour
             lastCheckTime = Time.time;
             InteractWithObject();
         }
-        if (curInteractable != null && Input.GetKey(KeyCode.E)&& !curInteractable.isInteractable)
-        {
-            holdDuration += Time.deltaTime;
-            fillAmountImage.fillAmount = Mathf.Clamp01(holdDuration / holdTime); // 1과 0사이 수 리턴
-            if (holdDuration >= holdTime)
-            {
-                Interact();
-            }
-        }
+        
         Debug.DrawRay(transform.position, transform.forward, Color.red, interactionRange);
 
         if (Input.GetKeyUp(KeyCode.E))
@@ -69,7 +61,7 @@ public class PlayerInteractable : MonoBehaviour
         }
         else
         {
-            Debug.Log("??");
+            Debug.Log("objectNull");
             curInteractableGameObject = null;
             curInteractable = null;
             playerInteraction.SetActive(false);
@@ -80,30 +72,26 @@ public class PlayerInteractable : MonoBehaviour
 
     public void OnInteracted(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Started && curInteractable != null && !curInteractable.isInteractable)
+        Debug.Log("?");
+        if (curInteractable != null && context.phase == InputActionPhase.Started && !curInteractable.isInteractable)
         {
-            curInteractable.Interact();
-            curInteractableGameObject = null;
-            curInteractable = null;
-            playerInteraction.SetActive(false);
-            holdDuration = 0f;
-            fillAmountImage.fillAmount = 0f;
+            holdDuration += Time.deltaTime;
+            fillAmountImage.fillAmount = Mathf.Clamp01(holdDuration / holdTime); // 1과 0사이 수 리턴
+            if (holdDuration >= holdTime)
+            {
+                if (context.phase == InputActionPhase.Started && curInteractable != null && !curInteractable.isInteractable)
+                {
+                    curInteractable.Interact();
+                    curInteractableGameObject = null;
+                    curInteractable = null;
+                    playerInteraction.SetActive(false);
+                    holdDuration = 0f;
+                    fillAmountImage.fillAmount = 0f;
+                }
+            }
         }
+        
     }
-
-    void Interact()
-    {
-        if (curInteractable != null && !curInteractable.isInteractable)
-        {
-            curInteractable.Interact();
-            curInteractableGameObject = null;
-            curInteractable = null;
-            playerInteraction.SetActive(false);
-            holdDuration = 0f;
-            fillAmountImage.fillAmount = 0f;
-        }
-    }
-
     public void InteractionActiveSelf()
     {
         interactableText.gameObject.SetActive(!interactableText.gameObject.activeSelf);
