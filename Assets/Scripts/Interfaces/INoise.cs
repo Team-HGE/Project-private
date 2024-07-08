@@ -1,4 +1,6 @@
 
+using UnityEngine;
+
 public interface INoise
 { 
     public float NoiseTransitionTime { get; set; }
@@ -7,7 +9,10 @@ public interface INoise
     public float NoiseAmount { get; set; }
     public float DecreaseSpeed { get; set; }
 
-    public void MakeNoise(float transitionTime, float min, float max, float speed);
+    public SoundSource PlayNoise(AudioClip[] audioClips, string tag);
 
-    public void PlayNoise();
+
+    //public void MakeNoise(float transitionTime, float min, float max, float speed);
+
+    //public void PlayNoise();
 }

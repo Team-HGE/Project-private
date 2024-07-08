@@ -37,11 +37,10 @@ public class NoisePool : MonoBehaviour
 
         }
 
-        foreach (KeyValuePair<string, List<GameObject>> item in poolDictionary)
-        {
-            Debug.Log($"tag : {item.Key}, value : {item.Value.Count}");
-        }
-
+        //foreach (KeyValuePair<string, List<GameObject>> item in poolDictionary)
+        //{
+        //    Debug.Log($"tag : {item.Key}, value : {item.Value.Count}");
+        //}
     }
 
     public GameObject SpawnFromPool(string tag)

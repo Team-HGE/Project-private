@@ -1,6 +1,7 @@
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, INoise
 {
     [field: Header("References")]
     [field: SerializeField] public PlayerSO Data { get; private set; }
@@ -55,7 +56,27 @@ public class Player : MonoBehaviour
         stateMachine.PhysicsUpdate();
     }
 
-    //public void MakeNoise(float transitionTime, float min, float max, float speed)
+    public SoundSource PlayNoise(AudioClip[] audioClips, string tag)
+    {
+        int index = Random.Range(0, audioClips.Length);
+        Debug.Log(index);
+
+        SoundSource soundSource;
+
+       soundSource = NoiseManager.Instance.PlayNoise(audioClips[index], tag);
+
+        return soundSource;
+    }
+
+    //public void PlayNoise(AudioClip[] audioClips, string tag)
+    //{
+    //    int index = Random.Range(0, audioClips.Length);
+    //    Debug.Log(index);
+
+    //    NoiseManager.Instance.PlayNoise(audioClips[index], tag);
+    //}
+
+    //public void PlayNoise(float transitionTime, float min, float max, float speed)
     //{
     //    // 소음 반복
     //    if (transitionTime > 0)
@@ -67,10 +88,5 @@ public class Player : MonoBehaviour
     //    {
 
     //    }
-    //}
-
-    //public void PlayNoise()
-    //{
-    //    throw new System.NotImplementedException();
-    //}
+    //}  
 }

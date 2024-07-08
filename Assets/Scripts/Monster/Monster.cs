@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Monster : MonoBehaviour, INoise
+public class Monster : MonoBehaviour
 {
     [field: Header("Reference")]
     [field: SerializeField] public MonsterSO Data { get; private set; }
@@ -79,24 +79,5 @@ public class Monster : MonoBehaviour, INoise
         yield return new WaitForSeconds(time);
 
         IsBehavior = !IsBehavior;
-    }
-
-    public void MakeNoise(float transitionTime, float min, float max, float speed)
-    {
-        // 소음 반복
-        if (transitionTime > 0)
-        {
-
-        }
-        // 소음 한번 발생
-        else 
-        {
-            
-        }
-    }
-
-    public void PlayNoise()
-    {
-        throw new System.NotImplementedException();
     }
 }

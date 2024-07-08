@@ -14,7 +14,7 @@ public class SoundSource : MonoBehaviour
         }
     }
 
-    public void Play(AudioClip clip, float soundEffectVolume, float soundEffectPitchVariance, float disableDelay = 0.2f)
+    public void Play(AudioClip clip, float soundEffectVolume, float soundEffectPitchVariance)
     {
         if (audioSource == null) return;
 
@@ -33,7 +33,7 @@ public class SoundSource : MonoBehaviour
 
         // Disable 메서드를 클립 길이 + 추가 지연 시간 후에 호출
         // disableDelay 인자를 추가하여 오브젝트를 비활성화하기 전에 대기할 시간을 유연하게 설정
-        Invoke("Disable", clip.length + disableDelay);
+        Invoke("Disable", clip.length + 0.1f);
     }
 
     public void Disable()
