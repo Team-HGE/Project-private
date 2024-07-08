@@ -36,14 +36,8 @@ public class PlayerInteractable : MonoBehaviour
             lastCheckTime = Time.time;
             InteractWithObject();
         }
-        
-        Debug.DrawRay(transform.position, transform.forward, Color.red, interactionRange);
 
-        if (Input.GetKeyUp(KeyCode.E))
-        {
-            holdDuration = 0f;
-            fillAmountImage.fillAmount = 0f;
-        }
+        Debug.DrawRay(transform.position, transform.forward, Color.red, interactionRange);
     }
 
     void InteractWithObject()
@@ -70,16 +64,16 @@ public class PlayerInteractable : MonoBehaviour
         }
     }
 
-    public void OnInteracted(InputAction.CallbackContext context)
+    public void OnInteracted()
     {
         Debug.Log("?");
-        if (curInteractable != null && context.phase == InputActionPhase.Started && !curInteractable.isInteractable)
+        if (curInteractable != null && !curInteractable.isInteractable)
         {
             holdDuration += Time.deltaTime;
             fillAmountImage.fillAmount = Mathf.Clamp01(holdDuration / holdTime); // 1과 0사이 수 리턴
             if (holdDuration >= holdTime)
             {
-                if (context.phase == InputActionPhase.Started && curInteractable != null && !curInteractable.isInteractable)
+                if (curInteractable != null && !curInteractable.isInteractable)
                 {
                     curInteractable.Interact();
                     curInteractableGameObject = null;
@@ -90,12 +84,10 @@ public class PlayerInteractable : MonoBehaviour
                 }
             }
         }
-        
     }
-    public void InteractionActiveSelf()
+    public void EndInteraction()
     {
-        interactableText.gameObject.SetActive(!interactableText.gameObject.activeSelf);
-        interactionImage.gameObject.SetActive(!interactionImage.gameObject.activeSelf);
-        fillAmountImage.gameObject.SetActive(!fillAmountImage.gameObject.activeSelf);
+        holdDuration = 0f;
+        fillAmountImage.fillAmount = 0f;
     }
 }
