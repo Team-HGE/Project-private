@@ -20,6 +20,13 @@ public class PlayerGroundState : PlayerBaseState
     public override void Update()
     {
         base.Update();
+
+        // E 키를 누르는 동안 실행 시킬 내용
+        if (stateMachine.IsInteraction)
+        {
+            Debug.Log("Update - E키 누르는 중");
+
+        }
     }
 
     public override void PhysicsUpdate()
@@ -33,6 +40,30 @@ public class PlayerGroundState : PlayerBaseState
             // 추락 이후에 소음이 발생 구현 예정 추가 구현 사항***
             return;
         }
+    }
+
+    // E 키 상호작용 - 키 눌렀을 때
+    protected override void OnInterationStared(InputAction.CallbackContext context)
+    {
+        base.OnInterationStared(context);
+
+        Debug.Log("E키 눌렸음");
+    }
+
+    // E 키 상호작용 - 키 누르는 중
+    protected override void OnInterationPerformed(InputAction.CallbackContext context)
+    {
+        base.OnInterationPerformed(context);
+
+        Debug.Log("E키 누르는 중");
+    }
+
+    // E 키 상호작용 - 키 뗌
+    protected override void OnInterationCanceled(InputAction.CallbackContext context)
+    {
+        base.OnInterationCanceled(context);
+
+        Debug.Log("E키 뗌");
     }
 
     protected override void OnMovementCanceled(InputAction.CallbackContext context)
