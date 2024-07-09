@@ -9,6 +9,8 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Material Sample Specular Simple - Metal Silver
   m_Shader: {fileID: 4800000, guid: cee0b159f08e8384cbd77a810ea4a5f8, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -19,6 +21,7 @@ Material:
     MotionVector: User
   disabledShaderPasses:
   - TransparentBackface
+  m_LockedProperties: _Brightness
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -151,7 +154,7 @@ Material:
     - _ZWrite: 1
     - __dirty: 0
     m_Colors:
-    - _BaseColor: {r: 0.9882353, g: 0.98039216, b: 0.9607843, a: 0}
+    - _BaseColor: {r: 0.8773585, g: 0.6633398, b: 0.12829298, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _MainUVs: {r: 5, g: 5, b: 0, a: 0}
