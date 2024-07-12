@@ -40,7 +40,7 @@ public class MonsterEarTypePatrolState : MonsterEarTypeGroundState
     {
         base.Update();
 
-        if (stateMachine.Monster.Agent.remainingDistance < 0.1f)
+        if (stateMachine.Monster.Agent.enabled && stateMachine.Monster.Agent.remainingDistance < 0.1f)
         {
             // 목적지에 도착하면 idle 상태 진입
             stateMachine.ChangeState(stateMachine.IdleState);
