@@ -22,48 +22,50 @@ public class PlayerGroundState : PlayerBaseState
     {
         base.Update();
 
-        // E Å°¸¦ ´©¸£´Â µ¿¾È ½ÇÇà ½ÃÅ³ ³»¿ë
+        // E Å°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å³ ï¿½ï¿½ï¿½ï¿½
         if (stateMachine.IsInteraction)
         {
-            Debug.Log("Update - EÅ° ´©¸£´Â Áß");
-        }    
+            Debug.Log("Update - EÅ° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½");
+            GameManager.Instance.player.OnInteracted();
+        }
     }
 
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
 
-        // ¶¥¿¡ ºÙ¾îÀÖ´Â »óÅÂ¿´´Ù°¡ -> Ãß¶ô (°È°¡°¡ Àýº®À¸·Î ¶³¾îÁø °æ¿ì)
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¾ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½Â¿ï¿½ï¿½Ù°ï¿½ -> ï¿½ß¶ï¿½ (ï¿½È°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½)
         if (!stateMachine.Player.Controller.isGrounded
         && stateMachine.Player.Controller.velocity.y < Physics.gravity.y * Time.fixedDeltaTime)
         {
-            // Ãß¶ô ÀÌÈÄ¿¡ ¼ÒÀ½ÀÌ ¹ß»ý ±¸Çö ¿¹Á¤ Ãß°¡ ±¸Çö »çÇ×***
+            // ï¿½ß¶ï¿½ ï¿½ï¿½ï¿½Ä¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½***
             return;
         }
     }
 
-    // E Å° »óÈ£ÀÛ¿ë - Å° ´­·¶À» ¶§
+    // E Å° ï¿½ï¿½È£ï¿½Û¿ï¿½ - Å° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
     protected override void OnInterationStared(InputAction.CallbackContext context)
     {
         base.OnInterationStared(context);
 
-        Debug.Log("EÅ° ´­·ÈÀ½");
+        Debug.Log("EÅ° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
     }
 
-    // E Å° »óÈ£ÀÛ¿ë - Å° ´©¸£´Â Áß
-    protected override void OnInterationPerformed(InputAction.CallbackContext context)
-    {
-        base.OnInterationPerformed(context);
+    // E Å° ï¿½ï¿½È£ï¿½Û¿ï¿½ - Å° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+    //protected override void OnInterationPerformed(InputAction.CallbackContext context)
+    //{
+    //    base.OnInterationPerformed(context);
+    //
+    //    Debug.Log("EÅ° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½");
+    //}
 
-        Debug.Log("EÅ° ´©¸£´Â Áß");
-    }
-
-    // E Å° »óÈ£ÀÛ¿ë - Å° ¶À
+    // E Å° ï¿½ï¿½È£ï¿½Û¿ï¿½ - Å° ï¿½ï¿½
     protected override void OnInterationCanceled(InputAction.CallbackContext context)
     {
         base.OnInterationCanceled(context);
 
-        Debug.Log("EÅ° ¶À");
+        Debug.Log("EÅ° ï¿½ï¿½");
+        GameManager.Instance.player.EndInteraction();
     }
 
     protected override void OnMovementCanceled(InputAction.CallbackContext context)
