@@ -25,7 +25,7 @@ public class PlayerGroundState : PlayerBaseState
         if (stateMachine.IsInteraction)
         {
             Debug.Log("Update - E키 누르는 중");
-
+            GameManager.Instance.player.OnInteracted();
         }
     }
 
@@ -51,12 +51,12 @@ public class PlayerGroundState : PlayerBaseState
     }
 
     // E 키 상호작용 - 키 누르는 중
-    protected override void OnInterationPerformed(InputAction.CallbackContext context)
-    {
-        base.OnInterationPerformed(context);
-
-        Debug.Log("E키 누르는 중");
-    }
+    //protected override void OnInterationPerformed(InputAction.CallbackContext context)
+    //{
+    //    base.OnInterationPerformed(context);
+    //
+    //    Debug.Log("E키 누르는 중");
+    //}
 
     // E 키 상호작용 - 키 뗌
     protected override void OnInterationCanceled(InputAction.CallbackContext context)
@@ -64,6 +64,7 @@ public class PlayerGroundState : PlayerBaseState
         base.OnInterationCanceled(context);
 
         Debug.Log("E키 뗌");
+        GameManager.Instance.player.EndInteraction();
     }
 
     protected override void OnMovementCanceled(InputAction.CallbackContext context)
