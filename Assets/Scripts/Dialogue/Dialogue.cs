@@ -8,7 +8,7 @@ using System.Collections;
 public class Dialogue : MonoBehaviour
 {
     public DialogueSO dialogueSO;
-    public NPC_SO npcSO;
+    //public NPC npc;
 
     public GameObject dialogueCanvas;
     public Image titleBG;
@@ -19,24 +19,20 @@ public class Dialogue : MonoBehaviour
 
     private StringBuilder sbTitle = new StringBuilder();
     private StringBuilder sbBody = new StringBuilder();
-    
+
     private IEnumerator curPrintLine;
     private bool nowTalking = false;
 
     public void Init()
     {
         CloseDialogue();
+        //GameObject nowInteracting = GameManager.Instance.player.curInteractableGameObject;
+        //npc = nowInteracting.GetComponent<NPC>();
     }
 
     private void InitSOData(DialogueSO _dialogue)
     {
         dialogueSO = _dialogue;
-    }
-
-    private void InitNPCData(NPC_SO _npc)
-    {
-        //TODO: 상호작용 중인 NPC 정보 받아오기
-        npcSO = _npc;
     }
 
     public void StartDialogue()
@@ -46,7 +42,6 @@ public class Dialogue : MonoBehaviour
 
         OpenDialogue();
         InitSOData(dialogueSO);
-        InitNPCData(npcSO);
         StartCoroutine(PrintDialogue());
     }
 
@@ -57,15 +52,15 @@ public class Dialogue : MonoBehaviour
 
         portrait.sprite = null;
 
-        for(int i = 0; i < dialogueSO.bodyTexts.Length; i++)
+        for (int i = 0; i < dialogueSO.bodyTexts.Length; i++)
         {
             UtilSB.SetText(titleText, sbTitle, dialogueSO.speakers[0]);
 
             SetImage(portrait, dialogueSO.images[0]);
 
             if (portrait.sprite == null) portrait.transform.localScale = Vector3.zero;
-            else 
-            { 
+            else
+            {
                 portrait.transform.localScale = Vector3.one;
             }
 
@@ -83,7 +78,7 @@ public class Dialogue : MonoBehaviour
         CloseDialogue();
 
         nowTalking = false;
-        
+
         yield return null;
     }
 

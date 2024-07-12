@@ -33,14 +33,5 @@ public class DialogueManager : MonoBehaviour
         quest.UpdateQuest();
         systemMsg.UpdateMessage();
 
-        //Debug.Log("E 키를 눌러서 대화를 시작하세요");
-    }
-
-    private void Update()
-    {
-        //if (Input.GetKey(KeyCode.E))
-        {
-          //  dialogue.StartDialogue();
-        }
     }
 }
