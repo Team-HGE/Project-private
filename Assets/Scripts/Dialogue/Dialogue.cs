@@ -8,6 +8,7 @@ using System.Collections;
 public class Dialogue : MonoBehaviour
 {
     public DialogueSO dialogueSO;
+    public NPC_SO npcSO;
 
     public GameObject dialogueCanvas;
     public Image titleBG;
@@ -32,15 +33,20 @@ public class Dialogue : MonoBehaviour
         dialogueSO = _dialogue;
     }
 
+    private void InitNPCData(NPC_SO _npc)
+    {
+        //TODO: 상호작용 중인 NPC 정보 받아오기
+        npcSO = _npc;
+    }
+
     public void StartDialogue()
     {
         if (nowTalking) return;
         nowTalking = true;
 
-        //Debug.Log("NPC와 대화 시작");
-
         OpenDialogue();
         InitSOData(dialogueSO);
+        InitNPCData(npcSO);
         StartCoroutine(PrintDialogue());
     }
 

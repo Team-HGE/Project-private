@@ -8,11 +8,13 @@ public class NPCInteract : InteractableObject
 {
     public bool readyToTalk = false;
 
+    private GameObject nowInteractNPC;
+
     public override void ActivateInteraction()
     {
         if (isInteractable) return;
 
-        Debug.Log("오브젝트 감지");
+        nowInteractNPC = GameManager.Instance.player.curInteractableGameObject;
 
         GameManager.Instance.player.playerInteraction.SetActive(true);
         GameManager.Instance.player.interactableText.text = "[E] Talk";
@@ -25,9 +27,9 @@ public class NPCInteract : InteractableObject
         readyToTalk = true;
         // readyToTalk = false;
 
-        DialogueManager.Instance.dialogue.StartDialogue();
+        Debug.Log($"{nowInteractNPC} 와 대화 중");
 
-        //Debug.Log($"readyToTalk: {readyToTalk}");
+        DialogueManager.Instance.dialogue.StartDialogue();
     }
 
     // NPC 상태 제어

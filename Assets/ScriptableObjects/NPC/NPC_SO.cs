@@ -4,6 +4,7 @@ public enum NPCStateType
 {
     Speaking,
     Calling,
+    Mutated,
     Dead
 }
 
