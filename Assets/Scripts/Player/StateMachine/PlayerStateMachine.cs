@@ -33,9 +33,6 @@ public class PlayerStateMachine : StateMachine
         WalkState = new PlayerWalkState(this);
         RunState = new PlayerRunState(this);
         CrouchState = new PlayerCrouchState(this);
-        // 추가 구현 사항***
-        //JumpState = new PlayerJumpState(this);
-        //FallState = new PlayerFallState(this);
 
         MovementSpeed = player.Data.GroundData.BaseSpeed;
         OriginHeight = player.transform.localScale.y;

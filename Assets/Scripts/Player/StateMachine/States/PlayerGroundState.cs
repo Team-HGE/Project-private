@@ -9,7 +9,8 @@ public class PlayerGroundState : PlayerBaseState
 
     public override void Enter()
     {
-        base.Enter();
+        base.Enter();        
+        stateMachine.Player.SumNoiseAmount = 5;
     }
 
     public override void Exit()
@@ -25,8 +26,7 @@ public class PlayerGroundState : PlayerBaseState
         if (stateMachine.IsInteraction)
         {
             Debug.Log("Update - E키 누르는 중");
-
-        }
+        }    
     }
 
     public override void PhysicsUpdate()
@@ -88,15 +88,6 @@ public class PlayerGroundState : PlayerBaseState
         base.OnRunCanceled(context);
     }
 
-
-    protected override void OnJumpStarted(InputAction.CallbackContext context)
-    {
-        base.OnJumpStarted(context);
-
-        // JumpState 로 전환 - 추가 구현 사항***
-        //stateMachine.ChangeState(stateMachine.JumpState);
-    }
-
     protected override void OnCrouchPerformed(InputAction.CallbackContext context)
     {
         base.OnCrouchPerformed(context);
@@ -107,5 +98,5 @@ public class PlayerGroundState : PlayerBaseState
     protected override void OnCrouchCanceled(InputAction.CallbackContext context)
     {
         base.OnCrouchCanceled(context);
-    }
+    }    
 }

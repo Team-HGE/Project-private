@@ -40,9 +40,4 @@ public class ForceReceiver : MonoBehaviour
     {
         _impact += force;
     }
-
-    public void Jump(float jumpForce)
-    {
-        _verticalVelocity += jumpForce;
-    }
 }

@@ -8,13 +8,14 @@ public class NoiseData
     public string tag;
     public GameObject prefab;
     public AudioClip[] noises;
+    public float volume;
+    public float transitionTime;
+
     public Transform box;
 }
 
 [Serializable]
-public class NoiseDatas
-{
-    
-    public List<NoiseData> noiseDatas;
-    
+public class NoiseDatasList
+{    
+    public List<NoiseData> noiseDatasList;    
 }

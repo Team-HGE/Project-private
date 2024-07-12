@@ -8,6 +8,10 @@ public class PlayerBaseState : IState
     protected PlayerStateMachine stateMachine;
     protected readonly PlayerGroundData groundData;
 
+    private SoundSource curStepSource;
+    private SoundSource curBreathSource;
+    private int curWalkBreathIndex = 0;
+
     public PlayerBaseState(PlayerStateMachine stateMachine)
     {
         this.stateMachine = stateMachine;
@@ -37,14 +41,7 @@ public class PlayerBaseState : IState
         input.playerActions.Interaction.started += OnInterationStared;
         input.playerActions.Interaction.performed += OnInterationPerformed;
         input.playerActions.Interaction.canceled += OnInterationCanceled;
-
-        // 점프 이벤트
-        //input.playerActions.Jump.started += OnJumpStarted;//추가 구현사항***
     }
-
-    
-
-
 
     protected virtual void RemoveInputActionsCallbacks()
     {
@@ -57,9 +54,6 @@ public class PlayerBaseState : IState
         input.playerActions.Interaction.started -= OnInterationStared;
         input.playerActions.Interaction.performed -= OnInterationPerformed;
         input.playerActions.Interaction.canceled -= OnInterationCanceled;
-
-
-        //input.playerActions.Jump.started -= OnJumpStarted;
     }
 
     public virtual void HandleInput()
@@ -70,17 +64,20 @@ public class PlayerBaseState : IState
     public virtual void Update()
     {
         Move();
+        BreathNoise();
     }
 
     private void ReadMovementInput()
     {
         stateMachine.Player.InputsData.MovementInput = stateMachine.Player.Input.playerActions.Movement.ReadValue<Vector2>();
+
+        if (stateMachine.Player.InputsData.MovementInput != Vector2.zero) StepNoise();
     }
 
     private void Move()
     {
         Vector3 movementDirection = GetMovementDirection();
-        Move(movementDirection);
+        Move(movementDirection);        
     }
 
     private Vector3 GetMovementDirection()
@@ -111,6 +108,113 @@ public class PlayerBaseState : IState
         float movementSpeed = stateMachine.MovementSpeed * stateMachine.MovementSpeedModifier;
         return movementSpeed;
     }
+
+    private void StepNoise()
+    {
+        NoiseData curStepData;
+
+        if (curStepSource == null)
+        {
+            for (int i = 0; i < stateMachine.Player.NoiseDatasList.noiseDatasList.Count; i++)
+            {
+                if (stateMachine.IsRuning)
+                {
+                    if (stateMachine.Player.NoiseDatasList.noiseDatasList[i].tag == "RunStepNoise")
+                    {
+                        curStepData = stateMachine.Player.NoiseDatasList.noiseDatasList[i];
+                        curStepSource = stateMachine.Player.PlayNoise(curStepData.noises, curStepData.tag, curStepData.volume, 0.5f, curStepData.transitionTime, 0f);
+                        break;
+                    }
+                }
+                else if (stateMachine.IsCrouch)
+                {
+                    if (stateMachine.Player.NoiseDatasList.noiseDatasList[i].tag == "WalkStepNoise")
+                    {
+                        curStepData = stateMachine.Player.NoiseDatasList.noiseDatasList[i];
+                        curStepSource = stateMachine.Player.PlayNoise(curStepData.noises, curStepData.tag, curStepData.volume - 3f, -0.75f, curStepData.transitionTime + 0.5f, 0f);
+                        break;
+                    }
+                }
+                else 
+                {
+                    if (stateMachine.Player.NoiseDatasList.noiseDatasList[i].tag == "WalkStepNoise")
+                    {
+                        curStepData = stateMachine.Player.NoiseDatasList.noiseDatasList[i];
+                        curStepSource = stateMachine.Player.PlayNoise(curStepData.noises, curStepData.tag, curStepData.volume, -0.5f, curStepData.transitionTime, 0f);
+                        break;
+                    }
+                }                
+            }
+        }
+        else
+        {
+            if (!curStepSource.gameObject.activeSelf)
+            {
+                curStepSource = null;
+            }
+        }
+    }
+
+    private void BreathNoise()
+    {
+        string walkBreathTag = "WalkBreathNoise";
+
+        if (!stateMachine.IsRuning)
+        {
+            NoiseData curBreathData;
+
+            if (curBreathSource == null)
+            {
+                for (int i = 0; i < stateMachine.Player.NoiseDatasList.noiseDatasList.Count; i++)
+                {
+                    if (stateMachine.Player.NoiseDatasList.noiseDatasList[i].tag == walkBreathTag)
+                    {
+                        curBreathData = stateMachine.Player.NoiseDatasList.noiseDatasList[i];
+                        curBreathSource = stateMachine.Player.PlayNoise(curBreathData.noises[curWalkBreathIndex], curBreathData.tag, curBreathData.volume, 0.1f, curBreathData.transitionTime, 0f);
+                        curWalkBreathIndex++;
+                        if (curWalkBreathIndex == 4) curWalkBreathIndex = 0;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                if (!curBreathSource.gameObject.activeSelf)
+                {
+                    curBreathSource = null;
+                }
+            }
+        }
+        else
+        {
+            NoiseData curBreathData;
+
+            if (curBreathSource == null)
+            {
+                for (int i = 0; i < stateMachine.Player.NoiseDatasList.noiseDatasList.Count; i++)
+                {
+                    if (stateMachine.Player.NoiseDatasList.noiseDatasList[i].tag == walkBreathTag)
+                    {
+                        curBreathData = stateMachine.Player.NoiseDatasList.noiseDatasList[i];
+                        curBreathSource = stateMachine.Player.PlayNoise(curBreathData.noises[curWalkBreathIndex], curBreathData.tag, curBreathData.volume + 3f, 0.5f, curBreathData.transitionTime - 0.5f, 0f);
+                        curWalkBreathIndex++;
+                        if (curWalkBreathIndex == 4) curWalkBreathIndex = 0;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                if (!curBreathSource.gameObject.activeSelf)
+                {
+                    curBreathSource = null;
+                }
+            }
+        }
+
+    }
+
+
 
     protected virtual void OnRunPerformed(InputAction.CallbackContext context)
     {
@@ -163,5 +267,4 @@ public class PlayerBaseState : IState
     {
     }
 
-    
 }

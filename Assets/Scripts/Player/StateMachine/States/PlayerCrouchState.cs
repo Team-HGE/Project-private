@@ -14,12 +14,18 @@ public class PlayerCrouchState : PlayerGroundState
         base.Enter();
         stateMachine.Player.transform.localScale = new Vector3(stateMachine.Player.transform.localScale.x, groundData.CrouchHeight, stateMachine.Player.transform.localScale.z);
         stateMachine.MovementSpeedModifier = groundData.CrouchSpeedModifier;
+        stateMachine.Player.SumNoiseAmount = 2f;
     }
 
     public override void Exit() 
     {
         base.Exit();
         stateMachine.Player.transform.localScale = new Vector3(stateMachine.Player.transform.localScale.x, stateMachine.OriginHeight, stateMachine.Player.transform.localScale.z);
+    }
+
+    public override void Update()
+    {
+        base.Update();
     }
 
     protected override void OnCrouchCanceled(InputAction.CallbackContext context)

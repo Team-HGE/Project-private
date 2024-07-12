@@ -2,18 +2,14 @@ using UnityEngine.InputSystem;
 using UnityEngine;
 using TMPro;
 using Unity.VisualScripting;
+using System.Collections.Generic;
+using System;
 
 public class PlayerWalkState : PlayerGroundState
 {
     public PlayerWalkState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
     {
     }
-
-    bool isNoise = false;
-    float delay = 0f;
-    float delayMax = 30f;
-
-    private SoundSource curAudioSource;
 
     public override void Enter()
     {        
@@ -31,11 +27,7 @@ public class PlayerWalkState : PlayerGroundState
             return;
         }
 
-        stateMachine.MovementSpeedModifier = groundData.WalkSpeedModifier;
-
-        //stateMachine.Player.PlayNoise(stateMachine.Player.NoiseDatas.noiseDatas[0].noises[0], "PlayerWalk");
-        //Debug.Log(stateMachine.Player.NoiseDatas.noiseDatas[0].noises.Length);
-        //stateMachine.Player.PlayNoise(stateMachine.Player.NoiseDatas.noiseDatas[0].noises, "PlayerWalk");        
+        stateMachine.MovementSpeedModifier = groundData.WalkSpeedModifier;    
     }
 
     public override void Exit()
@@ -47,21 +39,6 @@ public class PlayerWalkState : PlayerGroundState
     public override void Update()
     {
         base.Update();
-
-        if (curAudioSource == null)
-        {
-            curAudioSource = stateMachine.Player.PlayNoise(stateMachine.Player.NoiseDatas.noiseDatas[0].noises, "PlayerWalk");
-
-        }
-        else 
-        {
-            if (!curAudioSource.gameObject.activeSelf)
-            {
-                curAudioSource = null;
-            }
-
-        }
-
     }
 
 
@@ -76,5 +53,4 @@ public class PlayerWalkState : PlayerGroundState
     {
         base.OnCrouchPerformed(context);
     }
-
 }

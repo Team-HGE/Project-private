@@ -7,21 +7,23 @@ public class Player : MonoBehaviour, INoise
     [field: SerializeField] public PlayerSO Data { get; private set; }
 
     [field: Header("Noise")]
-    [field: SerializeField] public NoiseDatas NoiseDatas { get; private set; }
+    [field: SerializeField] public NoiseDatasList NoiseDatasList { get; private set; }
 
     public PlayerController Input { get; private set; }
     public CharacterController Controller { get; private set; }
     public ForceReceiver ForceReceiver { get; private set; }
     public PlayerInputsData InputsData { get; private set; }
-
     private PlayerStateMachine stateMachine;
 
     // INoise
     public float NoiseTransitionTime { get; set; }
     public float NoiseMin { get; set; }
     public float NoiseMax { get; set; }
-    public float NoiseAmount { get; set; }
-    public float DecreaseSpeed { get; set; }
+    [field: SerializeField]
+    public float CurNoiseAmount { get; set; }
+    public float SumNoiseAmount { get; set; }
+    [field: SerializeField]
+    public float DecreaseSpeed { get; set; } = 1f;
 
     private void Awake()
     {
@@ -32,10 +34,9 @@ public class Player : MonoBehaviour, INoise
 
         stateMachine = new PlayerStateMachine(this);
 
-        Debug.Log($"{NoiseDatas.noiseDatas.Count}");
-        for (int i = 0; i < NoiseDatas.noiseDatas.Count; i++)
+        for (int i = 0; i < NoiseDatasList.noiseDatasList.Count; i++)
         {
-            NoisePool.Instance.noiseDatasList.Add(NoiseDatas.noiseDatas[i]);
+            NoisePool.Instance.noiseDatasList.Add(NoiseDatasList.noiseDatasList[i]);
         }
     }
 
@@ -49,6 +50,12 @@ public class Player : MonoBehaviour, INoise
     {
         stateMachine.HandleInput();
         stateMachine.Update();
+
+        if (CurNoiseAmount > 0)
+        {
+            CurNoiseAmount -= DecreaseSpeed * Time.deltaTime;
+            if (CurNoiseAmount <= 0) CurNoiseAmount = 0;
+        }
     }
 
     private void FixedUpdate()
@@ -56,15 +63,22 @@ public class Player : MonoBehaviour, INoise
         stateMachine.PhysicsUpdate();
     }
 
-    public SoundSource PlayNoise(AudioClip[] audioClips, string tag)
+    public SoundSource PlayNoise(AudioClip[] audioClips, string tag, float amount, float addVolume, float transitionTime, float pitch)
     {
         int index = Random.Range(0, audioClips.Length);
-        Debug.Log(index);
+        //Debug.Log(index);
 
         SoundSource soundSource;
+        soundSource = NoiseManager.Instance.PlayNoise(audioClips[index], tag, addVolume, transitionTime, pitch);
+        if (CurNoiseAmount < SumNoiseAmount) CurNoiseAmount += amount;
+        return soundSource;
+    }
 
-       soundSource = NoiseManager.Instance.PlayNoise(audioClips[index], tag);
-
+    public SoundSource PlayNoise(AudioClip audioClip, string tag, float amount, float addVolume, float transitionTime, float pitch)
+    {                
+        SoundSource soundSource;
+        soundSource = NoiseManager.Instance.PlayNoise(audioClip, tag, addVolume, transitionTime, pitch);
+        if (CurNoiseAmount < SumNoiseAmount) CurNoiseAmount += amount;
         return soundSource;
     }
 

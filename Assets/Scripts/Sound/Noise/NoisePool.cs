@@ -21,11 +21,11 @@ public class NoisePool : MonoBehaviour
     private void Start()
     {
 
-        if (noiseDatasList.Count == 0)
-        {
-            Debug.Log("노이즈 0개");
-        }
-        Debug.Log($"노이즈 종류 갯수 : {noiseDatasList.Count}");
+        //if (noiseDatasList.Count == 0)
+        //{
+        //    Debug.Log("노이즈 0개");
+        //}
+        //Debug.Log($"노이즈 종류 갯수 : {noiseDatasList.Count}");
 
 
         poolDictionary = new Dictionary<string, List<GameObject>>();

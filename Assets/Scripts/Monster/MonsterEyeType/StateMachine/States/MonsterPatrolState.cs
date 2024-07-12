@@ -36,7 +36,7 @@ public class MonsterPatrolState : MonsterGroundState
 
         if (stateMachine.Monster.Agent.remainingDistance < 0.1f)
         {
-            StatrPatrol();
+            stateMachine.ChangeState(stateMachine.IdleState);
         }
 
         if (IsInChaseRange() && GetIsPlayerInFieldOfView())
@@ -48,9 +48,14 @@ public class MonsterPatrolState : MonsterGroundState
     private Vector3 GetRandomPoint(Vector3 center, float radius)
     {
 
-        Vector3 randomPos = Random.insideUnitSphere * radius;
-        randomPos.y = 0;
-        randomPos += center;
+        Vector3 randomPos = center;
+        for (int i = 0; i < 50; i++)
+        {
+            randomPos = Random.insideUnitSphere * radius;
+            randomPos.y = 0;
+            randomPos += center;
+            if (Vector3.Distance(stateMachine.Monster.transform.position, randomPos) > stateMachine.Monster.Data.GroundData.PatrolMinDistance) break;
+        }
 
         NavMeshHit hit;
         if (NavMesh.SamplePosition(randomPos, out hit, radius, NavMesh.AllAreas))
