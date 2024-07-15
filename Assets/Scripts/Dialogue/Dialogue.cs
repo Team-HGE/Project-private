@@ -4,11 +4,13 @@ using System.Text;
 using TMPro;
 using UnityEngine.Diagnostics;
 using System.Collections;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 public class Dialogue : MonoBehaviour
 {
-    public DialogueSO dialogueSO;
-    //public NPC npc;
+    //public DialogueSO dialogueSO;
+    public NPC_SO npcSO;
+    public NPC npc;
 
     public GameObject dialogueCanvas;
     public Image titleBG;
@@ -26,13 +28,6 @@ public class Dialogue : MonoBehaviour
     public void Init()
     {
         CloseDialogue();
-        //GameObject nowInteracting = GameManager.Instance.player.curInteractableGameObject;
-        //npc = nowInteracting.GetComponent<NPC>();
-    }
-
-    private void InitSOData(DialogueSO _dialogue)
-    {
-        dialogueSO = _dialogue;
     }
 
     public void StartDialogue()
@@ -40,8 +35,13 @@ public class Dialogue : MonoBehaviour
         if (nowTalking) return;
         nowTalking = true;
 
+        GameObject nowInteracting = GameManager.Instance.player.curInteractableGameObject;
+        Debug.Log(nowInteracting);
+        npc = nowInteracting.GetComponent<NPC>();
+
+        npcSO = npc.npcSO;
+
         OpenDialogue();
-        InitSOData(dialogueSO);
         StartCoroutine(PrintDialogue());
     }
 
@@ -52,11 +52,11 @@ public class Dialogue : MonoBehaviour
 
         portrait.sprite = null;
 
-        for (int i = 0; i < dialogueSO.bodyTexts.Length; i++)
+        for (int i = 0; i < npcSO.testDialogue.Length; i++)
         {
-            UtilSB.SetText(titleText, sbTitle, dialogueSO.speakers[0]);
+            UtilSB.SetText(titleText, sbTitle, npcSO.npcName + " - " + npcSO.state);
 
-            SetImage(portrait, dialogueSO.images[0]);
+            SetImage(portrait, npcSO.illusts[0]);
 
             if (portrait.sprite == null) portrait.transform.localScale = Vector3.zero;
             else
@@ -64,7 +64,7 @@ public class Dialogue : MonoBehaviour
                 portrait.transform.localScale = Vector3.one;
             }
 
-            curPrintLine = TextEffect.Typing(bodyText, sbBody, dialogueSO.bodyTexts[i]);
+            curPrintLine = TextEffect.Typing(bodyText, sbBody, npcSO.testDialogue[i]);
             yield return StartCoroutine(curPrintLine);
 
             Debug.Log("E 키로 진행하세요");

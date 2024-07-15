@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public enum NPCStateType
+public enum npcState
 {
     Idle,
     Speaking,
@@ -10,7 +10,7 @@ public enum NPCStateType
     Dead
 }
 
-public enum NPCEmotion
+public enum Emotion
 {
     Default,
     Embarrassed,
@@ -22,7 +22,8 @@ public enum NPCEmotion
 public class NPC_SO : ScriptableObject
 {
     public string npcName;
-    public NPCStateType stateType;
-    public Sprite[] emotions;
+    public npcState state;
+    public Emotion emotion;
+    public Sprite[] illusts;
     [TextArea] public string[] testDialogue;
 }

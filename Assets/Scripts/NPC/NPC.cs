@@ -7,6 +7,17 @@ public class NPC : InteractableObject
 {
     public NPC_SO npcSO;
 
+    //public string npcName { get; private set; }
+    //public npcState npcState { get; private set; }
+    //public Emotion emotion { get; private set; }
+
+    //public NPC(string npcName, npcState npcState, Emotion emotion)
+    //{
+    //    this.npcName = npcName;
+    //    this.npcState = npcState;
+    //    this.emotion = emotion;
+    //}
+
     // NPC 정보 불러오기
     private void InitNPCData(NPC_SO _npc)
     {
@@ -24,7 +35,7 @@ public class NPC : InteractableObject
 
     public override void Interact()
     {
-        ChangeState(NPCStateType.Speaking);
+        ChangeState(npcState.Speaking);
 
         InitNPCData(npcSO);
 
@@ -34,39 +45,39 @@ public class NPC : InteractableObject
     }
 
     // NPC 표정 바꾸기
-    public Sprite ChangeEmotion(NPCEmotion emotion)
+    public Sprite ChangeEmotion(Emotion emotion)
     {
         switch(emotion)
         {
-            case NPCEmotion.Default:
-                return npcSO.emotions[0];
-            case NPCEmotion.Embarrassed:
-                return npcSO.emotions[1];
-            case NPCEmotion.Rage:
-                return npcSO.emotions[2];
+            case Emotion.Default:
+                return npcSO.illusts[0];
+            case Emotion.Embarrassed:
+                return npcSO.illusts[1];
+            case Emotion.Rage:
+                return npcSO.illusts[2];
             default:
-                return npcSO.emotions[0];
+                return npcSO.illusts[0];
         }
     }
 
     // NPC 상태 제어
     // 대화중, 통화중, 변이, 사망
 
-    public string ChangeState(NPCStateType stateType)
+    public string ChangeState(npcState stateType)
     {
         switch (stateType)
         {
-            case NPCStateType.Idle:
-                npcSO.stateType = NPCStateType.Idle;
+            case npcState.Idle:
+                npcSO.state = npcState.Idle;
                 return "대기중";
-            case NPCStateType.Speaking:
-                npcSO.stateType = NPCStateType.Speaking;
+            case npcState.Speaking:
+                npcSO.state = npcState.Speaking;
                 return "대화중";
-            case NPCStateType.Calling:
-                npcSO.stateType = NPCStateType.Calling;
+            case npcState.Calling:
+                npcSO.state = npcState.Calling;
                 return "통화중";
             default:
-                npcSO.stateType = NPCStateType.Idle;
+                npcSO.state = npcState.Idle;
                 return "대기중";
         }
     }
