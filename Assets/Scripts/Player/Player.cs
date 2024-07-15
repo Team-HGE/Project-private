@@ -34,6 +34,14 @@ public class Player : MonoBehaviour, INoise
 
         stateMachine = new PlayerStateMachine(this);
 
+        //Debug.Log($"Player - Awake");
+
+    }
+
+    private void OnEnable()
+    {
+        //Debug.Log($"Player - OnEnable");
+
         for (int i = 0; i < NoiseDatasList.noiseDatasList.Count; i++)
         {
             NoisePool.Instance.noiseDatasList.Add(NoiseDatasList.noiseDatasList[i]);
@@ -42,6 +50,9 @@ public class Player : MonoBehaviour, INoise
 
     private void Start()
     {
+
+        
+
         Cursor.lockState = CursorLockMode.Locked;
         stateMachine.ChangeState(stateMachine.IdleState);
     }
@@ -82,25 +93,4 @@ public class Player : MonoBehaviour, INoise
         return soundSource;
     }
 
-    //public void PlayNoise(AudioClip[] audioClips, string tag)
-    //{
-    //    int index = Random.Range(0, audioClips.Length);
-    //    Debug.Log(index);
-
-    //    NoiseManager.Instance.PlayNoise(audioClips[index], tag);
-    //}
-
-    //public void PlayNoise(float transitionTime, float min, float max, float speed)
-    //{
-    //    // 소음 반복
-    //    if (transitionTime > 0)
-    //    {
-
-    //    }
-    //    // 소음 한번 발생
-    //    else
-    //    {
-
-    //    }
-    //}  
 }

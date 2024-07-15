@@ -10,6 +10,8 @@ public class NoiseManager : MonoBehaviour
 
     private void Awake()
     {
+        //Debug.Log($"NoiseManager - Awake");
+
         Instance = this;//임시 코드 수정 예정***
     }
 
