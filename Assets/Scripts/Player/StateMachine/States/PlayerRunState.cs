@@ -1,3 +1,4 @@
+using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,6 +6,7 @@ public class PlayerRunState : PlayerGroundState
 {
     private string stepTag = "RunStepNoise";
     private SoundSource curStepSource;
+    private PlayerStamina CurrentStamina;
 
     public PlayerRunState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
     {
@@ -13,19 +15,37 @@ public class PlayerRunState : PlayerGroundState
     public override void Enter()
     {
         base.Enter();
-        stateMachine.MovementSpeedModifier = groundData.RunSpeedModifier;
-        stateMachine.Player.SumNoiseAmount = 12f;
-    }
 
-    public override void Exit()
-    {
-        base.Exit();
+        CurrentStamina = stateMachine.Player.GetComponent<PlayerStamina>();
+
+        if (CurrentStamina.IsExhausted)
+        {
+            stateMachine.ChangeState(stateMachine.WalkState);
+        }
+        else
+        {
+            stateMachine.MovementSpeedModifier = groundData.RunSpeedModifier;
+           
+        }
+        stateMachine.Player.SumNoiseAmount = 12f;
     }
 
     public override void Update()
     {
         base.Update();
-        //Run();
+        CurrentStamina.ConsumeStamina(18f); // 스태미나 소모
+
+        if (CurrentStamina.IsExhausted)
+        {
+            stateMachine.ChangeState(stateMachine.WalkState); // 스태미나가 다 떨어지면 걷기 상태로 전환
+        }
+        
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+        stateMachine.IsRuning = false; 
     }
 
     protected override void OnRunCanceled(InputAction.CallbackContext context)
@@ -35,18 +55,11 @@ public class PlayerRunState : PlayerGroundState
         if (stateMachine.Player.InputsData.MovementInput == Vector2.zero)
         {
             stateMachine.ChangeState(stateMachine.IdleState);
-            return;
         }
         else
         {
             stateMachine.ChangeState(stateMachine.WalkState);
-            return;
         }
-    }
-
-    protected override void OnCrouchPerformed(InputAction.CallbackContext context)
-    {
-        base.OnCrouchPerformed(context);
     }
 
     private void Run()

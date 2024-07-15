@@ -1,0 +1,17 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/CircularBar/Example/Main.uss?fileID=7433441132597879392&amp;guid=e2c95a4a4f303054fb9cde841a6ae19c&amp;type=3#Main" />
+    <ui:VisualElement style="flex-grow: 1; flex-direction: row; align-items: center;">
+        <ui:VisualElement name="1" class="container" style="flex-grow: 1;">
+            <ui:Label tabindex="-1" text="77% filled" parse-escape-sequences="true" display-tooltip-when-elided="true" />
+            <DiceNook.View.CircularBar fill="0.77" />
+        </ui:VisualElement>
+        <ui:VisualElement name="2" class="container" style="flex-grow: 1;">
+            <ui:Label tabindex="-1" text="59% filled" parse-escape-sequences="true" display-tooltip-when-elided="true" />
+            <DiceNook.View.CircularBar fill="0.59" />
+        </ui:VisualElement>
+        <ui:VisualElement name="3" class="container" style="flex-grow: 1;">
+            <ui:Label tabindex="-1" text="35% filled" parse-escape-sequences="true" display-tooltip-when-elided="true" />
+            <DiceNook.View.CircularBar fill="0.35" name="CircularBar" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
