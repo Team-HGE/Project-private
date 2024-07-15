@@ -45,7 +45,7 @@ public class EarTypeMonster : MonoBehaviour
 
     private void Update()
     {
-        _stateMachine.HandleInput();
+        //_stateMachine.HandleInput();
         _stateMachine.Update();
 
     }

@@ -34,25 +34,22 @@ public class Player : MonoBehaviour, INoise
 
         stateMachine = new PlayerStateMachine(this);
 
-        //Debug.Log($"Player - Awake");
-
-    }
-
-    private void OnEnable()
-    {
-        //Debug.Log($"Player - OnEnable");
+        if (NoisePool.Instance != null)
+        {
+            //Debug.Log($"Player - Awake - 노이즈 풀 있음");
+            NoisePool.Instance.Initialize();
+        }
 
         for (int i = 0; i < NoiseDatasList.noiseDatasList.Count; i++)
         {
             NoisePool.Instance.noiseDatasList.Add(NoiseDatasList.noiseDatasList[i]);
         }
+
+        NoisePool.Instance.FindNoise();
     }
 
     private void Start()
     {
-
-        
-
         Cursor.lockState = CursorLockMode.Locked;
         stateMachine.ChangeState(stateMachine.IdleState);
     }

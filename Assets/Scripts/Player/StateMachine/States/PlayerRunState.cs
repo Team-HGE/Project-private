@@ -13,6 +13,7 @@ public class PlayerRunState : PlayerGroundState
     public override void Enter()
     {
         base.Enter();
+        Debug.Log("달리기 시작");
         stateMachine.MovementSpeedModifier = groundData.RunSpeedModifier;
         stateMachine.Player.SumNoiseAmount = 12f;
     }
@@ -20,6 +21,8 @@ public class PlayerRunState : PlayerGroundState
     public override void Exit()
     {
         base.Exit();
+        Debug.Log("달리기 종료");
+
     }
 
     public override void Update()

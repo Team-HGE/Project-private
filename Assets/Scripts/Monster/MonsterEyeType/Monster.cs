@@ -53,7 +53,7 @@ public class Monster : MonoBehaviour
 
     private void Update()
     {
-        _stateMachine.HandleInput();
+        //_stateMachine.HandleInput();
         _stateMachine.Update();
 
         if (NoiseAmount > 0)
