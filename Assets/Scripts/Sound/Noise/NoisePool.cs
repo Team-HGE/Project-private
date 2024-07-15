@@ -1,11 +1,27 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class NoisePool : MonoBehaviour
 {
     public static NoisePool Instance;//임시 코드 수정 예정***
+
+    //private static NoisePool _instance;
+
+    //public static NoisePool Instance
+    //{
+    //    get 
+    //    {
+    //        if (_instance == null)
+    //        {
+    //            _instance = new NoisePool();
+    //        }
+
+    //        return _instance;
+    //    }
+    //}
 
 
     // 외부의 오브젝드에서 여기에 오디오 클립을 담은 리스트를 전달
@@ -15,6 +31,8 @@ public class NoisePool : MonoBehaviour
 
     private void Awake()
     {
+        //Debug.Log($"NoisePool - Awake");
+
         Instance = this;//임시 코드 수정 예정***
     }
 
