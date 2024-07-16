@@ -84,7 +84,6 @@ namespace GlobalSnowEffect {
         public OnUpdatePropertiesEvent OnUpdateProperties;
         public OnUpdateCoverageEvent OnBeforeUpdateCoverage;
         public OnUpdateCoverageEvent OnPostUpdateCoverage;
-
         static GlobalSnow _snow;
 
         public static GlobalSnow instance {
@@ -103,6 +102,10 @@ namespace GlobalSnowEffect {
                 return _snow;
             }
         }
+        [SerializeField]
+        Transform 
+            
+            blockCelling;
 
         [SerializeField]
         GameObject
@@ -2495,6 +2498,7 @@ namespace GlobalSnowEffect {
                         }
                         snowfallSystem.SetParticles(m_Particles, actualCount);
                         lastSnowfallIntensity = snowfallIntensity;
+                        snowfallSystem.trigger.SetCollider(0, blockCelling);
                         if (Application.isPlaying) {
                             snowfallSystem.Play();
                         }
