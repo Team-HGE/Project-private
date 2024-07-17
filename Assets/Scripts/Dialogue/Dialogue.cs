@@ -19,7 +19,7 @@ public class Dialogue : MonoBehaviour
     private StringBuilder sbBody = new StringBuilder();
 
     private IEnumerator curPrintLine;
-    private bool nowTalking = false;
+    public bool nowTalking = false;
 
     public void Init()
     {
@@ -44,7 +44,7 @@ public class Dialogue : MonoBehaviour
         StartCoroutine(PrintDialogue());
     }
 
-    private IEnumerator PrintDialogue()
+    public IEnumerator PrintDialogue()
     {
         titleText.text = sbTitle.Clear().ToString();
         bodyText.text = sbBody.Clear().ToString();
