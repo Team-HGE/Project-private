@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -21,7 +22,7 @@ public class PlayerInteractable : MonoBehaviour
     [SerializeField] Camera camera;
     
     IInteractable curInteractable;
-    float checkRate = 0.05f;
+    float checkRate = 1.0f;
     float lastCheckTime;
 
     private void Start()
@@ -88,4 +89,5 @@ public class PlayerInteractable : MonoBehaviour
         holdDuration = 0f;
         fillAmountImage.fillAmount = 0f;
     }
+
 }

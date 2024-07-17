@@ -28,7 +28,7 @@ public class DoorObject : InteractableObject
         if (isInteractable) return;
 
         GameManager.Instance.player.playerInteraction.SetActive(true);
-        GameManager.Instance.player.interactableText.text = "[E] Door Open";
+        GameManager.Instance.player.interactableText.text = "¿­±â/´Ý±â";
     }
 
     public override void Interact()

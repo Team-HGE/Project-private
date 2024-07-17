@@ -2,16 +2,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Text;
 using TMPro;
-using UnityEngine.Diagnostics;
 using System.Collections;
-using System.Runtime.InteropServices.WindowsRuntime;
 
 public class Dialogue : MonoBehaviour
 {
-    //public DialogueSO dialogueSO;
-    public NPC_SO npcSO;
-    public NPC npc;
-
     public GameObject dialogueCanvas;
     public Image titleBG;
 
@@ -19,6 +13,8 @@ public class Dialogue : MonoBehaviour
     public TextMeshProUGUI bodyText;
     public Image portrait;
 
+    private NPC npc;
+    private NPC_SO npcSO;
     private StringBuilder sbTitle = new StringBuilder();
     private StringBuilder sbBody = new StringBuilder();
 
@@ -32,13 +28,16 @@ public class Dialogue : MonoBehaviour
 
     public void StartDialogue()
     {
-        if (nowTalking) return;
+        if (nowTalking)
+        {
+            GameManager.Instance.player.playerInteraction.SetActive(false);
+            return;
+        }
+            
         nowTalking = true;
 
         GameObject nowInteracting = GameManager.Instance.player.curInteractableGameObject;
-        Debug.Log(nowInteracting);
         npc = nowInteracting.GetComponent<NPC>();
-
         npcSO = npc.npcSO;
 
         OpenDialogue();
@@ -54,9 +53,9 @@ public class Dialogue : MonoBehaviour
 
         for (int i = 0; i < npcSO.testDialogue.Length; i++)
         {
-            UtilSB.SetText(titleText, sbTitle, npcSO.npcName + " - " + npcSO.state);
+            UtilSB.SetText(titleText, sbTitle, npcSO.npcName + " - " + npc.ChangeNpcState(npcState.Speaking));
 
-            SetImage(portrait, npcSO.illusts[0]);
+            SetImage(portrait, npc.SwitchPortrait(npcSO.emotion));
 
             if (portrait.sprite == null) portrait.transform.localScale = Vector3.zero;
             else
@@ -78,6 +77,7 @@ public class Dialogue : MonoBehaviour
         CloseDialogue();
 
         nowTalking = false;
+        npc.ChangeNpcState(npcState.Idle);
 
         yield return null;
     }
