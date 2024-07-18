@@ -34,10 +34,18 @@ public class Player : MonoBehaviour, INoise
 
         stateMachine = new PlayerStateMachine(this);
 
+        if (NoisePool.Instance != null)
+        {
+            //Debug.Log($"Player - Awake - 노이즈 풀 있음");
+            NoisePool.Instance.Initialize();
+        }
+
         for (int i = 0; i < NoiseDatasList.noiseDatasList.Count; i++)
         {
             NoisePool.Instance.noiseDatasList.Add(NoiseDatasList.noiseDatasList[i]);
         }
+
+        NoisePool.Instance.FindNoise();
     }
 
     private void Start()
@@ -56,6 +64,8 @@ public class Player : MonoBehaviour, INoise
             CurNoiseAmount -= DecreaseSpeed * Time.deltaTime;
             if (CurNoiseAmount <= 0) CurNoiseAmount = 0;
         }
+
+        if (CurNoiseAmount >= 20f) CurNoiseAmount = 20f;
     }
 
     private void FixedUpdate()
@@ -82,25 +92,4 @@ public class Player : MonoBehaviour, INoise
         return soundSource;
     }
 
-    //public void PlayNoise(AudioClip[] audioClips, string tag)
-    //{
-    //    int index = Random.Range(0, audioClips.Length);
-    //    Debug.Log(index);
-
-    //    NoiseManager.Instance.PlayNoise(audioClips[index], tag);
-    //}
-
-    //public void PlayNoise(float transitionTime, float min, float max, float speed)
-    //{
-    //    // 소음 반복
-    //    if (transitionTime > 0)
-    //    {
-
-    //    }
-    //    // 소음 한번 발생
-    //    else
-    //    {
-
-    //    }
-    //}  
 }

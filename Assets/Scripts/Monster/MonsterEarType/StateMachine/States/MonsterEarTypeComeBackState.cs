@@ -12,6 +12,9 @@ public class MonsterEarTypeComeBackState : MonsterEarTypeGroundState
     {
         base.Enter();
         stateMachine.IsComeBack = true;
+        stateMachine.Monster.Agent.speed = groundData.ComebackSpeed;
+        stateMachine.Monster.Agent.SetDestination(stateMachine.StartPosition);
+
         // 애니메이션 실행 - 그라운드 파라미터 해쉬로 접근
 
     }
@@ -29,12 +32,10 @@ public class MonsterEarTypeComeBackState : MonsterEarTypeGroundState
     {
         base.Update();
 
-        if (Vector3.Distance(stateMachine.StartPosition, stateMachine.Monster.transform.position) < 1f)
+        if (stateMachine.Monster.Agent.remainingDistance < 1f)
         {
-            stateMachine.ChangeState(stateMachine.PatrolState);
-            return;
+            Debug.Log("복귀 완료");
+            stateMachine.ChangeState(stateMachine.IdleState);
         }
-
-        Move();
     }
 }

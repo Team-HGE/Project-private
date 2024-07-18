@@ -21,7 +21,7 @@ public class ElevatorBtn : InteractableObject
         if (GameManager.Instance.isElevatorButtonPressed) return;
         if (GameManager.Instance.nowFloor == myNum) return;
         GameManager.Instance.player.playerInteraction.SetActive(true);
-        GameManager.Instance.player.interactableText.text = "Push";
+        GameManager.Instance.player.interactableText.text = "´©¸£±â";
     }
     public override void Interact()
     {
