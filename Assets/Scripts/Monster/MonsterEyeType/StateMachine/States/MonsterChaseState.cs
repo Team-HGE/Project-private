@@ -12,7 +12,9 @@ public class MonsterChaseState : MonsterGroundState
     public override void Enter()
     {
         base.Enter();
- 
+        Debug.Log("플레이어 추적 시작");
+
+
         stateMachine.Monster.Agent.isStopped = false;
         stateMachine.Monster.Agent.speed = groundData.ChaseSpeed;             
         
@@ -40,17 +42,25 @@ public class MonsterChaseState : MonsterGroundState
         // 공격 가능 범위 - 공격, 게임 오버
         if (GetIsPlayerInFieldOfView() && IsInAttackRange())
         {
-            Debug.Log("게임 오버");
+            Debug.Log("플레이어 공격 - 게임 오버");
+            stateMachine.ChangeState(stateMachine.IdleState);
             return;
         }
 
+        //// 탐지 범위
+        //if (GetIsPlayerInFieldOfView() && IsInChaseRange())
+        //{
+        //    stateMachine.Monster.Agent.SetDestination(stateMachine.Target.transform.position);            
+        //}
+
         // 탐지 범위
-        if (GetIsPlayerInFieldOfView() && IsInChaseRange())
+        if (IsInChaseRange())
         {
-            stateMachine.Monster.Agent.SetDestination(stateMachine.Target.transform.position);            
+            stateMachine.Monster.Agent.SetDestination(stateMachine.Target.transform.position);
         }
         else 
         {
+            Debug.Log("플레이어 놓침");
             stateMachine.ChangeState(stateMachine.LoseSightState);
             return;
 

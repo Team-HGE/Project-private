@@ -12,10 +12,12 @@ public class MonsterEarTypeFocusState : MonsterEarTypeGroundState
     {
         base.Enter();
 
+        Debug.Log("focus 시작");
+
         stateMachine.IsFocusNoise = true;
         stateMachine.IsFocusRotate = true;
         stateMachine.Monster.IsBehavior = false;
-        stateMachine.Monster.WaitForBehavior(8f);
+        stateMachine.Monster.WaitForBehavior(stateMachine.Monster.Data.GroundData.FocusTransitionTime);
 
         // 애니메이션 실행
 
@@ -24,7 +26,8 @@ public class MonsterEarTypeFocusState : MonsterEarTypeGroundState
     public override void Exit()
     {
         base.Exit();
-        
+        Debug.Log("focus 끝");
+
         stateMachine.IsFocusNoise = false;
         stateMachine.IsFocusRotate = false;
 
@@ -38,6 +41,8 @@ public class MonsterEarTypeFocusState : MonsterEarTypeGroundState
 
         if (stateMachine.Monster.IsBehavior)
         {
+            Debug.Log("복귀");
+
             // 복귀
             stateMachine.ChangeState(stateMachine.ComeBackState);
         }

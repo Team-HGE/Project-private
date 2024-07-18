@@ -40,34 +40,34 @@ public class MonsterEarTypeBaseState : IState
         //SearchTarget();              
     }
 
-    public virtual void Move()
-    {
-        Vector3 movementDirection = GetMovementDirection();
-        //Debug.Log(movementDirection);
-        Move(movementDirection);
-        Rotate(movementDirection);
-    }
+    //public virtual void Move()
+    //{
+    //    Vector3 movementDirection = GetMovementDirection();
+    //    //Debug.Log(movementDirection);
+    //    Move(movementDirection);
+    //    Rotate(movementDirection);
+    //}
 
 
-    public virtual void Move(Vector3 movementDirection)
-    {
-        float movementSpeed = GetMovementSpeed();
-        stateMachine.Monster.Controller.Move(((movementDirection * movementSpeed) + stateMachine.Monster.ForceReceiver.Movement) * Time.deltaTime);
-    }
+    //public virtual void Move(Vector3 movementDirection)
+    //{
+    //    float movementSpeed = GetMovementSpeed();
+    //    stateMachine.Monster.Controller.Move(((movementDirection * movementSpeed) + stateMachine.Monster.ForceReceiver.Movement) * Time.deltaTime);
+    //}
 
     // 수직, 수평 가하는 힘 
-    protected void ForceMove()
-    {
-        stateMachine.Monster.Controller.Move(stateMachine.Monster.ForceReceiver.Movement * Time.deltaTime);
-    }
+    //protected void ForceMove()
+    //{
+    //    stateMachine.Monster.Controller.Move(stateMachine.Monster.ForceReceiver.Movement * Time.deltaTime);
+    //}
 
-    private float GetMovementSpeed()
-    {
-        float movementSpeed = stateMachine.MovementSpeed * stateMachine.MovementSpeedModifier;
-        //Debug.Log(movementSpeed);
+    //private float GetMovementSpeed()
+    //{
+    //    float movementSpeed = stateMachine.MovementSpeed * stateMachine.MovementSpeedModifier;
+    //    //Debug.Log(movementSpeed);
 
-        return movementSpeed;
-    }
+    //    return movementSpeed;
+    //}
 
 
     // 모든 상태에 필요한 애니메이션 전환 기능
@@ -108,37 +108,49 @@ public class MonsterEarTypeBaseState : IState
     private void SearchTarget()
     {
         if (stateMachine.IsChasing) return;
+        _biggestNoise = 0f;
 
-        // 탐지 범위 SO에 추가***s
-        stateMachine.Monster.noiseMakers = Physics.OverlapSphere(stateMachine.Monster.transform.position, 100f, stateMachine.Monster.targetLayer);
+        stateMachine.Monster.noiseMakers = Physics.OverlapSphere(stateMachine.Monster.transform.position, stateMachine.Monster.Data.GroundData.PlayerChasingRange, stateMachine.Monster.targetLayer);
 
         if (stateMachine.Monster.noiseMakers.Length > 0)
         {
 
             for (int i = 0; i < stateMachine.Monster.noiseMakers.Length; i++)
             {
+                // 집중 -> 탐지
+                if (stateMachine.IsFocusRotate && stateMachine.Monster.noiseMakers[i].gameObject.GetComponent<Player>().CurNoiseAmount > 0.95f && stateMachine.Monster.noiseMakers[i].gameObject.GetComponent<Player>().CurNoiseAmount < 5f)
+                {
+                    Rotate(GetMovementDirection());
+                }
+
                 // 플레이어 일때
                 if (stateMachine.Monster.noiseMakers[i].tag == "Player")
                 {
-
-                    if (stateMachine.IsFocusNoise && _biggestNoise >= 5)
+                    // 집중 -> 추적
+                    if (stateMachine.IsFocusNoise && stateMachine.IsFocusNoise && _biggestNoise >= 5.5f)
                     {
-                        stateMachine.CurDestination = noisePosition;
-
-                        // 추적
+                        //stateMachine.CurDestination = noisePosition;
+                        Debug.Log($"chase, 소음 :  {_biggestNoise}"); 
+                        //_biggestNoise = 0f;
+                        // 죽일때까지 추적
                         stateMachine.ChangeState(stateMachine.ChaseState);
+                        return;
                     }
-
-                    //Debug.Log("플레이어 발견");
-                    if (stateMachine.IsFocusRotate && stateMachine.Monster.noiseMakers[i].gameObject.GetComponent<Player>().CurNoiseAmount > 0.96f && stateMachine.Monster.noiseMakers[i].gameObject.GetComponent<Player>().CurNoiseAmount < 5f)
-                    {
-                        Rotate(GetMovementDirection());
-                    }                    
-
+                                                        
                     if (CheckNoise(stateMachine.Monster.noiseMakers[i].gameObject.GetComponent<Player>().CurNoiseAmount))
                     {
                         noisePosition = stateMachine.Monster.noiseMakers[i].gameObject.transform.position;
 
+                    }
+
+                    if (!stateMachine.IsFocusNoise && !stateMachine.IsChasing && Vector3.Distance(stateMachine.Monster.transform.position, stateMachine.Target.transform.position) <= 50f && _biggestNoise >= 5)
+                    {
+                        Debug.Log("걸음소리 추적");
+                        stateMachine.CurDestination = noisePosition;
+                        //_biggestNoise = 0f;
+                        noisePosition = Vector3.zero;
+                        stateMachine.ChangeState(stateMachine.MoveState);
+                        return;
                     }
 
                 }
@@ -150,18 +162,22 @@ public class MonsterEarTypeBaseState : IState
                 if (stateMachine.IsFocusNoise && _biggestNoise >= 5 && stateMachine.Monster.noiseMakers[i].tag != "Player")
                 {
                     stateMachine.CurDestination = noisePosition;
-
-                    // 추적
+                    //_biggestNoise = 0f;
+                    // 이동만
                     stateMachine.ChangeState(stateMachine.MoveState);
+                    return;
                 }
             }
 
-            if (!stateMachine.IsFocusNoise && _biggestNoise >= 12f)
+            if (!stateMachine.IsChasing && !stateMachine.IsFocusNoise && _biggestNoise >= 12f)
             {
                 stateMachine.CurDestination = noisePosition;
 
-                _biggestNoise = 0f;
+                //_biggestNoise = 0f;
                 noisePosition = Vector3.zero;
+
+                Debug.Log("뛰는 소리 추적");
+
 
                 // 이동 
                 stateMachine.ChangeState(stateMachine.MoveState);

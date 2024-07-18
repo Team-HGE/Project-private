@@ -11,9 +11,10 @@ public class MonsterEarTypeChaseState : MonsterEarTypeGroundState
     public override void Enter()
     {
         base.Enter();
+        Debug.Log("chace 시작");
 
         stateMachine.IsChasing = true;
-        stateMachine.MovementSpeedModifier = groundData.ChaseSpeed;
+        stateMachine.Monster.Agent.speed = groundData.ChaseSpeed;
 
         // 애니메이션 실행
 
@@ -36,9 +37,12 @@ public class MonsterEarTypeChaseState : MonsterEarTypeGroundState
         if (IsInAttackRange())
         {
             Debug.Log("플레이어 사망 - 게임 오버  ");
+
+            //stateMachine.ChangeState(stateMachine.IdleState);
             return;
         }
 
-        Move();
+        stateMachine.Monster.Agent.SetDestination(stateMachine.Target.transform.position);
+
     }
 }

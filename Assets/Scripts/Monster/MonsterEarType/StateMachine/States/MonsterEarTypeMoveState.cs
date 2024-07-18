@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class MonsterEarTypeMoveState : MonsterEarTypeGroundState
 {
@@ -12,8 +13,13 @@ public class MonsterEarTypeMoveState : MonsterEarTypeGroundState
     {
         base.Enter();
 
+        stateMachine.Monster.Agent.isStopped = false;
         stateMachine.IsMove = true;
-        stateMachine.MovementSpeedModifier = groundData.MoveSpeed;
+        stateMachine.Monster.Agent.speed = groundData.MoveSpeed;
+
+        Debug.Log($"플레이어 추적 시작 - 무브, {stateMachine.CurDestination}");         
+        // 작동안함
+        stateMachine.Monster.Agent.SetDestination(stateMachine.CurDestination);
 
         // 애니메이션 실행
 
@@ -33,20 +39,12 @@ public class MonsterEarTypeMoveState : MonsterEarTypeGroundState
     {
         base.Update();
 
-        // 근처에 플레이어 있을시 공격
-        if (IsInAttackRange())
+        if (stateMachine.Monster.Agent.remainingDistance < 1f)
         {
-            Debug.Log("플레이어 사망 - 게임 오버  ");
-            return;
-        }
-
-        if (Vector3.Distance(stateMachine.CurDestination, stateMachine.Monster.transform.position) < 1f)
-        {
-            // 없으면 집중 상태로 전환
+            Debug.Log("소음지역 도착");
             stateMachine.ChangeState(stateMachine.FocusState);
-            return;
         }
 
-        Move();
     }
+
 }
