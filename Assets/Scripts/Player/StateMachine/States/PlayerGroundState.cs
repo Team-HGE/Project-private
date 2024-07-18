@@ -25,7 +25,7 @@ public class PlayerGroundState : PlayerBaseState
         // E Ű�� ������ ���� ���� ��ų ����
         if (stateMachine.IsInteraction)
         {
-            Debug.Log("Update - EŰ ������ ��");
+            //Debug.Log("Update - EŰ ������ ��");
             GameManager.Instance.player.OnInteracted();
         }
     }

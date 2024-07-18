@@ -29,6 +29,8 @@ public class MonsterEarTypeStateMachine : StateMachine
     public bool IsComeBack { get; set; }
  
     public Vector3 CurDestination { get; set; }
+    public float BiggestNoise { get; set; }
+
 
     public float MovementSpeed { get; private set; }
     public float RotationDamping { get; private set; }
@@ -36,6 +38,7 @@ public class MonsterEarTypeStateMachine : StateMachine
     public float MovementSpeedModifier { get; set; } = 1f;
 
     public bool IsPlayerInFieldOfView { get; set; }
+
 
     public MonsterEarTypeStateMachine(EarTypeMonster monster)
     {

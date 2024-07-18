@@ -1,5 +1,7 @@
 using Unity.VisualScripting.Antlr3.Runtime.Tree;
+using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour, INoise
 {
@@ -64,6 +66,8 @@ public class Player : MonoBehaviour, INoise
             CurNoiseAmount -= DecreaseSpeed * Time.deltaTime;
             if (CurNoiseAmount <= 0) CurNoiseAmount = 0;
         }
+
+        if (CurNoiseAmount >= 20f) CurNoiseAmount = 20f;
     }
 
     private void FixedUpdate()

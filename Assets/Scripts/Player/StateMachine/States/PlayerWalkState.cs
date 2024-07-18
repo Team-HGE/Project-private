@@ -1,20 +1,20 @@
-using UnityEngine.InputSystem;
+using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
-using TMPro;
-using Unity.VisualScripting;
-using System.Collections.Generic;
-using System;
+using UnityEngine.InputSystem;
 
 public class PlayerWalkState : PlayerGroundState
 {
+    private RunEffect CurrentStamina;
+    private RunEffect CanRun;
+
     public PlayerWalkState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
     {
     }
 
     public override void Enter()
-    {        
+    {
         base.Enter();
-        Debug.Log("걷기 시작");
+        CurrentStamina = stateMachine.Player.GetComponent<RunEffect>();
 
         if (stateMachine.IsRuning)
         {
@@ -28,28 +28,34 @@ public class PlayerWalkState : PlayerGroundState
             return;
         }
 
-        stateMachine.MovementSpeedModifier = groundData.WalkSpeedModifier;    
+        stateMachine.MovementSpeedModifier = groundData.WalkSpeedModifier;
+    }
+
+    public override void Update()
+    {
+        base.Update();
+        CurrentStamina.IncreaseWalkIdle();
+        if (CanRun == false && stateMachine.IsRuning)
+        {
+            stateMachine.MovementSpeedModifier = groundData.WalkSpeedModifier;
+        }
+        
     }
 
     public override void Exit()
     {
         base.Exit();
-        Debug.Log("걷기 종료");
-
+        stateMachine.IsWalking = false; // 걷기 중단
     }
-
-
-    public override void Update()
-    {
-        base.Update();
-    }
-
 
     protected override void OnRunPerformed(InputAction.CallbackContext context)
     {
         base.OnRunPerformed(context);
 
-        stateMachine.ChangeState(stateMachine.RunState);
+        if (CurrentStamina.CanRun)
+        {
+            stateMachine.ChangeState(stateMachine.RunState); // 스태미나가 충분할 때만 달리기 상태로 전환
+        }
     }
 
     protected override void OnCrouchPerformed(InputAction.CallbackContext context)

@@ -20,13 +20,13 @@ public class PlayerBaseState : IState
 
     public virtual void Enter()
     {
-        // 이벤트 등록
+
         AddInputActionsCallbacks();
     }
 
     public virtual void Exit()
     {
-        // 이벤트 해제
+        
         RemoveInputActionsCallbacks();
     }
 

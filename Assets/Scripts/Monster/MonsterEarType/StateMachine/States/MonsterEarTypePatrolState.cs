@@ -12,7 +12,7 @@ public class MonsterEarTypePatrolState : MonsterEarTypeGroundState
     public override void Enter()
     {
         base.Enter();
-        stateMachine.Monster.Agent.enabled = true;
+        //stateMachine.Monster.Agent.enabled = true;
         stateMachine.Monster.Agent.isStopped = false;
         stateMachine.Monster.Agent.speed = groundData.PatrolSpeed;
         if (stateMachine.IsPatrol) return;
@@ -28,7 +28,7 @@ public class MonsterEarTypePatrolState : MonsterEarTypeGroundState
         base.Exit();
 
         stateMachine.Monster.Agent.isStopped = true;
-        stateMachine.Monster.Agent.enabled = false;
+        //stateMachine.Monster.Agent.enabled = false;
         stateMachine.IsPatrol = false;
 
         // 애니메이션 종료 - 그라운드 파라미터 해쉬로 접근

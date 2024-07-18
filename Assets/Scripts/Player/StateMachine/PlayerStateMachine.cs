@@ -1,4 +1,7 @@
 using UnityEngine.InputSystem.LowLevel;
+using UnityEditor.ShaderKeywordFilter;
+using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerStateMachine : StateMachine
 {
@@ -15,7 +18,9 @@ public class PlayerStateMachine : StateMachine
 
     // 상태 전환 조건
     public bool IsRuning { get; set; }
+    public bool IsWalking { get; set; }
     public bool IsCrouch { get; set; }
+
     // 상호작용
     public bool IsInteraction { get; set; }
 
@@ -37,4 +42,5 @@ public class PlayerStateMachine : StateMachine
         MovementSpeed = player.Data.GroundData.BaseSpeed;
         OriginHeight = player.transform.localScale.y;
     }
+
 }
