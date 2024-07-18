@@ -4,7 +4,10 @@ public class DialogueManager : MonoBehaviour
 {
     // 임시 싱글톤 
     public static DialogueManager Instance;
+
     public Dialogue dialogue;
+    public Script script;
+
     private SystemMsg systemMsg;
     private Quest quest;
 
@@ -24,6 +27,8 @@ public class DialogueManager : MonoBehaviour
     private void Start()
     {
         dialogue = GetComponent<Dialogue>();
+        script = GetComponent<Script>();
+
         systemMsg = GetComponent<SystemMsg>();
         quest = GetComponent<Quest>();
 
@@ -33,5 +38,6 @@ public class DialogueManager : MonoBehaviour
         quest.UpdateQuest();
         systemMsg.UpdateMessage();
 
+        script.StartScript();
     }
 }

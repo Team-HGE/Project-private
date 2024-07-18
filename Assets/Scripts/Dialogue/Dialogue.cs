@@ -15,10 +15,10 @@ public class Dialogue : MonoBehaviour
 
     private NPC npc;
     private NPC_SO npcSO;
-    private StringBuilder sbTitle = new StringBuilder();
-    private StringBuilder sbBody = new StringBuilder();
+    public StringBuilder sbTitle = new StringBuilder();
+    public StringBuilder sbBody = new StringBuilder();
 
-    private IEnumerator curPrintLine;
+    public IEnumerator curPrintLine;
     public bool nowTalking = false;
 
     public void Init()
@@ -82,7 +82,7 @@ public class Dialogue : MonoBehaviour
         yield return null;
     }
 
-    private void ClearDialogue()
+    public void ClearDialogue()
     {
         UtilSB.ClearText(titleText, sbTitle);
         UtilSB.ClearText(bodyText, sbBody);

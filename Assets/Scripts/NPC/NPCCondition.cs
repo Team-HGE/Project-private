@@ -1,5 +1,5 @@
 
 public class NPCCondition
 {
-    public float Stress { get; private set; }
+    public float stress { get; private set; }
 }
