@@ -9,6 +9,8 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: FlowerRedPoppy 1
   m_Shader: {fileID: 4800000, guid: b5992cfd4ba81ae498a54831f8541baa, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 5
@@ -17,6 +19,7 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -66,7 +69,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _BulgeScale: 0.2
+    - _BulgeScale: 0.075
     - _BulgeScale_copy: 0.05
     - _BulgeShape: 0.12
     - _BumpScale: 1
@@ -97,7 +100,7 @@ Material:
     - _EmissionColorUI: {r: 1, g: 1, b: 1, a: 1}
     - _HeightControlPoints: {r: 1, g: 1, b: 1, a: 1}
     - _InteractPos: {r: -52.100906, g: 0.73, b: -27.394844, a: 0}
-    - _OceanCenter: {r: 0, g: 0, b: 0, a: 0}
+    - _OceanCenter: {r: 0, g: 0, b: 0.15, a: 0.15}
     - _TimeControl1: {r: 2, g: 0, b: 0.75, a: 0}
     - _WaveControl1: {r: 111, g: 11, b: 1, a: 0}
   m_BuildTextureStacks: []
