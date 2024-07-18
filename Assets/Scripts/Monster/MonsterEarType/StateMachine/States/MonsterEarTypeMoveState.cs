@@ -51,7 +51,7 @@ public class MonsterEarTypeMoveState : MonsterEarTypeGroundState
 
         if (stateMachine.Monster.Agent.remainingDistance < 1f)
         {
-            Debug.Log("소음지역 도착");
+            //Debug.Log("소음지역 도착");
             stateMachine.ChangeState(stateMachine.FocusState);
             return;
         }

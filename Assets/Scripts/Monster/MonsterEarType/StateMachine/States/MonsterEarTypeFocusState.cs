@@ -12,7 +12,7 @@ public class MonsterEarTypeFocusState : MonsterEarTypeGroundState
     {
         base.Enter();
 
-        Debug.Log("focus 시작");
+        //Debug.Log("focus 시작");
 
         stateMachine.IsFocusNoise = true;
         stateMachine.IsFocusRotate = true;
@@ -26,7 +26,7 @@ public class MonsterEarTypeFocusState : MonsterEarTypeGroundState
     public override void Exit()
     {
         base.Exit();
-        Debug.Log("focus 끝");
+        //Debug.Log("focus 끝");
 
         stateMachine.IsFocusNoise = false;
         stateMachine.IsFocusRotate = false;
@@ -41,9 +41,8 @@ public class MonsterEarTypeFocusState : MonsterEarTypeGroundState
 
         if (stateMachine.Monster.IsBehavior)
         {
-            Debug.Log("복귀");
+            //Debug.Log("복귀");
 
-            // 복귀
             stateMachine.ChangeState(stateMachine.ComeBackState);
             return;
         }
@@ -55,7 +54,6 @@ public class MonsterEarTypeFocusState : MonsterEarTypeGroundState
     {
         if (Vector3.Distance(stateMachine.Monster.transform.position, stateMachine.Target.transform.position) > stateMachine.Monster.Data.GroundData.PlayerChasingRange) return;
 
-        // 걷는 소리나면 추적
         for (int i = 0; i < stateMachine.Monster.noiseMakers.Count; i++)
         {
             if (stateMachine.Monster.noiseMakers[i].gameObject.GetComponent<INoise>().CurNoiseAmount >= 0.95f && stateMachine.Monster.noiseMakers[i].gameObject.GetComponent<INoise>().CurNoiseAmount < 5.5f)
@@ -64,22 +62,20 @@ public class MonsterEarTypeFocusState : MonsterEarTypeGroundState
                 Rotate(GetMovementDirection());
             }   
 
-            // 소음 발생
             if (stateMachine.Monster.noiseMakers[i].gameObject.GetComponent<INoise>().CurNoiseAmount >= 5.5f)
             {
                 stateMachine.CurDestination = stateMachine.Monster.noiseMakers[i].gameObject.transform.position;
 
-                //플레이어일때
                 if (stateMachine.Monster.noiseMakers[i].tag == "Player")
                 {
-                    Debug.Log("플레이어 추적");
+                    //Debug.Log("플레이어 추적");
 
                     stateMachine.ChangeState(stateMachine.ChaseState);
                 }
 
                 if (stateMachine.Monster.noiseMakers[i].tag == "NoiseMaker")
                 {
-                    Debug.Log("아이템 추적");
+                    //Debug.Log("아이템 추적");
 
                     stateMachine.ChangeState(stateMachine.MoveState);
                 }

@@ -11,7 +11,7 @@ public class MonsterEarTypeChaseState : MonsterEarTypeGroundState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("chace 시작");
+        //Debug.Log("chace 시작");
 
         stateMachine.IsChasing = true;
         stateMachine.Monster.Agent.speed = groundData.ChaseSpeed;
