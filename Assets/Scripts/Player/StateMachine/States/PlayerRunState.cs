@@ -16,6 +16,7 @@ public class PlayerRunState : PlayerGroundState
     {
         base.Enter();
 
+
         CurrentStamina = stateMachine.Player.GetComponent<RunEffect>();
 
         if (CurrentStamina.IsExhausted)
@@ -28,7 +29,14 @@ public class PlayerRunState : PlayerGroundState
            
         }
         stateMachine.Player.SumNoiseAmount = 12f;
+
+        //Debug.Log("달리기 시작");
+        stateMachine.MovementSpeedModifier = groundData.RunSpeedModifier;
+        stateMachine.Player.SumNoiseAmount = 12f;
     }
+
+
+
 
     public override void Update()
     {
@@ -62,9 +70,21 @@ public class PlayerRunState : PlayerGroundState
         }
     }
 
+
+    private void Run()
+    {
+        NoiseData curStepData;
+    }
+
+    protected override void OnCrouchPerformed(InputAction.CallbackContext context)
+    {
+        base.OnCrouchPerformed(context);
+    }
+
     //private void Run()
     //{
     //    NoiseData curStepData;
+
 
     //    if (curStepSource == null)
     //    {
