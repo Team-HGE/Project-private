@@ -6,7 +6,7 @@ public class PlayerRunState : PlayerGroundState
 {
     private string stepTag = "RunStepNoise";
     private SoundSource curStepSource;
-    private PlayerStamina CurrentStamina;
+    private RunEffect CurrentStamina;
 
     public PlayerRunState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
     {
@@ -16,7 +16,7 @@ public class PlayerRunState : PlayerGroundState
     {
         base.Enter();
 
-        CurrentStamina = stateMachine.Player.GetComponent<PlayerStamina>();
+        CurrentStamina = stateMachine.Player.GetComponent<RunEffect>();
 
         if (CurrentStamina.IsExhausted)
         {

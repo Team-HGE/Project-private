@@ -4,8 +4,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerWalkState : PlayerGroundState
 {
-    private PlayerStamina CurrentStamina;
-    private PlayerStamina CanRun;
+    private RunEffect CurrentStamina;
+    private RunEffect CanRun;
 
     public PlayerWalkState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
     {
@@ -14,7 +14,7 @@ public class PlayerWalkState : PlayerGroundState
     public override void Enter()
     {
         base.Enter();
-        CurrentStamina = stateMachine.Player.GetComponent<PlayerStamina>();
+        CurrentStamina = stateMachine.Player.GetComponent<RunEffect>();
 
         if (stateMachine.IsRuning)
         {

@@ -5,7 +5,7 @@ using UnityEditor.ShaderKeywordFilter;
 
 public class PlayerIdleState : PlayerGroundState
 {
-    private PlayerStamina CurrentStamina;
+    private RunEffect CurrentStamina;
 
     public PlayerIdleState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
     {
@@ -17,7 +17,7 @@ public class PlayerIdleState : PlayerGroundState
 
         stateMachine.MovementSpeedModifier = 0f;
 
-        CurrentStamina = stateMachine.Player.GetComponent<PlayerStamina>();
+        CurrentStamina = stateMachine.Player.GetComponent<RunEffect>();
 
         if (stateMachine.IsCrouch)
         {

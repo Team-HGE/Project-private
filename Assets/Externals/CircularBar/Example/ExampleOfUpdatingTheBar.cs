@@ -10,39 +10,40 @@ namespace DiceNook.View
         private List<CircularBar> circularBars;
         private List<Label> labels;
 
-        private PlayerStamina playerStamina;
+        public Player player;
 
         private void Start()
         {
+
             circularBars = UIDocument.rootVisualElement.Query<CircularBar>().ToList();
             labels = UIDocument.rootVisualElement.Query<Label>().ToList();
-            playerStamina = FindObjectOfType<PlayerStamina>(); // PlayerStamina 컴포넌트를 찾습니다.
+            player = FindObjectOfType<Player>();
         }
 
         void Update()
         {
-            if (playerStamina == null) return;
+            if (player == null) Debug.Log("뭐야 아무것도없는데?");
 
-            float currentStamina = playerStamina.CurrentStamina / playerStamina.MaxStamina;
-
-            UpdateBars(currentStamina);
-            UpdateLabels(currentStamina);
+            float currentNoise = player.CurNoiseAmount / 30 ;
+             
+            UpdateBars(currentNoise);
+            UpdateLabels(currentNoise);
         }
 
-        private void UpdateBars(float staminaPercentage)
+        private void UpdateBars(float noisePercentage)
         {
             foreach (var bar in circularBars)
             {
-                bar.UpdateBar(staminaPercentage);
+                bar.UpdateBar(noisePercentage);
             }
         }
 
-        private void UpdateLabels(float staminaPercentage)
+        private void UpdateLabels(float noisePercentage)
         {
-            int percentage = Mathf.RoundToInt(staminaPercentage * 100);
+            int percentage = Mathf.RoundToInt(noisePercentage * 100);
             foreach (var label in labels)
             {
-                label.text = $"{percentage}% stamina";
+                label.text = $"{percentage}% noise";
             }
         }
     }
