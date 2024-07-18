@@ -1,11 +1,11 @@
-using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
+using UnityEditor.ShaderKeywordFilter;
 using UnityEngine.InputSystem;
 
 public class PlayerStamina : MonoBehaviour
 {
     private PlayerStateMachine stateMachine;
-    private const bool V = false;
+    
     public float MaxStamina = 100f;
     public float CurrentStamina;
     public float DecreaseRate = 18f;
@@ -15,8 +15,8 @@ public class PlayerStamina : MonoBehaviour
     private void Awake()
     {
         CurrentStamina = MaxStamina;
-        stateMachine = GetComponent<PlayerStateMachine>(); 
-       
+        stateMachine = GetComponent<PlayerStateMachine>();
+
     }
 
    
