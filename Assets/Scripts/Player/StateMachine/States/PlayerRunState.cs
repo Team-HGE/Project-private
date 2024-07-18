@@ -52,28 +52,28 @@ public class PlayerRunState : PlayerGroundState
         base.OnCrouchPerformed(context);
     }
 
-    private void Run()
-    {
-        NoiseData curStepData;
+    //private void Run()
+    //{
+    //    NoiseData curStepData;
 
-        if (curStepSource == null)
-        {
-            for (int i = 0; i < stateMachine.Player.NoiseDatasList.noiseDatasList.Count; i++)
-            {
-                if (stateMachine.Player.NoiseDatasList.noiseDatasList[i].tag == stepTag)
-                {
-                    curStepData = stateMachine.Player.NoiseDatasList.noiseDatasList[i];
-                    curStepSource = stateMachine.Player.PlayNoise(curStepData.noises, curStepData.tag, curStepData.volume, 0.2f, curStepData.transitionTime, 0f);
-                    break;
-                }
-            }
-        }
-        else
-        {
-            if (!curStepSource.gameObject.activeSelf)
-            {
-                curStepSource = null;
-            }
-        }
-    }
+    //    if (curStepSource == null)
+    //    {
+    //        for (int i = 0; i < stateMachine.Player.NoiseDatasList.noiseDatasList.Count; i++)
+    //        {
+    //            if (stateMachine.Player.NoiseDatasList.noiseDatasList[i].tag == stepTag)
+    //            {
+    //                curStepData = stateMachine.Player.NoiseDatasList.noiseDatasList[i];
+    //                curStepSource = stateMachine.Player.PlayNoise(curStepData.noises, curStepData.tag, curStepData.volume, 0.2f, curStepData.transitionTime, 0f);
+    //                break;
+    //            }
+    //        }
+    //    }
+    //    else
+    //    {
+    //        if (!curStepSource.gameObject.activeSelf)
+    //        {
+    //            curStepSource = null;
+    //        }
+    //    }
+    //}
 }
