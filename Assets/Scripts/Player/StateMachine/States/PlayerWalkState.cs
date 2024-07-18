@@ -14,7 +14,7 @@ public class PlayerWalkState : PlayerGroundState
     public override void Enter()
     {        
         base.Enter();
-        Debug.Log("∞»±‚ Ω√¿€");
+        //Debug.Log("∞»±‚ Ω√¿€");
 
         if (stateMachine.IsRuning)
         {
@@ -34,7 +34,7 @@ public class PlayerWalkState : PlayerGroundState
     public override void Exit()
     {
         base.Exit();
-        Debug.Log("∞»±‚ ¡æ∑·");
+        //Debug.Log("∞»±‚ ¡æ∑·");
 
     }
 

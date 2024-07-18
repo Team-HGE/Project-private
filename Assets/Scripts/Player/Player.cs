@@ -64,6 +64,8 @@ public class Player : MonoBehaviour, INoise
             CurNoiseAmount -= DecreaseSpeed * Time.deltaTime;
             if (CurNoiseAmount <= 0) CurNoiseAmount = 0;
         }
+
+        if (CurNoiseAmount >= 20f) CurNoiseAmount = 20f;
     }
 
     private void FixedUpdate()

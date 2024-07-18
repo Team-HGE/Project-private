@@ -13,7 +13,7 @@ public class PlayerRunState : PlayerGroundState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("달리기 시작");
+        //Debug.Log("달리기 시작");
         stateMachine.MovementSpeedModifier = groundData.RunSpeedModifier;
         stateMachine.Player.SumNoiseAmount = 12f;
     }
@@ -21,7 +21,7 @@ public class PlayerRunState : PlayerGroundState
     public override void Exit()
     {
         base.Exit();
-        Debug.Log("달리기 종료");
+        //Debug.Log("달리기 종료");
 
     }
 
@@ -52,28 +52,28 @@ public class PlayerRunState : PlayerGroundState
         base.OnCrouchPerformed(context);
     }
 
-    private void Run()
-    {
-        NoiseData curStepData;
+    //private void Run()
+    //{
+    //    NoiseData curStepData;
 
-        if (curStepSource == null)
-        {
-            for (int i = 0; i < stateMachine.Player.NoiseDatasList.noiseDatasList.Count; i++)
-            {
-                if (stateMachine.Player.NoiseDatasList.noiseDatasList[i].tag == stepTag)
-                {
-                    curStepData = stateMachine.Player.NoiseDatasList.noiseDatasList[i];
-                    curStepSource = stateMachine.Player.PlayNoise(curStepData.noises, curStepData.tag, curStepData.volume, 0.2f, curStepData.transitionTime, 0f);
-                    break;
-                }
-            }
-        }
-        else
-        {
-            if (!curStepSource.gameObject.activeSelf)
-            {
-                curStepSource = null;
-            }
-        }
-    }
+    //    if (curStepSource == null)
+    //    {
+    //        for (int i = 0; i < stateMachine.Player.NoiseDatasList.noiseDatasList.Count; i++)
+    //        {
+    //            if (stateMachine.Player.NoiseDatasList.noiseDatasList[i].tag == stepTag)
+    //            {
+    //                curStepData = stateMachine.Player.NoiseDatasList.noiseDatasList[i];
+    //                curStepSource = stateMachine.Player.PlayNoise(curStepData.noises, curStepData.tag, curStepData.volume, 0.2f, curStepData.transitionTime, 0f);
+    //                break;
+    //            }
+    //        }
+    //    }
+    //    else
+    //    {
+    //        if (!curStepSource.gameObject.activeSelf)
+    //        {
+    //            curStepSource = null;
+    //        }
+    //    }
+    //}
 }
