@@ -36,7 +36,7 @@ public class MonsterEarTypeChaseState : MonsterEarTypeGroundState
 
         if (IsInAttackRange())
         {
-            Debug.Log("플레이어 사망 - 게임 오버  ");
+            Debug.Log("플레이어 사망 - 게임 오버");
 
             //stateMachine.ChangeState(stateMachine.IdleState);
             return;

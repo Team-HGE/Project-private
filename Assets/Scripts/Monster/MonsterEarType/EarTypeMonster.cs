@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -22,7 +23,8 @@ public class EarTypeMonster : MonoBehaviour
     public bool IsBehavior { get; set; } = true;
 
     public LayerMask targetLayer;
-    public Collider[] noiseMakers;
+    //public Collider[] noiseMakers;
+    public List<Collider> noiseMakers;
 
     private void Awake()
     {
@@ -34,6 +36,7 @@ public class EarTypeMonster : MonoBehaviour
         ForceReceiver = GetComponent<ForceReceiver>();
 
         _stateMachine = new MonsterEarTypeStateMachine(this);
+        noiseMakers = new List<Collider>();
     }
 
     private void Start()
@@ -45,7 +48,6 @@ public class EarTypeMonster : MonoBehaviour
 
     private void Update()
     {
-        //_stateMachine.HandleInput();
         _stateMachine.Update();
 
         DrawCircle(transform.position, 36, Data.GroundData.PlayerChasingRange, Color.green);
