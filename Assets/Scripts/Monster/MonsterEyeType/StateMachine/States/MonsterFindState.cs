@@ -9,6 +9,7 @@ public class MonsterFindState : MonsterGroundState
     public override void Enter()
     {
         base.Enter();
+        Debug.Log("플레이어 발견");
 
         stateMachine.Monster.Agent.isStopped = true;
         stateMachine.Monster.IsBehavior = false;

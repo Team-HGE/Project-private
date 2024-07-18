@@ -2,14 +2,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Text;
 using TMPro;
-using UnityEngine.Diagnostics;
 using System.Collections;
 
 public class Dialogue : MonoBehaviour
 {
-    public DialogueSO dialogueSO;
-    public NPC_SO npcSO;
-
     public GameObject dialogueCanvas;
     public Image titleBG;
 
@@ -17,59 +13,57 @@ public class Dialogue : MonoBehaviour
     public TextMeshProUGUI bodyText;
     public Image portrait;
 
+    private NPC npc;
+    private NPC_SO npcSO;
     private StringBuilder sbTitle = new StringBuilder();
     private StringBuilder sbBody = new StringBuilder();
-    
+
     private IEnumerator curPrintLine;
-    private bool nowTalking = false;
+    public bool nowTalking = false;
 
     public void Init()
     {
         CloseDialogue();
     }
 
-    private void InitSOData(DialogueSO _dialogue)
-    {
-        dialogueSO = _dialogue;
-    }
-
-    private void InitNPCData(NPC_SO _npc)
-    {
-        //TODO: 상호작용 중인 NPC 정보 받아오기
-        npcSO = _npc;
-    }
-
     public void StartDialogue()
     {
-        if (nowTalking) return;
+        if (nowTalking)
+        {
+            GameManager.Instance.player.playerInteraction.SetActive(false);
+            return;
+        }
+            
         nowTalking = true;
 
+        GameObject nowInteracting = GameManager.Instance.player.curInteractableGameObject;
+        npc = nowInteracting.GetComponent<NPC>();
+        npcSO = npc.npcSO;
+
         OpenDialogue();
-        InitSOData(dialogueSO);
-        InitNPCData(npcSO);
         StartCoroutine(PrintDialogue());
     }
 
-    private IEnumerator PrintDialogue()
+    public IEnumerator PrintDialogue()
     {
         titleText.text = sbTitle.Clear().ToString();
         bodyText.text = sbBody.Clear().ToString();
 
         portrait.sprite = null;
 
-        for(int i = 0; i < dialogueSO.bodyTexts.Length; i++)
+        for (int i = 0; i < npcSO.testDialogue.Length; i++)
         {
-            UtilSB.SetText(titleText, sbTitle, dialogueSO.speakers[0]);
+            UtilSB.SetText(titleText, sbTitle, npcSO.npcName + " - " + npc.ChangeNpcState(npcState.Speaking));
 
-            SetImage(portrait, dialogueSO.images[0]);
+            SetImage(portrait, npc.SwitchPortrait(npcSO.emotion));
 
             if (portrait.sprite == null) portrait.transform.localScale = Vector3.zero;
-            else 
-            { 
+            else
+            {
                 portrait.transform.localScale = Vector3.one;
             }
 
-            curPrintLine = TextEffect.Typing(bodyText, sbBody, dialogueSO.bodyTexts[i]);
+            curPrintLine = TextEffect.Typing(bodyText, sbBody, npcSO.testDialogue[i]);
             yield return StartCoroutine(curPrintLine);
 
             Debug.Log("E 키로 진행하세요");
@@ -83,7 +77,8 @@ public class Dialogue : MonoBehaviour
         CloseDialogue();
 
         nowTalking = false;
-        
+        npc.ChangeNpcState(npcState.Idle);
+
         yield return null;
     }
 
