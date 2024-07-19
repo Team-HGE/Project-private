@@ -32,8 +32,6 @@ public class Script: Dialogue
 
             uiDialogue.SetImage(uiDialogue.portrait, scriptSO.images[i]);
 
-            Debug.Log(scriptSO.speakers[i]);
-
             uiDialogue.CheckSpeakerNull(scriptSO.speakers[i]);
 
             curPrintLine = TextEffect.Typing(uiDialogue.bodyText, sbBody, scriptSO.bodyTexts[i]);
