@@ -1,27 +1,17 @@
 ﻿using UnityEngine;
 
-public class DialogueManager : MonoBehaviour
+public class DialogueManager : SingletonManager<DialogueManager>
 {
-    // 임시 싱글톤 
-    public static DialogueManager Instance;
-
     public Dialogue dialogue;
+
     public Script script;
 
     private SystemMsg systemMsg;
     private Quest quest;
 
-    private void Awake()
+    protected override void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        base.Awake();
     }
 
     private void Start()

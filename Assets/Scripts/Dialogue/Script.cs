@@ -7,48 +7,47 @@ public class Script: Dialogue
 
     private void InitScript(ScriptSO _script)
     {
+        uiDialogue = GetComponent<UIDialogue>();
         scriptSO = _script;
     }
 
     public void StartScript()
     {
         if (nowTalking) return;
-        OpenDialogue();
         InitScript(scriptSO);
+        uiDialogue.OpenDialogue();
         StartCoroutine(PrintScript());
     }
 
     public IEnumerator PrintScript()
     {
-        titleText.text = sbTitle.Clear().ToString();
-        bodyText.text = sbBody.Clear().ToString();
+        uiDialogue.titleText.text = sbTitle.Clear().ToString();
+        uiDialogue.bodyText.text = sbBody.Clear().ToString();
 
-        portrait.sprite = null;
+        uiDialogue.portrait.sprite = null;
 
         for (int i = 0; i < scriptSO.bodyTexts.Length; i++)
         {
-            UtilSB.SetText(titleText, sbTitle, scriptSO.speakers[i]);
+            UtilSB.SetText(uiDialogue.titleText, sbTitle, scriptSO.speakers[i]);
 
-            SetImage(portrait, scriptSO.images[i]);
+            uiDialogue.SetImage(uiDialogue.portrait, scriptSO.images[i]);
 
-            if (portrait.sprite == null) portrait.transform.localScale = Vector3.zero;
-            else
-            {
-                portrait.transform.localScale = Vector3.one;
-            }
+            Debug.Log(scriptSO.speakers[i]);
 
-            curPrintLine = TextEffect.Typing(bodyText, sbBody, scriptSO.bodyTexts[i]);
+            uiDialogue.CheckSpeakerNull(scriptSO.speakers[i]);
+
+            curPrintLine = TextEffect.Typing(uiDialogue.bodyText, sbBody, scriptSO.bodyTexts[i]);
             yield return StartCoroutine(curPrintLine);
 
             //Debug.Log("E 키로 진행하세요");
             //yield return new WaitUntil(() => Input.GetKey(KeyCode.E));
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(3f);
 
             ClearDialogue();
         }
 
-        CloseDialogue();
+        uiDialogue.CloseDialogue();
 
         nowTalking = false;
 
