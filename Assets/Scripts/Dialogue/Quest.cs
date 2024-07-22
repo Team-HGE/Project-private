@@ -5,24 +5,27 @@ using UnityEngine;
 public class Quest : MonoBehaviour
 {
     public QuestSO questSO;
-
+    public int CurrentQuest = -1;
     public TextMeshProUGUI nowQuestText;
     private StringBuilder sb = new StringBuilder();
 
     public void Init()
     {
-
+        
     }
 
     public void UpdateQuest()
     {
-        sb.Append(questSO.quests[0]);
-        nowQuestText.text = "할일: " + sb.ToString();
+
+        CurrentQuest++;
+        sb.Append(questSO.quests[CurrentQuest]);
+        nowQuestText.text = "할 일: " + sb.ToString();
     }
+
 
     public void FinishQuest()
     {
 
     }
-
+   
 }
