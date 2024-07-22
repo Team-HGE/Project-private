@@ -1,11 +1,11 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEditor.ShaderKeywordFilter;
 
 
 public class PlayerIdleState : PlayerGroundState
 {
-    private RunEffect CurrentStamina;
+    //private RunEffect CurrentStamina;
 
     public PlayerIdleState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
     {
@@ -17,9 +17,9 @@ public class PlayerIdleState : PlayerGroundState
 
         stateMachine.MovementSpeedModifier = 0f;
 
-        CurrentStamina = stateMachine.Player.GetComponent<RunEffect>();
+        //CurrentStamina = stateMachine.Player.GetComponent<RunEffect>();
 
-        if (stateMachine.IsCrouch)
+        if (stateMachine.PressCtrl)
         {
             stateMachine.ChangeState(stateMachine.CrouchState);
             return;
@@ -35,7 +35,7 @@ public class PlayerIdleState : PlayerGroundState
     {
         base.Update();
 
-        CurrentStamina.IncreaseStaminaIdle(); // Idle »óÅÂ¿¡¼­ ½ºÅÂ¹Ì³ª È¸º¹
+        stateMachine.Player.CurrentStamina.IncreaseStaminaIdle(); // Idle ìƒíƒœì—ì„œ ìŠ¤íƒœë¯¸ë‚˜ íšŒë³µ
 
         if (stateMachine.Player.InputsData.MovementInput != Vector2.zero)
         {
@@ -52,7 +52,7 @@ public class PlayerIdleState : PlayerGroundState
     {
         base.OnRunPerformed(context);
 
-        if (CurrentStamina.CanRun)
+        if (stateMachine.Player.CurrentStamina.CanRun)
         {
             stateMachine.ChangeState(stateMachine.RunState);
         }

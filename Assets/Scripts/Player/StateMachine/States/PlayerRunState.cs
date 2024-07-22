@@ -1,12 +1,10 @@
-using UnityEditor.ShaderKeywordFilter;
+ï»¿using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerRunState : PlayerGroundState
 {
-    private string stepTag = "RunStepNoise";
-    private SoundSource curStepSource;
-    private RunEffect CurrentStamina;
+    //private RunEffect CurrentStamina;
 
     public PlayerRunState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
     {
@@ -17,9 +15,9 @@ public class PlayerRunState : PlayerGroundState
         base.Enter();
 
 
-        CurrentStamina = stateMachine.Player.GetComponent<RunEffect>();
+        //CurrentStamina = stateMachine.Player.GetComponent<RunEffect>();
 
-        if (CurrentStamina.IsExhausted)
+        if (stateMachine.Player.CurrentStamina.IsExhausted)
         {
             stateMachine.ChangeState(stateMachine.WalkState);
         }
@@ -28,32 +26,30 @@ public class PlayerRunState : PlayerGroundState
             stateMachine.MovementSpeedModifier = groundData.RunSpeedModifier;
            
         }
-        stateMachine.Player.SumNoiseAmount = 12f;
 
-        //Debug.Log("´Ş¸®±â ½ÃÀÛ");
+        //Debug.Log("ë‹¬ë¦¬ê¸° ì‹œì‘");
         stateMachine.MovementSpeedModifier = groundData.RunSpeedModifier;
         stateMachine.Player.SumNoiseAmount = 12f;
+        stateMachine.IsRun = true;
     }
-
-
 
 
     public override void Update()
     {
         base.Update();
-        CurrentStamina.ConsumeStamina(18f); // ½ºÅÂ¹Ì³ª ¼Ò¸ğ
+        stateMachine.Player.CurrentStamina.ConsumeStamina(18f); // ìŠ¤íƒœë¯¸ë‚˜ ì†Œëª¨
 
-        if (CurrentStamina.IsExhausted)
+        if (stateMachine.Player.CurrentStamina.IsExhausted)
         {
-            stateMachine.ChangeState(stateMachine.WalkState); // ½ºÅÂ¹Ì³ª°¡ ´Ù ¶³¾îÁö¸é °È±â »óÅÂ·Î ÀüÈ¯
+            stateMachine.ChangeState(stateMachine.WalkState); // ìŠ¤íƒœë¯¸ë‚˜ê°€ ë‹¤ ë–¨ì–´ì§€ë©´ ê±·ê¸° ìƒíƒœë¡œ ì „í™˜
         }
         
     }
 
     public override void Exit()
     {
-        base.Exit();
-        stateMachine.IsRuning = false; 
+        base.Exit();        
+        stateMachine.IsRun = false;
     }
 
     protected override void OnRunCanceled(InputAction.CallbackContext context)
@@ -70,40 +66,9 @@ public class PlayerRunState : PlayerGroundState
         }
     }
 
-
-    private void Run()
-    {
-        NoiseData curStepData;
-    }
-
     protected override void OnCrouchPerformed(InputAction.CallbackContext context)
     {
         base.OnCrouchPerformed(context);
     }
 
-    //private void Run()
-    //{
-    //    NoiseData curStepData;
-
-
-    //    if (curStepSource == null)
-    //    {
-    //        for (int i = 0; i < stateMachine.Player.NoiseDatasList.noiseDatasList.Count; i++)
-    //        {
-    //            if (stateMachine.Player.NoiseDatasList.noiseDatasList[i].tag == stepTag)
-    //            {
-    //                curStepData = stateMachine.Player.NoiseDatasList.noiseDatasList[i];
-    //                curStepSource = stateMachine.Player.PlayNoise(curStepData.noises, curStepData.tag, curStepData.volume, 0.2f, curStepData.transitionTime, 0f);
-    //                break;
-    //            }
-    //        }
-    //    }
-    //    else
-    //    {
-    //        if (!curStepSource.gameObject.activeSelf)
-    //        {
-    //            curStepSource = null;
-    //        }
-    //    }
-    //}
 }

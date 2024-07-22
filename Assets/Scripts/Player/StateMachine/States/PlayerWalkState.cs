@@ -1,11 +1,10 @@
-using UnityEditor.ShaderKeywordFilter;
+ï»¿using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerWalkState : PlayerGroundState
 {
-    private RunEffect CurrentStamina;
-    private RunEffect CanRun;
+    //private RunEffect CurrentStamina;
 
     public PlayerWalkState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
     {
@@ -14,47 +13,48 @@ public class PlayerWalkState : PlayerGroundState
     public override void Enter()
     {
         base.Enter();
-        CurrentStamina = stateMachine.Player.GetComponent<RunEffect>();
+        //CurrentStamina = stateMachine.Player.GetComponent<RunEffect>();
 
-        if (stateMachine.IsRuning)
+        if (stateMachine.PressShift && stateMachine.Player.CurrentStamina.CanRun && !stateMachine.Player.CurrentStamina.IsExhausted)
         {
             stateMachine.ChangeState(stateMachine.RunState);
             return;
         }
 
-        if (stateMachine.IsCrouch)
+        if (stateMachine.PressCtrl)
         {
             stateMachine.ChangeState(stateMachine.CrouchState);
             return;
         }
 
         stateMachine.MovementSpeedModifier = groundData.WalkSpeedModifier;
+        stateMachine.Player.SumNoiseAmount = 6f;
     }
 
     public override void Update()
     {
         base.Update();
-        CurrentStamina.IncreaseWalkIdle();
-        if (CanRun == false && stateMachine.IsRuning)
-        {
-            stateMachine.MovementSpeedModifier = groundData.WalkSpeedModifier;
-        }
+        stateMachine.Player.CurrentStamina.IncreaseWalkIdle();
+
+        //if (CanRun == false && stateMachine.PressShift)
+        //{
+        //    stateMachine.MovementSpeedModifier = groundData.WalkSpeedModifier;
+        //}
         
     }
 
     public override void Exit()
     {
         base.Exit();
-        stateMachine.IsWalking = false; // °È±â Áß´Ü
     }
 
     protected override void OnRunPerformed(InputAction.CallbackContext context)
     {
         base.OnRunPerformed(context);
 
-        if (CurrentStamina.CanRun)
+        if (stateMachine.Player.CurrentStamina.CanRun && !stateMachine.Player.CurrentStamina.IsExhausted)
         {
-            stateMachine.ChangeState(stateMachine.RunState); // ½ºÅÂ¹Ì³ª°¡ ÃæºĞÇÒ ¶§¸¸ ´Ş¸®±â »óÅÂ·Î ÀüÈ¯
+            stateMachine.ChangeState(stateMachine.RunState); // ìŠ¤íƒœë¯¸ë‚˜ê°€ ì¶©ë¶„í•  ë•Œë§Œ ë‹¬ë¦¬ê¸° ìƒíƒœë¡œ ì „í™˜
         }
     }
 

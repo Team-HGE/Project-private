@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -22,9 +22,9 @@ namespace DiceNook.View
 
         void Update()
         {
-            if (player == null) Debug.Log("¹¹¾ß ¾Æ¹«°Íµµ¾ø´Âµ¥?");
+            if (player == null) Debug.Log("ë­ì•¼ ì•„ë¬´ê²ƒë„ì—†ëŠ”ë°?");
 
-            float currentNoise = player.CurNoiseAmount / 30 ;
+            float currentNoise = player.CurNoiseAmount / player.MaxNoiseAmount;
              
             UpdateBars(currentNoise);
             UpdateLabels(currentNoise);

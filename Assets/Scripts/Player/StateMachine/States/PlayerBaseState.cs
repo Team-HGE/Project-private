@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -117,7 +117,7 @@ public class PlayerBaseState : IState
         {
             for (int i = 0; i < stateMachine.Player.NoiseDatasList.noiseDatasList.Count; i++)
             {
-                if (stateMachine.IsRuning)
+                if (stateMachine.IsRun)
                 {
                     if (stateMachine.Player.NoiseDatasList.noiseDatasList[i].tag == "RunStepNoise")
                     {
@@ -159,7 +159,7 @@ public class PlayerBaseState : IState
     {
         string walkBreathTag = "WalkBreathNoise";
 
-        if (!stateMachine.IsRuning)
+        if (!stateMachine.PressShift)
         {
             NoiseData curBreathData;
 
@@ -218,22 +218,22 @@ public class PlayerBaseState : IState
 
     protected virtual void OnRunPerformed(InputAction.CallbackContext context)
     {
-        stateMachine.IsRuning = true;
+        stateMachine.PressShift = true;
     }
 
     protected virtual void OnRunCanceled(InputAction.CallbackContext context)
     {
-        stateMachine.IsRuning = false;
+        stateMachine.PressShift = false;
     }
 
     protected virtual void OnCrouchPerformed(InputAction.CallbackContext context)
     {
-        stateMachine.IsCrouch = true;
+        stateMachine.PressCtrl = true;
     }
 
     protected virtual void OnCrouchCanceled(InputAction.CallbackContext context)
     {
-        stateMachine.IsCrouch = false;
+        stateMachine.PressCtrl = false;
     }
 
     protected virtual void OnInterationStared(InputAction.CallbackContext context)
@@ -254,7 +254,7 @@ public class PlayerBaseState : IState
 
 
 
-    // ÀÚ½Ä Å¬·¡½º¿¡¼­ ÀçÁ¤ÀÇ ÇÒ ¸Þ¼­µå
+    // ìžì‹ í´ëž˜ìŠ¤ì—ì„œ ìž¬ì •ì˜ í•  ë©”ì„œë“œ
     public virtual void PhysicsUpdate()
     {
     }
