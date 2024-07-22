@@ -1,5 +1,7 @@
-using Unity.VisualScripting.Antlr3.Runtime.Tree;
+Ôªøusing Unity.VisualScripting.Antlr3.Runtime.Tree;
+using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour, INoise
 {
@@ -13,17 +15,26 @@ public class Player : MonoBehaviour, INoise
     public CharacterController Controller { get; private set; }
     public ForceReceiver ForceReceiver { get; private set; }
     public PlayerInputsData InputsData { get; private set; }
-    private PlayerStateMachine stateMachine;
+
+    private PlayerStateMachine _stateMachine;
+
+    public RunEffect CurrentStamina;
 
     // INoise
     public float NoiseTransitionTime { get; set; }
-    public float NoiseMin { get; set; }
-    public float NoiseMax { get; set; }
+
+    public float MaxNoiseAmount { get; set; } = 13f;
+
     [field: SerializeField]
     public float CurNoiseAmount { get; set; }
     public float SumNoiseAmount { get; set; }
     [field: SerializeField]
-    public float DecreaseSpeed { get; set; } = 1f;
+    public float DecreaseSpeed { get; set; } = 5f;
+
+    // ÌîåÎ†àÏù¥ Ï°∞Ïûë onoff
+    [field: SerializeField]
+    public bool IsPlayerControll { get; set; } = true;
+
 
     private void Awake()
     {
@@ -31,12 +42,13 @@ public class Player : MonoBehaviour, INoise
         Controller = GetComponent<CharacterController>();
         ForceReceiver = GetComponent<ForceReceiver>();
         InputsData = GetComponent<PlayerInputsData>();
+        CurrentStamina = GetComponent<RunEffect>();
 
-        stateMachine = new PlayerStateMachine(this);
+        _stateMachine = new PlayerStateMachine(this);
 
         if (NoisePool.Instance != null)
         {
-            //Debug.Log($"Player - Awake - ≥Î¿Ã¡Ó «Æ ¿÷¿Ω");
+            //Debug.Log($"Player - Awake - ÎÖ∏Ïù¥Ï¶à ÌíÄ ÏûàÏùå");
             NoisePool.Instance.Initialize();
         }
 
@@ -51,13 +63,13 @@ public class Player : MonoBehaviour, INoise
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        stateMachine.ChangeState(stateMachine.IdleState);
+        _stateMachine.ChangeState(_stateMachine.IdleState);
     }
 
     private void Update()
     {
-        stateMachine.HandleInput();
-        stateMachine.Update();
+        _stateMachine.HandleInput();
+        _stateMachine.Update();
 
         if (CurNoiseAmount > 0)
         {
@@ -65,12 +77,12 @@ public class Player : MonoBehaviour, INoise
             if (CurNoiseAmount <= 0) CurNoiseAmount = 0;
         }
 
-        if (CurNoiseAmount >= 20f) CurNoiseAmount = 20f;
+        if (CurNoiseAmount >= MaxNoiseAmount) CurNoiseAmount = MaxNoiseAmount;
     }
 
     private void FixedUpdate()
     {
-        stateMachine.PhysicsUpdate();
+        _stateMachine.PhysicsUpdate();
     }
 
     public SoundSource PlayNoise(AudioClip[] audioClips, string tag, float amount, float addVolume, float transitionTime, float pitch)
@@ -80,7 +92,8 @@ public class Player : MonoBehaviour, INoise
 
         SoundSource soundSource;
         soundSource = NoiseManager.Instance.PlayNoise(audioClips[index], tag, addVolume, transitionTime, pitch);
-        if (CurNoiseAmount < SumNoiseAmount) CurNoiseAmount += amount;
+        CurNoiseAmount += amount;
+        if (CurNoiseAmount >= SumNoiseAmount) CurNoiseAmount = SumNoiseAmount;
         return soundSource;
     }
 
@@ -88,8 +101,14 @@ public class Player : MonoBehaviour, INoise
     {                
         SoundSource soundSource;
         soundSource = NoiseManager.Instance.PlayNoise(audioClip, tag, addVolume, transitionTime, pitch);
-        if (CurNoiseAmount < SumNoiseAmount) CurNoiseAmount += amount;
+        CurNoiseAmount += amount;
+        if (CurNoiseAmount >= SumNoiseAmount) CurNoiseAmount = SumNoiseAmount;
         return soundSource;
+    }
+
+    public void PlayerOnOff()
+    {
+        IsPlayerControll = !IsPlayerControll;
     }
 
 }

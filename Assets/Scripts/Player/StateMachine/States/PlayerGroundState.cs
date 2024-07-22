@@ -10,7 +10,7 @@ public class PlayerGroundState : PlayerBaseState
     public override void Enter()
     {
         base.Enter();        
-        stateMachine.Player.SumNoiseAmount = 5;
+        stateMachine.Player.SumNoiseAmount = 6f;
     }
 
     public override void Exit()
@@ -22,10 +22,12 @@ public class PlayerGroundState : PlayerBaseState
     {
         base.Update();
 
-        // E Ű�� ������ ���� ���� ��ų ����
+        // E 키로 상호작용
         if (stateMachine.IsInteraction)
         {
-            //Debug.Log("Update - EŰ ������ ��");
+            if (!stateMachine.Player.IsPlayerControll) return;
+
+            //Debug.Log("Update - E키 누르는 중");
             GameManager.Instance.player.OnInteracted();
         }
     }
@@ -48,7 +50,7 @@ public class PlayerGroundState : PlayerBaseState
     {
         base.OnInterationStared(context);
 
-        Debug.Log("EŰ ������");
+        //Debug.Log("E키 누름");
     }
 
     // E Ű ��ȣ�ۿ� - Ű ������ ��
@@ -64,7 +66,7 @@ public class PlayerGroundState : PlayerBaseState
     {
         base.OnInterationCanceled(context);
 
-        Debug.Log("EŰ ��");
+        //Debug.Log("E키 뗌");
         GameManager.Instance.player.EndInteraction();
     }
 

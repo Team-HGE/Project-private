@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Externals/CircularBar/Example/Main.uss?fileID=7433441132597879392&amp;guid=e2c95a4a4f303054fb9cde841a6ae19c&amp;type=3#Main" />
+    <ui:VisualElement name="VisualElement" style="flex-grow: 1; flex-direction: row; align-items: center; height: 16px; width: 301px;">
+        <ui:VisualElement name="3" class="container" style="flex-grow: 1; width: 396px; height: 91px; position: absolute; top: 3px; left: 0;" />
+        <ui:VisualElement name="2" class="container" style="flex-grow: 1; height: 92px; width: 802px; position: absolute; top: 7px; left: 0;">
+            <DiceNook.View.CircularBar fill="0.35" name="CircularBar" style="height: 184px; width: 250px; align-self: flex-end; justify-content: space-around; bottom: auto; position: absolute; top: 9px; left: 1789px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

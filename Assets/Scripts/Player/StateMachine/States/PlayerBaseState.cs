@@ -1,4 +1,4 @@
-using System;
+Ôªøusing System;
 using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -20,13 +20,13 @@ public class PlayerBaseState : IState
 
     public virtual void Enter()
     {
-        // ¿Ã∫•∆Æ µÓ∑œ
+
         AddInputActionsCallbacks();
     }
 
     public virtual void Exit()
     {
-        // ¿Ã∫•∆Æ «ÿ¡¶
+        
         RemoveInputActionsCallbacks();
     }
 
@@ -58,11 +58,15 @@ public class PlayerBaseState : IState
 
     public virtual void HandleInput()
     {
+        if (!stateMachine.Player.IsPlayerControll) return;
+
         ReadMovementInput();
     }
 
     public virtual void Update()
     {
+        if (!stateMachine.Player.IsPlayerControll) return;
+
         Move();
         BreathNoise();
     }
@@ -117,7 +121,7 @@ public class PlayerBaseState : IState
         {
             for (int i = 0; i < stateMachine.Player.NoiseDatasList.noiseDatasList.Count; i++)
             {
-                if (stateMachine.IsRuning)
+                if (stateMachine.IsRunning)
                 {
                     if (stateMachine.Player.NoiseDatasList.noiseDatasList[i].tag == "RunStepNoise")
                     {
@@ -159,7 +163,7 @@ public class PlayerBaseState : IState
     {
         string walkBreathTag = "WalkBreathNoise";
 
-        if (!stateMachine.IsRuning)
+        if (!stateMachine.PressShift)
         {
             NoiseData curBreathData;
 
@@ -218,43 +222,53 @@ public class PlayerBaseState : IState
 
     protected virtual void OnRunPerformed(InputAction.CallbackContext context)
     {
-        stateMachine.IsRuning = true;
+        stateMachine.PressShift = true;
     }
 
     protected virtual void OnRunCanceled(InputAction.CallbackContext context)
     {
-        stateMachine.IsRuning = false;
+        stateMachine.PressShift = false;
     }
 
     protected virtual void OnCrouchPerformed(InputAction.CallbackContext context)
     {
-        stateMachine.IsCrouch = true;
+        if (!stateMachine.Player.IsPlayerControll) return;
+
+        stateMachine.PressCtrl = true;
     }
 
     protected virtual void OnCrouchCanceled(InputAction.CallbackContext context)
     {
-        stateMachine.IsCrouch = false;
+        if (!stateMachine.Player.IsPlayerControll) return;
+
+        stateMachine.PressCtrl = false;
     }
 
     protected virtual void OnInterationStared(InputAction.CallbackContext context)
     {
+        if (!stateMachine.Player.IsPlayerControll) return;
+
         stateMachine.IsInteraction = true;
     } 
 
     protected virtual void OnInterationPerformed(InputAction.CallbackContext context)
     {
+        if (!stateMachine.Player.IsPlayerControll) return;
+
         stateMachine.IsInteraction = true;
     }
 
     protected virtual void OnInterationCanceled(InputAction.CallbackContext context)
     {
+        if (!stateMachine.Player.IsPlayerControll) return;
+
         stateMachine.IsInteraction = false;
 
     }
 
 
 
-    // ¿⁄Ωƒ ≈¨∑°Ω∫ø°º≠ ¿Á¡§¿« «“ ∏ﬁº≠µÂ
+    // ÏûêÏãù ÌÅ¥ÎûòÏä§ÏóêÏÑú Ïû¨Ï†ïÏùò Ìï† Î©îÏÑúÎìú
     public virtual void PhysicsUpdate()
     {
     }

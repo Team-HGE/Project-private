@@ -1,8 +1,12 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEditor.ShaderKeywordFilter;
+
 
 public class PlayerIdleState : PlayerGroundState
 {
+    //private RunEffect CurrentStamina;
+
     public PlayerIdleState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
     {
     }
@@ -13,7 +17,9 @@ public class PlayerIdleState : PlayerGroundState
 
         stateMachine.MovementSpeedModifier = 0f;
 
-        if (stateMachine.IsCrouch)
+        //CurrentStamina = stateMachine.Player.GetComponent<RunEffect>();
+
+        if (stateMachine.PressCtrl)
         {
             stateMachine.ChangeState(stateMachine.CrouchState);
             return;
@@ -29,9 +35,11 @@ public class PlayerIdleState : PlayerGroundState
     {
         base.Update();
 
+        stateMachine.Player.CurrentStamina.IncreaseStaminaIdle(); // Idle 상태에서 스태미나 회복
+
         if (stateMachine.Player.InputsData.MovementInput != Vector2.zero)
         {
-            stateMachine.ChangeState(stateMachine.WalkState);         
+            stateMachine.ChangeState(stateMachine.WalkState);
         }
     }
 
@@ -44,6 +52,9 @@ public class PlayerIdleState : PlayerGroundState
     {
         base.OnRunPerformed(context);
 
-        stateMachine.ChangeState(stateMachine.RunState);
+        if (stateMachine.Player.CurrentStamina.CanRun)
+        {
+            stateMachine.ChangeState(stateMachine.RunState);
+        }
     }
 }

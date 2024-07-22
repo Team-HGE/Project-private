@@ -1,55 +1,64 @@
-using UnityEngine.InputSystem;
+Ôªøusing UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
-using TMPro;
-using Unity.VisualScripting;
-using System.Collections.Generic;
-using System;
+using UnityEngine.InputSystem;
 
 public class PlayerWalkState : PlayerGroundState
 {
+    //private RunEffect CurrentStamina;
+
     public PlayerWalkState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
     {
     }
 
     public override void Enter()
-    {        
+    {
         base.Enter();
-        //Debug.Log("∞»±‚ Ω√¿€");
+        //CurrentStamina = stateMachine.Player.GetComponent<RunEffect>();
 
-        if (stateMachine.IsRuning)
+        if (stateMachine.PressShift && stateMachine.Player.CurrentStamina.CanRun && !stateMachine.Player.CurrentStamina.IsExhausted)
         {
             stateMachine.ChangeState(stateMachine.RunState);
             return;
         }
 
-        if (stateMachine.IsCrouch)
+        if (stateMachine.PressCtrl)
         {
             stateMachine.ChangeState(stateMachine.CrouchState);
             return;
         }
 
-        stateMachine.MovementSpeedModifier = groundData.WalkSpeedModifier;    
+        stateMachine.IsWalking = true;
+        stateMachine.MovementSpeedModifier = groundData.WalkSpeedModifier;
+        //stateMachine.Player.SumNoiseAmount = 6f;
+    }
+
+    public override void Update()
+    {
+        base.Update();
+        stateMachine.Player.CurrentStamina.IncreaseWalkIdle();
+
+        //if (CanRun == false && stateMachine.PressShift)
+        //{
+        //    stateMachine.MovementSpeedModifier = groundData.WalkSpeedModifier;
+        //}
+        
     }
 
     public override void Exit()
     {
         base.Exit();
-        //Debug.Log("∞»±‚ ¡æ∑·");
+        stateMachine.IsWalking = false;
 
     }
-
-
-    public override void Update()
-    {
-        base.Update();
-    }
-
 
     protected override void OnRunPerformed(InputAction.CallbackContext context)
     {
         base.OnRunPerformed(context);
 
-        stateMachine.ChangeState(stateMachine.RunState);
+        if (stateMachine.Player.CurrentStamina.CanRun && !stateMachine.Player.CurrentStamina.IsExhausted)
+        {
+            stateMachine.ChangeState(stateMachine.RunState); // Ïä§ÌÉúÎØ∏ÎÇòÍ∞Ä Ï∂©Î∂ÑÌï† ÎïåÎßå Îã¨Î¶¨Í∏∞ ÏÉÅÌÉúÎ°ú Ï†ÑÌôò
+        }
     }
 
     protected override void OnCrouchPerformed(InputAction.CallbackContext context)

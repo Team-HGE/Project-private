@@ -1,29 +1,24 @@
 using UnityEngine;
-using UnityEngine.UI;
 using System.Text;
-using TMPro;
 using System.Collections;
 
 public class Dialogue : MonoBehaviour
 {
-    public GameObject dialogueCanvas;
-    public Image titleBG;
-
-    public TextMeshProUGUI titleText;
-    public TextMeshProUGUI bodyText;
-    public Image portrait;
+    public UIDialogue uiDialogue;
 
     private NPC npc;
     private NPC_SO npcSO;
-    private StringBuilder sbTitle = new StringBuilder();
-    private StringBuilder sbBody = new StringBuilder();
 
-    private IEnumerator curPrintLine;
+    public StringBuilder sbTitle = new StringBuilder();
+    public StringBuilder sbBody = new StringBuilder();
+
+    public IEnumerator curPrintLine;
     public bool nowTalking = false;
 
     public void Init()
     {
-        CloseDialogue();
+        uiDialogue = GetComponent<UIDialogue>();
+        uiDialogue.CloseDialogue();
     }
 
     public void StartDialogue()
@@ -40,33 +35,33 @@ public class Dialogue : MonoBehaviour
         npc = nowInteracting.GetComponent<NPC>();
         npcSO = npc.npcSO;
 
-        OpenDialogue();
+        uiDialogue.OpenDialogue();
         StartCoroutine(PrintDialogue());
     }
 
     public IEnumerator PrintDialogue()
     {
-        titleText.text = sbTitle.Clear().ToString();
-        bodyText.text = sbBody.Clear().ToString();
+        uiDialogue.titleText.text = sbTitle.Clear().ToString();
+        uiDialogue.bodyText.text = sbBody.Clear().ToString();
 
-        portrait.sprite = null;
+        uiDialogue.portrait.sprite = null;
 
         for (int i = 0; i < npcSO.testDialogue.Length; i++)
         {
-            UtilSB.SetText(titleText, sbTitle, npcSO.npcName + " - " + npc.ChangeNpcState(npcState.Speaking));
+            UtilSB.SetText(uiDialogue.titleText, sbTitle, npcSO.npcName + " - " + npc.ChangeNpcState(npcState.Speaking));
 
-            SetImage(portrait, npc.SwitchPortrait(npcSO.emotion));
+            uiDialogue.SetImage(uiDialogue.portrait, npc.SwitchPortrait(npcSO.emotion));
 
-            if (portrait.sprite == null) portrait.transform.localScale = Vector3.zero;
+            if (uiDialogue.portrait.sprite == null) uiDialogue.portrait.transform.localScale = Vector3.zero;
             else
             {
-                portrait.transform.localScale = Vector3.one;
+                uiDialogue.portrait.transform.localScale = Vector3.one;
             }
 
-            curPrintLine = TextEffect.Typing(bodyText, sbBody, npcSO.testDialogue[i]);
+            curPrintLine = TextEffect.Typing(uiDialogue.bodyText, sbBody, npcSO.testDialogue[i]);
             yield return StartCoroutine(curPrintLine);
 
-            Debug.Log("E 키로 진행하세요");
+            //Debug.Log("E 키로 진행하세요");
             yield return new WaitUntil(() => Input.GetKey(KeyCode.E));
 
             yield return new WaitForSeconds(1f);
@@ -74,7 +69,7 @@ public class Dialogue : MonoBehaviour
             ClearDialogue();
         }
 
-        CloseDialogue();
+        uiDialogue.CloseDialogue();
 
         nowTalking = false;
         npc.ChangeNpcState(npcState.Idle);
@@ -82,27 +77,10 @@ public class Dialogue : MonoBehaviour
         yield return null;
     }
 
-    private void ClearDialogue()
+    public void ClearDialogue()
     {
-        UtilSB.ClearText(titleText, sbTitle);
-        UtilSB.ClearText(bodyText, sbBody);
-        portrait.sprite = null;
-    }
-
-
-    // UI
-
-    public void OpenDialogue()
-    {
-        dialogueCanvas.SetActive(true);
-    }
-    public void CloseDialogue()
-    {
-        dialogueCanvas.SetActive(false);
-    }
-
-    public void SetImage(Image image, Sprite sprite)
-    {
-        image.sprite = sprite;
+        UtilSB.ClearText(uiDialogue.titleText, sbTitle);
+        UtilSB.ClearText(uiDialogue.bodyText, sbBody);
+        uiDialogue.portrait.sprite = null;
     }
 }

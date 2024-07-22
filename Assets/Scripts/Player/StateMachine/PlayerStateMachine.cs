@@ -1,22 +1,30 @@
-using UnityEngine.InputSystem.LowLevel;
+ï»¿using UnityEngine.InputSystem.LowLevel;
+using UnityEditor.ShaderKeywordFilter;
+using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerStateMachine : StateMachine
 {
     public Player Player { get; }
 
-    // ÇÃ·¹ÀÌ¾î »óÅÂ
+    // í”Œë ˆì´ì–´ ìƒíƒœ
     public PlayerIdleState IdleState { get; private set; }
     public PlayerWalkState WalkState { get; private set; }
     public PlayerRunState RunState { get; private set; }
     public PlayerCrouchState CrouchState { get; private set; }
-    // Ãß°¡ »óÅÂµé Ãß°¡ ±¸Çö »çÇ×***
-    //public PlayerJumpState JumpState { get; }
-    //public PlayerFallState FallState { get; }
+    // ì¶”ê°€ ìƒíƒœë“¤ ì¶”ê°€ êµ¬í˜„ ì‚¬í•­***
 
-    // »óÅÂ ÀüÈ¯ Á¶°Ç
-    public bool IsRuning { get; set; }
+    // ìƒíƒœ ì „í™˜ ì¡°ê±´
+    public bool PressShift { get; set; }
+    public bool PressCtrl { get; set; }
+
+    public bool IsRunning { get; set; }
     public bool IsCrouch { get; set; }
-    // »óÈ£ÀÛ¿ë
+    public bool IsWalking { get; set; }
+
+
+
+    // ìƒí˜¸ì‘ìš©
     public bool IsInteraction { get; set; }
 
 
@@ -37,4 +45,5 @@ public class PlayerStateMachine : StateMachine
         MovementSpeed = player.Data.GroundData.BaseSpeed;
         OriginHeight = player.transform.localScale.y;
     }
+
 }
