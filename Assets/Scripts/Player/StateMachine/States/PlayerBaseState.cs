@@ -58,11 +58,15 @@ public class PlayerBaseState : IState
 
     public virtual void HandleInput()
     {
+        if (!stateMachine.Player.IsPlayerControll) return;
+
         ReadMovementInput();
     }
 
     public virtual void Update()
     {
+        if (!stateMachine.Player.IsPlayerControll) return;
+
         Move();
         BreathNoise();
     }
@@ -117,7 +121,7 @@ public class PlayerBaseState : IState
         {
             for (int i = 0; i < stateMachine.Player.NoiseDatasList.noiseDatasList.Count; i++)
             {
-                if (stateMachine.IsRun)
+                if (stateMachine.IsRunning)
                 {
                     if (stateMachine.Player.NoiseDatasList.noiseDatasList[i].tag == "RunStepNoise")
                     {
@@ -228,26 +232,36 @@ public class PlayerBaseState : IState
 
     protected virtual void OnCrouchPerformed(InputAction.CallbackContext context)
     {
+        if (!stateMachine.Player.IsPlayerControll) return;
+
         stateMachine.PressCtrl = true;
     }
 
     protected virtual void OnCrouchCanceled(InputAction.CallbackContext context)
     {
+        if (!stateMachine.Player.IsPlayerControll) return;
+
         stateMachine.PressCtrl = false;
     }
 
     protected virtual void OnInterationStared(InputAction.CallbackContext context)
     {
+        if (!stateMachine.Player.IsPlayerControll) return;
+
         stateMachine.IsInteraction = true;
     } 
 
     protected virtual void OnInterationPerformed(InputAction.CallbackContext context)
     {
+        if (!stateMachine.Player.IsPlayerControll) return;
+
         stateMachine.IsInteraction = true;
     }
 
     protected virtual void OnInterationCanceled(InputAction.CallbackContext context)
     {
+        if (!stateMachine.Player.IsPlayerControll) return;
+
         stateMachine.IsInteraction = false;
 
     }

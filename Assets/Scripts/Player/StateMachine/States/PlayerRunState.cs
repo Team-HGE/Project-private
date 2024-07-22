@@ -30,7 +30,7 @@ public class PlayerRunState : PlayerGroundState
         //Debug.Log("달리기 시작");
         stateMachine.MovementSpeedModifier = groundData.RunSpeedModifier;
         stateMachine.Player.SumNoiseAmount = 12f;
-        stateMachine.IsRun = true;
+        stateMachine.IsRunning = true;
     }
 
 
@@ -49,7 +49,7 @@ public class PlayerRunState : PlayerGroundState
     public override void Exit()
     {
         base.Exit();        
-        stateMachine.IsRun = false;
+        stateMachine.IsRunning = false;
     }
 
     protected override void OnRunCanceled(InputAction.CallbackContext context)

@@ -18,8 +18,9 @@ public class PlayerStateMachine : StateMachine
     public bool PressShift { get; set; }
     public bool PressCtrl { get; set; }
 
-    public bool IsRun { get; set; }
+    public bool IsRunning { get; set; }
     public bool IsCrouch { get; set; }
+    public bool IsWalking { get; set; }
 
 
 

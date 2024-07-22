@@ -27,8 +27,9 @@ public class PlayerWalkState : PlayerGroundState
             return;
         }
 
+        stateMachine.IsWalking = true;
         stateMachine.MovementSpeedModifier = groundData.WalkSpeedModifier;
-        stateMachine.Player.SumNoiseAmount = 6f;
+        //stateMachine.Player.SumNoiseAmount = 6f;
     }
 
     public override void Update()
@@ -46,6 +47,8 @@ public class PlayerWalkState : PlayerGroundState
     public override void Exit()
     {
         base.Exit();
+        stateMachine.IsWalking = false;
+
     }
 
     protected override void OnRunPerformed(InputAction.CallbackContext context)

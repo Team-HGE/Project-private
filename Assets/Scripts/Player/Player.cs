@@ -31,6 +31,11 @@ public class Player : MonoBehaviour, INoise
     [field: SerializeField]
     public float DecreaseSpeed { get; set; } = 5f;
 
+    // 플레이 조작 onoff
+    [field: SerializeField]
+    public bool IsPlayerControll { get; set; } = true;
+
+
     private void Awake()
     {
         Input = GetComponent<PlayerController>();
@@ -99,6 +104,11 @@ public class Player : MonoBehaviour, INoise
         CurNoiseAmount += amount;
         if (CurNoiseAmount >= SumNoiseAmount) CurNoiseAmount = SumNoiseAmount;
         return soundSource;
+    }
+
+    public void PlayerOnOff()
+    {
+        IsPlayerControll = !IsPlayerControll;
     }
 
 }
