@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 330832895471244228}
   - component: {fileID: 1565557736858896460}
   - component: {fileID: 1776522802564517765}
+  - component: {fileID: 1534367255949965295}
+  - component: {fileID: 542670094413310124}
   m_Layer: 0
   m_Name: DialogueManager
   m_TagString: Untagged
@@ -49,6 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue: {fileID: 0}
+  script: {fileID: 0}
 --- !u!114 &4455518639332731130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,11 +64,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d628121ad37d984d8addc64a891c390, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueCanvas: {fileID: 0}
-  titleBG: {fileID: 0}
-  titleText: {fileID: 0}
-  bodyText: {fileID: 0}
-  portrait: {fileID: 0}
+  uiDialogue: {fileID: 0}
   nowTalking: 0
 --- !u!114 &330832895471244228
 MonoBehaviour:
@@ -110,3 +109,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   systemMsgSO: {fileID: 11400000, guid: 655d02bd21be268449ad7bbdc49dbc7d, type: 2}
   systemMsgCanvas: {fileID: 0}
+--- !u!114 &1534367255949965295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 833481111887110611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 643ba2f036df59341817c51664aced0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueCanvas: {fileID: 0}
+  bodyText: {fileID: 0}
+  titleBG: {fileID: 0}
+  titleText: {fileID: 0}
+  portrait: {fileID: 0}
+--- !u!114 &542670094413310124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 833481111887110611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bbe5994fad507747926bb300dc806cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiDialogue: {fileID: 0}
+  nowTalking: 0
+  scriptSO: {fileID: 11400000, guid: 56fdc8b90c6f06c4198c5a392805670d, type: 2}
