@@ -17,7 +17,10 @@ public class Script: Dialogue
         if (nowTalking) return;
         InitScript(scriptSO);
 
-        if (scriptSO == null) { Debug.Log("지금은 내보낼 스크립트가 없습니다."); return;};
+        if (scriptSO == null) { Debug.Log("지금은 내보낼 스크립트가 없습니다. DialogueManager > Script 컴포넌트에 script SO 파일을 드래그앤드롭 해주세요"); return;};
+
+        uiDialogue.OpenDS();
+
         uiDialogue.OpenDialogue();
         StartCoroutine(PrintScript());
     }
@@ -51,6 +54,8 @@ public class Script: Dialogue
         uiDialogue.CloseDialogue();
 
         nowTalking = false;
+        uiDialogue.CloseDS();
+
 
         yield return null;
     }

@@ -10,6 +10,16 @@ public class UIDialogue : MonoBehaviour
     public Image titleBG;
     public TextMeshProUGUI titleText;
     public Image portrait;
+    public GameObject darkScreen;
+
+    public void OpenDS()
+    {
+        darkScreen.SetActive(true);
+    }
+    public void CloseDS()
+    {
+        darkScreen.SetActive(false);
+    }
 
     public void OpenDialogue()
     {
