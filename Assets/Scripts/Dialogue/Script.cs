@@ -9,12 +9,15 @@ public class Script: Dialogue
     {
         uiDialogue = GetComponent<UIDialogue>();
         scriptSO = _script;
+
     }
 
     public void StartScript()
     {
         if (nowTalking) return;
         InitScript(scriptSO);
+
+        if (scriptSO == null) { Debug.Log("지금은 내보낼 스크립트가 없습니다."); return;};
         uiDialogue.OpenDialogue();
         StartCoroutine(PrintScript());
     }

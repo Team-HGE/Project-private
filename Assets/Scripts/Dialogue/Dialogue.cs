@@ -83,21 +83,4 @@ public class Dialogue : MonoBehaviour
         UtilSB.ClearText(uiDialogue.bodyText, sbBody);
         uiDialogue.portrait.sprite = null;
     }
-
-
-    // UI
-
-    //public void OpenDialogue()
-    //{
-    //    dialogueCanvas.SetActive(true);
-    //}
-    //public void CloseDialogue()
-    //{
-    //    dialogueCanvas.SetActive(false);
-    //}
-
-    //public void SetImage(Image image, Sprite sprite)
-    //{
-    //    image.sprite = sprite;
-    //}
 }
