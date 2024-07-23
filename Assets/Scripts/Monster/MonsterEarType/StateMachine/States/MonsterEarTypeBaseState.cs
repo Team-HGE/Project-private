@@ -100,7 +100,7 @@ public class MonsterEarTypeBaseState : IState
             return;
         }
 
-        if (Vector3.Distance(stateMachine.Monster.transform.position, stateMachine.Target.transform.position) <= stateMachine.Monster.Data.GroundData.PlayerChasingRange && stateMachine.BiggestNoise >= 12f)
+        if (Vector3.Distance(stateMachine.Monster.transform.position, stateMachine.Target.transform.position) <= stateMachine.Monster.Data.GroundData.PlayerChasingRange && stateMachine.BiggestNoise >= 11.5f)
         {
             stateMachine.ChangeState(stateMachine.MoveState);
             return;
