@@ -7,21 +7,38 @@ public class DayNightUI : MonoBehaviour
     public RawImage dayImage;
     public Texture2D dayTexture;
     public Texture2D nightTexture;
+    float currentTime = 1;
 
-    void Update()
+    void Start()
     {
-       
-        float currentTime = DateTime.Now.Hour; 
 
-        if (currentTime >= 6 && currentTime < 18)
+        dayImage.texture = dayTexture;
+
+    
+    }
+
+    public void TimeUpdate()
+    {
+        currentTime++;
+    }
+
+    private void Update()
+    {
+        if (currentTime == 1)
         {
             // ³· ½Ã°£´ë
             dayImage.texture = dayTexture;
         }
-        else
+        else if (currentTime % 2 == 0)
         {
             // ¹ã ½Ã°£´ë
             dayImage.texture = nightTexture;
         }
+        else if (currentTime % 2 == 1)
+        {
+            // ³· ½Ã°£´ë
+            dayImage.texture = dayTexture;
+        }
+        
     }
 }
