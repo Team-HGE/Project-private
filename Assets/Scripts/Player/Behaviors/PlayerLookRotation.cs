@@ -16,7 +16,15 @@ public class PlayerLookRotation : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (!_player.IsPlayerControll) return;
+        if (!_player.IsPlayerControll)
+        {
+            if(virtualCamera.enabled) virtualCamera.enabled = false;
+            return;
+        }
+        else 
+        {
+            if (!virtualCamera.enabled) virtualCamera.enabled = true;
+        }
 
         lookPointTr.rotation = Quaternion.Euler(_pov.m_VerticalAxis.Value, 0, 0);
         transform.rotation = Quaternion.Euler(0, _pov.m_HorizontalAxis.Value, 0);
