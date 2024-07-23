@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class ObjectSound : MonoBehaviour
+public class ObjectSound1 : MonoBehaviour
 {
     public AudioSource audioSource; // 재생할 소리 클립
-    public float maxDistance = 8f; // 소리가 재생되는 최대 거리
+    public float maxDistance = 30f; // 소리가 재생되는 최대 거리
     
     private Transform playerTransform;
 
@@ -26,7 +26,7 @@ public class ObjectSound : MonoBehaviour
                 audioSource.Play(); // 소리 재생
             }
 
-             audioSource.volume = 0.3f - (distanceToPlayer / maxDistance);
+             audioSource.volume = 0.6f - (distanceToPlayer / maxDistance);
         }
         else
         {
