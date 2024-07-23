@@ -66,21 +66,21 @@ public class NPC : InteractableObject
     // NPC 상태 제어
     // 대화중, 통화중, 변이, 사망
 
-    public string ChangeNpcState(npcState stateType)
+    public string ChangeNpcState(NpcState stateType)
     {
         switch (stateType)
         {
-            case npcState.Idle:
-                npcSO.state = npcState.Idle;
+            case NpcState.Idle:
+                npcSO.state = NpcState.Idle;
                 return "대기중";
-            case npcState.Speaking:
-                npcSO.state = npcState.Speaking;
+            case NpcState.Speaking:
+                npcSO.state = NpcState.Speaking;
                 return "대화중";
-            case npcState.Calling:
-                npcSO.state = npcState.Calling;
+            case NpcState.Calling:
+                npcSO.state = NpcState.Calling;
                 return "통화중";
             default:
-                npcSO.state = npcState.Idle;
+                npcSO.state = NpcState.Idle;
                 return "대기중";
         }
     }
