@@ -20,6 +20,10 @@ public class SingletonManager<T> : MonoBehaviour where T : MonoBehaviour
 
                     DontDestroyOnLoad(singletonObject);
                 }
+                else
+                {
+                    DontDestroyOnLoad(_instance.gameObject);
+                }
             }
             return _instance;
         }

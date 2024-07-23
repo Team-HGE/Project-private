@@ -12,6 +12,8 @@ public class PlayerCrouchState : PlayerGroundState
     public override void Enter()
     {
         base.Enter();
+        Debug.Log("¾É±â");
+
         stateMachine.Player.transform.localScale = new Vector3(stateMachine.Player.transform.localScale.x, groundData.CrouchHeight, stateMachine.Player.transform.localScale.z);
         stateMachine.MovementSpeedModifier = groundData.CrouchSpeedModifier;
         stateMachine.Player.SumNoiseAmount = 2f;
