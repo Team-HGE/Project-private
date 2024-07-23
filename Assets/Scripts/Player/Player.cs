@@ -64,6 +64,8 @@ public class Player : MonoBehaviour, INoise
     {
         Cursor.lockState = CursorLockMode.Locked;
         _stateMachine.ChangeState(_stateMachine.IdleState);
+
+        GameManager.Instance.Init(this);
     }
 
     private void Update()
@@ -111,4 +113,8 @@ public class Player : MonoBehaviour, INoise
         IsPlayerControll = !IsPlayerControll;
     }
 
+    public Player GetPlayerReturn()
+    {
+        return this;
+    }
 }

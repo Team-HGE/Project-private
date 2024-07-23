@@ -1,8 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
-
 public class Wood_Board : InteractableObject
 {
     public override void ActivateInteraction()
@@ -16,7 +11,6 @@ public class Wood_Board : InteractableObject
     public override void Interact()
     {
         isInteractable = true;
-        GameManager.Instance.fadeManager.FadeStart();
-        SceneManager.LoadScene("BScene");
+        GameManager.Instance.fadeManager.MoveScene(SceneEnum.BScene);
     }
 }
