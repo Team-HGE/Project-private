@@ -13,7 +13,6 @@ public class FadeManager : MonoBehaviour
 {
     [SerializeField] FadeEffect fadeEffect;
     [SerializeField] GameObject sceneLoading;
-    [SerializeField] CharacterController playerController;
     public void FadeStart()
     {
         StartCoroutine(Fade());
@@ -31,20 +30,23 @@ public class FadeManager : MonoBehaviour
     public bool loadComplete;
     private IEnumerator MoveSceneFade(SceneEnum sceneEnum)
     {
-        playerController = GameManager.Instance.exampleBar.player.GetComponent<CharacterController>();
-        yield return playerController.enabled = false;
+        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
         yield return fadeEffect.UseFadeEffect(FadeState.FadeOut);
-        SceneManager.LoadScene((int)sceneEnum);
-        loadComplete = false;
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync((int)sceneEnum);
+        //loadComplete = false;
         sceneLoading.SetActive(true);
+        while (!asyncOperation.isDone)
+        {
+            yield return null;
+        }
+        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
         yield return new WaitForSeconds(3);
         sceneLoading .SetActive(false);
-        loadComplete = true;
-        yield return new WaitUntil(()=> loadComplete);
+        //loadComplete = true;
+        //yield return new WaitUntil(()=> loadComplete);
         yield return fadeEffect.UseFadeEffect(FadeState.FadeIn);
+        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
 
-        playerController = GameManager.Instance.exampleBar.player.GetComponent<CharacterController>();
-        yield return playerController.enabled = true;
         fadeEffect.OffFadeObject();
     }
 }
