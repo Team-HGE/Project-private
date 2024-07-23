@@ -7,7 +7,9 @@ public class DialogueManager : SingletonManager<DialogueManager>
     public Script script;
 
     private SystemMsg systemMsg;
-    private Quest quest;
+    public Quest quest;
+
+    public GameObject tutorialManager;
 
     protected override void Awake()
     {

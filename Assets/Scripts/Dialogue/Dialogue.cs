@@ -61,8 +61,8 @@ public class Dialogue : MonoBehaviour
             curPrintLine = TextEffect.Typing(uiDialogue.bodyText, sbBody, npcSO.testDialogue[i]);
             yield return StartCoroutine(curPrintLine);
 
-            //Debug.Log("E 키로 진행하세요");
-            yield return new WaitUntil(() => Input.GetKey(KeyCode.E));
+            Debug.Log("좌클릭으로 진행하세요");
+            yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
 
             yield return new WaitForSeconds(1f);
 

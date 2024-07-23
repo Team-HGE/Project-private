@@ -52,6 +52,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue: {fileID: 0}
   script: {fileID: 0}
+  quest: {fileID: 0}
+  tutorialManager: {fileID: 6120794873211401179, guid: 89a503070200ff44493e79ae2c5f99f2,
+    type: 3}
 --- !u!114 &4455518639332731130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,6 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questSO: {fileID: 11400000, guid: fa6ed0fe88c386d4ca9456c29433959e, type: 2}
+  CurrentQuest: -1
   nowQuestText: {fileID: 0}
 --- !u!114 &1776522802564517765
 MonoBehaviour:
