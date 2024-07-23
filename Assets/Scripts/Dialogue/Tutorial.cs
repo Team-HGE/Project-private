@@ -64,5 +64,13 @@ public class Tutorial : MonoBehaviour
             Debug.Log("튜토리얼: Ctrl로 웅크리기 완료");
             isCrouched = true;
         }
+
+
+        // 플레이어 정지 확인용(지워도 됨)** 
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Debug.Log("플레이어 OnOff");
+            GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
+        }
     }
 }

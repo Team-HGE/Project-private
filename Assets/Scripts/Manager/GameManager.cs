@@ -17,6 +17,9 @@ public class GameManager : SingletonManager<GameManager>
     private int _nowFloor = 1;
     public Transform blockCelling;
     public FadeManager fadeManager;
+
+    public PlayerStateMachine PlayerStateMachine { get; set; }
+
     public int nowFloor
     {
         get { return _nowFloor; }

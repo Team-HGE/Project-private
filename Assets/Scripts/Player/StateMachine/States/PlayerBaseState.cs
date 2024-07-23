@@ -232,35 +232,35 @@ public class PlayerBaseState : IState
 
     protected virtual void OnCrouchPerformed(InputAction.CallbackContext context)
     {
-        if (!stateMachine.Player.IsPlayerControll) return;
+        //if (!stateMachine.Player.IsPlayerControll) return;
 
         stateMachine.PressCtrl = true;
     }
 
     protected virtual void OnCrouchCanceled(InputAction.CallbackContext context)
     {
-        if (!stateMachine.Player.IsPlayerControll) return;
+        //if (!stateMachine.Player.IsPlayerControll) return;
 
         stateMachine.PressCtrl = false;
     }
 
     protected virtual void OnInterationStared(InputAction.CallbackContext context)
     {
-        if (!stateMachine.Player.IsPlayerControll) return;
+        //if (!stateMachine.Player.IsPlayerControll) return;
 
         stateMachine.IsInteraction = true;
     } 
 
     protected virtual void OnInterationPerformed(InputAction.CallbackContext context)
     {
-        if (!stateMachine.Player.IsPlayerControll) return;
+        //if (!stateMachine.Player.IsPlayerControll) return;
 
         stateMachine.IsInteraction = true;
     }
 
     protected virtual void OnInterationCanceled(InputAction.CallbackContext context)
     {
-        if (!stateMachine.Player.IsPlayerControll) return;
+        //if (!stateMachine.Player.IsPlayerControll) return;
 
         stateMachine.IsInteraction = false;
 

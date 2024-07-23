@@ -80,6 +80,7 @@ public class Player : MonoBehaviour, INoise
         }
 
         if (CurNoiseAmount >= MaxNoiseAmount) CurNoiseAmount = MaxNoiseAmount;
+
     }
 
     private void FixedUpdate()
@@ -108,7 +109,7 @@ public class Player : MonoBehaviour, INoise
         return soundSource;
     }
 
-    public void PlayerOnOff()
+    public void PlayerControllOnOff()
     {
         IsPlayerControll = !IsPlayerControll;
     }

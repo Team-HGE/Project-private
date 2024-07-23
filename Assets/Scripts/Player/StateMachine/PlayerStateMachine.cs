@@ -32,7 +32,6 @@ public class PlayerStateMachine : StateMachine
     public float RotationDamping { get; private set; }
     public float OriginHeight { get; private set; }
     public float MovementSpeedModifier { get; set; } = 1f;
-    public float JumpForce { get; set; }
 
     public PlayerStateMachine(Player player)
     {
@@ -44,6 +43,17 @@ public class PlayerStateMachine : StateMachine
 
         MovementSpeed = player.Data.GroundData.BaseSpeed;
         OriginHeight = player.transform.localScale.y;
+
+        GameManager.Instance.PlayerStateMachine = this;
+    }
+
+    public override void ChangeState(IState state)
+    {
+
+        if (!Player.IsPlayerControll) return;
+
+        base.ChangeState(state);
+
     }
 
 }
