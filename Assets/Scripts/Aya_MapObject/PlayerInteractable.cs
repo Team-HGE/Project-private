@@ -13,11 +13,11 @@ public class PlayerInteractable : MonoBehaviour
     public TextMeshProUGUI interactableText;
     public Image interactionImage;
     public Image fillAmountImage;
-    public float holdTime = 2.0f;
+    public float holdTime = 2.0f; // 상호작용할 시간
 
     [Header("SerializeField")]
-    [SerializeField] float interactionRange = 2.0f;
-    [SerializeField] float holdDuration = 0f;
+    [SerializeField] float interactionRange = 2.0f; // 사거리
+    [SerializeField] float holdDuration = 0f; // 현재상호작용 시간
     [SerializeField] LayerMask layerMask;
     [SerializeField] Camera camera;
     
