@@ -1,11 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.Build.Content;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public enum SceneEnum
 {
+    MainMenuScene,
+    Hotel_A_Loading,
     AScene,
     BScene
 }
@@ -27,8 +26,10 @@ public class FadeManager : MonoBehaviour
     }
     private IEnumerator Fade()
     {
+        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
         yield return fadeEffect.UseFadeEffect(FadeState.FadeOut);
         yield return fadeEffect.UseFadeEffect(FadeState.FadeIn);
+        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
         fadeEffect.OffFadeObject();
     }
     public bool loadComplete;
