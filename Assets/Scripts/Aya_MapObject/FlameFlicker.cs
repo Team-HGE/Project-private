@@ -1,4 +1,3 @@
-using JetBrains.Annotations;
 using System;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -57,20 +56,17 @@ public class FlameFlicker : MonoBehaviour
     public bool Optimize = true;
     public float FlickerDistance = 10f;
 
-    public Transform player;
+    private Transform player;
     private Vector3 originalPosition;
 
     private void Awake()
     {
+        player = GameManager.Instance.player.transform;
         originalPosition = transform.position;
     }
 
     private void Update()
     {
-        if (player == null)
-        {
-            player = GameManager.Instance.exampleBar.player.transform;
-        }
         if (!FlameLight.enabled)
             return;
 
