@@ -1,4 +1,5 @@
 using DiceNook.View;
+using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -44,5 +45,15 @@ public class GameManager : SingletonManager<GameManager>
         player.interactableText = interactableText;
         player.playerInteraction = playerInteractionCanvas;
         player.interactionImage = interactionImage;
+    }
+    private void Start()
+    {
+        StartCoroutine(ASceneLoading());
+    }
+    IEnumerator ASceneLoading()
+    {
+        yield return new WaitForSeconds(3);
+        fadeManager.sceneLoadings[0].SetActive(false);
+        fadeManager.FadeStart(FadeState.FadeIn);
     }
 }

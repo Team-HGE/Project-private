@@ -35,6 +35,8 @@ public class Player : MonoBehaviour, INoise
     [field: SerializeField]
     public bool IsPlayerControll { get; set; } = true;
 
+    public FlashLightController flashLightController;
+
 
     private void Awake()
     {
@@ -43,6 +45,7 @@ public class Player : MonoBehaviour, INoise
         ForceReceiver = GetComponent<ForceReceiver>();
         InputsData = GetComponent<PlayerInputsData>();
         CurrentStamina = GetComponent<RunEffect>();
+        flashLightController = GetComponent<FlashLightController>();
 
         _stateMachine = new PlayerStateMachine(this);
 
@@ -117,5 +120,9 @@ public class Player : MonoBehaviour, INoise
     public Player GetPlayerReturn()
     {
         return this;
+    }
+    public FlashLightController GetFlashLightController()
+    {
+        return flashLightController;
     }
 }

@@ -31,6 +31,10 @@ public class Monster : MonoBehaviour
     public float NoiseAmount { get; set; }
     public float DecreaseSpeed { get; set; }
 
+    [Header("MonsterTransform")]
+    public Transform monsterTransform;
+    public Transform monsterEyeTransform;
+
 
     private void Awake()
     {
