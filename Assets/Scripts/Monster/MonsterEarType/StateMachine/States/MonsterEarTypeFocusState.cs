@@ -20,6 +20,7 @@ public class MonsterEarTypeFocusState : MonsterEarTypeGroundState
         stateMachine.Monster.WaitForBehavior(stateMachine.Monster.Data.GroundData.FocusTransitionTime);
 
         // 애니메이션 실행
+        StartAnimation(stateMachine.Monster.AnimationData.FocusParameterHash);
 
     }
 
@@ -32,6 +33,7 @@ public class MonsterEarTypeFocusState : MonsterEarTypeGroundState
         stateMachine.IsFocusRotate = false;
 
         // 애니메이션 종료
+        StopAnimation(stateMachine.Monster.AnimationData.FocusParameterHash);
 
     }
 

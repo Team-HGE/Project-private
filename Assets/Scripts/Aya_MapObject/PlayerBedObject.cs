@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class PlayerBedObject : InteractableObject
 {
+    public NPC_SO npcSO;
+
+    private void InitNPCData(NPC_SO _npc)
+    {
+        npcSO = _npc;
+    }
+
     public override void ActivateInteraction()
     {
         if (isInteractable) return;
@@ -12,6 +19,10 @@ public class PlayerBedObject : InteractableObject
     }
     public override void Interact()
     {
+        InitNPCData(npcSO);
+
+        DialogueManager.Instance.dialogue.StartDialogue();
+
         GameManager.Instance.fadeManager.FadeStart(FadeState.FadeOutIn);
     }
 }

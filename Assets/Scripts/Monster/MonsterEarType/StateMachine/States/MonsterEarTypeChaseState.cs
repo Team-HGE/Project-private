@@ -17,7 +17,7 @@ public class MonsterEarTypeChaseState : MonsterEarTypeGroundState
         stateMachine.Monster.Agent.speed = groundData.ChaseSpeed;
 
         // 애니메이션 실행
-
+        StartAnimation(stateMachine.Monster.AnimationData.ChaseParameterHash);
     }
 
     public override void Exit()
@@ -27,6 +27,7 @@ public class MonsterEarTypeChaseState : MonsterEarTypeGroundState
         stateMachine.IsChasing = false;
 
         // 애니메이션 종료
+        StopAnimation(stateMachine.Monster.AnimationData.ChaseParameterHash);
 
     }
 
@@ -36,9 +37,7 @@ public class MonsterEarTypeChaseState : MonsterEarTypeGroundState
 
         if (IsInAttackRange())
         {
-            Debug.Log("플레이어 사망 - 게임 오버");
-
-            //stateMachine.ChangeState(stateMachine.IdleState);
+            stateMachine.ChangeState(stateMachine.AttackState);
             return;
         }
 
