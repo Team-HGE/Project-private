@@ -1,7 +1,7 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
+
 
 public class MonsterEarTypeMoveState : MonsterEarTypeGroundState
 {
@@ -18,11 +18,11 @@ public class MonsterEarTypeMoveState : MonsterEarTypeGroundState
         stateMachine.Monster.Agent.isStopped = false;
         stateMachine.Monster.Agent.speed = groundData.MoveSpeed;
 
-        //Debug.Log($"¼ÒÀ½ ÃßÀû ½ÃÀÛ - ¹«ºê, {stateMachine.CurDestination}");         
+        Debug.Log($"ì†ŒìŒ ì¶”ì  ì‹œì‘ - ë¬´ë¸Œ, {stateMachine.CurDestination}");         
 
         stateMachine.Monster.Agent.SetDestination(stateMachine.CurDestination);
 
-        // ¾Ö´Ï¸ŞÀÌ¼Ç ½ÇÇà
+        // ì• ë‹ˆë©”ì´ì…˜ ì‹¤í–‰
         if (!stateMachine.IsMove) StartAnimation(stateMachine.Monster.AnimationData.MoveParameterHash);
         StartAnimation(stateMachine.Monster.AnimationData.MoveParameterHash);
         stateMachine.IsMove = true;
@@ -36,8 +36,9 @@ public class MonsterEarTypeMoveState : MonsterEarTypeGroundState
         base.Exit();
 
         //stateMachine.IsMove = false;
+        //Debug.Log($"ë¬´ë¸Œ ë");
 
-        // ¾Ö´Ï¸ŞÀÌ¼Ç Á¾·á
+        // ì• ë‹ˆë©”ì´ì…˜ ì¢…ë£Œ
         if (!stateMachine.IsMove) StopAnimation(stateMachine.Monster.AnimationData.MoveParameterHash);
 
     }
@@ -45,18 +46,20 @@ public class MonsterEarTypeMoveState : MonsterEarTypeGroundState
     public override void Update()
     {
         base.Update();
-        
-        if (stateMachine.Monster.Agent.remainingDistance < 1f)
+
+        //Debug.Log($"ì†ŒìŒì§€ì—­ {stateMachine.CurDestination}, ëª¬ìŠ¤í„° ìœ„ì¹˜ : {stateMachine.Monster.transform.position} , ê±°ë¦¬ : {stateMachine.Monster.Agent.remainingDistance}, {Vector3.Distance(stateMachine.CurDestination, stateMachine.Monster.transform.position)}");
+
+        if (Vector3.Distance(stateMachine.CurDestination, stateMachine.Monster.transform.position) < 3f)
         {
+            stateMachine.IsMove = false;
+
             if (IsInAttackRange())
             {
                 stateMachine.ChangeState(stateMachine.AttackState);
                 return;
             }
 
-
-            stateMachine.IsMove = false;
-            //Debug.Log("¼ÒÀ½Áö¿ª µµÂø");
+            //Debug.Log($"ì†ŒìŒì§€ì—­ ë„ì°© {stateMachine.CurDestination}, ëª¬ìŠ¤í„° ìœ„ì¹˜ : {stateMachine.Monster.transform.position}");
             stateMachine.ChangeState(stateMachine.FocusState);
             return;
         }

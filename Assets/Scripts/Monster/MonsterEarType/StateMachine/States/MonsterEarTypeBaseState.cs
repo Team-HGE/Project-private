@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -41,24 +41,24 @@ public class MonsterEarTypeBaseState : IState
         stateMachine.Monster.Animator.SetBool(animationHash, true);
     }
 
-    // ¾Ö´Ï¸ŞÀÌ¼Ç Á¾·á
+    // ì• ë‹ˆë©”ì´ì…˜ ì¢…ë£Œ
     protected void StopAnimation(int animationHash)
     {
         stateMachine.Monster.Animator.SetBool(animationHash, false);
     }
 
-    // ¾Ö´Ï¸ŞÀÌ¼Ç ÁøÇàµµ Ã¼Å©//¼öÁ¤ ÇÊ¿ä, ±¸Çö ¿¹Á¤***
+    // ì• ë‹ˆë©”ì´ì…˜ ì§„í–‰ë„ ì²´í¬//ìˆ˜ì • í•„ìš”, êµ¬í˜„ ì˜ˆì •***
     protected float GetNormalizedTime(Animator animator, string tag)
     {
         AnimatorStateInfo currentInfo = animator.GetCurrentAnimatorStateInfo(0);
         AnimatorStateInfo nextInfo = animator.GetNextAnimatorStateInfo(0);
 
-        // ÀüÈ¯µÇ°í ÀÖÀ»¶§ && ´ÙÀ½ ¾Ö´Ï¸ŞÀÌ¼Ç tag
+        // ì „í™˜ë˜ê³  ìˆì„ë•Œ && ë‹¤ìŒ ì• ë‹ˆë©”ì´ì…˜ tag
         if (animator.IsInTransition(0) && nextInfo.IsTag(tag))
         {
             return nextInfo.normalizedTime;
         }
-        // ÀüÈ¯µÇ°í ÀÖÁö ¾ÊÀ»¶§ && ÇöÀç ¾Ö´Ï¸ŞÀÌ¼Ç tag        
+        // ì „í™˜ë˜ê³  ìˆì§€ ì•Šì„ë•Œ && í˜„ì¬ ì• ë‹ˆë©”ì´ì…˜ tag        
         else if (!animator.IsInTransition(0) && currentInfo.IsTag(tag))
         {
             return currentInfo.normalizedTime;
@@ -75,6 +75,7 @@ public class MonsterEarTypeBaseState : IState
         //Debug.Log("SearchTarget");
 
         stateMachine.BiggestNoise = 0f;
+        Vector3 tempPosition = Vector3.zero;
 
         stateMachine.Monster.noiseMakers.Clear();
 
@@ -87,27 +88,36 @@ public class MonsterEarTypeBaseState : IState
                 stateMachine.Monster.noiseMakers.Add(col);
                 //CheckNoise(col.gameObject.GetComponent<INoise>().CurNoiseAmount);
 
-                if (CheckNoise(col.gameObject.GetComponent<INoise>().CurNoiseAmount)) stateMachine.CurDestination = col.gameObject.transform.position;
+                if (CheckNoise(col.gameObject.GetComponent<INoise>().CurNoiseAmount))
+                {
+                    //stateMachine.CurDestination = col.gameObject.transform.position;
+                    tempPosition = col.transform.position;
+                }
 
             }
         }
 
-        // ¾ÆÀÌÅÛ, Àåºñ ¼ÒÀ½ ¹ß»ı***
+        // ì•„ì´í…œ, ì¥ë¹„ ì†ŒìŒ ë°œìƒ***
         if (stateMachine.BiggestNoise >= 90f)
         {
-            //Debug.Log("¾ÆÀÌÅÛ °¨Áö");
+            //Debug.Log("ì•„ì´í…œ ê°ì§€");
+            stateMachine.CurDestination = tempPosition;
             stateMachine.ChangeState(stateMachine.MoveState);
             return;
         }
 
         if (Vector3.Distance(stateMachine.Monster.transform.position, stateMachine.Target.transform.position) <= stateMachine.Monster.Data.GroundData.PlayerChasingRange && stateMachine.BiggestNoise >= 11.5f)
         {
+            //Debug.Log("ë‹¬ë¦¬ê¸° ê°ì§€");
+            stateMachine.CurDestination = tempPosition;
             stateMachine.ChangeState(stateMachine.MoveState);
             return;
         }
 
         if (Vector3.Distance(stateMachine.Monster.transform.position, stateMachine.Target.transform.position) <= stateMachine.Monster.Data.GroundData.PlayerChasingRange * 0.5f && stateMachine.BiggestNoise >= 5.5f)
         {
+            //Debug.Log("ê±·ê¸° ê°ì§€");
+            stateMachine.CurDestination = tempPosition;
             stateMachine.ChangeState(stateMachine.MoveState);
             return;
         }
