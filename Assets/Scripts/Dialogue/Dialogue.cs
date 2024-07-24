@@ -48,7 +48,7 @@ public class Dialogue : MonoBehaviour
 
         for (int i = 0; i < npcSO.testDialogue.Length; i++)
         {
-            UtilSB.SetText(uiDialogue.titleText, sbTitle, npcSO.npcName + " - " + npc.ChangeNpcState(npcState.Speaking));
+            UtilSB.SetText(uiDialogue.titleText, sbTitle, npcSO.objName + " - " + npc.ChangeNpcState(NpcState.Speaking));
 
             uiDialogue.SetImage(uiDialogue.portrait, npc.SwitchPortrait(npcSO.emotion));
 
@@ -62,7 +62,7 @@ public class Dialogue : MonoBehaviour
             yield return StartCoroutine(curPrintLine);
 
             //Debug.Log("E 키로 진행하세요");
-            yield return new WaitUntil(() => Input.GetKey(KeyCode.E));
+            yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
 
             yield return new WaitForSeconds(1f);
 
@@ -72,7 +72,7 @@ public class Dialogue : MonoBehaviour
         uiDialogue.CloseDialogue();
 
         nowTalking = false;
-        npc.ChangeNpcState(npcState.Idle);
+        npc.ChangeNpcState(NpcState.Idle);
 
         yield return null;
     }
