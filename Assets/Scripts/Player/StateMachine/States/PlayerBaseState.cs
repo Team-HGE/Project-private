@@ -272,6 +272,7 @@ public class PlayerBaseState : IState
     protected virtual void OnFlashStarted(InputAction.CallbackContext context)
     {
         Debug.Log("F키 입력, 후레쉬 OnOff");
+        stateMachine.Player.flashLightController.ToggleFlashLight();
     }
 
 

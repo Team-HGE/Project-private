@@ -29,7 +29,7 @@ public class JumpScareManager : MonoBehaviour
     public GameObject flashLight;
 
     [Header("Death")]
-    public GameObject blackImage;
+    public GameObject deathCanvas;
 
     [Header("Audio")]
     [SerializeField] AudioSource jumpScareAudioSources;
@@ -68,6 +68,7 @@ public class JumpScareManager : MonoBehaviour
             vcFollow.DOLocalMove(secondTake, 0.2f).onComplete += () => 
             {
                 GameManager.Instance.fadeManager.FadeImmediately();
+                Invoke("DeathVideo", 3f);
             };
         };
         OffMonsterController();
@@ -90,5 +91,10 @@ public class JumpScareManager : MonoBehaviour
         {
             controller.enabled = false;
         }
+    }
+    void DeathVideo()
+    {
+        jumpScareAudioSources.Stop();
+        deathCanvas.SetActive(true);
     }
 }
