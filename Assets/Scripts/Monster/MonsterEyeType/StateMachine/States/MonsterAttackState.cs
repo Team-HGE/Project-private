@@ -7,10 +7,10 @@ public class MonsterAttackState : MonsterGroundState
     public MonsterAttackState(MonsterStateMachine monsterStateMachine) : base(monsterStateMachine)
     {
     }
-
     public override void Enter()
     {
         base.Enter();
+        JumpScareManager.Instance.OnJumpScare(stateMachine.Monster.monsterTransform, JumpScareType.EyeTypeMonster, stateMachine.Monster.monsterEyeTransform);
 
         // 애니메이션 실행
         StartAnimation(stateMachine.Monster.AnimationData.AttackParameterHash);        

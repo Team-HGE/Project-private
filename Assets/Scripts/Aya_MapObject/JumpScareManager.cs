@@ -23,8 +23,7 @@ public class JumpScareManager : MonoBehaviour
     public Transform vcFollow;
     public CinemachineVirtualCamera monsterVC;
     public CinemachineVirtualCamera mainCamera;
-    [SerializeField] Vector3 firstTake;
-    [SerializeField] Vector3 secondTake;
+
 
     [Header("FlashLight")]
     public GameObject flashLight;
@@ -38,12 +37,26 @@ public class JumpScareManager : MonoBehaviour
 
     [Header("MonsterControllers")]
     [SerializeField] NavMeshAgent[] monstersNavMeshAgent;
-    public void OnJumpScare(Transform target, JumpScareType jumpScareType)
+    public void OnJumpScare(Transform target, JumpScareType jumpScareType, Transform eyeTransform)
     {
+        Vector3 secondTake;
+        
+        secondTake = eyeTransform.position - target.position;
+        secondTake.x = 0;
+
+        Vector3 orginPos = secondTake;
+        orginPos.z += 1f;
+
+        Vector3 firstTake = orginPos;
+        firstTake.z += 2.5f;
+
+
+        vcFollow.localPosition = orginPos;
+        
         jumpScareObject.transform.SetParent(target);
         jumpScareObject.transform.localPosition = Vector3.zero;
         jumpScareObject.transform.localRotation = new Quaternion(0,0,0,0);
-        monsterVC.LookAt = target;
+        monsterVC.LookAt = eyeTransform;
         jumpScareObject.SetActive(true);
         mainCamera.Priority = 0;
         monsterVC.Priority = 10;
