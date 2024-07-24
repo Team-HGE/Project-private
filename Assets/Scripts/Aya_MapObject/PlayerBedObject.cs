@@ -19,7 +19,7 @@ public class PlayerBedObject : InteractableObject
     }
     public override void Interact()
     {
-        InitNPCData(npcSO);
+        //InitNPCData(npcSO);
 
         DialogueManager.Instance.dialogue.StartDialogue();
 
