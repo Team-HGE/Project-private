@@ -18,6 +18,8 @@ public class MonsterEarTypeStateMachine : StateMachine
     public MonsterEarTypeFocusState FocusState { get; private set; }
     public MonsterEarTypeComeBackState ComeBackState { get; private set; }
     public MonsterEarTypeChaseState ChaseState { get; private set; }
+    public MonsterEarTypeAttackState AttackState { get; private set; }
+
 
     // 상태 전환 조건
     public bool IsChasing { get; set; }
@@ -27,7 +29,10 @@ public class MonsterEarTypeStateMachine : StateMachine
     public bool IsMove { get; set; }
     public bool IsFocusRotate { get; set; }
     public bool IsComeBack { get; set; }
- 
+    public bool IsAttack { get; set; }
+
+
+
     public Vector3 CurDestination { get; set; }
     public float BiggestNoise { get; set; }
 
@@ -54,6 +59,7 @@ public class MonsterEarTypeStateMachine : StateMachine
         FocusState = new MonsterEarTypeFocusState(this);
         ComeBackState = new MonsterEarTypeComeBackState(this);
         ChaseState = new MonsterEarTypeChaseState(this);
+        AttackState = new MonsterEarTypeAttackState(this);
 
         MovementSpeed = Monster.Data.GroundData.BaseSpeed;
         RotationDamping = Monster.Data.GroundData.BaseRotationDamping;

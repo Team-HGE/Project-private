@@ -71,7 +71,7 @@ public class MonsterEarTypeBaseState : IState
 
     private void SearchTarget()
     {
-        if (stateMachine.IsChasing || stateMachine.IsFocusNoise) return;
+        if (stateMachine.IsChasing || stateMachine.IsFocusNoise || stateMachine.IsAttack) return;
         //Debug.Log("SearchTarget");
 
         stateMachine.BiggestNoise = 0f;
