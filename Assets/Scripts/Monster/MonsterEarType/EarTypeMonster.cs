@@ -26,6 +26,9 @@ public class EarTypeMonster : MonoBehaviour
     //public Collider[] noiseMakers;
     public List<Collider> noiseMakers;
 
+    [Header("MonsterTransform")]
+    public Transform monsterTransform;
+    public Transform monsterEyeTransform;
     private void Awake()
     {
         AnimationData.Initialize();
