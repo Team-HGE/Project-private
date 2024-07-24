@@ -14,13 +14,15 @@ namespace DiceNook.View
 
         private void Start()
         {
+
             circularBars = UIDocument.rootVisualElement.Query<CircularBar>().ToList();
             labels = UIDocument.rootVisualElement.Query<Label>().ToList();
+            player = FindObjectOfType<Player>();
         }
 
         void Update()
         {
-            if (player == null) return;
+            if (player == null) Debug.Log("뭐야 아무것도없는데?");
 
             float currentNoise = player.CurNoiseAmount / player.MaxNoiseAmount;
              
