@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,22 +11,24 @@ public class MonsterEarTypeChaseState : MonsterEarTypeGroundState
     public override void Enter()
     {
         base.Enter();
-        //Debug.Log("chace ½ÃÀÛ");
+        //Debug.Log("chace ì‹œì‘");
 
+        //stateMachine.Monster.Agent.isStopped = true;
         stateMachine.IsChasing = true;
         stateMachine.Monster.Agent.speed = groundData.ChaseSpeed;
 
-        // ¾Ö´Ï¸ŞÀÌ¼Ç ½ÇÇà
+        // ì• ë‹ˆë©”ì´ì…˜ ì‹¤í–‰
         StartAnimation(stateMachine.Monster.AnimationData.ChaseParameterHash);
     }
 
     public override void Exit()
     {
         base.Exit();
+        //Debug.Log("chace ë");
 
         stateMachine.IsChasing = false;
 
-        // ¾Ö´Ï¸ŞÀÌ¼Ç Á¾·á
+        // ì• ë‹ˆë©”ì´ì…˜ ì¢…ë£Œ
         StopAnimation(stateMachine.Monster.AnimationData.ChaseParameterHash);
 
     }

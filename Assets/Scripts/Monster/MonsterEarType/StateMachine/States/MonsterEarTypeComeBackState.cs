@@ -1,4 +1,4 @@
-    using System.Collections;
+ï»¿    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,20 +11,20 @@ public class MonsterEarTypeComeBackState : MonsterEarTypeGroundState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("ÄÄ¹é ½ÃÀÛ");
+        //Debug.Log("ì»´ë°± ì‹œì‘");
         stateMachine.IsComeBack = true;
         stateMachine.Monster.Agent.speed = groundData.ComebackSpeed;
         stateMachine.Monster.Agent.SetDestination(stateMachine.StartPosition);
-        // ¾Ö´Ï¸ŞÀÌ¼Ç ½ÇÇà - ±×¶ó¿îµå ÆÄ¶ó¹ÌÅÍ ÇØ½¬·Î Á¢±Ù
+        // ì• ë‹ˆë©”ì´ì…˜ ì‹¤í–‰ - ê·¸ë¼ìš´ë“œ íŒŒë¼ë¯¸í„° í•´ì‰¬ë¡œ ì ‘ê·¼
         StartAnimation(stateMachine.Monster.AnimationData.ComeBackParameterHash);
     }
 
     public override void Exit()
     {
         base.Exit();
-        Debug.Log("ÄÄ¹é ³¡");
+        //Debug.Log("ì»´ë°± ë");
         stateMachine.IsComeBack = false;
-        // ¾Ö´Ï¸ŞÀÌ¼Ç Á¾·á - ±×¶ó¿îµå ÆÄ¶ó¹ÌÅÍ ÇØ½¬·Î Á¢±Ù
+        // ì• ë‹ˆë©”ì´ì…˜ ì¢…ë£Œ - ê·¸ë¼ìš´ë“œ íŒŒë¼ë¯¸í„° í•´ì‰¬ë¡œ ì ‘ê·¼
         StopAnimation(stateMachine.Monster.AnimationData.ComeBackParameterHash);
     }
 
@@ -32,9 +32,10 @@ public class MonsterEarTypeComeBackState : MonsterEarTypeGroundState
     {
         base.Update();
 
-        if (stateMachine.Monster.Agent.remainingDistance < 1f)
+        if (Vector3.Distance(stateMachine.StartPosition, stateMachine.Monster.transform.position) < 3f)
+
         {
-            Debug.Log("º¹±Í ¿Ï·á");
+            //Debug.Log("ë³µê·€ ì™„ë£Œ");
             stateMachine.ChangeState(stateMachine.IdleState);
         }
     }
