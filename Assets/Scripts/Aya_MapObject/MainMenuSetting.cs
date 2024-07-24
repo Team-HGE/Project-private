@@ -7,6 +7,7 @@ public class MainMenuSetting : MonoBehaviour
 {
     public void LoadAScene()
     {
+        AudioManager.Instance.soundSource.Stop();
         SceneManager.LoadScene((int)SceneEnum.AScene);
     }
 }
