@@ -14,12 +14,12 @@ public class Answer : Dialogue
     {
         answerSO = _answer;
         answerSO.nowAnswer = 0;
-        Debug.Log("선택지 초기화 완료");
+        //Debug.Log("선택지 초기화 완료");
     }
 
     public void StartAnswer()
     {
-        Debug.Log("선택지 시작");
+        //Debug.Log("선택지 시작");
         InitAnswerData(answerSO);
 
         uiDialogue.answerText1.text = answerSO.answers[0];
@@ -28,26 +28,28 @@ public class Answer : Dialogue
         uiDialogue.AnswerCanvas.SetActive(true);
 
         Cursor.lockState = CursorLockMode.None;
-        // 커서를 화면에 표시합니다.
         Cursor.visible = true;
 
     }
 
-    public void UpdateAnswer()
+    public void UseAnswer()
     {
-        Debug.Log("선택지 업데이트 완료");
     }
 
     public void PickAnswer()
     {
-        Debug.Log("1번 선택지 클릭됨");
+        //Debug.Log("1번 선택지 클릭됨");
         uiDialogue.AnswerCanvas.SetActive(false);
         answerSO.nowAnswer = 1;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
     public void PickAnswer2()
     {
-        Debug.Log("2번 선택지 클릭됨");
+        //Debug.Log("2번 선택지 클릭됨");
         uiDialogue.AnswerCanvas.SetActive(false);
         answerSO.nowAnswer = 2;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 }

@@ -9,7 +9,7 @@ public class DialogueManager : SingletonManager<DialogueManager>
     private SystemMsg systemMsg;
     private Quest quest;
 
-    private Answer answer;
+    public Answer answer;
 
 
     protected override void Awake()
@@ -38,11 +38,11 @@ public class DialogueManager : SingletonManager<DialogueManager>
         script.StartScript();
     }
 
-    private void Update()
-    {
-        if (Input.GetKey(KeyCode.E))
-        {
-            answer.StartAnswer();
-        }
-    }
+    //private void Update()
+    //{
+    //    if (Input.GetKey(KeyCode.E))
+    //    {
+    //        answer.StartAnswer();
+    //    }
+    //}
 }
