@@ -17,6 +17,10 @@ public class FadeManager : MonoBehaviour
     {
         StartCoroutine(Fade());
     }
+    public void FadeImmediately() 
+    {
+        fadeEffect.FadeImmediately();
+    }
     public void MoveScene(SceneEnum sceneEnum)
     {
         StartCoroutine(MoveSceneFade(sceneEnum));
