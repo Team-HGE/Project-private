@@ -8,6 +8,8 @@ public class MonsterLoseSightState : MonsterGroundState
     {
         base.Enter();
 
+        StartAnimation(stateMachine.Monster.AnimationData.LoseSightParameterHash);
+
         stateMachine.Monster.Agent.isStopped = true;
         stateMachine.Monster.IsBehavior = false;
         stateMachine.Monster.WaitForBehavior(groundData.LoseSightTransitionTime);
@@ -15,6 +17,8 @@ public class MonsterLoseSightState : MonsterGroundState
     public override void Exit()
     {
         base.Exit();
+        StopAnimation(stateMachine.Monster.AnimationData.LoseSightParameterHash);
+
     }
 
     public override void Update()
@@ -27,7 +31,7 @@ public class MonsterLoseSightState : MonsterGroundState
 
     public void CheckLoseSight()
     {
-        if (IsInChaseRange() && GetIsPlayerInFieldOfView())
+        if (IsInFindRange() && GetIsPlayerInFieldOfView())
         {
             stateMachine.ChangeState(stateMachine.ChaseState);
             return;

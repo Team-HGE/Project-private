@@ -43,7 +43,7 @@ public class MonsterEarTypeStateMachine : StateMachine
     public MonsterEarTypeStateMachine(EarTypeMonster monster)
     {
         Monster = monster;
-        // 태그로 플레어 탐색
+        // 태그로 플레어 탐색***
         Target = GameObject.FindGameObjectWithTag("Player");
         // 고유한 위치
         StartPosition = Monster.transform.position;

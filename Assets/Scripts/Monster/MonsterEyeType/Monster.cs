@@ -59,7 +59,8 @@ public class Monster : MonoBehaviour
             
         }
 
-        DrawCircle(transform.position, 36, Data.GroundData.PlayerChasingRange, Color.green);
+        DrawCircle(transform.position, 36, Data.GroundData.PlayerChasingRange, Color.yellow);
+        DrawCircle(transform.position, 36, Data.GroundData.PlayerFindRange, Color.green);
         DrawCircle(transform.position, 36, Data.GroundData.AttackRange, Color.red);
 
     }

@@ -13,7 +13,7 @@ public class MonsterGroundState : MonsterBaseState
         base.Enter();
 
         // 애니메이션 실행
-        //StartAnimation(stateMachine.Monster.AnimationData.GroundParameterHash);//구현 예정***
+        StartAnimation(stateMachine.Monster.AnimationData.GroundParameterHash);
     }
 
     public override void Exit()
@@ -21,7 +21,7 @@ public class MonsterGroundState : MonsterBaseState
         base.Exit();
 
         // 애니메이션 종료
-        //StopAnimation(stateMachine.Monster.AnimationData.GroundParameterHash);//구현 예정***
+        StopAnimation(stateMachine.Monster.AnimationData.GroundParameterHash);
     }
 
     public override void HandleInput()

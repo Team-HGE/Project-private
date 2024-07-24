@@ -80,6 +80,15 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Flash"",
+                    ""type"": ""Button"",
+                    ""id"": ""e1c1a6de-16f0-460f-8489-a57e3255c4a0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -192,6 +201,17 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""action"": ""UsingItem"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6b3503ad-2dbd-4dcd-a2e3-12d8e0e22216"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Flash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -212,6 +232,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_Player_Crouch = m_Player.FindAction("Crouch", throwIfNotFound: true);
         m_Player_Interaction = m_Player.FindAction("Interaction", throwIfNotFound: true);
         m_Player_UsingItem = m_Player.FindAction("UsingItem", throwIfNotFound: true);
+        m_Player_Flash = m_Player.FindAction("Flash", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -279,6 +300,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Crouch;
     private readonly InputAction m_Player_Interaction;
     private readonly InputAction m_Player_UsingItem;
+    private readonly InputAction m_Player_Flash;
     public struct PlayerActions
     {
         private @PlayerInputs m_Wrapper;
@@ -289,6 +311,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         public InputAction @Crouch => m_Wrapper.m_Player_Crouch;
         public InputAction @Interaction => m_Wrapper.m_Player_Interaction;
         public InputAction @UsingItem => m_Wrapper.m_Player_UsingItem;
+        public InputAction @Flash => m_Wrapper.m_Player_Flash;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -316,6 +339,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @UsingItem.started += instance.OnUsingItem;
             @UsingItem.performed += instance.OnUsingItem;
             @UsingItem.canceled += instance.OnUsingItem;
+            @Flash.started += instance.OnFlash;
+            @Flash.performed += instance.OnFlash;
+            @Flash.canceled += instance.OnFlash;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -338,6 +364,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @UsingItem.started -= instance.OnUsingItem;
             @UsingItem.performed -= instance.OnUsingItem;
             @UsingItem.canceled -= instance.OnUsingItem;
+            @Flash.started -= instance.OnFlash;
+            @Flash.performed -= instance.OnFlash;
+            @Flash.canceled -= instance.OnFlash;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -372,5 +401,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         void OnCrouch(InputAction.CallbackContext context);
         void OnInteraction(InputAction.CallbackContext context);
         void OnUsingItem(InputAction.CallbackContext context);
+        void OnFlash(InputAction.CallbackContext context);
     }
 }

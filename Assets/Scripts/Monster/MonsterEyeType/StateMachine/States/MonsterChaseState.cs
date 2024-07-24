@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class MonsterChaseState : MonsterGroundState
 {
+
     public MonsterChaseState(MonsterStateMachine monsterStateMachine) : base(monsterStateMachine)
     {
     }
@@ -14,12 +16,11 @@ public class MonsterChaseState : MonsterGroundState
         base.Enter();
         Debug.Log("플레이어 추적 시작");
 
-
         stateMachine.Monster.Agent.isStopped = false;
         stateMachine.Monster.Agent.speed = groundData.ChaseSpeed;             
         
         // 애니메이션 실행
-        //StartAnimation(stateMachine.Monster.AnimationData.ChaseParameterHash);//구현 예정***
+        StartAnimation(stateMachine.Monster.AnimationData.ChaseParameterHash);
     }
 
     public override void Exit()
@@ -27,7 +28,7 @@ public class MonsterChaseState : MonsterGroundState
         base.Exit();
 
         // 애니메이션 종료
-        //StopAnimation(stateMachine.Monster.AnimationData.ChaseParameterHash);//구현 예정***
+        StopAnimation(stateMachine.Monster.AnimationData.ChaseParameterHash);
     }
 
     public override void Update()
@@ -39,19 +40,17 @@ public class MonsterChaseState : MonsterGroundState
 
     private void ChaseCheck()
     {
+        //Debug.Log(Vector3.Distance(stateMachine.Monster.transform.position, stateMachine.Target.transform.position));
+
         // 공격 가능 범위 - 공격, 게임 오버
         if (GetIsPlayerInFieldOfView() && IsInAttackRange())
         {
             Debug.Log("플레이어 공격 - 게임 오버");
-            stateMachine.ChangeState(stateMachine.IdleState);
+            stateMachine.Monster.Agent.isStopped = true;
+
+            //stateMachine.ChangeState(stateMachine.IdleState);
             return;
         }
-
-        //// 탐지 범위
-        //if (GetIsPlayerInFieldOfView() && IsInChaseRange())
-        //{
-        //    stateMachine.Monster.Agent.SetDestination(stateMachine.Target.transform.position);            
-        //}
 
         // 탐지 범위
         if (IsInChaseRange())

@@ -15,18 +15,20 @@ public class MonsterComeBackState : MonsterGroundState
         stateMachine.Monster.Agent.isStopped = false;
         stateMachine.Monster.Agent.speed = groundData.PatrolSpeed;
         stateMachine.Monster.Agent.SetDestination(stateMachine.StartPosition);
+        StartAnimation(stateMachine.Monster.AnimationData.PatrolParameterHash);
     }
 
     public override void Exit()
     {
         base.Exit();
+        StopAnimation(stateMachine.Monster.AnimationData.PatrolParameterHash);
     }
 
     public override void Update()
     {
         base.Update();
 
-        if (IsInChaseRange() && GetIsPlayerInFieldOfView())
+        if (IsInFindRange() && GetIsPlayerInFieldOfView())
         {
             stateMachine.ChangeState(stateMachine.FindState);
             return;

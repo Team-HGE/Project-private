@@ -58,6 +58,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Flash",
+                    "type": "Button",
+                    "id": "e1c1a6de-16f0-460f-8489-a57e3255c4a0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -168,6 +177,17 @@
                     "processors": "",
                     "groups": "KeyboardAndMouse",
                     "action": "UsingItem",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6b3503ad-2dbd-4dcd-a2e3-12d8e0e22216",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Flash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

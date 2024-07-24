@@ -16,7 +16,9 @@ public class MonsterFindState : MonsterGroundState
 
         // 플레이어 바라보기
         Rotate(GetMovementDirection());
-        stateMachine.Monster.WaitForBehavior(groundData.FindTransitionTime);      
+        stateMachine.Monster.WaitForBehavior(groundData.FindTransitionTime);
+        StartAnimation(stateMachine.Monster.AnimationData.FindParameterHash);
+
     }
 
     public override void Exit()
@@ -30,6 +32,8 @@ public class MonsterFindState : MonsterGroundState
         Rotate(GetMovementDirection());
         if (!stateMachine.Monster.IsBehavior) return;
         FindCheck();
+        StopAnimation(stateMachine.Monster.AnimationData.FindParameterHash);
+
     }
 
     private void FindCheck()

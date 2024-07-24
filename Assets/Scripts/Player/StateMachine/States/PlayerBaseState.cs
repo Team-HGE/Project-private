@@ -41,6 +41,7 @@ public class PlayerBaseState : IState
         input.playerActions.Interaction.started += OnInterationStared;
         input.playerActions.Interaction.performed += OnInterationPerformed;
         input.playerActions.Interaction.canceled += OnInterationCanceled;
+        input.playerActions.Flash.started += OnFlashStarted;
     }
 
     protected virtual void RemoveInputActionsCallbacks()
@@ -54,6 +55,7 @@ public class PlayerBaseState : IState
         input.playerActions.Interaction.started -= OnInterationStared;
         input.playerActions.Interaction.performed -= OnInterationPerformed;
         input.playerActions.Interaction.canceled -= OnInterationCanceled;
+        input.playerActions.Flash.started -= OnFlashStarted;
     }
 
     public virtual void HandleInput()
@@ -246,24 +248,30 @@ public class PlayerBaseState : IState
 
     protected virtual void OnInterationStared(InputAction.CallbackContext context)
     {
-        //if (!stateMachine.Player.IsPlayerControll) return;
+        if (!stateMachine.Player.IsPlayerControll) return;
 
         stateMachine.IsInteraction = true;
     } 
 
     protected virtual void OnInterationPerformed(InputAction.CallbackContext context)
     {
-        //if (!stateMachine.Player.IsPlayerControll) return;
+        if (!stateMachine.Player.IsPlayerControll) return;
 
         stateMachine.IsInteraction = true;
     }
 
     protected virtual void OnInterationCanceled(InputAction.CallbackContext context)
     {
-        //if (!stateMachine.Player.IsPlayerControll) return;
+        if (!stateMachine.Player.IsPlayerControll) return;
 
         stateMachine.IsInteraction = false;
 
+    }
+
+    // F키 상호작용 Flash***
+    protected virtual void OnFlashStarted(InputAction.CallbackContext context)
+    {
+        Debug.Log("F키 입력, 후레쉬 OnOff");
     }
 
 
@@ -277,8 +285,10 @@ public class PlayerBaseState : IState
     {
     }
 
-    protected virtual void OnJumpStarted(InputAction.CallbackContext context)
-    {
-    }
+
+
+    
+
+
 
 }
