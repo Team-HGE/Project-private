@@ -9,7 +9,7 @@ public enum FadeState
     FadeOut, // 점점 어두워짐
     FadeInOut, // 밝 -> 어
     FadeOutIn, // 어 -> 밝
-    FadeLoop  // 여러번 반복
+    FadeLoop,  // 여러번 반복
 }
 public class FadeEffect : MonoBehaviour
 {
@@ -26,7 +26,13 @@ public class FadeEffect : MonoBehaviour
         image = GetComponent<Image>();
         this.gameObject.SetActive(false);
     }
-
+    public void FadeImmediately()
+    {
+        Color color = image.color;
+        color.a = 1;
+        image.color = color;
+        image.gameObject.SetActive(true);
+    }
     public Coroutine UseFadeEffect(FadeState fade)
     {
         this.gameObject.SetActive(true);
@@ -103,6 +109,7 @@ public class FadeEffect : MonoBehaviour
             yield return null;
         }
     }
+
 
     public void OffFadeObject()
     {
