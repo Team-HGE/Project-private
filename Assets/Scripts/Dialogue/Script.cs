@@ -40,6 +40,20 @@ public class Script: Dialogue
 
             uiDialogue.CheckSpeakerNull(scriptSO.speakers[i]);
 
+            if (scriptSO.bodyTexts[i] == "PickAnswer")
+            {
+                //Debug.Log("잠깐 정지하고 선택지 출력합니다.");
+  
+                UtilSB.AppendText(uiDialogue.bodyText, sbBody, scriptSO.bodyTexts[i - 1]);
+
+                DialogueManager.Instance.answer.StartAnswer();
+                yield return new WaitUntil(() => DialogueManager.Instance.answer.answerSO.nowAnswer != 0);
+
+                DialogueManager.Instance.answer.answerSO.nowAnswer = 0;
+
+                continue;
+            }
+
             curPrintLine = TextEffect.Typing(uiDialogue.bodyText, sbBody, scriptSO.bodyTexts[i]);
             yield return StartCoroutine(curPrintLine);
 

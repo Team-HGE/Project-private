@@ -12,6 +12,6 @@ public class PlayerBedObject : InteractableObject
     }
     public override void Interact()
     {
-        GameManager.Instance.fadeManager.FadeStart();
+        GameManager.Instance.fadeManager.FadeStart(FadeState.FadeOutIn);
     }
 }

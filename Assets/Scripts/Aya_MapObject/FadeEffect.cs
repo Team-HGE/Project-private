@@ -21,10 +21,10 @@ public class FadeEffect : MonoBehaviour
     private AnimationCurve fadeCurve;
     private Image image;
     private FadeState fadeState;
-    void Start()
+    void Awake()
     {
         image = GetComponent<Image>();
-        this.gameObject.SetActive(false);
+        this.gameObject.SetActive(true);
     }
     public void FadeImmediately()
     {
