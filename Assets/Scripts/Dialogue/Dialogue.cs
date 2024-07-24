@@ -44,6 +44,7 @@ public class Dialogue : MonoBehaviour
         else 
             npcSO = npc.npcSO;
 
+        //GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
         uiDialogue.OpenDialogue();
         StartCoroutine(PrintDialogue());
     }
@@ -92,6 +93,8 @@ public class Dialogue : MonoBehaviour
 
         if (npcSO.state != NpcState.Item)
             npc.ChangeNpcState(NpcState.Idle);
+
+        //GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
 
         yield return null;
     }
