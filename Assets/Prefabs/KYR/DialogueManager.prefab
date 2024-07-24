@@ -53,6 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue: {fileID: 0}
   script: {fileID: 0}
+  answer: {fileID: 0}
 --- !u!114 &4455518639332731130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,6 +131,8 @@ MonoBehaviour:
   portrait: {fileID: 0}
   darkScreen: {fileID: 0}
   AnswerCanvas: {fileID: 0}
+  answerText1: {fileID: 0}
+  answerText2: {fileID: 0}
 --- !u!114 &542670094413310124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,7 +147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiDialogue: {fileID: 0}
   nowTalking: 0
-  scriptSO: {fileID: 0}
+  scriptSO: {fileID: 11400000, guid: 32326b3131b9d4d48964c1a7bf2a27ea, type: 2}
 --- !u!114 &7273186344831853445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,4 +162,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiDialogue: {fileID: 0}
   nowTalking: 0
-  answer: {fileID: 11400000, guid: 509e8c7de2b9e414f8916f07bd82fe5b, type: 2}
+  answerSO: {fileID: 11400000, guid: 509e8c7de2b9e414f8916f07bd82fe5b, type: 2}
