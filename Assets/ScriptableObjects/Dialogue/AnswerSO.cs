@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class AnswerSO: ScriptableObject
 {
-    public int[] answerIDs;
+    public int nowAnswer;
     public string[] answers;
 }

@@ -13,6 +13,8 @@ public class UIDialogue : MonoBehaviour
     public GameObject darkScreen;
 
     public GameObject AnswerCanvas;
+    public TextMeshProUGUI answerText1;
+    public TextMeshProUGUI answerText2;
 
     public void OpenDS()
     {
