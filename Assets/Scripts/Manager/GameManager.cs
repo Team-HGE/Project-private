@@ -19,6 +19,8 @@ public class GameManager : SingletonManager<GameManager>
     public Transform blockCelling;
     public FadeManager fadeManager;
 
+    [Header("Player")]
+    public ExampleOfUpdatingTheBar exampleBar;
     public PlayerStateMachine PlayerStateMachine { get; set; }
 
     public int nowFloor
@@ -28,13 +30,18 @@ public class GameManager : SingletonManager<GameManager>
     }
     public bool isElevatorButtonPressed;
 
-    public ExampleOfUpdatingTheBar exampleBar;
+    [Header("Time")]
+    public DayNightUI dayNightUI;
     protected override void Awake()
     {
         base.Awake();
         if (fadeManager == null)
         {
             fadeManager = GetComponent<FadeManager>();
+        }
+        if (dayNightUI == null)
+        {
+            dayNightUI = GetComponent<DayNightUI>();
         }
     }
     public void Init(Player _player)

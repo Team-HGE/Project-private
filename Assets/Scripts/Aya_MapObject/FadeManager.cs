@@ -27,7 +27,7 @@ public class FadeManager : MonoBehaviour
     }
     private IEnumerator Fade(FadeState fadeState)
     {
-        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
+        //GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
         switch (fadeState)
         {
             case FadeState.FadeOut:
@@ -45,7 +45,7 @@ public class FadeManager : MonoBehaviour
                 yield return fadeEffect.UseFadeEffect(FadeState.FadeOut);
                 break;
         }
-        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
+        //GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
         fadeEffect.OffFadeObject();
     }
     public bool loadComplete;
