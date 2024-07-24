@@ -29,6 +29,7 @@ public class PlayerInteractable : MonoBehaviour
     {
         camera = GetComponent<Camera>();
         camera = Camera.main;
+
     }
     void Update()
     {
@@ -89,5 +90,4 @@ public class PlayerInteractable : MonoBehaviour
         holdDuration = 0f;
         fillAmountImage.fillAmount = 0f;
     }
-
 }
