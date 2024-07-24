@@ -18,15 +18,18 @@ public class MonsterPatrolState : MonsterGroundState
 
         StatrPatrol();
 
+        //Debug.Log($"패트롤 시작");
         // 애니메이션 실행 - 그라운드 파라미터 해쉬로 접근
-        //StartAnimation(stateMachine.Monster.AnimationData.PatrolParameterHash);//구현 예정***
+        StartAnimation(stateMachine.Monster.AnimationData.PatrolParameterHash);
     }
 
     public override void Exit()
     {
         base.Exit();
+        //Debug.Log($"패트롤 끝");
+
         // 애니메이션 종료 - 그라운드 파라미터 해쉬로 접근
-        //StopAnimation(stateMachine.Monster.AnimationData.PatrolParameterHash);//구현 예정***
+        StopAnimation(stateMachine.Monster.AnimationData.PatrolParameterHash);
         stateMachine.IsPatrol = false;
     }
 
@@ -39,7 +42,7 @@ public class MonsterPatrolState : MonsterGroundState
             stateMachine.ChangeState(stateMachine.IdleState);
         }
 
-        if (IsInChaseRange() && GetIsPlayerInFieldOfView())
+        if (IsInFindRange() && GetIsPlayerInFieldOfView())
         {
             stateMachine.ChangeState(stateMachine.FindState);
         }

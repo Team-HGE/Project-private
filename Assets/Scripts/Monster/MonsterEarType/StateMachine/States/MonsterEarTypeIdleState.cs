@@ -13,7 +13,7 @@ public class MonsterEarTypeIdleState : MonsterEarTypeGroundState
         base.Enter();
 
         // 애니메이션 실행 - 그라운드 파라미터 해쉬로 접근
-        //StartAnimation(stateMachine.Monster.AnimationData.IdleParameterHash);//구현 예정***
+        StartAnimation(stateMachine.Monster.AnimationData.IdleParameterHash);
 
         stateMachine.Monster.IsBehavior = false;
         stateMachine.Monster.WaitForBehavior(stateMachine.Monster.Data.GroundData.IdleTransitionTime);
@@ -25,7 +25,7 @@ public class MonsterEarTypeIdleState : MonsterEarTypeGroundState
         base.Exit();
 
         // 애니메이션 종료 - 그라운드 파라미터 해쉬로 접근
-        //StopAnimation(stateMachine.Monster.AnimationData.IdleParameterHash);//구현 예정***
+        StopAnimation(stateMachine.Monster.AnimationData.IdleParameterHash);
     }
 
     public override void Update()

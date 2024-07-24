@@ -20,7 +20,7 @@ public class MonsterEarTypePatrolState : MonsterEarTypeGroundState
         StatrPatrol();
 
         // 애니메이션 실행 - 그라운드 파라미터 해쉬로 접근
-        //StartAnimation(stateMachine.Monster.AnimationData.PatrolParameterHash);//구현 예정***
+        StartAnimation(stateMachine.Monster.AnimationData.PatrolParameterHash);
     }
 
     public override void Exit()
@@ -32,7 +32,7 @@ public class MonsterEarTypePatrolState : MonsterEarTypeGroundState
         stateMachine.IsPatrol = false;
 
         // 애니메이션 종료 - 그라운드 파라미터 해쉬로 접근
-        //StopAnimation(stateMachine.Monster.AnimationData.PatrolParameterHash);//구현 예정***
+        StopAnimation(stateMachine.Monster.AnimationData.PatrolParameterHash);
 
     }
 

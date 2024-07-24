@@ -57,16 +57,16 @@ public class MonsterBaseState : IState
     // 애니메이션 재생
     protected void StartAnimation(int animationHash)
     {
-        //stateMachine.Monster.Animator.SetBool(animationHash, true);//구현 예정***
+        stateMachine.Monster.Animator.SetBool(animationHash, true);
     }
 
     // 애니메이션 종료
     protected void StopAnimation(int animationHash)
     {
-        //stateMachine.Monster.Animator.SetBool(animationHash, false);//구현 예정***
+        stateMachine.Monster.Animator.SetBool(animationHash, false);
     }
 
-    // 애니메이션 진행도 체크//수정 필요, 구현 예정***
+    // 애니메이션 진행도 체크
     protected float GetNormalizedTime(Animator animator, string tag)
     {
         AnimatorStateInfo currentInfo = animator.GetCurrentAnimatorStateInfo(0);
@@ -92,6 +92,12 @@ public class MonsterBaseState : IState
     {
         float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.Monster.transform.position).sqrMagnitude;
         return playerDistanceSqr <= groundData.PlayerChasingRange * groundData.PlayerChasingRange;
+    }
+
+    protected bool IsInFindRange()
+    {
+        float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.Monster.transform.position).sqrMagnitude;
+        return playerDistanceSqr <= groundData.PlayerFindRange * groundData.PlayerFindRange;
     }
 
     protected bool IsInAttackRange()
