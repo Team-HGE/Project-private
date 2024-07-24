@@ -42,9 +42,10 @@ public class MonsterFindState : MonsterGroundState
         if (IsInAttackRange() && GetIsPlayerInFieldOfView())
         {
             // 플레이어 공격
-            Debug.Log("플레이어 공격 - 게임 오버");
+            //Debug.Log("플레이어 공격 - 게임 오버");
+            //stateMachine.Monster.IsBehavior = false;// 임시코드 게임 오버 구현 후 수정할 것***
 
-            stateMachine.Monster.IsBehavior = false;// 임시코드 게임 오버 구현 후 수정할 것***
+            stateMachine.ChangeState(stateMachine.AttackState);
             return;
         }
 

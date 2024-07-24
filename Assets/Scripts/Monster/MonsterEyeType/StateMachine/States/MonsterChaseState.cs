@@ -44,11 +44,8 @@ public class MonsterChaseState : MonsterGroundState
 
         // 공격 가능 범위 - 공격, 게임 오버
         if (GetIsPlayerInFieldOfView() && IsInAttackRange())
-        {
-            Debug.Log("플레이어 공격 - 게임 오버");
-            stateMachine.Monster.Agent.isStopped = true;
-
-            //stateMachine.ChangeState(stateMachine.IdleState);
+        {           
+            stateMachine.ChangeState(stateMachine.AttackState);
             return;
         }
 
@@ -62,7 +59,6 @@ public class MonsterChaseState : MonsterGroundState
             Debug.Log("플레이어 놓침");
             stateMachine.ChangeState(stateMachine.LoseSightState);
             return;
-
         }
     }
 }
