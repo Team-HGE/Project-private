@@ -7,6 +7,7 @@ public class Dialogue : MonoBehaviour
     public UIDialogue uiDialogue;
 
     private NPC npc;
+    private Item item;
     private NPC_SO npcSO;
 
     public StringBuilder sbTitle = new StringBuilder();
@@ -28,12 +29,20 @@ public class Dialogue : MonoBehaviour
             GameManager.Instance.player.playerInteraction.SetActive(false);
             return;
         }
-            
+
         nowTalking = true;
 
         GameObject nowInteracting = GameManager.Instance.player.curInteractableGameObject;
         npc = nowInteracting.GetComponent<NPC>();
-        npcSO = npc.npcSO;
+
+        if (npc == null)
+        {
+            Debug.Log("아이템 입니다");
+            item = nowInteracting.GetComponent<Item>();
+            npcSO = item.npcSO;
+        }
+        else 
+            npcSO = npc.npcSO;
 
         uiDialogue.OpenDialogue();
         StartCoroutine(PrintDialogue());
@@ -48,9 +57,17 @@ public class Dialogue : MonoBehaviour
 
         for (int i = 0; i < npcSO.testDialogue.Length; i++)
         {
-            UtilSB.SetText(uiDialogue.titleText, sbTitle, npcSO.objName + " - " + npc.ChangeNpcState(NpcState.Speaking));
+            if (npcSO.state == NpcState.Item)
+            {
+                UtilSB.SetText(uiDialogue.titleText, sbTitle, npcSO.objName);
+                uiDialogue.SetImage(uiDialogue.portrait, npcSO.illusts[0]);
+            }
+            else
+            {
+                UtilSB.SetText(uiDialogue.titleText, sbTitle, npcSO.objName + " - " + npc.ChangeNpcState(NpcState.Speaking));
+                uiDialogue.SetImage(uiDialogue.portrait, npc.SwitchPortrait(npcSO.emotion));
+            }
 
-            uiDialogue.SetImage(uiDialogue.portrait, npc.SwitchPortrait(npcSO.emotion));
 
             if (uiDialogue.portrait.sprite == null) uiDialogue.portrait.transform.localScale = Vector3.zero;
             else
@@ -72,10 +89,13 @@ public class Dialogue : MonoBehaviour
         uiDialogue.CloseDialogue();
 
         nowTalking = false;
-        npc.ChangeNpcState(NpcState.Idle);
+
+        if (npcSO.state != NpcState.Item)
+            npc.ChangeNpcState(NpcState.Idle);
 
         yield return null;
     }
+
 
     public void ClearDialogue()
     {

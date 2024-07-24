@@ -7,7 +7,8 @@ public enum NpcState
     Speaking,
     Calling,
     Mutated,
-    Dead
+    Dead,
+    Item
 }
 
 public enum Emotion
