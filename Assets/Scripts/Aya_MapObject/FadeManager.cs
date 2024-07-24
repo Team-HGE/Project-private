@@ -55,16 +55,16 @@ public class FadeManager : MonoBehaviour
         switch (sceneEnum)
         {
             case SceneEnum.AScene:
-                sceneIndex = 0;
+                sceneIndex = 1;
                 break;
             case SceneEnum.BScene:
-                sceneIndex = 1;
+                sceneIndex = 2;
                 break;
         }
         GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
         yield return fadeEffect.UseFadeEffect(FadeState.FadeOut);
+        AudioManager.Instance.StopSound();
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync((int)sceneEnum);
-        //loadComplete = false;
         sceneLoadings[sceneIndex].SetActive(true);
         while (!asyncOperation.isDone)
         {
@@ -73,11 +73,9 @@ public class FadeManager : MonoBehaviour
         GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
         yield return new WaitForSeconds(3);
         sceneLoadings[sceneIndex].SetActive(false);
-        //loadComplete = true;
-        //yield return new WaitUntil(()=> loadComplete);
         yield return fadeEffect.UseFadeEffect(FadeState.FadeIn);
+        AudioManager.Instance.PlaySound(AudioManager.Instance.backGroundAudioClips[sceneIndex]);
         GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
-
         fadeEffect.OffFadeObject();
     }
 }

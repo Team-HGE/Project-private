@@ -5,7 +5,7 @@ public class Script: Dialogue
 {
     public ScriptSO scriptSO;
 
-    private void InitScript(ScriptSO _script)
+    public void InitScript(ScriptSO _script)
     {
         uiDialogue = GetComponent<UIDialogue>();
         scriptSO = _script;

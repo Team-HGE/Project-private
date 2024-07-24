@@ -80,6 +80,8 @@ public class JumpScareManager : MonoBehaviour
                 jumpScareAudioSources.Play();
                 break;
             case JumpScareType.EarTypeMonster:
+                jumpScareAudioSources.clip = jumpScareAudioClips[0];
+                jumpScareAudioSources.Play();
                 break;
         }
         GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();

@@ -35,7 +35,7 @@ public class DialogueManager : SingletonManager<DialogueManager>
         quest.UpdateQuest();
         systemMsg.UpdateMessage();
 
-        script.StartScript();
+        //script.StartScript();
     }
 
     //private void Update()

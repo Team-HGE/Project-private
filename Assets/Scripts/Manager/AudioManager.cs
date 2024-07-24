@@ -23,4 +23,8 @@ public class AudioManager : SingletonManager<AudioManager>
         soundSource.clip = clip;
         soundSource.Play();
     }
+    public void StopSound()
+    {
+        soundSource.Stop();
+    }
 }
