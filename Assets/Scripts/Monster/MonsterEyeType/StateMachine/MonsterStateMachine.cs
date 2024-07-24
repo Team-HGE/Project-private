@@ -16,10 +16,14 @@ public class MonsterStateMachine : StateMachine
     public MonsterChaseState ChaseState { get; private set; }
     public MonsterLoseSightState LoseSightState { get; private set; }
     public MonsterComeBackState ComBackState { get; private set; }
+    public MonsterAttackState AttackState { get; private set; }
+
 
     // 상태 전환 조건
     public bool IsChasing { get; set; }
     public bool IsPatrol { get; set; }
+    public bool IsAttack { get; set; }
+
 
     public float MovementSpeed { get; private set; }
     public float RotationDamping { get; private set; }
@@ -42,6 +46,7 @@ public class MonsterStateMachine : StateMachine
         ChaseState = new MonsterChaseState(this);
         LoseSightState = new MonsterLoseSightState(this);
         ComBackState = new MonsterComeBackState(this);
+        AttackState = new MonsterAttackState(this);
 
         MovementSpeed = Monster.Data.GroundData.BaseSpeed;
         RotationDamping = Monster.Data.GroundData.BaseRotationDamping;

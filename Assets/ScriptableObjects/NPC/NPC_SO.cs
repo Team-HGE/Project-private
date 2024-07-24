@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public enum npcState
+public enum NpcState
 {
     Idle,
     Speaking,
@@ -21,8 +21,8 @@ public enum Emotion
 [CreateAssetMenu(fileName = "ScriptableObject", menuName = "ScriptableObject/NPC", order = 3)]
 public class NPC_SO : ScriptableObject
 {
-    public string npcName;
-    public npcState state;
+    public string objName;
+    public NpcState state;
     public Emotion emotion;
     public Sprite[] illusts;
     [TextArea] public string[] testDialogue;

@@ -12,6 +12,8 @@ public class UIDialogue : MonoBehaviour
     public Image portrait;
     public GameObject darkScreen;
 
+    public GameObject AnswerCanvas;
+
     public void OpenDS()
     {
         darkScreen.SetActive(true);

@@ -38,13 +38,13 @@ public class MonsterEarTypeBaseState : IState
 
     protected void StartAnimation(int animationHash)
     {
-        //stateMachine.Monster.Animator.SetBool(animationHash, true);//구현 예정***
+        stateMachine.Monster.Animator.SetBool(animationHash, true);
     }
 
     // 애니메이션 종료
     protected void StopAnimation(int animationHash)
     {
-        //stateMachine.Monster.Animator.SetBool(animationHash, false);//구현 예정***
+        stateMachine.Monster.Animator.SetBool(animationHash, false);
     }
 
     // 애니메이션 진행도 체크//수정 필요, 구현 예정***
@@ -100,7 +100,7 @@ public class MonsterEarTypeBaseState : IState
             return;
         }
 
-        if (Vector3.Distance(stateMachine.Monster.transform.position, stateMachine.Target.transform.position) <= stateMachine.Monster.Data.GroundData.PlayerChasingRange && stateMachine.BiggestNoise >= 12f)
+        if (Vector3.Distance(stateMachine.Monster.transform.position, stateMachine.Target.transform.position) <= stateMachine.Monster.Data.GroundData.PlayerChasingRange && stateMachine.BiggestNoise >= 11.5f)
         {
             stateMachine.ChangeState(stateMachine.MoveState);
             return;

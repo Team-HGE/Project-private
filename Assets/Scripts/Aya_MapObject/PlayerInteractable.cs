@@ -25,6 +25,8 @@ public class PlayerInteractable : MonoBehaviour
     float checkRate = 1.0f;
     float lastCheckTime;
 
+    public bool tutorialSuccess = false;
+
     private void Start()
     {
         camera = GetComponent<Camera>();
@@ -81,6 +83,7 @@ public class PlayerInteractable : MonoBehaviour
                     playerInteraction.SetActive(false);
                     holdDuration = 0f;
                     fillAmountImage.fillAmount = 0f;
+                    if (!tutorialSuccess) tutorialSuccess = true;
                 }
             }
         }

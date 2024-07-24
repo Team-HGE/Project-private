@@ -44,22 +44,22 @@ public class Tutorial : MonoBehaviour
 
     public void CheckTutorial()
     {
-        if (!isMoved && Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
+        if (!isMoved && GameManager.Instance.PlayerStateMachine.IsWalking)
         {
             Debug.Log("튜토리얼: WASD로 이동하기 완료");
             isMoved = true;
         }
-        else if (!isInteracted && Input.GetKeyDown(KeyCode.E))
+        else if (!isInteracted && GameManager.Instance.player.tutorialSuccess)
         {
             Debug.Log("튜토리얼: E로 상호작용하기 완료");
             isInteracted = true;
         }
-        else if (!isRan && Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+        else if (!isRan && GameManager.Instance.PlayerStateMachine.IsRunning)
         {
             Debug.Log("튜토리얼: Shift로 달리기 완료");
             isRan = true;
         }
-        else if (!isCrouched && Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl))
+        else if (!isCrouched && GameManager.Instance.PlayerStateMachine.IsCrouch)
         {
             Debug.Log("튜토리얼: Ctrl로 웅크리기 완료");
             isCrouched = true;
