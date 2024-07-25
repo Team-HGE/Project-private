@@ -37,6 +37,10 @@ public class Player : MonoBehaviour, INoise
 
     public FlashLightController flashLightController;
 
+    // 카르마
+    [field: SerializeField]
+    public float Karma { get; set; }
+
 
     private void Awake()
     {
