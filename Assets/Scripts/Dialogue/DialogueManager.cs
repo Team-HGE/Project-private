@@ -11,6 +11,7 @@ public class DialogueManager : SingletonManager<DialogueManager>
 
     public Answer answer;
 
+    public bool isSceneChanged;
 
     protected override void Awake()
     {
@@ -38,11 +39,12 @@ public class DialogueManager : SingletonManager<DialogueManager>
         //script.StartScript();
     }
 
-    //private void Update()
-    //{
-    //    if (Input.GetKey(KeyCode.E))
-    //    {
-    //        answer.StartAnswer();
-    //    }
-    //}
+
+    public void ChangeSO()
+    {
+        if (isSceneChanged)
+        {
+            //TODO: 씬이 바뀌면 SO를 바꿔주는 함수
+        }
+    }
 }
