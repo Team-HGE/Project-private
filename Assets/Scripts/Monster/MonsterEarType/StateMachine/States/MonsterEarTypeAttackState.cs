@@ -6,6 +6,7 @@ public class MonsterEarTypeAttackState : MonsterEarTypeGroundState
 {
     public MonsterEarTypeAttackState(MonsterEarTypeStateMachine monsterStateMachine) : base(monsterStateMachine)
     {
+
     }
 
     public override void Enter()
@@ -14,7 +15,7 @@ public class MonsterEarTypeAttackState : MonsterEarTypeGroundState
         stateMachine.IsAttack = true;
         stateMachine.Monster.Agent.isStopped = true;
         Debug.Log("플레이어 사망 - 게임 오버");
-
+        JumpScareManager.Instance.OnJumpScare(stateMachine.Monster.monsterTransform, JumpScareType.EyeTypeMonster, stateMachine.Monster.monsterEyeTransform);
         // 애니메이션 실행
         StartAnimation(stateMachine.Monster.AnimationData.AttackParameterHash);
     }
