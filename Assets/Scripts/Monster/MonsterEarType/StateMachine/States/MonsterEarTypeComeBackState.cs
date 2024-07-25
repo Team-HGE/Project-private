@@ -11,7 +11,7 @@ public class MonsterEarTypeComeBackState : MonsterEarTypeGroundState
     public override void Enter()
     {
         base.Enter();
-        //Debug.Log("컴백 시작");
+        Debug.Log("컴백 시작");
         stateMachine.IsComeBack = true;
         stateMachine.Monster.Agent.speed = groundData.ComebackSpeed;
         stateMachine.Monster.Agent.SetDestination(stateMachine.StartPosition);
@@ -35,7 +35,7 @@ public class MonsterEarTypeComeBackState : MonsterEarTypeGroundState
         if (Vector3.Distance(stateMachine.StartPosition, stateMachine.Monster.transform.position) < 3f)
 
         {
-            //Debug.Log("복귀 완료");
+            Debug.Log("복귀 완료");
             stateMachine.ChangeState(stateMachine.IdleState);
         }
     }
