@@ -18,7 +18,7 @@ public class MonsterEarTypeMoveState : MonsterEarTypeGroundState
         stateMachine.Monster.Agent.isStopped = false;
         stateMachine.Monster.Agent.speed = groundData.MoveSpeed;
 
-        Debug.Log($"소음 추적 시작 - 무브, {stateMachine.CurDestination}");         
+        //Debug.Log($"소음 추적 시작 - 무브, {stateMachine.CurDestination}");         
 
         stateMachine.Monster.Agent.SetDestination(stateMachine.CurDestination);
 
@@ -49,7 +49,7 @@ public class MonsterEarTypeMoveState : MonsterEarTypeGroundState
 
         //Debug.Log($"소음지역 {stateMachine.CurDestination}, 몬스터 위치 : {stateMachine.Monster.transform.position} , 거리 : {stateMachine.Monster.Agent.remainingDistance}, {Vector3.Distance(stateMachine.CurDestination, stateMachine.Monster.transform.position)}");
 
-        if (Vector3.Distance(stateMachine.CurDestination, stateMachine.Monster.transform.position) < 3f)
+        if (Vector3.Distance(stateMachine.CurDestination, stateMachine.Monster.transform.position) < 6f)
         {
             stateMachine.IsMove = false;
 

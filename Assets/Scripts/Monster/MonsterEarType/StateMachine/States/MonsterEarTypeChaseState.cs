@@ -11,7 +11,7 @@ public class MonsterEarTypeChaseState : MonsterEarTypeGroundState
     public override void Enter()
     {
         base.Enter();
-        //Debug.Log("chace 시작");
+        Debug.Log("chace 시작");
 
         //stateMachine.Monster.Agent.isStopped = true;
         stateMachine.IsChasing = true;
@@ -24,7 +24,7 @@ public class MonsterEarTypeChaseState : MonsterEarTypeGroundState
     public override void Exit()
     {
         base.Exit();
-        //Debug.Log("chace 끝");
+        Debug.Log("chace 끝");
 
         stateMachine.IsChasing = false;
 
