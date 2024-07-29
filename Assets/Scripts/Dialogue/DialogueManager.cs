@@ -4,11 +4,16 @@ public class DialogueManager : SingletonManager<DialogueManager>
 {
     [HideInInspector]
     public DialogueSetting set;
+    [HideInInspector]
     public StoryScript storyScript;
+    [HideInInspector]
     public NPCScript npcScript;
+    [HideInInspector]
     public Answer answer;
+
     private SystemMsg systemMsg;
     private Quest quest;
+
     public bool isSceneChanged;
 
     protected override void Awake()
@@ -28,7 +33,6 @@ public class DialogueManager : SingletonManager<DialogueManager>
         quest = GetComponent<Quest>();
 
         set.InitUI();
-        //npcScript.Init();
         systemMsg.Init();
         answer.Init();
 

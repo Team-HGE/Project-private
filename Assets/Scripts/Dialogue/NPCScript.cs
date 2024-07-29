@@ -4,10 +4,9 @@ using System.Collections;
 
 public class NPCScript : DialogueSetting, IScript
 {
-    public ScriptSO scriptSO;
-
+    [HideInInspector]
+    private ScriptSO scriptSO;
     private NPC npc;
-    private NPC_SO npcSO;
 
     public void Init(ScriptSO _script)
     {
@@ -25,14 +24,8 @@ public class NPCScript : DialogueSetting, IScript
         GameObject nowInteracting = GameManager.Instance.player.curInteractableGameObject;
         npc = nowInteracting.GetComponent<NPC>();
 
-        // npc가 아닐 경우
-        if (npc == null)
-        {
-            Debug.Log("NPC가 아닙니다. 또는 NPC 정보가 없습니다.");
-            return;
-        }
-        else
-            npcSO = npc.npcSO;
+        // npc 가 아닐 경우
+        if (npc == null) { Debug.Log("NPC가 아닙니다. 또는 NPC 정보가 없습니다."); return; }
 
         ui.OpenDialogue();
         StartCoroutine(PrintScript());

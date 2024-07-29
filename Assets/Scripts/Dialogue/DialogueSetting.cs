@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class DialogueSetting: MonoBehaviour
 {
-    private float printSpeed = 0.5f;
     public bool isTalking = false;
+    [HideInInspector]
+    public float printSpeed = 0.5f;
+    [HideInInspector]
+    public UIDialogue ui;
+
     public StringBuilder sbTitle = new StringBuilder();
     public StringBuilder sbBody = new StringBuilder();
     public IEnumerator curPrintLine;
-    public UIDialogue ui;
     public WaitForSeconds waitTime = new WaitForSeconds(1f);
     public WaitUntil waitLeftClick = new WaitUntil(() => Input.GetMouseButtonDown(0));
 

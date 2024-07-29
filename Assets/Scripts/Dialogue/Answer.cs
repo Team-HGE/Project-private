@@ -45,6 +45,7 @@ public class Answer : DialogueSetting
     public void PickAnswer()
     {
         Debug.Log("1번 선택지 클릭됨");
+        // 플레이어 카르마 스탯 증감
         ui.AnswerCanvas.SetActive(false);
         answerSO.nowAnswer = 1;
         Cursor.lockState = CursorLockMode.Locked;
@@ -53,6 +54,7 @@ public class Answer : DialogueSetting
     public void PickAnswer2()
     {
         Debug.Log("2번 선택지 클릭됨");
+        // 플레이어 카르마 스탯 증감
         ui.AnswerCanvas.SetActive(false);
         answerSO.nowAnswer = 2;
         Cursor.lockState = CursorLockMode.Locked;

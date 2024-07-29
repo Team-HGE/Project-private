@@ -8,6 +8,7 @@ public class StoryScript: DialogueSetting, IScript
     public void Init(ScriptSO _script)
     {
         scriptSO = _script;
+        ui = GetComponent<UIDialogue>();
         ui.CloseDialogue();
     }
 

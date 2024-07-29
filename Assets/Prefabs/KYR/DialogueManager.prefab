@@ -51,9 +51,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 377cf4bf5fde8194593542d2b179fb36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue: {fileID: 0}
-  script: {fileID: 0}
+  set: {fileID: 0}
+  storyScript: {fileID: 0}
+  npcScript: {fileID: 0}
   answer: {fileID: 0}
+  isSceneChanged: 0
 --- !u!114 &4455518639332731130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,11 +65,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 833481111887110611}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d628121ad37d984d8addc64a891c390, type: 3}
+  m_Script: {fileID: 11500000, guid: 99cb2825f5bffbe41a6a9e02a6b0172e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiDialogue: {fileID: 0}
-  nowTalking: 0
+  isTalking: 0
+  printSpeed: 0.5
+  ui: {fileID: 0}
 --- !u!114 &330832895471244228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,9 +148,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bbe5994fad507747926bb300dc806cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiDialogue: {fileID: 0}
-  nowTalking: 0
-  scriptSO: {fileID: 11400000, guid: 32326b3131b9d4d48964c1a7bf2a27ea, type: 2}
+  isTalking: 0
+  printSpeed: 0.5
+  ui: {fileID: 0}
+  scriptSO: {fileID: 11400000, guid: bc42ac719c383754ebc27ec74388b420, type: 2}
 --- !u!114 &7273186344831853445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,6 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1412e3f5ba35a824ea8dc980cb8bb322, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiDialogue: {fileID: 0}
-  nowTalking: 0
+  isTalking: 0
+  printSpeed: 0.5
+  ui: {fileID: 0}
   answerSO: {fileID: 11400000, guid: 509e8c7de2b9e414f8916f07bd82fe5b, type: 2}
