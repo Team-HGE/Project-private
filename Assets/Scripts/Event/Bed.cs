@@ -20,6 +20,6 @@ public class Bed : InteractableObject
     {
         InitNPCData(npcSO);
 
-        DialogueManager.Instance.dialogue.StartDialogue();
+        DialogueManager.Instance.npcScript.Print();
     }
 }

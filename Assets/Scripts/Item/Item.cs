@@ -20,7 +20,7 @@ public class Item : InteractableObject
     {
         InitNPCData(npcSO);
 
-        DialogueManager.Instance.dialogue.StartDialogue();
+        //DialogueManager.Instance.dialogue.StartDialogue();
 
         Destroy(this.gameObject);
     }

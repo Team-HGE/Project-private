@@ -25,7 +25,7 @@ public class NPC : InteractableObject
 
         InitNPCData(npcSO);
 
-        DialogueManager.Instance.dialogue.StartDialogue();
+        DialogueManager.Instance.npcScript.Print();
     }
 
     // NPC 표정 바꾸기

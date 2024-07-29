@@ -1,3 +1,4 @@
+using System.Text;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,25 +17,20 @@ public class UIDialogue : MonoBehaviour
     public TextMeshProUGUI answerText1;
     public TextMeshProUGUI answerText2;
 
-    public void OpenDS()
-    {
-        darkScreen.SetActive(true);
-    }
-    public void CloseDS()
-    {
-        darkScreen.SetActive(false);
-    }
+    // TODO: 캐릭터 스탠딩 이미지도 받아오기
 
     public void OpenDialogue()
     {
+        darkScreen.SetActive(true);
         dialogueCanvas.SetActive(true);
     }
     public void CloseDialogue()
     {
+        darkScreen.SetActive(false);
         dialogueCanvas.SetActive(false);
     }
 
-    public void CheckSpeakerNull(string speaker)
+    public void CheckNullTitle(string speaker)
     {
         if (portrait.sprite == null) portrait.transform.localScale = Vector3.zero;
         else
@@ -52,5 +48,12 @@ public class UIDialogue : MonoBehaviour
     public void SetImage(Image image, Sprite sprite)
     {
         image.sprite = sprite;
+    }
+
+    public void ClearDialogue(StringBuilder sbTitle, StringBuilder sbBody)
+    {
+        UtilSB.ClearText(titleText, sbTitle);
+        UtilSB.ClearText(bodyText, sbBody);
+        portrait.sprite = null;
     }
 }

@@ -2,15 +2,13 @@
 
 public class DialogueManager : SingletonManager<DialogueManager>
 {
-    public Dialogue dialogue;
-
-    public Script script;
-
+    [HideInInspector]
+    public DialogueSetting set;
+    public StoryScript storyScript;
+    public NPCScript npcScript;
+    public Answer answer;
     private SystemMsg systemMsg;
     private Quest quest;
-
-    public Answer answer;
-
     public bool isSceneChanged;
 
     protected override void Awake()
@@ -21,24 +19,24 @@ public class DialogueManager : SingletonManager<DialogueManager>
     private void Start()
     {
 
-        dialogue = GetComponent<Dialogue>();
-        script = GetComponent<Script>();
+        set = GetComponent<DialogueSetting>();
+        storyScript = GetComponent<StoryScript>();
+        npcScript = GetComponent<NPCScript>();
+        answer = GetComponent<Answer>();
 
         systemMsg = GetComponent<SystemMsg>();
         quest = GetComponent<Quest>();
 
-        answer = GetComponent<Answer>();
-
-        dialogue.Init();
+        set.InitUI();
+        //npcScript.Init();
         systemMsg.Init();
-        answer.InitAnswer();
+        answer.Init();
 
         quest.UpdateQuest();
         systemMsg.UpdateMessage();
 
-        //script.StartScript();
+        storyScript.Print();
     }
-
 
     public void ChangeSO()
     {
