@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DialogueSetting: MonoBehaviour
 {
-    public bool isTalking = false;
+    public bool isTalking { get; set; }
     [HideInInspector]
     public float printSpeed = 0.5f;
     [HideInInspector]
@@ -16,8 +16,9 @@ public class DialogueSetting: MonoBehaviour
     public WaitForSeconds waitTime = new WaitForSeconds(1f);
     public WaitUntil waitLeftClick = new WaitUntil(() => Input.GetMouseButtonDown(0));
 
-    public void InitUI()
+    public void Init()
     {
+        isTalking = false;
         ui = GetComponent<UIDialogue>();
     }
 }

@@ -34,7 +34,7 @@ public class DialogueManager : SingletonManager<DialogueManager>
         systemMsg = GetComponent<SystemMsg>();
         quest = GetComponent<Quest>();
 
-        set.InitUI();
+        set.Init();
         systemMsg.Init();
         answer.Init();
 

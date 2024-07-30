@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.ProBuilder.MeshOperations;
 
 public class ItemScript : DialogueSetting, IScript
 {
@@ -7,6 +8,7 @@ public class ItemScript : DialogueSetting, IScript
     private ScriptSO scriptSO;
     private Item item;
     private PlayerBedObject bed;
+    private PlayerMirrorObject mirror;
 
     public void Init(ScriptSO _script)
     {
@@ -27,9 +29,10 @@ public class ItemScript : DialogueSetting, IScript
 
         // item 이 아닐 경우
         if (item == null) { Debug.Log("Item이 아닙니다. 또는 Item 컴포넌트가 없습니다."); }
-        else
+        else if(!TryGetComponent(out bed) && !TryGetComponent(out mirror))
         {
-            bed = nowInteracting.GetComponent<PlayerBedObject>();
+            return;
+           // bed = nowInteracting.GetComponent<PlayerBedObject>();
         }
 
         ui.OpenDialogue();
