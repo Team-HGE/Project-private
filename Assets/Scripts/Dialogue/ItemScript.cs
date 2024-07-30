@@ -13,7 +13,6 @@ public class ItemScript : DialogueSetting, IScript
     public void Init(ScriptSO _script)
     {
         scriptSO = _script;
-        ui = GetComponent<UIDialogue>();
         ui.CloseDialogue();
     }
 

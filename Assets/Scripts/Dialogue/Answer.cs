@@ -8,7 +8,7 @@ public class Answer : DialogueSetting
 
     public void Init()
     {
-        ui = GetComponent<UIDialogue>();
+        InitUI();
         ui.AnswerCanvas.SetActive(false);
     }
 
@@ -16,12 +16,12 @@ public class Answer : DialogueSetting
     {
         answerSO = _answer;
         answerSO.nowAnswer = 0;
-        Debug.Log("선택지 초기화 완료");
+        //Debug.Log("선택지 초기화 완료");
     }
 
     public void Print()
     {
-        Debug.Log("선택지 시작");
+        //Debug.Log("선택지 시작");
         InitAnswer(answerSO);
 
         //for(int i = 0; i < answerSO.answers.Length; i++)
@@ -36,8 +36,8 @@ public class Answer : DialogueSetting
         ui.AnswerCanvas.SetActive(true);
 
         // 커서락 OFF
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+
+        ui.AnswerCanvas.SetActive(false);
 
         // TODO: 선택지 결과 출력
     }
@@ -48,8 +48,6 @@ public class Answer : DialogueSetting
         // 플레이어 카르마 스탯 증감
         ui.AnswerCanvas.SetActive(false);
         answerSO.nowAnswer = 1;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
     }
     public void PickAnswer2()
     {
@@ -57,7 +55,5 @@ public class Answer : DialogueSetting
         // 플레이어 카르마 스탯 증감
         ui.AnswerCanvas.SetActive(false);
         answerSO.nowAnswer = 2;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
     }
 }

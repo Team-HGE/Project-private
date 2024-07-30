@@ -8,14 +8,14 @@ public class StoryScript: DialogueSetting, IScript
     public void Init(ScriptSO _script)
     {
         scriptSO = _script;
-        ui = GetComponent<UIDialogue>();
+        InitUI();
         ui.CloseDialogue();
     }
 
     public void Print()
     {
-        // 스크립트 출력 중이면 새 대화를 시작하지 않음 
-        if (isTalking) return;
+        // 스크립트 출력 중이면 새 대화를 시작하지 않음, 대화 내용 초기화
+        if (isTalking) { Debug.Log("지금은 대화할 수 없습니다."); InitDialogueSetting(); return; }
         isTalking = true;
 
         Init(scriptSO);
@@ -51,10 +51,12 @@ public class StoryScript: DialogueSetting, IScript
             }
 
             curPrintLine = TextEffect.Typing(ui.bodyText, sbBody, scriptSO.bodyTexts[i]);
+
             yield return StartCoroutine(curPrintLine);
 
             //Debug.Log("좌클릭으로 진행하세요");
             yield return waitLeftClick;
+
             yield return waitTime;
 
             ui.ClearDialogue(sbTitle, sbBody);

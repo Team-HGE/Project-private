@@ -15,10 +15,9 @@ public class NPCScript : DialogueSetting, IScript
 
     public void Print()
     {
-        // 스크립트 출력 중이면 새 대화를 시작하지 않음 
-        if (isTalking) { Debug.Log("지금은 대화할 수 없습니다."); return; }
+        // 스크립트 출력 중이면 새 대화를 시작하지 않음, 대화 내용 초기화
+        if (isTalking) { Debug.Log("지금은 대화할 수 없습니다."); InitDialogueSetting(); return; }
         isTalking = true;
-        //StopCoroutine(PrintScript());
 
         // 상호작용 중인 오브젝트 판별
         GameObject nowInteracting = GameManager.Instance.player.curInteractableGameObject;
@@ -29,7 +28,6 @@ public class NPCScript : DialogueSetting, IScript
 
         ui.OpenDialogue();
         StartCoroutine(PrintScript());
-        //isTalking = false;
     }
 
     private IEnumerator PrintScript()

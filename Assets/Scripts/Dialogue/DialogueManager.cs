@@ -26,6 +26,9 @@ public class DialogueManager : SingletonManager<DialogueManager>
     private void Start()
     {
         set = GetComponent<DialogueSetting>();
+        set.InitUI();
+        set.InitDialogueSetting();
+
         storyScript = GetComponent<StoryScript>();
         npcScript = GetComponent<NPCScript>();
         itemScript = GetComponent<ItemScript>();
@@ -34,7 +37,6 @@ public class DialogueManager : SingletonManager<DialogueManager>
         systemMsg = GetComponent<SystemMsg>();
         quest = GetComponent<Quest>();
 
-        set.Init();
         systemMsg.Init();
         answer.Init();
 
@@ -50,5 +52,10 @@ public class DialogueManager : SingletonManager<DialogueManager>
         {
             //TODO: 씬이 바뀌면 SO를 바꿔주는 함수
         }
+    }
+
+    public void FinishStory()
+    {
+        set.InitDialogueSetting();
     }
 }

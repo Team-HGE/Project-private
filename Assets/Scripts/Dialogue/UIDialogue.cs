@@ -27,11 +27,15 @@ public class UIDialogue : MonoBehaviour
     public void OpenDialogue()
     {
         dialogueCanvas.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
     public void CloseDialogue()
     {
         darkScreen.SetActive(false);
         dialogueCanvas.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     public void CheckNullTitle(string speaker)

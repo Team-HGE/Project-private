@@ -4,10 +4,11 @@ using System.Text;
 using TMPro;
 using UnityEngine;
 
-public class TextEffect
+public class TextEffect: DialogueSetting
 {
     // TODO: 텍스트 노랑 or 빨갛게 강조, 타이핑 효과, 페이드아웃 효과, 취소선
 
+    public static bool isSkipped { get; set; }
     private static float typingPerSeconds = 20f;
     private static float TextFadeOutSpeed = 1f;
 
@@ -17,9 +18,21 @@ public class TextEffect
 
         foreach (char c in SOstr.ToCharArray())
         {
+            CheckSkip();
+
+            if (isSkipped) break;
+            
             UtilSB.AppendText(tmp, sb, c);
             yield return new WaitForSeconds(1f / typingPerSeconds);
         }
+
+        if (isSkipped)
+        {
+            UtilSB.SetText(tmp, sb, SOstr);
+            isSkipped = false;
+            Debug.Log("스킵 종료, isSkipped: " + isSkipped);
+        }
+
         yield return null;
     }
     public static IEnumerator FadeOut(TextMeshProUGUI tmp)
@@ -47,5 +60,14 @@ public class TextEffect
     public static void CorrectLine(TextMeshProUGUI tmp)
     {
 
+    }
+
+    private static void CheckSkip()
+    {
+        if (!isSkipped && Input.GetMouseButtonDown(0))
+        {
+            isSkipped = true;
+            Debug.Log("좌클릭 감지, isSkipped:" + isSkipped);
+        }
     }
 }
