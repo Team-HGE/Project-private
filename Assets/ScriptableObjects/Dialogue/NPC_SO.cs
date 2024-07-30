@@ -8,7 +8,6 @@ public enum NpcState
     Calling,
     Mutated,
     Dead,
-    Item
 }
 
 public enum Emotion
@@ -22,9 +21,8 @@ public enum Emotion
 [CreateAssetMenu(fileName = "ScriptableObject", menuName = "ScriptableObject/NPC", order = 3)]
 public class NPC_SO : ScriptableObject
 {
-    public string objName;
+    public string npcName;
     public NpcState state;
     public Emotion emotion;
     public Sprite[] illusts;
-    [TextArea] public string[] testDialogue;
 }

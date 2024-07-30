@@ -9,6 +9,8 @@ public class DialogueManager : SingletonManager<DialogueManager>
     [HideInInspector]
     public NPCScript npcScript;
     [HideInInspector]
+    public ItemScript itemScript;
+    [HideInInspector]
     public Answer answer;
 
     private SystemMsg systemMsg;
@@ -23,10 +25,10 @@ public class DialogueManager : SingletonManager<DialogueManager>
 
     private void Start()
     {
-
         set = GetComponent<DialogueSetting>();
         storyScript = GetComponent<StoryScript>();
         npcScript = GetComponent<NPCScript>();
+        itemScript = GetComponent<ItemScript>();
         answer = GetComponent<Answer>();
 
         systemMsg = GetComponent<SystemMsg>();

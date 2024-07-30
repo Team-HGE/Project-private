@@ -1,9 +1,12 @@
+ï»¿using UnityEngine;
 using System.Collections;
-using UnityEngine;
 
-public class StoryScript: DialogueSetting, IScript
+public class ItemScript : DialogueSetting, IScript
 {
-    public ScriptSO scriptSO;
+    [HideInInspector]
+    private ScriptSO scriptSO;
+    private Item item;
+    private PlayerBedObject bed;
 
     public void Init(ScriptSO _script)
     {
@@ -14,14 +17,21 @@ public class StoryScript: DialogueSetting, IScript
 
     public void Print()
     {
-        // ½ºÅ©¸³Æ® Ãâ·Â ÁßÀÌ¸é »õ ´ëÈ­¸¦ ½ÃÀÛÇÏÁö ¾ÊÀ½ 
+        // ìŠ¤í¬ë¦½íŠ¸ ì¶œë ¥ ì¤‘ì´ë©´ ìƒˆ ëŒ€í™”ë¥¼ ì‹œì‘í•˜ì§€ ì•ŠìŒ 
         if (isTalking) return;
         isTalking = true;
 
-        Init(scriptSO);
-        if (scriptSO == null) { Debug.Log("Áö±İÀº ³»º¸³¾ ½ºÅ©¸³Æ®°¡ ¾ø½À´Ï´Ù. DialogueManager > Script ÄÄÆ÷³ÍÆ®¿¡ script SO ÆÄÀÏÀ» µå·¡±×¾Øµå·Ó ÇØÁÖ¼¼¿ä"); return; };
+        // ìƒí˜¸ì‘ìš© ì¤‘ì¸ ì˜¤ë¸Œì íŠ¸ íŒë³„
+        GameObject nowInteracting = GameManager.Instance.player.curInteractableGameObject;
+        item = nowInteracting.GetComponent<Item>();
 
-        ui.OpenBG();
+        // item ì´ ì•„ë‹ ê²½ìš°
+        if (item == null) { Debug.Log("Itemì´ ì•„ë‹™ë‹ˆë‹¤. ë˜ëŠ” Item ì»´í¬ë„ŒíŠ¸ê°€ ì—†ìŠµë‹ˆë‹¤."); }
+        else
+        {
+            bed = nowInteracting.GetComponent<PlayerBedObject>();
+        }
+
         ui.OpenDialogue();
         StartCoroutine(PrintScript());
     }
@@ -33,13 +43,12 @@ public class StoryScript: DialogueSetting, IScript
         for (int i = 0; i < scriptSO.bodyTexts.Length; i++)
         {
             UtilSB.SetText(ui.titleText, sbTitle, scriptSO.speakers[i]);
-
             ui.SetImage(ui.portrait, scriptSO.images[i]);
             ui.CheckNullTitle(scriptSO.speakers[i]);
 
             if (scriptSO.bodyTexts[i] == "PickAnswer")
             {
-                //Debug.Log("Àá±ñ Á¤ÁöÇÏ°í ¼±ÅÃÁö Ãâ·ÂÇÕ´Ï´Ù.");
+                //Debug.Log("ì ê¹ ì •ì§€í•˜ê³  ì„ íƒì§€ ì¶œë ¥í•©ë‹ˆë‹¤.");
 
                 UtilSB.AppendText(ui.bodyText, sbBody, scriptSO.bodyTexts[i - 1]);
 
@@ -53,7 +62,7 @@ public class StoryScript: DialogueSetting, IScript
             curPrintLine = TextEffect.Typing(ui.bodyText, sbBody, scriptSO.bodyTexts[i]);
             yield return StartCoroutine(curPrintLine);
 
-            //Debug.Log("ÁÂÅ¬¸¯À¸·Î ÁøÇàÇÏ¼¼¿ä");
+            //Debug.Log("ì¢Œí´ë¦­ìœ¼ë¡œ ì§„í–‰í•˜ì„¸ìš”");
             yield return waitLeftClick;
             yield return waitTime;
 

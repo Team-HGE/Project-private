@@ -19,9 +19,13 @@ public class UIDialogue : MonoBehaviour
 
     // TODO: 캐릭터 스탠딩 이미지도 받아오기
 
-    public void OpenDialogue()
+    public void OpenBG()
     {
         darkScreen.SetActive(true);
+    }
+
+    public void OpenDialogue()
+    {
         dialogueCanvas.SetActive(true);
     }
     public void CloseDialogue()

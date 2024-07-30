@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Text;
 using System.Collections;
 
 public class NPCScript : DialogueSetting, IScript
@@ -25,7 +24,7 @@ public class NPCScript : DialogueSetting, IScript
         npc = nowInteracting.GetComponent<NPC>();
 
         // npc 가 아닐 경우
-        if (npc == null) { Debug.Log("NPC가 아닙니다. 또는 NPC 정보가 없습니다."); return; }
+        if (npc == null) { Debug.Log("NPC가 아닙니다. 또는 NPC 컴포넌트가 없습니다."); return; }
 
         ui.OpenDialogue();
         StartCoroutine(PrintScript());
@@ -37,8 +36,10 @@ public class NPCScript : DialogueSetting, IScript
 
         for (int i = 0; i < scriptSO.bodyTexts.Length; i++)
         {
-            // 말하는 NPC 이름 - 대화중 
-            UtilSB.SetText(ui.titleText, sbTitle, scriptSO.speakers[i] + " - " + npc.ChangeNpcState(NpcState.Speaking));
+            // 말하는 NPC 이름 - 대화중
+            if (scriptSO.speakers[i] != "")
+                UtilSB.SetText(ui.titleText, sbTitle, scriptSO.speakers[i] + " - " + npc.ChangeNpcState(NpcState.Speaking));
+
             ui.SetImage(ui.portrait, scriptSO.images[i]);
             ui.CheckNullTitle(scriptSO.speakers[i]);
 

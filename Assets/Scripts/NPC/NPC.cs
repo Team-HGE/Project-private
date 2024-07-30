@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class NPC : InteractableObject
 {
-    private NPC_SO npcSO;
+    public NPC_SO npcSO;
     public ScriptSO scriptSO;
 
     private void Init(NPC_SO _npc)
