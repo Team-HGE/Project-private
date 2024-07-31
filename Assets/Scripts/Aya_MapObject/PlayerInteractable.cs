@@ -48,7 +48,7 @@ public class PlayerInteractable : MonoBehaviour
         Ray ray = camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         if (Physics.Raycast(ray, out RaycastHit hit, interactionRange, layerMask))
         {
-            if (hit.collider.gameObject != curInteractableGameObject)
+            if (hit.collider.gameObject != curInteractableGameObject && !curInteractable.oneTime)
             {
                 curInteractableGameObject = hit.collider.gameObject;
                 curInteractable = hit.collider.gameObject.GetComponent<IInteractable>();
@@ -67,7 +67,7 @@ public class PlayerInteractable : MonoBehaviour
 
     public void OnInteracted()
     {
-        if (curInteractable != null && !curInteractable.isInteractable)
+        if (curInteractable != null && !curInteractable.isInteractable && !curInteractable.oneTime)
         {
             holdDuration += Time.deltaTime;
             fillAmountImage.fillAmount = Mathf.Clamp01(holdDuration / holdTime); // 1과 0사이 수 리턴

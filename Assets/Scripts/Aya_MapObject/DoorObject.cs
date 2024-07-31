@@ -5,9 +5,6 @@ public class DoorObject : InteractableObject
 {
     [SerializeField] bool isOpen;
     [SerializeField] bool interactableOneTime;
-    //[SerializeField] Vector3 openRotate;
-    //[SerializeField] Vector3 closeRotate;
-    //[SerializeField] Transform parentObject;
     [SerializeField] AudioClip openSound;
     [SerializeField] AudioClip closeSound;
     [SerializeField] DOTweenAnimation openDoor;
