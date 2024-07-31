@@ -32,7 +32,7 @@ public class Laver : InteractableObject
     public override void Interact()
     {
         if (isInteractable) return;
-        laverUp.CreateTween(true);
+        laverUp.DOPlay();
         isInteractable = true;
     }
     public void OffNowFloorAllLight()
