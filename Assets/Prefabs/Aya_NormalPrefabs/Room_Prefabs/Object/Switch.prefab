@@ -12,13 +12,13 @@ GameObject:
   - component: {fileID: 8376628100153191695}
   - component: {fileID: 5362552667879539795}
   - component: {fileID: 4677664655490280959}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: On
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7301281789257950080
 Transform:
   m_ObjectHideFlags: 0
@@ -118,13 +118,13 @@ GameObject:
   - component: {fileID: 3657622461850951820}
   - component: {fileID: 2496825605241699172}
   - component: {fileID: 7135600702977174052}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Off
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &276136534845458215
 Transform:
   m_ObjectHideFlags: 0
@@ -221,7 +221,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2455346994865354294}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: OnOffToggle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -374,7 +374,7 @@ MonoBehaviour:
   lights:
   - {fileID: 0}
   - {fileID: 0}
-  turnLight: 0
+  turnLight: 1
   materials:
   - {fileID: 2100000, guid: 568a1fd63f406ec46af03532d72137b3, type: 2}
   - {fileID: 2100000, guid: 4baca75528cd10c4aa1bb85a805679d9, type: 2}

@@ -43,13 +43,16 @@ public class Switch_Object_Toggle : InteractableObject
             {
                 if (mesh != null)
                 {
+                    Material[] newMaterial = mesh.materials;
                     if (mesh.gameObject.name == "Room_Celling")
                     {
-                        mesh.materials[1] = materials[1];
+                        newMaterial[1] = materials[1];
+                        mesh.materials = newMaterial;
                     }
                     else
                     {
-                        mesh.materials[0] = materials[1];
+                        newMaterial[0] = materials[1];
+                        mesh.materials = newMaterial;
                     }
                 }
             }
@@ -70,13 +73,19 @@ public class Switch_Object_Toggle : InteractableObject
         {
             foreach (MeshRenderer mesh in lightObjectMesh)
             {
-                if (mesh.gameObject.name == "Room_Celling")
+                if (mesh != null)
                 {
-                    mesh.materials[1] = materials[0];
-                }
-                else
-                {
-                    mesh.materials[0] = materials[0];
+                    Material[] newMaterial = mesh.materials;
+                    if (mesh.gameObject.name == "Room_Celling")
+                    {
+                        newMaterial[1] = materials[0];
+                        mesh.materials = newMaterial;
+                    }
+                    else
+                    {
+                        newMaterial[0] = materials[0];
+                        mesh.materials = newMaterial;
+                    }
                 }
             }
             foreach (GameObject obj in lights)

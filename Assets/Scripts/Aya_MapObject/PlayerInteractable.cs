@@ -35,20 +35,18 @@ public class PlayerInteractable : MonoBehaviour
     }
     void Update()
     {
-        if (Time.time - lastCheckTime > checkRate)
-        {
-            lastCheckTime = Time.time;
-            InteractWithObject();
-        }
-
-        Debug.DrawRay(transform.position, transform.forward, Color.red, interactionRange);
+        //if (Time.time - lastCheckTime > checkRate)
+        //{
+        //    lastCheckTime = Time.time;
+        //    InteractWithObject();
+        //}
+        InteractWithObject();
     }
 
     void InteractWithObject()
     {
-        Ray ray = camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, interactionRange, layerMask))
+        Ray ray = camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        if (Physics.Raycast(ray, out RaycastHit hit, interactionRange, layerMask))
         {
             if (hit.collider.gameObject != curInteractableGameObject)
             {

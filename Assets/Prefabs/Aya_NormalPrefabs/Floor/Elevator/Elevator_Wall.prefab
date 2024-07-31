@@ -17,7 +17,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1054478323217028900
 Transform:
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6907259675395833839}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.7071064, z: -0, w: 0.7071072}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -0.05013275, y: 5, z: -87.86903}
   m_LocalScale: {x: 0.5, y: 2, z: 0.499925}
   m_ConstrainProportionsScale: 0
@@ -121,6 +121,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ElevateLED Panel
       objectReference: {fileID: 0}
+    - target: {fileID: 1625631953793238512, guid: 14fc6825c38b988438cfbfc71d17ef67,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1821748164862455123, guid: 14fc6825c38b988438cfbfc71d17ef67,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -185,6 +190,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8147191363803770415, guid: 14fc6825c38b988438cfbfc71d17ef67,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
