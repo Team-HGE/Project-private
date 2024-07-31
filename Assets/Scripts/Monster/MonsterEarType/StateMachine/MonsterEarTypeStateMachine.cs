@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,12 +6,13 @@ public class MonsterEarTypeStateMachine : StateMachine
 {
     public EarTypeMonster Monster { get; }
 
-    // °ø°İ ´ë»ó, ÇÃ·¹ÀÌ¾î
+    // ê³µê²© ëŒ€ìƒ, í”Œë ˆì´ì–´
     public GameObject Target { get; private set; }
-    // ¸ó½ºÅÍ »ı¼º À§Ä¡
+
+    // ëª¬ìŠ¤í„° ìƒì„± ìœ„ì¹˜
     public Vector3 StartPosition { get; private set; }
 
-    // ¸ó½ºÅÍ »óÅÂ***
+    // ëª¬ìŠ¤í„° ìƒíƒœ***
     public MonsterEarTypeIdleState IdleState { get; private set; }
     public MonsterEarTypePatrolState PatrolState { get; private set; }
     public MonsterEarTypeMoveState MoveState { get; private set; }
@@ -20,27 +21,25 @@ public class MonsterEarTypeStateMachine : StateMachine
     public MonsterEarTypeChaseState ChaseState { get; private set; }
     public MonsterEarTypeAttackState AttackState { get; private set; }
 
-
-    // »óÅÂ ÀüÈ¯ Á¶°Ç
-    public bool IsChasing { get; set; }
+    // ìƒíƒœ ì „í™˜ ì¡°ê±´
     public bool IsPatrol { get; set; }
-    public bool IsSearchTarget { get; set; } = false;
-    public bool IsFocusNoise { get; set; } = false;
+    //public bool IsSearchTarget { get; set; } = false;
     public bool IsMove { get; set; }
+    public bool IsFocusNoise { get; set; } = false;
     public bool IsFocusRotate { get; set; }
+    public bool IsChasing { get; set; }
     public bool IsComeBack { get; set; }
     public bool IsAttack { get; set; }
 
-
-
+    // ì¶”ì 
     public Vector3 CurDestination { get; set; }
     public float BiggestNoise { get; set; }
-
+    public float BeforeNoise { get; set; } = 0f;
 
     public float MovementSpeed { get; private set; }
     public float RotationDamping { get; private set; }
 
-    public float MovementSpeedModifier { get; set; } = 1f;
+    //public float MovementSpeedModifier { get; set; } = 1f;
 
     public bool IsPlayerInFieldOfView { get; set; }
 
@@ -48,9 +47,9 @@ public class MonsterEarTypeStateMachine : StateMachine
     public MonsterEarTypeStateMachine(EarTypeMonster monster)
     {
         Monster = monster;
-        // ÅÂ±×·Î ÇÃ·¹¾î Å½»ö***
+        // íƒœê·¸ë¡œ í”Œë ˆì–´ íƒìƒ‰***
         Target = GameObject.FindGameObjectWithTag("Player");
-        // °íÀ¯ÇÑ À§Ä¡
+        // ê³ ìœ í•œ ìœ„ì¹˜
         StartPosition = Monster.transform.position;
 
         IdleState = new MonsterEarTypeIdleState(this);

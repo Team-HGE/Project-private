@@ -24,6 +24,9 @@ public class Monster : MonoBehaviour
     // 행동 관리
     public bool IsBehavior {get; set;} = true;
 
+    [field: SerializeField]
+    public bool CanPatrol { get; set; } = true;
+
     // INoise
     public float NoiseTransitionTime { get; set; }
     public float NoiseMin { get; set; }
@@ -50,7 +53,7 @@ public class Monster : MonoBehaviour
 
     private void Start()
     {
-        _stateMachine.ChangeState(_stateMachine.PatrolState);
+        _stateMachine.ChangeState(_stateMachine.IdleState);
     }
 
     private void Update()
@@ -58,10 +61,10 @@ public class Monster : MonoBehaviour
         //_stateMachine.HandleInput();
         _stateMachine.Update();
 
-        if (NoiseAmount > 0)
-        {
+        //if (NoiseAmount > 0)
+        //{
             
-        }
+        //}
 
         DrawCircle(transform.position, 36, Data.GroundData.PlayerChasingRange, Color.yellow);
         DrawCircle(transform.position, 36, Data.GroundData.PlayerFindRange, Color.green);

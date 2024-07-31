@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -19,8 +19,13 @@ public class EarTypeMonster : MonoBehaviour
 
     private MonsterEarTypeStateMachine _stateMachine;
 
-    // Çàµ¿ °ü¸®
+    // í–‰ë™ ê´€ë¦¬
     public bool IsBehavior { get; set; } = true;
+    private bool _isWaiting = false;
+    private Coroutine _wait;
+    //private float _waitTiem = 0f;
+    [field: SerializeField]
+    public bool CanPatrol { get; set; } = true;
 
     public LayerMask targetLayer;
     //public Collider[] noiseMakers;
@@ -29,6 +34,7 @@ public class EarTypeMonster : MonoBehaviour
     [Header("MonsterTransform")]
     public Transform monsterTransform;
     public Transform monsterEyeTransform;
+
     private void Awake()
     {
         AnimationData.Initialize();
@@ -44,7 +50,7 @@ public class EarTypeMonster : MonoBehaviour
 
     private void Start()
     {
-        _stateMachine.ChangeState(_stateMachine.PatrolState);
+        _stateMachine.ChangeState(_stateMachine.IdleState);
         //_stateMachine.ChangeState(_stateMachine.MoveState);
 
     }
@@ -58,6 +64,12 @@ public class EarTypeMonster : MonoBehaviour
 
         DrawCircle(transform.position, 36, Data.GroundData.AttackRange, Color.red);
 
+        //if (_isWaiting)
+        //{
+        //    _waitTiem += Time.deltaTime;
+        //    Debug.Log(_waitTiem);
+        //}
+
     }
 
     private void FixedUpdate()
@@ -65,18 +77,42 @@ public class EarTypeMonster : MonoBehaviour
         _stateMachine.PhysicsUpdate();
     }
 
-    // ´ë±â ½Ã°£
+    // ëŒ€ê¸° ì‹œê°„
     public void WaitForBehavior(float time)
     {
         StartCoroutine(ChangeBehavior(time));
     }
 
+    public void WaitForBehavior()
+    {
+        _wait = StartCoroutine(ChangeBehavior());
+    }
+
+    public void StopWait()
+    {
+        if (!_isWaiting) return;
+        StopCoroutine(_wait);
+    }
+
     public IEnumerator ChangeBehavior(float time)
     {
-        // nÃÊ ´ë±â
+        // nì´ˆ ëŒ€ê¸°
         yield return new WaitForSeconds(time);
 
         IsBehavior = !IsBehavior;
+    }
+
+    public IEnumerator ChangeBehavior()
+    {
+        _isWaiting = true;
+        //_waitTiem = 0f;
+        //Debug.Log($"{Data.GroundData.FocusTransitionTime}ì´ˆ ëŒ€ê¸°");
+        // nì´ˆ ëŒ€ê¸°
+        yield return new WaitForSeconds(Data.GroundData.FocusTransitionTime);
+
+        IsBehavior = !IsBehavior;
+        //Debug.Log($"{Data.GroundData.FocusTransitionTime}ì´ˆ ëŒ€ê¸° ë, {IsBehavior}");
+        _isWaiting = false;
     }
 
     private void DrawCircle(Vector3 center, int segments, float radius, Color color)
@@ -84,7 +120,7 @@ public class EarTypeMonster : MonoBehaviour
         Vector3 normal = Vector3.up;
 
         float angleStep = 360.0f / segments;
-        Quaternion rotation = Quaternion.LookRotation(normal);  // ¹ı¼± º¤ÅÍ¸¦ ±âÁØÀ¸·Î È¸Àü
+        Quaternion rotation = Quaternion.LookRotation(normal);  // ë²•ì„  ë²¡í„°ë¥¼ ê¸°ì¤€ìœ¼ë¡œ íšŒì „
 
         Vector3 prevPoint = center + rotation * new Vector3(Mathf.Cos(0) * radius, Mathf.Sin(0) * radius, 0);
 
@@ -94,11 +130,11 @@ public class EarTypeMonster : MonoBehaviour
             Vector3 point = new Vector3(Mathf.Cos(angle) * radius, Mathf.Sin(angle) * radius, 0);
             Vector3 currentPoint = center + rotation * point;
 
-            Debug.DrawLine(prevPoint, currentPoint, color);  // ÀÌÀü Á¡°ú ÇöÀç Á¡À» ¿¬°áÇÏ¿© ¼±À» ±×¸²
+            Debug.DrawLine(prevPoint, currentPoint, color);  // ì´ì „ ì ê³¼ í˜„ì¬ ì ì„ ì—°ê²°í•˜ì—¬ ì„ ì„ ê·¸ë¦¼
             prevPoint = currentPoint;
         }
 
-        // ¸¶Áö¸· Á¡°ú Ã¹ ¹øÂ° Á¡À» ¿¬°áÇÏ¿© ¿øÀ» ¿Ï¼º
+        // ë§ˆì§€ë§‰ ì ê³¼ ì²« ë²ˆì§¸ ì ì„ ì—°ê²°í•˜ì—¬ ì›ì„ ì™„ì„±
         Vector3 firstPoint = center + rotation * new Vector3(Mathf.Cos(0) * radius, Mathf.Sin(0) * radius, 0);
         Debug.DrawLine(prevPoint, firstPoint, color);
     }
