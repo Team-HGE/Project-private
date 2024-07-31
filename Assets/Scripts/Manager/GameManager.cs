@@ -62,7 +62,7 @@ public class GameManager : SingletonManager<GameManager>
         yield return new WaitForSeconds(3);
         fadeManager.sceneLoadings[(int)SceneEnum.AScene].SetActive(false);
         fadeManager.FadeStart(FadeState.FadeIn);
-        AudioManager.Instance.PlaySound(AudioManager.Instance.backGroundAudioClips[(int)BackGroundSound.ASceneSound]);
-        DialogueManager.Instance.storyScript.Print();
+        AudioManager.Instance.PlaySound(BackGroundSound.ASceneSound);
+        DialogueManager.Instance.script.StartScript();
     }
 }

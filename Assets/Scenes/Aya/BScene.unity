@@ -275,6 +275,7 @@ MonoBehaviour:
   - {fileID: 88417773}
   - {fileID: 938163601}
   - {fileID: 2139754055}
+  - {fileID: 1462884182}
 --- !u!82 &115423702
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2396,6 +2397,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5418887719614716361, guid: 65c413625ab1dba4c8044747d6469009,
+        type: 3}
+      propertyPath: monsterTransform
+      value: 
+      objectReference: {fileID: 1462884181}
+    - target: {fileID: 5418887719614716361, guid: 65c413625ab1dba4c8044747d6469009,
+        type: 3}
+      propertyPath: monsterEyeTransform
+      value: 
+      objectReference: {fileID: 2010282201}
     - target: {fileID: 8377894138480221165, guid: 65c413625ab1dba4c8044747d6469009,
         type: 3}
       propertyPath: m_Name
@@ -2403,9 +2414,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 8613519029127746735, guid: 65c413625ab1dba4c8044747d6469009,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2010282201}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65c413625ab1dba4c8044747d6469009, type: 3}
+--- !u!4 &1462884180 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8613519029127746735, guid: 65c413625ab1dba4c8044747d6469009,
+    type: 3}
+  m_PrefabInstance: {fileID: 1462884179}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1462884181 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2364081058313625668, guid: 65c413625ab1dba4c8044747d6469009,
+    type: 3}
+  m_PrefabInstance: {fileID: 1462884179}
+  m_PrefabAsset: {fileID: 0}
+--- !u!195 &1462884182 stripped
+NavMeshAgent:
+  m_CorrespondingSourceObject: {fileID: 5430641681002056101, guid: 65c413625ab1dba4c8044747d6469009,
+    type: 3}
+  m_PrefabInstance: {fileID: 1462884179}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1497816682 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8060882193321070964, guid: 9c12e21e032b6b745936ff5c3e0ed79b,
@@ -3207,6 +3240,37 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2066950585}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2010282200
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2010282201}
+  m_Layer: 0
+  m_Name: MonsterEyeTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2010282201
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2010282200}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.7071069, y: -0, z: -0, w: 0.70710677}
+  m_LocalPosition: {x: -0.017, y: 1.867, z: 0.079}
+  m_LocalScale: {x: 0.26315793, y: 0.2631579, z: 0.2631579}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1462884180}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2017410281 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1533693692975599495, guid: 9c12e21e032b6b745936ff5c3e0ed79b,

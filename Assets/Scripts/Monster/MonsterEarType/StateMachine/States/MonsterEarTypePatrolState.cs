@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -12,40 +12,35 @@ public class MonsterEarTypePatrolState : MonsterEarTypeGroundState
     public override void Enter()
     {
         base.Enter();
-        //stateMachine.Monster.Agent.enabled = true;
-        stateMachine.Monster.Agent.isStopped = false;
+        if (stateMachine.Monster.Agent.isStopped) stateMachine.Monster.Agent.isStopped = false;
         stateMachine.Monster.Agent.speed = groundData.PatrolSpeed;
         if (stateMachine.IsPatrol) return;
 
         StatrPatrol();
 
-        // ¾Ö´Ï¸ŞÀÌ¼Ç ½ÇÇà - ±×¶ó¿îµå ÆÄ¶ó¹ÌÅÍ ÇØ½¬·Î Á¢±Ù
+        // ì• ë‹ˆë©”ì´ì…˜ ì‹¤í–‰
         StartAnimation(stateMachine.Monster.AnimationData.PatrolParameterHash);
     }
 
     public override void Exit()
     {
         base.Exit();
-
-        stateMachine.Monster.Agent.isStopped = true;
         //stateMachine.Monster.Agent.enabled = false;
         stateMachine.IsPatrol = false;
-
-        // ¾Ö´Ï¸ŞÀÌ¼Ç Á¾·á - ±×¶ó¿îµå ÆÄ¶ó¹ÌÅÍ ÇØ½¬·Î Á¢±Ù
+        // ì• ë‹ˆë©”ì´ì…˜ ì¢…ë£Œ
         StopAnimation(stateMachine.Monster.AnimationData.PatrolParameterHash);
-
     }
 
     public override void Update()
     {
         base.Update();
+        if (stateMachine.Monster.Agent.pathPending) return;
 
-        if (stateMachine.Monster.Agent.enabled && stateMachine.Monster.Agent.remainingDistance < 0.1f)
+        if (stateMachine.Monster.Agent.remainingDistance < 0.2f)
         {
-            // ¸ñÀûÁö¿¡ µµÂøÇÏ¸é idle »óÅÂ ÁøÀÔ
+            // ëª©ì ì§€ì— ë„ì°©í•˜ë©´ idle ìƒíƒœ ì§„ì…
             stateMachine.ChangeState(stateMachine.IdleState);
         }
-
     }
 
     private Vector3 GetRandomPoint(Vector3 center, float radius)
