@@ -32,6 +32,8 @@ public class GameManager : SingletonManager<GameManager>
 
     [Header("Time")]
     public DayNightUI dayNightUI;
+    [Header("Light")]
+    public LightManager lightManager;
     protected override void Awake()
     {
         base.Awake();
@@ -42,6 +44,10 @@ public class GameManager : SingletonManager<GameManager>
         if (dayNightUI == null)
         {
             dayNightUI = GetComponent<DayNightUI>();
+        }
+        if (lightManager == null)
+        {
+            lightManager = GetComponent<LightManager>();
         }
     }
     public void Init(Player _player)

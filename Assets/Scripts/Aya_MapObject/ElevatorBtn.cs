@@ -25,6 +25,7 @@ public class ElevatorBtn : InteractableObject
     }
     public override void Interact()
     {
+        if (isInteractable) return;
         isInteractable = true;
         GameManager.Instance.isElevatorButtonPressed = true;
         Material[] newMaterials = meshRenderer.materials;

@@ -7,6 +7,7 @@ public class DoorObject : InteractableObject
     [SerializeField] bool interactableOneTime;
     [SerializeField] AudioClip openSound;
     [SerializeField] AudioClip closeSound;
+    [SerializeField] AudioClip lockSound;
     [SerializeField] DOTweenAnimation openDoor;
     [SerializeField] DOTweenAnimation closeDoor;
 
