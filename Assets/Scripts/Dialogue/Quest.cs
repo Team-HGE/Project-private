@@ -6,13 +6,8 @@ public class Quest : MonoBehaviour
 {
     public QuestSO questSO;
     public int CurrentQuest = -1;
-    public TextMeshProUGUI nowQuestText;
+    public TextMeshProUGUI nowQuestText; // 협업 끝나면 UIDialogue로 대체
     private StringBuilder sb = new StringBuilder();
-
-    public void Init()
-    {
-        
-    }
 
     public void UpdateQuest()
     {
@@ -20,12 +15,5 @@ public class Quest : MonoBehaviour
         CurrentQuest++;
         sb.Append(questSO.quests[CurrentQuest]);
         nowQuestText.text = "할 일: " + sb.ToString();
-    }
-
-
-    public void FinishQuest()
-    {
-
-    }
-   
+    }   
 }

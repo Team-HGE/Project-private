@@ -4,8 +4,9 @@ using UnityEngine;
 public class NPC : InteractableObject
 {
     public NPC_SO npcSO;
+    public ScriptSO scriptSO;
 
-    private void InitNPCData(NPC_SO _npc)
+    private void Init(NPC_SO _npc)
     {
         npcSO = _npc;
     }
@@ -16,16 +17,16 @@ public class NPC : InteractableObject
 
         GameManager.Instance.player.playerInteraction.SetActive(true);
         GameManager.Instance.player.interactableText.text = "대화하기";
-
     }
 
     public override void Interact()
     {
         //ChangeState(npcState.Speaking);
+        // NPC 스트레스 지수 감소
 
-        InitNPCData(npcSO);
-
-        DialogueManager.Instance.dialogue.StartDialogue();
+        Init(npcSO);
+        DialogueManager.Instance.npcScript.Init(scriptSO);
+        DialogueManager.Instance.npcScript.Print();
     }
 
     // NPC 표정 바꾸기

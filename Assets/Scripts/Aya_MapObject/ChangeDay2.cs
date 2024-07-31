@@ -8,7 +8,7 @@ public class ChangeDay2 : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        DialogueManager.Instance.script.InitScript(scriptSO);
-        DialogueManager.Instance.script.StartScript();
+        DialogueManager.Instance.storyScript.Init(scriptSO);
+        DialogueManager.Instance.storyScript.Print();
     }
 }

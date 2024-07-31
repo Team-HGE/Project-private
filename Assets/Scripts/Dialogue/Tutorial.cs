@@ -31,6 +31,7 @@ public class Tutorial : MonoBehaviour
         {
             Debug.Log("튜토리얼을 모두 완료했습니다.");
             Init();
+            Destroy(gameObject);
         }
     }
 

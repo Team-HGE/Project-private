@@ -1,6 +1,7 @@
+using UnityEngine;
+
 public interface IScript
 {
-    public void InitData();
+    public void Init(ScriptSO _script);
     public void Print();
-    public void Clear();
 }

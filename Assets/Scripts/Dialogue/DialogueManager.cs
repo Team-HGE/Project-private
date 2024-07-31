@@ -2,14 +2,19 @@
 
 public class DialogueManager : SingletonManager<DialogueManager>
 {
-    public Dialogue dialogue;
-
-    public Script script;
+    [HideInInspector]
+    public DialogueSetting set;
+    [HideInInspector]
+    public StoryScript storyScript;
+    [HideInInspector]
+    public NPCScript npcScript;
+    [HideInInspector]
+    public ItemScript itemScript;
+    [HideInInspector]
+    public Answer answer;
 
     private SystemMsg systemMsg;
     private Quest quest;
-
-    public Answer answer;
 
     public bool isSceneChanged;
 
@@ -20,25 +25,26 @@ public class DialogueManager : SingletonManager<DialogueManager>
 
     private void Start()
     {
+        set = GetComponent<DialogueSetting>();
+        set.InitUI();
+        set.InitDialogueSetting();
 
-        dialogue = GetComponent<Dialogue>();
-        script = GetComponent<Script>();
+        storyScript = GetComponent<StoryScript>();
+        npcScript = GetComponent<NPCScript>();
+        itemScript = GetComponent<ItemScript>();
+        answer = GetComponent<Answer>();
 
         systemMsg = GetComponent<SystemMsg>();
         quest = GetComponent<Quest>();
 
-        answer = GetComponent<Answer>();
-
-        dialogue.Init();
         systemMsg.Init();
-        answer.InitAnswer();
+        answer.Init();
 
         quest.UpdateQuest();
         systemMsg.UpdateMessage();
 
-        //script.StartScript();
+        storyScript.Print();
     }
-
 
     public void ChangeSO()
     {
@@ -46,5 +52,10 @@ public class DialogueManager : SingletonManager<DialogueManager>
         {
             //TODO: 씬이 바뀌면 SO를 바꿔주는 함수
         }
+    }
+
+    public void FinishStory()
+    {
+        set.InitDialogueSetting();
     }
 }

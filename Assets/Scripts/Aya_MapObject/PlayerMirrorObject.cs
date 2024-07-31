@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBedObject : InteractableObject
+public class PlayerMirrorObject : InteractableObject
 {
     public ScriptSO scriptSO;
 
@@ -10,7 +10,7 @@ public class PlayerBedObject : InteractableObject
     {
         if (isInteractable) return;
         GameManager.Instance.player.playerInteraction.SetActive(true);
-        GameManager.Instance.player.interactableText.text = "잠들기";
+        GameManager.Instance.player.interactableText.text = "상태 확인";
     }
     public override void Interact()
     {
@@ -19,7 +19,7 @@ public class PlayerBedObject : InteractableObject
         DialogueManager.Instance.itemScript.Init(scriptSO);
         DialogueManager.Instance.itemScript.Print();
 
-        StartCoroutine(Sleep());
+        //StartCoroutine(Sleep());
     }
     IEnumerator Sleep()
     {
