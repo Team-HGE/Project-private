@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,30 +11,30 @@ public class MonsterEarTypeFocusState : MonsterEarTypeGroundState
     public override void Enter()
     {
         base.Enter();
-
-        //Debug.Log("focus ½ÃÀÛ");
-
+        Debug.Log("focus ì‹œì‘");
+        stateMachine.BeforeNoise = 0f;
         stateMachine.IsFocusNoise = true;
         stateMachine.IsFocusRotate = true;
         stateMachine.Monster.IsBehavior = false;
-        stateMachine.Monster.WaitForBehavior(stateMachine.Monster.Data.GroundData.FocusTransitionTime);
+        stateMachine.Monster.Agent.isStopped = true;
+        stateMachine.Monster.WaitForBehavior();
 
-        // ¾Ö´Ï¸ŞÀÌ¼Ç ½ÇÇà
+        // ì• ë‹ˆë©”ì´ì…˜ ì‹¤í–‰
         StartAnimation(stateMachine.Monster.AnimationData.FocusParameterHash);
-
     }
 
     public override void Exit()
     {
         base.Exit();
-        //Debug.Log("focus ³¡");
-
+        Debug.Log("focus ë");
         stateMachine.IsFocusNoise = false;
         stateMachine.IsFocusRotate = false;
+        stateMachine.Monster.Agent.isStopped = false;
 
-        // ¾Ö´Ï¸ŞÀÌ¼Ç Á¾·á
+        // ì• ë‹ˆë©”ì´ì…˜ ì¢…ë£Œ
         StopAnimation(stateMachine.Monster.AnimationData.FocusParameterHash);
-
+        stateMachine.Monster.StopWait();
+        //stateMachine.Monster.IsBehavior = true;
     }
 
     public override void Update()
@@ -43,13 +43,13 @@ public class MonsterEarTypeFocusState : MonsterEarTypeGroundState
 
         if (stateMachine.Monster.IsBehavior)
         {
-            //Debug.Log("º¹±Í");
+            Debug.Log("ì§‘ì¤‘ -> ë³µê·€");
 
             stateMachine.ChangeState(stateMachine.ComeBackState);
             return;
         }
 
-        CheckNoise();
+        //CheckNoise();
     }
 
     private void CheckNoise()
@@ -70,14 +70,14 @@ public class MonsterEarTypeFocusState : MonsterEarTypeGroundState
 
                 if (stateMachine.Monster.noiseMakers[i].tag == "Player")
                 {
-                    //Debug.Log("ÇÃ·¹ÀÌ¾î ÃßÀû");
+                    //Debug.Log("í”Œë ˆì´ì–´ ì¶”ì ");
 
                     stateMachine.ChangeState(stateMachine.ChaseState);
                 }
 
                 if (stateMachine.Monster.noiseMakers[i].tag == "NoiseMaker")
                 {
-                    //Debug.Log("¾ÆÀÌÅÛ ÃßÀû");
+                    //Debug.Log("ì•„ì´í…œ ì¶”ì ");
 
                     stateMachine.ChangeState(stateMachine.MoveState);
                 }

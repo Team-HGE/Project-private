@@ -12,6 +12,10 @@ public class MonsterGroundData
 
     [field: SerializeField][field: Range(0f, 20f)] public float AttackRange { get; private set; } = 1.5f;
     [field: SerializeField][field: Range(0f, 180f)] public float ViewAngle { get; private set; } = 120f;
+    [field: SerializeField][field: Range(0f, 20f)] public float DetectNoiseMax { get; private set; } = 11.2f;
+    [field: SerializeField][field: Range(0f, 20f)] public float DetectNoiseMid { get; private set; } = 5.2f;
+
+
 
 
     [field: Header("IdleData")]

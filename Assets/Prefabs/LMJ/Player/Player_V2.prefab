@@ -59,8 +59,8 @@ Transform:
   m_GameObject: {fileID: 3808083907055372520}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
-  m_LocalScale: {x: 2, y: 3, z: 2}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
+  m_LocalScale: {x: 2, y: 3.5, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8484175837570284864}
@@ -137,7 +137,7 @@ CapsuleCollider:
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: -0.56, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7641863236141898210
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,10 +272,12 @@ MonoBehaviour:
       transitionTime: 0
       box: {fileID: 0}
   CurrentStamina: {fileID: 0}
+  virtualCamera: {fileID: 0}
   <CurNoiseAmount>k__BackingField: 0
   <DecreaseSpeed>k__BackingField: 5
   <IsPlayerControll>k__BackingField: 1
   flashLightController: {fileID: 0}
+  <Karma>k__BackingField: 0
 --- !u!114 &4676062930434097826
 MonoBehaviour:
   m_ObjectHideFlags: 0

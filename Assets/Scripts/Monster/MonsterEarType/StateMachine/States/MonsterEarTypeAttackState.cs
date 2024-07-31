@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,10 +14,11 @@ public class MonsterEarTypeAttackState : MonsterEarTypeGroundState
         base.Enter();
         stateMachine.IsAttack = true;
         stateMachine.Monster.Agent.isStopped = true;
-        Debug.Log("ÇÃ·¹ÀÌ¾î »ç¸Á - °ÔÀÓ ¿À¹ö");
-        JumpScareManager.Instance.OnJumpScare(stateMachine.Monster.monsterTransform, JumpScareType.EyeTypeMonster, stateMachine.Monster.monsterEyeTransform);
-        // ¾Ö´Ï¸ŞÀÌ¼Ç ½ÇÇà
+        Debug.Log("í”Œë ˆì´ì–´ ì‚¬ë§ - ê²Œì„ ì˜¤ë²„");
+        // ì• ë‹ˆë©”ì´ì…˜ ì‹¤í–‰
         StartAnimation(stateMachine.Monster.AnimationData.AttackParameterHash);
+
+        JumpScareManager.Instance.OnJumpScare(stateMachine.Monster.monsterTransform, JumpScareType.EyeTypeMonster, stateMachine.Monster.monsterEyeTransform);        
     }
 
     public override void Exit()
@@ -26,9 +27,7 @@ public class MonsterEarTypeAttackState : MonsterEarTypeGroundState
         stateMachine.IsAttack = false;
         stateMachine.Monster.Agent.isStopped = false;
 
-
-        // ¾Ö´Ï¸ŞÀÌ¼Ç Á¾·á
+        // ì• ë‹ˆë©”ì´ì…˜ ì¢…ë£Œ
         StopAnimation(stateMachine.Monster.AnimationData.AttackParameterHash);
-
     }
 }

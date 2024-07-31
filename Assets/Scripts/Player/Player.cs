@@ -1,7 +1,9 @@
-﻿using Unity.VisualScripting.Antlr3.Runtime.Tree;
+﻿using Cinemachine;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 using UnityEngine.InputSystem;
+
 
 public class Player : MonoBehaviour, INoise
 {
@@ -19,6 +21,9 @@ public class Player : MonoBehaviour, INoise
     private PlayerStateMachine _stateMachine;
 
     public RunEffect CurrentStamina;
+
+    //Vc
+    public CinemachineVirtualCamera virtualCamera;
 
     // INoise
     public float NoiseTransitionTime { get; set; }
@@ -40,6 +45,8 @@ public class Player : MonoBehaviour, INoise
     // 카르마
     [field: SerializeField]
     public float Karma { get; set; }
+
+    
 
 
     private void Awake()
