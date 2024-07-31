@@ -34,8 +34,11 @@ public class UIDialogue : MonoBehaviour
     {
         darkScreen.SetActive(false);
         dialogueCanvas.SetActive(false);
+        AnswerCanvas.SetActive(false);
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        Debug.Log("isTalking : " + DialogueSetting.isTalking);
     }
 
     public void CheckNullTitle(string speaker)

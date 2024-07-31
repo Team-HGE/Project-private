@@ -28,6 +28,8 @@ public class StoryScript: DialogueSetting, IScript
 
     private IEnumerator PrintScript()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         ui.ClearDialogue(sbTitle, sbBody);
 
         for (int i = 0; i < scriptSO.bodyTexts.Length; i++)

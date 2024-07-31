@@ -16,12 +16,12 @@ public class Answer : DialogueSetting
     {
         answerSO = _answer;
         answerSO.nowAnswer = 0;
-        //Debug.Log("선택지 초기화 완료");
+        Debug.Log("선택지 초기화 완료");
     }
 
     public void Print()
     {
-        //Debug.Log("선택지 시작");
+        Debug.Log("선택지 시작");
         InitAnswer(answerSO);
 
         //for(int i = 0; i < answerSO.answers.Length; i++)
@@ -36,8 +36,10 @@ public class Answer : DialogueSetting
         ui.AnswerCanvas.SetActive(true);
 
         // 커서락 OFF
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
 
-        ui.AnswerCanvas.SetActive(false);
+        //ui.AnswerCanvas.SetActive(false);
 
         // TODO: 선택지 결과 출력
     }

@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 public class Item : InteractableObject
 {
     //public ItemSO itemSO;

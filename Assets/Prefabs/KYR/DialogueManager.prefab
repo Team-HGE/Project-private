@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 542670094413310124}
   - component: {fileID: 7273186344831853445}
   - component: {fileID: 2963101403854385897}
+  - component: {fileID: 7691494589928532885}
   m_Layer: 0
   m_Name: DialogueManager
   m_TagString: Untagged
@@ -70,8 +71,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99cb2825f5bffbe41a6a9e02a6b0172e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isTalking: 0
-  printSpeed: 0.5
   ui: {fileID: 0}
 --- !u!114 &330832895471244228
 MonoBehaviour:
@@ -150,10 +149,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bbe5994fad507747926bb300dc806cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isTalking: 0
-  printSpeed: 0.5
   ui: {fileID: 0}
-  scriptSO: {fileID: 0}
+  scriptSO: {fileID: 11400000, guid: bc42ac719c383754ebc27ec74388b420, type: 2}
 --- !u!114 &7273186344831853445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,8 +163,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1412e3f5ba35a824ea8dc980cb8bb322, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isTalking: 0
-  printSpeed: 0.5
   ui: {fileID: 0}
   answerSO: {fileID: 11400000, guid: 509e8c7de2b9e414f8916f07bd82fe5b, type: 2}
 --- !u!114 &2963101403854385897
@@ -182,6 +177,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5b0fa5e152820b498d3a2845492cd9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isTalking: 0
-  printSpeed: 0.5
+  ui: {fileID: 0}
+--- !u!114 &7691494589928532885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 833481111887110611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ea585a7b182c743b19ff166e9cc2df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   ui: {fileID: 0}

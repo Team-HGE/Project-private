@@ -30,7 +30,7 @@ public class TextEffect: DialogueSetting
         {
             UtilSB.SetText(tmp, sb, SOstr);
             isSkipped = false;
-            Debug.Log("스킵 종료, isSkipped: " + isSkipped);
+            Debug.Log("스킵 실행");
         }
 
         yield return null;
@@ -67,7 +67,7 @@ public class TextEffect: DialogueSetting
         if (!isSkipped && Input.GetMouseButtonDown(0))
         {
             isSkipped = true;
-            Debug.Log("좌클릭 감지, isSkipped:" + isSkipped);
+            //Debug.Log("좌클릭 감지, isSkipped:" + isSkipped);
         }
     }
 }
