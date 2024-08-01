@@ -1,4 +1,4 @@
-using Cinemachine;
+﻿using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,7 +15,7 @@ public class PlayerCrouchState : PlayerGroundState
     public override void Enter()
     {
         base.Enter();
-        //Debug.Log("�ɱ�");
+        //Debug.Log("앉기");
         originHeight = stateMachine.Player.virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.y;
         stateMachine.Player.virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.y = 3f;
         stateMachine.Player.transform.localScale = new Vector3(stateMachine.Player.transform.localScale.x, groundData.CrouchHeight, stateMachine.Player.transform.localScale.z);
