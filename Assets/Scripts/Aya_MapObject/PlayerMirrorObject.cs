@@ -10,7 +10,7 @@ public class PlayerMirrorObject : InteractableObject
     {
         if (isInteractable) return;
         GameManager.Instance.player.playerInteraction.SetActive(true);
-        GameManager.Instance.player.interactableText.text = "상태 확인";
+        GameManager.Instance.player.interactableText.text = "마주하기";
     }
     public override void Interact()
     {

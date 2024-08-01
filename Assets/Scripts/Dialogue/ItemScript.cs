@@ -7,8 +7,6 @@ public class ItemScript : DialogueSetting, IScript
     [HideInInspector]
     private ScriptSO scriptSO;
     private Item item;
-    private PlayerBedObject bed;
-    private PlayerMirrorObject mirror;
 
     public void Init(ScriptSO _script)
     {
@@ -29,11 +27,6 @@ public class ItemScript : DialogueSetting, IScript
 
         // item 이 아닐 경우
         if (item == null) { Debug.Log("Item이 아닙니다. 또는 Item 컴포넌트가 없습니다."); }
-        else if(!TryGetComponent(out bed) && !TryGetComponent(out mirror))
-        {
-            return;
-           // bed = nowInteracting.GetComponent<PlayerBedObject>();
-        }
 
         ui.OpenDialogue();
         StartCoroutine(PrintScript());
