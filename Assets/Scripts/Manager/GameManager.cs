@@ -23,6 +23,8 @@ public class GameManager : SingletonManager<GameManager>
     public ExampleOfUpdatingTheBar exampleBar;
     public PlayerStateMachine PlayerStateMachine { get; set; }
 
+    [Header("Manager")]
+    public CinemachineManager cinemachineManager;
     public int nowFloor
     {
         get { return _nowFloor; }
@@ -37,18 +39,13 @@ public class GameManager : SingletonManager<GameManager>
     protected override void Awake()
     {
         base.Awake();
-        if (fadeManager == null)
-        {
-            fadeManager = GetComponent<FadeManager>();
-        }
-        if (dayNightUI == null)
-        {
-            dayNightUI = GetComponent<DayNightUI>();
-        }
-        if (lightManager == null)
-        {
-            lightManager = GetComponent<LightManager>();
-        }
+        if (fadeManager == null) fadeManager = GetComponent<FadeManager>();
+
+        if (dayNightUI == null) dayNightUI = GetComponent<DayNightUI>();
+
+        if (lightManager == null) lightManager = GetComponent<LightManager>();
+
+        if (cinemachineManager == null) cinemachineManager = GetComponent<CinemachineManager>();
     }
     public void Init(Player _player)
     {

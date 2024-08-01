@@ -152,23 +152,13 @@ PrefabInstance:
     - target: {fileID: 2173546295586971751, guid: c6f0c59a4fcd12c41a19e4cd119cc203,
         type: 3}
       propertyPath: m_Name
-      value: Door
+      value: LockDoor
       objectReference: {fileID: 0}
-    - target: {fileID: 8768052357167672533, guid: c6f0c59a4fcd12c41a19e4cd119cc203,
+    - target: {fileID: 2322575947408529668, guid: c6f0c59a4fcd12c41a19e4cd119cc203,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8768052357167672533, guid: c6f0c59a4fcd12c41a19e4cd119cc203,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8768052357167672533, guid: c6f0c59a4fcd12c41a19e4cd119cc203,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: doorOpen
+      value: 
+      objectReference: {fileID: 1492479363776925872}
     - target: {fileID: 8768052357167672533, guid: c6f0c59a4fcd12c41a19e4cd119cc203,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -222,7 +212,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7885770606343287183, guid: c6f0c59a4fcd12c41a19e4cd119cc203,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4351636251942435951}
   m_SourcePrefab: {fileID: 100100000, guid: c6f0c59a4fcd12c41a19e4cd119cc203, type: 3}
 --- !u!4 &644584713203640637 stripped
 Transform:
@@ -230,3 +224,45 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8168517384205174248}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2032115044202443879 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7885770606343287183, guid: c6f0c59a4fcd12c41a19e4cd119cc203,
+    type: 3}
+  m_PrefabInstance: {fileID: 8168517384205174248}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4351636251942435951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2032115044202443879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7452c11b5ff94684f904403148f33a53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lockDoorObject: {fileID: 5865681007839141100}
+  keyPadGimmick: {fileID: 0}
+  KeyPadDecal: {fileID: 2504279707380310479}
+  keyPadGimmickCanvas: {fileID: 0}
+  passwords: 
+  unLock: 0
+--- !u!1 &2504279707380310479 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6024860174789403687, guid: c6f0c59a4fcd12c41a19e4cd119cc203,
+    type: 3}
+  m_PrefabInstance: {fileID: 8168517384205174248}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5865681007839141100 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2322575947408529668, guid: c6f0c59a4fcd12c41a19e4cd119cc203,
+    type: 3}
+  m_PrefabInstance: {fileID: 8168517384205174248}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f7381022cd830e4e94a08832a91ac52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
