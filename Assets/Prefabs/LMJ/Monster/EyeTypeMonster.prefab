@@ -131,8 +131,17 @@ MonoBehaviour:
     chaseParameterName: Chase
     loseSightParameterName: LoseSight
     attackParameterName: Attack
+  <CanPatrol>k__BackingField: 1
   monsterTransform: {fileID: 3632290930665208911}
   monsterEyeTransform: {fileID: 8857895248666016699}
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  obstructionMask:
+    serializedVersion: 2
+    m_Bits: 0
+  canSeePlayer: 0
+  rangeChecks: []
 --- !u!195 &7567904555289203676
 NavMeshAgent:
   m_ObjectHideFlags: 0

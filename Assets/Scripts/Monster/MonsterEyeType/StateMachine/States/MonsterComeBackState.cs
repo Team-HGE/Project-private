@@ -12,6 +12,7 @@ public class MonsterComeBackState : MonsterGroundState
     {
         base.Enter();
 
+        stateMachine.IsComeBack = true;
         stateMachine.Monster.Agent.isStopped = false;
         stateMachine.Monster.Agent.speed = groundData.PatrolSpeed;
         stateMachine.Monster.Agent.SetDestination(stateMachine.StartPosition);
@@ -21,6 +22,7 @@ public class MonsterComeBackState : MonsterGroundState
     public override void Exit()
     {
         base.Exit();
+        stateMachine.IsComeBack = false;
         StopAnimation(stateMachine.Monster.AnimationData.PatrolParameterHash);
     }
 

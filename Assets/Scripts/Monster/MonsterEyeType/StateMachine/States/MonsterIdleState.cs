@@ -14,7 +14,7 @@ public class MonsterIdleState : MonsterGroundState
 
         // 애니메이션 실행
         StartAnimation(stateMachine.Monster.AnimationData.IdleParameterHash);
-
+        stateMachine.IsIdle = true;
         stateMachine.Monster.IsBehavior = false;
         stateMachine.Monster.WaitForBehavior(stateMachine.Monster.Data.GroundData.IdleTransitionTime);
     }
@@ -25,6 +25,7 @@ public class MonsterIdleState : MonsterGroundState
 
         // 애니메이션 종료
         StopAnimation(stateMachine.Monster.AnimationData.IdleParameterHash);
+        stateMachine.IsIdle = false;
     }
 
     public override void Update()

@@ -42,10 +42,10 @@ public class MonsterPatrolState : MonsterGroundState
             stateMachine.ChangeState(stateMachine.IdleState);
         }
 
-        if (IsInFindRange() && GetIsPlayerInFieldOfView())
-        {
-            stateMachine.ChangeState(stateMachine.FindState);
-        }
+        //if (IsInFindRange() && GetIsPlayerInFieldOfView())
+        //{
+        //    stateMachine.ChangeState(stateMachine.FindState);
+        //}
     }    
 
     private Vector3 GetRandomPoint(Vector3 center, float radius)

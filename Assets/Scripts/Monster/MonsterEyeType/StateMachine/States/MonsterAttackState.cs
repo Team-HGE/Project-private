@@ -10,13 +10,12 @@ public class MonsterAttackState : MonsterGroundState
     public override void Enter()
     {
         base.Enter();
-        JumpScareManager.Instance.OnJumpScare(stateMachine.Monster.monsterTransform, JumpScareType.EyeTypeMonster, stateMachine.Monster.monsterEyeTransform);
-
         // 애니메이션 실행
-        StartAnimation(stateMachine.Monster.AnimationData.AttackParameterHash);        
+        StartAnimation(stateMachine.Monster.AnimationData.AttackParameterHash);
         stateMachine.Monster.Agent.isStopped = true;
         Debug.Log("플레이어 공격 - 게임 오버");
 
+        JumpScareManager.Instance.OnJumpScare(stateMachine.Monster.monsterTransform, JumpScareType.EyeTypeMonster, stateMachine.Monster.monsterEyeTransform);      
     }
 
     public override void Exit()
