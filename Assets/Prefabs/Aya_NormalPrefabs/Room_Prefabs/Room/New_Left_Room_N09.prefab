@@ -271,15 +271,17 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
+  m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 0
   m_isCullingEnabled: 0
@@ -608,15 +610,17 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
+  m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
   m_isOrthographic: 0
   m_isCullingEnabled: 0
@@ -663,7 +667,7 @@ GameObject:
   - component: {fileID: 4564864075945221823}
   - component: {fileID: 7880766586267391652}
   m_Layer: 0
-  m_Name: Point Light
+  m_Name: BrightSource_Point Light_Holl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -702,7 +706,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 0.2
@@ -730,12 +734,12 @@ Light:
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
-  m_RenderMode: 0
+  m_RenderMode: 2
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -1098,6 +1102,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7613843136350610869, guid: 3d5bd53612428f4428daf87040c4aeb2,
         type: 3}
+      propertyPath: m_Name
+      value: BrightSource_Point Light_Holl
+      objectReference: {fileID: 0}
+    - target: {fileID: 7613843136350610869, guid: 3d5bd53612428f4428daf87040c4aeb2,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -1105,6 +1114,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8612395698939174056, guid: 3d5bd53612428f4428daf87040c4aeb2,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8612395698939174056, guid: 3d5bd53612428f4428daf87040c4aeb2,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8612395698939174056, guid: 3d5bd53612428f4428daf87040c4aeb2,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8813264465213096883, guid: 3d5bd53612428f4428daf87040c4aeb2,
         type: 3}
@@ -1130,6 +1154,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9073915908853681751}
     m_Modifications:
+    - target: {fileID: 863246205068129154, guid: ffd6853512495ab41b401c9875e03183,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 863246205068129154, guid: ffd6853512495ab41b401c9875e03183,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 863246205068129154, guid: ffd6853512495ab41b401c9875e03183,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 936932595755885322, guid: ffd6853512495ab41b401c9875e03183,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1144,6 +1183,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 1805769690920684549, guid: ffd6853512495ab41b401c9875e03183,
+        type: 3}
+      propertyPath: m_Name
+      value: BrightSource_Point Light_Holl
       objectReference: {fileID: 0}
     - target: {fileID: 1805769690920684549, guid: ffd6853512495ab41b401c9875e03183,
         type: 3}
@@ -1270,6 +1314,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7832484309548652497, guid: ffd6853512495ab41b401c9875e03183,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7832484309548652497, guid: ffd6853512495ab41b401c9875e03183,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7832484309548652497, guid: ffd6853512495ab41b401c9875e03183,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7999496515838204358, guid: ffd6853512495ab41b401c9875e03183,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -1284,6 +1343,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 9099293067990755414, guid: ffd6853512495ab41b401c9875e03183,
+        type: 3}
+      propertyPath: m_Name
+      value: BrightSource_Point Light_Holl
       objectReference: {fileID: 0}
     - target: {fileID: 9099293067990755414, guid: ffd6853512495ab41b401c9875e03183,
         type: 3}
@@ -1731,6 +1795,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 664335329891638845, guid: 6496d7a1bd9bbf54584387766d5995bd,
         type: 3}
+      propertyPath: m_Name
+      value: BrightSource_Point Light_Holl
+      objectReference: {fileID: 0}
+    - target: {fileID: 664335329891638845, guid: 6496d7a1bd9bbf54584387766d5995bd,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -1798,6 +1867,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Range
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663126551992510240, guid: 6496d7a1bd9bbf54584387766d5995bd,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663126551992510240, guid: 6496d7a1bd9bbf54584387766d5995bd,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663126551992510240, guid: 6496d7a1bd9bbf54584387766d5995bd,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1663126551992510240, guid: 6496d7a1bd9bbf54584387766d5995bd,
         type: 3}
@@ -2112,10 +2196,35 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 657145334685068831, guid: 89445752c9bd9df4696ded275c2b884c,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 657145334685068831, guid: 89445752c9bd9df4696ded275c2b884c,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 657145334685068831, guid: 89445752c9bd9df4696ded275c2b884c,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 664723593300975662, guid: 89445752c9bd9df4696ded275c2b884c,
+        type: 3}
+      propertyPath: m_Name
+      value: BrightSource_Point Light_Picture
+      objectReference: {fileID: 0}
     - target: {fileID: 664723593300975662, guid: 89445752c9bd9df4696ded275c2b884c,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 1611191305514980285, guid: 89445752c9bd9df4696ded275c2b884c,
+        type: 3}
+      propertyPath: m_Name
+      value: BrightSource_Point Light_Picture
       objectReference: {fileID: 0}
     - target: {fileID: 1611191305514980285, guid: 89445752c9bd9df4696ded275c2b884c,
         type: 3}
@@ -2127,6 +2236,26 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 2936612322529777247, guid: 89445752c9bd9df4696ded275c2b884c,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2936612322529777247, guid: 89445752c9bd9df4696ded275c2b884c,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2936612322529777247, guid: 89445752c9bd9df4696ded275c2b884c,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3266517154376409189, guid: 89445752c9bd9df4696ded275c2b884c,
+        type: 3}
+      propertyPath: m_Name
+      value: BrightSource_Point Light_Picture
+      objectReference: {fileID: 0}
     - target: {fileID: 3266517154376409189, guid: 89445752c9bd9df4696ded275c2b884c,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -2136,6 +2265,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 4897288344331419994, guid: 89445752c9bd9df4696ded275c2b884c,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4897288344331419994, guid: 89445752c9bd9df4696ded275c2b884c,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4897288344331419994, guid: 89445752c9bd9df4696ded275c2b884c,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071995049143072608, guid: 89445752c9bd9df4696ded275c2b884c,
+        type: 3}
+      propertyPath: m_Name
+      value: BrightSource_Point Light_Picture
       objectReference: {fileID: 0}
     - target: {fileID: 5071995049143072608, guid: 89445752c9bd9df4696ded275c2b884c,
         type: 3}
@@ -2222,6 +2371,26 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 7465344550414631185, guid: 89445752c9bd9df4696ded275c2b884c,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7465344550414631185, guid: 89445752c9bd9df4696ded275c2b884c,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7465344550414631185, guid: 89445752c9bd9df4696ded275c2b884c,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7475148505446551328, guid: 89445752c9bd9df4696ded275c2b884c,
+        type: 3}
+      propertyPath: m_Name
+      value: BrightSource_Point Light_Picture
+      objectReference: {fileID: 0}
     - target: {fileID: 7475148505446551328, guid: 89445752c9bd9df4696ded275c2b884c,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -2231,6 +2400,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8718881134147105410, guid: 89445752c9bd9df4696ded275c2b884c,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8718881134147105410, guid: 89445752c9bd9df4696ded275c2b884c,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8718881134147105410, guid: 89445752c9bd9df4696ded275c2b884c,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2931,6 +3115,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 664335329891638845, guid: 6496d7a1bd9bbf54584387766d5995bd,
         type: 3}
+      propertyPath: m_Name
+      value: BrightSource_Point Light_Holl
+      objectReference: {fileID: 0}
+    - target: {fileID: 664335329891638845, guid: 6496d7a1bd9bbf54584387766d5995bd,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -3008,6 +3197,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Intensity
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663126551992510240, guid: 6496d7a1bd9bbf54584387766d5995bd,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663126551992510240, guid: 6496d7a1bd9bbf54584387766d5995bd,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663126551992510240, guid: 6496d7a1bd9bbf54584387766d5995bd,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1663126551992510240, guid: 6496d7a1bd9bbf54584387766d5995bd,
         type: 3}
@@ -3331,6 +3535,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 664335329891638845, guid: 6496d7a1bd9bbf54584387766d5995bd,
         type: 3}
+      propertyPath: m_Name
+      value: BrightSource_Point Light_Holl
+      objectReference: {fileID: 0}
+    - target: {fileID: 664335329891638845, guid: 6496d7a1bd9bbf54584387766d5995bd,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -3408,6 +3617,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Intensity
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663126551992510240, guid: 6496d7a1bd9bbf54584387766d5995bd,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663126551992510240, guid: 6496d7a1bd9bbf54584387766d5995bd,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663126551992510240, guid: 6496d7a1bd9bbf54584387766d5995bd,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1663126551992510240, guid: 6496d7a1bd9bbf54584387766d5995bd,
         type: 3}
@@ -3611,6 +3835,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2063609122627330495, guid: bf162110dd32183428a80f7746862b55,
         type: 3}
+      propertyPath: m_Name
+      value: BrightSource_Celling_Light
+      objectReference: {fileID: 0}
+    - target: {fileID: 2063609122627330495, guid: bf162110dd32183428a80f7746862b55,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -3623,6 +3852,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 3985062182098923391, guid: bf162110dd32183428a80f7746862b55,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3985062182098923391, guid: bf162110dd32183428a80f7746862b55,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3985062182098923391, guid: bf162110dd32183428a80f7746862b55,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4156,6 +4400,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 664335329891638845, guid: 6496d7a1bd9bbf54584387766d5995bd,
         type: 3}
+      propertyPath: m_Name
+      value: BrightSource_Point Light_Holl
+      objectReference: {fileID: 0}
+    - target: {fileID: 664335329891638845, guid: 6496d7a1bd9bbf54584387766d5995bd,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -4233,6 +4482,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Intensity
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663126551992510240, guid: 6496d7a1bd9bbf54584387766d5995bd,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663126551992510240, guid: 6496d7a1bd9bbf54584387766d5995bd,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1663126551992510240, guid: 6496d7a1bd9bbf54584387766d5995bd,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1663126551992510240, guid: 6496d7a1bd9bbf54584387766d5995bd,
         type: 3}

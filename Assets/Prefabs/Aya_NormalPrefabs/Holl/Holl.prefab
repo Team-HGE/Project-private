@@ -407,7 +407,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 11
+  m_Priority: 1
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
@@ -820,8 +820,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
-      propertyPath: m_Shadows.m_Type
+      propertyPath: m_RenderMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Strength
+      value: 0.654
       objectReference: {fileID: 0}
     - target: {fileID: 1866103807163041256, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
@@ -1080,8 +1100,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8743436719692388441, guid: db9dd252f03d4b148b45819dffed249f,
         type: 3}
-      propertyPath: m_Shadows.m_Type
+      propertyPath: m_SpotAngle
+      value: 26.013363
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743436719692388441, guid: db9dd252f03d4b148b45819dffed249f,
+        type: 3}
+      propertyPath: m_RenderMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743436719692388441, guid: db9dd252f03d4b148b45819dffed249f,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743436719692388441, guid: db9dd252f03d4b148b45819dffed249f,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 13.828806
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743436719692388441, guid: db9dd252f03d4b148b45819dffed249f,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743436719692388441, guid: db9dd252f03d4b148b45819dffed249f,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8743436719692388441, guid: db9dd252f03d4b148b45819dffed249f,
         type: 3}
@@ -1305,8 +1350,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
-      propertyPath: m_Shadows.m_Type
+      propertyPath: m_RenderMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Strength
+      value: 0.654
       objectReference: {fileID: 0}
     - target: {fileID: 1866103807163041256, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
@@ -1416,8 +1481,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
-      propertyPath: m_Shadows.m_Type
+      propertyPath: m_RenderMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Strength
+      value: 0.654
       objectReference: {fileID: 0}
     - target: {fileID: 1866103807163041256, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
@@ -2028,7 +2113,7 @@ MonoBehaviour:
   keyPadGimmickCanvas: {fileID: 0}
   passwords: 020000000400000006000000080000000100000003000000
   unLock: 0
-  keyPadCam: {fileID: 0}
+  keyPadCam: {fileID: 5319436569937880285}
 --- !u!114 &1871066515754720134 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1492479363776925872, guid: 4f43d4c0f462fcd4d90b1c39f8a363f6,
@@ -2257,8 +2342,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8743436719692388441, guid: db9dd252f03d4b148b45819dffed249f,
         type: 3}
-      propertyPath: m_Shadows.m_Type
+      propertyPath: m_SpotAngle
+      value: 26.013363
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743436719692388441, guid: db9dd252f03d4b148b45819dffed249f,
+        type: 3}
+      propertyPath: m_RenderMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743436719692388441, guid: db9dd252f03d4b148b45819dffed249f,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743436719692388441, guid: db9dd252f03d4b148b45819dffed249f,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 13.828806
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743436719692388441, guid: db9dd252f03d4b148b45819dffed249f,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743436719692388441, guid: db9dd252f03d4b148b45819dffed249f,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8743436719692388441, guid: db9dd252f03d4b148b45819dffed249f,
         type: 3}
@@ -2473,8 +2583,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8743436719692388441, guid: db9dd252f03d4b148b45819dffed249f,
         type: 3}
-      propertyPath: m_Shadows.m_Type
+      propertyPath: m_SpotAngle
+      value: 26.013363
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743436719692388441, guid: db9dd252f03d4b148b45819dffed249f,
+        type: 3}
+      propertyPath: m_RenderMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743436719692388441, guid: db9dd252f03d4b148b45819dffed249f,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743436719692388441, guid: db9dd252f03d4b148b45819dffed249f,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 13.828806
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743436719692388441, guid: db9dd252f03d4b148b45819dffed249f,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743436719692388441, guid: db9dd252f03d4b148b45819dffed249f,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8743436719692388441, guid: db9dd252f03d4b148b45819dffed249f,
         type: 3}
@@ -2603,8 +2738,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
-      propertyPath: m_Shadows.m_Type
+      propertyPath: m_RenderMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Strength
+      value: 0.654
       objectReference: {fileID: 0}
     - target: {fileID: 1866103807163041256, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
@@ -2976,12 +3131,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 8630607382054435356}
     m_Modifications:
     - target: {fileID: 3957516152500275, guid: 5a5988c1a1b1690458e7a4f9fcd44512, type: 3}
+      propertyPath: m_SpotAngle
+      value: 26.013363
+      objectReference: {fileID: 0}
+    - target: {fileID: 3957516152500275, guid: 5a5988c1a1b1690458e7a4f9fcd44512, type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3957516152500275, guid: 5a5988c1a1b1690458e7a4f9fcd44512, type: 3}
       propertyPath: m_Lightmapping
-      value: 4
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3957516152500275, guid: 5a5988c1a1b1690458e7a4f9fcd44512, type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 13.828806
       objectReference: {fileID: 0}
     - target: {fileID: 3957516152500275, guid: 5a5988c1a1b1690458e7a4f9fcd44512, type: 3}
       propertyPath: m_Shadows.m_Type
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3957516152500275, guid: 5a5988c1a1b1690458e7a4f9fcd44512, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3957516152500275, guid: 5a5988c1a1b1690458e7a4f9fcd44512, type: 3}
       propertyPath: m_Shadows.m_Strength
@@ -2989,13 +3160,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 307757680788870514, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
+      propertyPath: m_SpotAngle
+      value: 26.013363
+      objectReference: {fileID: 0}
+    - target: {fileID: 307757680788870514, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 307757680788870514, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
       propertyPath: m_Lightmapping
-      value: 4
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 307757680788870514, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 13.828806
       objectReference: {fileID: 0}
     - target: {fileID: 307757680788870514, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
       propertyPath: m_Shadows.m_Type
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 307757680788870514, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 307757680788870514, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
@@ -3014,13 +3205,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 450194171925403760, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
+      propertyPath: m_SpotAngle
+      value: 26.013363
+      objectReference: {fileID: 0}
+    - target: {fileID: 450194171925403760, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 450194171925403760, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
       propertyPath: m_Lightmapping
-      value: 4
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 450194171925403760, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 13.828806
       objectReference: {fileID: 0}
     - target: {fileID: 450194171925403760, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
       propertyPath: m_Shadows.m_Type
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 450194171925403760, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 450194171925403760, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
@@ -3029,13 +3240,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 477758951916240738, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
+      propertyPath: m_SpotAngle
+      value: 26.013363
+      objectReference: {fileID: 0}
+    - target: {fileID: 477758951916240738, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 477758951916240738, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
       propertyPath: m_Lightmapping
-      value: 4
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 477758951916240738, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 13.828806
       objectReference: {fileID: 0}
     - target: {fileID: 477758951916240738, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
       propertyPath: m_Shadows.m_Type
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 477758951916240738, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 477758951916240738, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
@@ -3064,13 +3295,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 668962165950195443, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
+      propertyPath: m_SpotAngle
+      value: 26.013363
+      objectReference: {fileID: 0}
+    - target: {fileID: 668962165950195443, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 668962165950195443, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
       propertyPath: m_Lightmapping
-      value: 4
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 668962165950195443, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 13.828806
       objectReference: {fileID: 0}
     - target: {fileID: 668962165950195443, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
       propertyPath: m_Shadows.m_Type
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 668962165950195443, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 668962165950195443, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
@@ -3089,13 +3340,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 790976247440186020, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
+      propertyPath: m_SpotAngle
+      value: 26.013363
+      objectReference: {fileID: 0}
+    - target: {fileID: 790976247440186020, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 790976247440186020, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
       propertyPath: m_Lightmapping
-      value: 4
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 790976247440186020, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 13.828806
       objectReference: {fileID: 0}
     - target: {fileID: 790976247440186020, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
       propertyPath: m_Shadows.m_Type
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 790976247440186020, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 790976247440186020, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
@@ -3104,13 +3375,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 795525030158420598, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
+      propertyPath: m_SpotAngle
+      value: 26.013363
+      objectReference: {fileID: 0}
+    - target: {fileID: 795525030158420598, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 795525030158420598, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
       propertyPath: m_Lightmapping
-      value: 4
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 795525030158420598, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 13.828806
       objectReference: {fileID: 0}
     - target: {fileID: 795525030158420598, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
       propertyPath: m_Shadows.m_Type
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 795525030158420598, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 795525030158420598, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
@@ -3129,13 +3420,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1130397513915798550, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
+      propertyPath: m_SpotAngle
+      value: 26.013363
+      objectReference: {fileID: 0}
+    - target: {fileID: 1130397513915798550, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1130397513915798550, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
       propertyPath: m_Lightmapping
-      value: 4
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1130397513915798550, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 13.828806
       objectReference: {fileID: 0}
     - target: {fileID: 1130397513915798550, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
       propertyPath: m_Shadows.m_Type
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1130397513915798550, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1130397513915798550, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
@@ -3144,13 +3455,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1223800634783738128, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
+      propertyPath: m_SpotAngle
+      value: 26.013363
+      objectReference: {fileID: 0}
+    - target: {fileID: 1223800634783738128, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1223800634783738128, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
       propertyPath: m_Lightmapping
-      value: 4
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1223800634783738128, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 13.828806
       objectReference: {fileID: 0}
     - target: {fileID: 1223800634783738128, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
       propertyPath: m_Shadows.m_Type
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1223800634783738128, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1223800634783738128, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
@@ -3309,13 +3640,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2945887878415869166, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
+      propertyPath: m_SpotAngle
+      value: 26.013363
+      objectReference: {fileID: 0}
+    - target: {fileID: 2945887878415869166, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2945887878415869166, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
       propertyPath: m_Lightmapping
-      value: 4
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2945887878415869166, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 13.828806
       objectReference: {fileID: 0}
     - target: {fileID: 2945887878415869166, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
       propertyPath: m_Shadows.m_Type
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2945887878415869166, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2945887878415869166, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
@@ -3324,13 +3675,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2994264578594630026, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
+      propertyPath: m_SpotAngle
+      value: 26.013363
+      objectReference: {fileID: 0}
+    - target: {fileID: 2994264578594630026, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2994264578594630026, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
       propertyPath: m_Lightmapping
-      value: 4
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2994264578594630026, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 13.828806
       objectReference: {fileID: 0}
     - target: {fileID: 2994264578594630026, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
       propertyPath: m_Shadows.m_Type
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2994264578594630026, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2994264578594630026, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
@@ -3354,13 +3725,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3330880847511060980, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
+      propertyPath: m_SpotAngle
+      value: 26.013363
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330880847511060980, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330880847511060980, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
       propertyPath: m_Lightmapping
-      value: 4
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330880847511060980, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 13.828806
       objectReference: {fileID: 0}
     - target: {fileID: 3330880847511060980, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
       propertyPath: m_Shadows.m_Type
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330880847511060980, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3330880847511060980, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
@@ -3374,13 +3765,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3355424653022151479, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
+      propertyPath: m_SpotAngle
+      value: 26.013363
+      objectReference: {fileID: 0}
+    - target: {fileID: 3355424653022151479, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3355424653022151479, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
       propertyPath: m_Lightmapping
-      value: 4
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3355424653022151479, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 13.828806
       objectReference: {fileID: 0}
     - target: {fileID: 3355424653022151479, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
       propertyPath: m_Shadows.m_Type
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3355424653022151479, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3355424653022151479, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
@@ -3429,13 +3840,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3884240892234540453, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
+      propertyPath: m_SpotAngle
+      value: 26.013363
+      objectReference: {fileID: 0}
+    - target: {fileID: 3884240892234540453, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3884240892234540453, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
       propertyPath: m_Lightmapping
-      value: 4
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3884240892234540453, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 13.828806
       objectReference: {fileID: 0}
     - target: {fileID: 3884240892234540453, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
       propertyPath: m_Shadows.m_Type
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3884240892234540453, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3884240892234540453, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
@@ -3444,13 +3875,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4061305416067416040, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
+      propertyPath: m_SpotAngle
+      value: 26.013363
+      objectReference: {fileID: 0}
+    - target: {fileID: 4061305416067416040, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4061305416067416040, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
       propertyPath: m_Lightmapping
-      value: 4
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4061305416067416040, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 13.828806
       objectReference: {fileID: 0}
     - target: {fileID: 4061305416067416040, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
       propertyPath: m_Shadows.m_Type
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4061305416067416040, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4061305416067416040, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
@@ -3464,13 +3915,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4102880363691906258, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
+      propertyPath: m_SpotAngle
+      value: 26.013363
+      objectReference: {fileID: 0}
+    - target: {fileID: 4102880363691906258, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4102880363691906258, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
       propertyPath: m_Lightmapping
-      value: 4
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4102880363691906258, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 13.828806
       objectReference: {fileID: 0}
     - target: {fileID: 4102880363691906258, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
       propertyPath: m_Shadows.m_Type
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4102880363691906258, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4102880363691906258, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
@@ -3539,13 +4010,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4714786439993658374, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
+      propertyPath: m_SpotAngle
+      value: 26.013363
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714786439993658374, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714786439993658374, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
       propertyPath: m_Lightmapping
-      value: 4
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714786439993658374, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 13.828806
       objectReference: {fileID: 0}
     - target: {fileID: 4714786439993658374, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
       propertyPath: m_Shadows.m_Type
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714786439993658374, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4714786439993658374, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
@@ -3564,13 +4055,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4760602585833082083, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
+      propertyPath: m_SpotAngle
+      value: 26.013363
+      objectReference: {fileID: 0}
+    - target: {fileID: 4760602585833082083, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4760602585833082083, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
       propertyPath: m_Lightmapping
-      value: 4
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4760602585833082083, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 13.828806
       objectReference: {fileID: 0}
     - target: {fileID: 4760602585833082083, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
       propertyPath: m_Shadows.m_Type
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4760602585833082083, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4760602585833082083, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
@@ -3689,13 +4200,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5812446548432320494, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
+      propertyPath: m_SpotAngle
+      value: 26.013363
+      objectReference: {fileID: 0}
+    - target: {fileID: 5812446548432320494, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5812446548432320494, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
       propertyPath: m_Lightmapping
-      value: 4
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5812446548432320494, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 13.828806
       objectReference: {fileID: 0}
     - target: {fileID: 5812446548432320494, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
       propertyPath: m_Shadows.m_Type
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5812446548432320494, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5812446548432320494, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
@@ -3714,13 +4245,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6054991011299728024, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
+      propertyPath: m_SpotAngle
+      value: 26.013363
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054991011299728024, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054991011299728024, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
       propertyPath: m_Lightmapping
-      value: 4
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054991011299728024, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 13.828806
       objectReference: {fileID: 0}
     - target: {fileID: 6054991011299728024, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
       propertyPath: m_Shadows.m_Type
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6054991011299728024, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6054991011299728024, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
@@ -3739,13 +4290,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6167485623531624183, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
+      propertyPath: m_SpotAngle
+      value: 26.013363
+      objectReference: {fileID: 0}
+    - target: {fileID: 6167485623531624183, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6167485623531624183, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
       propertyPath: m_Lightmapping
-      value: 4
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6167485623531624183, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 13.828806
       objectReference: {fileID: 0}
     - target: {fileID: 6167485623531624183, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
       propertyPath: m_Shadows.m_Type
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6167485623531624183, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6167485623531624183, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
@@ -3779,13 +4350,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6370987155658463750, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
+      propertyPath: m_SpotAngle
+      value: 26.013363
+      objectReference: {fileID: 0}
+    - target: {fileID: 6370987155658463750, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6370987155658463750, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
       propertyPath: m_Lightmapping
-      value: 4
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6370987155658463750, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 13.828806
       objectReference: {fileID: 0}
     - target: {fileID: 6370987155658463750, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
       propertyPath: m_Shadows.m_Type
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6370987155658463750, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6370987155658463750, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
@@ -3799,13 +4390,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6768769440966061728, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
+      propertyPath: m_SpotAngle
+      value: 26.013363
+      objectReference: {fileID: 0}
+    - target: {fileID: 6768769440966061728, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6768769440966061728, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
       propertyPath: m_Lightmapping
-      value: 4
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6768769440966061728, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 13.828806
       objectReference: {fileID: 0}
     - target: {fileID: 6768769440966061728, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
       propertyPath: m_Shadows.m_Type
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6768769440966061728, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6768769440966061728, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
@@ -3814,13 +4425,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6915956992169111064, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
+      propertyPath: m_SpotAngle
+      value: 26.013363
+      objectReference: {fileID: 0}
+    - target: {fileID: 6915956992169111064, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6915956992169111064, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
       propertyPath: m_Lightmapping
-      value: 4
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6915956992169111064, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 13.828806
       objectReference: {fileID: 0}
     - target: {fileID: 6915956992169111064, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
       propertyPath: m_Shadows.m_Type
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6915956992169111064, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6915956992169111064, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
@@ -3889,13 +4520,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7710060612094584189, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
+      propertyPath: m_SpotAngle
+      value: 26.013363
+      objectReference: {fileID: 0}
+    - target: {fileID: 7710060612094584189, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7710060612094584189, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
       propertyPath: m_Lightmapping
-      value: 4
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7710060612094584189, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 13.828806
       objectReference: {fileID: 0}
     - target: {fileID: 7710060612094584189, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
       propertyPath: m_Shadows.m_Type
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7710060612094584189, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7710060612094584189, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
@@ -3926,6 +4577,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7999778320080004516, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.47
       objectReference: {fileID: 0}
     - target: {fileID: 8019912580682138270, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
@@ -3959,13 +4615,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8579224532502626168, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
+      propertyPath: m_SpotAngle
+      value: 26.013363
+      objectReference: {fileID: 0}
+    - target: {fileID: 8579224532502626168, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8579224532502626168, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
       propertyPath: m_Lightmapping
-      value: 4
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8579224532502626168, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 13.828806
       objectReference: {fileID: 0}
     - target: {fileID: 8579224532502626168, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
       propertyPath: m_Shadows.m_Type
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8579224532502626168, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8579224532502626168, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
@@ -3979,13 +4655,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8746084603138308630, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
+      propertyPath: m_SpotAngle
+      value: 26.013363
+      objectReference: {fileID: 0}
+    - target: {fileID: 8746084603138308630, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8746084603138308630, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
       propertyPath: m_Lightmapping
-      value: 4
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8746084603138308630, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 13.828806
       objectReference: {fileID: 0}
     - target: {fileID: 8746084603138308630, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
       propertyPath: m_Shadows.m_Type
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8746084603138308630, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8746084603138308630, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
@@ -3999,13 +4695,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8926335505467332933, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
+      propertyPath: m_SpotAngle
+      value: 26.013363
+      objectReference: {fileID: 0}
+    - target: {fileID: 8926335505467332933, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8926335505467332933, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
       propertyPath: m_Lightmapping
-      value: 4
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8926335505467332933, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 13.828806
       objectReference: {fileID: 0}
     - target: {fileID: 8926335505467332933, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
       propertyPath: m_Shadows.m_Type
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8926335505467332933, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8926335505467332933, guid: 5a5988c1a1b1690458e7a4f9fcd44512,
         type: 3}
@@ -4440,6 +5156,21 @@ PrefabInstance:
     - target: {fileID: 2956927962449103650, guid: e19d584b25e14f84ebc790ef54a40eff,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4660136581885003149, guid: e19d584b25e14f84ebc790ef54a40eff,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4660136581885003149, guid: e19d584b25e14f84ebc790ef54a40eff,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4660136581885003149, guid: e19d584b25e14f84ebc790ef54a40eff,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5235437160683940957, guid: e19d584b25e14f84ebc790ef54a40eff,
@@ -5024,8 +5755,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8743436719692388441, guid: db9dd252f03d4b148b45819dffed249f,
         type: 3}
-      propertyPath: m_Shadows.m_Type
+      propertyPath: m_SpotAngle
+      value: 26.013363
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743436719692388441, guid: db9dd252f03d4b148b45819dffed249f,
+        type: 3}
+      propertyPath: m_RenderMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743436719692388441, guid: db9dd252f03d4b148b45819dffed249f,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743436719692388441, guid: db9dd252f03d4b148b45819dffed249f,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 13.828806
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743436719692388441, guid: db9dd252f03d4b148b45819dffed249f,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743436719692388441, guid: db9dd252f03d4b148b45819dffed249f,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8743436719692388441, guid: db9dd252f03d4b148b45819dffed249f,
         type: 3}
@@ -5111,6 +5867,21 @@ PrefabInstance:
     - target: {fileID: 2956927962449103650, guid: e19d584b25e14f84ebc790ef54a40eff,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4660136581885003149, guid: e19d584b25e14f84ebc790ef54a40eff,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4660136581885003149, guid: e19d584b25e14f84ebc790ef54a40eff,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4660136581885003149, guid: e19d584b25e14f84ebc790ef54a40eff,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5235437160683940957, guid: e19d584b25e14f84ebc790ef54a40eff,
@@ -5282,8 +6053,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
-      propertyPath: m_Shadows.m_Type
+      propertyPath: m_RenderMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Strength
+      value: 0.654
       objectReference: {fileID: 0}
     - target: {fileID: 1866103807163041256, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
@@ -5393,8 +6184,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
-      propertyPath: m_Shadows.m_Type
+      propertyPath: m_RenderMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Strength
+      value: 0.654
       objectReference: {fileID: 0}
     - target: {fileID: 1866103807163041256, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
@@ -5504,8 +6315,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
-      propertyPath: m_Shadows.m_Type
+      propertyPath: m_RenderMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Strength
+      value: 0.654
       objectReference: {fileID: 0}
     - target: {fileID: 1866103807163041256, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
@@ -5702,8 +6533,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
-      propertyPath: m_Shadows.m_Type
+      propertyPath: m_RenderMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Strength
+      value: 0.654
       objectReference: {fileID: 0}
     - target: {fileID: 1866103807163041256, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
@@ -5813,8 +6664,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
-      propertyPath: m_Shadows.m_Type
+      propertyPath: m_RenderMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Strength
+      value: 0.654
       objectReference: {fileID: 0}
     - target: {fileID: 1866103807163041256, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
@@ -6023,8 +6894,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
-      propertyPath: m_Shadows.m_Type
+      propertyPath: m_RenderMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Strength
+      value: 0.654
       objectReference: {fileID: 0}
     - target: {fileID: 1866103807163041256, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
@@ -6283,8 +7174,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2906610039056663380, guid: 72e144f4727c80c4594f0ae7abefbdfb,
         type: 3}
-      propertyPath: m_Shadows.m_Type
+      propertyPath: m_SpotAngle
+      value: 26.013363
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906610039056663380, guid: 72e144f4727c80c4594f0ae7abefbdfb,
+        type: 3}
+      propertyPath: m_RenderMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906610039056663380, guid: 72e144f4727c80c4594f0ae7abefbdfb,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906610039056663380, guid: 72e144f4727c80c4594f0ae7abefbdfb,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 13.828806
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906610039056663380, guid: 72e144f4727c80c4594f0ae7abefbdfb,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2906610039056663380, guid: 72e144f4727c80c4594f0ae7abefbdfb,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2906610039056663380, guid: 72e144f4727c80c4594f0ae7abefbdfb,
         type: 3}
@@ -6308,8 +7224,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4318111675314428592, guid: 72e144f4727c80c4594f0ae7abefbdfb,
         type: 3}
-      propertyPath: m_Shadows.m_Type
+      propertyPath: m_SpotAngle
+      value: 26.013363
+      objectReference: {fileID: 0}
+    - target: {fileID: 4318111675314428592, guid: 72e144f4727c80c4594f0ae7abefbdfb,
+        type: 3}
+      propertyPath: m_RenderMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4318111675314428592, guid: 72e144f4727c80c4594f0ae7abefbdfb,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4318111675314428592, guid: 72e144f4727c80c4594f0ae7abefbdfb,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 13.828806
+      objectReference: {fileID: 0}
+    - target: {fileID: 4318111675314428592, guid: 72e144f4727c80c4594f0ae7abefbdfb,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4318111675314428592, guid: 72e144f4727c80c4594f0ae7abefbdfb,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4318111675314428592, guid: 72e144f4727c80c4594f0ae7abefbdfb,
         type: 3}
@@ -6363,8 +7304,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7331034504910434223, guid: 72e144f4727c80c4594f0ae7abefbdfb,
         type: 3}
-      propertyPath: m_Shadows.m_Type
+      propertyPath: m_SpotAngle
+      value: 26.013363
+      objectReference: {fileID: 0}
+    - target: {fileID: 7331034504910434223, guid: 72e144f4727c80c4594f0ae7abefbdfb,
+        type: 3}
+      propertyPath: m_RenderMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7331034504910434223, guid: 72e144f4727c80c4594f0ae7abefbdfb,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7331034504910434223, guid: 72e144f4727c80c4594f0ae7abefbdfb,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 13.828806
+      objectReference: {fileID: 0}
+    - target: {fileID: 7331034504910434223, guid: 72e144f4727c80c4594f0ae7abefbdfb,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7331034504910434223, guid: 72e144f4727c80c4594f0ae7abefbdfb,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7331034504910434223, guid: 72e144f4727c80c4594f0ae7abefbdfb,
         type: 3}
@@ -6393,8 +7359,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8310993240423000025, guid: 72e144f4727c80c4594f0ae7abefbdfb,
         type: 3}
-      propertyPath: m_Shadows.m_Type
+      propertyPath: m_SpotAngle
+      value: 26.013363
+      objectReference: {fileID: 0}
+    - target: {fileID: 8310993240423000025, guid: 72e144f4727c80c4594f0ae7abefbdfb,
+        type: 3}
+      propertyPath: m_RenderMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8310993240423000025, guid: 72e144f4727c80c4594f0ae7abefbdfb,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8310993240423000025, guid: 72e144f4727c80c4594f0ae7abefbdfb,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 13.828806
+      objectReference: {fileID: 0}
+    - target: {fileID: 8310993240423000025, guid: 72e144f4727c80c4594f0ae7abefbdfb,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8310993240423000025, guid: 72e144f4727c80c4594f0ae7abefbdfb,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8310993240423000025, guid: 72e144f4727c80c4594f0ae7abefbdfb,
         type: 3}
@@ -6580,8 +7571,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8743436719692388441, guid: db9dd252f03d4b148b45819dffed249f,
         type: 3}
-      propertyPath: m_Shadows.m_Type
+      propertyPath: m_SpotAngle
+      value: 26.013363
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743436719692388441, guid: db9dd252f03d4b148b45819dffed249f,
+        type: 3}
+      propertyPath: m_RenderMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743436719692388441, guid: db9dd252f03d4b148b45819dffed249f,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743436719692388441, guid: db9dd252f03d4b148b45819dffed249f,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 13.828806
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743436719692388441, guid: db9dd252f03d4b148b45819dffed249f,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743436719692388441, guid: db9dd252f03d4b148b45819dffed249f,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8743436719692388441, guid: db9dd252f03d4b148b45819dffed249f,
         type: 3}
@@ -6710,8 +7726,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
-      propertyPath: m_Shadows.m_Type
+      propertyPath: m_RenderMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Strength
+      value: 0.654
       objectReference: {fileID: 0}
     - target: {fileID: 1866103807163041256, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
@@ -7037,8 +8073,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8743436719692388441, guid: db9dd252f03d4b148b45819dffed249f,
         type: 3}
-      propertyPath: m_Shadows.m_Type
+      propertyPath: m_SpotAngle
+      value: 26.013363
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743436719692388441, guid: db9dd252f03d4b148b45819dffed249f,
+        type: 3}
+      propertyPath: m_RenderMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743436719692388441, guid: db9dd252f03d4b148b45819dffed249f,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743436719692388441, guid: db9dd252f03d4b148b45819dffed249f,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 13.828806
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743436719692388441, guid: db9dd252f03d4b148b45819dffed249f,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743436719692388441, guid: db9dd252f03d4b148b45819dffed249f,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8743436719692388441, guid: db9dd252f03d4b148b45819dffed249f,
         type: 3}
@@ -7088,8 +8149,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
-      propertyPath: m_Shadows.m_Type
+      propertyPath: m_RenderMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Strength
+      value: 0.654
       objectReference: {fileID: 0}
     - target: {fileID: 1866103807163041256, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
@@ -7820,8 +8901,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
-      propertyPath: m_Shadows.m_Type
+      propertyPath: m_RenderMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Strength
+      value: 0.654
       objectReference: {fileID: 0}
     - target: {fileID: 1866103807163041256, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
@@ -7931,8 +9032,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
-      propertyPath: m_Shadows.m_Type
+      propertyPath: m_RenderMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Strength
+      value: 0.654
       objectReference: {fileID: 0}
     - target: {fileID: 1866103807163041256, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
@@ -8141,8 +9262,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
-      propertyPath: m_Shadows.m_Type
+      propertyPath: m_RenderMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Strength
+      value: 0.654
       objectReference: {fileID: 0}
     - target: {fileID: 1866103807163041256, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
@@ -8846,8 +9987,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
-      propertyPath: m_Shadows.m_Type
+      propertyPath: m_RenderMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Strength
+      value: 0.654
       objectReference: {fileID: 0}
     - target: {fileID: 1866103807163041256, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
@@ -9036,8 +10197,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
-      propertyPath: m_Shadows.m_Type
+      propertyPath: m_RenderMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Strength
+      value: 0.654
       objectReference: {fileID: 0}
     - target: {fileID: 1866103807163041256, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
@@ -9185,6 +10366,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4660136581885003149, guid: e19d584b25e14f84ebc790ef54a40eff,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4660136581885003149, guid: e19d584b25e14f84ebc790ef54a40eff,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4660136581885003149, guid: e19d584b25e14f84ebc790ef54a40eff,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5235437160683940957, guid: e19d584b25e14f84ebc790ef54a40eff,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -9303,6 +10499,21 @@ PrefabInstance:
     - target: {fileID: 2956927962449103650, guid: e19d584b25e14f84ebc790ef54a40eff,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4660136581885003149, guid: e19d584b25e14f84ebc790ef54a40eff,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4660136581885003149, guid: e19d584b25e14f84ebc790ef54a40eff,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4660136581885003149, guid: e19d584b25e14f84ebc790ef54a40eff,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5235437160683940957, guid: e19d584b25e14f84ebc790ef54a40eff,
@@ -9482,8 +10693,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
-      propertyPath: m_Shadows.m_Type
+      propertyPath: m_RenderMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Strength
+      value: 0.654
       objectReference: {fileID: 0}
     - target: {fileID: 1866103807163041256, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
@@ -10762,8 +11993,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
-      propertyPath: m_Shadows.m_Type
+      propertyPath: m_RenderMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Strength
+      value: 0.654
       objectReference: {fileID: 0}
     - target: {fileID: 1866103807163041256, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
@@ -10873,8 +12124,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
-      propertyPath: m_Shadows.m_Type
+      propertyPath: m_RenderMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Strength
+      value: 0.654
       objectReference: {fileID: 0}
     - target: {fileID: 1866103807163041256, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
@@ -11032,6 +12303,21 @@ PrefabInstance:
       propertyPath: m_Intensity
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4660136581885003149, guid: e19d584b25e14f84ebc790ef54a40eff,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4660136581885003149, guid: e19d584b25e14f84ebc790ef54a40eff,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4660136581885003149, guid: e19d584b25e14f84ebc790ef54a40eff,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5235437160683940957, guid: e19d584b25e14f84ebc790ef54a40eff,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -11114,8 +12400,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
-      propertyPath: m_Shadows.m_Type
+      propertyPath: m_RenderMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Strength
+      value: 0.654
       objectReference: {fileID: 0}
     - target: {fileID: 1866103807163041256, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
@@ -11319,8 +12625,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
-      propertyPath: m_Shadows.m_Type
+      propertyPath: m_RenderMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Strength
+      value: 0.654
       objectReference: {fileID: 0}
     - target: {fileID: 1866103807163041256, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
@@ -11517,8 +12843,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
-      propertyPath: m_Shadows.m_Type
+      propertyPath: m_RenderMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Strength
+      value: 0.654
       objectReference: {fileID: 0}
     - target: {fileID: 1866103807163041256, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
@@ -11816,8 +13162,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
-      propertyPath: m_Shadows.m_Type
+      propertyPath: m_RenderMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Strength
+      value: 0.654
       objectReference: {fileID: 0}
     - target: {fileID: 1866103807163041256, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
@@ -12053,8 +13419,40 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7997063022957662335, guid: 405d70b0984f16845b0a5163e88ab3fd,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6722498247516903807}
   m_SourcePrefab: {fileID: 100100000, guid: 405d70b0984f16845b0a5163e88ab3fd, type: 3}
+--- !u!1 &872232172954350798 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7997063022957662335, guid: 405d70b0984f16845b0a5163e88ab3fd,
+    type: 3}
+  m_PrefabInstance: {fileID: 7125131085600646321}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &6722498247516903807
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 872232172954350798}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 45c2ad30f11de2a4bb96370353f513e2, type: 3}
 --- !u!4 &2289848286425679181 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9018071340114076156, guid: 405d70b0984f16845b0a5163e88ab3fd,
@@ -12081,8 +13479,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
-      propertyPath: m_Shadows.m_Type
+      propertyPath: m_RenderMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Strength
+      value: 0.654
       objectReference: {fileID: 0}
     - target: {fileID: 1866103807163041256, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
@@ -12357,8 +13775,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8743436719692388441, guid: db9dd252f03d4b148b45819dffed249f,
         type: 3}
-      propertyPath: m_Shadows.m_Type
+      propertyPath: m_SpotAngle
+      value: 26.013363
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743436719692388441, guid: db9dd252f03d4b148b45819dffed249f,
+        type: 3}
+      propertyPath: m_RenderMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743436719692388441, guid: db9dd252f03d4b148b45819dffed249f,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743436719692388441, guid: db9dd252f03d4b148b45819dffed249f,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 13.828806
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743436719692388441, guid: db9dd252f03d4b148b45819dffed249f,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8743436719692388441, guid: db9dd252f03d4b148b45819dffed249f,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8743436719692388441, guid: db9dd252f03d4b148b45819dffed249f,
         type: 3}
@@ -12482,8 +13925,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
-      propertyPath: m_Shadows.m_Type
+      propertyPath: m_RenderMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Strength
+      value: 0.654
       objectReference: {fileID: 0}
     - target: {fileID: 1866103807163041256, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
@@ -12629,6 +14092,21 @@ PrefabInstance:
     - target: {fileID: 2956927962449103650, guid: e19d584b25e14f84ebc790ef54a40eff,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4660136581885003149, guid: e19d584b25e14f84ebc790ef54a40eff,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4660136581885003149, guid: e19d584b25e14f84ebc790ef54a40eff,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4660136581885003149, guid: e19d584b25e14f84ebc790ef54a40eff,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5235437160683940957, guid: e19d584b25e14f84ebc790ef54a40eff,
@@ -12807,8 +14285,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
-      propertyPath: m_Shadows.m_Type
+      propertyPath: m_RenderMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Strength
+      value: 0.654
       objectReference: {fileID: 0}
     - target: {fileID: 1866103807163041256, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
@@ -12918,8 +14416,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
-      propertyPath: m_Shadows.m_Type
+      propertyPath: m_RenderMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Strength
+      value: 0.654
       objectReference: {fileID: 0}
     - target: {fileID: 1866103807163041256, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
@@ -13044,8 +14562,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 358225513892102023, guid: 6f58347af2fbc0646b085f7180c7a1ec,
         type: 3}
-      propertyPath: m_Shadows.m_Type
+      propertyPath: m_SpotAngle
+      value: 26.013363
+      objectReference: {fileID: 0}
+    - target: {fileID: 358225513892102023, guid: 6f58347af2fbc0646b085f7180c7a1ec,
+        type: 3}
+      propertyPath: m_RenderMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 358225513892102023, guid: 6f58347af2fbc0646b085f7180c7a1ec,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 358225513892102023, guid: 6f58347af2fbc0646b085f7180c7a1ec,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 13.828806
+      objectReference: {fileID: 0}
+    - target: {fileID: 358225513892102023, guid: 6f58347af2fbc0646b085f7180c7a1ec,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 358225513892102023, guid: 6f58347af2fbc0646b085f7180c7a1ec,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 358225513892102023, guid: 6f58347af2fbc0646b085f7180c7a1ec,
         type: 3}
@@ -13134,8 +14677,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1350939492848294002, guid: 6f58347af2fbc0646b085f7180c7a1ec,
         type: 3}
-      propertyPath: m_Shadows.m_Type
+      propertyPath: m_SpotAngle
+      value: 26.013363
+      objectReference: {fileID: 0}
+    - target: {fileID: 1350939492848294002, guid: 6f58347af2fbc0646b085f7180c7a1ec,
+        type: 3}
+      propertyPath: m_RenderMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1350939492848294002, guid: 6f58347af2fbc0646b085f7180c7a1ec,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1350939492848294002, guid: 6f58347af2fbc0646b085f7180c7a1ec,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 13.828806
+      objectReference: {fileID: 0}
+    - target: {fileID: 1350939492848294002, guid: 6f58347af2fbc0646b085f7180c7a1ec,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1350939492848294002, guid: 6f58347af2fbc0646b085f7180c7a1ec,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1350939492848294002, guid: 6f58347af2fbc0646b085f7180c7a1ec,
         type: 3}
@@ -13289,8 +14857,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3553514136837534873, guid: 6f58347af2fbc0646b085f7180c7a1ec,
         type: 3}
-      propertyPath: m_Shadows.m_Type
+      propertyPath: m_SpotAngle
+      value: 26.013363
+      objectReference: {fileID: 0}
+    - target: {fileID: 3553514136837534873, guid: 6f58347af2fbc0646b085f7180c7a1ec,
+        type: 3}
+      propertyPath: m_RenderMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3553514136837534873, guid: 6f58347af2fbc0646b085f7180c7a1ec,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3553514136837534873, guid: 6f58347af2fbc0646b085f7180c7a1ec,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 13.828806
+      objectReference: {fileID: 0}
+    - target: {fileID: 3553514136837534873, guid: 6f58347af2fbc0646b085f7180c7a1ec,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3553514136837534873, guid: 6f58347af2fbc0646b085f7180c7a1ec,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3553514136837534873, guid: 6f58347af2fbc0646b085f7180c7a1ec,
         type: 3}
@@ -13404,8 +14997,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4525727640446776577, guid: 6f58347af2fbc0646b085f7180c7a1ec,
         type: 3}
-      propertyPath: m_Shadows.m_Type
+      propertyPath: m_SpotAngle
+      value: 26.013363
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525727640446776577, guid: 6f58347af2fbc0646b085f7180c7a1ec,
+        type: 3}
+      propertyPath: m_RenderMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525727640446776577, guid: 6f58347af2fbc0646b085f7180c7a1ec,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525727640446776577, guid: 6f58347af2fbc0646b085f7180c7a1ec,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 13.828806
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525727640446776577, guid: 6f58347af2fbc0646b085f7180c7a1ec,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525727640446776577, guid: 6f58347af2fbc0646b085f7180c7a1ec,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4525727640446776577, guid: 6f58347af2fbc0646b085f7180c7a1ec,
         type: 3}
@@ -13414,8 +15032,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4647631259976317750, guid: 6f58347af2fbc0646b085f7180c7a1ec,
         type: 3}
-      propertyPath: m_Shadows.m_Type
+      propertyPath: m_SpotAngle
+      value: 26.013363
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647631259976317750, guid: 6f58347af2fbc0646b085f7180c7a1ec,
+        type: 3}
+      propertyPath: m_RenderMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647631259976317750, guid: 6f58347af2fbc0646b085f7180c7a1ec,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647631259976317750, guid: 6f58347af2fbc0646b085f7180c7a1ec,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 13.828806
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647631259976317750, guid: 6f58347af2fbc0646b085f7180c7a1ec,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647631259976317750, guid: 6f58347af2fbc0646b085f7180c7a1ec,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4647631259976317750, guid: 6f58347af2fbc0646b085f7180c7a1ec,
         type: 3}
@@ -13484,8 +15127,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5305821235749685864, guid: 6f58347af2fbc0646b085f7180c7a1ec,
         type: 3}
-      propertyPath: m_Shadows.m_Type
+      propertyPath: m_SpotAngle
+      value: 26.013363
+      objectReference: {fileID: 0}
+    - target: {fileID: 5305821235749685864, guid: 6f58347af2fbc0646b085f7180c7a1ec,
+        type: 3}
+      propertyPath: m_RenderMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5305821235749685864, guid: 6f58347af2fbc0646b085f7180c7a1ec,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5305821235749685864, guid: 6f58347af2fbc0646b085f7180c7a1ec,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 13.828806
+      objectReference: {fileID: 0}
+    - target: {fileID: 5305821235749685864, guid: 6f58347af2fbc0646b085f7180c7a1ec,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5305821235749685864, guid: 6f58347af2fbc0646b085f7180c7a1ec,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5305821235749685864, guid: 6f58347af2fbc0646b085f7180c7a1ec,
         type: 3}
@@ -13564,8 +15232,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6514767786821920114, guid: 6f58347af2fbc0646b085f7180c7a1ec,
         type: 3}
-      propertyPath: m_Shadows.m_Type
+      propertyPath: m_SpotAngle
+      value: 26.013363
+      objectReference: {fileID: 0}
+    - target: {fileID: 6514767786821920114, guid: 6f58347af2fbc0646b085f7180c7a1ec,
+        type: 3}
+      propertyPath: m_RenderMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6514767786821920114, guid: 6f58347af2fbc0646b085f7180c7a1ec,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6514767786821920114, guid: 6f58347af2fbc0646b085f7180c7a1ec,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 13.828806
+      objectReference: {fileID: 0}
+    - target: {fileID: 6514767786821920114, guid: 6f58347af2fbc0646b085f7180c7a1ec,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6514767786821920114, guid: 6f58347af2fbc0646b085f7180c7a1ec,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6514767786821920114, guid: 6f58347af2fbc0646b085f7180c7a1ec,
         type: 3}
@@ -14011,8 +15704,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
-      propertyPath: m_Shadows.m_Type
+      propertyPath: m_RenderMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 646231268388651353, guid: 349fcde0e51195048b1816d0f71310e7,
+        type: 3}
+      propertyPath: m_Shadows.m_Strength
+      value: 0.654
       objectReference: {fileID: 0}
     - target: {fileID: 1866103807163041256, guid: 349fcde0e51195048b1816d0f71310e7,
         type: 3}
