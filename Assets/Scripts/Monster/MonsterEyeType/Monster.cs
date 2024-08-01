@@ -24,6 +24,9 @@ public class Monster : MonoBehaviour
     // 행동 관리
     public bool IsBehavior {get; set;} = true;
 
+    [field: SerializeField]
+    public bool CanPatrol { get; set; } = true;
+
     // INoise
     public float NoiseTransitionTime { get; set; }
     public float NoiseMin { get; set; }
@@ -34,6 +37,17 @@ public class Monster : MonoBehaviour
     [Header("MonsterTransform")]
     public Transform monsterTransform;
     public Transform monsterEyeTransform;
+
+    [field: Header("Find")]
+    public LayerMask playerMask;
+    public LayerMask obstructionMask;
+    public bool canSeePlayer;
+    //public Collider[] rangeChecks;
+    public bool canCheck;
+    public Transform eye;
+    public Transform findTarget;
+
+
 
 
     private void Awake()
@@ -50,7 +64,8 @@ public class Monster : MonoBehaviour
 
     private void Start()
     {
-        _stateMachine.ChangeState(_stateMachine.PatrolState);
+        _stateMachine.ChangeState(_stateMachine.IdleState);
+        StartCoroutine(FPRoutine());
     }
 
     private void Update()
@@ -58,15 +73,82 @@ public class Monster : MonoBehaviour
         //_stateMachine.HandleInput();
         _stateMachine.Update();
 
-        if (NoiseAmount > 0)
-        {
+        //if (NoiseAmount > 0)
+        //{
             
-        }
+        //}
 
         DrawCircle(transform.position, 36, Data.GroundData.PlayerChasingRange, Color.yellow);
         DrawCircle(transform.position, 36, Data.GroundData.PlayerFindRange, Color.green);
         DrawCircle(transform.position, 36, Data.GroundData.AttackRange, Color.red);
 
+    }
+
+    private IEnumerator FPRoutine()
+    {
+        WaitForSeconds wait = new WaitForSeconds(0.2f);
+        while (true) 
+        {
+            yield return wait;
+            FindPlayer();
+        }            
+    }
+
+    private void FindPlayer()
+    {
+        Collider[] rangeChecks = Physics.OverlapSphere(transform.position, Data.GroundData.PlayerChasingRange, playerMask);
+
+        if (rangeChecks.Length > 0)
+        {
+            if (!_stateMachine.IsPatrol && !_stateMachine.IsIdle && !_stateMachine.IsComeBack)
+            {
+                findTarget = rangeChecks[0].transform;
+                canCheck = true;
+                //if (Vector3.Distance(transform.position, rangeChecks[0].transform.position))
+            }
+            else if (_stateMachine.IsPatrol || _stateMachine.IsIdle || _stateMachine.IsComeBack)
+            {
+                if (Vector3.Distance(transform.position, rangeChecks[0].transform.position) <= Data.GroundData.PlayerFindRange)
+                {
+                    findTarget = rangeChecks[0].transform;
+                    canCheck = true;
+                }
+                else 
+                {
+                    canCheck = false;
+                }
+            }
+        }
+        else
+        {
+            canCheck = false;
+        }
+
+
+
+
+        //if (_stateMachine.IsPatrol || _stateMachine.IsIdle)
+        //{
+        //    rangeChecks = Physics.OverlapSphere(transform.position, Data.GroundData.PlayerFindRange, playerMask);
+        //    if (rangeChecks.Length > 0)
+        //    {
+        //        findTarget = rangeChecks[0].transform;
+        //        canCheck = true;
+        //    }
+
+        //    //if (rangeChecks.Length > 0) Debug.Log($"플레이어 발견1, {Data.GroundData.PlayerFindRange}, {Vector3.Distance(transform.position, _stateMachine.Target.transform.position)}");
+        //}
+        //else
+        //{
+        //    rangeChecks = Physics.OverlapSphere(transform.position, Data.GroundData.PlayerChasingRange, playerMask);
+        //    if (rangeChecks.Length > 0)
+        //    {
+        //        findTarget = rangeChecks[0].transform;
+        //        canCheck = true;
+        //    }
+
+        //    //if (rangeChecks.Length > 0) Debug.Log($"플레이어 발견2, {Data.GroundData.PlayerChasingRange}, {Vector3.Distance(transform.position, _stateMachine.Target.transform.position)}");
+        //}
     }
 
     private void FixedUpdate()

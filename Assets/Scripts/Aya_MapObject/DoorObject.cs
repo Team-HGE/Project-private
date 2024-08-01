@@ -5,11 +5,13 @@ public class DoorObject : InteractableObject
 {
     [SerializeField] bool isOpen;
     [SerializeField] bool interactableOneTime;
-    [SerializeField] Vector3 openRotate;
-    [SerializeField] Vector3 closeRotate;
-    [SerializeField] Transform parentObject;
+    //[SerializeField] Vector3 openRotate;
+    //[SerializeField] Vector3 closeRotate;
+    //[SerializeField] Transform parentObject;
     [SerializeField] AudioClip openSound;
     [SerializeField] AudioClip closeSound;
+    [SerializeField] DOTweenAnimation openDoor;
+    [SerializeField] DOTweenAnimation closeDoor;
 
     private AudioSource audioSource;
 
@@ -38,24 +40,23 @@ public class DoorObject : InteractableObject
             isInteractable = true;
         }
 
-        Vector3 targetRotate;
         AudioClip targetSound;
 
+        
         if (isOpen)
         {
-            targetRotate = closeRotate;
+            openDoor.DOKill();
+            closeDoor.CreateTween(true);
             targetSound = closeSound;
             isOpen = false;
         }
         else
         {
-            targetRotate = openRotate;
+            closeDoor.DOKill();
+            openDoor.CreateTween(true);
             targetSound = openSound;
             isOpen = true;
         }
-
-        parentObject.DOKill();
-        parentObject.DORotate(targetRotate, 2f);
 
         // 효과음 재생
         if (targetSound != null)

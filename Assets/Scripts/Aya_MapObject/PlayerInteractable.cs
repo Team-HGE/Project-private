@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -13,11 +13,11 @@ public class PlayerInteractable : MonoBehaviour
     public TextMeshProUGUI interactableText;
     public Image interactionImage;
     public Image fillAmountImage;
-    public float holdTime = 2.0f; // »óÈ£ÀÛ¿ëÇÒ ½Ã°£
+    public float holdTime = 2.0f; // ìƒí˜¸ìž‘ìš©í•  ì‹œê°„
 
     [Header("SerializeField")]
-    [SerializeField] float interactionRange = 2.0f; // »ç°Å¸®
-    [SerializeField] float holdDuration = 0f; // ÇöÀç»óÈ£ÀÛ¿ë ½Ã°£
+    [SerializeField] float interactionRange = 2.0f; // ì‚¬ê±°ë¦¬
+    [SerializeField] float holdDuration = 0f; // í˜„ìž¬ìƒí˜¸ìž‘ìš© ì‹œê°„
     [SerializeField] LayerMask layerMask;
     [SerializeField] Camera camera;
     
@@ -35,20 +35,22 @@ public class PlayerInteractable : MonoBehaviour
     }
     void Update()
     {
-        if (Time.time - lastCheckTime > checkRate)
-        {
-            lastCheckTime = Time.time;
-            InteractWithObject();
-        }
+        //if (Time.time - lastCheckTime > checkRate)
+        //{
+        //    lastCheckTime = Time.time;
+        //    InteractWithObject();
+        //}
 
-        Debug.DrawRay(transform.position, transform.forward, Color.red, interactionRange);
+        // í”Œë ˆì´ì–´ ì •ì§€ - ìƒí˜¸ìž‘ìš© ê°€ëŠ¥ í…ìŠ¤íŠ¸
+        if (!GameManager.Instance.PlayerStateMachine.Player.IsPlayerControll) return;
+
+        InteractWithObject();
     }
 
     void InteractWithObject()
     {
-        Ray ray = camera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, interactionRange, layerMask))
+        Ray ray = camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        if (Physics.Raycast(ray, out RaycastHit hit, interactionRange, layerMask))
         {
             if (hit.collider.gameObject != curInteractableGameObject)
             {
@@ -72,7 +74,7 @@ public class PlayerInteractable : MonoBehaviour
         if (curInteractable != null && !curInteractable.isInteractable)
         {
             holdDuration += Time.deltaTime;
-            fillAmountImage.fillAmount = Mathf.Clamp01(holdDuration / holdTime); // 1°ú 0»çÀÌ ¼ö ¸®ÅÏ
+            fillAmountImage.fillAmount = Mathf.Clamp01(holdDuration / holdTime); // 1ê³¼ 0ì‚¬ì´ ìˆ˜ ë¦¬í„´
             if (holdDuration >= holdTime)
             {
                 if (curInteractable != null && !curInteractable.isInteractable)

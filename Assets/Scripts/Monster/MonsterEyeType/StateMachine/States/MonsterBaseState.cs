@@ -31,6 +31,7 @@ public class MonsterBaseState : IState
 
     public virtual void Update()
     {
+        FindPlayerCheck();
     }
 
     
@@ -86,6 +87,76 @@ public class MonsterBaseState : IState
         {
             return 0f;
         }
+    }
+
+    protected void FindPlayerCheck()
+    {
+        if (!stateMachine.Monster.canCheck)
+        {
+            //Debug.Log("플레이어 탐지 불가");
+            if (stateMachine.Monster.canSeePlayer) stateMachine.Monster.canSeePlayer = false;
+            return;
+        }
+            
+        //if (stateMachine.Monster.rangeChecks.Length <= 0)
+        //{
+        //    //Debug.Log("플레이어 탐지 불가");
+        //    if (stateMachine.Monster.canSeePlayer) stateMachine.Monster.canSeePlayer = false;
+        //    return;
+        //}
+
+        //Transform target = stateMachine.Monster.rangeChecks[0].transform;
+        Transform target = stateMachine.Monster.findTarget;
+         
+        Vector3 directionToTarget = (target.position - stateMachine.Monster.transform.position).normalized;
+        Vector3 directionToTargetEye = (new Vector3(target.position.x, stateMachine.Monster.eye.position.y, target.position.z) - stateMachine.Monster.eye.position).normalized;
+
+
+        if (Vector3.Angle(stateMachine.Monster.transform.forward, directionToTarget) < stateMachine.Monster.Data.GroundData.ViewAngle / 2)
+        {
+            float distanceToTarget = Vector3.Distance(stateMachine.Monster.transform.position, target.position);
+            float distanceToTargetEye = Vector3.Distance(stateMachine.Monster.eye.position, new Vector3(target.position.x, stateMachine.Monster.eye.position.y, target.position.z));
+
+
+            Debug.Log($"FindPlayerCheck - 바닥, {Physics.Raycast(stateMachine.Monster .transform.position, directionToTarget, distanceToTarget, stateMachine.Monster.obstructionMask)}, {Physics.Raycast(stateMachine.Monster.transform.position, directionToTarget, distanceToTarget, stateMachine.Monster.playerMask)}, {stateMachine.Monster.transform.position}, {distanceToTarget} ");
+
+
+            if (!Physics.Raycast(stateMachine.Monster.transform.position, directionToTarget, distanceToTarget, stateMachine.Monster.obstructionMask))
+            {
+                stateMachine.Monster.canSeePlayer = true;
+                if (stateMachine.IsFocus || stateMachine.IsChasing) return;
+                else
+                {
+                    Debug.Log($"FindPlayerCheck - 플레이어 발견 - 바닥, {Physics.Raycast(stateMachine.Monster.transform.position, directionToTarget, distanceToTarget, stateMachine.Monster.obstructionMask)}, {Physics.Raycast(stateMachine.Monster.transform.position, directionToTarget, distanceToTarget, stateMachine.Monster.playerMask)}, {stateMachine.Monster.transform.position} ");
+
+                    stateMachine.ChangeState(stateMachine.FindState);
+                }
+                
+                return;
+            }
+            else stateMachine.Monster.canSeePlayer = false;
+
+            Debug.Log($"FindPlayerCheck - 눈, {Physics.Raycast(stateMachine.Monster.eye.position, directionToTargetEye, distanceToTargetEye, stateMachine.Monster.obstructionMask)}, {Physics.Raycast(stateMachine.Monster.eye.position, directionToTargetEye, distanceToTargetEye, stateMachine.Monster.playerMask)}, {stateMachine.Monster.eye.position}, {distanceToTargetEye} ");
+
+
+            if (!Physics.Raycast(stateMachine.Monster.eye.position, directionToTargetEye, distanceToTargetEye, stateMachine.Monster.obstructionMask) && Physics.Raycast(stateMachine.Monster.eye.position, directionToTargetEye, distanceToTargetEye, stateMachine.Monster.playerMask))
+            {
+                stateMachine.Monster.canSeePlayer = true;
+
+                if (stateMachine.IsFocus || stateMachine.IsChasing) return;
+                else
+                {
+                    Debug.Log($"FindPlayerCheck - 플레이어 발견 - 눈, {stateMachine.Monster.eye.position}");
+                    stateMachine.ChangeState(stateMachine.FindState);
+                }
+
+                return;
+            }
+            else stateMachine.Monster.canSeePlayer = false;
+
+        }
+        else stateMachine.Monster.canSeePlayer = false;
+
     }
 
     protected bool IsInChaseRange()

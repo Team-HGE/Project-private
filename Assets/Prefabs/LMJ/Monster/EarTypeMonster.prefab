@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2364081058313625668
 Transform:
   m_ObjectHideFlags: 0
@@ -85,10 +85,13 @@ MonoBehaviour:
     comeBackParameterName: ComeBack
     chaseParameterName: Chase
     attackParameterName: Attack
+  <CanPatrol>k__BackingField: 1
   targetLayer:
     serializedVersion: 2
-    m_Bits: 576
+    m_Bits: 832
   noiseMakers: []
+  monsterTransform: {fileID: 0}
+  monsterEyeTransform: {fileID: 0}
 --- !u!114 &1778946566560032546
 MonoBehaviour:
   m_ObjectHideFlags: 0
