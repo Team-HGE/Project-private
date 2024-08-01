@@ -19,6 +19,8 @@ public class PlayerMirrorObject : InteractableObject
         DialogueManager.Instance.itemScript.Init(scriptSO);
         DialogueManager.Instance.itemScript.Print();
 
+        //스크립트 출력
+
         //StartCoroutine(Sleep());
     }
     IEnumerator Sleep()

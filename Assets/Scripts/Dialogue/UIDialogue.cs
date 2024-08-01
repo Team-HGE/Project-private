@@ -12,6 +12,7 @@ public class UIDialogue : MonoBehaviour
     public TextMeshProUGUI titleText;
     public Image portrait;
     public GameObject darkScreen;
+    public GameObject FinishStoryBtn;
 
     public GameObject AnswerCanvas;
     public TextMeshProUGUI answerText1;
@@ -22,6 +23,7 @@ public class UIDialogue : MonoBehaviour
     public void OpenBG()
     {
         darkScreen.SetActive(true);
+        FinishStoryBtn.SetActive(true);
     }
 
     public void OpenDialogue()
@@ -35,10 +37,11 @@ public class UIDialogue : MonoBehaviour
         darkScreen.SetActive(false);
         dialogueCanvas.SetActive(false);
         AnswerCanvas.SetActive(false);
+        FinishStoryBtn.SetActive(false);
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        Debug.Log("isTalking : " + DialogueSetting.isTalking);
+        //Debug.Log("isTalking : " + DialogueSetting.isTalking);
     }
 
     public void CheckNullTitle(string speaker)

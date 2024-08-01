@@ -707,7 +707,7 @@ GameObject:
   - component: {fileID: 2375288084469312636}
   - component: {fileID: 347377770189502133}
   m_Layer: 5
-  m_Name: FinishBtn
+  m_Name: FinishStoryBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2604,7 +2604,7 @@ PrefabInstance:
     - target: {fileID: 4776030977966683855, guid: 0eb3953eb82a75e4fb9c920f0405b7fe,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2689,6 +2689,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Colors.m_NormalColor.r
       value: 0.49019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 2936536799586942754, guid: e2a60ae3af0ea1d40a93d1b0b6eee9c9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ApplyAnswer
       objectReference: {fileID: 0}
     - target: {fileID: 3073837308270510480, guid: e2a60ae3af0ea1d40a93d1b0b6eee9c9,
         type: 3}
@@ -2949,6 +2954,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Colors.m_HighlightedColor.r
       value: 0.9607843
+      objectReference: {fileID: 0}
+    - target: {fileID: 6897512613243977230, guid: e2a60ae3af0ea1d40a93d1b0b6eee9c9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ApplyAnswer
       objectReference: {fileID: 0}
     - target: {fileID: 6951222667274156193, guid: e2a60ae3af0ea1d40a93d1b0b6eee9c9,
         type: 3}

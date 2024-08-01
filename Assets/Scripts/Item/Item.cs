@@ -26,6 +26,7 @@ public class Item : InteractableObject
         DialogueManager.Instance.itemScript.Init(scriptSO);
         DialogueManager.Instance.itemScript.Print();
 
+        Debug.Log("æ∆¿Ã≈€ »πµÊ");
         Destroy(gameObject);
     }
 }
