@@ -60,6 +60,7 @@ public class PlayerBaseState : IState
 
     public virtual void HandleInput()
     {
+        // 플레이어 정지 - 이동 입력
         if (!stateMachine.Player.IsPlayerControll) return;
 
         ReadMovementInput();
@@ -67,6 +68,7 @@ public class PlayerBaseState : IState
 
     public virtual void Update()
     {
+        // 플레이어 정지 - 이동, 숨소리
         if (!stateMachine.Player.IsPlayerControll) return;
 
         Move();
@@ -248,21 +250,24 @@ public class PlayerBaseState : IState
 
     protected virtual void OnInterationStared(InputAction.CallbackContext context)
     {
-        if (!stateMachine.Player.IsPlayerControll) return;
+        // 플레이어 정지 - 상호작용 E키
+        //if (!stateMachine.Player.IsPlayerControll) return;
 
         stateMachine.IsInteraction = true;
     } 
 
     protected virtual void OnInterationPerformed(InputAction.CallbackContext context)
     {
-        if (!stateMachine.Player.IsPlayerControll) return;
+        // 플레이어 정지 - 상호작용 E키
+        //if (!stateMachine.Player.IsPlayerControll) return;
 
         stateMachine.IsInteraction = true;
     }
 
     protected virtual void OnInterationCanceled(InputAction.CallbackContext context)
     {
-        if (!stateMachine.Player.IsPlayerControll) return;
+        // 플레이어 정지 - 상호작용 E키
+        //if (!stateMachine.Player.IsPlayerControll) return;
 
         stateMachine.IsInteraction = false;
 
