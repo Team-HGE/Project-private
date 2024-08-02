@@ -30,7 +30,7 @@ public class TextEffect: DialogueSetting
         {
             UtilSB.SetText(tmp, sb, SOstr);
             isSkipped = false;
-            Debug.Log("스킵 실행");
+            //Debug.Log("스킵 실행");
         }
 
         yield return null;

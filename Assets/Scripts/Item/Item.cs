@@ -1,4 +1,4 @@
-using System.Diagnostics;
+using UnityEngine;
 
 public class Item : InteractableObject
 {
@@ -26,6 +26,7 @@ public class Item : InteractableObject
         DialogueManager.Instance.itemScript.Init(scriptSO);
         DialogueManager.Instance.itemScript.Print();
 
+        Debug.Log("아이템 파괴");
         Destroy(gameObject);
     }
 }

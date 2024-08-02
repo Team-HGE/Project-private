@@ -19,6 +19,8 @@ public class NPCScript : DialogueSetting, IScript
         if (isTalking) { Debug.Log("지금은 대화할 수 없습니다."); InitDialogueSetting(); return; }
         isTalking = true;
 
+        //플레이어 움직임 정지
+
         // 상호작용 중인 오브젝트 판별
         GameObject nowInteracting = GameManager.Instance.player.curInteractableGameObject;
         npc = nowInteracting.GetComponent<NPC>();
@@ -68,6 +70,8 @@ public class NPCScript : DialogueSetting, IScript
 
         ui.CloseDialogue();
         isTalking = false;
+
+        //플레이어 움직임 재개
 
         // NPC 감정 상태 해제
         npc.ChangeNpcState(NpcState.Idle);
