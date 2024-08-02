@@ -29,11 +29,12 @@ public class KarmaScript : DialogueSetting, IScript
 
         for (int i = 0; i < 1; i++)
         {
-            UtilSB.SetText(ui.titleText, sbTitle, scriptSO.speakers[RandomKarmaIndex()]);
-            ui.SetImage(ui.portrait, scriptSO.images[RandomKarmaIndex()]);
-            ui.CheckNullTitle(scriptSO.speakers[RandomKarmaIndex()]);
+            int j = RandomKarmaIndex();
+            UtilSB.SetText(ui.titleText, sbTitle, scriptSO.speakers[j]);
+            ui.SetImage(ui.portrait, scriptSO.images[j]);
+            ui.CheckNullTitle(scriptSO.speakers[j]);
 
-            curPrintLine = TextEffect.Typing(ui.bodyText, sbBody, scriptSO.bodyTexts[RandomKarmaIndex()]);
+            curPrintLine = TextEffect.Typing(ui.bodyText, sbBody, scriptSO.bodyTexts[j]);
             yield return StartCoroutine(curPrintLine);
 
             //Debug.Log("좌클릭으로 진행하세요");
@@ -45,6 +46,8 @@ public class KarmaScript : DialogueSetting, IScript
 
         ui.CloseDialogue();
         isTalking = false;
+
+        //Debug.Log("카르마 출력 완료");
 
         yield return null;
     }

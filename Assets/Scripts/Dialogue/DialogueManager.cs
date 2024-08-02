@@ -11,6 +11,8 @@ public class DialogueManager : SingletonManager<DialogueManager>
     [HideInInspector]
     public ItemScript itemScript;
     [HideInInspector]
+    public KarmaScript karmaScript;
+    [HideInInspector]
     public Answer answer;
 
     private SystemMsg systemMsg;
@@ -36,8 +38,9 @@ public class DialogueManager : SingletonManager<DialogueManager>
         storyScript = GetComponent<StoryScript>();
         npcScript = GetComponent<NPCScript>();
         itemScript = GetComponent<ItemScript>();
-        answer = GetComponent<Answer>();
+        karmaScript = GetComponent<KarmaScript>();
 
+        answer = GetComponent<Answer>();
         systemMsg = GetComponent<SystemMsg>();
         quest = GetComponent<Quest>();
 

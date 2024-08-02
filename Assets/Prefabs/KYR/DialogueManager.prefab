@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 7273186344831853445}
   - component: {fileID: 2963101403854385897}
   - component: {fileID: 7691494589928532885}
+  - component: {fileID: 1668020000572827439}
   m_Layer: 0
   m_Name: DialogueManager
   m_TagString: Untagged
@@ -57,6 +58,7 @@ MonoBehaviour:
   storyScript: {fileID: 0}
   npcScript: {fileID: 0}
   itemScript: {fileID: 0}
+  karmaScript: {fileID: 0}
   answer: {fileID: 0}
   isSceneChanged: 0
 --- !u!114 &4455518639332731130
@@ -134,6 +136,7 @@ MonoBehaviour:
   titleText: {fileID: 0}
   portrait: {fileID: 0}
   darkScreen: {fileID: 0}
+  FinishStoryBtn: {fileID: 0}
   AnswerCanvas: {fileID: 0}
   answerText1: {fileID: 0}
   answerText2: {fileID: 0}
@@ -188,6 +191,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41ea585a7b182c743b19ff166e9cc2df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ui: {fileID: 0}
+--- !u!114 &1668020000572827439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 833481111887110611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37827217dd18bbd4d8ad6839afafb78e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ui: {fileID: 0}

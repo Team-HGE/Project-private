@@ -21,12 +21,12 @@ public class Answer : DialogueSetting
 
         answerSO = _answer;
         answerSO.nowAnswer = 0;
-        Debug.Log("선택지 초기화 완료");
+        //Debug.Log("선택지 초기화 완료");
     }
 
     public void Print()
     {
-        Debug.Log("랜덤 선택지 시작");
+        //Debug.Log("랜덤 선택지 시작");
         InitAnswer(answerSO);
 
         string[] answersTemp = new string[answerSO.answers.Length];
