@@ -31,6 +31,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1624161576044637314}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3510893272534175962
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3324914343571061179}
+  m_Layer: 0
+  m_Name: Eye
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3324914343571061179
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3510893272534175962}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3632290930665208911}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3816161495135012163
 GameObject:
   m_ObjectHideFlags: 0
@@ -67,6 +98,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5410294894715189878}
+  - {fileID: 3324914343571061179}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &5374452907135009213
@@ -139,9 +171,11 @@ MonoBehaviour:
     m_Bits: 256
   obstructionMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 32768
   canSeePlayer: 0
-  rangeChecks: []
+  canCheck: 0
+  eye: {fileID: 3324914343571061179}
+  findTarget: {fileID: 0}
 --- !u!195 &7567904555289203676
 NavMeshAgent:
   m_ObjectHideFlags: 0

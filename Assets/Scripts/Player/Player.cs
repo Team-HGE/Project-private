@@ -1,4 +1,5 @@
 ﻿using Cinemachine;
+using Unity.Burst.Intrinsics;
 using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
@@ -78,7 +79,8 @@ public class Player : MonoBehaviour, INoise
     {
         Cursor.lockState = CursorLockMode.Locked;
         _stateMachine.ChangeState(_stateMachine.IdleState);
-
+        // 카르마 초기화
+        Karma = 0f;
         GameManager.Instance.Init(this);
     }
 

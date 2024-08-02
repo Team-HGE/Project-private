@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class MonsterFindState : MonsterGroundState
 {
@@ -9,12 +9,12 @@ public class MonsterFindState : MonsterGroundState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("MonsterFindState - ÇÃ·¹ÀÌ¾î ¹ß°ß ÁÖ½Ã ½ÃÀÛ");
-        stateMachine.IsFocus = true;
+        Debug.Log("MonsterFindState - í”Œë ˆì´ì–´ ë°œê²¬ ì£¼ì‹œ ì‹œì‘");
+        stateMachine.IsFind = true;
         stateMachine.Monster.Agent.isStopped = true;
         stateMachine.Monster.IsBehavior = false;
 
-        // ÇÃ·¹ÀÌ¾î ¹Ù¶óº¸±â
+        // í”Œë ˆì´ì–´ ë°”ë¼ë³´ê¸°
         //Rotate(GetMovementDirection());
         StartAnimation(stateMachine.Monster.AnimationData.FindParameterHash);
 
@@ -25,10 +25,10 @@ public class MonsterFindState : MonsterGroundState
     public override void Exit()
     {
         base.Exit();
-        Debug.Log("MonsterFindState - ÇÃ·¹ÀÌ¾î ¹ß°ß ÁÖ½Ã Á¾·á");
-        stateMachine.IsFocus = false;
+        Debug.Log("MonsterFindState - í”Œë ˆì´ì–´ ë°œê²¬ ì£¼ì‹œ ì¢…ë£Œ");
+        stateMachine.IsFind = false;
         StopAnimation(stateMachine.Monster.AnimationData.FindParameterHash);
-
+        stateMachine.Monster.StopWait();
     }
 
     public override void Update()
@@ -44,23 +44,23 @@ public class MonsterFindState : MonsterGroundState
     {
         if (!stateMachine.Monster.canSeePlayer)
         {
-            Debug.Log("ÇÃ·¹ÀÌ¾î ³õÄ§");
+            Debug.Log("í”Œë ˆì´ì–´ ë†“ì¹¨");
             stateMachine.ChangeState(stateMachine.LoseSightState);
         }
         else 
         {
-            // °ø°İ ¹üÀ§ ¾ÈÀÌ¸é °ø°İ - °ÔÀÓ ¿À¹ö
+            // ê³µê²© ë²”ìœ„ ì•ˆì´ë©´ ê³µê²© - ê²Œì„ ì˜¤ë²„
             if (IsInAttackRange() && GetIsPlayerInFieldOfView())
             {
-                // ÇÃ·¹ÀÌ¾î °ø°İ
-                //Debug.Log("ÇÃ·¹ÀÌ¾î °ø°İ - °ÔÀÓ ¿À¹ö");
-                //stateMachine.Monster.IsBehavior = false;// ÀÓ½ÃÄÚµå °ÔÀÓ ¿À¹ö ±¸Çö ÈÄ ¼öÁ¤ÇÒ °Í***
+                // í”Œë ˆì´ì–´ ê³µê²©
+                //Debug.Log("í”Œë ˆì´ì–´ ê³µê²© - ê²Œì„ ì˜¤ë²„");
+                //stateMachine.Monster.IsBehavior = false;// ì„ì‹œì½”ë“œ ê²Œì„ ì˜¤ë²„ êµ¬í˜„ í›„ ìˆ˜ì •í•  ê²ƒ***
 
                 stateMachine.ChangeState(stateMachine.AttackState);
                 return;
             }
 
-            Debug.Log("ÇÃ·¹ÀÌ¾î ÃßÀû");
+            Debug.Log("í”Œë ˆì´ì–´ ì¶”ì ");
             stateMachine.ChangeState(stateMachine.ChaseState);
         }
 

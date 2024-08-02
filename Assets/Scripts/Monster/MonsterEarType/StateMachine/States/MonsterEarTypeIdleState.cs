@@ -26,6 +26,7 @@ public class MonsterEarTypeIdleState : MonsterEarTypeGroundState
         // 애니메이션 종료
         StopAnimation(stateMachine.Monster.AnimationData.IdleParameterHash);
         stateMachine.Monster.Agent.isStopped = false;
+        stateMachine.Monster.StopWait();
     }
 
     public override void Update()

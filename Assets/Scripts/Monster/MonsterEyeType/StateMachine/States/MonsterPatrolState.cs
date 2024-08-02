@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -18,17 +18,17 @@ public class MonsterPatrolState : MonsterGroundState
 
         StatrPatrol();
 
-        //Debug.Log($"ÆĞÆ®·Ñ ½ÃÀÛ");
-        // ¾Ö´Ï¸ŞÀÌ¼Ç ½ÇÇà - ±×¶ó¿îµå ÆÄ¶ó¹ÌÅÍ ÇØ½¬·Î Á¢±Ù
+        //Debug.Log($"íŒ¨íŠ¸ë¡¤ ì‹œì‘");
+        // ì• ë‹ˆë©”ì´ì…˜ ì‹¤í–‰ - ê·¸ë¼ìš´ë“œ íŒŒë¼ë¯¸í„° í•´ì‰¬ë¡œ ì ‘ê·¼
         StartAnimation(stateMachine.Monster.AnimationData.PatrolParameterHash);
     }
 
     public override void Exit()
     {
         base.Exit();
-        //Debug.Log($"ÆĞÆ®·Ñ ³¡");
+        //Debug.Log($"íŒ¨íŠ¸ë¡¤ ë");
 
-        // ¾Ö´Ï¸ŞÀÌ¼Ç Á¾·á - ±×¶ó¿îµå ÆÄ¶ó¹ÌÅÍ ÇØ½¬·Î Á¢±Ù
+        // ì• ë‹ˆë©”ì´ì…˜ ì¢…ë£Œ - ê·¸ë¼ìš´ë“œ íŒŒë¼ë¯¸í„° í•´ì‰¬ë¡œ ì ‘ê·¼
         StopAnimation(stateMachine.Monster.AnimationData.PatrolParameterHash);
         stateMachine.IsPatrol = false;
     }
@@ -36,8 +36,9 @@ public class MonsterPatrolState : MonsterGroundState
     public override void Update()
     {
         base.Update();
+        if (stateMachine.Monster.Agent.pathPending) return;
 
-        if (stateMachine.Monster.Agent.remainingDistance < 0.1f)
+        if (stateMachine.Monster.Agent.remainingDistance < 0.2f)
         {
             stateMachine.ChangeState(stateMachine.IdleState);
         }
