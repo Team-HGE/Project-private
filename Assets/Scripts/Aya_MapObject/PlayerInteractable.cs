@@ -86,6 +86,7 @@ public class PlayerInteractable : MonoBehaviour
                     holdDuration = 0f;
                     fillAmountImage.fillAmount = 0f;
                     if (!tutorialSuccess) tutorialSuccess = true;
+                    GameManager.Instance.PlayerStateMachine.IsInteraction = false;
                 }
             }
         }

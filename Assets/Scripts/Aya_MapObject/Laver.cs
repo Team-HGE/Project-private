@@ -14,14 +14,7 @@ public class Laver : InteractableObject
     [SerializeField] DOTweenAnimation laverUp;
     private void Start()
     {
-        for (int i = 0; i < GameManager.Instance.lightManager.lavers.Length; i++)
-        {
-            if (GameManager.Instance.lightManager.lavers[i] == null)
-            {
-                GameManager.Instance.lightManager.lavers[i] = this;
-                break;
-            }
-        }
+        GameManager.Instance.lightManager.lavers.Add(this);
     }
     public override void ActivateInteraction()
     {
@@ -39,26 +32,36 @@ public class Laver : InteractableObject
     {
         foreach (var light in nowFloorlights)
         {
-            light.enabled = false;
+            if (light != null)
+            {
+                light.enabled = false;
+            }
         }
         foreach (var obj in nowFloorObject)
         {
-            obj.SetActive(false);
+            if (obj != null)
+            {
+                obj.SetActive(false);
+            }
         }
-
         GameManager.Instance.lightManager.ChangeMaterial(nowFloorObjectRenderers);
     }
     public void OnNowFloorAllLight()
     {
         foreach (var light in nowFloorlights)
         {
-            light.enabled = true;
+            if (light != null)
+            {
+                light.enabled = true;
+            }
         }
         foreach (var obj in nowFloorObject)
         {
-            obj.SetActive(true);
+            if (obj != null)
+            {
+                obj.SetActive(true);
+            }
         }
-
         GameManager.Instance.lightManager.ChangeMaterial(nowFloorObjectRenderers);
     }
 }

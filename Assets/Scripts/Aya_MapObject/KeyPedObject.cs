@@ -31,6 +31,7 @@ public class KeyPadObject : InteractableObject
     {
         if (isInteractable) return;
         if (unLock) return;
+        isInteractable = true;
         StartCoroutine(Init());
         keyPadGimmick.puzzleSetting(passwords, this);
         Cursor.lockState = CursorLockMode.None;

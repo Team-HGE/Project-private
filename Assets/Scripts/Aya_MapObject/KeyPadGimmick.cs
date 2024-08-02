@@ -29,6 +29,7 @@ public class KeyPadGimmick : MonoBehaviour
     
     public void puzzleSetting(int[] puzzlePassworlds, KeyPadObject keyPadObject)
     {
+        puzzleNumbers.Clear();
         for (int i = 0; puzzlePassworlds.Length > i; i++)
         {
             puzzleNumbers.Add(puzzlePassworlds[i]);
@@ -38,6 +39,11 @@ public class KeyPadGimmick : MonoBehaviour
             image.sprite = imageNumbers[0];
         }
         this.keyPadObject = keyPadObject;
+        interactNumbers.Clear();
+        foreach (var btn in keyPadGimmick_Numbers)
+        {
+            btn.numBtn.enabled = true;
+        }
     }
     public void AddInteractNumber(int num)
     {

@@ -21,7 +21,7 @@ public enum LightName
 public class LightManager : MonoBehaviour
 {
     [Header("Laver")]
-    public Laver[] lavers;
+    public List<Laver> lavers = new List<Laver>();
 
     [Header("UseLights")]
     public Material Use_Y_Lights;
@@ -62,6 +62,10 @@ public class LightManager : MonoBehaviour
     {
         foreach (var renderer in meshRenderers)
         {
+            if (renderer == null)
+            {
+                continue;
+            }
             Material[] newMaterial = renderer.materials;
             for (int i = 0; i < newMaterial.Length; i++)
             {
