@@ -68,6 +68,8 @@ public class ItemScript : DialogueSetting, IScript
         ui.CloseDialogue();
         isTalking = false;
 
+        Debug.Log("아이템 스크립트 종료");
+
         yield return null;
     }
 }

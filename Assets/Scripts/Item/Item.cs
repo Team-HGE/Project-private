@@ -1,4 +1,4 @@
-using System.Diagnostics;
+using UnityEngine;
 
 public class Item : InteractableObject
 {
@@ -26,7 +26,7 @@ public class Item : InteractableObject
         DialogueManager.Instance.itemScript.Init(scriptSO);
         DialogueManager.Instance.itemScript.Print();
 
-        Debug.Log("æ∆¿Ã≈€ »πµÊ");
+        Debug.Log("æ∆¿Ã≈€ ∆ƒ±´");
         Destroy(gameObject);
     }
 }
