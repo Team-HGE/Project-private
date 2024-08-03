@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 3717573668145468764}
   - component: {fileID: 3498446970132530391}
   - component: {fileID: 4484964525741386240}
+  - component: {fileID: 3787321916269134326}
   m_Layer: 0
-  m_Name: 01_low
+  m_Name: 01_low_T
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,6 +84,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3787321916269134326
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73294361862502076}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2596774734982952093, guid: 5518466ac73c3b94e8f1765c6c455927, type: 3}
 --- !u!1 &3273243136175341277
 GameObject:
   m_ObjectHideFlags: 0
@@ -126,7 +149,6 @@ GameObject:
   - component: {fileID: 8684225132457712550}
   - component: {fileID: 4355989663490738248}
   - component: {fileID: 3124086989378647841}
-  - component: {fileID: 6885468404919216750}
   m_Layer: 6
   m_Name: Door
   m_TagString: Untagged
@@ -186,32 +208,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOpen: 0
   interactableOneTime: 0
-  openRotate: {x: 0, y: 0, z: 0}
-  closeRotate: {x: 0, y: 90, z: 0}
-  parentObject: {fileID: 63236553680279670}
   openSound: {fileID: 8300000, guid: e7cbd620580728540a4d8074ee99683e, type: 3}
   closeSound: {fileID: 8300000, guid: 19ecd7db23acfa34186d959c1bd43a75, type: 3}
---- !u!65 &6885468404919216750
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6504950960518854523}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.07, y: 1.85, z: 0.88}
-  m_Center: {x: 0, y: 1.02, z: 0}
+  lockSound: {fileID: 0}
+  openDoor: {fileID: 0}
+  closeDoor: {fileID: 0}
 --- !u!1 &8260521471886723883
 GameObject:
   m_ObjectHideFlags: 0

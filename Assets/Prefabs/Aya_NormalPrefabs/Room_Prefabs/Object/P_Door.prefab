@@ -69,7 +69,7 @@ GameObject:
   - component: {fileID: 6871417869349977087}
   - component: {fileID: 8377293306685167895}
   - component: {fileID: 1308620819773032842}
-  - component: {fileID: 2312937046904628296}
+  - component: {fileID: 3010954673916343312}
   m_Layer: 6
   m_Name: 01_low
   m_TagString: Untagged
@@ -377,8 +377,8 @@ MonoBehaviour:
   lockSound: {fileID: 0}
   openDoor: {fileID: 6871417869349977087}
   closeDoor: {fileID: 8377293306685167895}
---- !u!65 &2312937046904628296
-BoxCollider:
+--- !u!64 &3010954673916343312
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -395,9 +395,10 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.06, y: 0.91, z: 2.03}
-  m_Center: {x: 0, y: -0.39, z: 0.98}
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2596774734982952093, guid: 5518466ac73c3b94e8f1765c6c455927, type: 3}
 --- !u!1 &5125763101735021891
 GameObject:
   m_ObjectHideFlags: 0
