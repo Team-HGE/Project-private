@@ -11,6 +11,10 @@ public class AudioManager : SingletonManager<AudioManager>
     [Header("Clips")]
     public BackGroundSoundClipMapping[] backGroundAudioClips;
 
+    [Header("SE Clips")]
+    public List<AudioClip> seAudioClips;
+    private Dictionary<string, AudioClip> _seAudioClipDictionary = new Dictionary<string, AudioClip>();
+
     [System.Serializable]
     public struct BackGroundSoundClipMapping
     {
@@ -24,6 +28,7 @@ public class AudioManager : SingletonManager<AudioManager>
         set { _audioBackGroundClipDictionary = value; }
     }
     public PlayAudio playAudio;
+    public PlaySEAudio playSEAudio;
     protected override void Awake()
     {
         base.Awake();
@@ -33,6 +38,11 @@ public class AudioManager : SingletonManager<AudioManager>
         foreach (var mapping in backGroundAudioClips)
         {
             _audioBackGroundClipDictionary[mapping.backGroundSound] = mapping.audioClip;
+        }
+
+        foreach (var clip in seAudioClips)
+        {
+            _seAudioClipDictionary[clip.name] = clip;
         }
 
         for (int i = 0; i < maxAudioSources; i++)
@@ -45,7 +55,7 @@ public class AudioManager : SingletonManager<AudioManager>
     {
         if (_audioBackGroundClipDictionary.TryGetValue(backGroundSound, out AudioClip clip))
         {
-            playAudio.PlayAudioClip(clip);
+            playSEAudio.PlaySEAudioClip(clip);
         }
     }
     public void StopSound(BackGroundSound backGroundSound)
@@ -65,4 +75,13 @@ public class AudioManager : SingletonManager<AudioManager>
             }
         }
     }
+
+    public void PlaySE(string seName)
+    {
+        if (_seAudioClipDictionary.TryGetValue(seName, out AudioClip clip))
+        {
+            playAudio.PlayAudioClip(clip);
+        }
+    }
+
 }
