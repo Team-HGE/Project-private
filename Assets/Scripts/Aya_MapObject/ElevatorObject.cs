@@ -3,35 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using System;
-using Cinemachine;
 
 public class ElevatorObject : MonoBehaviour
 {
-    [SerializeField] Transform elevatorLeftDoor;
-    [SerializeField] Transform elevatorRightDoor;
-    public event Action onInteractComplete;
-    [SerializeField] GameObject elevatorBoxCollider;
-    [SerializeField] Sprite[] elevatorSprites;
-    [SerializeField] SpriteRenderer elevatorCountSprite;
-    private CinemachineTransposer _virtualCamera;
-    CinemachineTransposer virtualCamera
-    {
-        get
-        {
-            if (_virtualCamera == null)
-            {
-                GameObject obj = GameObject.FindGameObjectWithTag("VCam");
-                _virtualCamera = obj.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>();
-            }
-            return _virtualCamera;
-        }
-    }
-
-    public void MoveElevatorTo(int targetFloor)
-    {
-        elevatorBoxCollider.SetActive(true);
-        ElevatorDoorClose(targetFloor);
-    }
     Coroutine fixPlayerYPosCor;
     IEnumerator fixPlayerYPos(float playerDistance)
     {
@@ -43,137 +17,113 @@ public class ElevatorObject : MonoBehaviour
             yield return null;
         }
     }
-    public void ElevatorUp(int targetFloor, bool init, float playerDistance)
-    {
-        float moveTime;
-        Ease nowEase;
-        if (init)
-        {
-            fixPlayerY(playerDistance);
-            nowEase = Ease.InQuad;
-            moveTime = 3f;
-        }
-        else
-        {
-            nowEase = Ease.Linear;
-            moveTime = 4f;
-            
-        }
-        transform.DOShakeRotation(moveTime, 1, 2).SetDelay(1);
-        var nowMove = transform.DOMoveY(38, moveTime).SetEase(nowEase);
 
-        nowMove.onComplete += ()=> 
-        {
-            Vector3 pos = transform.position;
-            pos.y = -46;
-            transform.position = pos;
-            GameManager.Instance.nowFloor++;
-            elevatorCountSprite.sprite = elevatorSprites[GameManager.Instance.nowFloor];
-            if (targetFloor <= GameManager.Instance.nowFloor)
-            {
-                transform.DOShakeRotation(3, 1, 2);
-                transform.DOMoveY(0, 3).onComplete += () =>
-                {
-                    ReleasePlayerY();
-                    ElevatorDoorOpen();
-                };
-            }
-            else { ElevatorUp(targetFloor, false, playerDistance);}
-        };
-    }
-    public void ElevatorDown(int targetFloor, bool init, float playerDistance)
+    private int _nowFloor = 1;
+    public int NowFloor
     {
-        float moveTime;
-        Ease nowEase;
-        if (init)
-        {
-            fixPlayerY(playerDistance);
-            nowEase = Ease.InQuad;
-            moveTime = 3f;
-        }
-        else
-        {
-            nowEase = Ease.Linear;
-            moveTime = 4f;
+        get { return _nowFloor; }
+        set { _nowFloor = value; }
+    }
+    public float floorHeight = 35.5f;
+    public float moveTime = 4f;
+    float initialY;
+    int lastUpdatedFloor = -1;
 
-        }
-        transform.DOShakeRotation(moveTime, 1, 2).SetDelay(1);
-        var nowMove = transform.DOMoveY(-46, moveTime).SetEase(nowEase);
+    [Header("FloorImage")]
+    [SerializeField] Sprite[] elevatorSprites;
+    [SerializeField] SpriteRenderer elevatorCountSprite;
+    public event Action onInteractComplete;
 
-        nowMove.onComplete += () =>
-        {
-            Vector3 pos = transform.position;
-            pos.y = 38;
-            transform.position = pos;
-            GameManager.Instance.nowFloor--;
-            if (targetFloor >= GameManager.Instance.nowFloor)
-            {
-                transform.DOShakeRotation(3, 1, 2);
-                transform.DOMoveY(0, 3).onComplete += () =>
-                {
-                    ReleasePlayerY();
-                    ElevatorDoorOpen();
-                };
-            }
-            else { ElevatorDown(targetFloor, false, playerDistance); }
-        };
-    }
+    public int elevatorIndex;
+    [SerializeField] DOTweenAnimation[] openDoor;
+    [SerializeField] DOTweenAnimation[] closeDoor;
 
-    public void ElevatorDoor(int open)
-    {
-        if (open == 0)
-        {
-            ElevatorDoorOpen();
-        }
-    }
-    public void ElevatorDoorOpen()
-    {
-        elevatorBoxCollider.SetActive(false);
-        elevatorLeftDoor.DOLocalMoveX(5,3).SetDelay(1);
-        elevatorRightDoor.DOLocalMoveX(-17.5f,3).SetDelay(1).onComplete +=() => 
-        {
-            onInteractComplete?.Invoke();
-        }; 
-    }
-    public void ElevatorDoorClose(int targetFloor)
-    {
-        elevatorLeftDoor.DOLocalMoveX(-2, 3).SetDelay(1);
-        elevatorRightDoor.DOLocalMoveX(-10.5f, 3).SetDelay(1).onComplete += () => 
-        {
-            if (targetFloor == -100)
-            {
-                return;
-            }
-
-            if (GameManager.Instance.nowFloor < targetFloor)
-            {
-                ElevatorUp(targetFloor, true, transform.position.y - GameManager.Instance.player.transform.position.y);
-            }
-            else if (GameManager.Instance.nowFloor > targetFloor)
-            {
-                ElevatorDown(targetFloor, true, transform.position.y - GameManager.Instance.player.transform.position.y);
-            }
-            
-        };
-    }
-    Vector3 oringDamping = Vector3.zero;
-    void fixPlayerY(float playerDistance)
-    {
-        fixPlayerYPosCor = StartCoroutine(fixPlayerYPos(playerDistance));
-        oringDamping.x = virtualCamera.m_XDamping;
-        oringDamping.y = virtualCamera.m_YDamping;
-        oringDamping.z = virtualCamera.m_ZDamping;
-
-        virtualCamera.m_XDamping = 0;
-        virtualCamera.m_YDamping = 0;
-        virtualCamera.m_ZDamping = 0;
-    }
-    void ReleasePlayerY()
-    {
-        StopCoroutine(fixPlayerYPosCor);
-        virtualCamera.m_XDamping = oringDamping.x;
-        virtualCamera.m_YDamping = oringDamping.y;
-        virtualCamera.m_ZDamping = oringDamping.z;
-    }
     
+    [SerializeField] GameObject elevatorBoxCollider;
+
+    public void MoveFloor(int targetFloor)
+    {
+        elevatorBoxCollider.SetActive(true);
+
+        GameManager.Instance.player.transform.SetParent(this.transform);
+
+        float targetY = (targetFloor - 1) * floorHeight;
+
+        initialY = transform.position.y;
+        
+        int floorsToMove = Mathf.Abs(targetFloor - NowFloor);
+
+        float allMoveTime = floorsToMove * moveTime;
+        Tween moveUp = transform.DOMoveY(targetY, allMoveTime).SetEase(Ease.InOutQuad);
+        moveUp.OnUpdate(() =>
+        {
+            float currentY = transform.position.y;
+            int floor = Mathf.FloorToInt((currentY + floorHeight / 2) / floorHeight) + 1;
+
+            if (floor != lastUpdatedFloor)
+            {
+                lastUpdatedFloor = floor;
+                DOVirtual.DelayedCall(0.5f, () => UpdateElevatorCountSprite(floor));
+            }
+        });
+
+        Sequence elevatorSequence = DOTween.Sequence();
+        elevatorSequence.PrependCallback(() =>
+        {
+            CloseDoor();
+            elevatorSequence.AppendInterval(5f);
+        });
+        elevatorSequence.Append(moveUp);
+        //elevatorSequence.Join(transform.DOShakeRotation(allMoveTime, 1, 2).SetDelay(1));
+
+        elevatorSequence.AppendCallback(() =>
+        {
+            HotelFloorScene_DataManager.Instance.elevatorManager.openTime = 0;
+            GameManager.Instance.player.transform.SetParent(null);
+            NowFloor = targetFloor;
+            elevatorBoxCollider.SetActive(false);
+            DOVirtual.DelayedCall(1f, () =>  OpenDoor());
+        });
+    }
+
+    private void UpdateElevatorCountSprite(int floor)
+    {
+        elevatorCountSprite.sprite = elevatorSprites[floor];
+    }
+    public void OpenDoor()
+    {
+        HotelFloorScene_DataManager.Instance.elevatorManager.isElevatorOpen = true;
+        List<DOTweenAnimation> nowDoor = HotelFloorScene_DataManager.Instance.elevatorManager.GetOpenDoor(NowFloor, this);
+        
+        foreach (var anim in nowDoor)
+        {
+            anim.DOKill();
+            anim.CreateTween(true);
+        }
+        foreach (var anim in openDoor)
+        {
+
+            anim.DOKill();
+            anim.CreateTween(true);
+        }
+        DOVirtual.DelayedCall(1f, () => onInteractComplete?.Invoke());
+    }
+
+    public void CloseDoor()
+    {
+        HotelFloorScene_DataManager.Instance.elevatorManager.isElevatorOpen = false;
+        List<DOTweenAnimation> nowDoor = HotelFloorScene_DataManager.Instance.elevatorManager.GetCloseDoor(NowFloor, this);
+
+        foreach (var anim in nowDoor)
+        {
+            anim.DOKill();
+            anim.CreateTween(true);
+        }
+        foreach (var anim in closeDoor)
+        {
+            anim.DOKill();
+            anim.CreateTween(true);
+        }
+    }
 }
+ 

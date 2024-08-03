@@ -14,28 +14,18 @@ public class GameManager : SingletonManager<GameManager>
     public Image fillAmountImage;
     public PlayerInteractable player;
 
-    [Header("Elevator")]
-    private int _nowFloor = 1;
-    public Transform blockCelling;
-    public FadeManager fadeManager;
-
     [Header("Player")]
     public ExampleOfUpdatingTheBar exampleBar;
     public PlayerStateMachine PlayerStateMachine { get; set; }
 
     [Header("Manager")]
+    public FadeManager fadeManager;
     public CinemachineManager cinemachineManager;
-    public int nowFloor
-    {
-        get { return _nowFloor; }
-        set { _nowFloor = value; }
-    }
-    public bool isElevatorButtonPressed;
+    public LightManager lightManager;
 
     [Header("Time")]
     public DayNightUI dayNightUI;
-    [Header("Light")]
-    public LightManager lightManager;
+    
     protected override void Awake()
     {
         base.Awake();

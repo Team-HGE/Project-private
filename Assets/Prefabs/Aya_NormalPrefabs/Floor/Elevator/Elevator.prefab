@@ -137,9 +137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26a147af1441e4d45a4eab243bde0580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elevatorLeftDoor: {fileID: 3563970905039399458}
-  elevatorRightDoor: {fileID: 7762782603858162050}
-  elevatorBoxCollider: {fileID: 7632003017365844685}
+  floorHeight: 35.5
+  moveTime: 3
   elevatorSprites:
   - {fileID: 35327293, guid: 0d3d57269f24e2e4296be234834accc5, type: 3}
   - {fileID: 946226809, guid: 0d3d57269f24e2e4296be234834accc5, type: 3}
@@ -152,6 +151,14 @@ MonoBehaviour:
   - {fileID: 1496592565, guid: 0d3d57269f24e2e4296be234834accc5, type: 3}
   - {fileID: 1501181010, guid: 0d3d57269f24e2e4296be234834accc5, type: 3}
   elevatorCountSprite: {fileID: 2114849671840465822}
+  elevatorIndex: 1
+  openDoor:
+  - {fileID: 2370754003315906474}
+  - {fileID: 4876732275243768448}
+  closeDoor:
+  - {fileID: 4764360692892261571}
+  - {fileID: 7343295429370015652}
+  elevatorBoxCollider: {fileID: 7632003017365844685}
 --- !u!1 &5568963135166071299
 GameObject:
   m_ObjectHideFlags: 0
@@ -547,7 +554,7 @@ PrefabInstance:
     - target: {fileID: 8398601300368950195, guid: 6e7fbc840ccd7a341b4467f900a6f5db,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 19.712656
+      value: 20.045988
       objectReference: {fileID: 0}
     - target: {fileID: 8398601300368950195, guid: 6e7fbc840ccd7a341b4467f900a6f5db,
         type: 3}
@@ -596,9 +603,19 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 4f58d23867cc46542bf10ca2e73b5ba9, type: 2}
     - target: {fileID: 8624791390315863787, guid: 6e7fbc840ccd7a341b4467f900a6f5db,
         type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8624791390315863787, guid: 6e7fbc840ccd7a341b4467f900a6f5db,
+        type: 3}
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 5540288634318010586}
+    - target: {fileID: 8624791390315863787, guid: 6e7fbc840ccd7a341b4467f900a6f5db,
+        type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenDoor
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -726,6 +743,11 @@ PrefabInstance:
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 5540288634318010586}
+    - target: {fileID: 5297487574436904952, guid: 2c7a0b9cd4a54d14d892973304f4938c,
+        type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MoveFloor
+      objectReference: {fileID: 0}
     - target: {fileID: 8635294362640433093, guid: 2c7a0b9cd4a54d14d892973304f4938c,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -968,22 +990,56 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1309840465889484846, guid: be161a4ff482c5f45b29d0a47ba58cf8,
+        type: 3}
+      propertyPath: easeType
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 7359529890838993413, guid: be161a4ff482c5f45b29d0a47ba58cf8,
         type: 3}
       propertyPath: m_Name
       value: Elevator_LeftDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 8130554291452767047, guid: be161a4ff482c5f45b29d0a47ba58cf8,
+        type: 3}
+      propertyPath: easeType
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be161a4ff482c5f45b29d0a47ba58cf8, type: 3}
+--- !u!114 &2370754003315906474 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1309840465889484846, guid: be161a4ff482c5f45b29d0a47ba58cf8,
+    type: 3}
+  m_PrefabInstance: {fileID: 3660266247217264516}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d0390bd8b8ffd640b34fe25065ff1df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &3563970905039399458 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 269693046047628710, guid: be161a4ff482c5f45b29d0a47ba58cf8,
     type: 3}
   m_PrefabInstance: {fileID: 3660266247217264516}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4764360692892261571 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8130554291452767047, guid: be161a4ff482c5f45b29d0a47ba58cf8,
+    type: 3}
+  m_PrefabInstance: {fileID: 3660266247217264516}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d0390bd8b8ffd640b34fe25065ff1df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4150541841513342337
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1090,6 +1146,11 @@ PrefabInstance:
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 5540288634318010586}
+    - target: {fileID: 5297487574436904952, guid: 2c7a0b9cd4a54d14d892973304f4938c,
+        type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MoveFloor
+      objectReference: {fileID: 0}
     - target: {fileID: 8635294362640433093, guid: 2c7a0b9cd4a54d14d892973304f4938c,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -1278,11 +1339,45 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6775982952878095037, guid: e05d28795902bc746bda91302085e606,
+        type: 3}
+      propertyPath: easeType
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8668341846372093849, guid: e05d28795902bc746bda91302085e606,
+        type: 3}
+      propertyPath: easeType
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e05d28795902bc746bda91302085e606, type: 3}
+--- !u!114 &4876732275243768448 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8668341846372093849, guid: e05d28795902bc746bda91302085e606,
+    type: 3}
+  m_PrefabInstance: {fileID: 4314871553440339225}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d0390bd8b8ffd640b34fe25065ff1df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7343295429370015652 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6775982952878095037, guid: e05d28795902bc746bda91302085e606,
+    type: 3}
+  m_PrefabInstance: {fileID: 4314871553440339225}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d0390bd8b8ffd640b34fe25065ff1df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7762782603858162050 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5790346502395389083, guid: e05d28795902bc746bda91302085e606,
@@ -1479,6 +1574,11 @@ PrefabInstance:
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 5540288634318010586}
+    - target: {fileID: 5297487574436904952, guid: 2c7a0b9cd4a54d14d892973304f4938c,
+        type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MoveFloor
+      objectReference: {fileID: 0}
     - target: {fileID: 8635294362640433093, guid: 2c7a0b9cd4a54d14d892973304f4938c,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -1616,6 +1716,11 @@ PrefabInstance:
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 5540288634318010586}
+    - target: {fileID: 5297487574436904952, guid: 2c7a0b9cd4a54d14d892973304f4938c,
+        type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MoveFloor
+      objectReference: {fileID: 0}
     - target: {fileID: 8635294362640433093, guid: 2c7a0b9cd4a54d14d892973304f4938c,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -1753,6 +1858,11 @@ PrefabInstance:
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 5540288634318010586}
+    - target: {fileID: 5297487574436904952, guid: 2c7a0b9cd4a54d14d892973304f4938c,
+        type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MoveFloor
+      objectReference: {fileID: 0}
     - target: {fileID: 8635294362640433093, guid: 2c7a0b9cd4a54d14d892973304f4938c,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -1868,9 +1978,19 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 4f58d23867cc46542bf10ca2e73b5ba9, type: 2}
     - target: {fileID: 4055607991837222037, guid: a2c363656eb933842b228b649073e0e3,
         type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4055607991837222037, guid: a2c363656eb933842b228b649073e0e3,
+        type: 3}
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 5540288634318010586}
+    - target: {fileID: 4055607991837222037, guid: a2c363656eb933842b228b649073e0e3,
+        type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenDoor
+      objectReference: {fileID: 0}
     - target: {fileID: 6302632676225319474, guid: a2c363656eb933842b228b649073e0e3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1884,7 +2004,7 @@ PrefabInstance:
     - target: {fileID: 6302632676225319474, guid: a2c363656eb933842b228b649073e0e3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 19.712656
+      value: 20.045988
       objectReference: {fileID: 0}
     - target: {fileID: 6302632676225319474, guid: a2c363656eb933842b228b649073e0e3,
         type: 3}
@@ -2053,6 +2173,11 @@ PrefabInstance:
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 5540288634318010586}
+    - target: {fileID: 5297487574436904952, guid: 2c7a0b9cd4a54d14d892973304f4938c,
+        type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MoveFloor
+      objectReference: {fileID: 0}
     - target: {fileID: 8635294362640433093, guid: 2c7a0b9cd4a54d14d892973304f4938c,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -2368,6 +2493,11 @@ PrefabInstance:
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 5540288634318010586}
+    - target: {fileID: 5297487574436904952, guid: 2c7a0b9cd4a54d14d892973304f4938c,
+        type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MoveFloor
+      objectReference: {fileID: 0}
     - target: {fileID: 8635294362640433093, guid: 2c7a0b9cd4a54d14d892973304f4938c,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -2505,6 +2635,11 @@ PrefabInstance:
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 5540288634318010586}
+    - target: {fileID: 5297487574436904952, guid: 2c7a0b9cd4a54d14d892973304f4938c,
+        type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MoveFloor
+      objectReference: {fileID: 0}
     - target: {fileID: 8635294362640433093, guid: 2c7a0b9cd4a54d14d892973304f4938c,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -2731,6 +2866,11 @@ PrefabInstance:
       propertyPath: action.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 5540288634318010586}
+    - target: {fileID: 5297487574436904952, guid: 2c7a0b9cd4a54d14d892973304f4938c,
+        type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MoveFloor
+      objectReference: {fileID: 0}
     - target: {fileID: 8635294362640433093, guid: 2c7a0b9cd4a54d14d892973304f4938c,
         type: 3}
       propertyPath: m_SizeDelta.x
