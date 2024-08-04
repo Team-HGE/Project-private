@@ -118,4 +118,18 @@ public class LightManager : MonoBehaviour
         }
         return LightName.Unknown;
     }
+    float time;
+    bool lightOff;
+    private void Update()
+    {
+        if (!lightOff)
+        {
+            time += Time.deltaTime;
+            if (time > 10)
+            {
+                OffAllLight();
+                lightOff = true;
+            }
+        }
+    }
 }

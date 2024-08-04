@@ -33,9 +33,9 @@ public class GameManager : SingletonManager<GameManager>
 
         if (dayNightUI == null) dayNightUI = GetComponent<DayNightUI>();
 
-        if (lightManager == null) lightManager = GetComponent<LightManager>();
-
         if (cinemachineManager == null) cinemachineManager = GetComponent<CinemachineManager>();
+
+        if (lightManager == null) lightManager = GetComponent<LightManager>();
     }
     public void Init(Player _player)
     {

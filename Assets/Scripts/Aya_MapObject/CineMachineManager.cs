@@ -7,8 +7,11 @@ using UnityEngine;
 
 public class CinemachineManager : MonoBehaviour
 {
-    private CinemachineVirtualCamera playerVC;
+    string VCam = "VCam";
+    
     private CinemachineVirtualCamera targetCamera;
+    [Header("Cinemachine")]
+    [SerializeField] CinemachineVirtualCamera playerVC;
     [SerializeField] CinemachineBrain mainCamera;
     [SerializeField] CinemachineBlendListCamera blendListCamera;
 
@@ -19,7 +22,7 @@ public class CinemachineManager : MonoBehaviour
     {
         if (playerVC == null)
         {
-            playerVC = HotelFloorScene_DataManager.Instance.GetPlayerVC;
+            playerVC = GameObject.FindGameObjectWithTag(VCam).GetComponent<CinemachineVirtualCamera>();
         }
         yield return StartCoroutine(SetBlendCamera(0, targetCamera));
         

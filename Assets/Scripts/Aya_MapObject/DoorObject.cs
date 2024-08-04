@@ -3,15 +3,22 @@ using DG.Tweening;
 
 public class DoorObject : InteractableObject
 {
+    [Header("Bool")]
     [SerializeField] bool isOpen;
-    [SerializeField] bool interactableOneTime;
+    [SerializeField] bool isLock;
+
+    [Header("SoundClip")]
     [SerializeField] AudioClip openSound;
     [SerializeField] AudioClip closeSound;
     [SerializeField] AudioClip lockSound;
+
+    [Header("Animation")]
     [SerializeField] DOTweenAnimation openDoor;
     [SerializeField] DOTweenAnimation closeDoor;
+    [SerializeField] DOTweenAnimation lockDoor;
 
-    private AudioSource audioSource;
+    AudioSource audioSource;
+    AudioClip targetSound;
 
     void Awake()
     {
@@ -33,33 +40,31 @@ public class DoorObject : InteractableObject
 
     public override void Interact()
     {
-        if (interactableOneTime)
+        if (isLock)
         {
-            isInteractable = true;
+            openDoor.DOKill();
+            closeDoor.DOKill();
+            lockDoor.CreateTween(true);
+            targetSound = lockSound;
         }
 
-        AudioClip targetSound;
-
-        
-        if (isOpen)
+        if (isOpen && !isLock)
         {
+            lockDoor.DOKill();
             openDoor.DOKill();
             closeDoor.CreateTween(true);
             targetSound = closeSound;
             isOpen = false;
         }
-        else
+        else if (!isOpen && !isLock)
         {
+            lockDoor.DOKill();
             closeDoor.DOKill();
             openDoor.CreateTween(true);
             targetSound = openSound;
             isOpen = true;
         }
 
-        // 효과음 재생
-        if (targetSound != null)
-        {
-            audioSource.PlayOneShot(targetSound);
-        }
+        audioSource.PlayOneShot(targetSound);
     }
 }
