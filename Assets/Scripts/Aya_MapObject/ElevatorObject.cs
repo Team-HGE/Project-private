@@ -7,12 +7,12 @@ using System;
 public class ElevatorObject : MonoBehaviour
 {
     Coroutine fixPlayerYPosCor;
-    IEnumerator fixPlayerYPos(float playerDistance)
+    IEnumerator fixPlayerYPos()
     {
         while (true)
         {
             Vector3 targetPos = GameManager.Instance.player.transform.position;
-            targetPos.y = transform.position.y - playerDistance;
+            targetPos.y = transform.position.y + HotelFloorScene_DataManager.Instance.elevatorManager.playerHeightY;
             GameManager.Instance.player.transform.position = targetPos;
             yield return null;
         }
@@ -26,30 +26,29 @@ public class ElevatorObject : MonoBehaviour
     }
     public float floorHeight = 35.5f;
     public float moveTime = 4f;
-    float initialY;
     int lastUpdatedFloor = -1;
 
     [Header("FloorImage")]
     [SerializeField] Sprite[] elevatorSprites;
-    [SerializeField] SpriteRenderer elevatorCountSprite;
+    [SerializeField] SpriteRenderer[] elevatorCountSprite;
     public event Action onInteractComplete;
 
-    public int elevatorIndex;
+    public ElevatorObjectType elevatorObjectType;
     [SerializeField] DOTweenAnimation[] openDoor;
     [SerializeField] DOTweenAnimation[] closeDoor;
 
     
     [SerializeField] GameObject elevatorBoxCollider;
 
-    public void MoveFloor(int targetFloor)
+    public void MoveFloor(int targetFloor, bool isPlayerIn)
     {
         elevatorBoxCollider.SetActive(true);
 
-        GameManager.Instance.player.transform.SetParent(this.transform);
-
+        if (isPlayerIn)
+        {
+            fixPlayerYPosCor = StartCoroutine(fixPlayerYPos());
+        }
         float targetY = (targetFloor - 1) * floorHeight;
-
-        initialY = transform.position.y;
         
         int floorsToMove = Mathf.Abs(targetFloor - NowFloor);
 
@@ -68,18 +67,18 @@ public class ElevatorObject : MonoBehaviour
         });
 
         Sequence elevatorSequence = DOTween.Sequence();
-        elevatorSequence.PrependCallback(() =>
+        elevatorSequence.AppendCallback(() =>
         {
             CloseDoor();
-            elevatorSequence.AppendInterval(5f);
         });
+        elevatorSequence.AppendInterval(4f);
         elevatorSequence.Append(moveUp);
-        //elevatorSequence.Join(transform.DOShakeRotation(allMoveTime, 1, 2).SetDelay(1));
+        elevatorSequence.Join(transform.DOShakeRotation(allMoveTime, 1, 2).SetDelay(1));
 
         elevatorSequence.AppendCallback(() =>
         {
+            StopCoroutine(fixPlayerYPosCor);
             HotelFloorScene_DataManager.Instance.elevatorManager.openTime = 0;
-            GameManager.Instance.player.transform.SetParent(null);
             NowFloor = targetFloor;
             elevatorBoxCollider.SetActive(false);
             DOVirtual.DelayedCall(1f, () =>  OpenDoor());
@@ -88,7 +87,10 @@ public class ElevatorObject : MonoBehaviour
 
     private void UpdateElevatorCountSprite(int floor)
     {
-        elevatorCountSprite.sprite = elevatorSprites[floor];
+        foreach (var sprite in elevatorCountSprite)
+        {
+            sprite.sprite = elevatorSprites[floor];
+        }
     }
     public void OpenDoor()
     {
@@ -106,7 +108,7 @@ public class ElevatorObject : MonoBehaviour
             anim.DOKill();
             anim.CreateTween(true);
         }
-        DOVirtual.DelayedCall(1f, () => onInteractComplete?.Invoke());
+        DOVirtual.DelayedCall(4f, () => onInteractComplete?.Invoke());
     }
 
     public void CloseDoor()

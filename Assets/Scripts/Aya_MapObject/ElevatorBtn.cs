@@ -9,7 +9,6 @@ public class ElevatorBtn : InteractableObject
     [SerializeField] int materialIndexChange;
     [SerializeField] int myNum;
     [SerializeField] ElevatorObject elevatorObject;
-    [SerializeField] UnityEvent<int> action;
 
     private void Start()
     {
@@ -35,7 +34,7 @@ public class ElevatorBtn : InteractableObject
         newMaterials[materialIndexChange] = changeMaterial[0];
         meshRenderer.materials = newMaterials;
 
-        action?.Invoke(myNum);
+        elevatorObject.MoveFloor(myNum, true);
         elevatorObject.onInteractComplete -= ChangeMaterialAfterAction;
         elevatorObject.onInteractComplete += ChangeMaterialAfterAction;
     }

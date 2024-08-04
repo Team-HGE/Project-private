@@ -1,30 +1,90 @@
 using DG.Tweening;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ElevatorObjectType
+{
+    ALeft,
+    ARight,
+    BLeft,
+    BRight
+}
+[Serializable]
+public class DOTweenAnimationListALeft
+{
+    [Header("Open")]
+    public DOTweenAnimation floorLeftDoorOpen;
+    public DOTweenAnimation floorRightDoorOpen;
+    [Header("Close")]
+    public DOTweenAnimation floorLeftDoorClose;
+    public DOTweenAnimation floorRightDoorClose;
+}
+[Serializable]
+public class DOTweenAnimationListARight
+{
+    [Header("Open")]
+    public DOTweenAnimation floorLeftDoorOpen;
+    public DOTweenAnimation floorRightDoorOpen;
+    [Header("Close")]
+    public DOTweenAnimation floorLeftDoorClose;
+    public DOTweenAnimation floorRightDoorClose;
+}
+[Serializable]
+public class DOTweenAnimationListBLeft
+{
+    [Header("Open")]
+    public DOTweenAnimation floorLeftDoorOpen;
+    public DOTweenAnimation floorRightDoorOpen;
+    [Header("Close")]
+    public DOTweenAnimation floorLeftDoorClose;
+    public DOTweenAnimation floorRightDoorClose;
+}
+[Serializable]
+public class DOTweenAnimationListBRight
+{
+    [Header("Open")]
+    public DOTweenAnimation floorLeftDoorOpen;
+    public DOTweenAnimation floorRightDoorOpen;
+    [Header("Close")]
+    public DOTweenAnimation floorLeftDoorClose;
+    public DOTweenAnimation floorRightDoorClose;
+}
+
 public class ElevatorManager : MonoBehaviour
 {
+    [Header("PlayerHeightY")]
+    public float playerHeightY;
+
+    [Header("Bool Check")]
     public bool isElevatorButtonPressed;
     public bool isElevatorOpen;
     public float openTime = 0;
-    [SerializeField] ElevatorObject nowElevator;
+
     List<DOTweenAnimation> nowDoor = new List<DOTweenAnimation>();
-    [SerializeField] DOTweenAnimation[] floorOpenAni;
-    [SerializeField] DOTweenAnimation[] floorCloseAni;
+
+    [Header("FloorElevatorDoorAnimation")]
+    [SerializeField] ElevatorObject nowElevator;
+    [SerializeField] DOTweenAnimationListALeft[] aLeftFloorElevatorDoorAni;
+    [SerializeField] DOTweenAnimationListARight[] aRightFloorElevatorDoorAni;
+    [SerializeField] DOTweenAnimationListBLeft[] bLeftFloorElevatorDoorAni;
+    [SerializeField] DOTweenAnimationListBRight[] bRightFloorElevatorDoorAni;
     public List<DOTweenAnimation> GetOpenDoor(int nowFloor, ElevatorObject elevatorObject)
     {
         nowElevator = elevatorObject;
         nowDoor.Clear();
-        switch (nowFloor)
+        switch (nowElevator.elevatorObjectType)
         {
-            case 1:
-                if (nowElevator.elevatorIndex == 1)
-                {
-                    nowDoor.Add(floorOpenAni[0]);
-                    nowDoor.Add(floorOpenAni[1]);
-                }
+            case ElevatorObjectType.ALeft:
+                nowDoor.Add(aLeftFloorElevatorDoorAni[nowElevator.NowFloor].floorLeftDoorOpen);
+                nowDoor.Add(aLeftFloorElevatorDoorAni[nowElevator.NowFloor].floorRightDoorOpen);
                 break;
-
+            case ElevatorObjectType.ARight:
+                break;
+            case ElevatorObjectType.BLeft:
+                break;
+            case ElevatorObjectType.BRight:
+                break;
         }
         return nowDoor;
     }
@@ -32,14 +92,17 @@ public class ElevatorManager : MonoBehaviour
     {
         nowElevator = elevatorObject;
         nowDoor.Clear();
-        switch (nowFloor)
+        switch (nowElevator.elevatorObjectType)
         {
-            case 1:
-                if (nowElevator.elevatorIndex == 1)
-                {
-                    nowDoor.Add(floorCloseAni[0]);
-                    nowDoor.Add(floorCloseAni[1]);
-                }
+            case ElevatorObjectType.ALeft:
+                nowDoor.Add(aLeftFloorElevatorDoorAni[nowElevator.NowFloor].floorLeftDoorClose);
+                nowDoor.Add(aLeftFloorElevatorDoorAni[nowElevator.NowFloor].floorRightDoorClose);
+                break;
+            case ElevatorObjectType.ARight:
+                break;
+            case ElevatorObjectType.BLeft:
+                break;
+            case ElevatorObjectType.BRight:
                 break;
         }
         return nowDoor;
