@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5048050478257131023}
   - component: {fileID: 343774313219493155}
   - component: {fileID: 3051539309903096871}
+  - component: {fileID: 6129682779321036796}
   m_Layer: 0
   m_Name: Stool
   m_TagString: Untagged
@@ -83,3 +84,26 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &6129682779321036796
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3654468143555880093}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.17608915
+  m_Height: 0.33887967
+  m_Direction: 1
+  m_Center: {x: 0.0000000074505815, y: -0.000000022351745, z: 0}

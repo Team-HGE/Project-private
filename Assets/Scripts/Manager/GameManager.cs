@@ -14,35 +14,28 @@ public class GameManager : SingletonManager<GameManager>
     public Image fillAmountImage;
     public PlayerInteractable player;
 
-    [Header("Elevator")]
-    private int _nowFloor = 1;
-    public Transform blockCelling;
-    public FadeManager fadeManager;
-
     [Header("Player")]
     public ExampleOfUpdatingTheBar exampleBar;
     public PlayerStateMachine PlayerStateMachine { get; set; }
 
-    public int nowFloor
-    {
-        get { return _nowFloor; }
-        set { _nowFloor = value; }
-    }
-    public bool isElevatorButtonPressed;
+    [Header("Manager")]
+    public FadeManager fadeManager;
+    public CinemachineManager cinemachineManager;
+    public LightManager lightManager;
 
     [Header("Time")]
     public DayNightUI dayNightUI;
+    
     protected override void Awake()
     {
         base.Awake();
-        if (fadeManager == null)
-        {
-            fadeManager = GetComponent<FadeManager>();
-        }
-        if (dayNightUI == null)
-        {
-            dayNightUI = GetComponent<DayNightUI>();
-        }
+        if (fadeManager == null) fadeManager = GetComponent<FadeManager>();
+
+        if (dayNightUI == null) dayNightUI = GetComponent<DayNightUI>();
+
+        if (cinemachineManager == null) cinemachineManager = GetComponent<CinemachineManager>();
+
+        if (lightManager == null) lightManager = GetComponent<LightManager>();
     }
     public void Init(Player _player)
     {
