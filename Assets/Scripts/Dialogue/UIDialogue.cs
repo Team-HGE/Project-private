@@ -64,10 +64,13 @@ public class UIDialogue : MonoBehaviour
         image.sprite = sprite;
     }
 
-    public void ClearDialogue(StringBuilder sbTitle, StringBuilder sbBody)
+    public void ClearDialogue(StringBuilder _sbTitle, StringBuilder _sbBody)
     {
-        UtilSB.ClearText(titleText, sbTitle);
-        UtilSB.ClearText(bodyText, sbBody);
+        titleText.text = _sbTitle.Clear().ToString();
+        bodyText.text = _sbBody.Clear().ToString();
+
+        UtilSB.ClearText(titleText, _sbTitle);
+        UtilSB.ClearText(bodyText, _sbBody);
         portrait.sprite = null;
     }
 }

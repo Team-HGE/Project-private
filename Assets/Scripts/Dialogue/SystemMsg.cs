@@ -48,6 +48,24 @@ public class SystemMsg : MonoBehaviour
 
             yield return new WaitForSeconds(1f);
         }
+
+        for (int i = 0; i < systemMsgSO.tips.Length; i++)
+        {
+            msgPrefab = objectPool.GetObject();
+            msgText = msgPrefab.GetComponent<TextMeshProUGUI>();
+
+            sb.Append(systemMsgSO.tips[i]);
+            //TextEffect.Highlight(msgText, Color.red);
+            msgText.text = "TIP: " + sb.ToString();
+
+            StartCoroutine(TextEffect.FadeOut(msgText));
+            sb.Clear();
+
+            //Debug.Log(msgPrefab);
+
+            yield return new WaitForSeconds(1f);
+        }
+
         isUpdating = false;
         yield return null;
     }

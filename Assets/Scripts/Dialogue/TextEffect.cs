@@ -18,6 +18,12 @@ public class TextEffect: DialogueSetting
 
         foreach (char c in SOstr.ToCharArray())
         {
+            if (!isTalking)
+            {
+                SOstr = null;
+                break;
+            }
+
             CheckSkip();
 
             if (isSkipped) break;

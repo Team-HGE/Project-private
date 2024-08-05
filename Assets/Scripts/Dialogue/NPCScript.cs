@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Text;
 
 public class NPCScript : DialogueSetting, IScript
 {
@@ -9,6 +10,7 @@ public class NPCScript : DialogueSetting, IScript
 
     public void Init(ScriptSO _script)
     {
+        scriptSO = null;
         scriptSO = _script;
         ui.CloseDialogue();
     }
@@ -34,10 +36,14 @@ public class NPCScript : DialogueSetting, IScript
 
     private IEnumerator PrintScript()
     {
+        //if (!isTalking) { Debug.Log("실행중인 코루틴을 종료합니다."); StopAllCoroutines(); InitDialogueSetting();}
+
         ui.ClearDialogue(sbTitle, sbBody);
 
         for (int i = 0; i < scriptSO.bodyTexts.Length; i++)
         {
+            if (!isTalking) { Debug.Log("실행중인 코루틴을 종료합니다."); StopAllCoroutines(); InitDialogueSetting(); break; }
+
             // 말하는 NPC 이름 - 대화중
             if (scriptSO.speakers[i] != "")
                 UtilSB.SetText(ui.titleText, sbTitle, scriptSO.speakers[i] + " - " + npc.ChangeNpcState(NpcState.Speaking));
@@ -66,6 +72,7 @@ public class NPCScript : DialogueSetting, IScript
             yield return waitTime;
 
             ui.ClearDialogue(sbTitle, sbBody);
+            //Debug.Log(sbTitle); null 잘됨
         }
 
         ui.CloseDialogue();
@@ -75,6 +82,9 @@ public class NPCScript : DialogueSetting, IScript
 
         // NPC 감정 상태 해제
         npc.ChangeNpcState(NpcState.Idle);
+
+        //해당 NPC 대화 기회 소모 
+        npc.npcSO.isInteracted = true;
 
         yield return null;
     }

@@ -64,5 +64,19 @@ public class DialogueManager : SingletonManager<DialogueManager>
     public void FinishStory()
     {
         set.InitDialogueSetting();
+        Debug.Log("스토리 스크립트 초기화");
+        storyScript.scriptSO = null;
+        StopAllCoroutines();
+    }
+
+    public void NpcStartInteract()
+    {
+        // NPC 대화 기회 초기화
+        //isInteracted = false;
+    }
+
+    public void StoryInit()
+    {
+        //챕터 바뀌면 다음 스크립트 출려해주는 함수
     }
 }
