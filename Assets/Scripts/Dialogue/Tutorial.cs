@@ -45,7 +45,7 @@ public class Tutorial : MonoBehaviour
 
     public void CheckTutorial()
     {
-        if (!isMoved && GameManager.Instance.PlayerStateMachine.IsWalking)
+        if (!isMoved && GameManager.Instance.PlayerStateMachine.IsWalking) // null 에러 남
         {
             Debug.Log("튜토리얼: WASD로 이동하기 완료");
             isMoved = true;
