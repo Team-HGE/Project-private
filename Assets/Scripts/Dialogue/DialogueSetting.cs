@@ -23,7 +23,7 @@ public class DialogueSetting: MonoBehaviour
     public void InitDialogueSetting()
     {
         isTalking = false;
-        Debug.Log("DialogueSetting 초기화:" + isTalking);
+        //Debug.Log("DialogueSetting 초기화:" + isTalking);
         TextEffect.isSkipped = false;
         ui.ClearDialogue(sbTitle, sbBody);
         ui.CloseDialogue();
