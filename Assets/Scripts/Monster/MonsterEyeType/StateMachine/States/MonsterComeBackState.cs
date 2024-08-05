@@ -12,7 +12,7 @@ public class MonsterComeBackState : MonsterGroundState
     {
         base.Enter();
 
-        StartAnimation(stateMachine.Monster.AnimationData.PatrolParameterHash);
+        StartAnimation(stateMachine.Monster.AnimationData.ComeBackParameterHash);
 
         stateMachine.IsComeBack = true;
         stateMachine.Monster.Agent.isStopped = false;
@@ -24,12 +24,13 @@ public class MonsterComeBackState : MonsterGroundState
     {
         base.Exit();
         stateMachine.IsComeBack = false;
-        StopAnimation(stateMachine.Monster.AnimationData.PatrolParameterHash);
+        StopAnimation(stateMachine.Monster.AnimationData.ComeBackParameterHash);
     }
 
     public override void Update()
     {
         base.Update();
+        RotateToPlayer();
 
         if (stateMachine.Monster.Agent.pathPending) return;
 

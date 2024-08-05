@@ -36,6 +36,8 @@ public class MonsterPatrolState : MonsterGroundState
     public override void Update()
     {
         base.Update();
+        RotateToPlayer();
+
         if (stateMachine.Monster.Agent.pathPending) return;
 
         if (stateMachine.Monster.Agent.remainingDistance < 0.2f)

@@ -51,8 +51,6 @@ public class Monster : MonoBehaviour
     public Transform findTarget;
 
 
-
-
     private void Awake()
     {
         AnimationData.Initialize();
@@ -76,15 +74,9 @@ public class Monster : MonoBehaviour
         //_stateMachine.HandleInput();
         _stateMachine.Update();
 
-        //if (NoiseAmount > 0)
-        //{
-            
-        //}
-
         DrawCircle(transform.position, 36, Data.GroundData.PlayerChasingRange, Color.yellow);
         DrawCircle(transform.position, 36, Data.GroundData.PlayerFindRange, Color.green);
         DrawCircle(transform.position, 36, Data.GroundData.AttackRange, Color.red);
-
     }
 
     private IEnumerator FPRoutine()
@@ -99,6 +91,8 @@ public class Monster : MonoBehaviour
 
     private void FindPlayer()
     {
+        if (_stateMachine.IsAttack) return; 
+
         Collider[] rangeChecks = Physics.OverlapSphere(transform.position, Data.GroundData.PlayerChasingRange, playerMask);
 
         if (rangeChecks.Length > 0)
@@ -126,32 +120,6 @@ public class Monster : MonoBehaviour
         {
             canCheck = false;
         }
-
-
-
-
-        //if (_stateMachine.IsPatrol || _stateMachine.IsIdle)
-        //{
-        //    rangeChecks = Physics.OverlapSphere(transform.position, Data.GroundData.PlayerFindRange, playerMask);
-        //    if (rangeChecks.Length > 0)
-        //    {
-        //        findTarget = rangeChecks[0].transform;
-        //        canCheck = true;
-        //    }
-
-        //    //if (rangeChecks.Length > 0) Debug.Log($"플레이어 발견1, {Data.GroundData.PlayerFindRange}, {Vector3.Distance(transform.position, _stateMachine.Target.transform.position)}");
-        //}
-        //else
-        //{
-        //    rangeChecks = Physics.OverlapSphere(transform.position, Data.GroundData.PlayerChasingRange, playerMask);
-        //    if (rangeChecks.Length > 0)
-        //    {
-        //        findTarget = rangeChecks[0].transform;
-        //        canCheck = true;
-        //    }
-
-        //    //if (rangeChecks.Length > 0) Debug.Log($"플레이어 발견2, {Data.GroundData.PlayerChasingRange}, {Vector3.Distance(transform.position, _stateMachine.Target.transform.position)}");
-        //}
     }
 
     private void FixedUpdate()

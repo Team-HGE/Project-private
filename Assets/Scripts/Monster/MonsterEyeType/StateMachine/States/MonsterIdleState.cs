@@ -33,7 +33,9 @@ public class MonsterIdleState : MonsterGroundState
 
     public override void Update()
     {
-        base.Update();  
+        base.Update();
+        RotateToPlayer();
+
         if (!stateMachine.Monster.CanPatrol) return;
         if (!stateMachine.Monster.IsBehavior) return;
         stateMachine.ChangeState(stateMachine.PatrolState);

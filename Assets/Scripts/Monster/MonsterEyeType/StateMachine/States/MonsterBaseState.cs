@@ -32,6 +32,7 @@ public class MonsterBaseState : IState
     public virtual void Update()
     {
         FindPlayerCheck();
+        RotateToPlayer();
     }
 
 
@@ -89,8 +90,28 @@ public class MonsterBaseState : IState
     //    }
     //}
 
+    protected void RotateToPlayer()
+    {
+
+        //Debug.Log("돌아보기 준비");
+
+        //if (Vector3.Distance(stateMachine.Monster.transform.position, stateMachine.Target.transform.position) <= stateMachine.Monster.Data.GroundData.AttackRange)
+        //{
+        //    Debug.Log("돌아보기 성공");
+
+        //    Rotate(GetMovementDirection());
+        //}
+
+        if (IsInAttackRange())
+        {
+            Rotate(GetMovementDirection());
+        }
+    }
+
     protected void FindPlayerCheck()
     {
+        if (stateMachine.IsAttack) return;
+
         if (!stateMachine.Monster.canCheck)
         {
             //Debug.Log("플레이어 탐지 불가");
