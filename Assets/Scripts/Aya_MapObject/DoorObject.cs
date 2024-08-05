@@ -5,7 +5,7 @@ public class DoorObject : InteractableObject
 {
     [Header("Bool")]
     [SerializeField] bool isOpen;
-    [SerializeField] bool isLock;
+    public bool isLock;
 
     [Header("SoundClip")]
     [SerializeField] AudioClip openSound;
