@@ -33,8 +33,8 @@ Transform:
   m_LocalScale: {x: 0.75, y: 1.0509875, z: 0.89671737}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 822616813858848169}
   - {fileID: 5415099201073143744}
-  - {fileID: 1974756383943835187}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &2920163339302652293
@@ -109,7 +109,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 00cb8f6928617c34abbd6a16825d3673, type: 2}
---- !u!1 &9219581197081954510
+--- !u!1 &7084039296308776673
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -117,38 +117,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1974756383943835187}
-  - component: {fileID: 374673045473068534}
-  - component: {fileID: 8098770985564650708}
+  - component: {fileID: 822616813858848169}
+  - component: {fileID: 6809728159528885529}
+  - component: {fileID: 2461569694748532161}
   m_Layer: 0
-  m_Name: Point Light
+  m_Name: Drinck Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1974756383943835187
+--- !u!4 &822616813858848169
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9219581197081954510}
+  m_GameObject: {fileID: 7084039296308776673}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.5733244, y: 2.6165864, z: 0.00000034668827}
+  m_LocalRotation: {x: -0, y: -0, z: 9.318503e-17, w: 1}
+  m_LocalPosition: {x: -3.5733242, y: 2.6165864, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6998401340673609436}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!108 &374673045473068534
+--- !u!108 &6809728159528885529
 Light:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9219581197081954510}
+  m_GameObject: {fileID: 7084039296308776673}
   m_Enabled: 1
   serializedVersion: 10
   m_Type: 2
@@ -193,7 +193,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -204,13 +204,13 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &8098770985564650708
+--- !u!114 &2461569694748532161
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9219581197081954510}
+  m_GameObject: {fileID: 7084039296308776673}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
