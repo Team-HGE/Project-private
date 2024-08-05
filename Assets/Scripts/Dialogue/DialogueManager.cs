@@ -11,6 +11,8 @@ public class DialogueManager : SingletonManager<DialogueManager>
     [HideInInspector]
     public ItemScript itemScript;
     [HideInInspector]
+    public KarmaScript karmaScript;
+    [HideInInspector]
     public Answer answer;
 
     private SystemMsg systemMsg;
@@ -36,8 +38,9 @@ public class DialogueManager : SingletonManager<DialogueManager>
         storyScript = GetComponent<StoryScript>();
         npcScript = GetComponent<NPCScript>();
         itemScript = GetComponent<ItemScript>();
-        answer = GetComponent<Answer>();
+        karmaScript = GetComponent<KarmaScript>();
 
+        answer = GetComponent<Answer>();
         systemMsg = GetComponent<SystemMsg>();
         quest = GetComponent<Quest>();
 
@@ -47,7 +50,7 @@ public class DialogueManager : SingletonManager<DialogueManager>
         quest.UpdateQuest();
         systemMsg.UpdateMessage();
 
-        storyScript.Print();
+        //storyScript.Print();
     }
 
     public void ChangeSO()
@@ -61,5 +64,19 @@ public class DialogueManager : SingletonManager<DialogueManager>
     public void FinishStory()
     {
         set.InitDialogueSetting();
+        Debug.Log("스토리 스크립트 초기화");
+        storyScript.scriptSO = null;
+        StopAllCoroutines();
+    }
+
+    public void NpcStartInteract()
+    {
+        // NPC 대화 기회 초기화
+        //isInteracted = false;
+    }
+
+    public void StoryInit()
+    {
+        //챕터 바뀌면 다음 스크립트 출려해주는 함수
     }
 }

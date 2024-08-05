@@ -14,20 +14,7 @@ public class PlayerMirrorObject : InteractableObject
     }
     public override void Interact()
     {
-        isInteractable = true;
-
-        DialogueManager.Instance.itemScript.Init(scriptSO);
-        DialogueManager.Instance.itemScript.Print();
-
-        //스크립트 출력
-
-        //StartCoroutine(Sleep());
-    }
-    IEnumerator Sleep()
-    {
-        GameManager.Instance.fadeManager.FadeStart(FadeState.FadeOut);
-        GameManager.Instance.dayNightUI.TimeUpdate();
-
-        yield return null;
+        DialogueManager.Instance.karmaScript.Init(scriptSO);
+        DialogueManager.Instance.karmaScript.Print();
     }
 }

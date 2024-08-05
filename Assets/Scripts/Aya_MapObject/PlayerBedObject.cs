@@ -23,6 +23,9 @@ public class PlayerBedObject : InteractableObject
     }
     IEnumerator Sleep()
     {
+        // 스크립트 종료되면 잠들기
+        yield return new WaitUntil(() => !DialogueSetting.isTalking);
+
         GameManager.Instance.fadeManager.FadeStart(FadeState.FadeOut);
         GameManager.Instance.dayNightUI.TimeUpdate();
 

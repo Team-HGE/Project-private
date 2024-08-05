@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Text;
 using UnityEngine;
 
 public class StoryScript: DialogueSetting, IScript
@@ -7,6 +8,9 @@ public class StoryScript: DialogueSetting, IScript
 
     public void Init(ScriptSO _script)
     {
+        //sbTitle = new StringBuilder();
+        //sbBody = new StringBuilder();
+        scriptSO = null;
         scriptSO = _script;
         InitUI();
         ui.CloseDialogue();
@@ -19,8 +23,9 @@ public class StoryScript: DialogueSetting, IScript
         isTalking = true;
 
         Init(scriptSO);
-        if (scriptSO == null) { Debug.Log("지금은 내보낼 스크립트가 없습니다. DialogueManager > Script 컴포넌트에 script SO 파일을 드래그앤드롭 해주세요"); return; };
+        if (scriptSO == null) { Debug.Log("지금은 내보낼 스크립트가 없습니다. scriptSO null"); return; };
 
+        StopAllCoroutines();
         ui.OpenBG();
         ui.OpenDialogue();
         StartCoroutine(PrintScript());
@@ -28,12 +33,16 @@ public class StoryScript: DialogueSetting, IScript
 
     private IEnumerator PrintScript()
     {
+        //if (!isTalking) { Debug.Log("실행중인 코루틴을 종료합니다."); StopAllCoroutines(); InitDialogueSetting(); }
+
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         ui.ClearDialogue(sbTitle, sbBody);
 
         for (int i = 0; i < scriptSO.bodyTexts.Length; i++)
         {
+            if (!isTalking) { Debug.Log("실행중인 코루틴을 종료합니다."); StopAllCoroutines(); InitDialogueSetting(); break; }
+
             UtilSB.SetText(ui.titleText, sbTitle, scriptSO.speakers[i]);
 
             ui.SetImage(ui.portrait, scriptSO.images[i]);
