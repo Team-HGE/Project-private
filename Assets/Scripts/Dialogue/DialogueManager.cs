@@ -50,7 +50,7 @@ public class DialogueManager : SingletonManager<DialogueManager>
         quest.UpdateQuest();
         systemMsg.UpdateMessage();
 
-        storyScript.Print();
+        //storyScript.Print();
     }
 
     public void ChangeSO()
