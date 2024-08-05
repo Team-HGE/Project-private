@@ -9,7 +9,7 @@ public class RunEffect : MonoBehaviour
     
     public float MaxStamina = 100f;
     public float CurrentStamina;
-    public float DecreaseRate = 14f;
+    public float DecreaseRate = 1f;
     public bool IsExhausted => CurrentStamina <= 5f;
     public bool CanRun => CurrentStamina >= 40f;
 

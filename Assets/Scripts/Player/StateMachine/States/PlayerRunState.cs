@@ -37,7 +37,7 @@ public class PlayerRunState : PlayerGroundState
     public override void Update()
     {
         base.Update();
-        stateMachine.Player.CurrentStamina.ConsumeStamina(18f); // 스태미나 소모
+        stateMachine.Player.CurrentStamina.ConsumeStamina(3f); // 스태미나 소모
 
         if (stateMachine.Player.CurrentStamina.IsExhausted)
         {
