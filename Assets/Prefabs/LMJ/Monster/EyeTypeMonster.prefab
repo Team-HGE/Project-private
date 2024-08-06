@@ -141,7 +141,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   canSeePlayer: 0
-  rangeChecks: []
+  canCheck: 0
+  eye: {fileID: 0}
+  findTarget: {fileID: 0}
 --- !u!195 &7567904555289203676
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -177,7 +179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 2238359253920294947}
-  maxDistance: 80
+  maxDistance: 120
 --- !u!82 &2238359253920294947
 AudioSource:
   m_ObjectHideFlags: 0
@@ -192,14 +194,14 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 0.6
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 120
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -234,7 +236,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
