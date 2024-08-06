@@ -113,6 +113,8 @@ public class AudioManager : SingletonManager<AudioManager>
     {
        Quest,
        EnterES,
-       Dial
+       Dial,
+       duck,
+       Wokeup
     }
 }
