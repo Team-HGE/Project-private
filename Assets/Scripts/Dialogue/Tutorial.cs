@@ -18,6 +18,8 @@ public class Tutorial : MonoBehaviour
     [SerializeField]
     private bool isCrouched = false;
 
+    public Quest quest; // 권용 수정
+
     public void Start()
     {
         Init();
@@ -48,21 +50,25 @@ public class Tutorial : MonoBehaviour
         if (!isMoved && GameManager.Instance.PlayerStateMachine.IsWalking) // null 에러 남
         {
             Debug.Log("튜토리얼: WASD로 이동하기 완료");
+            quest.NextQuest(0);
             isMoved = true;
         }
         else if (!isInteracted && GameManager.Instance.player.tutorialSuccess)
         {
             Debug.Log("튜토리얼: E로 상호작용하기 완료");
+            quest.NextQuest(1);
             isInteracted = true;
         }
         else if (!isRan && GameManager.Instance.PlayerStateMachine.IsRunning)
         {
             Debug.Log("튜토리얼: Shift로 달리기 완료");
+            quest.NextQuest(2);
             isRan = true;
         }
         else if (!isCrouched && GameManager.Instance.PlayerStateMachine.IsCrouch)
         {
             Debug.Log("튜토리얼: Ctrl로 웅크리기 완료");
+            quest.NextQuest(3);
             isCrouched = true;
         }
 
