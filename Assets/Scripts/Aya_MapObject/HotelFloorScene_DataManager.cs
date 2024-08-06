@@ -9,8 +9,11 @@ public class HotelFloorScene_DataManager : MonoBehaviour
         if (Instance == null) Instance = this;
 
         if (elevatorManager == null) elevatorManager = GetComponent<ElevatorManager>();
+
+        if (controller == null) controller = GetComponent<HotelFloorScene_Controller>();
     }
     public ElevatorManager elevatorManager;
+    public HotelFloorScene_Controller controller;
     [SerializeField] CinemachineVirtualCamera playerVC;
     public CinemachineVirtualCamera GetPlayerVC { get { return playerVC; } }
 }

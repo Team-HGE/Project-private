@@ -37,68 +37,70 @@ public class Switch_Object_Toggle : InteractableObject
 
     public override void Interact()
     {
-        if (!turnLight)
+        if (HotelFloorScene_DataManager.Instance.controller.isCentralPowerActive)
         {
-            foreach (MeshRenderer mesh in lightObjectMesh)
+            if (!turnLight)
             {
-                if (mesh != null)
+                foreach (MeshRenderer mesh in lightObjectMesh)
                 {
-                    Material[] newMaterial = mesh.materials;
-                    if (mesh.gameObject.name == "Room_Celling")
+                    if (mesh != null)
                     {
-                        newMaterial[1] = materials[1];
-                        mesh.materials = newMaterial;
-                    }
-                    else
-                    {
-                        newMaterial[0] = materials[1];
-                        mesh.materials = newMaterial;
+                        Material[] newMaterial = mesh.materials;
+                        if (mesh.gameObject.name == "Room_Celling")
+                        {
+                            newMaterial[1] = materials[1];
+                            mesh.materials = newMaterial;
+                        }
+                        else
+                        {
+                            newMaterial[0] = materials[1];
+                            mesh.materials = newMaterial;
+                        }
                     }
                 }
-            }
-            foreach (GameObject obj in lights)
-            {
-                if (obj != null)
+                foreach (GameObject obj in lights)
                 {
-                    obj.SetActive(true);
+                    if (obj != null)
+                    {
+                        obj.SetActive(true);
+                    }
                 }
+                turnLight = true;
+                offSwitch.SetActive(false);
+                onSwitch.SetActive(true);
             }
-            turnLight = true;
-            offSwitch.SetActive(false);
-            onSwitch.SetActive(true);
-            audioSource.Play();
-            
+            else
+            {
+                foreach (MeshRenderer mesh in lightObjectMesh)
+                {
+                    if (mesh != null)
+                    {
+                        Material[] newMaterial = mesh.materials;
+                        if (mesh.gameObject.name == "Room_Celling")
+                        {
+                            newMaterial[1] = materials[0];
+                            mesh.materials = newMaterial;
+                        }
+                        else
+                        {
+                            newMaterial[0] = materials[0];
+                            mesh.materials = newMaterial;
+                        }
+                    }
+                }
+                foreach (GameObject obj in lights)
+                {
+                    if (obj != null)
+                    {
+                        obj.SetActive(false);
+                    }
+                }
+                turnLight = false;
+                offSwitch.SetActive(true);
+                onSwitch.SetActive(false);
+
+            }
         }
-        else
-        {
-            foreach (MeshRenderer mesh in lightObjectMesh)
-            {
-                if (mesh != null)
-                {
-                    Material[] newMaterial = mesh.materials;
-                    if (mesh.gameObject.name == "Room_Celling")
-                    {
-                        newMaterial[1] = materials[0];
-                        mesh.materials = newMaterial;
-                    }
-                    else
-                    {
-                        newMaterial[0] = materials[0];
-                        mesh.materials = newMaterial;
-                    }
-                }
-            }
-            foreach (GameObject obj in lights)
-            {
-                if (obj != null)
-                {
-                    obj.SetActive(false);
-                }
-            }
-            turnLight = false;
-            offSwitch.SetActive(true);
-            onSwitch.SetActive(false);
-            audioSource.Play();
-        }
+        audioSource.Play();
     }
 }
