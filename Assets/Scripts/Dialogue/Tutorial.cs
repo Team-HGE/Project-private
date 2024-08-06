@@ -18,7 +18,7 @@ public class Tutorial : MonoBehaviour
     [SerializeField]
     private bool isCrouched = false;
 
-    public Quest quest; // ±Ç¿ë ¼öÁ¤
+    public Quest quest; // ê¶Œìš© ìˆ˜ì •
 
     public void Start()
     {
@@ -31,7 +31,7 @@ public class Tutorial : MonoBehaviour
 
         if(isMoved && isInteracted && isRan && isCrouched)
         {
-            Debug.Log("Æ©Åä¸®¾óÀ» ¸ğµÎ ¿Ï·áÇß½À´Ï´Ù.");
+            Debug.Log("íŠœí† ë¦¬ì–¼ì„ ëª¨ë‘ ì™„ë£Œí–ˆìŠµë‹ˆë‹¤.");
             Init();
             Destroy(gameObject);
         }
@@ -47,36 +47,36 @@ public class Tutorial : MonoBehaviour
 
     public void CheckTutorial()
     {
-        if (!isMoved && GameManager.Instance.PlayerStateMachine.IsWalking) // null ¿¡·¯ ³²
+        if (!isMoved && GameManager.Instance.PlayerStateMachine.IsWalking) // null ì—ëŸ¬ ë‚¨
         {
-            Debug.Log("Æ©Åä¸®¾ó: WASD·Î ÀÌµ¿ÇÏ±â ¿Ï·á");
+            Debug.Log("íŠœí† ë¦¬ì–¼: WASDë¡œ ì´ë™í•˜ê¸° ì™„ë£Œ");
             quest.NextQuest(0);
             isMoved = true;
         }
         else if (!isInteracted && GameManager.Instance.player.tutorialSuccess)
         {
-            Debug.Log("Æ©Åä¸®¾ó: E·Î »óÈ£ÀÛ¿ëÇÏ±â ¿Ï·á");
+            Debug.Log("íŠœí† ë¦¬ì–¼: Eë¡œ ìƒí˜¸ì‘ìš©í•˜ê¸° ì™„ë£Œ");
             quest.NextQuest(1);
             isInteracted = true;
         }
         else if (!isRan && GameManager.Instance.PlayerStateMachine.IsRunning)
         {
-            Debug.Log("Æ©Åä¸®¾ó: Shift·Î ´Ş¸®±â ¿Ï·á");
+            Debug.Log("íŠœí† ë¦¬ì–¼: Shiftë¡œ ë‹¬ë¦¬ê¸° ì™„ë£Œ");
             quest.NextQuest(2);
             isRan = true;
         }
         else if (!isCrouched && GameManager.Instance.PlayerStateMachine.IsCrouch)
         {
-            Debug.Log("Æ©Åä¸®¾ó: Ctrl·Î ¿õÅ©¸®±â ¿Ï·á");
+            Debug.Log("íŠœí† ë¦¬ì–¼: Ctrlë¡œ ì›…í¬ë¦¬ê¸° ì™„ë£Œ");
             quest.NextQuest(3);
             isCrouched = true;
         }
 
 
-        // ÇÃ·¹ÀÌ¾î Á¤Áö È®ÀÎ¿ë(Áö¿öµµ µÊ)** 
+        // í”Œë ˆì´ì–´ ì •ì§€ í™•ì¸ìš©(ì§€ì›Œë„ ë¨)** 
         if (Input.GetKeyDown(KeyCode.P))
         {
-            Debug.Log("ÇÃ·¹ÀÌ¾î OnOff");
+            Debug.Log("í”Œë ˆì´ì–´ OnOff");
             GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
         }
     }
