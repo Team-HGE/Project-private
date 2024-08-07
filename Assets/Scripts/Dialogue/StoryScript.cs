@@ -62,6 +62,19 @@ public class StoryScript: DialogueSetting, IScript
                 continue;
             }
 
+            if (scriptSO.bodyTexts[i] == "CheckQuest") // scriptSO 출력 중 CheckQuest 문구가 나올 때
+            {
+                Debug.Log("잠깐 스토리 진행을 멈추고 퀘스트가 완료될 때까지 기다립니다.");
+
+                UtilSB.AppendText(ui.bodyText, sbBody, scriptSO.bodyTexts[i - 1]); // 이전 스크립트를 띄워둡니다.
+
+                Debug.Log("퀘스트 완료 대기 중입니다.");
+                // yield return new WaitUntil(() => 퀘스트가 완료됐을 때의 조건식을 넣어주세요;
+
+                Debug.Log("퀘스트 완료. 다시 스토리를 진행합니다.");
+                continue;
+            }
+
             curPrintLine = TextEffect.Typing(ui.bodyText, sbBody, scriptSO.bodyTexts[i]);
 
             yield return StartCoroutine(curPrintLine);
