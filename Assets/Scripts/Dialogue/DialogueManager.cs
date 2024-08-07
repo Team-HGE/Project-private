@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class DialogueManager : SingletonManager<DialogueManager>
 {
@@ -15,10 +16,14 @@ public class DialogueManager : SingletonManager<DialogueManager>
     [HideInInspector]
     public Answer answer;
 
+    //public bool isSceneChanged;
+    public List<ScriptSO> storyList = new List<ScriptSO>();
+    public List<AnswerSO> answerList = new List<AnswerSO>();
+    //private int scriptIndex;
+
     private SystemMsg systemMsg;
     private Quest quest;
 
-    public bool isSceneChanged;
 
     protected override void Awake()
     {
@@ -45,20 +50,21 @@ public class DialogueManager : SingletonManager<DialogueManager>
         quest = GetComponent<Quest>();
 
         systemMsg.Init();
-        answer.Init();
+        //answer.Init();
 
         quest.UpdateQuest();
         systemMsg.UpdateMessage();
-
-        //storyScript.Print();
     }
 
-    public void ChangeSO()
+    //씬이 바뀌면 새 스토리를 재생하고 선택지 초기화
+    public void StartStory(int storyIdx)
     {
-        if (isSceneChanged)
-        {
-            //TODO: 씬이 바뀌면 SO를 바꿔주는 함수
-        }
+        storyScript.Init(storyList[storyIdx]);
+        if (answerList[storyIdx] != null)
+            answer.InitAnswer(answerList[storyIdx]);
+        else Debug.Log("이 파트엔 선택지가 없습니다. answerList[storyIdx] null");
+        storyScript.Print();
+        //scriptIndex++;
     }
 
     public void FinishStory()
@@ -73,10 +79,5 @@ public class DialogueManager : SingletonManager<DialogueManager>
     {
         // NPC 대화 기회 초기화
         //isInteracted = false;
-    }
-
-    public void StoryInit()
-    {
-        //챕터 바뀌면 다음 스크립트 출려해주는 함수
     }
 }

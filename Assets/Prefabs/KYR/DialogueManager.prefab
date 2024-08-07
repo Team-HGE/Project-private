@@ -60,7 +60,14 @@ MonoBehaviour:
   itemScript: {fileID: 0}
   karmaScript: {fileID: 0}
   answer: {fileID: 0}
-  isSceneChanged: 0
+  storyList:
+  - {fileID: 11400000, guid: 32326b3131b9d4d48964c1a7bf2a27ea, type: 2}
+  - {fileID: 11400000, guid: 56fdc8b90c6f06c4198c5a392805670d, type: 2}
+  - {fileID: 11400000, guid: f1d7d22a6353da54586744f461c77c4d, type: 2}
+  answerList:
+  - {fileID: 11400000, guid: 509e8c7de2b9e414f8916f07bd82fe5b, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &1534367255949965295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,7 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ui: {fileID: 0}
-  answerSO: {fileID: 11400000, guid: 509e8c7de2b9e414f8916f07bd82fe5b, type: 2}
+  answerSO: {fileID: 0}
 --- !u!114 &4455518639332731130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,8 +159,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questSO: {fileID: 11400000, guid: fa6ed0fe88c386d4ca9456c29433959e, type: 2}
-  CurrentQuest: -1
+  CurrentQuestIndex: 0
   nowQuestText: {fileID: 0}
+  audioManager: {fileID: 0}
 --- !u!114 &1776522802564517765
 MonoBehaviour:
   m_ObjectHideFlags: 0

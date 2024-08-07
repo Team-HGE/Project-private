@@ -5,29 +5,33 @@ using UnityEngine.EventSystems;
 
 public class Answer : DialogueSetting
 {
+    [HideInInspector]
     public AnswerSO answerSO;
 
-    public void Init()
-    {
-        InitUI();
-        ui.AnswerCanvas.SetActive(false);
-    }
+    //public void Init()
+    //{
+    //    InitUI();
+    //    ui.AnswerCanvas.SetActive(false);
+    //}
 
     public void InitAnswer(AnswerSO _answer)
     {
-        // 가비지 제거
+        answerSO = _answer;
+        answerSO.nowAnswer = 0;
+        InitUI();
         ui.answerText1.text = "";
         ui.answerText2.text = "";
 
-        answerSO = _answer;
-        answerSO.nowAnswer = 0;
+        if (ui == null) { Debug.Log("answer ui null"); return; };
         //Debug.Log("선택지 초기화 완료");
     }
 
     public void Print()
     {
         //Debug.Log("랜덤 선택지 시작");
-        InitAnswer(answerSO);
+
+        if(answerSO == null) { Debug.Log("지금은 내보낼 선택지가 없습니다. answerSO null"); return; };
+        //InitAnswer(answerSO);
 
         string[] answersTemp = new string[answerSO.answers.Length];
 

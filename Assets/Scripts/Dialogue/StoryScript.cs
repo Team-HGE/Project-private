@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class StoryScript: DialogueSetting, IScript
 {
-    public ScriptSO scriptSO;
+    [HideInInspector]
+    public ScriptSO scriptSO; // 추후 private로 수정예정
 
     public void Init(ScriptSO _script)
     {
@@ -22,7 +23,7 @@ public class StoryScript: DialogueSetting, IScript
         if (isTalking) { Debug.Log("지금은 대화할 수 없습니다."); InitDialogueSetting(); return; }
         isTalking = true;
 
-        Init(scriptSO);
+        //Init(scriptSO);
         if (scriptSO == null) { Debug.Log("지금은 내보낼 스크립트가 없습니다. scriptSO null"); return; };
 
         StopAllCoroutines();
