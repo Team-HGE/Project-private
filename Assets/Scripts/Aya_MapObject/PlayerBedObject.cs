@@ -10,7 +10,7 @@ public class PlayerBedObject : InteractableObject
     {
         if (isInteractable) return;
         GameManager.Instance.player.playerInteraction.SetActive(true);
-        GameManager.Instance.player.interactableText.text = "Àáµé±â";
+        GameManager.Instance.player.interactableText.text = "ìž ë“¤ê¸°";
     }
     public override void Interact()
     {
@@ -23,7 +23,7 @@ public class PlayerBedObject : InteractableObject
     }
     IEnumerator Sleep()
     {
-        // ½ºÅ©¸³Æ® Á¾·áµÇ¸é Àáµé±â
+        // ìŠ¤í¬ë¦½íŠ¸ ì¢…ë£Œë˜ë©´ ìž ë“¤ê¸°
         yield return new WaitUntil(() => !DialogueSetting.isTalking);
 
         GameManager.Instance.fadeManager.FadeStart(FadeState.FadeOut);

@@ -5,29 +5,33 @@ using UnityEngine.EventSystems;
 
 public class Answer : DialogueSetting
 {
+    [HideInInspector]
     public AnswerSO answerSO;
 
-    public void Init()
-    {
-        InitUI();
-        ui.AnswerCanvas.SetActive(false);
-    }
+    //public void Init()
+    //{
+    //    InitUI();
+    //    ui.AnswerCanvas.SetActive(false);
+    //}
 
     public void InitAnswer(AnswerSO _answer)
     {
-        // °¡ºñÁö Á¦°Å
+        answerSO = _answer;
+        answerSO.nowAnswer = 0;
+        InitUI();
         ui.answerText1.text = "";
         ui.answerText2.text = "";
 
-        answerSO = _answer;
-        answerSO.nowAnswer = 0;
-        //Debug.Log("¼±ÅÃÁö ÃÊ±âÈ­ ¿Ï·á");
+        if (ui == null) { Debug.Log("answer ui null"); return; };
+        //Debug.Log("ì„ íƒì§€ ì´ˆê¸°í™” ì™„ë£Œ");
     }
 
     public void Print()
     {
-        //Debug.Log("·£´ı ¼±ÅÃÁö ½ÃÀÛ");
-        InitAnswer(answerSO);
+        //Debug.Log("ëœë¤ ì„ íƒì§€ ì‹œì‘");
+
+        if(answerSO == null) { Debug.Log("ì§€ê¸ˆì€ ë‚´ë³´ë‚¼ ì„ íƒì§€ê°€ ì—†ìŠµë‹ˆë‹¤. answerSO null"); return; };
+        //InitAnswer(answerSO);
 
         string[] answersTemp = new string[answerSO.answers.Length];
 
@@ -45,13 +49,13 @@ public class Answer : DialogueSetting
         //ui.answerText2.text = answerSO.answers[1];
         ui.AnswerCanvas.SetActive(true);
 
-        // Ä¿¼­¶ô OFF
+        // ì»¤ì„œë½ OFF
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
         //ui.AnswerCanvas.SetActive(false);
 
-        // TODO: ¼±ÅÃÁö °á°ú Ãâ·Â
+        // TODO: ì„ íƒì§€ ê²°ê³¼ ì¶œë ¥
     }
 
     public void ApplyAnswer()
@@ -62,41 +66,41 @@ public class Answer : DialogueSetting
 
         if(btnText.text == answerSO.answers[0])
         {
-            // ÇÃ·¹ÀÌ¾î Ä«¸£¸¶ ½ºÅÈ °¨¼Ò
+            // í”Œë ˆì´ì–´ ì¹´ë¥´ë§ˆ ìŠ¤íƒ¯ ê°ì†Œ
             //Debug.Log(btnText.text);
             GameManager.Instance.PlayerStateMachine.Player.Karma -= answerSO.karmaUpDown;
             answerSO.nowAnswer = 1;
         }
         else if (btnText.text == answerSO.answers[1])
         {
-            // ÇÃ·¹ÀÌ¾î Ä«¸£¸¶ ½ºÅÈ Áõ°¡
+            // í”Œë ˆì´ì–´ ì¹´ë¥´ë§ˆ ìŠ¤íƒ¯ ì¦ê°€
             //Debug.Log(btnText.text);
             GameManager.Instance.PlayerStateMachine.Player.Karma += answerSO.karmaUpDown;
             answerSO.nowAnswer = 2;
         }
         else
         {
-            //Ä«¸£¸¶ º¯È­ ¾øÀ½
+            //ì¹´ë¥´ë§ˆ ë³€í™” ì—†ìŒ
             //Debug.Log(btnText.text);
             answerSO.nowAnswer = 3;
         }
 
-        Debug.Log("ÇöÀç Ä«¸£¸¶ ¼öÄ¡: " + GameManager.Instance.PlayerStateMachine.Player.Karma);
+        Debug.Log("í˜„ì¬ ì¹´ë¥´ë§ˆ ìˆ˜ì¹˜: " + GameManager.Instance.PlayerStateMachine.Player.Karma);
         ui.AnswerCanvas.SetActive(false);
     }
 
     //public void PickAnswer()
     //{
-    //    Debug.Log("1¹ø ¼±ÅÃÁö Å¬¸¯µÊ");
-    //    // ÇÃ·¹ÀÌ¾î Ä«¸£¸¶ ½ºÅÈ Áõ°¨
+    //    Debug.Log("1ë²ˆ ì„ íƒì§€ í´ë¦­ë¨");
+    //    // í”Œë ˆì´ì–´ ì¹´ë¥´ë§ˆ ìŠ¤íƒ¯ ì¦ê°
     //    GameManager.Instance.PlayerStateMachine.Player.Karma += answerSO.karmaUpDown;
     //    ui.AnswerCanvas.SetActive(false);
     //    answerSO.nowAnswer = 1;
     //}
     //public void PickAnswer2()
     //{
-    //    Debug.Log("2¹ø ¼±ÅÃÁö Å¬¸¯µÊ");
-    //    // ÇÃ·¹ÀÌ¾î Ä«¸£¸¶ ½ºÅÈ Áõ°¨
+    //    Debug.Log("2ë²ˆ ì„ íƒì§€ í´ë¦­ë¨");
+    //    // í”Œë ˆì´ì–´ ì¹´ë¥´ë§ˆ ìŠ¤íƒ¯ ì¦ê°
     //    GameManager.Instance.PlayerStateMachine.Player.Karma -= answerSO.karmaUpDown;
     //    ui.AnswerCanvas.SetActive(false);
     //    answerSO.nowAnswer = 2;

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class StoryScript: DialogueSetting, IScript
 {
-    public ScriptSO scriptSO;
+    [HideInInspector]
+    public ScriptSO scriptSO; // ì¶”í›„ privateë¡œ ìˆ˜ì •ì˜ˆì •
 
     public void Init(ScriptSO _script)
     {
@@ -18,12 +19,12 @@ public class StoryScript: DialogueSetting, IScript
 
     public void Print()
     {
-        // ½ºÅ©¸³Æ® Ãâ·Â ÁßÀÌ¸é »õ ´ëÈ­¸¦ ½ÃÀÛÇÏÁö ¾ÊÀ½, ´ëÈ­ ³»¿ë ÃÊ±âÈ­
-        if (isTalking) { Debug.Log("Áö±İÀº ´ëÈ­ÇÒ ¼ö ¾ø½À´Ï´Ù."); InitDialogueSetting(); return; }
+        // ìŠ¤í¬ë¦½íŠ¸ ì¶œë ¥ ì¤‘ì´ë©´ ìƒˆ ëŒ€í™”ë¥¼ ì‹œì‘í•˜ì§€ ì•ŠìŒ, ëŒ€í™” ë‚´ìš© ì´ˆê¸°í™”
+        if (isTalking) { Debug.Log("ì§€ê¸ˆì€ ëŒ€í™”í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤."); InitDialogueSetting(); return; }
         isTalking = true;
 
-        Init(scriptSO);
-        if (scriptSO == null) { Debug.Log("Áö±İÀº ³»º¸³¾ ½ºÅ©¸³Æ®°¡ ¾ø½À´Ï´Ù. scriptSO null"); return; };
+        //Init(scriptSO);
+        if (scriptSO == null) { Debug.Log("ì§€ê¸ˆì€ ë‚´ë³´ë‚¼ ìŠ¤í¬ë¦½íŠ¸ê°€ ì—†ìŠµë‹ˆë‹¤. scriptSO null"); return; };
 
         StopAllCoroutines();
         ui.OpenBG();
@@ -33,7 +34,7 @@ public class StoryScript: DialogueSetting, IScript
 
     private IEnumerator PrintScript()
     {
-        //if (!isTalking) { Debug.Log("½ÇÇàÁßÀÎ ÄÚ·çÆ¾À» Á¾·áÇÕ´Ï´Ù."); StopAllCoroutines(); InitDialogueSetting(); }
+        //if (!isTalking) { Debug.Log("ì‹¤í–‰ì¤‘ì¸ ì½”ë£¨í‹´ì„ ì¢…ë£Œí•©ë‹ˆë‹¤."); StopAllCoroutines(); InitDialogueSetting(); }
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -41,7 +42,7 @@ public class StoryScript: DialogueSetting, IScript
 
         for (int i = 0; i < scriptSO.bodyTexts.Length; i++)
         {
-            if (!isTalking) { Debug.Log("½ÇÇàÁßÀÎ ÄÚ·çÆ¾À» Á¾·áÇÕ´Ï´Ù."); StopAllCoroutines(); InitDialogueSetting(); break; }
+            if (!isTalking) { Debug.Log("ì‹¤í–‰ì¤‘ì¸ ì½”ë£¨í‹´ì„ ì¢…ë£Œí•©ë‹ˆë‹¤."); StopAllCoroutines(); InitDialogueSetting(); break; }
 
             UtilSB.SetText(ui.titleText, sbTitle, scriptSO.speakers[i]);
 
@@ -50,7 +51,7 @@ public class StoryScript: DialogueSetting, IScript
 
             if (scriptSO.bodyTexts[i] == "PickAnswer")
             {
-                //Debug.Log("Àá±ñ Á¤ÁöÇÏ°í ¼±ÅÃÁö Ãâ·ÂÇÕ´Ï´Ù.");
+                //Debug.Log("ì ê¹ ì •ì§€í•˜ê³  ì„ íƒì§€ ì¶œë ¥í•©ë‹ˆë‹¤.");
 
                 UtilSB.AppendText(ui.bodyText, sbBody, scriptSO.bodyTexts[i - 1]);
 
@@ -61,11 +62,24 @@ public class StoryScript: DialogueSetting, IScript
                 continue;
             }
 
+            if (scriptSO.bodyTexts[i] == "CheckQuest") // scriptSO ì¶œë ¥ ì¤‘ CheckQuest ë¬¸êµ¬ê°€ ë‚˜ì˜¬ ë•Œ
+            {
+                Debug.Log("ì ê¹ ìŠ¤í† ë¦¬ ì§„í–‰ì„ ë©ˆì¶”ê³  í€˜ìŠ¤íŠ¸ê°€ ì™„ë£Œë  ë•Œê¹Œì§€ ê¸°ë‹¤ë¦½ë‹ˆë‹¤.");
+
+                UtilSB.AppendText(ui.bodyText, sbBody, scriptSO.bodyTexts[i - 1]); // ì´ì „ ìŠ¤í¬ë¦½íŠ¸ë¥¼ ë„ì›Œë‘¡ë‹ˆë‹¤.
+
+                Debug.Log("í€˜ìŠ¤íŠ¸ ì™„ë£Œ ëŒ€ê¸° ì¤‘ì…ë‹ˆë‹¤.");
+                // yield return new WaitUntil(() => í€˜ìŠ¤íŠ¸ê°€ ì™„ë£Œëì„ ë•Œì˜ ì¡°ê±´ì‹ì„ ë„£ì–´ì£¼ì„¸ìš”;
+
+                Debug.Log("í€˜ìŠ¤íŠ¸ ì™„ë£Œ. ë‹¤ì‹œ ìŠ¤í† ë¦¬ë¥¼ ì§„í–‰í•©ë‹ˆë‹¤.");
+                continue;
+            }
+
             curPrintLine = TextEffect.Typing(ui.bodyText, sbBody, scriptSO.bodyTexts[i]);
 
             yield return StartCoroutine(curPrintLine);
 
-            //Debug.Log("ÁÂÅ¬¸¯À¸·Î ÁøÇàÇÏ¼¼¿ä");
+            //Debug.Log("ì¢Œí´ë¦­ìœ¼ë¡œ ì§„í–‰í•˜ì„¸ìš”");
             yield return waitLeftClick;
 
             yield return waitTime;

@@ -15,7 +15,7 @@ public class KarmaScript : DialogueSetting, IScript
 
     public void Print()
     {
-        // ½ºÅ©¸³Æ® Ãâ·Â ÁßÀÌ¸é »õ ´ëÈ­¸¦ ½ÃÀÛÇÏÁö ¾ÊÀ½ 
+        // ìŠ¤í¬ë¦½íŠ¸ ì¶œë ¥ ì¤‘ì´ë©´ ìƒˆ ëŒ€í™”ë¥¼ ì‹œì‘í•˜ì§€ ì•ŠìŒ 
         if (isTalking) return;
         isTalking = true;
 
@@ -37,7 +37,7 @@ public class KarmaScript : DialogueSetting, IScript
             curPrintLine = TextEffect.Typing(ui.bodyText, sbBody, scriptSO.bodyTexts[j]);
             yield return StartCoroutine(curPrintLine);
 
-            //Debug.Log("ÁÂÅ¬¸¯À¸·Î ÁøÇàÇÏ¼¼¿ä");
+            //Debug.Log("ì¢Œí´ë¦­ìœ¼ë¡œ ì§„í–‰í•˜ì„¸ìš”");
             yield return waitLeftClick;
             yield return waitTime;
 
@@ -47,7 +47,7 @@ public class KarmaScript : DialogueSetting, IScript
         ui.CloseDialogue();
         isTalking = false;
 
-        //Debug.Log("Ä«¸£¸¶ Ãâ·Â ¿Ï·á");
+        //Debug.Log("ì¹´ë¥´ë§ˆ ì¶œë ¥ ì™„ë£Œ");
 
         yield return null;
     }
@@ -57,22 +57,22 @@ public class KarmaScript : DialogueSetting, IScript
         System.Random rng = new System.Random();
         int ranIndex = -1;
 
-        //ÇöÀç Ä«¸£¸¶ ¼öÄ¡ È®ÀÎ
-        //Ä«¸£¸¶°¡ À½¼ö¸é ¼±, ¾ç¼ö¸é ¾Ç, 0ÀÌ¸é Áß¸³ ¸Ş½ÃÁö Ãâ·Â
+        //í˜„ì¬ ì¹´ë¥´ë§ˆ ìˆ˜ì¹˜ í™•ì¸
+        //ì¹´ë¥´ë§ˆê°€ ìŒìˆ˜ë©´ ì„ , ì–‘ìˆ˜ë©´ ì•…, 0ì´ë©´ ì¤‘ë¦½ ë©”ì‹œì§€ ì¶œë ¥
 
         if (GameManager.Instance.PlayerStateMachine.Player.Karma < 0)
         {
-            // Ä«¸£¸¶ ¼±
+            // ì¹´ë¥´ë§ˆ ì„ 
             ranIndex = rng.Next(0, 5);
         }
         else if (GameManager.Instance.PlayerStateMachine.Player.Karma > 0)
         {
-            // Ä«¸£¸¶ ¾Ç
+            // ì¹´ë¥´ë§ˆ ì•…
             ranIndex = rng.Next(2, 7);
         }
         else
         {
-            // Ä«¸£¸¶ Áß¸³
+            // ì¹´ë¥´ë§ˆ ì¤‘ë¦½
             ranIndex = rng.Next(2, 5);
         }
 
