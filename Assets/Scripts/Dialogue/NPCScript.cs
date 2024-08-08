@@ -12,6 +12,7 @@ public class NPCScript : DialogueSetting, IScript
     {
         scriptSO = null;
         scriptSO = _script;
+        InitUI();
         ui.CloseDialogue();
     }
 

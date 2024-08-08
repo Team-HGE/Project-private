@@ -56,6 +56,6 @@ public class GameManager : SingletonManager<GameManager>
         fadeManager.sceneLoadings[(int)SceneEnum.AScene].SetActive(false);
         fadeManager.FadeStart(FadeState.FadeIn);
         AudioManager.Instance.PlaySound(BackGroundSound.ASceneSound);
-        DialogueManager.Instance.storyScript.Print();
+        DialogueManager.Instance.StartStory(0);
     }
 }

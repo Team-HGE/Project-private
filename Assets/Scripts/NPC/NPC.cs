@@ -16,20 +16,20 @@ public class NPC : InteractableObject
         if (isInteractable) return;
 
         GameManager.Instance.player.playerInteraction.SetActive(true);
-        GameManager.Instance.player.interactableText.text = "´ëÈ­ÇÏ±â";
+        GameManager.Instance.player.interactableText.text = "ëŒ€í™”í•˜ê¸°";
     }
 
     public override void Interact()
     {
         //ChangeState(npcState.Speaking);
-        // NPC ½ºÆ®·¹½º Áö¼ö °¨¼Ò
+        // NPC ìŠ¤íŠ¸ë ˆìŠ¤ ì§€ìˆ˜ ê°ì†Œ
 
         Init(npcSO);
         DialogueManager.Instance.npcScript.Init(scriptSO);
         DialogueManager.Instance.npcScript.Print();
     }
 
-    // NPC Ç¥Á¤ ¹Ù²Ù±â
+    // NPC í‘œì • ë°”ê¾¸ê¸°: ì¶”í›„ ì¼ëŸ¬ ì¶”ê°€ë˜ë©´ ë¦¬íŒ©í† ë§ ì˜ˆì •
     public void SwitchEmotion(Emotion emotion)
     {
         switch(emotion)
@@ -64,8 +64,8 @@ public class NPC : InteractableObject
         }
     }
 
-    // NPC »óÅÂ Á¦¾î
-    // ´ëÈ­Áß, ÅëÈ­Áß, º¯ÀÌ, »ç¸Á
+    // NPC ìƒíƒœ ì œì–´
+    // ëŒ€í™”ì¤‘, í†µí™”ì¤‘, ë³€ì´, ì‚¬ë§
 
     public string ChangeNpcState(NpcState stateType)
     {
@@ -73,16 +73,16 @@ public class NPC : InteractableObject
         {
             case NpcState.Idle:
                 npcSO.state = NpcState.Idle;
-                return "´ë±âÁß";
+                return "ëŒ€ê¸°ì¤‘";
             case NpcState.Speaking:
                 npcSO.state = NpcState.Speaking;
-                return "´ëÈ­Áß";
+                return "ëŒ€í™”ì¤‘";
             case NpcState.Calling:
                 npcSO.state = NpcState.Calling;
-                return "ÅëÈ­Áß";
+                return "í†µí™”ì¤‘";
             default:
                 npcSO.state = NpcState.Idle;
-                return "´ë±âÁß";
+                return "ëŒ€ê¸°ì¤‘";
         }
     }
 }

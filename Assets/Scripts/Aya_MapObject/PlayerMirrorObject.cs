@@ -10,7 +10,7 @@ public class PlayerMirrorObject : InteractableObject
     {
         if (isInteractable) return;
         GameManager.Instance.player.playerInteraction.SetActive(true);
-        GameManager.Instance.player.interactableText.text = "¸¶ÁÖÇÏ±â";
+        GameManager.Instance.player.interactableText.text = "ë§ˆì£¼í•˜ê¸°";
     }
     public override void Interact()
     {
