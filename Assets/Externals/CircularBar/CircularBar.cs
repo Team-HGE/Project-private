@@ -75,12 +75,12 @@ namespace DiceNook.View
             else if (fill >= 0.3f)
             {
                 // 40%에서 80% 사이일 때 노란색으로 보간
-                return Color.Lerp(Color.yellow, Color.red, (fill - 0.6f) / 0.3f);
+                return Color.Lerp(Color.white, Color.red, (fill - 0.6f) / 0.3f);
             }
             else
             {
                 // 0%에서 40% 사이일 때 빨간색으로 보간
-                return Color.Lerp(Color.green, Color.yellow, fill / 0.3f);
+                return Color.Lerp(Color.grey, Color.grey, fill / 0.3f);
             }
         }
 
