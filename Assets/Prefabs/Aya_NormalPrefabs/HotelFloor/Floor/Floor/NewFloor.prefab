@@ -3509,7 +3509,7 @@ PrefabInstance:
     - target: {fileID: 785063953859269883, guid: 2b89ecc848a7f774c98f97d8ba23ec5d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 312.40002
+      value: 272.385
       objectReference: {fileID: 0}
     - target: {fileID: 785063953859269883, guid: 2b89ecc848a7f774c98f97d8ba23ec5d,
         type: 3}
@@ -3519,7 +3519,7 @@ PrefabInstance:
     - target: {fileID: 785063953859269883, guid: 2b89ecc848a7f774c98f97d8ba23ec5d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 98.090004
+      value: 98.165
       objectReference: {fileID: 0}
     - target: {fileID: 785063953859269883, guid: 2b89ecc848a7f774c98f97d8ba23ec5d,
         type: 3}
@@ -3666,6 +3666,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2932644429950790317, guid: 2b89ecc848a7f774c98f97d8ba23ec5d,
+        type: 3}
+      propertyPath: m_text
+      value: B
+      objectReference: {fileID: 0}
     - target: {fileID: 3347518860194977072, guid: 2b89ecc848a7f774c98f97d8ba23ec5d,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -3745,6 +3750,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525849872052729129, guid: 2b89ecc848a7f774c98f97d8ba23ec5d,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525849872052729129, guid: 2b89ecc848a7f774c98f97d8ba23ec5d,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525849872052729129, guid: 2b89ecc848a7f774c98f97d8ba23ec5d,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4623815860705938234, guid: 2b89ecc848a7f774c98f97d8ba23ec5d,
         type: 3}
@@ -8471,7 +8491,7 @@ PrefabInstance:
     - target: {fileID: 5259375824801470459, guid: 2d1a9674de7f55643a5a5face2e7d050,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 98.090004
+      value: 98.165
       objectReference: {fileID: 0}
     - target: {fileID: 5259375824801470459, guid: 2d1a9674de7f55643a5a5face2e7d050,
         type: 3}
@@ -8875,11 +8895,6 @@ PrefabInstance:
       objectReference: {fileID: 6277501957454491156}
     - target: {fileID: 7060797499910338971, guid: 2d1a9674de7f55643a5a5face2e7d050,
         type: 3}
-      propertyPath: nowFloorlights.Array.data[51]
-      value: 
-      objectReference: {fileID: 7914613779903554677}
-    - target: {fileID: 7060797499910338971, guid: 2d1a9674de7f55643a5a5face2e7d050,
-        type: 3}
       propertyPath: nowFloorlights.Array.data[52]
       value: 
       objectReference: {fileID: 6687890780929556716}
@@ -8887,7 +8902,7 @@ PrefabInstance:
         type: 3}
       propertyPath: nowFloorlights.Array.data[53]
       value: 
-      objectReference: {fileID: 8913440666538189972}
+      objectReference: {fileID: 0}
     - target: {fileID: 7060797499910338971, guid: 2d1a9674de7f55643a5a5face2e7d050,
         type: 3}
       propertyPath: nowFloorlights.Array.data[54]
@@ -17476,12 +17491,6 @@ MeshRenderer:
     type: 3}
   m_PrefabInstance: {fileID: 8289196629461651291}
   m_PrefabAsset: {fileID: 0}
---- !u!108 &7914613779903554677 stripped
-Light:
-  m_CorrespondingSourceObject: {fileID: 2224636543102708526, guid: 2d1a9674de7f55643a5a5face2e7d050,
-    type: 3}
-  m_PrefabInstance: {fileID: 8289196629461651291}
-  m_PrefabAsset: {fileID: 0}
 --- !u!108 &7915722718702910543 stripped
 Light:
   m_CorrespondingSourceObject: {fileID: 2221241864549036820, guid: 2d1a9674de7f55643a5a5face2e7d050,
@@ -18037,12 +18046,6 @@ MeshRenderer:
 --- !u!108 &8908665973769290946 stripped
 Light:
   m_CorrespondingSourceObject: {fileID: 623982651376503705, guid: 2d1a9674de7f55643a5a5face2e7d050,
-    type: 3}
-  m_PrefabInstance: {fileID: 8289196629461651291}
-  m_PrefabAsset: {fileID: 0}
---- !u!108 &8913440666538189972 stripped
-Light:
-  m_CorrespondingSourceObject: {fileID: 629311411841592271, guid: 2d1a9674de7f55643a5a5face2e7d050,
     type: 3}
   m_PrefabInstance: {fileID: 8289196629461651291}
   m_PrefabAsset: {fileID: 0}
