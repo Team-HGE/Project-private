@@ -129,6 +129,10 @@ public class LightManager : MonoBehaviour
             {
                 OffAllLight();
                 lightOff = true;
+                foreach (var obj in HotelFloorScene_DataManager.Instance.controller.barrierObjects)
+                {
+                    obj.CloseAni();
+                }
             }
         }
     }
