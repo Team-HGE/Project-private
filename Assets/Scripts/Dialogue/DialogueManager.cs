@@ -57,6 +57,10 @@ public class DialogueManager : SingletonManager<DialogueManager>
     }
 
     //씬이 바뀌면 새 스토리를 재생하고 선택지 초기화
+    //storyIdx 0번: 인트로
+    // 1번: 1일차 낮 시작시
+    // 2번: 1일차 밤 시작시
+    // 3번: 1일차 밤 통로 진입시
     public void StartStory(int storyIdx)
     {
         storyScript.Init(storyList[storyIdx]);
