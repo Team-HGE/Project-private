@@ -57,10 +57,14 @@ public class FirstTLTrigger : MonoBehaviour
     private void OnPlayableDirectorStopped(PlayableDirector director)
     {
         VCs.SetActive(false);
-
         GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
 
-        // 코루틴 대기 후 진행
+        StartCoroutine(WaitTime(1f));        
+    }
+
+    private IEnumerator WaitTime(float time)
+    {
+        yield return new WaitForSeconds(time);
 
         if (doors != null)
         {
