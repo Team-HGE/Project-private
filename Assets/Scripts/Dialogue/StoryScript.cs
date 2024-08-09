@@ -40,6 +40,8 @@ public class StoryScript: DialogueSetting, IScript
         Cursor.visible = true;
         ui.ClearDialogue(sbTitle, sbBody);
 
+        if (scriptSO == null) { Debug.Log("scriptSO null"); StopAllCoroutines(); InitDialogueSetting(); yield break; };
+
         for (int i = 0; i < scriptSO.bodyTexts.Length; i++)
         {
             if (!isTalking) { Debug.Log("실행중인 코루틴을 종료합니다."); StopAllCoroutines(); InitDialogueSetting(); break; }
