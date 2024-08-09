@@ -7,6 +7,7 @@ using System;
 public class ElevatorObject : MonoBehaviour
 {
     Coroutine fixPlayerYPosCor;
+    public bool isPlayerIn { get; set; }
     IEnumerator fixPlayerYPos()
     {
         while (true)
@@ -42,25 +43,57 @@ public class ElevatorObject : MonoBehaviour
 
     public void MoveFloor(int targetFloor, bool isPlayerIn)
     {
+        this.isPlayerIn = isPlayerIn;
         elevatorBoxCollider.SetActive(true);
-
+        
         if (isPlayerIn)
         {
             fixPlayerYPosCor = StartCoroutine(fixPlayerYPos());
         }
-        float targetY = (targetFloor - 1) * floorHeight;
+
+        float targetY;
+        if (targetFloor > 0)
+        {
+            targetY = (targetFloor - 1) * floorHeight;
+            if (NowFloor < 0)
+            {
+                targetY += 106.5f;
+            }
+        }
+        else if (targetFloor < 0)
+        {
+            targetY = -182;
+        }
+        else
+        {
+            targetY = -106.5f;
+        }
         
         int floorsToMove = Mathf.Abs(targetFloor - NowFloor);
 
         float allMoveTime = floorsToMove * moveTime;
-        Tween moveUp = transform.DOMoveY(targetY, allMoveTime).SetEase(Ease.InOutQuad);
+
+        if (targetFloor * NowFloor == 0)
+        {
+            allMoveTime += 3f;
+        }
+        else if (targetFloor * NowFloor < 0)
+        {
+            allMoveTime += 6f;
+        }
+
+        Tween moveUp = transform.DOLocalMoveY(targetY, allMoveTime).SetEase(Ease.InOutQuad);
         moveUp.OnUpdate(() =>
         {
             float currentY = transform.position.y;
-            int floor = Mathf.FloorToInt((currentY + floorHeight / 2) / floorHeight) + 1;
+            int floor = Mathf.RoundToInt(currentY / floorHeight) + 1;
 
             if (floor != lastUpdatedFloor)
             {
+                if (floor <= 0)
+                {
+                    floor = 0;
+                }
                 lastUpdatedFloor = floor;
                 DOVirtual.DelayedCall(0.5f, () => UpdateElevatorCountSprite(floor));
             }
@@ -77,7 +110,7 @@ public class ElevatorObject : MonoBehaviour
 
         elevatorSequence.AppendCallback(() =>
         {
-            StopCoroutine(fixPlayerYPosCor);
+            if (isPlayerIn) StopCoroutine(fixPlayerYPosCor);
             HotelFloorScene_DataManager.Instance.elevatorManager.openTime = 0;
             NowFloor = targetFloor;
             elevatorBoxCollider.SetActive(false);
@@ -87,6 +120,7 @@ public class ElevatorObject : MonoBehaviour
 
     private void UpdateElevatorCountSprite(int floor)
     {
+        // 지하일경우 다른 배열 사용 필요
         foreach (var sprite in elevatorCountSprite)
         {
             sprite.sprite = elevatorSprites[floor];

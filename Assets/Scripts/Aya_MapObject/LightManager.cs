@@ -195,11 +195,12 @@ public class LightManager : MonoBehaviour
             time += Time.deltaTime;
             if (time > 10)
             {
+                lightOff = true;
                 HotelFloorScene_DataManager.Instance.controller.isCentralPowerActive = false;
                 OffLaversAllLight();
                 OffListLight(lobbyLights);
                 OffChangeMaterial(lobbyObjectRenderer);
-                lightOff = true;
+                
                 foreach (var obj in HotelFloorScene_DataManager.Instance.controller.barrierObjects)
                 {
                     obj.CloseAni();

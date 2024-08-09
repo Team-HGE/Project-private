@@ -60,7 +60,6 @@ public class ElevatorUpDownBtn : InteractableObject
     }
     private void ChangeMaterialAfterAction()
     {
-        Debug.Log("In");
         Material[] newMaterials = meshRenderer.materials;
         newMaterials[materialIndexChange] = changeMaterial[1];
         meshRenderer.materials = newMaterials;
