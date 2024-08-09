@@ -7,7 +7,6 @@ using static AudioManager;
 
 public class PlayerCrouchState : PlayerGroundState
 {
-    float originHeight = 0f;
     public AudioManager audioManager;
 
     public PlayerCrouchState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
@@ -18,8 +17,6 @@ public class PlayerCrouchState : PlayerGroundState
     {
         base.Enter();
         //Debug.Log("앉기");
-        originHeight = stateMachine.Player.virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.y;
-        stateMachine.Player.virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.y = 3f;
         stateMachine.Player.transform.localScale = new Vector3(stateMachine.Player.transform.localScale.x, groundData.CrouchHeight, stateMachine.Player.transform.localScale.z);
         stateMachine.MovementSpeedModifier = groundData.CrouchSpeedModifier;
         stateMachine.Player.SumNoiseAmount = 2f;
@@ -32,7 +29,6 @@ public class PlayerCrouchState : PlayerGroundState
         base.Exit();
         AudioManager.Instance.PlaySoundEffect(SoundEffect.Wokeup);
         stateMachine.Player.transform.localScale = new Vector3(stateMachine.Player.transform.localScale.x, stateMachine.OriginHeight, stateMachine.Player.transform.localScale.z);
-        stateMachine.Player.virtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.y = originHeight;
         stateMachine.IsCrouch = false;
 
     }

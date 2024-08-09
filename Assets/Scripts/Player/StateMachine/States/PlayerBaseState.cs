@@ -250,27 +250,17 @@ public class PlayerBaseState : IState
 
     protected virtual void OnInterationStared(InputAction.CallbackContext context)
     {
-        // 플레이어 정지 - 상호작용 E키
-        //if (!stateMachine.Player.IsPlayerControll) return;
-
         stateMachine.IsInteraction = true;
     } 
 
     protected virtual void OnInterationPerformed(InputAction.CallbackContext context)
     {
-        // 플레이어 정지 - 상호작용 E키
-        //if (!stateMachine.Player.IsPlayerControll) return;
-
         stateMachine.IsInteraction = true;
     }
 
     protected virtual void OnInterationCanceled(InputAction.CallbackContext context)
     {
-        // 플레이어 정지 - 상호작용 E키
-        //if (!stateMachine.Player.IsPlayerControll) return;
-
         stateMachine.IsInteraction = false;
-
     }
 
     // F키 상호작용 Flash***

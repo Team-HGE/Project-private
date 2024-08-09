@@ -24,7 +24,7 @@ public class Player : MonoBehaviour, INoise
     public RunEffect CurrentStamina;
 
     //Vc
-    public CinemachineVirtualCamera virtualCamera;
+    public CinemachineVirtualCamera offSight;
 
     // INoise
     public float NoiseTransitionTime { get; set; }
@@ -127,7 +127,11 @@ public class Player : MonoBehaviour, INoise
 
     public void PlayerControllOnOff()
     {
+        //Debug.Log("Player - PlayerControllOnOff 호출됨");
         IsPlayerControll = !IsPlayerControll;
+
+        if (IsPlayerControll) offSight.enabled = false;
+        else offSight.enabled = true;
     }
 
     public Player GetPlayerReturn()

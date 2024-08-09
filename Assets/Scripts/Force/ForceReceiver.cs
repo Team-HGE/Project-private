@@ -1,11 +1,10 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ForceReceiver : MonoBehaviour
 {
     [SerializeField] CharacterController controller;
-    [SerializeField] float drag = 0.3f;
+    [SerializeField][field: Range(1f, 300f)] float addGravity;
 
-    private Vector3 _dampingVelocity;
     private Vector3 _impact;
     private float _verticalVelocity;
 
@@ -20,24 +19,11 @@ public class ForceReceiver : MonoBehaviour
     {
         if (_verticalVelocity < 0f && controller.isGrounded)
         {
-            _verticalVelocity = Physics.gravity.y * Time.deltaTime;
+            _verticalVelocity = Physics.gravity.y * addGravity * Time.deltaTime;
         }
         else
         {
             _verticalVelocity += Physics.gravity.y * Time.deltaTime;
         }
-
-        _impact = Vector3.SmoothDamp(_impact, Vector3.zero, ref _dampingVelocity, drag);
-    }
-
-    public void Reset()
-    {
-        _impact = Vector3.zero;
-        _verticalVelocity = 0f;
-    }
-
-    public void AddForce(Vector3 force)
-    {
-        _impact += force;
     }
 }

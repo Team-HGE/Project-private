@@ -23,7 +23,6 @@ public class PlayerStateMachine : StateMachine
     public bool IsWalking { get; set; }
 
 
-
     // 상호작용
     public bool IsInteraction { get; set; }
 
