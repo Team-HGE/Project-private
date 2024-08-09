@@ -16,6 +16,7 @@ public class Quest : MonoBehaviour
         Init();
     }
 
+   
     public void Init()
     {
         CurrentQuestIndex = 0;

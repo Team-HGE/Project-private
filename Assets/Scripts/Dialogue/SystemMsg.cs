@@ -2,6 +2,7 @@ using System.Collections;
 using System.Text;
 using TMPro;
 using UnityEngine;
+using static AudioManager;
 
 public class SystemMsg : MonoBehaviour
 {
@@ -12,61 +13,86 @@ public class SystemMsg : MonoBehaviour
     private StringBuilder sb = new StringBuilder();
     private GameObject msgPrefab;
     private TextMeshProUGUI msgText;
+    public AudioManager audioManager;
+    public int NowSystemMsgNumber;
+
 
     private bool isUpdating = false;
 
     public void Init()
     {
         objectPool = GetComponent<ObjectPool>();
+        audioManager = GetComponent<AudioManager>();
+        NowSystemMsgNumber = 0;
     }
 
-    public void UpdateMessage()
+    public void UpdateMessage(int SystemMsgNumber)
     {
         if (isUpdating) return;
         isUpdating = true;
-
+        NowSystemMsgNumber = SystemMsgNumber;
         StartCoroutine(PopMessage());
     }
 
-    private IEnumerator PopMessage()
+    public IEnumerator PopMessage()
     {
         yield return new WaitForSeconds(1f);
 
-        for (int i = 0; i < systemMsgSO.messages.Length; i++)
-        {
-            msgPrefab = objectPool.GetObject();
-            msgText = msgPrefab.GetComponent<TextMeshProUGUI>();
+        AudioManager.Instance.PlaySoundEffect(SoundEffect.systemMsg);
+        msgPrefab = objectPool.GetObject();
+        msgText = msgPrefab.GetComponent<TextMeshProUGUI>();
+        sb.Append(systemMsgSO.messages[NowSystemMsgNumber]);
+        TextEffect.Highlight(msgText, Color.red);
+        msgText.text = sb.ToString();
 
-            sb.Append(systemMsgSO.messages[i]);
-            TextEffect.Highlight(msgText, Color.red);
-            msgText.text = "SYSTEM: " + sb.ToString();
+        StartCoroutine(TextEffect.FadeOut(msgText));
+        sb.Clear();
 
-            StartCoroutine(TextEffect.FadeOut(msgText));
-            sb.Clear();
+        //Debug.Log(msgPrefab);
 
-            //Debug.Log(msgPrefab);
+        yield return new WaitForSeconds(1f);
 
-            yield return new WaitForSeconds(1f);
-        }
 
-        for (int i = 0; i < systemMsgSO.tips.Length; i++)
-        {
-            msgPrefab = objectPool.GetObject();
-            msgText = msgPrefab.GetComponent<TextMeshProUGUI>();
+        //    private IEnumerator PopMessage()
+        //{
+        //    yield return new WaitForSeconds(1f);
 
-            sb.Append(systemMsgSO.tips[i]);
-            //TextEffect.Highlight(msgText, Color.red);
-            msgText.text = "TIP: " + sb.ToString();
+        //    for (int i = 0; i < systemMsgSO.messages.Length; i++)
+        //    {
+        //        msgPrefab = objectPool.GetObject();
+        //        msgText = msgPrefab.GetComponent<TextMeshProUGUI>();
 
-            StartCoroutine(TextEffect.FadeOut(msgText));
-            sb.Clear();
+        //        sb.Append(systemMsgSO.messages[i]);
+        //        TextEffect.Highlight(msgText, Color.red);
+        //        msgText.text = "SYSTEM: " + sb.ToString();
 
-            //Debug.Log(msgPrefab);
+        //        StartCoroutine(TextEffect.FadeOut(msgText));
+        //        sb.Clear();
 
-            yield return new WaitForSeconds(1f);
-        }
+        //        //Debug.Log(msgPrefab);
+
+        //        yield return new WaitForSeconds(1f);
+        //    }
+
+        //    for (int i = 0; i < systemMsgSO.tips.Length; i++)
+        //    {
+        //        msgPrefab = objectPool.GetObject();
+        //        msgText = msgPrefab.GetComponent<TextMeshProUGUI>();
+
+        //        sb.Append(systemMsgSO.tips[i]);
+        //        //TextEffect.Highlight(msgText, Color.red);
+        //        msgText.text = "TIP: " + sb.ToString();
+
+        //        StartCoroutine(TextEffect.FadeOut(msgText));
+        //        sb.Clear();
+
+        //        //Debug.Log(msgPrefab);
+
+        //        yield return new WaitForSeconds(1f);
+        //    }
 
         isUpdating = false;
         yield return null;
     }
+
 }

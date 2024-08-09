@@ -21,7 +21,7 @@ public class DialogueManager : SingletonManager<DialogueManager>
     public List<AnswerSO> answerList = new List<AnswerSO>();
     //private int scriptIndex;
 
-    private SystemMsg systemMsg;
+    public SystemMsg systemMsg;
     private Quest quest;
 
 
@@ -35,7 +35,7 @@ public class DialogueManager : SingletonManager<DialogueManager>
         //카르마 초기화 추후 게임매니저나 다른 곳으로 옮길 것
         //GameManager.Instance.PlayerStateMachine.Player.Karma = 0f;
         Debug.Log("현재 카르마 수치: " + GameManager.Instance.PlayerStateMachine.Player.Karma);
-
+        
         set = GetComponent<DialogueSetting>();
         set.InitUI();
         set.InitDialogueSetting();
@@ -53,7 +53,8 @@ public class DialogueManager : SingletonManager<DialogueManager>
         //answer.Init();
 
         quest.UpdateQuest();
-        systemMsg.UpdateMessage();
+
+        systemMsg.UpdateMessage(0);
     }
 
     //씬이 바뀌면 새 스토리를 재생하고 선택지 초기화

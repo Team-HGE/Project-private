@@ -52,7 +52,8 @@ public class AudioManager : SingletonManager<AudioManager>
         base.Awake();
 
         playAudio = GetComponent<PlayAudio>();
-
+        playAudioSE = GetComponent<PlayAudioSE>();
+        DontDestroyOnLoad(gameObject);
         foreach (var mapping in backGroundAudioClips)
         {
             _audioBackGroundClipDictionary[mapping.backGroundSound] = mapping.audioClip;
@@ -128,6 +129,8 @@ public class AudioManager : SingletonManager<AudioManager>
        Dial,
        duck,
        Wokeup,
-       DialClick
+       DialClick,
+       systemMsg
+
     }
 }
