@@ -28,8 +28,9 @@ public class AudioManager : SingletonManager<AudioManager>
         public BackGroundSound backGroundSound;
         public AudioClip audioClip;
     }
-    public PlaySEAudio playSEAudio;
+
     public PlayAudio playAudio;
+    public PlayAudioSE playAudioSE;
 
     private Dictionary<BackGroundSound, AudioClip> _audioBackGroundClipDictionary = new Dictionary<BackGroundSound, AudioClip>();
     public Dictionary<BackGroundSound, AudioClip> AudioBackGroundClipDictionary
@@ -87,16 +88,27 @@ public class AudioManager : SingletonManager<AudioManager>
     {
         if (_audioSoundEffectClipDictionary.TryGetValue(soundEffect, out AudioClip clip))
         {
-            playSEAudio.PlayAudioCIip(clip);
+            playAudioSE.PlayAudioCIip(clip);
         }
+    }
+
+    public void PlayDialSE(AudioClip clip) //Ãß°¡
+    {
+        if (clip == null) return;
+        playAudioSE.PlayDialSE(clip);
     }
 
     public void StopSoundEffect(SoundEffect soundEffect)
     {
         if (_audioSoundEffectClipDictionary.TryGetValue(soundEffect, out AudioClip clip))
         {
-            playAudio.PlayStopClip(clip);
+            playAudioSE.StopAudioCIip(clip);
         }
+    }
+
+    public void StopDialSE(AudioClip clip)
+    {
+           playAudioSE.StopDialSE(clip);
     }
 
     public void StopAllClips()
@@ -113,6 +125,9 @@ public class AudioManager : SingletonManager<AudioManager>
     {
        Quest,
        EnterES,
-       Dial
+       Dial,
+       duck,
+       Wokeup,
+       DialClick
     }
 }

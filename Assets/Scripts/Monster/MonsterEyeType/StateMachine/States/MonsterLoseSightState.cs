@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class MonsterLoseSightState : MonsterGroundState
 {
@@ -9,7 +9,7 @@ public class MonsterLoseSightState : MonsterGroundState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("µÎ¸®¹øµÎ¸®¹ø");
+        Debug.Log("ë‘ë¦¬ë²ˆë‘ë¦¬ë²ˆ");
 
         StartAnimation(stateMachine.Monster.AnimationData.LoseSightParameterHash);
 
@@ -21,7 +21,8 @@ public class MonsterLoseSightState : MonsterGroundState
     {
         base.Exit();
         StopAnimation(stateMachine.Monster.AnimationData.LoseSightParameterHash);
-
+        stateMachine.Monster.Agent.isStopped = false;
+        stateMachine.Monster.StopWait();
     }
 
     public override void Update()
@@ -29,7 +30,6 @@ public class MonsterLoseSightState : MonsterGroundState
         base.Update();
         
         if (!stateMachine.Monster.IsBehavior) return;
-        // ÄÚ·çÆ¾ ¼öÁ¤ÇÒ°Í*****
         CheckLoseSight();
     }
 
@@ -37,7 +37,7 @@ public class MonsterLoseSightState : MonsterGroundState
     {
         if (!stateMachine.Monster.canSeePlayer)
         {
-            Debug.Log("MonsterLoseSightState - ÇÃ·¹ÀÌ¾î ³õÄ§");
+            Debug.Log("MonsterLoseSightState - í”Œë ˆì´ì–´ ë†“ì¹¨");
 
             if (!stateMachine.Monster.CanPatrol)
             {
@@ -50,7 +50,7 @@ public class MonsterLoseSightState : MonsterGroundState
         }
         else
         {
-            stateMachine.ChangeState(stateMachine.ChaseState);
+            stateMachine.ChangeState(stateMachine.FindState);
             return;
         }
 

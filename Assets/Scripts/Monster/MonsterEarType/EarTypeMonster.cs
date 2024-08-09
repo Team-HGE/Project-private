@@ -78,14 +78,14 @@ public class EarTypeMonster : MonoBehaviour
     }
 
     // 대기 시간
+    //public void WaitForBehavior(float time)
+    //{
+    //    StartCoroutine(ChangeBehavior(time));
+    //}
+
     public void WaitForBehavior(float time)
     {
-        StartCoroutine(ChangeBehavior(time));
-    }
-
-    public void WaitForBehavior()
-    {
-        _wait = StartCoroutine(ChangeBehavior());
+        _wait = StartCoroutine(ChangeBehavior(time));
     }
 
     public void StopWait()
@@ -94,21 +94,22 @@ public class EarTypeMonster : MonoBehaviour
         StopCoroutine(_wait);
     }
 
+    //public IEnumerator ChangeBehavior(float time)
+    //{
+    //    // n초 대기
+    //    yield return new WaitForSeconds(time);
+
+    //    IsBehavior = !IsBehavior;
+    //}
+
     public IEnumerator ChangeBehavior(float time)
-    {
-        // n초 대기
-        yield return new WaitForSeconds(time);
-
-        IsBehavior = !IsBehavior;
-    }
-
-    public IEnumerator ChangeBehavior()
     {
         _isWaiting = true;
         //_waitTiem = 0f;
         //Debug.Log($"{Data.GroundData.FocusTransitionTime}초 대기");
         // n초 대기
-        yield return new WaitForSeconds(Data.GroundData.FocusTransitionTime);
+        yield return new WaitForSeconds(time);
+        //yield return new WaitForSeconds(Data.GroundData.FocusTransitionTime);
 
         IsBehavior = !IsBehavior;
         //Debug.Log($"{Data.GroundData.FocusTransitionTime}초 대기 끝, {IsBehavior}");

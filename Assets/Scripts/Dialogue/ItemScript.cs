@@ -28,6 +28,9 @@ public class ItemScript : DialogueSetting, IScript
         // item 이 아닐 경우
         if (item == null) { Debug.Log("Item이 아닙니다. 또는 Item 컴포넌트가 없습니다."); }
 
+        // 플레이어 정지 - 카메라 에러***
+        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
+
         ui.OpenDialogue();
         StartCoroutine(PrintScript());
     }
@@ -69,6 +72,9 @@ public class ItemScript : DialogueSetting, IScript
         isTalking = false;
 
         Debug.Log("아이템 스크립트 종료");
+
+        // 플레이어 행동 가능 - 카메라 에러***
+        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
 
         yield return null;
     }

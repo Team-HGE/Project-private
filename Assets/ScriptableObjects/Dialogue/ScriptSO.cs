@@ -6,7 +6,7 @@ public class ScriptSO : ScriptableObject
     public Sprite[] images;
     public string[] speakers;
     [TextArea] public string[] bodyTexts;
-    public AudioClip[] audioClip;
+    public AudioClip[] audioClips;
 }
 
 

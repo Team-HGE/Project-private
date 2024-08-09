@@ -24,7 +24,7 @@ public class MonsterStateMachine : StateMachine
     public bool IsPatrol { get; set; }
     public bool IsIdle { get; set; }
     public bool IsAttack { get; set; }
-    public bool IsFocus { get; set; }
+    public bool IsFind { get; set; }
     public bool IsComeBack { get; set; }
 
 

@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class MonsterIdleState : MonsterGroundState
 {
@@ -10,10 +10,11 @@ public class MonsterIdleState : MonsterGroundState
     {
         base.Enter();
 
-        //Debug.Log($"¾ÆÀÌµé ½ÃÀÛ");
+        //Debug.Log($"ì•„ì´ë“¤ ì‹œì‘");
 
-        // ¾Ö´Ï¸ŞÀÌ¼Ç ½ÇÇà
+        // ì• ë‹ˆë©”ì´ì…˜ ì‹¤í–‰
         StartAnimation(stateMachine.Monster.AnimationData.IdleParameterHash);
+        stateMachine.Monster.Agent.isStopped = true;
         stateMachine.IsIdle = true;
         stateMachine.Monster.IsBehavior = false;
         stateMachine.Monster.WaitForBehavior(stateMachine.Monster.Data.GroundData.IdleTransitionTime);
@@ -21,16 +22,20 @@ public class MonsterIdleState : MonsterGroundState
     public override void Exit()
     {
         base.Exit();
-        //Debug.Log($"¾ÆÀÌµé ³¡");
+        //Debug.Log($"ì•„ì´ë“¤ ë");
 
-        // ¾Ö´Ï¸ŞÀÌ¼Ç Á¾·á
+        // ì• ë‹ˆë©”ì´ì…˜ ì¢…ë£Œ
         StopAnimation(stateMachine.Monster.AnimationData.IdleParameterHash);
+        stateMachine.Monster.Agent.isStopped = false;
         stateMachine.IsIdle = false;
+        stateMachine.Monster.StopWait();
     }
 
     public override void Update()
     {
-        base.Update();  
+        base.Update();
+        RotateToPlayer();
+
         if (!stateMachine.Monster.CanPatrol) return;
         if (!stateMachine.Monster.IsBehavior) return;
         stateMachine.ChangeState(stateMachine.PatrolState);

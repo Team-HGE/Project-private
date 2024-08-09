@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Text;
 using UnityEngine;
+using static AudioManager;
 
 public class StoryScript: DialogueSetting, IScript
 {
     [HideInInspector]
     public ScriptSO scriptSO; // 추후 private로 수정예정
+    public AudioManager audioManager; // 권용 수정 오디오 매니저 참고
+    public GameObject waitIcon; // 기다리는 아이콘 참조
 
     public void Init(ScriptSO _script)
     {
@@ -26,6 +29,7 @@ public class StoryScript: DialogueSetting, IScript
         //Init(scriptSO);
         if (scriptSO == null) { Debug.Log("지금은 내보낼 스크립트가 없습니다. scriptSO null"); return; };
 
+        
         StopAllCoroutines();
         ui.OpenBG();
         ui.OpenDialogue();
@@ -48,6 +52,11 @@ public class StoryScript: DialogueSetting, IScript
 
             ui.SetImage(ui.portrait, scriptSO.images[i]);
             ui.CheckNullTitle(scriptSO.speakers[i]);
+
+            if (scriptSO.audioClips != null)
+            {
+                AudioManager.Instance.PlayDialSE(scriptSO.audioClips[i]); // 권용 오디오 클립 재생
+            }
 
             if (scriptSO.bodyTexts[i] == "PickAnswer")
             {
@@ -76,17 +85,28 @@ public class StoryScript: DialogueSetting, IScript
             }
 
             curPrintLine = TextEffect.Typing(ui.bodyText, sbBody, scriptSO.bodyTexts[i]);
-
+            
             yield return StartCoroutine(curPrintLine);
+
+            waitIcon.SetActive(true); //권용 추가 기다리는 아이콘 등장
 
             //Debug.Log("좌클릭으로 진행하세요");
             yield return waitLeftClick;
 
+            AudioManager.Instance.PlaySoundEffect(SoundEffect.DialClick); // 권용 수정 사운드 재생
+            AudioManager.Instance.StopDialSE(scriptSO.audioClips[i]); //권용 수정 사운드 재생 다이얼SE 멈춤
+            //Debug.Log("좌클릭으로 진행하세요1");
+
             yield return waitTime;
+
+            waitIcon.SetActive(false); // 권용 추가 기다리는 아이콘 사라짐
+
+            //Debug.Log("좌클릭으로 진행하세요2");
 
             ui.ClearDialogue(sbTitle, sbBody);
         }
 
+        
         ui.CloseDialogue();
         isTalking = false;
 
