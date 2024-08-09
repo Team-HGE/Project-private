@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -127,7 +127,7 @@ public class LightManager : MonoBehaviour
             time += Time.deltaTime;
             if (time > 10)
             {
-                OffAllLight();
+                //OffAllLight();//임시 주석처리**
                 lightOff = true;
             }
         }
