@@ -14,12 +14,9 @@ public class MonsterFindState : MonsterGroundState
         stateMachine.Monster.Agent.isStopped = true;
         stateMachine.Monster.IsBehavior = false;
 
-        // 플레이어 바라보기
-        //Rotate(GetMovementDirection());
         StartAnimation(stateMachine.Monster.AnimationData.FindParameterHash);
 
         stateMachine.Monster.WaitForBehavior(groundData.FindTransitionTime);
-
     }
 
     public override void Exit()
@@ -37,7 +34,6 @@ public class MonsterFindState : MonsterGroundState
         Rotate(GetMovementDirection());
         if (!stateMachine.Monster.IsBehavior) return;
         FindCheck();
-
     }
 
     private void FindCheck()
@@ -52,10 +48,6 @@ public class MonsterFindState : MonsterGroundState
             // 공격 범위 안이면 공격 - 게임 오버
             if (IsInAttackRange() && GetIsPlayerInFieldOfView())
             {
-                // 플레이어 공격
-                //Debug.Log("플레이어 공격 - 게임 오버");
-                //stateMachine.Monster.IsBehavior = false;// 임시코드 게임 오버 구현 후 수정할 것***
-
                 stateMachine.ChangeState(stateMachine.AttackState);
                 return;
             }
@@ -63,19 +55,5 @@ public class MonsterFindState : MonsterGroundState
             Debug.Log("플레이어 추적");
             stateMachine.ChangeState(stateMachine.ChaseState);
         }
-
-
-
-
-        //if (IsInChaseRange() && GetIsPlayerInFieldOfView())
-        //{
-        //    stateMachine.ChangeState(stateMachine.ChaseState);
-        //    return;
-        //}
-        //else 
-        //{
-        //    stateMachine.ChangeState(stateMachine.LoseSightState);
-        //    return;
-        //}
     }
 }

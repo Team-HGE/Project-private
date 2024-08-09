@@ -18,7 +18,6 @@ public class MonsterChaseState : MonsterGroundState
         stateMachine.IsChasing = true;
         stateMachine.Monster.Agent.isStopped = false;
         stateMachine.Monster.Agent.speed = groundData.ChaseSpeed;
-        //stateMachine.Monster.Agent.SetDestination(stateMachine.Target.transform.position);
 
         // 애니메이션 실행
         StartAnimation(stateMachine.Monster.AnimationData.ChaseParameterHash);
@@ -68,30 +67,6 @@ public class MonsterChaseState : MonsterGroundState
 
                 return;
             }
-
-
-
-
-            //// 공격 가능 범위 - 공격, 게임 오버
-            //if (GetIsPlayerInFieldOfView() && IsInAttackRange())
-            //{
-            //    stateMachine.ChangeState(stateMachine.AttackState);
-            //    return;
-            //}
-
-            //stateMachine.Monster.Agent.SetDestination(stateMachine.Target.transform.position);
         }
-    
-        //// 탐지 범위
-        //if (IsInChaseRange())
-        //{
-        //    stateMachine.Monster.Agent.SetDestination(stateMachine.Target.transform.position);
-        //}
-        //else 
-        //{
-        //    Debug.Log("플레이어 놓침");
-        //    stateMachine.ChangeState(stateMachine.LoseSightState);
-        //    return;
-        //}
     }
 }

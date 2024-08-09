@@ -34,12 +34,6 @@ public class MonsterComeBackState : MonsterGroundState
 
         if (stateMachine.Monster.Agent.pathPending) return;
 
-        //if (IsInFindRange() && GetIsPlayerInFieldOfView())
-        //{
-        //    stateMachine.ChangeState(stateMachine.FindState);
-        //    return;
-        //}
-
         if (stateMachine.Monster.Agent.remainingDistance < 0.2f)
         {
             stateMachine.ChangeState(stateMachine.IdleState);

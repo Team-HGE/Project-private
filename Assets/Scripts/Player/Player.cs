@@ -5,7 +5,6 @@ using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-
 public class Player : MonoBehaviour, INoise
 {
     [field: Header("References")]
@@ -13,6 +12,28 @@ public class Player : MonoBehaviour, INoise
 
     [field: Header("Noise")]
     [field: SerializeField] public NoiseDatasList NoiseDatasList { get; private set; }
+    // INoise
+    public float NoiseTransitionTime { get; set; }
+    public float MaxNoiseAmount { get; set; } = 13f;
+    [field: SerializeField] public float CurNoiseAmount { get; set; }
+    public float SumNoiseAmount { get; set; }
+    [field: SerializeField] public float DecreaseSpeed { get; set; } = 5f;
+
+    [field: Header("Stamina")]
+    public RunEffect CurrentStamina;
+
+    [field: Header("VC")]
+    public CinemachineVirtualCamera offSight;
+
+    [field: Header("Controll")]
+    // 플레이 조작 onoff
+    [field: SerializeField] public bool IsPlayerControll { get; set; } = true;
+
+    [field: Header("Controll")]
+    public FlashLightController flashLightController;
+
+    [field: Header("Karma")]
+    [field: SerializeField] public float Karma { get; set; }
 
     public PlayerController Input { get; private set; }
     public CharacterController Controller { get; private set; }
@@ -20,35 +41,6 @@ public class Player : MonoBehaviour, INoise
     public PlayerInputsData InputsData { get; private set; }
 
     private PlayerStateMachine _stateMachine;
-
-    public RunEffect CurrentStamina;
-
-    //Vc
-    public CinemachineVirtualCamera offSight;
-
-    // INoise
-    public float NoiseTransitionTime { get; set; }
-
-    public float MaxNoiseAmount { get; set; } = 13f;
-
-    [field: SerializeField]
-    public float CurNoiseAmount { get; set; }
-    public float SumNoiseAmount { get; set; }
-    [field: SerializeField]
-    public float DecreaseSpeed { get; set; } = 5f;
-
-    // 플레이 조작 onoff
-    [field: SerializeField]
-    public bool IsPlayerControll { get; set; } = true;
-
-    public FlashLightController flashLightController;
-
-    // 카르마
-    [field: SerializeField]
-    public float Karma { get; set; }
-
-    
-
 
     private void Awake()
     {
@@ -96,7 +88,6 @@ public class Player : MonoBehaviour, INoise
         }
 
         if (CurNoiseAmount >= MaxNoiseAmount) CurNoiseAmount = MaxNoiseAmount;
-
     }
 
     private void FixedUpdate()

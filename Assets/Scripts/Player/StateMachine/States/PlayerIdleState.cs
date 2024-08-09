@@ -5,7 +5,6 @@ using UnityEditor.ShaderKeywordFilter;
 
 public class PlayerIdleState : PlayerGroundState
 {
-    //private RunEffect CurrentStamina;
 
     public PlayerIdleState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
     {
@@ -16,8 +15,6 @@ public class PlayerIdleState : PlayerGroundState
         base.Enter();
 
         stateMachine.MovementSpeedModifier = 0f;
-
-        //CurrentStamina = stateMachine.Player.GetComponent<RunEffect>();
 
         if (stateMachine.PressCtrl)
         {
