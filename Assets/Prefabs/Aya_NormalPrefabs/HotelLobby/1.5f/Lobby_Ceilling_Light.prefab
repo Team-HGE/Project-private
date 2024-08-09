@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1067001224107910398}
   - component: {fileID: 3618119418559010055}
   - component: {fileID: 8173244567555396710}
+  - component: {fileID: 960917384492528156}
   m_Layer: 0
   m_Name: Point Light
   m_TagString: Untagged
@@ -118,6 +119,21 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!114 &960917384492528156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3974875251956547262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f13a56ce3123004f8afe4c74cb47efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisLight: {fileID: 3618119418559010055}
+  parentRenderer:
+  - {fileID: 3231192332527064078}
 --- !u!1 &8751562453014874704
 GameObject:
   m_ObjectHideFlags: 0
@@ -129,7 +145,6 @@ GameObject:
   - component: {fileID: 4758135769457888296}
   - component: {fileID: 3231192332527064078}
   - component: {fileID: 1004290137853216342}
-  - component: {fileID: 2805290863005030490}
   m_Layer: 0
   m_Name: Lobby_Ceilling_Light
   m_TagString: Untagged
@@ -203,26 +218,4 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8751562453014874704}
-  m_Mesh: {fileID: 4300000, guid: ed994ba780fa8ba418782c0bb1181bf4, type: 2}
---- !u!64 &2805290863005030490
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8751562453014874704}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: ed994ba780fa8ba418782c0bb1181bf4, type: 2}

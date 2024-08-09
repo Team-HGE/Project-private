@@ -23,6 +23,10 @@ public class LightManager : MonoBehaviour
     [Header("Laver")]
     public List<Laver> lavers = new List<Laver>();
 
+    [Header("Lobby")]
+    public List<Light> lobbyLights = new List<Light>();
+    public List<MeshRenderer> lobbyObjectRenderer = new List<MeshRenderer>();
+
     [Header("UseLights")]
     public Material Use_Y_Lights;
     public Material Use_W_Lights;
@@ -51,14 +55,22 @@ public class LightManager : MonoBehaviour
         { "None_Week_Lights", LightName.None_Week_Lights},
         { "None_Bar_Lights", LightName.None_Bar_Lights }
     };
-    public void OffAllLight()
+    public void OffLaversAllLight()
     {
         foreach (var laver in lavers)
         {
             laver.OffNowFloorAllLight();
         }
     }
-    public void ChangeMaterial(MeshRenderer[] meshRenderers)
+
+    public void OffListLight(List<Light> lights)
+    {
+        foreach (var light in lights)
+        {
+            light.enabled = false;
+        }
+    }
+    public void OffChangeMaterial(MeshRenderer[] meshRenderers)
     {
         foreach (var renderer in meshRenderers)
         {
@@ -71,7 +83,6 @@ public class LightManager : MonoBehaviour
             {
                 string materialName = newMaterial[i].name.Replace(" (Instance)", "");
                 LightName newName = GetMaterialType(materialName);
-                Debug.Log(newName);
                 switch (newName)
                 {
                     case LightName.Use_Bar_Lights:
@@ -89,6 +100,63 @@ public class LightManager : MonoBehaviour
                     case LightName.Use_Week_Lights:
                         newMaterial[i] = None_Week_Lights;
                         break;
+                    default: break;
+                }
+                renderer.materials = newMaterial;
+            }
+        }
+    }
+    public void OffChangeMaterial(List<MeshRenderer> meshRenderers)
+    {
+        foreach (var renderer in meshRenderers)
+        {
+            if (renderer == null)
+            {
+                continue;
+            }
+            Material[] newMaterial = renderer.materials;
+            for (int i = 0; i < newMaterial.Length; i++)
+            {
+                string materialName = newMaterial[i].name.Replace(" (Instance)", "");
+                LightName newName = GetMaterialType(materialName);
+                switch (newName)
+                {
+                    case LightName.Use_Bar_Lights:
+                        newMaterial[i] = None_Bar_Lights;
+                        break;
+                    case LightName.Use_Y_Lights:
+                        newMaterial[i] = None_Y_Lights;
+                        break;
+                    case LightName.Use_WY_Lights:
+                        newMaterial[i] = None_WY_Lights;
+                        break;
+                    case LightName.Use_W_Lights:
+                        newMaterial[i] = None_W_Lights;
+                        break;
+                    case LightName.Use_Week_Lights:
+                        newMaterial[i] = None_Week_Lights;
+                        break;
+                    default: break;
+                }
+                renderer.materials = newMaterial;
+            }
+        }
+    }
+    public void OnChangeMaterial(MeshRenderer[] meshRenderers)
+    {
+        foreach (var renderer in meshRenderers)
+        {
+            if (renderer == null)
+            {
+                continue;
+            }
+            Material[] newMaterial = renderer.materials;
+            for (int i = 0; i < newMaterial.Length; i++)
+            {
+                string materialName = newMaterial[i].name.Replace(" (Instance)", "");
+                LightName newName = GetMaterialType(materialName);
+                switch (newName)
+                {
                     case LightName.None_Bar_Lights:
                         newMaterial[i] = Use_Bar_Lights;
                         break;
@@ -127,8 +195,12 @@ public class LightManager : MonoBehaviour
             time += Time.deltaTime;
             if (time > 10)
             {
-                OffAllLight();
                 lightOff = true;
+                HotelFloorScene_DataManager.Instance.controller.isCentralPowerActive = false;
+                //OffLaversAllLight();
+                OffListLight(lobbyLights);
+                OffChangeMaterial(lobbyObjectRenderer);
+                
                 foreach (var obj in HotelFloorScene_DataManager.Instance.controller.barrierObjects)
                 {
                     obj.CloseAni();

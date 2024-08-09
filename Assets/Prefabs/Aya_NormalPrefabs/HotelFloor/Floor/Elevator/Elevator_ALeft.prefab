@@ -717,6 +717,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 8431290001314329804}
   - {fileID: 962414348935953478}
   - {fileID: 6820292629836657987}
   - {fileID: 154654400579723397}
@@ -2550,6 +2551,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Elveator_7F_FloorBtn
       objectReference: {fileID: 0}
+    - target: {fileID: 3501226557751777799, guid: 2c7a0b9cd4a54d14d892973304f4938c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4175316112184889295, guid: 2c7a0b9cd4a54d14d892973304f4938c,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -2585,12 +2591,12 @@ PrefabInstance:
     - target: {fileID: 8635294362640433093, guid: 2c7a0b9cd4a54d14d892973304f4938c,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 0.41
       objectReference: {fileID: 0}
     - target: {fileID: 8635294362640433093, guid: 2c7a0b9cd4a54d14d892973304f4938c,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 0.85
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2693,6 +2699,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Elveator_9F_FloorBtn
       objectReference: {fileID: 0}
+    - target: {fileID: 3501226557751777799, guid: 2c7a0b9cd4a54d14d892973304f4938c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4175316112184889295, guid: 2c7a0b9cd4a54d14d892973304f4938c,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -2728,12 +2739,12 @@ PrefabInstance:
     - target: {fileID: 8635294362640433093, guid: 2c7a0b9cd4a54d14d892973304f4938c,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 0.41
       objectReference: {fileID: 0}
     - target: {fileID: 8635294362640433093, guid: 2c7a0b9cd4a54d14d892973304f4938c,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 0.85
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2836,6 +2847,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Elveator_6F_FloorBtn
       objectReference: {fileID: 0}
+    - target: {fileID: 3501226557751777799, guid: 2c7a0b9cd4a54d14d892973304f4938c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4175316112184889295, guid: 2c7a0b9cd4a54d14d892973304f4938c,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -2871,12 +2887,12 @@ PrefabInstance:
     - target: {fileID: 8635294362640433093, guid: 2c7a0b9cd4a54d14d892973304f4938c,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 0.41
       objectReference: {fileID: 0}
     - target: {fileID: 8635294362640433093, guid: 2c7a0b9cd4a54d14d892973304f4938c,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 0.85
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2979,6 +2995,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Elveator_8F_FloorBtn
       objectReference: {fileID: 0}
+    - target: {fileID: 3501226557751777799, guid: 2c7a0b9cd4a54d14d892973304f4938c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4175316112184889295, guid: 2c7a0b9cd4a54d14d892973304f4938c,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -3014,12 +3035,12 @@ PrefabInstance:
     - target: {fileID: 8635294362640433093, guid: 2c7a0b9cd4a54d14d892973304f4938c,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 0.41
       objectReference: {fileID: 0}
     - target: {fileID: 8635294362640433093, guid: 2c7a0b9cd4a54d14d892973304f4938c,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 0.85
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3174,6 +3195,149 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1114134780479209546, guid: 2c7a0b9cd4a54d14d892973304f4938c,
     type: 3}
   m_PrefabInstance: {fileID: 8411528821647285925}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8824739955201520774
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7539181948845992129}
+    m_Modifications:
+    - target: {fileID: 1114134780479209546, guid: 2c7a0b9cd4a54d14d892973304f4938c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -18.011993
+      objectReference: {fileID: 0}
+    - target: {fileID: 1114134780479209546, guid: 2c7a0b9cd4a54d14d892973304f4938c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 1114134780479209546, guid: 2c7a0b9cd4a54d14d892973304f4938c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5.0673337
+      objectReference: {fileID: 0}
+    - target: {fileID: 1114134780479209546, guid: 2c7a0b9cd4a54d14d892973304f4938c,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1114134780479209546, guid: 2c7a0b9cd4a54d14d892973304f4938c,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1114134780479209546, guid: 2c7a0b9cd4a54d14d892973304f4938c,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1114134780479209546, guid: 2c7a0b9cd4a54d14d892973304f4938c,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1114134780479209546, guid: 2c7a0b9cd4a54d14d892973304f4938c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1114134780479209546, guid: 2c7a0b9cd4a54d14d892973304f4938c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1114134780479209546, guid: 2c7a0b9cd4a54d14d892973304f4938c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1871715939468168407, guid: 2c7a0b9cd4a54d14d892973304f4938c,
+        type: 3}
+      propertyPath: m_text
+      value: L
+      objectReference: {fileID: 0}
+    - target: {fileID: 1871715939468168407, guid: 2c7a0b9cd4a54d14d892973304f4938c,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 3199409928624324999b9336dd1ed8f3,
+        type: 2}
+    - target: {fileID: 1871715939468168407, guid: 2c7a0b9cd4a54d14d892973304f4938c,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 21032597133445202, guid: 3199409928624324999b9336dd1ed8f3,
+        type: 2}
+    - target: {fileID: 1871715939468168407, guid: 2c7a0b9cd4a54d14d892973304f4938c,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1871715939468168407, guid: 2c7a0b9cd4a54d14d892973304f4938c,
+        type: 3}
+      propertyPath: m_ActiveFontFeatures.Array.data[0]
+      value: 1801810542
+      objectReference: {fileID: 0}
+    - target: {fileID: 3501226557751777799, guid: 2c7a0b9cd4a54d14d892973304f4938c,
+        type: 3}
+      propertyPath: m_Name
+      value: Elveator_Lobby_Btn
+      objectReference: {fileID: 0}
+    - target: {fileID: 4175316112184889295, guid: 2c7a0b9cd4a54d14d892973304f4938c,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 21032597133445202, guid: 3199409928624324999b9336dd1ed8f3,
+        type: 2}
+    - target: {fileID: 5297487574436904952, guid: 2c7a0b9cd4a54d14d892973304f4938c,
+        type: 3}
+      propertyPath: myNum
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5297487574436904952, guid: 2c7a0b9cd4a54d14d892973304f4938c,
+        type: 3}
+      propertyPath: elevatorObject
+      value: 
+      objectReference: {fileID: 2649638393383139414}
+    - target: {fileID: 5297487574436904952, guid: 2c7a0b9cd4a54d14d892973304f4938c,
+        type: 3}
+      propertyPath: changeMaterial.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4f58d23867cc46542bf10ca2e73b5ba9, type: 2}
+    - target: {fileID: 5297487574436904952, guid: 2c7a0b9cd4a54d14d892973304f4938c,
+        type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5540288634318010586, guid: 34197bba1e8d8c14cb62118d2039f34c,
+        type: 3}
+    - target: {fileID: 5297487574436904952, guid: 2c7a0b9cd4a54d14d892973304f4938c,
+        type: 3}
+      propertyPath: action.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MoveFloor
+      objectReference: {fileID: 0}
+    - target: {fileID: 8635294362640433093, guid: 2c7a0b9cd4a54d14d892973304f4938c,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8635294362640433093, guid: 2c7a0b9cd4a54d14d892973304f4938c,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2c7a0b9cd4a54d14d892973304f4938c, type: 3}
+--- !u!4 &8431290001314329804 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1114134780479209546, guid: 2c7a0b9cd4a54d14d892973304f4938c,
+    type: 3}
+  m_PrefabInstance: {fileID: 8824739955201520774}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8910239130611905159
 PrefabInstance:

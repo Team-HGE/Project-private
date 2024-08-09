@@ -41,7 +41,7 @@ public class Laver : InteractableObject
                 obj.SetActive(false);
             }
         }
-        GameManager.Instance.lightManager.ChangeMaterial(nowFloorObjectRenderers);
+        GameManager.Instance.lightManager.OffChangeMaterial(nowFloorObjectRenderers);
     }
     public void OnNowFloorAllLight()
     {
@@ -59,6 +59,6 @@ public class Laver : InteractableObject
                 obj.SetActive(true);
             }
         }
-        GameManager.Instance.lightManager.ChangeMaterial(nowFloorObjectRenderers);
+        GameManager.Instance.lightManager.OffChangeMaterial(nowFloorObjectRenderers);
     }
 }

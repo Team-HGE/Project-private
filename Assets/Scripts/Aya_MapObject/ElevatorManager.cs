@@ -80,10 +80,16 @@ public class ElevatorManager : MonoBehaviour
                 nowDoor.Add(aLeftFloorElevatorDoorAni[nowElevator.NowFloor].floorRightDoorOpen);
                 break;
             case ElevatorObjectType.ARight:
+                nowDoor.Add(aRightFloorElevatorDoorAni[nowElevator.NowFloor].floorLeftDoorOpen);
+                nowDoor.Add(aRightFloorElevatorDoorAni[nowElevator.NowFloor].floorRightDoorOpen);
                 break;
             case ElevatorObjectType.BLeft:
+                nowDoor.Add(bLeftFloorElevatorDoorAni[nowElevator.NowFloor].floorLeftDoorOpen);
+                nowDoor.Add(bLeftFloorElevatorDoorAni[nowElevator.NowFloor].floorRightDoorOpen);
                 break;
             case ElevatorObjectType.BRight:
+                nowDoor.Add(bRightFloorElevatorDoorAni[nowElevator.NowFloor].floorLeftDoorOpen);
+                nowDoor.Add(bRightFloorElevatorDoorAni[nowElevator.NowFloor].floorRightDoorOpen);
                 break;
         }
         return nowDoor;
@@ -99,10 +105,16 @@ public class ElevatorManager : MonoBehaviour
                 nowDoor.Add(aLeftFloorElevatorDoorAni[nowElevator.NowFloor].floorRightDoorClose);
                 break;
             case ElevatorObjectType.ARight:
+                nowDoor.Add(aRightFloorElevatorDoorAni[nowElevator.NowFloor].floorLeftDoorClose);
+                nowDoor.Add(aRightFloorElevatorDoorAni[nowElevator.NowFloor].floorRightDoorClose);
                 break;
             case ElevatorObjectType.BLeft:
+                nowDoor.Add(bLeftFloorElevatorDoorAni[nowElevator.NowFloor].floorLeftDoorClose);
+                nowDoor.Add(bLeftFloorElevatorDoorAni[nowElevator.NowFloor].floorRightDoorClose);
                 break;
             case ElevatorObjectType.BRight:
+                nowDoor.Add(bRightFloorElevatorDoorAni[nowElevator.NowFloor].floorLeftDoorClose);
+                nowDoor.Add(bRightFloorElevatorDoorAni[nowElevator.NowFloor].floorRightDoorClose);
                 break;
         }
         return nowDoor;

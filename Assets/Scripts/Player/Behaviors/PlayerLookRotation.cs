@@ -18,12 +18,12 @@ public class PlayerLookRotation : MonoBehaviour
     {
         if (!_player.IsPlayerControll)
         {
-            if(virtualCamera.enabled) virtualCamera.enabled = false;
+            //if(virtualCamera.enabled) virtualCamera.enabled = false;
             return;
         }
         else 
         {
-            if (!virtualCamera.enabled) virtualCamera.enabled = true;
+            //if (!virtualCamera.enabled) virtualCamera.enabled = true;
         }
 
         lookPointTr.rotation = Quaternion.Euler(_pov.m_VerticalAxis.Value, 0, 0);

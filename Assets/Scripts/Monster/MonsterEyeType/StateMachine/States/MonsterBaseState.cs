@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -32,75 +32,96 @@ public class MonsterBaseState : IState
     public virtual void Update()
     {
         FindPlayerCheck();
+        RotateToPlayer();
     }
 
-    
-    public virtual void Move(Vector3 movementDirection)
-    {
-        float movementSpeed = GetMovementSpeed();
-        stateMachine.Monster.Controller.Move(((movementDirection * movementSpeed) + stateMachine.Monster.ForceReceiver.Movement) * Time.deltaTime);
-    }
 
-    // ¼öÁ÷, ¼öÆò °¡ÇÏ´Â Èû 
+    //public virtual void Move(Vector3 movementDirection)
+    //{
+    //    float movementSpeed = GetMovementSpeed();
+    //    stateMachine.Monster.Controller.Move(((movementDirection * movementSpeed) + stateMachine.Monster.ForceReceiver.Movement) * Time.deltaTime);
+    //}
+
+    // ìˆ˜ì§, ìˆ˜í‰ ê°€í•˜ëŠ” í˜ 
     protected void ForceMove()
     {
         stateMachine.Monster.Controller.Move(stateMachine.Monster.ForceReceiver.Movement * Time.deltaTime);
     }
 
-    private float GetMovementSpeed()
-    {
-        float movementSpeed = stateMachine.MovementSpeed * stateMachine.MovementSpeedModifier;
-        return movementSpeed;
-    }
+    //private float GetMovementSpeed()
+    //{
+    //    float movementSpeed = stateMachine.MovementSpeed * stateMachine.MovementSpeedModifier;
+    //    return movementSpeed;
+    //}
 
 
-    // ¸ğµç »óÅÂ¿¡ ÇÊ¿äÇÑ ¾Ö´Ï¸ŞÀÌ¼Ç ÀüÈ¯ ±â´É
-    // ¾Ö´Ï¸ŞÀÌ¼Ç Àç»ı
+    // ëª¨ë“  ìƒíƒœì— í•„ìš”í•œ ì• ë‹ˆë©”ì´ì…˜ ì „í™˜ ê¸°ëŠ¥
+    // ì• ë‹ˆë©”ì´ì…˜ ì¬ìƒ
     protected void StartAnimation(int animationHash)
     {
         stateMachine.Monster.Animator.SetBool(animationHash, true);
     }
 
-    // ¾Ö´Ï¸ŞÀÌ¼Ç Á¾·á
+    // ì• ë‹ˆë©”ì´ì…˜ ì¢…ë£Œ
     protected void StopAnimation(int animationHash)
     {
         stateMachine.Monster.Animator.SetBool(animationHash, false);
     }
 
-    // ¾Ö´Ï¸ŞÀÌ¼Ç ÁøÇàµµ Ã¼Å©
-    protected float GetNormalizedTime(Animator animator, string tag)
-    {
-        AnimatorStateInfo currentInfo = animator.GetCurrentAnimatorStateInfo(0);
-        AnimatorStateInfo nextInfo = animator.GetNextAnimatorStateInfo(0);
+    //// ì• ë‹ˆë©”ì´ì…˜ ì§„í–‰ë„ ì²´í¬
+    //protected float GetNormalizedTime(Animator animator, string tag)
+    //{
+    //    AnimatorStateInfo currentInfo = animator.GetCurrentAnimatorStateInfo(0);
+    //    AnimatorStateInfo nextInfo = animator.GetNextAnimatorStateInfo(0);
 
-        // ÀüÈ¯µÇ°í ÀÖÀ»¶§ && ´ÙÀ½ ¾Ö´Ï¸ŞÀÌ¼Ç tag
-        if (animator.IsInTransition(0) && nextInfo.IsTag(tag))
+    //    // ì „í™˜ë˜ê³  ìˆì„ë•Œ && ë‹¤ìŒ ì• ë‹ˆë©”ì´ì…˜ tag
+    //    if (animator.IsInTransition(0) && nextInfo.IsTag(tag))
+    //    {
+    //        return nextInfo.normalizedTime;
+    //    }
+    //    // ì „í™˜ë˜ê³  ìˆì§€ ì•Šì„ë•Œ && í˜„ì¬ ì• ë‹ˆë©”ì´ì…˜ tag        
+    //    else if (!animator.IsInTransition(0) && currentInfo.IsTag(tag))
+    //    {
+    //        return currentInfo.normalizedTime;
+    //    }
+    //    else
+    //    {
+    //        return 0f;
+    //    }
+    //}
+
+    protected void RotateToPlayer()
+    {
+
+        //Debug.Log("ëŒì•„ë³´ê¸° ì¤€ë¹„");
+
+        //if (Vector3.Distance(stateMachine.Monster.transform.position, stateMachine.Target.transform.position) <= stateMachine.Monster.Data.GroundData.AttackRange)
+        //{
+        //    Debug.Log("ëŒì•„ë³´ê¸° ì„±ê³µ");
+
+        //    Rotate(GetMovementDirection());
+        //}
+
+        if (IsInAttackRange())
         {
-            return nextInfo.normalizedTime;
-        }
-        // ÀüÈ¯µÇ°í ÀÖÁö ¾ÊÀ»¶§ && ÇöÀç ¾Ö´Ï¸ŞÀÌ¼Ç tag        
-        else if (!animator.IsInTransition(0) && currentInfo.IsTag(tag))
-        {
-            return currentInfo.normalizedTime;
-        }
-        else
-        {
-            return 0f;
+            Rotate(GetMovementDirection());
         }
     }
 
     protected void FindPlayerCheck()
     {
+        if (stateMachine.IsAttack) return;
+
         if (!stateMachine.Monster.canCheck)
         {
-            //Debug.Log("ÇÃ·¹ÀÌ¾î Å½Áö ºÒ°¡");
+            //Debug.Log("í”Œë ˆì´ì–´ íƒì§€ ë¶ˆê°€");
             if (stateMachine.Monster.canSeePlayer) stateMachine.Monster.canSeePlayer = false;
             return;
         }
             
         //if (stateMachine.Monster.rangeChecks.Length <= 0)
         //{
-        //    //Debug.Log("ÇÃ·¹ÀÌ¾î Å½Áö ºÒ°¡");
+        //    //Debug.Log("í”Œë ˆì´ì–´ íƒì§€ ë¶ˆê°€");
         //    if (stateMachine.Monster.canSeePlayer) stateMachine.Monster.canSeePlayer = false;
         //    return;
         //}
@@ -118,16 +139,16 @@ public class MonsterBaseState : IState
             float distanceToTargetEye = Vector3.Distance(stateMachine.Monster.eye.position, new Vector3(target.position.x, stateMachine.Monster.eye.position.y, target.position.z));
 
 
-            Debug.Log($"FindPlayerCheck - ¹Ù´Ú, {Physics.Raycast(stateMachine.Monster .transform.position, directionToTarget, distanceToTarget, stateMachine.Monster.obstructionMask)}, {Physics.Raycast(stateMachine.Monster.transform.position, directionToTarget, distanceToTarget, stateMachine.Monster.playerMask)}, {stateMachine.Monster.transform.position}, {distanceToTarget} ");
+            //Debug.Log($"FindPlayerCheck - ë°”ë‹¥, {Physics.Raycast(stateMachine.Monster .transform.position, directionToTarget, distanceToTarget, stateMachine.Monster.obstructionMask)}, {Physics.Raycast(stateMachine.Monster.transform.position, directionToTarget, distanceToTarget, stateMachine.Monster.playerMask)}, {stateMachine.Monster.transform.position}, {distanceToTarget} ");
 
 
             if (!Physics.Raycast(stateMachine.Monster.transform.position, directionToTarget, distanceToTarget, stateMachine.Monster.obstructionMask))
             {
                 stateMachine.Monster.canSeePlayer = true;
-                if (stateMachine.IsFocus || stateMachine.IsChasing) return;
+                if (stateMachine.IsFind || stateMachine.IsChasing) return;
                 else
                 {
-                    Debug.Log($"FindPlayerCheck - ÇÃ·¹ÀÌ¾î ¹ß°ß - ¹Ù´Ú, {Physics.Raycast(stateMachine.Monster.transform.position, directionToTarget, distanceToTarget, stateMachine.Monster.obstructionMask)}, {Physics.Raycast(stateMachine.Monster.transform.position, directionToTarget, distanceToTarget, stateMachine.Monster.playerMask)}, {stateMachine.Monster.transform.position} ");
+                    //Debug.Log($"FindPlayerCheck - í”Œë ˆì´ì–´ ë°œê²¬ - ë°”ë‹¥, {Physics.Raycast(stateMachine.Monster.transform.position, directionToTarget, distanceToTarget, stateMachine.Monster.obstructionMask)}, {Physics.Raycast(stateMachine.Monster.transform.position, directionToTarget, distanceToTarget, stateMachine.Monster.playerMask)}, {stateMachine.Monster.transform.position} ");
 
                     stateMachine.ChangeState(stateMachine.FindState);
                 }
@@ -136,17 +157,18 @@ public class MonsterBaseState : IState
             }
             else stateMachine.Monster.canSeePlayer = false;
 
-            Debug.Log($"FindPlayerCheck - ´«, {Physics.Raycast(stateMachine.Monster.eye.position, directionToTargetEye, distanceToTargetEye, stateMachine.Monster.obstructionMask)}, {Physics.Raycast(stateMachine.Monster.eye.position, directionToTargetEye, distanceToTargetEye, stateMachine.Monster.playerMask)}, {stateMachine.Monster.eye.position}, {distanceToTargetEye} ");
+            //Debug.Log($"FindPlayerCheck - ëˆˆ, {Physics.Raycast(stateMachine.Monster.eye.position, directionToTargetEye, distanceToTargetEye, stateMachine.Monster.obstructionMask)}, {Physics.Raycast(stateMachine.Monster.eye.position, directionToTargetEye, distanceToTargetEye, stateMachine.Monster.playerMask)}, {stateMachine.Monster.eye.position}, {distanceToTargetEye} ");
 
 
             if (!Physics.Raycast(stateMachine.Monster.eye.position, directionToTargetEye, distanceToTargetEye, stateMachine.Monster.obstructionMask) && Physics.Raycast(stateMachine.Monster.eye.position, directionToTargetEye, distanceToTargetEye, stateMachine.Monster.playerMask))
             {
                 stateMachine.Monster.canSeePlayer = true;
 
-                if (stateMachine.IsFocus || stateMachine.IsChasing) return;
+                if (stateMachine.IsFind || stateMachine.IsChasing) return;
                 else
                 {
-                    Debug.Log($"FindPlayerCheck - ÇÃ·¹ÀÌ¾î ¹ß°ß - ´«, {stateMachine.Monster.eye.position}");
+                    //Debug.Log($"FindPlayerCheck - í”Œë ˆì´ì–´ ë°œê²¬ - ëˆˆ, {stateMachine.Monster.eye.position}");
+                    //Debug.Log($"FindPlayerCheck - í”Œë ˆì´ì–´ ë°œê²¬ - ëˆˆ, {Physics.Raycast(stateMachine.Monster.eye.position, directionToTargetEye, distanceToTargetEye, stateMachine.Monster.obstructionMask)}, {Physics.Raycast(stateMachine.Monster.eye.position, directionToTargetEye, distanceToTargetEye, stateMachine.Monster.playerMask)}, {stateMachine.Monster.eye.position}, {distanceToTargetEye} ");
                     stateMachine.ChangeState(stateMachine.FindState);
                 }
 

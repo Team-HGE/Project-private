@@ -37,9 +37,9 @@ public class Switch_Object_Toggle : InteractableObject
 
     public override void Interact()
     {
-        if (HotelFloorScene_DataManager.Instance.controller.isCentralPowerActive)
+        if (!turnLight)
         {
-            if (!turnLight)
+            if (HotelFloorScene_DataManager.Instance.controller.isCentralPowerActive)
             {
                 foreach (MeshRenderer mesh in lightObjectMesh)
                 {
@@ -65,11 +65,14 @@ public class Switch_Object_Toggle : InteractableObject
                         obj.SetActive(true);
                     }
                 }
-                turnLight = true;
-                offSwitch.SetActive(false);
-                onSwitch.SetActive(true);
             }
-            else
+            turnLight = true;
+            offSwitch.SetActive(false);
+            onSwitch.SetActive(true);
+        }
+        else
+        {
+            if (HotelFloorScene_DataManager.Instance.controller.isCentralPowerActive)
             {
                 foreach (MeshRenderer mesh in lightObjectMesh)
                 {
@@ -95,11 +98,10 @@ public class Switch_Object_Toggle : InteractableObject
                         obj.SetActive(false);
                     }
                 }
-                turnLight = false;
-                offSwitch.SetActive(true);
-                onSwitch.SetActive(false);
-
             }
+            turnLight = false;
+            offSwitch.SetActive(true);
+            onSwitch.SetActive(false);
         }
         audioSource.Play();
     }

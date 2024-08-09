@@ -10,6 +10,7 @@ public class MonsterAnimationData
     [SerializeField] private string chaseParameterName = "Chase";
     [SerializeField] private string loseSightParameterName = "LoseSight";
     [SerializeField] private string attackParameterName = "Attack";
+    [SerializeField] private string comeBackParameterName = "ComeBack";
 
 
     public int GroundParameterHash { get; private set; }
@@ -19,6 +20,7 @@ public class MonsterAnimationData
     public int ChaseParameterHash { get; private set; }
     public int LoseSightParameterHash { get; private set; }
     public int AttackParameterHash { get; private set; }
+    public int ComeBackParameterHash { get; private set; }
 
 
     public void Initialize()
@@ -30,6 +32,6 @@ public class MonsterAnimationData
         ChaseParameterHash = Animator.StringToHash(chaseParameterName);
         LoseSightParameterHash = Animator.StringToHash(loseSightParameterName);
         AttackParameterHash = Animator.StringToHash(attackParameterName);
-
+        ComeBackParameterHash = Animator.StringToHash(comeBackParameterName);
     }
 }

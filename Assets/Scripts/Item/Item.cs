@@ -1,7 +1,28 @@
+using System;
 using UnityEngine;
 
 public class Item : InteractableObject
 {
+    public event Action OnGetItem;
+
+    // 첫날 컷신 
+    private bool _isFisrtCutScene = false;
+
+    public bool IsFisrtCutScene
+    {
+        get { return _isFisrtCutScene; }
+        set
+        {
+            if (_isFisrtCutScene != value)
+            {
+                _isFisrtCutScene = value;
+                OnGetItem?.Invoke();
+            }
+            else _isFisrtCutScene = value;
+        }
+    }
+
+
     //public ItemSO itemSO;
     public ScriptSO scriptSO;
 
@@ -27,6 +48,17 @@ public class Item : InteractableObject
         DialogueManager.Instance.itemScript.Print();
 
         Debug.Log("아이템 파괴");
+        GetEventItem();
+
         Destroy(gameObject);
+    }
+
+    private void GetEventItem()
+    {
+        if (gameObject.tag == "FirstCutScene")
+        {
+            //Debug.Log("컷신 아이템 일때");
+            IsFisrtCutScene = true;
+        }
     }
 }
