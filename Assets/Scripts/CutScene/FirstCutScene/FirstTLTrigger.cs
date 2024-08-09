@@ -1,16 +1,34 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
 
 public class FirstTLTrigger : MonoBehaviour
 {
+    public event Action OnEnd;
+
     public PlayableDirector firstCutScene;
     public GameObject[] doors;
     public GameObject VCs;
     public GameObject monsters;
 
-    public bool isEnd = false;
+    private bool _isEnd = false;
+
+
+    public bool IsEnd 
+    {
+        get { return _isEnd; }
+        set 
+        {
+            if (_isEnd != value)
+            {
+                _isEnd = value;
+                OnEnd?.Invoke();
+            }
+            else _isEnd = value;
+        }
+    }
 
     private void Start()
     {
@@ -51,7 +69,7 @@ public class FirstTLTrigger : MonoBehaviour
         }
 
         monsters.SetActive(true);
-        isEnd = true;
+        IsEnd = true;
         //Debug.Log("타임라인이 종료");
     }
 }
