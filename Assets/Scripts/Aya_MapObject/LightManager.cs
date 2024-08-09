@@ -197,7 +197,7 @@ public class LightManager : MonoBehaviour
             {
                 lightOff = true;
                 HotelFloorScene_DataManager.Instance.controller.isCentralPowerActive = false;
-                OffLaversAllLight();
+                //OffLaversAllLight();
                 OffListLight(lobbyLights);
                 OffChangeMaterial(lobbyObjectRenderer);
                 
