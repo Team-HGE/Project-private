@@ -24,7 +24,7 @@ public class PlayerCrouchState : PlayerGroundState
         stateMachine.MovementSpeedModifier = groundData.CrouchSpeedModifier;
         stateMachine.Player.SumNoiseAmount = 2f;
         stateMachine.IsCrouch = true;
-        AudioManager.Instance.PlaySoundEffect(SoundEffect.duck);
+        AudioManager.Instance.PlaySoundEffect(SoundEffect.duck); // 권용 수정
     }
 
     public override void Exit() 
@@ -49,14 +49,17 @@ public class PlayerCrouchState : PlayerGroundState
         if (stateMachine.Player.InputsData.MovementInput != Vector2.zero)
         {
             stateMachine.ChangeState(stateMachine.WalkState);
-            AudioManager.Instance.StopAllClips();
+            AudioManager.Instance.PlaySoundEffect(SoundEffect.duck); // 권용 수정
+            AudioManager.Instance.PlaySoundEffect(SoundEffect.Wokeup); // 권용 수정
+
             return;
         }
 
         if (stateMachine.PressShift)
         {
             stateMachine.ChangeState(stateMachine.RunState);
-            AudioManager.Instance.StopAllClips();
+            AudioManager.Instance.PlaySoundEffect(SoundEffect.duck); // 권용 수정
+            AudioManager.Instance.PlaySoundEffect(SoundEffect.Wokeup); // 권용 수정
             return;
         }
 

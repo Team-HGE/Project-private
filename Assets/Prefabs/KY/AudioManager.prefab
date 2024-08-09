@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4195558109549652876}
   - component: {fileID: 5545005771648761714}
+  - component: {fileID: 2902700249209736789}
   - component: {fileID: 4926351576361659669}
-  - component: {fileID: 1770495011655866176}
+  - component: {fileID: 2206834971917580895}
   - component: {fileID: 1007383038080742758}
   m_Layer: 0
   m_Name: AudioManager
@@ -50,18 +51,30 @@ MonoBehaviour:
   audioSources:
   - {fileID: 0}
   maxAudioSources: 0
-  backGroundAudioClips:
-  - backGroundSound: 1
-    audioClip: {fileID: 0}
-  - backGroundSound: 0
-    audioClip: {fileID: 0}
+  backGroundAudioClips: []
   soundEffectClips:
   - soundEffect: 0
     audioClip: {fileID: 8300000, guid: 244edf2205df65843a6ab3a1c0cdca7e, type: 3}
   - soundEffect: 3
-    audioClip: {fileID: 8300000, guid: 0c0ebbb48a6747041a91670cb20809cc, type: 3}
-  playSEAudio: {fileID: 4926351576361659669}
-  playAudio: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 6313a64c40ee6644f8e65ce24de4249d, type: 3}
+  - soundEffect: 4
+    audioClip: {fileID: 8300000, guid: b5ccca488b26a444b959f685a88856f9, type: 3}
+  - soundEffect: 5
+    audioClip: {fileID: 8300000, guid: 8ec7c859bc6b7644d850c8854afa0ff8, type: 3}
+  playAudio: {fileID: 2902700249209736789}
+  playAudioSE: {fileID: 4926351576361659669}
+--- !u!114 &2902700249209736789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2165691014192094679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8545ee7715c04c4282d81c24d7da6c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4926351576361659669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,7 +88,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   volume: 0.4
---- !u!114 &1770495011655866176
+--- !u!114 &2206834971917580895
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -84,7 +97,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2165691014192094679}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d95ff3c9949c234cbac3852ac19e888, type: 3}
+  m_Script: {fileID: 11500000, guid: f444a39665d171d47a6d22f03e7b2a81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
