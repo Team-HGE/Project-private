@@ -10,7 +10,7 @@ public class TextEffect: DialogueSetting
 
     public static bool isSkipped { get; set; }
     private static float typingPerSeconds = 20f;
-    private static float TextFadeOutSpeed = 1f;
+    private static float TextFadeOutSpeed = 1.4f;
 
     public static IEnumerator Typing(TextMeshProUGUI tmp, StringBuilder sb, string SOstr)
     {

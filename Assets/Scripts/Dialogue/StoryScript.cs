@@ -109,7 +109,7 @@ public class StoryScript: DialogueSetting, IScript
             yield return waitTime;
 
             waitIcon.SetActive(false); // 권용 추가 기다리는 아이콘 사라짐
-
+          
             //Debug.Log("좌클릭으로 진행하세요2");
 
             ui.ClearDialogue(sbTitle, sbBody);
