@@ -78,6 +78,7 @@ public class DialogueManager : SingletonManager<DialogueManager>
         Debug.Log("스토리 스크립트 초기화");
         storyScript.scriptSO = null;
         StopAllCoroutines();
+        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
     }
 
     public void NpcStartInteract()
