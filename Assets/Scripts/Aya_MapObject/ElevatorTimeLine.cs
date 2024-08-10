@@ -1,10 +1,9 @@
-using System;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.Playables;
 
 public class ElevatorTimeLine : MonoBehaviour
 {
+    public bool triggerOn; 
     public PlayableDirector timelineDirector;
     public GameObject timeLineObject;
     public GameObject UI;
@@ -12,11 +11,11 @@ public class ElevatorTimeLine : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        GameManager.Instance.fadeManager.fadeComplete += ElevatorMovie;
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !triggerOn)
         {
-            GameManager.Instance.fadeManager.FadeStart(FadeState.FadeIn);
-            
+            triggerOn = true;
+            GameManager.Instance.fadeManager.fadeComplete += ElevatorMovie;
+            GameManager.Instance.fadeManager.FadeStart(FadeState.FadeOut);
         }
     }
 
