@@ -55,7 +55,6 @@ public class MonsterBaseState : IState
     //}
 
 
-    // 모든 상태에 필요한 애니메이션 전환 기능
     // 애니메이션 재생
     protected void StartAnimation(int animationHash)
     {

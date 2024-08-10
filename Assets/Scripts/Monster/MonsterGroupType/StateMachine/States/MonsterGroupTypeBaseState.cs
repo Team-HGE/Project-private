@@ -1,0 +1,76 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class MonsterGroupTypeBaseState : IState
+{
+    protected MonsterGroupTypeStateMachine stateMachine;
+    protected readonly MonsterGroundData groundData;
+
+    public MonsterGroupTypeBaseState(MonsterGroupTypeStateMachine monsterStateMachine)
+    {
+        stateMachine = monsterStateMachine;
+        groundData = stateMachine.Monster.Data.GroundData;
+    }
+
+
+    public virtual void Enter()
+    {
+    }
+
+    public virtual void Exit()
+    {
+    }
+
+    public virtual void HandleInput()
+    {
+    }
+
+    public virtual void PhysicsUpdate()
+    {
+    }
+
+    public virtual void Update()
+    {
+    }
+
+    protected bool IsInAttackRange()
+    {
+        float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.Monster.transform.position).sqrMagnitude;
+        return playerDistanceSqr <= groundData.AttackRange * groundData.AttackRange;
+    }
+
+    // 애니메이션 재생
+    protected void StartAnimation(int animationHash)
+    {
+        stateMachine.Monster.Animator.SetBool(animationHash, true);
+    }
+
+    // 애니메이션 종료
+    protected void StopAnimation(int animationHash)
+    {
+        stateMachine.Monster.Animator.SetBool(animationHash, false);
+    }
+
+    protected Vector3 GetMovementDirection()
+    {
+        Vector3 dir = (stateMachine.Target.transform.position - stateMachine.Monster.transform.position).normalized;
+        return dir;
+    }
+
+    protected void Rotate(Vector3 movementDirection)
+    {
+        if (movementDirection != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(movementDirection);
+            stateMachine.Monster.transform.rotation = Quaternion.Lerp(stateMachine.Monster.transform.rotation, targetRotation, stateMachine.RotationDamping * Time.deltaTime);
+        }
+    }
+
+    protected bool GetIsPlayerInFieldOfView()
+    {
+        Vector3 directionToPlayer = stateMachine.Target.transform.position - stateMachine.Monster.transform.position;
+        float angle = Vector3.Angle(stateMachine.Monster.transform.forward, directionToPlayer);
+        return angle < groundData.ViewAngle * 0.5f;
+    }
+}

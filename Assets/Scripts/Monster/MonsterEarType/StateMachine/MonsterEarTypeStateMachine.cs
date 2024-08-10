@@ -12,7 +12,7 @@ public class MonsterEarTypeStateMachine : StateMachine
     // 몬스터 생성 위치
     public Vector3 StartPosition { get; private set; }
 
-    // 몬스터 상태***
+    // 몬스터 상태
     public MonsterEarTypeIdleState IdleState { get; private set; }
     public MonsterEarTypePatrolState PatrolState { get; private set; }
     public MonsterEarTypeMoveState MoveState { get; private set; }
@@ -21,7 +21,7 @@ public class MonsterEarTypeStateMachine : StateMachine
     public MonsterEarTypeChaseState ChaseState { get; private set; }
     public MonsterEarTypeAttackState AttackState { get; private set; }
 
-    // 상태 전환 조건
+    // 현재 상태
     public bool IsPatrol { get; set; }
     //public bool IsSearchTarget { get; set; } = false;
     public bool IsMove { get; set; }
@@ -41,13 +41,13 @@ public class MonsterEarTypeStateMachine : StateMachine
 
     //public float MovementSpeedModifier { get; set; } = 1f;
 
-    public bool IsPlayerInFieldOfView { get; set; }
+    //public bool IsPlayerInFieldOfView { get; set; }
 
 
     public MonsterEarTypeStateMachine(EarTypeMonster monster)
     {
         Monster = monster;
-        // 태그로 플레어 탐색***
+        // 플레이어 캐싱
         Target = GameObject.FindGameObjectWithTag("Player");
         // 고유한 위치
         StartPosition = Monster.transform.position;

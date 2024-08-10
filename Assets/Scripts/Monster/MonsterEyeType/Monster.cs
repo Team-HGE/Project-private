@@ -14,13 +14,8 @@ public class Monster : MonoBehaviour
     [field: SerializeField] public MonsterAnimationData AnimationData { get; private set; }
 
     [field: Header("Behavior")]
-    // 행동 관리
-    public bool IsBehavior {get; set;} = true;
-    private Coroutine _wait;
-    private bool _isWaiting = false;
-
     [field: SerializeField] public bool CanPatrol { get; set; } = true;
-
+    
     [field: Header("MonsterTransform")]
     public Transform monsterTransform;
     public Transform monsterEyeTransform;
@@ -40,6 +35,10 @@ public class Monster : MonoBehaviour
     public NavMeshAgent Agent { get; private set; }
 
     private MonsterStateMachine _stateMachine;
+
+    public bool IsBehavior { get; set; } = true;
+    private Coroutine _wait;
+    private bool _isWaiting = false;
 
 
     private void Awake()

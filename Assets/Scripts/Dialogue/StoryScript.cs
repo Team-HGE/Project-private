@@ -28,7 +28,7 @@ public class StoryScript: DialogueSetting, IScript
         //Init(scriptSO);
         if (scriptSO == null) { Debug.Log("지금은 내보낼 스크립트가 없습니다. scriptSO null"); return; };
 
-        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
+        //GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();//임시 주석 처리 - 다이얼로그 끝난 뒤 플래이어 정지 해제 안됨***
         StopAllCoroutines();
         ui.OpenBG();
         ui.OpenDialogue();
