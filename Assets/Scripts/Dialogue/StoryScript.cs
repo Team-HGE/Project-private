@@ -17,6 +17,7 @@ public class StoryScript: DialogueSetting, IScript
         scriptSO = _script;
         InitUI();
         ui.CloseDialogue();
+        ui.ObjectPoolInit();
     }
 
     public void Print()
@@ -52,11 +53,12 @@ public class StoryScript: DialogueSetting, IScript
             UtilSB.SetText(ui.titleText, sbTitle, scriptSO.speakers[i]);
 
             ui.SetPortrait(ui.portrait, scriptSO.portraits[i]);
+            ui.PopStanding(scriptSO.portraits[i]);
             ui.CheckNullTitle(scriptSO.speakers[i]);
 
             if (scriptSO.audioClips != null)
             {
-                AudioManager.Instance.PlayDialSE(scriptSO.audioClips[i]); // 권용 오디오 클립 재생
+                //AudioManager.Instance.PlayDialSE(scriptSO.audioClips[i]); // 권용 오디오 클립 재생
             }
 
 
@@ -97,18 +99,18 @@ public class StoryScript: DialogueSetting, IScript
             
             yield return StartCoroutine(curPrintLine);
 
-            waitIcon.SetActive(true); //권용 추가 기다리는 아이콘 등장
+            //waitIcon.SetActive(true); //권용 추가 기다리는 아이콘 등장
 
             //Debug.Log("좌클릭으로 진행하세요");
             yield return waitLeftClick;
 
-            AudioManager.Instance.PlaySoundEffect(SoundEffect.DialClick); // 권용 수정 사운드 재생
-            AudioManager.Instance.StopDialSE(scriptSO.audioClips[i]); //권용 수정 사운드 재생 다이얼SE 멈춤
+            //AudioManager.Instance.PlaySoundEffect(SoundEffect.DialClick); // 권용 수정 사운드 재생
+            //AudioManager.Instance.StopDialSE(scriptSO.audioClips[i]); //권용 수정 사운드 재생 다이얼SE 멈춤
             //Debug.Log("좌클릭으로 진행하세요1");
 
             yield return waitTime;
 
-            waitIcon.SetActive(false); // 권용 추가 기다리는 아이콘 사라짐
+            //waitIcon.SetActive(false); // 권용 추가 기다리는 아이콘 사라짐
           
             //Debug.Log("좌클릭으로 진행하세요2");
 

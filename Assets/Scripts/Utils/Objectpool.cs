@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class ObjectPool : MonoBehaviour
 {
@@ -50,6 +51,16 @@ public class ObjectPool : MonoBehaviour
     public void ReturnObject(GameObject obj)
     {
         obj.SetActive(false);
+    }
+
+    public void ReturnObjectbyIndex(int index)
+    {
+        pool[0].SetActive(false);
+        for (int i = 1; i < index-1; i++)
+        {
+            pool[i] = pool[i + 1];
+        }
+        //pool[index-1].SetActive(false);
     }
 
     public void ReturnAllObject()

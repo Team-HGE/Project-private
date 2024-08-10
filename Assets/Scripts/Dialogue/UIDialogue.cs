@@ -11,7 +11,6 @@ public class UIDialogue : MonoBehaviour
     public Image titleBG;
     public TextMeshProUGUI titleText;
     public Image portrait;
-    //public Image standingImg;
     public GameObject darkScreen;
     public GameObject FinishStoryBtn;
 
@@ -20,6 +19,7 @@ public class UIDialogue : MonoBehaviour
     public TextMeshProUGUI answerText2;
 
     private ObjectPool objectPool;
+    public GameObject standingImgLayout;
     private GameObject standingImg;
     private int standingCnt = 0;
 
@@ -69,21 +69,26 @@ public class UIDialogue : MonoBehaviour
         image.sprite = sprite;
     }
 
-    public void PopStanding(Image Image, Sprite sprite)
+    public void ObjectPoolInit()
     {
-        objectPool = GetComponent<ObjectPool>();
-
-        if (standingCnt >= 3)
-        {
-            objectPool.ReturnAllObject();
-        }
-
-        standingImg = objectPool.GetObject();
-        Image = standingImg.GetComponent<Image>();
-        Image.sprite = sprite;
-        standingCnt++;
+        objectPool = standingImgLayout.GetComponent<ObjectPool>();
+        standingCnt = 0;
     }
 
+    public void PopStanding(Sprite sprite)
+    {
+        if (standingCnt >= objectPool.poolSize)
+        {
+            objectPool.ReturnObjectbyIndex(standingCnt);
+            //objectPool.ReturnAllObject();
+        }
+        //Debug.Log("Pop Standing");
+        standingImg = objectPool.GetObject();
+        Image image = standingImg.GetComponent<Image>();
+        image.sprite = sprite;
+        image.preserveAspect = true;
+        standingCnt++;
+    }
 
     public void ClearDialogue(StringBuilder _sbTitle, StringBuilder _sbBody)
     {
