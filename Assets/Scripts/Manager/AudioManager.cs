@@ -122,15 +122,5 @@ public class AudioManager : SingletonManager<AudioManager>
             }
         }
     }
-    public enum SoundEffect
-    {
-       Quest,
-       EnterES,
-       Dial,
-       duck,
-       Wokeup,
-       DialClick,
-       systemMsg
-
-    }
+    
 }
