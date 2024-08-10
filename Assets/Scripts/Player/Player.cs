@@ -121,8 +121,8 @@ public class Player : MonoBehaviour, INoise
         //Debug.Log("Player - PlayerControllOnOff 호출됨");
         IsPlayerControll = !IsPlayerControll;
 
-        if (IsPlayerControll) offSight.enabled = false;
-        else offSight.enabled = true;
+        //if (IsPlayerControll) offSight.enabled = false;
+        //else offSight.enabled = true;
     }
 
     public void PlayerControllOff()
