@@ -54,13 +54,13 @@ public class NPC : InteractableObject
         switch (emotion)
         {
             case Emotion.Default:
-                return npcSO.illusts[0];
+                return npcSO.standings[0];
             case Emotion.Embarrassed:
-                return npcSO.illusts[1];
+                return npcSO.standings[1];
             case Emotion.Rage:
-                return npcSO.illusts[2];
+                return npcSO.standings[2];
             default:
-                return npcSO.illusts[0];
+                return npcSO.standings[0];
         }
     }
 

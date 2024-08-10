@@ -15,7 +15,16 @@ public class ObjectPool : MonoBehaviour
 
         for (int i = 0; i < poolSize; i++)
         {
-            GameObject obj = Instantiate(prefab, parrent);
+            GameObject obj;
+            if(parrent == null)
+            {
+                obj = Instantiate(prefab);
+
+            }
+            else
+            {
+                obj = Instantiate(prefab, parrent);
+            }
             obj.SetActive(false);
             pool.Add(obj);
         }
@@ -41,5 +50,14 @@ public class ObjectPool : MonoBehaviour
     public void ReturnObject(GameObject obj)
     {
         obj.SetActive(false);
+    }
+
+    public void ReturnAllObject()
+    {
+        for (int i = 0; i < poolSize; i++)
+        {
+            pool[i].SetActive(false);
+        }
+        Debug.Log("풀 초기화 완료");
     }
 }

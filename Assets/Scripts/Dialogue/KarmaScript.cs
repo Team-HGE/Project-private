@@ -31,7 +31,7 @@ public class KarmaScript : DialogueSetting, IScript
         {
             int j = RandomKarmaIndex();
             UtilSB.SetText(ui.titleText, sbTitle, scriptSO.speakers[j]);
-            ui.SetImage(ui.portrait, scriptSO.images[j]);
+            ui.SetPortrait(ui.portrait, scriptSO.portraits[j]);
             ui.CheckNullTitle(scriptSO.speakers[j]);
 
             curPrintLine = TextEffect.Typing(ui.bodyText, sbBody, scriptSO.bodyTexts[j]);
