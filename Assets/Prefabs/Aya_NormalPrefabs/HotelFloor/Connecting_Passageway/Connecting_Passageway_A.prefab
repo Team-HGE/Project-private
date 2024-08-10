@@ -790,7 +790,7 @@ MeshRenderer:
   - {fileID: 2100000, guid: b28319a3a6b184549b9fef2bffd7b27c, type: 2}
   - {fileID: 2100000, guid: 11351e671ef3bab4c8896a6179de62c3, type: 2}
   - {fileID: 2100000, guid: 75490cce12f834244b19e1e5abed5100, type: 2}
-  - {fileID: 2100000, guid: 8169385d5cb644d488369b15fd983561, type: 2}
+  - {fileID: 2100000, guid: 6dde41b816186ac489fd2c4af81f62e0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6070,6 +6070,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8162670206747255273}
     m_Modifications:
+    - target: {fileID: 3553254289513304557, guid: a2d5b20728f374f4995ace7fb7a6d889,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3553254289513304557, guid: a2d5b20728f374f4995ace7fb7a6d889,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3786310827184708060, guid: a2d5b20728f374f4995ace7fb7a6d889,
         type: 3}
       propertyPath: m_Name
@@ -6079,6 +6089,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4380553612287555520, guid: a2d5b20728f374f4995ace7fb7a6d889,
+        type: 3}
+      propertyPath: duration
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 4380553612287555520, guid: a2d5b20728f374f4995ace7fb7a6d889,
         type: 3}
@@ -6119,6 +6134,11 @@ PrefabInstance:
         type: 3}
       propertyPath: onComplete.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5604510701598524578, guid: a2d5b20728f374f4995ace7fb7a6d889,
+        type: 3}
+      propertyPath: duration
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 5604510701598524578, guid: a2d5b20728f374f4995ace7fb7a6d889,
         type: 3}
@@ -6968,6 +6988,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8162670206747255273}
     m_Modifications:
+    - target: {fileID: 828781992435945668, guid: 693c43ccb07c35a47a55f07e74b2a586,
+        type: 3}
+      propertyPath: loops
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 1343581469453794056, guid: 693c43ccb07c35a47a55f07e74b2a586,
         type: 3}
       propertyPath: m_Name
@@ -9475,6 +9500,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Barrier_Left
+      objectReference: {fileID: 0}
+    - target: {fileID: 3752786805815640570, guid: 91c9767773543d74dbd41de744fb411c,
+        type: 3}
+      propertyPath: duration
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 3879376223497026461, guid: 91c9767773543d74dbd41de744fb411c,
+        type: 3}
+      propertyPath: duration
+      value: 60
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

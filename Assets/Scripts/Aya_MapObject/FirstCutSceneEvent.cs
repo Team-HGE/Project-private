@@ -6,10 +6,11 @@ using UnityEngine;
 public class FirstCutSceneEvent : MonoBehaviour
 {
     [SerializeField] Light[] offLights;
+    WaitForSeconds waitTime1 = new WaitForSeconds(0.3f);
+    WaitForSeconds waitTime2 = new WaitForSeconds(2f);
+    WaitForSeconds waitTime3 = new WaitForSeconds(5f);
 
-    public WaitForSeconds waitTime2 = new WaitForSeconds(2f);
-    public WaitForSeconds waitTime1 = new WaitForSeconds(0.3f);
-
+    public Laver floorB_Laver;
     void LightOff()
     {
         foreach (Light light in offLights)
@@ -25,7 +26,7 @@ public class FirstCutSceneEvent : MonoBehaviour
         }
     }
 
-    public void SystemOn()
+    public void EventOn()
     {
         StartCoroutine(LightSystem());
     }
@@ -41,6 +42,13 @@ public class FirstCutSceneEvent : MonoBehaviour
         LightOn();
         yield return waitTime2;
         LightOff();
-        yield return null;
+        yield return waitTime2;
+        floorB_Laver.OffNowFloorAllLight();
+        foreach(var obj in HotelFloorScene_DataManager.Instance.controller.barrierObjects)
+        {
+            obj.CloseAni();
+            obj.isInteractable = true;
+        }
+        Destroy(gameObject);
     }
 }

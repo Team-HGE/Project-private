@@ -201,10 +201,10 @@ public class LightManager : MonoBehaviour
                 OffListLight(lobbyLights);
                 OffChangeMaterial(lobbyObjectRenderer);
                 
-                foreach (var obj in HotelFloorScene_DataManager.Instance.controller.barrierObjects)
-                {
-                    obj.CloseAni();
-                }
+               // foreach (var obj in HotelFloorScene_DataManager.Instance.controller.barrierObjects)
+                //{
+                 //   obj.CloseAni();
+                //}
             }
         }
     }

@@ -13,6 +13,7 @@ public class FirstCutScene : MonoBehaviour
     public bool onTrigger;
 
     private FirstTLTrigger trigger;
+    private FirstCutSceneEvent sceneEvent;
     private Item item;
 
     private void Start()
@@ -22,6 +23,8 @@ public class FirstCutScene : MonoBehaviour
         
         item = eventObject.GetComponent<Item>();
         item.OnGetItem += HandleGetItem;
+
+        sceneEvent ??= GetComponent<FirstCutSceneEvent>();
     }
 
     private void HandleGetItem()
@@ -31,7 +34,10 @@ public class FirstCutScene : MonoBehaviour
 
     private void HandleEnd()
     {
-        if (trigger.IsEnd) Destroy(gameObject);
+        if (trigger.IsEnd)
+        {
+            sceneEvent.EventOn();
+        }
     }
 
     private void OnDestroy()
