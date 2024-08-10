@@ -15,8 +15,7 @@ public class SystemMsg : MonoBehaviour
     private TextMeshProUGUI msgText;
     public AudioManager audioManager;
     public int NowSystemMsgNumber;
-
-
+    public int NowTipMsgNumber;
     private bool isUpdating = false;
 
     public void Init()
@@ -24,6 +23,7 @@ public class SystemMsg : MonoBehaviour
         objectPool = GetComponent<ObjectPool>();
         audioManager = GetComponent<AudioManager>();
         NowSystemMsgNumber = 0;
+        NowTipMsgNumber = 0;
     }
 
     public void UpdateMessage(int SystemMsgNumber)
@@ -32,6 +32,14 @@ public class SystemMsg : MonoBehaviour
         isUpdating = true;
         NowSystemMsgNumber = SystemMsgNumber;
         StartCoroutine(PopMessage());
+    }
+
+    public void UpdateTipMessage(int TipMsgNumber)
+    {
+        if (isUpdating) return;
+        isUpdating = true;
+        NowTipMsgNumber = TipMsgNumber;
+        StartCoroutine(PopTipMessage());
     }
 
     public IEnumerator PopMessage()
@@ -95,4 +103,25 @@ public class SystemMsg : MonoBehaviour
         yield return null;
     }
 
+    public IEnumerator PopTipMessage()
+    {
+        yield return new WaitForSeconds(1f);
+
+        AudioManager.Instance.PlaySoundEffect(SoundEffect.systemMsg);
+        msgPrefab = objectPool.GetObject();
+        msgText = msgPrefab.GetComponent<TextMeshProUGUI>();
+        sb.Append(systemMsgSO.tips[NowTipMsgNumber]);
+        TextEffect.Highlight(msgText, Color.white);
+        msgText.text = sb.ToString();
+
+        StartCoroutine(TextEffect.FadeOut(msgText));
+        sb.Clear();
+
+        //Debug.Log(msgPrefab);
+
+        yield return new WaitForSeconds(1f);
+
+        isUpdating = false;
+        yield return null;
+    }
 }
