@@ -80,7 +80,7 @@ public class UIDialogue : MonoBehaviour
         if (standingCnt >= objectPool.poolSize)
         {
             objectPool.ReturnObjectbyIndex(standingCnt);
-            //objectPool.ReturnAllObject();
+            objectPool.ReturnAllObject();
         }
         //Debug.Log("Pop Standing");
         standingImg = objectPool.GetObject();

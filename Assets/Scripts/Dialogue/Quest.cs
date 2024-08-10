@@ -36,4 +36,10 @@ public class Quest : MonoBehaviour
         UpdateQuest();
         AudioManager.Instance.PlaySoundEffect(SoundEffect.Quest);
     }
+    public void TryNextQuest()
+    {
+        CurrentQuestIndex++;
+        UpdateQuest();
+        AudioManager.Instance.PlaySoundEffect(SoundEffect.Quest);
+    }
 }

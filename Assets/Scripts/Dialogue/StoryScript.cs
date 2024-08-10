@@ -8,9 +8,13 @@ public class StoryScript: DialogueSetting, IScript
     public ScriptSO scriptSO; // 추후 private로 수정예정
     public AudioManager audioManager; // 권용 수정 오디오 매니저 참고
     public GameObject waitIcon; // 기다리는 아이콘 참조
-
+    public Quest quest;
+    public SystemMsg systemMsg;
     public void Init(ScriptSO _script)
     {
+        audioManager = GetComponent<AudioManager>();
+        quest = GetComponent<Quest>();
+        systemMsg = GetComponent<SystemMsg>();
         //sbTitle = new StringBuilder();
         //sbBody = new StringBuilder();
         scriptSO = null;
@@ -38,89 +42,160 @@ public class StoryScript: DialogueSetting, IScript
 
     private IEnumerator PrintScript()
     {
-        //if (!isTalking) { Debug.Log("실행중인 코루틴을 종료합니다."); StopAllCoroutines(); InitDialogueSetting(); }
+        if (!isTalking)
+        {
+            Debug.Log("실행중인 코루틴을 종료합니다.");
+            InitDialogueSetting();
+            yield break;
+        }
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         ui.ClearDialogue(sbTitle, sbBody);
 
-        if (scriptSO == null) { Debug.Log("scriptSO null"); StopAllCoroutines(); InitDialogueSetting(); yield break; };
+        if (scriptSO == null)
+        {
+            Debug.Log("scriptSO가 음슴");
+            InitDialogueSetting();
+            yield break;
+        }
 
         for (int i = 0; i < scriptSO.bodyTexts.Length; i++)
         {
-            if (!isTalking) { Debug.Log("실행중인 코루틴을 종료합니다."); StopAllCoroutines(); InitDialogueSetting(); break; }
-
-            UtilSB.SetText(ui.titleText, sbTitle, scriptSO.speakers[i]);
-
-            ui.SetPortrait(ui.portrait, scriptSO.portraits[i]);
-            ui.PopStanding(scriptSO.portraits[i]);
-            ui.CheckNullTitle(scriptSO.speakers[i]);
-
-            if (scriptSO.audioClips != null)
+            if (!isTalking)
             {
-                //AudioManager.Instance.PlayDialSE(scriptSO.audioClips[i]); // 권용 오디오 클립 재생
+                Debug.Log("실행중인 코루틴을 종료합니다.");
+                InitDialogueSetting();
+                yield break;
             }
 
+            UpdateUI(scriptSO.speakers[i], scriptSO.portraits[i]);
 
-            if (scriptSO.bodyTexts[i] == "PickAnswer")
+            if (scriptSO.audioClips != null && scriptSO.audioClips[i] != null)
             {
-                //Debug.Log("잠깐 정지하고 선택지 출력합니다.");
-
-                UtilSB.AppendText(ui.bodyText, sbBody, scriptSO.bodyTexts[i - 1]);
-
-                DialogueManager.Instance.answer.Print();
-                yield return new WaitUntil(() => DialogueManager.Instance.answer.answerSO.nowAnswer != 0);
-
-                DialogueManager.Instance.answer.answerSO.nowAnswer = 0;
-                continue;
-            }
-            else if (scriptSO.bodyTexts[i] == "CheckQuest") // scriptSO 출력 중 CheckQuest 문구가 나올 때
-            {
-                Debug.Log("잠깐 스토리 진행을 멈추고 퀘스트가 완료될 때까지 기다립니다.");
-
-                UtilSB.AppendText(ui.bodyText, sbBody, scriptSO.bodyTexts[i - 1]); // 이전 스크립트를 띄워둡니다.
-
-                Debug.Log("퀘스트 완료 대기 중입니다.");
-                // yield return new WaitUntil(() => 퀘스트가 완료됐을 때의 조건식을 넣어주세요;
-
-                //여기서 퀘스트를 갱신하세요
-
-                Debug.Log("퀘스트 완료. 다시 스토리를 진행합니다.");
-                continue;
-            }
-            else if(scriptSO.bodyTexts[i] == "PlayerControl")  // 다이얼로그 진입 시 플레이어 이동 기본 상태: OFF
-            {
-                ui.darkScreen.SetActive(false);
-                Debug.Log("플레이어 이동 OnOff");
-                GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
+                AudioManager.Instance.PlayDialSE(scriptSO.audioClips[i]); // 권용 오디오 클립 재생 버그해결완
             }
 
-            curPrintLine = TextEffect.Typing(ui.bodyText, sbBody, scriptSO.bodyTexts[i]);
-            
+            // 기능 분기
+            switch (scriptSO.bodyTexts[i])
+            {
+                case "PickAnswer":
+                    yield return HandlePickAnswer(i);
+                    continue;
+
+                case "TryQuest":
+                    yield return HandleTryQuest(i);
+                    continue;
+
+                case var text when text.StartsWith("NewQuest"):
+                    yield return HandleNewQuest(text);
+                    continue;
+
+
+                case "PlayerControl":
+                    HandlePlayerControl();
+                    continue;
+
+                case var text when text.StartsWith("NewTip"):
+                    yield return Tips(text);
+                    continue;
+
+                default:
+                    curPrintLine = TextEffect.Typing(ui.bodyText, sbBody, scriptSO.bodyTexts[i]);
+                    break;
+            }
+
             yield return StartCoroutine(curPrintLine);
-
-            //waitIcon.SetActive(true); //권용 추가 기다리는 아이콘 등장
-
-            //Debug.Log("좌클릭으로 진행하세요");
-            yield return waitLeftClick;
-
-            //AudioManager.Instance.PlaySoundEffect(SoundEffect.DialClick); // 권용 수정 사운드 재생
-            //AudioManager.Instance.StopDialSE(scriptSO.audioClips[i]); //권용 수정 사운드 재생 다이얼SE 멈춤
-            //Debug.Log("좌클릭으로 진행하세요1");
-
-            yield return waitTime;
-
-            //waitIcon.SetActive(false); // 권용 추가 기다리는 아이콘 사라짐
-          
-            //Debug.Log("좌클릭으로 진행하세요2");
+            yield return HandleWaitAndSound(i);
 
             ui.ClearDialogue(sbTitle, sbBody);
         }
 
-        
+        EndDialogue();
+        yield return null;
+    }
+
+    private void UpdateUI(string speaker, Sprite portrait)
+    {
+        UtilSB.SetText(ui.titleText, sbTitle, speaker);
+        ui.SetPortrait(ui.portrait, portrait);
+        //ui.PopStanding(portrait);
+        ui.CheckNullTitle(speaker);
+    }
+
+    private IEnumerator HandlePickAnswer(int index)
+    {
+        UtilSB.AppendText(ui.bodyText, sbBody, scriptSO.bodyTexts[index - 1]);
+        DialogueManager.Instance.answer.Print();
+        yield return new WaitUntil(() => DialogueManager.Instance.answer.answerSO.nowAnswer != 0);
+        DialogueManager.Instance.answer.answerSO.nowAnswer = 0;
+    }
+
+    private IEnumerator HandleTryQuest(int index)
+    {
+        Debug.Log("잠깐 스토리 진행을 멈추고 퀘스트가 완료될 때까지 기다립니다.");
+        UtilSB.AppendText(ui.bodyText, sbBody, scriptSO.bodyTexts[index - 1]);
+        quest.TryNextQuest();
+
+        Debug.Log("퀘스트 완료 대기 중입니다.");
+        // yield return new WaitUntil(() => 퀘스트가 완료됐을 때의 조건식을 넣어주세요;
+
+        Debug.Log("퀘스트 완료. 다시 스토리를 진행합니다.");
+        yield break;
+    }
+
+    private IEnumerator HandleNewQuest(string questText)
+    {
+        Debug.Log("다음 스토리를 갱신합니다.");
+        if (questText.StartsWith("NewQuest"))
+        {
+            string questString = questText.Substring(8); 
+            if (int.TryParse(questString, out int questNumber))
+            {
+                quest.NextQuest(questNumber);
+            }
+
+            yield break;
+        }
+    }
+
+    private void HandlePlayerControl()
+    {
+        ui.darkScreen.SetActive(false);
+        Debug.Log("플레이어 이동 OnOff");
+        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
+    }
+
+    private IEnumerator Tips(string TipText)
+    {
+        Debug.Log("선택한 팁 메세지를 호출합니다.");
+        if (TipText.StartsWith("NewTip"))
+        {
+            string TipString = TipText.Substring(6);
+            if (int.TryParse(TipString, out int TipsNumber))
+            {
+                systemMsg.UpdateTipMessage(TipsNumber);
+            }
+        }
+            
+       
+        yield break;
+    }
+
+    private IEnumerator HandleWaitAndSound(int index)
+    {
+        waitIcon.SetActive(true);
+        yield return waitLeftClick;
+        AudioManager.Instance.PlaySoundEffect(SoundEffect.DialClick);
+        AudioManager.Instance.StopDialSE(scriptSO.audioClips[index]);
+        yield return waitTime;
+        waitIcon.SetActive(false);
+    }
+
+    private void EndDialogue()
+    {
         ui.CloseDialogue();
         isTalking = false;
         GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
-        yield return null;
     }
 }
