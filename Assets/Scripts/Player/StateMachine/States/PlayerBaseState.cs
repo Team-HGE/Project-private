@@ -20,13 +20,11 @@ public class PlayerBaseState : IState
 
     public virtual void Enter()
     {
-
         AddInputActionsCallbacks();
     }
 
     public virtual void Exit()
     {
-        
         RemoveInputActionsCallbacks();
     }
 
@@ -156,10 +154,7 @@ public class PlayerBaseState : IState
         }
         else
         {
-            if (!curStepSource.gameObject.activeSelf)
-            {
-                curStepSource = null;
-            }
+            if (!curStepSource.gameObject.activeSelf) curStepSource = null;
         }
     }
 
@@ -187,10 +182,7 @@ public class PlayerBaseState : IState
             }
             else
             {
-                if (!curBreathSource.gameObject.activeSelf)
-                {
-                    curBreathSource = null;
-                }
+                if (!curBreathSource.gameObject.activeSelf) curBreathSource = null;
             }
         }
         else
@@ -213,15 +205,10 @@ public class PlayerBaseState : IState
             }
             else
             {
-                if (!curBreathSource.gameObject.activeSelf)
-                {
-                    curBreathSource = null;
-                }
+                if (!curBreathSource.gameObject.activeSelf) curBreathSource = null;
             }
         }
-
     }
-
 
 
     protected virtual void OnRunPerformed(InputAction.CallbackContext context)
@@ -236,51 +223,35 @@ public class PlayerBaseState : IState
 
     protected virtual void OnCrouchPerformed(InputAction.CallbackContext context)
     {
-        //if (!stateMachine.Player.IsPlayerControll) return;
-
         stateMachine.PressCtrl = true;
     }
 
     protected virtual void OnCrouchCanceled(InputAction.CallbackContext context)
     {
-        //if (!stateMachine.Player.IsPlayerControll) return;
-
         stateMachine.PressCtrl = false;
     }
 
     protected virtual void OnInterationStared(InputAction.CallbackContext context)
     {
-        // 플레이어 정지 - 상호작용 E키
-        //if (!stateMachine.Player.IsPlayerControll) return;
-
         stateMachine.IsInteraction = true;
     } 
 
     protected virtual void OnInterationPerformed(InputAction.CallbackContext context)
     {
-        // 플레이어 정지 - 상호작용 E키
-        //if (!stateMachine.Player.IsPlayerControll) return;
-
         stateMachine.IsInteraction = true;
     }
 
     protected virtual void OnInterationCanceled(InputAction.CallbackContext context)
     {
-        // 플레이어 정지 - 상호작용 E키
-        //if (!stateMachine.Player.IsPlayerControll) return;
-
         stateMachine.IsInteraction = false;
-
     }
 
-    // F키 상호작용 Flash***
+    // F키 상호작용 Flash
     protected virtual void OnFlashStarted(InputAction.CallbackContext context)
     {
         Debug.Log("F키 입력, 후레쉬 OnOff");
         stateMachine.Player.flashLightController.ToggleFlashLight();
     }
-
-
 
     // 자식 클래스에서 재정의 할 메서드
     public virtual void PhysicsUpdate()
@@ -290,11 +261,4 @@ public class PlayerBaseState : IState
     protected virtual void OnMovementCanceled(InputAction.CallbackContext context)
     {
     }
-
-
-
-    
-
-
-
 }

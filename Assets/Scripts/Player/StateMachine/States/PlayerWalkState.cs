@@ -4,7 +4,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerWalkState : PlayerGroundState
 {
-    //private RunEffect CurrentStamina;
 
     public PlayerWalkState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
     {
@@ -13,7 +12,6 @@ public class PlayerWalkState : PlayerGroundState
     public override void Enter()
     {
         base.Enter();
-        //CurrentStamina = stateMachine.Player.GetComponent<RunEffect>();
 
         if (stateMachine.PressShift && stateMachine.Player.CurrentStamina.CanRun && !stateMachine.Player.CurrentStamina.IsExhausted)
         {
@@ -29,26 +27,18 @@ public class PlayerWalkState : PlayerGroundState
 
         stateMachine.IsWalking = true;
         stateMachine.MovementSpeedModifier = groundData.WalkSpeedModifier;
-        //stateMachine.Player.SumNoiseAmount = 6f;
     }
 
     public override void Update()
     {
         base.Update();
         stateMachine.Player.CurrentStamina.IncreaseWalkIdle();
-
-        //if (CanRun == false && stateMachine.PressShift)
-        //{
-        //    stateMachine.MovementSpeedModifier = groundData.WalkSpeedModifier;
-        //}
-        
     }
 
     public override void Exit()
     {
         base.Exit();
         stateMachine.IsWalking = false;
-
     }
 
     protected override void OnRunPerformed(InputAction.CallbackContext context)

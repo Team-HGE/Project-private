@@ -1,13 +1,11 @@
-
+ï»¿
 using UnityEngine;
 
 public interface INoise
 { 
     public float NoiseTransitionTime { get; set; }
-    //public float NoiseMin { get; set;}
-    //public float NoiseMax { get; set; }
 
-    // ¹ß»ıÁßÀÎ ¼ÒÀ½
+    // ë°œìƒì¤‘ì¸ ì†ŒìŒ
     public float CurNoiseAmount { get; set; }
 
     public float SumNoiseAmount { get; set; }
@@ -15,8 +13,4 @@ public interface INoise
 
     public SoundSource PlayNoise(AudioClip[] audioClips, string tag, float amount, float addVolume, float transitionTime, float pitch);
 
-
-    //public void MakeNoise(float transitionTime, float min, float max, float speed);
-
-    //public void PlayNoise();
 }

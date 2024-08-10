@@ -13,6 +13,21 @@ public class Monster : MonoBehaviour
     [field: Header("Animations")]
     [field: SerializeField] public MonsterAnimationData AnimationData { get; private set; }
 
+    [field: Header("Behavior")]
+    [field: SerializeField] public bool CanPatrol { get; set; } = true;
+    
+    [field: Header("MonsterTransform")]
+    public Transform monsterTransform;
+    public Transform monsterEyeTransform;
+
+    [field: Header("Find")]
+    public LayerMask playerMask;
+    public LayerMask obstructionMask;
+    public bool canSeePlayer;
+    public bool canCheck;
+    public Transform eye;
+    public Transform findTarget;
+
     public CharacterController Controller { get; private set; }
     public ForceReceiver ForceReceiver { get; private set; }
     public Animator Animator { get; private set; }
@@ -21,34 +36,9 @@ public class Monster : MonoBehaviour
 
     private MonsterStateMachine _stateMachine;
 
-    // 행동 관리
-    public bool IsBehavior {get; set;} = true;
+    public bool IsBehavior { get; set; } = true;
     private Coroutine _wait;
     private bool _isWaiting = false;
-
-
-    [field: SerializeField]
-    public bool CanPatrol { get; set; } = true;
-
-    // INoise
-    public float NoiseTransitionTime { get; set; }
-    public float NoiseMin { get; set; }
-    public float NoiseMax { get; set; }
-    public float NoiseAmount { get; set; }
-    public float DecreaseSpeed { get; set; }
-
-    [Header("MonsterTransform")]
-    public Transform monsterTransform;
-    public Transform monsterEyeTransform;
-
-    [field: Header("Find")]
-    public LayerMask playerMask;
-    public LayerMask obstructionMask;
-    public bool canSeePlayer;
-    //public Collider[] rangeChecks;
-    public bool canCheck;
-    public Transform eye;
-    public Transform findTarget;
 
 
     private void Awake()
@@ -71,9 +61,9 @@ public class Monster : MonoBehaviour
 
     private void Update()
     {
-        //_stateMachine.HandleInput();
         _stateMachine.Update();
 
+        // 범위 체크용, 나중에 주석처리 또는 지울것    
         DrawCircle(transform.position, 36, Data.GroundData.PlayerChasingRange, Color.yellow);
         DrawCircle(transform.position, 36, Data.GroundData.PlayerFindRange, Color.green);
         DrawCircle(transform.position, 36, Data.GroundData.AttackRange, Color.red);
@@ -82,6 +72,7 @@ public class Monster : MonoBehaviour
     private IEnumerator FPRoutine()
     {
         WaitForSeconds wait = new WaitForSeconds(0.2f);
+
         while (true) 
         {
             yield return wait;

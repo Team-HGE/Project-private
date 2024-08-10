@@ -19,7 +19,7 @@ public class MonsterPatrolState : MonsterGroundState
         StatrPatrol();
 
         //Debug.Log($"패트롤 시작");
-        // 애니메이션 실행 - 그라운드 파라미터 해쉬로 접근
+        // 애니메이션 실행
         StartAnimation(stateMachine.Monster.AnimationData.PatrolParameterHash);
     }
 
@@ -28,7 +28,7 @@ public class MonsterPatrolState : MonsterGroundState
         base.Exit();
         //Debug.Log($"패트롤 끝");
 
-        // 애니메이션 종료 - 그라운드 파라미터 해쉬로 접근
+        // 애니메이션 종료
         StopAnimation(stateMachine.Monster.AnimationData.PatrolParameterHash);
         stateMachine.IsPatrol = false;
     }
@@ -36,6 +36,7 @@ public class MonsterPatrolState : MonsterGroundState
     public override void Update()
     {
         base.Update();
+
         RotateToPlayer();
 
         if (stateMachine.Monster.Agent.pathPending) return;
@@ -44,11 +45,6 @@ public class MonsterPatrolState : MonsterGroundState
         {
             stateMachine.ChangeState(stateMachine.IdleState);
         }
-
-        //if (IsInFindRange() && GetIsPlayerInFieldOfView())
-        //{
-        //    stateMachine.ChangeState(stateMachine.FindState);
-        //}
     }    
 
     private Vector3 GetRandomPoint(Vector3 center, float radius)

@@ -53,16 +53,5 @@ public class MonsterLoseSightState : MonsterGroundState
             stateMachine.ChangeState(stateMachine.FindState);
             return;
         }
-
-        //if (IsInFindRange() && GetIsPlayerInFieldOfView())
-        //{
-        //    stateMachine.ChangeState(stateMachine.ChaseState);
-        //    return;
-        //}
-        //else 
-        //{
-        //    stateMachine.ChangeState(stateMachine.ComBackState);
-        //    return;
-        //}
     }
 }

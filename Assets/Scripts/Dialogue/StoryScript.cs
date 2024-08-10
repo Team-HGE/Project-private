@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Text;
 using UnityEngine;
 using static AudioManager;
 
@@ -18,6 +17,7 @@ public class StoryScript: DialogueSetting, IScript
         scriptSO = _script;
         InitUI();
         ui.CloseDialogue();
+        ui.ObjectPoolInit();
     }
 
     public void Print()
@@ -29,7 +29,7 @@ public class StoryScript: DialogueSetting, IScript
         //Init(scriptSO);
         if (scriptSO == null) { Debug.Log("지금은 내보낼 스크립트가 없습니다. scriptSO null"); return; };
 
-        
+        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
         StopAllCoroutines();
         ui.OpenBG();
         ui.OpenDialogue();
@@ -44,19 +44,23 @@ public class StoryScript: DialogueSetting, IScript
         Cursor.visible = true;
         ui.ClearDialogue(sbTitle, sbBody);
 
+        if (scriptSO == null) { Debug.Log("scriptSO null"); StopAllCoroutines(); InitDialogueSetting(); yield break; };
+
         for (int i = 0; i < scriptSO.bodyTexts.Length; i++)
         {
             if (!isTalking) { Debug.Log("실행중인 코루틴을 종료합니다."); StopAllCoroutines(); InitDialogueSetting(); break; }
 
             UtilSB.SetText(ui.titleText, sbTitle, scriptSO.speakers[i]);
 
-            ui.SetImage(ui.portrait, scriptSO.images[i]);
+            ui.SetPortrait(ui.portrait, scriptSO.portraits[i]);
+            ui.PopStanding(scriptSO.portraits[i]);
             ui.CheckNullTitle(scriptSO.speakers[i]);
 
             if (scriptSO.audioClips != null)
             {
-                AudioManager.Instance.PlayDialSE(scriptSO.audioClips[i]); // 권용 오디오 클립 재생
+                //AudioManager.Instance.PlayDialSE(scriptSO.audioClips[i]); // 권용 오디오 클립 재생
             }
+
 
             if (scriptSO.bodyTexts[i] == "PickAnswer")
             {
@@ -70,8 +74,7 @@ public class StoryScript: DialogueSetting, IScript
                 DialogueManager.Instance.answer.answerSO.nowAnswer = 0;
                 continue;
             }
-
-            if (scriptSO.bodyTexts[i] == "CheckQuest") // scriptSO 출력 중 CheckQuest 문구가 나올 때
+            else if (scriptSO.bodyTexts[i] == "CheckQuest") // scriptSO 출력 중 CheckQuest 문구가 나올 때
             {
                 Debug.Log("잠깐 스토리 진행을 멈추고 퀘스트가 완료될 때까지 기다립니다.");
 
@@ -80,27 +83,35 @@ public class StoryScript: DialogueSetting, IScript
                 Debug.Log("퀘스트 완료 대기 중입니다.");
                 // yield return new WaitUntil(() => 퀘스트가 완료됐을 때의 조건식을 넣어주세요;
 
+                //여기서 퀘스트를 갱신하세요
+
                 Debug.Log("퀘스트 완료. 다시 스토리를 진행합니다.");
                 continue;
+            }
+            else if(scriptSO.bodyTexts[i] == "PlayerControl")  // 다이얼로그 진입 시 플레이어 이동 기본 상태: OFF
+            {
+                ui.darkScreen.SetActive(false);
+                Debug.Log("플레이어 이동 OnOff");
+                GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
             }
 
             curPrintLine = TextEffect.Typing(ui.bodyText, sbBody, scriptSO.bodyTexts[i]);
             
             yield return StartCoroutine(curPrintLine);
 
-            waitIcon.SetActive(true); //권용 추가 기다리는 아이콘 등장
+            //waitIcon.SetActive(true); //권용 추가 기다리는 아이콘 등장
 
             //Debug.Log("좌클릭으로 진행하세요");
             yield return waitLeftClick;
 
-            AudioManager.Instance.PlaySoundEffect(SoundEffect.DialClick); // 권용 수정 사운드 재생
-            AudioManager.Instance.StopDialSE(scriptSO.audioClips[i]); //권용 수정 사운드 재생 다이얼SE 멈춤
+            //AudioManager.Instance.PlaySoundEffect(SoundEffect.DialClick); // 권용 수정 사운드 재생
+            //AudioManager.Instance.StopDialSE(scriptSO.audioClips[i]); //권용 수정 사운드 재생 다이얼SE 멈춤
             //Debug.Log("좌클릭으로 진행하세요1");
 
             yield return waitTime;
 
-            waitIcon.SetActive(false); // 권용 추가 기다리는 아이콘 사라짐
-
+            //waitIcon.SetActive(false); // 권용 추가 기다리는 아이콘 사라짐
+          
             //Debug.Log("좌클릭으로 진행하세요2");
 
             ui.ClearDialogue(sbTitle, sbBody);
@@ -109,7 +120,7 @@ public class StoryScript: DialogueSetting, IScript
         
         ui.CloseDialogue();
         isTalking = false;
-
+        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
         yield return null;
     }
 }

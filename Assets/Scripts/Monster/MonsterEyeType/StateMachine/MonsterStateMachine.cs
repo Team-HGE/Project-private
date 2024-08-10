@@ -28,14 +28,12 @@ public class MonsterStateMachine : StateMachine
     public bool IsComeBack { get; set; }
 
 
-
-
     public float MovementSpeed { get; private set; }
     public float RotationDamping { get; private set; }
     
-    public float MovementSpeedModifier { get; set; } = 1f;
+    //public float MovementSpeedModifier { get; set; } = 1f;
 
-    public bool IsPlayerInFieldOfView { get; set; }
+    //public bool IsPlayerInFieldOfView { get; set; }
 
     public MonsterStateMachine(Monster monster)
     {

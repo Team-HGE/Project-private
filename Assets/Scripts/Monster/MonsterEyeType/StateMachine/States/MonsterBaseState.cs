@@ -55,7 +55,6 @@ public class MonsterBaseState : IState
     //}
 
 
-    // 모든 상태에 필요한 애니메이션 전환 기능
     // 애니메이션 재생
     protected void StartAnimation(int animationHash)
     {
@@ -67,28 +66,6 @@ public class MonsterBaseState : IState
     {
         stateMachine.Monster.Animator.SetBool(animationHash, false);
     }
-
-    //// 애니메이션 진행도 체크
-    //protected float GetNormalizedTime(Animator animator, string tag)
-    //{
-    //    AnimatorStateInfo currentInfo = animator.GetCurrentAnimatorStateInfo(0);
-    //    AnimatorStateInfo nextInfo = animator.GetNextAnimatorStateInfo(0);
-
-    //    // 전환되고 있을때 && 다음 애니메이션 tag
-    //    if (animator.IsInTransition(0) && nextInfo.IsTag(tag))
-    //    {
-    //        return nextInfo.normalizedTime;
-    //    }
-    //    // 전환되고 있지 않을때 && 현재 애니메이션 tag        
-    //    else if (!animator.IsInTransition(0) && currentInfo.IsTag(tag))
-    //    {
-    //        return currentInfo.normalizedTime;
-    //    }
-    //    else
-    //    {
-    //        return 0f;
-    //    }
-    //}
 
     protected void RotateToPlayer()
     {
