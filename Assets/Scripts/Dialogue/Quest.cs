@@ -13,6 +13,7 @@ public class Quest : MonoBehaviour
 
     private void Start() 
     {
+        audioManager = GetComponent<AudioManager>();
         Init();
     }
 
