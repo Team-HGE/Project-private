@@ -125,6 +125,16 @@ public class Player : MonoBehaviour, INoise
         else offSight.enabled = true;
     }
 
+    public void PlayerControllOff()
+    {
+        IsPlayerControll = false;
+    }
+
+    public void PlayerControllOn()
+    {
+        IsPlayerControll = true;
+    }
+
     public Player GetPlayerReturn()
     {
         return this;
