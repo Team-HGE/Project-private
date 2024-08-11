@@ -5,16 +5,23 @@ using UnityEngine;
 
 public class BarrierObject : InteractableObject
 {
+    [Header("Ani")]
     [SerializeField] DOTweenAnimation[] openAni;
     [SerializeField] DOTweenAnimation[] closeAni;
-    [SerializeField] Light alarmLight;
     [SerializeField] DOTweenAnimation alarmAni;
+
+    [Header("Alarm")]
+    [SerializeField] GameObject alram;
+    [SerializeField] AudioSource alarmSound;
+
+    [SerializeField] Light alarmLight;
     [SerializeField] bool isOpen { get; set; }
     float time;
     private void Start()
     {
         isOpen = true;
         HotelFloorScene_DataManager.Instance.controller.barrierObjects.Add(this);
+        alarmSound = alram.GetComponent<AudioSource>();
     }
     public override void ActivateInteraction()
     {
@@ -53,6 +60,7 @@ public class BarrierObject : InteractableObject
             alarmLight.enabled = true;
             isOpen = true;
         }
+        alarmSound.Play();
     }
     public void CloseAni()
     {
@@ -67,9 +75,11 @@ public class BarrierObject : InteractableObject
             alarmLight.enabled = true;
             isOpen = false;
         }
+        alarmSound.Play();
     }
     public void alaramLightOff()
     {
+        alarmSound.Stop();
         alarmLight.enabled = false;
     }
 }

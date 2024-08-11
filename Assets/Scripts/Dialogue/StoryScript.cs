@@ -187,7 +187,7 @@ public class StoryScript: DialogueSetting, IScript
         waitIcon.SetActive(true);
         yield return waitLeftClick;
         AudioManager.Instance.PlaySoundEffect(SoundEffect.DialClick);
-        AudioManager.Instance.StopDialSE(scriptSO.audioClips[index]);
+        //AudioManager.Instance.StopDialSE(scriptSO.audioClips[index]);
         yield return waitTime;
         waitIcon.SetActive(false);
     }

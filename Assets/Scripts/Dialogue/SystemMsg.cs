@@ -2,7 +2,6 @@ using System.Collections;
 using System.Text;
 using TMPro;
 using UnityEngine;
-using static AudioManager;
 
 public class SystemMsg : MonoBehaviour
 {
@@ -13,7 +12,6 @@ public class SystemMsg : MonoBehaviour
     private StringBuilder sb = new StringBuilder();
     private GameObject msgPrefab;
     private TextMeshProUGUI msgText;
-    public AudioManager audioManager;
     public int NowSystemMsgNumber;
     public int NowTipMsgNumber;
     private bool isUpdating = false;
@@ -21,7 +19,6 @@ public class SystemMsg : MonoBehaviour
     public void Init()
     {
         objectPool = GetComponent<ObjectPool>();
-        audioManager = GetComponent<AudioManager>();
         NowSystemMsgNumber = 0;
         NowTipMsgNumber = 0;
     }

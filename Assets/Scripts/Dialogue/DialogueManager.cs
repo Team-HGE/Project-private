@@ -22,7 +22,7 @@ public class DialogueManager : SingletonManager<DialogueManager>
     //private int scriptIndex;
 
     public SystemMsg systemMsg;
-    private Quest quest;
+    public Quest quest;
 
 
     protected override void Awake()

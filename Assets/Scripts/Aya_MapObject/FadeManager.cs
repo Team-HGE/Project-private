@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
@@ -12,6 +13,7 @@ public class FadeManager : MonoBehaviour
 {
     [SerializeField] FadeEffect fadeEffect;
     public GameObject[] sceneLoadings;
+    public event Action fadeComplete;
     public void FadeStart(FadeState fadeState)
     {
         StartCoroutine(Fade(fadeState));
@@ -27,7 +29,6 @@ public class FadeManager : MonoBehaviour
     }
     private IEnumerator Fade(FadeState fadeState)
     {
-        //GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
         switch (fadeState)
         {
             case FadeState.FadeOut:
@@ -45,7 +46,7 @@ public class FadeManager : MonoBehaviour
                 yield return fadeEffect.UseFadeEffect(FadeState.FadeOut);
                 break;
         }
-        //GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
+        fadeComplete?.Invoke();
         fadeEffect.OffFadeObject();
     }
     public bool loadComplete;
