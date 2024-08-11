@@ -1,18 +1,21 @@
 using System;
 using System.Collections;
-using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public enum SceneEnum
 {
-    MainMenuScene,
-    AScene,
-    BScene
+    Hotel_Day1,
+    Hotel_Day2
 }
 public class FadeManager : MonoBehaviour
 {
+    [Header("Fade")]
     [SerializeField] FadeEffect fadeEffect;
-    public GameObject[] sceneLoadings;
+
+    [Header("SceneLoading")]
+    [SerializeField] GameObject[] sceneLoadings;
+    [SerializeField] GameObject loadingBar;
+
     public event Action fadeComplete;
     public void FadeStart(FadeState fadeState)
     {
@@ -56,30 +59,38 @@ public class FadeManager : MonoBehaviour
         BackGroundSound backGroundSound = BackGroundSound.MainMenuSound;
         switch (sceneEnum)
         {
-            case SceneEnum.AScene:
-                sceneIndex = (int)SceneEnum.BScene;
+            case SceneEnum.Hotel_Day1:
+                //sceneIndex = (int)SceneEnum.BScene;
                 backGroundSound = BackGroundSound.ASceneSound;
                 break;
-            case SceneEnum.BScene:
-                sceneIndex = (int)SceneEnum.BScene;
+            case SceneEnum.Hotel_Day2:
+                //sceneIndex = (int)SceneEnum.BScene;
                 backGroundSound = BackGroundSound.BSceneSound;
                 break;
         }
         GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
         yield return fadeEffect.UseFadeEffect(FadeState.FadeOut);
-        AudioManager.Instance.StopAllClips();
+        //AudioManager.Instance.StopAllClips();
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync((int)sceneEnum);
-        sceneLoadings[sceneIndex].SetActive(true);
+
+        int rand = UnityEngine.Random.Range(0,sceneLoadings.Length);
+        sceneLoadings[rand].SetActive(true);
+        loadingBar.SetActive(true);
+
         while (!asyncOperation.isDone)
         {
             yield return null;
         }
-        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
+        Debug.Break();
+        //GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
         yield return new WaitForSeconds(3);
-        sceneLoadings[sceneIndex].SetActive(false);
+        sceneLoadings[rand].SetActive(false);
+        loadingBar.SetActive(false);
         yield return fadeEffect.UseFadeEffect(FadeState.FadeIn);
-        AudioManager.Instance.PlaySound(backGroundSound);
-        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
+        //AudioManager.Instance.PlaySound(backGroundSound);
+        //GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
+
+        fadeComplete?.Invoke();
         fadeEffect.OffFadeObject();
     }
 }

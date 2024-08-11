@@ -7,7 +7,7 @@ public class ElevatorTimeLine : MonoBehaviour
     public bool triggerOn; 
     public PlayableDirector timelineDirector;
     public GameObject timeLineObject;
-    public GameObject UI;
+    public GameObject[] UI;
     public Light playerLight;
 
     public TextMeshPro roomTxt101;
@@ -29,7 +29,10 @@ public class ElevatorTimeLine : MonoBehaviour
     {
         timeLineObject.SetActive(true);
         playerLight.enabled = false;
-        UI.SetActive(false);
+        foreach (GameObject go in UI)
+        {
+            go.SetActive(false);
+        }
         timelineDirector.Play();
     }
 
@@ -44,5 +47,14 @@ public class ElevatorTimeLine : MonoBehaviour
         roomTxt102.text = "2";
         roomTxt101_111.text = "201 - 211";
         roomTxt112_121.text = "212 - 221";
+    }
+
+    public void FadeOff()
+    {
+        GameManager.Instance.fadeManager.FadeStart(FadeState.FadeIn);
+    }
+    public void ChangeScene()
+    {
+        GameManager.Instance.fadeManager.MoveScene(SceneEnum.Hotel_Day2);
     }
 }

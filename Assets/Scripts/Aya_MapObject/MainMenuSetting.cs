@@ -12,6 +12,6 @@ public class MainMenuSetting : MonoBehaviour
     public void LoadAScene()
     {
         AudioManager.Instance.StopSound(BackGroundSound.MainMenuSound);
-        SceneManager.LoadScene((int)SceneEnum.AScene);
+        //SceneManager.LoadScene((int)SceneEnum.AScene);
     }
 }

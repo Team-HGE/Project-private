@@ -18,7 +18,7 @@ public class HotelFloorScene_DataManager : MonoBehaviour
 
         controller ??= GetComponent<HotelFloorScene_Controller>();
 
-        GameManager.Instance.lightManager.lobbyLights?.Clear(); 
+        GameManager.Instance.lightManager.lobbyLights?.Clear();
     }
     public ElevatorManager elevatorManager;
     public HotelFloorScene_Controller controller;
