@@ -53,6 +53,12 @@ public class ObjectPool : MonoBehaviour
         obj.SetActive(false);
     }
 
+    public void DestroyObject()
+    {
+        Destroy(pool[0]);
+    }
+
+    // Pop Standing illust ±¸Çö Áß
     public void ReturnObjectbyIndex(int index)
     {
         pool[0].SetActive(false);
