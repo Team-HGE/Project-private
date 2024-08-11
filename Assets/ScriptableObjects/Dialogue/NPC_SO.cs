@@ -24,6 +24,6 @@ public class NPC_SO : ScriptableObject
     public string npcName;
     public NpcState state;
     public Emotion emotion;
-    public Sprite[] illusts;
+    public Sprite[] standings;
     public bool isInteracted = false;
 }

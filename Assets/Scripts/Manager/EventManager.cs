@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,8 @@ public class EventManager : MonoBehaviour
     // 스위치 상태를 관리할 List<bool>
     public List<bool> switchStates;
     public Switch[] switches;
+
+    public event Action<GameSwitch, bool> OnSwitchChanged;
 
     public struct Switch
     {
@@ -28,6 +31,7 @@ public class EventManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        
     }
 
     private void InitializeSwitches()
@@ -47,6 +51,8 @@ public class EventManager : MonoBehaviour
         if (index >= 0 && index < switchStates.Count)
         {
             switchStates[index] = state; // 기존 스위치 상태 업데이트
+
+            OnSwitchChanged?.Invoke(switchType, state);
         }
         else
         {

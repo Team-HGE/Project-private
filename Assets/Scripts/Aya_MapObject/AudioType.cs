@@ -4,3 +4,14 @@ public enum BackGroundSound
     ASceneSound,
     BSceneSound
 }
+
+public enum SoundEffect
+{
+    Quest,
+    EnterES,
+    Dial,
+    duck,
+    Wokeup,
+    DialClick,
+    systemMsg
+}

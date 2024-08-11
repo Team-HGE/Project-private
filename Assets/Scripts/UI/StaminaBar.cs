@@ -13,6 +13,7 @@ public class StaminaBar : MonoBehaviour
 
     void Start()
     {
+        runEffect = GetComponent<RunEffect>();
         if (runEffect != null)
         {
             staminaSlider.maxValue = runEffect.MaxStamina;

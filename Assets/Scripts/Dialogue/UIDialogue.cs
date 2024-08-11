@@ -18,6 +18,11 @@ public class UIDialogue : MonoBehaviour
     public TextMeshProUGUI answerText1;
     public TextMeshProUGUI answerText2;
 
+    private ObjectPool objectPool;
+    public GameObject standingImgLayout;
+    private GameObject standingImg;
+    private int standingCnt = 0;
+
     // TODO: 캐릭터 스탠딩 이미지도 받아오기
 
     public void OpenBG()
@@ -59,9 +64,30 @@ public class UIDialogue : MonoBehaviour
         }
     }
 
-    public void SetImage(Image image, Sprite sprite)
+    public void SetPortrait(Image image, Sprite sprite)
     {
         image.sprite = sprite;
+    }
+
+    public void ObjectPoolInit()
+    {
+        objectPool = standingImgLayout.GetComponent<ObjectPool>();
+        standingCnt = 0;
+    }
+
+    public void PopStanding(Sprite sprite)
+    {
+        if (standingCnt >= objectPool.poolSize)
+        {
+            objectPool.ReturnObjectbyIndex(standingCnt);
+            //objectPool.ReturnAllObject();
+        }
+        //Debug.Log("Pop Standing");
+        standingImg = objectPool.GetObject();
+        Image image = standingImg.GetComponent<Image>();
+        image.sprite = sprite;
+        image.preserveAspect = true;
+        standingCnt++;
     }
 
     public void ClearDialogue(StringBuilder _sbTitle, StringBuilder _sbBody)

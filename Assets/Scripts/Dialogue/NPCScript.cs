@@ -49,7 +49,7 @@ public class NPCScript : DialogueSetting, IScript
             if (scriptSO.speakers[i] != "")
                 UtilSB.SetText(ui.titleText, sbTitle, scriptSO.speakers[i] + " - " + npc.ChangeNpcState(NpcState.Speaking));
 
-            ui.SetImage(ui.portrait, scriptSO.images[i]);
+            ui.SetPortrait(ui.portrait, scriptSO.portraits[i]);
             ui.CheckNullTitle(scriptSO.speakers[i]);
 
             if (scriptSO.bodyTexts[i] == "PickAnswer")

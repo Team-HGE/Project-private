@@ -13,6 +13,7 @@ public class Quest : MonoBehaviour
 
     private void Start() 
     {
+        audioManager = GetComponent<AudioManager>();
         Init();
     }
 
@@ -33,6 +34,12 @@ public class Quest : MonoBehaviour
     public void NextQuest(int newQuestIndex)
     {
         CurrentQuestIndex = newQuestIndex;
+        UpdateQuest();
+        AudioManager.Instance.PlaySoundEffect(SoundEffect.Quest);
+    }
+    public void TryNextQuest()
+    {
+        CurrentQuestIndex++;
         UpdateQuest();
         AudioManager.Instance.PlaySoundEffect(SoundEffect.Quest);
     }

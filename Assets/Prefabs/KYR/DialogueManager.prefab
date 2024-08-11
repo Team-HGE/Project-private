@@ -74,6 +74,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  systemMsg: {fileID: 1776522802564517765}
+  quest: {fileID: 0}
 --- !u!114 &1534367255949965295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,6 +98,7 @@ MonoBehaviour:
   AnswerCanvas: {fileID: 0}
   answerText1: {fileID: 0}
   answerText2: {fileID: 0}
+  standingImgLayout: {fileID: 0}
 --- !u!114 &542670094413310124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,6 +113,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ui: {fileID: 0}
   scriptSO: {fileID: 11400000, guid: bc42ac719c383754ebc27ec74388b420, type: 2}
+  audioManager: {fileID: 0}
+  waitIcon: {fileID: 0}
+  quest: {fileID: 1565557736858896460}
+  systemMsg: {fileID: 1776522802564517765}
 --- !u!114 &7273186344831853445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,6 +189,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   systemMsgSO: {fileID: 11400000, guid: 655d02bd21be268449ad7bbdc49dbc7d, type: 2}
   systemMsgCanvas: {fileID: 0}
+  NowSystemMsgNumber: 0
+  NowTipMsgNumber: 0
 --- !u!114 &2963101403854385897
 MonoBehaviour:
   m_ObjectHideFlags: 0

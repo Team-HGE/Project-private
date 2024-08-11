@@ -27,7 +27,7 @@ public class PlayerBedObject : InteractableObject
         yield return new WaitUntil(() => !DialogueSetting.isTalking);
 
         GameManager.Instance.fadeManager.FadeStart(FadeState.FadeOut);
-        GameManager.Instance.dayNightUI.TimeUpdate();
+        
 
         yield return null;
     }
