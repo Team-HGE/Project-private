@@ -33,7 +33,7 @@ public class ElevatorBtn : InteractableObject
         Material[] newMaterials = meshRenderer.materials;
         newMaterials[materialIndexChange] = changeMaterial[0];
         meshRenderer.materials = newMaterials;
-
+        elevatorObject.audioSource.PlayOneShot(elevatorObject.elevatorSounds[(int)ElevatorSoundType.BtnPressed].audioClip);
         elevatorObject.MoveFloor(myNum, true);
         elevatorObject.onInteractComplete -= ChangeMaterialAfterAction;
         elevatorObject.onInteractComplete += ChangeMaterialAfterAction;

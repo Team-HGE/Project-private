@@ -5,24 +5,26 @@ using UnityEngine;
 
 public class FirstCutSceneEvent : MonoBehaviour
 {
-    [SerializeField] Light[] offLights;
-    WaitForSeconds waitTime1 = new WaitForSeconds(0.3f);
-    WaitForSeconds waitTime2 = new WaitForSeconds(2f);
-    WaitForSeconds waitTime3 = new WaitForSeconds(5f);
+    [Header("First")]
+    [SerializeField] MeshRenderer[] firstRenderer;
+    [SerializeField] Light[] firstLight;
+
+    [Header("Second")]
+    [SerializeField] MeshRenderer[] secondRenderer;
+    [SerializeField] Light[] secondLight;
+    
+    [Header("Third")]
+    [SerializeField] MeshRenderer[] thirdRenderer;
+    [SerializeField] Light[] thirdLight;
+
+    WaitForSeconds waitTime = new WaitForSeconds(1.5f);
 
     public Laver floorB_Laver;
-    void LightOff()
+    void LightOff(Light[] offLights)
     {
         foreach (Light light in offLights)
         {
             light.enabled = false;
-        }
-    }
-    void LightOn()
-    {
-        foreach (Light light in offLights)
-        {
-            light.enabled = true;
         }
     }
 
@@ -33,16 +35,15 @@ public class FirstCutSceneEvent : MonoBehaviour
 
     IEnumerator LightSystem()
     {
-        LightOff();
-        yield return waitTime1;
-        LightOn();
-        yield return waitTime1;
-        LightOff();
-        yield return waitTime1;
-        LightOn();
-        yield return waitTime2;
-        LightOff();
-        yield return waitTime2;
+        LightOff(firstLight);
+        GameManager.Instance.lightManager.OffChangeMaterial(firstRenderer);
+        yield return waitTime;
+        LightOff(secondLight);
+        GameManager.Instance.lightManager.OffChangeMaterial(secondRenderer);
+        yield return waitTime;
+        LightOff(thirdLight);
+        GameManager.Instance.lightManager.OffChangeMaterial(thirdRenderer);
+        yield return waitTime;
         floorB_Laver.OffNowFloorAllLight();
         foreach(var obj in HotelFloorScene_DataManager.Instance.controller.barrierObjects)
         {

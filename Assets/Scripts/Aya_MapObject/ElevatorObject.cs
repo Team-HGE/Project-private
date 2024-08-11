@@ -4,6 +4,20 @@ using UnityEngine;
 using DG.Tweening;
 using System;
 
+public enum ElevatorSoundType
+{
+    OpenSound,
+    CloseSound,
+    UpDownSound,
+    BtnPressed
+}
+
+[Serializable]
+public class ElevatorSound
+{
+    public ElevatorSoundType elevatorSoundType;
+    public AudioClip audioClip;
+}
 public class ElevatorObject : MonoBehaviour
 {
     Coroutine fixPlayerYPosCor;
@@ -38,9 +52,16 @@ public class ElevatorObject : MonoBehaviour
     [SerializeField] DOTweenAnimation[] openDoor;
     [SerializeField] DOTweenAnimation[] closeDoor;
 
-    
     [SerializeField] GameObject elevatorBoxCollider;
 
+    [Header("Sound")]
+    public AudioSource audioSource;
+    public ElevatorSound[] elevatorSounds;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     public void MoveFloor(int targetFloor, bool isPlayerIn)
     {
         this.isPlayerIn = isPlayerIn;
@@ -103,13 +124,17 @@ public class ElevatorObject : MonoBehaviour
         elevatorSequence.AppendCallback(() =>
         {
             CloseDoor();
+
+            audioSource.clip = elevatorSounds[(int)ElevatorSoundType.UpDownSound].audioClip;
+            audioSource.Play();
+            audioSource.loop = true;
         });
         elevatorSequence.AppendInterval(4f);
         elevatorSequence.Append(moveUp);
         elevatorSequence.Join(transform.DOShakeRotation(allMoveTime, 1, 2).SetDelay(1));
-
         elevatorSequence.AppendCallback(() =>
         {
+            audioSource.Stop();
             if (isPlayerIn) StopCoroutine(fixPlayerYPosCor);
             HotelFloorScene_DataManager.Instance.elevatorManager.openTime = 0;
             NowFloor = targetFloor;
@@ -142,6 +167,7 @@ public class ElevatorObject : MonoBehaviour
             anim.DOKill();
             anim.CreateTween(true);
         }
+        audioSource.PlayOneShot(elevatorSounds[(int)ElevatorSoundType.OpenSound].audioClip);
         DOVirtual.DelayedCall(4f, () => onInteractComplete?.Invoke());
     }
 
@@ -160,6 +186,7 @@ public class ElevatorObject : MonoBehaviour
             anim.DOKill();
             anim.CreateTween(true);
         }
+        audioSource.PlayOneShot(elevatorSounds[(int)ElevatorSoundType.CloseSound].audioClip);
     }
 }
  
