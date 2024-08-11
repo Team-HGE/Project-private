@@ -12,7 +12,7 @@ public class UIDialogue : MonoBehaviour
     public TextMeshProUGUI titleText;
     public Image portrait;
     public GameObject darkScreen;
-    public GameObject FinishStoryBtn;
+    public GameObject finishStoryBtn;
 
     public GameObject AnswerCanvas;
     public TextMeshProUGUI answerText1;
@@ -28,7 +28,7 @@ public class UIDialogue : MonoBehaviour
     public void OpenBG()
     {
         darkScreen.SetActive(true);
-        FinishStoryBtn.SetActive(true);
+        finishStoryBtn.SetActive(true);
     }
 
     public void OpenDialogue()
@@ -42,7 +42,7 @@ public class UIDialogue : MonoBehaviour
         darkScreen.SetActive(false);
         dialogueCanvas.SetActive(false);
         AnswerCanvas.SetActive(false);
-        FinishStoryBtn.SetActive(false);
+        finishStoryBtn.SetActive(false);
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -79,7 +79,7 @@ public class UIDialogue : MonoBehaviour
     {
         if (standingCnt >= objectPool.poolSize)
         {
-            objectPool.ReturnObjectbyIndex(standingCnt);
+            //objectPool.ReturnObjectbyIndex(standingCnt);
             //objectPool.ReturnAllObject();
         }
         //Debug.Log("Pop Standing");

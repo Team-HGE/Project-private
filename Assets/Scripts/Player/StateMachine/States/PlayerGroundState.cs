@@ -26,7 +26,7 @@ public class PlayerGroundState : PlayerBaseState
         if (stateMachine.IsInteraction)
         {
             // 플레이어 정지 - 상호작용
-            if (!stateMachine.Player.IsPlayerControll) return;
+            //if (!stateMachine.Player.IsPlayerControll) return;
 
             //Debug.Log("Update - E키 누르는 중");
             GameManager.Instance.player.OnInteracted();
