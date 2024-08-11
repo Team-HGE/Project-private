@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using static AudioManager;
 
-public class StoryScript: DialogueSetting, IScript
+public class StoryScript : DialogueSetting, IScript
 {
     [HideInInspector]
     public ScriptSO scriptSO; // 추후 private로 수정예정
@@ -10,6 +10,7 @@ public class StoryScript: DialogueSetting, IScript
     public GameObject waitIcon; // 기다리는 아이콘 참조
     public Quest quest;
     public SystemMsg systemMsg;
+    private bool skipenable;
     public void Init(ScriptSO _script)
     {
         audioManager = GetComponent<AudioManager>();
@@ -33,13 +34,17 @@ public class StoryScript: DialogueSetting, IScript
         //Init(scriptSO);
         if (scriptSO == null) { Debug.Log("지금은 내보낼 스크립트가 없습니다. scriptSO null"); return; };
 
-        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOff();
+        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
         StopAllCoroutines();
         ui.OpenBG();
         ui.OpenDialogue();
         StartCoroutine(PrintScript());
     }
 
+    public void SkipEnable()
+    {
+        skipenable = true;
+    }
     private IEnumerator PrintScript()
     {
         if (!isTalking)
@@ -71,48 +76,57 @@ public class StoryScript: DialogueSetting, IScript
 
             UpdateUI(scriptSO.speakers[i], scriptSO.portraits[i]);
 
-            //if (scriptSO.audioClips != null && scriptSO.audioClips[i] != null)
-            //{
-            //    AudioManager.Instance.PlayDialSE(scriptSO.audioClips[i]); // 권용 오디오 클립 재생 버그해결완
-            //}
+            if (scriptSO.audioClips != null && scriptSO.audioClips[i] != null && !skipenable)
+            {
+                AudioManager.Instance.PlayDialSE(scriptSO.audioClips[i]); // 권용 오디오 클립 재생 버그해결완
+            }
 
             // 기능 분기
             switch (scriptSO.bodyTexts[i])
             {
                 case "PickAnswer":
                     yield return HandlePickAnswer(i);
+                    skipenable = false;
                     continue;
 
                 case "TryQuest":
                     yield return HandleTryQuest(i);
+                    skipenable = false;
                     continue;
 
                 case var text when text.StartsWith("NewQuest"):
                     yield return HandleNewQuest(text);
+                    skipenable = false;
                     continue;
 
 
                 case "PlayerControl":
                     HandlePlayerControl();
+                    skipenable = false;
                     continue;
 
                 case var text when text.StartsWith("NewTip"):
                     yield return Tips(text);
+                    skipenable = false;
                     continue;
 
                 default:
                     curPrintLine = TextEffect.Typing(ui.bodyText, sbBody, scriptSO.bodyTexts[i]);
                     break;
             }
-
-            yield return StartCoroutine(curPrintLine);
-            yield return HandleWaitAndSound(i);
+            if (!skipenable)
+            {
+                yield return StartCoroutine(curPrintLine);
+                yield return HandleWaitAndSound(i);
+            }
+            
 
             ui.ClearDialogue(sbTitle, sbBody);
         }
 
         EndDialogue();
         yield return null;
+        skipenable = false;
     }
 
     private void UpdateUI(string speaker, Sprite portrait)
@@ -149,7 +163,7 @@ public class StoryScript: DialogueSetting, IScript
         Debug.Log("다음 스토리를 갱신합니다.");
         if (questText.StartsWith("NewQuest"))
         {
-            string questString = questText.Substring(8); 
+            string questString = questText.Substring(8);
             if (int.TryParse(questString, out int questNumber))
             {
                 quest.NextQuest(questNumber);
@@ -161,17 +175,7 @@ public class StoryScript: DialogueSetting, IScript
 
     private void HandlePlayerControl()
     {
-        if(ui.darkScreen.activeSelf)
-        {
-            ui.darkScreen.SetActive(false);
-            ui.finishStoryBtn.SetActive(false);
-        }
-        else
-        {
-            ui.darkScreen.SetActive(true);
-            ui.finishStoryBtn.SetActive(true);
-        }
-
+        ui.darkScreen.SetActive(false);
         Debug.Log("플레이어 이동 OnOff");
         GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
     }
@@ -187,27 +191,25 @@ public class StoryScript: DialogueSetting, IScript
                 systemMsg.UpdateTipMessage(TipsNumber);
             }
         }
-            
-       
+
+
         yield break;
     }
 
     private IEnumerator HandleWaitAndSound(int index)
     {
-        if(waitIcon != null)
-            waitIcon.SetActive(true);
+        waitIcon.SetActive(true);
         yield return waitLeftClick;
         AudioManager.Instance.PlaySoundEffect(SoundEffect.DialClick);
         //AudioManager.Instance.StopDialSE(scriptSO.audioClips[index]);
         yield return waitTime;
-        if (waitIcon != null)
-            waitIcon.SetActive(false);
+        waitIcon.SetActive(false);
     }
 
     private void EndDialogue()
     {
         ui.CloseDialogue();
         isTalking = false;
-        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOn();
+        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
     }
 }
