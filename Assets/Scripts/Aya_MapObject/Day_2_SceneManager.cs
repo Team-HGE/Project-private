@@ -19,22 +19,4 @@ public class Day_2_SceneManager : MonoBehaviour
         if (GameManager.Instance.lightManager.lavers.Count > 0)
         GameManager.Instance.lightManager.lavers.Clear();
     }
-
-    private void Start()
-    {
-        StartCoroutine(FloorLightOff());
-    }
-
-    IEnumerator FloorLightOff()
-    {
-        yield return new WaitForSeconds(1);
-        while (true)
-        {
-            if (GameManager.Instance.lightManager.lavers.Count > 0)
-            {
-                GameManager.Instance.lightManager.OffLaversAllLight();
-                StopCoroutine(FloorLightOff());
-            }
-        }
-    }
 }

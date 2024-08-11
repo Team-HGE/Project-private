@@ -68,7 +68,7 @@ public class FadeManager : MonoBehaviour
                 backGroundSound = BackGroundSound.BSceneSound;
                 break;
         }
-        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
+        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOff();
         yield return fadeEffect.UseFadeEffect(FadeState.FadeOut);
         //AudioManager.Instance.StopAllClips();
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync((int)sceneEnum);
@@ -81,14 +81,13 @@ public class FadeManager : MonoBehaviour
         {
             yield return null;
         }
-        Debug.Break();
-        //GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
+        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOff();
         yield return new WaitForSeconds(3);
         sceneLoadings[rand].SetActive(false);
         loadingBar.SetActive(false);
         yield return fadeEffect.UseFadeEffect(FadeState.FadeIn);
         //AudioManager.Instance.PlaySound(backGroundSound);
-        //GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
+        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOn();
 
         fadeComplete?.Invoke();
         fadeEffect.OffFadeObject();
