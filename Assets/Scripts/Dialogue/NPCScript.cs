@@ -52,18 +52,18 @@ public class NPCScript : DialogueSetting, IScript
             ui.SetPortrait(ui.portrait, scriptSO.portraits[i]);
             ui.CheckNullTitle(scriptSO.speakers[i]);
 
-            if (scriptSO.bodyTexts[i] == "PickAnswer")
-            {
-                //Debug.Log("잠깐 정지하고 선택지 출력합니다.");
+            //if (scriptSO.bodyTexts[i] == "PickAnswer")
+            //{
+            //    //Debug.Log("잠깐 정지하고 선택지 출력합니다.");
 
-                UtilSB.AppendText(ui.bodyText, sbBody, scriptSO.bodyTexts[i - 1]);
+            //    UtilSB.AppendText(ui.bodyText, sbBody, scriptSO.bodyTexts[i - 1]);
 
-                DialogueManager.Instance.answer.Print();
-                yield return new WaitUntil(() => DialogueManager.Instance.answer.answerSO.nowAnswer != 0);
+            //    DialogueManager.Instance.answer.Print();
+            //    yield return new WaitUntil(() => DialogueManager.Instance.answer.answerSO.nowAnswer != 0);
 
-                DialogueManager.Instance.answer.answerSO.nowAnswer = 0;
-                continue;
-            }
+            //    DialogueManager.Instance.answer.answerSO.nowAnswer = 0;
+            //    continue;
+            //}
 
             curPrintLine = TextEffect.Typing(ui.bodyText, sbBody, scriptSO.bodyTexts[i]);
             yield return StartCoroutine(curPrintLine);

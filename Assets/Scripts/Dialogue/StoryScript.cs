@@ -33,7 +33,7 @@ public class StoryScript: DialogueSetting, IScript
         //Init(scriptSO);
         if (scriptSO == null) { Debug.Log("지금은 내보낼 스크립트가 없습니다. scriptSO null"); return; };
 
-        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
+        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOff();
         StopAllCoroutines();
         ui.OpenBG();
         ui.OpenDialogue();
@@ -71,10 +71,10 @@ public class StoryScript: DialogueSetting, IScript
 
             UpdateUI(scriptSO.speakers[i], scriptSO.portraits[i]);
 
-            if (scriptSO.audioClips != null && scriptSO.audioClips[i] != null)
-            {
-                AudioManager.Instance.PlayDialSE(scriptSO.audioClips[i]); // 권용 오디오 클립 재생 버그해결완
-            }
+            //if (scriptSO.audioClips != null && scriptSO.audioClips[i] != null)
+            //{
+            //    AudioManager.Instance.PlayDialSE(scriptSO.audioClips[i]); // 권용 오디오 클립 재생 버그해결완
+            //}
 
             // 기능 분기
             switch (scriptSO.bodyTexts[i])
@@ -161,7 +161,17 @@ public class StoryScript: DialogueSetting, IScript
 
     private void HandlePlayerControl()
     {
-        ui.darkScreen.SetActive(false);
+        if(ui.darkScreen.activeSelf)
+        {
+            ui.darkScreen.SetActive(false);
+            ui.finishStoryBtn.SetActive(false);
+        }
+        else
+        {
+            ui.darkScreen.SetActive(true);
+            ui.finishStoryBtn.SetActive(true);
+        }
+
         Debug.Log("플레이어 이동 OnOff");
         GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
     }
@@ -184,18 +194,20 @@ public class StoryScript: DialogueSetting, IScript
 
     private IEnumerator HandleWaitAndSound(int index)
     {
-        waitIcon.SetActive(true);
+        if(waitIcon != null)
+            waitIcon.SetActive(true);
         yield return waitLeftClick;
         AudioManager.Instance.PlaySoundEffect(SoundEffect.DialClick);
         //AudioManager.Instance.StopDialSE(scriptSO.audioClips[index]);
         yield return waitTime;
-        waitIcon.SetActive(false);
+        if (waitIcon != null)
+            waitIcon.SetActive(false);
     }
 
     private void EndDialogue()
     {
         ui.CloseDialogue();
         isTalking = false;
-        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
+        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOn();
     }
 }

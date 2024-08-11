@@ -104,6 +104,9 @@ public class SystemMsg : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
 
+        //if (NowTipMsgNumber > 3)
+        //    objectPool.DestroyObject();
+
         AudioManager.Instance.PlaySoundEffect(SoundEffect.systemMsg);
         msgPrefab = objectPool.GetObject();
         msgText = msgPrefab.GetComponent<TextMeshProUGUI>();
