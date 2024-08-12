@@ -629,7 +629,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 60, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &8371457337407379756
@@ -2198,6 +2198,7 @@ GameObject:
   - component: {fileID: 766204981264057204}
   - component: {fileID: 5128493325580091908}
   - component: {fileID: 7118870173662878522}
+  - component: {fileID: 5849020194180897412}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2295,7 +2296,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerVC: {fileID: 0}
   mainCamera: {fileID: 0}
-  blendListCamera: {fileID: 2074533612846539887}
+  blendListCamera: {fileID: 0}
 --- !u!114 &7118870173662878522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2321,6 +2322,23 @@ MonoBehaviour:
   None_WY_Lights: {fileID: 2100000, guid: 27e036ac43baafa418bbddbea737ad21, type: 2}
   None_Week_Lights: {fileID: 2100000, guid: 55038619a156eca4abea8107c02bff0b, type: 2}
   None_Bar_Lights: {fileID: 2100000, guid: 7b617093c1d690546846a62a4fc66727, type: 2}
+--- !u!114 &5849020194180897412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8972532280971072813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db6ae31c3fd18640aba91a719e08050, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vcFollow: {fileID: 0}
+  flashLight: {fileID: 0}
+  deathCanvas: {fileID: 0}
+  jumpScareAudioClips: []
+  monstersNavMeshAgent: []
 --- !u!1001 &2299845777459183427
 PrefabInstance:
   m_ObjectHideFlags: 0
