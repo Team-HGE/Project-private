@@ -74,8 +74,13 @@ public class DialogueManager : SingletonManager<DialogueManager>
 
     public void FinishStory()
     {
+        
+        set.InitDialogueSetting();
+        Debug.Log("스토리 스크립트 초기화");
+        storyScript.scriptSO = null;
+        StopAllCoroutines();
         storyScript.SkipEnable();
-        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
+        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOn();
     }
 
     public void NpcStartInteract()

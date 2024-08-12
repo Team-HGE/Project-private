@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,4 +20,11 @@ public class Day_2_SceneManager : MonoBehaviour
         if (GameManager.Instance.lightManager.lavers.Count > 0)
         GameManager.Instance.lightManager.lavers.Clear();
     }
+    private void Start()
+    {
+        GameManager.Instance.cinemachineManager.mainCamera = mainCamera;
+        GameManager.Instance.cinemachineManager.playerVC = playerVC;
+    }
+    [SerializeField] CinemachineVirtualCamera playerVC;
+    [SerializeField] CinemachineBrain mainCamera;
 }

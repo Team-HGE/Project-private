@@ -8,9 +8,9 @@ public class CinemachineManager : MonoBehaviour
     
     private CinemachineVirtualCamera targetCamera;
     [Header("Cinemachine")]
-    [SerializeField] CinemachineVirtualCamera playerVC;
-    [SerializeField] CinemachineBrain mainCamera;
-    [SerializeField] CinemachineBlendListCamera blendListCamera;
+    public CinemachineVirtualCamera playerVC;
+    public CinemachineBrain mainCamera;
+    public CinemachineBlendListCamera blendListCamera;
 
 
     Transform playerVCParent;
@@ -22,7 +22,6 @@ public class CinemachineManager : MonoBehaviour
             playerVC = GameObject.FindGameObjectWithTag(VCam).GetComponent<CinemachineVirtualCamera>();
         }
         yield return StartCoroutine(SetBlendCamera(0, targetCamera));
-        
     }
 
     IEnumerator SetBlendCamera(int index, CinemachineVirtualCamera target)
