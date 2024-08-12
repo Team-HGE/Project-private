@@ -34,6 +34,7 @@ public class ElevatorTimeLine : MonoBehaviour
             go.SetActive(false);
         }
         timelineDirector.Play();
+        GameManager.Instance.fadeManager.fadeComplete -= ElevatorMovie;
     }
 
     public void OffLight()
