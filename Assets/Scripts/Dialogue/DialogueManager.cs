@@ -16,7 +16,7 @@ public class DialogueManager : SingletonManager<DialogueManager>
     [HideInInspector]
     public Answer answer;
     [HideInInspector]
-    public NpcData npcData;  // 컴포넌트 부착해 주기
+    public NpcData npcData;
 
     //public bool isSceneChanged;
     public List<ScriptSO> storyList = new List<ScriptSO>();
@@ -79,7 +79,7 @@ public class DialogueManager : SingletonManager<DialogueManager>
 
         // npc 정보 설정, 전체 스트레스 증가
         npcData.storyIdx = _storyIdx;
-        npcData.condition.AllStressUp(20);
+        npcData.AllStressUp(20);
     }
 
     public void FinishStory()

@@ -7,16 +7,14 @@ public class NPCScript : DialogueSetting, IScript
     private NPC_SO npcSO;
     private ScriptSO scriptSO;
 
-    //private NPC npc;
-
     public void InitNPC(NpcData data, int ID)
     {
         npcSO = data.NpcList[ID];
         Init(data.LoadNpcSO(ID));
 
         // NPC 상태 대화중으로 변경, 스트레스 지수 감소
-        data.condition.ChangeNpcState(ID, NpcState.Speaking);
-        data.condition.StressDown(ID, 10);
+        data.ChangeNpcState(ID, NpcState.Speaking);
+        data.StressDown(ID, 10);
     }
 
     public void Init(ScriptSO _script)
@@ -75,10 +73,10 @@ public class NPCScript : DialogueSetting, IScript
         ui.CloseDialogue();
         isTalking = false;
 
-        //해당 NPC 대화 기회 소모 
-        npcSO.hadInteract = true;
-
+        //해당 NPC 대화 기회 소모
         //NPC 상태 대기중으로 변경
+        npcSO.hadInteract = true;
+        npcSO.state = NpcState.Idle;
 
         yield return null;
     }

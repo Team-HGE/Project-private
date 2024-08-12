@@ -173,7 +173,13 @@ public class StoryScript : DialogueSetting, IScript
 
     private void HandlePlayerControl()
     {
-        ui.darkScreen.SetActive(false);
+        if(ui.darkScreen.activeSelf)
+        {
+            ui.darkScreen.SetActive(false);
+        }
+        else
+            ui.darkScreen.SetActive(true);
+
         Debug.Log("플레이어 이동 OnOff");
         GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
     }

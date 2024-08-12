@@ -28,8 +28,8 @@ public class NPC_SO : ScriptableObject
     //public Sprite[] standings;
 
     [Header("Interact")]
-    public bool hadInteract = false;
     public float stress = 0; // 0에서 100까지
+    public bool hadInteract = false;
 
     [Header("Script Per Day")]
     public ScriptSO[] conversations;
