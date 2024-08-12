@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4650469784296947211}
   - component: {fileID: 4690558596412230389}
   - component: {fileID: 1694563732741205217}
-  - component: {fileID: 1974168761570644092}
+  - component: {fileID: 4605020067561281022}
   m_Layer: 0
   m_Name: Sofa
   m_TagString: Untagged
@@ -85,8 +85,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 818585614669222557}
   m_Mesh: {fileID: 4300000, guid: 680673dd258a38f49b7c9faf7e6edbb9, type: 2}
---- !u!64 &1974168761570644092
-MeshCollider:
+--- !u!65 &4605020067561281022
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -103,10 +103,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 680673dd258a38f49b7c9faf7e6edbb9, type: 2}
+  serializedVersion: 3
+  m_Size: {x: 2.0204315, y: 1, z: 5}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5026882975381755027
 GameObject:
   m_ObjectHideFlags: 0
@@ -118,7 +117,7 @@ GameObject:
   - component: {fileID: 938215910288327434}
   - component: {fileID: 1900009883334577464}
   - component: {fileID: 3598727826505546115}
-  - component: {fileID: 4980899801674312236}
+  - component: {fileID: 4756971617036963656}
   m_Layer: 0
   m_Name: Leg
   m_TagString: Untagged
@@ -191,8 +190,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5026882975381755027}
   m_Mesh: {fileID: 4300000, guid: 47f797a0ee5262649b94c85fb1b08201, type: 2}
---- !u!64 &4980899801674312236
-MeshCollider:
+--- !u!65 &4756971617036963656
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -209,7 +208,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 47f797a0ee5262649b94c85fb1b08201, type: 2}
+  serializedVersion: 3
+  m_Size: {x: 3.9956448, y: 1.0000105, z: 9.86295}
+  m_Center: {x: 1.7488037, y: 0.500005, z: -4.681721}

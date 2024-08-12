@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3539665390719398584}
   - component: {fileID: 7580223092498930942}
   - component: {fileID: 6926240959884937981}
-  - component: {fileID: 3575770841128542467}
+  - component: {fileID: 7480560586354106956}
   m_Layer: 0
   m_Name: Cafe_Table
   m_TagString: Untagged
@@ -86,8 +86,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 908335051189225669}
   m_Mesh: {fileID: 4300000, guid: 04d59fc3c6f6d8b4d841692afa20ec7f, type: 2}
---- !u!64 &3575770841128542467
-MeshCollider:
+--- !u!65 &7480560586354106956
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -104,10 +104,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 04d59fc3c6f6d8b4d841692afa20ec7f, type: 2}
+  serializedVersion: 3
+  m_Size: {x: 2.3211145, y: 3.5315702, z: 2.3211145}
+  m_Center: {x: -0.0000020861626, y: -0.00000005960464, z: 0.0000054240227}
 --- !u!1001 &3122839248364841707
 PrefabInstance:
   m_ObjectHideFlags: 0

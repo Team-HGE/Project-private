@@ -48,13 +48,13 @@ GameObject:
   - component: {fileID: 4252393828243109588}
   - component: {fileID: 4717786649556101907}
   - component: {fileID: 1960943706879338125}
-  - component: {fileID: 8603315752430679124}
+  - component: {fileID: 2254001292004573018}
   m_Layer: 0
   m_Name: Wine_Display_Rack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4252393828243109588
 Transform:
@@ -125,8 +125,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1965929915540576450}
   m_Mesh: {fileID: 4300000, guid: 53addf611bcb0a04ab4c4879e36f54aa, type: 2}
---- !u!64 &8603315752430679124
-MeshCollider:
+--- !u!65 &2254001292004573018
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -143,10 +143,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 53addf611bcb0a04ab4c4879e36f54aa, type: 2}
+  serializedVersion: 3
+  m_Size: {x: 32, y: 11, z: 10}
+  m_Center: {x: -16, y: 5.5, z: 5}
 --- !u!1 &2044836656000030165
 GameObject:
   m_ObjectHideFlags: 0
@@ -158,13 +157,12 @@ GameObject:
   - component: {fileID: 1719819809053479994}
   - component: {fileID: 426117665954273367}
   - component: {fileID: 628529972622252103}
-  - component: {fileID: 6884036601955341014}
   m_Layer: 0
   m_Name: Wine_Display_Rack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1719819809053479994
 Transform:
@@ -230,28 +228,6 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2044836656000030165}
-  m_Mesh: {fileID: 4300000, guid: cfa7d0260d5327845a54f555c15a9509, type: 2}
---- !u!64 &6884036601955341014
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2044836656000030165}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: cfa7d0260d5327845a54f555c15a9509, type: 2}
 --- !u!1 &2840907203281034706
 GameObject:
@@ -406,13 +382,12 @@ GameObject:
   - component: {fileID: 1901329787838219174}
   - component: {fileID: 4888664175544724629}
   - component: {fileID: 1504209879294578083}
-  - component: {fileID: 6995847794187900915}
   m_Layer: 0
   m_Name: Wine_Display_Rack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1901329787838219174
 Transform:
@@ -484,28 +459,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3983184272913268145}
   m_Mesh: {fileID: 4300000, guid: 5c0b3d76192ab0c40ba6712ea4fa2b4b, type: 2}
---- !u!64 &6995847794187900915
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3983184272913268145}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 5c0b3d76192ab0c40ba6712ea4fa2b4b, type: 2}
 --- !u!1 &5006282822601413591
 GameObject:
   m_ObjectHideFlags: 0
@@ -520,7 +473,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3990799990873550635
 Transform:

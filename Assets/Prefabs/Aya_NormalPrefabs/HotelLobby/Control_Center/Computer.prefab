@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 660186849757473672}
   - component: {fileID: 8119424272135228409}
   - component: {fileID: 2559858084192448334}
-  - component: {fileID: 8713200593258896609}
+  - component: {fileID: 7786110917347162717}
   m_Layer: 0
   m_Name: Computer
   m_TagString: Untagged
@@ -88,8 +88,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 759536568760787645}
   m_Mesh: {fileID: 4300000, guid: 2d83ca1e769c7804a9c41985d1b47ca7, type: 2}
---- !u!64 &8713200593258896609
-MeshCollider:
+--- !u!65 &7786110917347162717
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -106,10 +106,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 2d83ca1e769c7804a9c41985d1b47ca7, type: 2}
+  serializedVersion: 3
+  m_Size: {x: 6.0457397, y: 24.500002, z: 22.58492}
+  m_Center: {x: -0.00006318092, y: -0.0000038146973, z: 0.00000667572}
 --- !u!1001 &8150360125784877443
 PrefabInstance:
   m_ObjectHideFlags: 0

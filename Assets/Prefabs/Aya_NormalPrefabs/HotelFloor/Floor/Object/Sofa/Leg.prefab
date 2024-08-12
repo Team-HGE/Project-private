@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8595592260905418565}
   - component: {fileID: 4051166340580871861}
   - component: {fileID: 1930041463643001207}
-  - component: {fileID: 4566721838895219246}
+  - component: {fileID: 1052086490214330495}
   m_Layer: 0
   m_Name: Leg
   m_TagString: Untagged
@@ -84,8 +84,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1770547815640083628}
   m_Mesh: {fileID: 4300000, guid: 0201f2000062ef246a3a909329384139, type: 2}
---- !u!64 &4566721838895219246
-MeshCollider:
+--- !u!65 &1052086490214330495
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -102,7 +102,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 0201f2000062ef246a3a909329384139, type: 2}
+  serializedVersion: 3
+  m_Size: {x: 0.24901433, y: 1, z: 0.24950671}
+  m_Center: {x: -0.12450717, y: 0.5, z: 0.12500001}

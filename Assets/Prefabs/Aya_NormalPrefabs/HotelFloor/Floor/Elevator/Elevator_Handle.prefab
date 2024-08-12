@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3250709661562258670}
   - component: {fileID: 7266641535735186795}
   - component: {fileID: 4392867575711126669}
-  - component: {fileID: 375721287444626005}
+  - component: {fileID: 6511962737469733217}
   m_Layer: 0
   m_Name: Elevator_Handle
   m_TagString: Untagged
@@ -84,8 +84,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8275484273114939720}
   m_Mesh: {fileID: 4300000, guid: 7a5ee5a7bafea2243b8841ca01ea085c, type: 2}
---- !u!64 &375721287444626005
-MeshCollider:
+--- !u!65 &6511962737469733217
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -102,7 +102,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 7a5ee5a7bafea2243b8841ca01ea085c, type: 2}
+  serializedVersion: 3
+  m_Size: {x: 2.224226, y: 6.000001, z: 1}
+  m_Center: {x: -1.112113, y: 3.0000005, z: 0.5}

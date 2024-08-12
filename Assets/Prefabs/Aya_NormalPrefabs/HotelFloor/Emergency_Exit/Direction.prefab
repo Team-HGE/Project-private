@@ -389,7 +389,7 @@ GameObject:
   - component: {fileID: 7054757983166043280}
   - component: {fileID: 563552689652834326}
   - component: {fileID: 3137628306219158439}
-  - component: {fileID: 216989136148799390}
+  - component: {fileID: 5057992003113311143}
   m_Layer: 0
   m_Name: Direction
   m_TagString: Untagged
@@ -467,8 +467,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6893410660347983517}
   m_Mesh: {fileID: 4300000, guid: 089a840dd5390ca4fb29db61710ecc18, type: 2}
---- !u!64 &216989136148799390
-MeshCollider:
+--- !u!65 &5057992003113311143
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -485,10 +485,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 089a840dd5390ca4fb29db61710ecc18, type: 2}
+  serializedVersion: 3
+  m_Size: {x: 3, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &6351776580298973837
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -572,7 +571,8 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5615833026061200099, guid: 02ed8621712d3f24db2fd283a75aa643, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -666,7 +666,8 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5615833026061200099, guid: 02ed8621712d3f24db2fd283a75aa643, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

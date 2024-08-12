@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 417792892235799515}
   - component: {fileID: 8804860147729669557}
   - component: {fileID: 2135570131084225236}
-  - component: {fileID: 4853382212344223363}
+  - component: {fileID: 8776719742011563075}
   m_Layer: 0
   m_Name: Mirror
   m_TagString: Untagged
@@ -84,8 +84,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4897465871350576425}
   m_Mesh: {fileID: 4300000, guid: 9c379741aa41e384eb1d2dfaaa33bf6b, type: 2}
---- !u!64 &4853382212344223363
-MeshCollider:
+--- !u!65 &8776719742011563075
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -102,7 +102,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 9c379741aa41e384eb1d2dfaaa33bf6b, type: 2}
+  serializedVersion: 3
+  m_Size: {x: 12, y: 3, z: 9.999999}
+  m_Center: {x: -6, y: 1.5, z: 4.9999995}

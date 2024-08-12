@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4130728449503746}
   - component: {fileID: 33745791694866158}
   - component: {fileID: 23742289041977828}
-  - component: {fileID: 5562624342144149629}
+  - component: {fileID: 4316343496493967503}
   m_Layer: 0
   m_Name: WoodBox_01
   m_TagString: Untagged
@@ -84,8 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5562624342144149629
-MeshCollider:
+--- !u!65 &4316343496493967503
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -102,7 +102,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 6e78d03e0937ff84d99345cae3513362, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 0.28023857, y: 0.16350004, z: 0.3999999}
+  m_Center: {x: 0.000000007450581, y: -0.0000000037252903, z: 0}

@@ -129,8 +129,8 @@ GameObject:
   - component: {fileID: 7833539530415223257}
   - component: {fileID: 2938192114618913255}
   - component: {fileID: 7705638830231122638}
-  - component: {fileID: 4984248748289614342}
   - component: {fileID: 357327710643116428}
+  - component: {fileID: 8326927179865070409}
   m_Layer: 0
   m_Name: Alarm
   m_TagString: Untagged
@@ -204,28 +204,6 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1343581469453794056}
-  m_Mesh: {fileID: 4300000, guid: 9fd9875a72c58de4fadf6dd2e3a64e6d, type: 2}
---- !u!64 &4984248748289614342
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1343581469453794056}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 9fd9875a72c58de4fadf6dd2e3a64e6d, type: 2}
 --- !u!82 &357327710643116428
 AudioSource:
@@ -323,6 +301,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &8326927179865070409
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1343581469453794056}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.99606323, y: 1.0000012, z: 0.9980267}
+  m_Center: {x: 0.5019683, y: 0.5000007, z: -0.5}
 --- !u!1 &7352689878658242697
 GameObject:
   m_ObjectHideFlags: 0

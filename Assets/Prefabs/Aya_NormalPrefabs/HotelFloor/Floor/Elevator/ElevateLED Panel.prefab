@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1821748164862455123}
   - component: {fileID: 2415989034425082300}
   - component: {fileID: 3064501613448972749}
-  - component: {fileID: 4046864742954366002}
+  - component: {fileID: 8854402087604767041}
   m_Layer: 0
   m_Name: ElevateLED Panel
   m_TagString: Untagged
@@ -86,8 +86,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1625631953793238512}
   m_Mesh: {fileID: 4300000, guid: d45924978e22e3c4e8e146dc8897fdec, type: 2}
---- !u!64 &4046864742954366002
-MeshCollider:
+--- !u!65 &8854402087604767041
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -104,10 +104,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: d45924978e22e3c4e8e146dc8897fdec, type: 2}
+  serializedVersion: 3
+  m_Size: {x: 1.9999999, y: 0.99999994, z: 1.0000033}
+  m_Center: {x: -0.000007152557, y: 0.00000035762784, z: -0.000016748905}
 --- !u!1 &8147191363803770415
 GameObject:
   m_ObjectHideFlags: 0

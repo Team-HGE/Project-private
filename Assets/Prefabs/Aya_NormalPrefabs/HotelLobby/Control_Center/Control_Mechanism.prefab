@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 7061766718135192376}
   - component: {fileID: 8193094081019721182}
   - component: {fileID: 509889009011007627}
-  - component: {fileID: 4942943357280204355}
+  - component: {fileID: 1757286405298044763}
   m_Layer: 0
   m_Name: Control_Mechanism
   m_TagString: Untagged
@@ -165,8 +165,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8185911114293754225}
   m_Mesh: {fileID: 4300000, guid: 6c4a1e373e7e1b345ad062faf1495749, type: 2}
---- !u!64 &4942943357280204355
-MeshCollider:
+--- !u!65 &1757286405298044763
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -183,10 +183,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 6c4a1e373e7e1b345ad062faf1495749, type: 2}
+  serializedVersion: 3
+  m_Size: {x: 23.333408, y: 40.75002, z: 13}
+  m_Center: {x: -7.6666746, y: 0.0000028610236, z: -1.5}
 --- !u!1 &8607909161372674011
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,7 +197,6 @@ GameObject:
   - component: {fileID: 904674159697985958}
   - component: {fileID: 4220235651628678465}
   - component: {fileID: 6869126049901934786}
-  - component: {fileID: 4154367234712230589}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -270,28 +268,6 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8607909161372674011}
-  m_Mesh: {fileID: 4300000, guid: 0a7a3dd1d64685b45979b6ed730fd617, type: 2}
---- !u!64 &4154367234712230589
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8607909161372674011}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 0a7a3dd1d64685b45979b6ed730fd617, type: 2}
 --- !u!1001 &1317161377432703853
 PrefabInstance:

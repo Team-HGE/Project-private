@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 583665234688248724}
   - component: {fileID: 2237452574350201236}
   - component: {fileID: 4896418853225540288}
-  - component: {fileID: 4992386272338385937}
+  - component: {fileID: 8391241747653310743}
   m_Layer: 0
   m_Name: Bar_Ceiling_Light
   m_TagString: Untagged
@@ -86,8 +86,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2895328545042888091}
   m_Mesh: {fileID: 4300000, guid: 139f13a58b53bd148b7e66585b040c9d, type: 2}
---- !u!64 &4992386272338385937
-MeshCollider:
+--- !u!65 &8391241747653310743
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -104,10 +104,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 139f13a58b53bd148b7e66585b040c9d, type: 2}
+  serializedVersion: 3
+  m_Size: {x: 1, y: 3.607472, z: 1.8771436}
+  m_Center: {x: 0, y: 0.30373597, z: 0.43857175}
 --- !u!1 &8606635636760843015
 GameObject:
   m_ObjectHideFlags: 0

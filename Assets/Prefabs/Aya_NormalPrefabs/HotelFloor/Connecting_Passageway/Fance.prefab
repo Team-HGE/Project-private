@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8512301720307108394}
   - component: {fileID: 8014756850463696927}
   - component: {fileID: 4717275599279749236}
-  - component: {fileID: 3223686484886422751}
+  - component: {fileID: 6451623326269660445}
   m_Layer: 0
   m_Name: Fance
   m_TagString: Untagged
@@ -85,8 +85,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 679124358384691107}
   m_Mesh: {fileID: 4300000, guid: 72ffa4fc31ae9ba41b1ea29f83f2dd68, type: 2}
---- !u!64 &3223686484886422751
-MeshCollider:
+--- !u!65 &6451623326269660445
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -103,7 +103,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 72ffa4fc31ae9ba41b1ea29f83f2dd68, type: 2}
+  serializedVersion: 3
+  m_Size: {x: 2.7500095, y: 3, z: 1.0000036}
+  m_Center: {x: 0.000004827976, y: -1.4081923e-20, z: -0.0000017285347}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2838789541545239980}
   - component: {fileID: 8754146015267142754}
   - component: {fileID: 6039074875582143946}
-  - component: {fileID: 4982740825962017163}
+  - component: {fileID: 5251433682911742562}
   m_Layer: 0
   m_Name: NewOneSofa
   m_TagString: Untagged
@@ -88,8 +88,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1817483805721556560}
   m_Mesh: {fileID: 4300000, guid: 2b1a11583c09a0e4a82874ddccabcebb, type: 2}
---- !u!64 &4982740825962017163
-MeshCollider:
+--- !u!65 &5251433682911742562
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -106,10 +106,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 2b1a11583c09a0e4a82874ddccabcebb, type: 2}
+  serializedVersion: 3
+  m_Size: {x: 3.9629936, y: 3.1583123, z: 3.994522}
+  m_Center: {x: 0.08474922, y: 0.00000017881393, z: 0.0000076293945}
 --- !u!1001 &1219138378845949982
 PrefabInstance:
   m_ObjectHideFlags: 0

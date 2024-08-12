@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 8768052357167672533}
   - component: {fileID: 4044226309160924634}
   - component: {fileID: 3386407031416768910}
-  - component: {fileID: 824254033713860540}
   - component: {fileID: 2322575947408529668}
+  - component: {fileID: 2742247434297664593}
   m_Layer: 6
   m_Name: LockDoor
   m_TagString: Untagged
@@ -87,8 +87,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2173546295586971751}
   m_Mesh: {fileID: 4300000, guid: fa88d6b2e0675bf4895eb0d4de6f16de, type: 2}
---- !u!64 &824254033713860540
-MeshCollider:
+--- !u!114 &2322575947408529668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2173546295586971751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f7381022cd830e4e94a08832a91ac52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onInteract: 0
+  doorOpen: {fileID: 0}
+--- !u!65 &2742247434297664593
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -105,24 +119,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: fa88d6b2e0675bf4895eb0d4de6f16de, type: 2}
---- !u!114 &2322575947408529668
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2173546295586971751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f7381022cd830e4e94a08832a91ac52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onInteract: 0
-  doorOpen: {fileID: 0}
+  serializedVersion: 3
+  m_Size: {x: 7.555564, y: 12, z: 1.0000103}
+  m_Center: {x: -0.22221953, y: -0.50000024, z: -0.0000050067915}
 --- !u!1 &5080317174170084127
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,7 +133,6 @@ GameObject:
   - component: {fileID: 8640389506253532140}
   - component: {fileID: 7515491591025738821}
   - component: {fileID: 3637812608251349155}
-  - component: {fileID: 1845133344204840986}
   m_Layer: 0
   m_Name: Handle
   m_TagString: Untagged
@@ -207,28 +205,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5080317174170084127}
   m_Mesh: {fileID: 4300000, guid: 049d60abd03715143a7e5284b0c14d28, type: 2}
---- !u!64 &1845133344204840986
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5080317174170084127}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 049d60abd03715143a7e5284b0c14d28, type: 2}
 --- !u!1 &7885770606343287183
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,7 +216,7 @@ GameObject:
   - component: {fileID: 8215152266071325670}
   - component: {fileID: 4612829943444427618}
   - component: {fileID: 3351063102510101022}
-  - component: {fileID: 8498230837955812215}
+  - component: {fileID: 5557422716890991590}
   m_Layer: 0
   m_Name: KeyPad
   m_TagString: Untagged
@@ -314,8 +290,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7885770606343287183}
   m_Mesh: {fileID: 4300000, guid: 039752f77fc9fb449b14b8ee23e3491c, type: 2}
---- !u!64 &8498230837955812215
-MeshCollider:
+--- !u!65 &5557422716890991590
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -332,10 +308,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 039752f77fc9fb449b14b8ee23e3491c, type: 2}
+  serializedVersion: 3
+  m_Size: {x: 2, y: 1.0000007, z: 1.0000002}
+  m_Center: {x: 1.000001, y: 0.49998465, z: -0.5}
 --- !u!1001 &8861395233900677295
 PrefabInstance:
   m_ObjectHideFlags: 0

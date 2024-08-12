@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6442421300682666192}
   - component: {fileID: 4268290487344283731}
   - component: {fileID: 7026815087024693447}
-  - component: {fileID: 6308974044189097869}
+  - component: {fileID: 4258008809379916524}
   m_Layer: 0
   m_Name: Connceting_PassageWay_Light
   m_TagString: Untagged
@@ -85,8 +85,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4338357733663741519}
   m_Mesh: {fileID: 4300000, guid: e5fdb919c3c39fe4f8693931851788cd, type: 2}
---- !u!64 &6308974044189097869
-MeshCollider:
+--- !u!65 &4258008809379916524
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -103,10 +103,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: e5fdb919c3c39fe4f8693931851788cd, type: 2}
+  serializedVersion: 3
+  m_Size: {x: 0.9698463, y: 1, z: 0.9848077}
+  m_Center: {x: 0.5150769, y: 0.00009804964, z: 0.5}
 --- !u!1 &4815342239303383173
 GameObject:
   m_ObjectHideFlags: 0
