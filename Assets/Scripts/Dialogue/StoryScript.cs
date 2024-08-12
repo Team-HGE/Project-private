@@ -41,6 +41,7 @@ public class StoryScript : DialogueSetting, IScript
     public void SkipEnable()
     {
         skipenable = true;
+        Input.GetMouseButtonDown(0);
     }
     private IEnumerator PrintScript()
     {
