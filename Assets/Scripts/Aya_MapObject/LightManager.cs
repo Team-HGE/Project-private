@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,8 +19,51 @@ public enum LightName
     None_Week_Lights,
     None_Bar_Lights
 }
+public enum Floor
+{
+    AFloor1F, AFloor2F, AFloor3F, AFloor4F, AFloor5F,
+    BFloor1F, BFloor2F, BFloor3F, BFloor4F, BFloor5F, 
+    Lobby
+}
+[Serializable]
+public class FloorElements
+{
+    public List<Light> lights = new List<Light>();
+    public List<MeshRenderer> renderers = new List<MeshRenderer>();
+}
+
+[Serializable]
 public class LightManager : MonoBehaviour
 {
+    public Dictionary<Floor, FloorElements> elementsForFloors = new Dictionary<Floor, FloorElements>();
+    public void AddLightToFloor(Floor floor, Light light)
+    {
+        if (!elementsForFloors.ContainsKey(floor))
+        {
+            elementsForFloors[floor] = new FloorElements();
+        }
+        elementsForFloors[floor].lights.Add(light);
+    }
+
+    public void AddRendererToFloor(Floor floor, MeshRenderer renderer)
+    {
+        if (!elementsForFloors.ContainsKey(floor))
+        {
+            elementsForFloors[floor] = new FloorElements();
+        }
+        elementsForFloors[floor].renderers.Add(renderer);
+    }
+
+    public List<Light> GetLightsForFloor(Floor floor)
+    {
+        return elementsForFloors.ContainsKey(floor) ? elementsForFloors[floor].lights : new List<Light>();
+    }
+
+    public List<MeshRenderer> GetRenderersForFloor(Floor floor)
+    {
+        return elementsForFloors.ContainsKey(floor) ? elementsForFloors[floor].renderers : new List<MeshRenderer>();
+    }
+
     [Header("Laver")]
     public List<Laver> lavers = new List<Laver>();
 

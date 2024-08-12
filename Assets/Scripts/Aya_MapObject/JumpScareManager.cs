@@ -1,10 +1,7 @@
 using UnityEngine;
-using Cinemachine;
 using UnityEngine.AI;
-using DG.Tweening;
-using UnityEngine.UI;
-using System.Collections.Generic;
 using System;
+using System.Collections;
 public enum JumpScareType
 {
     GroupTypeMonster,
@@ -16,16 +13,19 @@ public class MonstersJumpScare
 {
     public JumpScareType jumpScareType;
     public GameObject gameObject;
+    public float time;
 }
 public class JumpScareManager : MonoBehaviour
 {
     public static JumpScareManager Instance;
 
     [Header("FlashLight")]
-    public GameObject flashLight;
+    public Light flashLight;
 
     [Header("Death")]
+    public GameObject playerCanvas;
     public GameObject deathCanvas;
+    public GameObject blackBG;
 
     [Header("MonsterControllers")]
     public NavMeshAgent[] monstersNavMeshAgent;
@@ -33,8 +33,28 @@ public class JumpScareManager : MonoBehaviour
     [Header("MonsterType")]
     public MonstersJumpScare[] monstersJumpScare;
 
+
     public void PlayJumpScare(JumpScareType jumpScareType)
     {
-        monstersJumpScare[(int)jumpScareType].gameObject.SetActive(true);
+        flashLight.enabled = false;
+        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOff();
+        playerCanvas.SetActive(false);
+        blackBG.SetActive(true);
+        foreach (var mon in monstersJumpScare)
+        {
+            if (mon.jumpScareType == jumpScareType)
+            {
+                mon.gameObject.SetActive(true);
+                StartCoroutine(OnDeathCanvas(mon.time, mon.gameObject));
+                break;
+            }
+        }
+    }
+    IEnumerator OnDeathCanvas(float time, GameObject monsterObject)
+    {
+        yield return new WaitForSeconds(time);
+        monsterObject.SetActive(false);
+        playerCanvas.SetActive(true);
+        deathCanvas.SetActive(true);
     }
 }

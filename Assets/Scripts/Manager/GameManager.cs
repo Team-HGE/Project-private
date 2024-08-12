@@ -22,6 +22,7 @@ public class GameManager : SingletonManager<GameManager>
     public FadeManager fadeManager;
     public CinemachineManager cinemachineManager;
     public LightManager lightManager;
+    public JumpScareManager jumpScareManager;
 
     [Header("Time")]
     public DayNightUI dayNightUI;
@@ -36,6 +37,8 @@ public class GameManager : SingletonManager<GameManager>
         if (cinemachineManager == null) cinemachineManager = GetComponent<CinemachineManager>();
 
         if (lightManager == null) lightManager = GetComponent<LightManager>();
+
+        if (jumpScareManager == null) jumpScareManager = GetComponent<JumpScareManager>();
     }
     public void Init(Player _player)
     {

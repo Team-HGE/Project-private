@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 1419798771703723459}
   - component: {fileID: 1663126551992510240}
   - component: {fileID: 2780288182253939171}
+  - component: {fileID: 3622427052164355573}
   m_Layer: 0
-  m_Name: Point Light
+  m_Name: BrightSource_Room_Window_Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -118,6 +119,22 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!114 &3622427052164355573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664335329891638845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f13a56ce3123004f8afe4c74cb47efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisLight: {fileID: 1663126551992510240}
+  parentRenderer:
+  - {fileID: 395608304402635754}
+  floor: 0
 --- !u!1 &4708772411604550494
 GameObject:
   m_ObjectHideFlags: 0
