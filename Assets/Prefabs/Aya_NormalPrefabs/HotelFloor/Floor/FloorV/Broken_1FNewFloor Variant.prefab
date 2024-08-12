@@ -20234,11 +20234,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1366237205780133568, guid: 9d289244898d0bd4089d19bf7c933e2b,
         type: 3}
-      propertyPath: nowFloorlights.Array.data[51]
-      value: 
-      objectReference: {fileID: 2608829035748828818}
-    - target: {fileID: 1366237205780133568, guid: 9d289244898d0bd4089d19bf7c933e2b,
-        type: 3}
       propertyPath: nowFloorlights.Array.data[52]
       value: 
       objectReference: {fileID: 6861942334668795163}
@@ -23049,6 +23044,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1661905197928305318, guid: 9d289244898d0bd4089d19bf7c933e2b,
+        type: 3}
+      propertyPath: floor
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1663462063734302877, guid: 9d289244898d0bd4089d19bf7c933e2b,
         type: 3}
@@ -30527,6 +30527,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 27e036ac43baafa418bbddbea737ad21, type: 2}
+    - target: {fileID: 4174603918725960865, guid: 9d289244898d0bd4089d19bf7c933e2b,
+        type: 3}
+      propertyPath: floor
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4175661031781348729, guid: 9d289244898d0bd4089d19bf7c933e2b,
         type: 3}
       propertyPath: m_IsActive
@@ -31816,6 +31821,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Size.x
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4687016863139670756, guid: 9d289244898d0bd4089d19bf7c933e2b,
+        type: 3}
+      propertyPath: floor
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4687709058303263608, guid: 9d289244898d0bd4089d19bf7c933e2b,
         type: 3}
@@ -39117,6 +39127,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: f4524e9617196f2469f1dba528106d16, type: 2}
+    - target: {fileID: 7960959915938353640, guid: 9d289244898d0bd4089d19bf7c933e2b,
+        type: 3}
+      propertyPath: floor
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7961807789762912327, guid: 9d289244898d0bd4089d19bf7c933e2b,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -46395,6 +46410,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 1567150511471864090, guid: 9d289244898d0bd4089d19bf7c933e2b, type: 3}
+    - {fileID: 7394578019569405521, guid: 9d289244898d0bd4089d19bf7c933e2b, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 9038447570197249288, guid: 9d289244898d0bd4089d19bf7c933e2b,
         type: 3}
@@ -47741,12 +47757,6 @@ Light:
 --- !u!108 &2602742747859539421 stripped
 Light:
   m_CorrespondingSourceObject: {fileID: 6699818757185237923, guid: 9d289244898d0bd4089d19bf7c933e2b,
-    type: 3}
-  m_PrefabInstance: {fileID: 8711163534234494590}
-  m_PrefabAsset: {fileID: 0}
---- !u!108 &2608829035748828818 stripped
-Light:
-  m_CorrespondingSourceObject: {fileID: 6687890780929556716, guid: 9d289244898d0bd4089d19bf7c933e2b,
     type: 3}
   m_PrefabInstance: {fileID: 8711163534234494590}
   m_PrefabAsset: {fileID: 0}
