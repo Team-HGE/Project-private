@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -34,6 +35,10 @@ public class FloorElements
 [Serializable]
 public class LightManager : MonoBehaviour
 {
+    [TitleGroup("LightManager", "MonoBehaviour", alignment: TitleAlignments.Centered, horizontalLine: true, boldTitle: true, indent: false)]
+
+    [Title("Lights & MeshRenderer Dictionary")]
+    [ShowInInspector, DictionaryDrawerSettings(DisplayMode = DictionaryDisplayOptions.Foldout)]
     public Dictionary<Floor, FloorElements> elementsForFloors = new Dictionary<Floor, FloorElements>();
     public void AddLightToFloor(Floor floor, Light light)
     {
@@ -63,26 +68,27 @@ public class LightManager : MonoBehaviour
         return elementsForFloors.ContainsKey(floor) ? elementsForFloors[floor].renderers : new List<MeshRenderer>();
     }
 
-    [Header("Laver")]
+    
+    [Title("Laver")]
     public List<Laver> lavers = new List<Laver>();
 
-    [Header("Lobby")]
+    [Title("Lobby")]
     public List<Light> lobbyLights = new List<Light>();
     public List<MeshRenderer> lobbyObjectRenderer = new List<MeshRenderer>();
 
-    [Header("UseLights")]
-    [SerializeField] Material Use_Y_Lights;
-    [SerializeField] Material Use_W_Lights;
-    [SerializeField] Material Use_WY_Lights;
-    [SerializeField] Material Use_Week_Lights;
-    [SerializeField] Material Use_Bar_Lights;
+    [TabGroup("Light", "UseLights", SdfIconType.Palette, TextColor = "yellow")]
+    [TabGroup("Light", "UseLights")][SerializeField] Material Use_Y_Lights;
+    [TabGroup("Light", "UseLights")][SerializeField] Material Use_W_Lights;
+    [TabGroup("Light", "UseLights")][SerializeField] Material Use_WY_Lights;
+    [TabGroup("Light", "UseLights")][SerializeField] Material Use_Week_Lights;
+    [TabGroup("Light", "UseLights")][SerializeField] Material Use_Bar_Lights;
 
-    [Header("noneLights")]
-    [SerializeField] Material None_Y_Lights;
-    [SerializeField] Material None_W_Lights;
-    [SerializeField] Material None_WY_Lights;
-    [SerializeField] Material None_Week_Lights;
-    [SerializeField] Material None_Bar_Lights;
+    [TabGroup("Light", "NoneLights", SdfIconType.Palette, TextColor = "white")]
+    [TabGroup("Light", "NoneLights")][SerializeField] Material None_Y_Lights;
+    [TabGroup("Light", "NoneLights")][SerializeField] Material None_W_Lights;
+    [TabGroup("Light", "NoneLights")][SerializeField] Material None_WY_Lights;
+    [TabGroup("Light", "NoneLights")][SerializeField] Material None_Week_Lights;
+    [TabGroup("Light", "NoneLights")][SerializeField] Material None_Bar_Lights;
 
     private Dictionary<string, LightName> materailLightName = new Dictionary<string, LightName>()
     {

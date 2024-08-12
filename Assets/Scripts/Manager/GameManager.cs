@@ -1,32 +1,37 @@
 using DiceNook.View;
+using Sirenix.OdinInspector;
 using System.Collections;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GameManager : SingletonManager<GameManager>
 {
-    [Header("PlayerInteractionCanvas")]
-    public GameObject playerInteractionCanvas;
-    public TextMeshProUGUI interactableText;
-    public Image interactionImage;
-    public Image fillAmountImage;
-    public PlayerInteractable player;
 
-    [Header("Player")]
-    public ExampleOfUpdatingTheBar exampleBar;
-    public PlayerStateMachine PlayerStateMachine { get; set; }
+    [TitleGroup("GameManager", "Singleton", alignment: TitleAlignments.Centered, horizontalLine: true, boldTitle: true, indent: false)]
+    [InfoBox("인스펙터 꾸미는 기능 필요한게 있으시면 말씀해주시면 됩니다.")]
+    [SerializeField] GameObject 응애;
 
-    [Header("Manager")]
-    public FadeManager fadeManager;
-    public CinemachineManager cinemachineManager;
-    public LightManager lightManager;
-    public JumpScareManager jumpScareManager;
+    [TabGroup("Tab", "PlayerCanvas", SdfIconType.Image, TextColor = "lightgreen")]
+    [TabGroup("Tab", "PlayerCanvas")] public GameObject playerInteractionCanvas;
+    [TabGroup("Tab", "PlayerCanvas")] public TextMeshProUGUI interactableText;
+    [TabGroup("Tab", "PlayerCanvas")] public Image interactionImage;
+    [TabGroup("Tab", "PlayerCanvas")] public Image fillAmountImage;
+    [TabGroup("Tab", "PlayerCanvas")] public PlayerInteractable player;
 
-    [Header("Time")]
+    [TabGroup("Tab", "Manager", SdfIconType.GearFill, TextColor = "orange")]
+    [TabGroup("Tab", "Manager")] public FadeManager fadeManager;
+    [TabGroup("Tab", "Manager")] public CinemachineManager cinemachineManager;
+    [TabGroup("Tab", "Manager")] public LightManager lightManager;
+    [TabGroup("Tab", "Manager")] public JumpScareManager jumpScareManager;
+
+    [TitleGroup("Time")]
     public DayNightUI dayNightUI;
-    
+
+    [TitleGroup("Player")]
+    public ExampleOfUpdatingTheBar exampleBar;
+    [ShowInInspector] public PlayerStateMachine PlayerStateMachine { get; set; }
+
     protected override void Awake()
     {
         base.Awake();

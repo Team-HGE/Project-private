@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using System;
 using System.Collections;
+using Sirenix.OdinInspector;
 public enum JumpScareType
 {
     GroupTypeMonster,
@@ -17,20 +18,19 @@ public class MonstersJumpScare
 }
 public class JumpScareManager : MonoBehaviour
 {
-    public static JumpScareManager Instance;
-
+    [TitleGroup("JumpScareManager", "MonoBehaviour", alignment: TitleAlignments.Centered, horizontalLine: true, boldTitle: true, indent: false)]
     [Header("FlashLight")]
     public Light flashLight;
 
-    [Header("Death")]
-    public GameObject playerCanvas;
-    public GameObject deathCanvas;
-    public GameObject blackBG;
+    [TabGroup("Tab", "Death", SdfIconType.EmojiDizzy, TextColor = "black")]
+    [TabGroup("Tab", "Death")] public GameObject playerCanvas;
+    [TabGroup("Tab", "Death")] public GameObject deathCanvas;
+    [TabGroup("Tab", "Death")] public GameObject blackBG;
 
-    [Header("MonsterControllers")]
+    [Title("MonsterControllers")]
     public NavMeshAgent[] monstersNavMeshAgent;
 
-    [Header("MonsterType")]
+    [Title("MonsterType")]
     public MonstersJumpScare[] monstersJumpScare;
 
 

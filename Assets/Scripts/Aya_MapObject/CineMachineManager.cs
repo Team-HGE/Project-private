@@ -1,19 +1,22 @@
 using Cinemachine;
+using Sirenix.OdinInspector;
 using System.Collections;
 using UnityEngine;
 
 public class CinemachineManager : MonoBehaviour
 {
-    string VCam = "VCam";
+    [TitleGroup("CinemachineManager", "MonoBehaviour", alignment: TitleAlignments.Centered, horizontalLine: true, boldTitle: true, indent: false)]
     
-    private CinemachineVirtualCamera targetCamera;
-    [Header("Cinemachine")]
-    public CinemachineVirtualCamera playerVC;
-    public CinemachineBrain mainCamera;
-    public CinemachineBlendListCamera blendListCamera;
+    [Header("Tag")]
+    [SerializeField] string VCam = "VCam";
+
+    [TabGroup("Tab", "Cinemachine", SdfIconType.Camera, TextColor = "red")]
+    [TabGroup("Tab", "Cinemachine")][SerializeField] CinemachineVirtualCamera targetCamera;
+    [TabGroup("Tab", "Cinemachine")] public CinemachineVirtualCamera playerVC;
+    [TabGroup("Tab", "Cinemachine")] public CinemachineBrain mainCamera;
+    [TabGroup("Tab", "Cinemachine")] public CinemachineBlendListCamera blendListCamera;
 
     Transform playerVCParent;
-
     Transform targetVCParent;
 
     private void Start()
