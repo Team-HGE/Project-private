@@ -70,7 +70,7 @@ public class LightManager : MonoBehaviour
 
     
     [Title("Laver")]
-    public List<Laver> lavers = new List<Laver>();
+    public List<Lever> levers = new List<Lever>();
 
     [Title("Lobby")]
     public List<Light> lobbyLights = new List<Light>();
@@ -106,9 +106,9 @@ public class LightManager : MonoBehaviour
     };
     public void OffLaversAllLight()
     {
-        foreach (var laver in lavers)
+        foreach (var lever in levers)
         {
-            laver.OffNowFloorAllLight();
+            lever.OffNowFloorAllLight();
         }
     }
 

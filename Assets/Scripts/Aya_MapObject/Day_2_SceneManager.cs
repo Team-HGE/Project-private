@@ -29,9 +29,9 @@ public class Day_2_SceneManager : MonoBehaviour
 
     private void Start()
     {
-        if (GameManager.Instance.lightManager.lavers.Count > 0)
+        if (GameManager.Instance.lightManager.levers.Count > 0)
         {
-            GameManager.Instance.lightManager.lavers.Clear();
+            GameManager.Instance.lightManager.levers.Clear();
         }
 
         GameManager.Instance.cinemachineManager.mainCamera = mainCamera;

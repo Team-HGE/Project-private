@@ -4,12 +4,16 @@ public class LightSystem : MonoBehaviour
 {
     public Light thisLight;
     public MeshRenderer[] parentRenderer;
-    public Floor floor;
+    [SerializeField] private Floor floor;
     private void Start()
     {
-        thisLight ??= GetComponent<Light>();
-
+        if (thisLight == null)
+        {
+            thisLight = GetComponent<Light>();
+        }
+        floor = LightInitializer.Instance.ReturnFloorOfLight(transform.position);
         GameManager.Instance.lightManager.AddLightToFloor(floor, thisLight);
+        
         if (parentRenderer != null)
         {
             foreach (var renderer in parentRenderer)
