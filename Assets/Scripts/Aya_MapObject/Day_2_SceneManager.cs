@@ -23,6 +23,7 @@ public class Day_2_SceneManager : MonoBehaviour
         {
             Destroy(this);
         }
+        GameManager.Instance.lightManager.elementsForFloors.Clear();
     }
 
     private void Start()
