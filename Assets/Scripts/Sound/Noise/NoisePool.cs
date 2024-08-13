@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -14,7 +14,7 @@ public class NoisePool : MonoBehaviour
         {
             if (_instance == null)
             {
-                //Debug.Log("³ëÀÌÁî Ç® ¿ÀºêÁ§Æ® ³Î");
+                //Debug.Log("ë…¸ì´ì¦ˆ í’€ ì˜¤ë¸Œì íŠ¸ ë„");
 
                 _instance = FindObjectOfType(typeof(NoisePool)) as NoisePool;
             }
@@ -23,31 +23,33 @@ public class NoisePool : MonoBehaviour
 
     }
 
-    // ¿ÜºÎÀÇ ¿ÀºêÁ§µå¿¡¼­ ¿©±â¿¡ ¿Àµğ¿À Å¬¸³À» ´ãÀº ¸®½ºÆ®¸¦ Àü´Ş
+    // ì™¸ë¶€ì˜ ì˜¤ë¸Œì ë“œì—ì„œ ì—¬ê¸°ì— ì˜¤ë””ì˜¤ í´ë¦½ì„ ë‹´ì€ ë¦¬ìŠ¤íŠ¸ë¥¼ ì „ë‹¬
     public List<NoiseData> noiseDatasList;
 
     public Dictionary<string, List<GameObject>> poolDictionary;
 
-    public void Initialize()
-    {
-        //Debug.Log($"NoisePool - Initialize");
+    //public void Initialize()
+    //{
+    //    //Debug.Log($"NoisePool - Initialize");
+    //    if (noiseDatasList == null)
+    //    {
+    //        Debug.Log($"NoisePool - Initialize -  noiseDatasList null, ì´ˆê¸°í™”");
+    //        noiseDatasList = new List<NoiseData>();
+    //    }
+    //    else
+    //    {
+    //        Debug.Log($"NoisePool - Initialize -  noiseDatasList ìˆìŒ {noiseDatasList.Count}");
 
-        noiseDatasList = new List<NoiseData>();
-
-        if (_instance == null)
-        {
-            Debug.Log($"NoisePool - Initialize -  null");
-            _instance = this;
-        }
-    }
+    //    }
+    //}
 
     public void FindNoise()
     {
         //if (noiseDatasList.Count == 0)
         //{
-        //    Debug.Log("³ëÀÌÁî 0°³");
+        //    Debug.Log("ë…¸ì´ì¦ˆ 0ê°œ");
         //}
-        //Debug.Log($"³ëÀÌÁî Á¾·ù °¹¼ö : {noiseDatasList.Count}");
+        //Debug.Log($"ë…¸ì´ì¦ˆ ì¢…ë¥˜ ê°¯ìˆ˜ : {noiseDatasList.Count}");
 
 
         poolDictionary = new Dictionary<string, List<GameObject>>();
@@ -72,7 +74,7 @@ public class NoisePool : MonoBehaviour
         List<GameObject> list = poolDictionary[tag];
         GameObject obj = null;
 
-        // ¹Ì¸® ¸¸µç ÇÁ¸®ÆéÀÌ ÀÖÀ» ¶§
+        // ë¯¸ë¦¬ ë§Œë“  í”„ë¦¬í©ì´ ìˆì„ ë•Œ
         for (int i = 0; i < list.Count; i++)
         {
             if (!list[i].activeSelf)
@@ -82,7 +84,7 @@ public class NoisePool : MonoBehaviour
             }
         }
 
-        // ¾øÀ» ¶§
+        // ì—†ì„ ë•Œ
         if (!obj)
         {
             NoiseData temp;

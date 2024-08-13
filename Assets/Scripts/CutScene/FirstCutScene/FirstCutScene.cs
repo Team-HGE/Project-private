@@ -10,7 +10,7 @@ public class FirstCutScene : MonoBehaviour
     public GameObject TLTrigger;
     // 획득 아이템
     public GameObject eventObject;
-    public bool onTrigger;
+    //public bool onTrigger;
 
     private FirstTLTrigger trigger;
     private FirstCutSceneEvent sceneEvent;
@@ -37,6 +37,7 @@ public class FirstCutScene : MonoBehaviour
         if (trigger.IsEnd)
         {
             sceneEvent.EventOn();
+            Destroy(gameObject);
         }
     }
 
@@ -45,5 +46,4 @@ public class FirstCutScene : MonoBehaviour
         trigger.OnEnd -= HandleEnd;
         item.OnGetItem -= HandleGetItem;
     }
-
 }

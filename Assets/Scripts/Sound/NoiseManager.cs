@@ -7,17 +7,18 @@ public class NoiseManager : SingletonManager<NoiseManager>
     [SerializeField][Range(0f, 5f)] private float soundEffectVolume;
     [SerializeField][Range(0f, 5f)] private float soundEffectPitchVariance;
 
-    //private void Awake()
-    //{
-    //    //Debug.Log($"NoiseManager - Awake");
-
-    //    Instance = this;//임시 코드 수정 예정***
-    //}
-
     protected override void Awake()
     {
-        base.Awake();
+        if (Instance != this)
+        {
+            Debug.Log("노이즈 매니저 이미 있음");
+        }
     }
+
+    //protected override void Awake()
+    //{
+    //    base.Awake();
+    //}
 
     public SoundSource PlayNoise(AudioClip clip, string tag, float addVolume, float transitionTime, float pitch)
     {
