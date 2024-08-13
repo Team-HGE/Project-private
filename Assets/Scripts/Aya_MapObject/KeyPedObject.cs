@@ -1,7 +1,5 @@
 using Cinemachine;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class KeyPadObject : InteractableObject
@@ -26,6 +24,12 @@ public class KeyPadObject : InteractableObject
         if (unLock) return;
         GameManager.Instance.player.playerInteraction.SetActive(true);
         GameManager.Instance.player.interactableText.text = "해제하기";
+    }
+
+    private void Start()
+    {
+        if (keyPadGimmickCanvas == null) keyPadGimmickCanvas = GameManager.Instance.keyPadGimmickCanvas;
+        if (keyPadGimmick == null) keyPadGimmick = GameManager.Instance.keyPadGimmick;  
     }
     public override void Interact()
     {
