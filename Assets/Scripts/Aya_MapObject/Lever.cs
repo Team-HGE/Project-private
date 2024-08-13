@@ -9,6 +9,7 @@ public class Lever : InteractableObject
     [SerializeField] DOTweenAnimation laverUp;
     private void Start()
     {
+        nowFloor = FloorInitializer.Instance.ReturnFloorPosition(transform.position);
         GameManager.Instance.lightManager.levers.Add(this);
     }
     public override void ActivateInteraction()

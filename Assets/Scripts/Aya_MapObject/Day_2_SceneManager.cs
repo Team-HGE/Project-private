@@ -24,6 +24,7 @@ public class Day_2_SceneManager : MonoBehaviour
             Destroy(this);
         }
         GameManager.Instance.lightManager.elementsForFloors.Clear();
+        FloorInitializer.Instance.SetInitializerNull();
     }
 
     private void Start()

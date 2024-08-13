@@ -57,5 +57,13 @@ public class ElevatorTimeLine : MonoBehaviour
     public void ChangeScene()
     {
         GameManager.Instance.fadeManager.MoveScene(SceneEnum.Hotel_Day2);
+        Invoke("SetUI", 1.5f);
+    }
+    void SetUI()
+    {
+        foreach (GameObject go in UI)
+        {
+            go.SetActive(true);
+        }
     }
 }
