@@ -17,14 +17,34 @@ public class Day_2_SceneManager : MonoBehaviour
 
     private void Awake()
     {
-        if (GameManager.Instance.lightManager.lavers.Count > 0)
-        GameManager.Instance.lightManager.lavers.Clear();
+        if (_instance == null)
+        {
+            _instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
     }
+
     private void Start()
     {
+        if (GameManager.Instance.lightManager.lavers.Count > 0)
+        {
+            GameManager.Instance.lightManager.lavers.Clear();
+        }
+
         GameManager.Instance.cinemachineManager.mainCamera = mainCamera;
         GameManager.Instance.cinemachineManager.playerVC = playerVC;
+        GameManager.Instance.jumpScareManager.flashLight = playerFlashLight;
+        GameManager.Instance.jumpScareManager.blackBG = blackBG;
     }
+
+    [Header("Cinemachine")]
     [SerializeField] CinemachineVirtualCamera playerVC;
     [SerializeField] CinemachineBrain mainCamera;
+    [SerializeField] GameObject blackBG;
+
+    [Header("Light")]
+    [SerializeField] Light playerFlashLight;
 }

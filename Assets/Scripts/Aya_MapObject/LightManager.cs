@@ -1,4 +1,5 @@
-using System.Collections;
+using Sirenix.OdinInspector;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,28 +19,76 @@ public enum LightName
     None_Week_Lights,
     None_Bar_Lights
 }
+public enum Floor
+{
+    AFloor1F, AFloor2F, AFloor3F, AFloor4F, AFloor5F,
+    BFloor1F, BFloor2F, BFloor3F, BFloor4F, BFloor5F, 
+    Lobby
+}
+[Serializable]
+public class FloorElements
+{
+    public List<Light> lights = new List<Light>();
+    public List<MeshRenderer> renderers = new List<MeshRenderer>();
+}
+
+[Serializable]
 public class LightManager : MonoBehaviour
 {
-    [Header("Laver")]
+    [TitleGroup("LightManager", "MonoBehaviour", alignment: TitleAlignments.Centered, horizontalLine: true, boldTitle: true, indent: false)]
+
+    [Title("Lights & MeshRenderer Dictionary")]
+    [ShowInInspector, DictionaryDrawerSettings(DisplayMode = DictionaryDisplayOptions.Foldout)]
+    public Dictionary<Floor, FloorElements> elementsForFloors = new Dictionary<Floor, FloorElements>();
+    public void AddLightToFloor(Floor floor, Light light)
+    {
+        if (!elementsForFloors.ContainsKey(floor))
+        {
+            elementsForFloors[floor] = new FloorElements();
+        }
+        elementsForFloors[floor].lights.Add(light);
+    }
+
+    public void AddRendererToFloor(Floor floor, MeshRenderer renderer)
+    {
+        if (!elementsForFloors.ContainsKey(floor))
+        {
+            elementsForFloors[floor] = new FloorElements();
+        }
+        elementsForFloors[floor].renderers.Add(renderer);
+    }
+
+    public List<Light> GetLightsForFloor(Floor floor)
+    {
+        return elementsForFloors.ContainsKey(floor) ? elementsForFloors[floor].lights : new List<Light>();
+    }
+
+    public List<MeshRenderer> GetRenderersForFloor(Floor floor)
+    {
+        return elementsForFloors.ContainsKey(floor) ? elementsForFloors[floor].renderers : new List<MeshRenderer>();
+    }
+
+    
+    [Title("Laver")]
     public List<Laver> lavers = new List<Laver>();
 
-    [Header("Lobby")]
+    [Title("Lobby")]
     public List<Light> lobbyLights = new List<Light>();
     public List<MeshRenderer> lobbyObjectRenderer = new List<MeshRenderer>();
 
-    [Header("UseLights")]
-    [SerializeField] Material Use_Y_Lights;
-    [SerializeField] Material Use_W_Lights;
-    [SerializeField] Material Use_WY_Lights;
-    [SerializeField] Material Use_Week_Lights;
-    [SerializeField] Material Use_Bar_Lights;
+    [TabGroup("Light", "UseLights", SdfIconType.Palette, TextColor = "yellow")]
+    [TabGroup("Light", "UseLights")][SerializeField] Material Use_Y_Lights;
+    [TabGroup("Light", "UseLights")][SerializeField] Material Use_W_Lights;
+    [TabGroup("Light", "UseLights")][SerializeField] Material Use_WY_Lights;
+    [TabGroup("Light", "UseLights")][SerializeField] Material Use_Week_Lights;
+    [TabGroup("Light", "UseLights")][SerializeField] Material Use_Bar_Lights;
 
-    [Header("noneLights")]
-    [SerializeField] Material None_Y_Lights;
-    [SerializeField] Material None_W_Lights;
-    [SerializeField] Material None_WY_Lights;
-    [SerializeField] Material None_Week_Lights;
-    [SerializeField] Material None_Bar_Lights;
+    [TabGroup("Light", "NoneLights", SdfIconType.Palette, TextColor = "white")]
+    [TabGroup("Light", "NoneLights")][SerializeField] Material None_Y_Lights;
+    [TabGroup("Light", "NoneLights")][SerializeField] Material None_W_Lights;
+    [TabGroup("Light", "NoneLights")][SerializeField] Material None_WY_Lights;
+    [TabGroup("Light", "NoneLights")][SerializeField] Material None_Week_Lights;
+    [TabGroup("Light", "NoneLights")][SerializeField] Material None_Bar_Lights;
 
     private Dictionary<string, LightName> materailLightName = new Dictionary<string, LightName>()
     {

@@ -178,7 +178,6 @@ GameObject:
   - component: {fileID: 2963101403854385897}
   - component: {fileID: 7691494589928532885}
   - component: {fileID: 1668020000572827439}
-  - component: {fileID: 2687690463132568656}
   m_Layer: 0
   m_Name: DialogueManager
   m_TagString: Untagged
@@ -220,7 +219,6 @@ MonoBehaviour:
   itemScript: {fileID: 0}
   karmaScript: {fileID: 0}
   answer: {fileID: 0}
-  npcData: {fileID: 0}
   storyList:
   - {fileID: 11400000, guid: 438d5df616f65ba4b86b0a80c1db4b79, type: 2}
   - {fileID: 11400000, guid: 32326b3131b9d4d48964c1a7bf2a27ea, type: 2}
@@ -228,6 +226,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 68448ed19a3c83b4f8c8abd6a7a33939, type: 2}
   - {fileID: 11400000, guid: f1d7d22a6353da54586744f461c77c4d, type: 2}
   - {fileID: 11400000, guid: de86a551508cfd8479940fa685762214, type: 2}
+  - {fileID: 11400000, guid: 32326b3131b9d4d48964c1a7bf2a27ea, type: 2}
   answerList:
   - {fileID: 0}
   - {fileID: 11400000, guid: 509e8c7de2b9e414f8916f07bd82fe5b, type: 2}
@@ -249,17 +248,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 643ba2f036df59341817c51664aced0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueCanvas: {fileID: 0}
-  bodyText: {fileID: 0}
-  titleBG: {fileID: 0}
-  titleText: {fileID: 0}
-  portrait: {fileID: 0}
-  darkScreen: {fileID: 0}
+  dialogueCanvas: {fileID: 7416526107992939375}
+  bodyText: {fileID: 8025294753214764609}
+  titleBG: {fileID: 6511670150322942724}
+  titleText: {fileID: 762841253815492558}
+  portrait: {fileID: 6642385589529094870}
+  darkScreen: {fileID: 3601057895770031491}
   finishStoryBtn: {fileID: 4205364019719695624}
-  AnswerCanvas: {fileID: 0}
-  answerText1: {fileID: 0}
-  answerText2: {fileID: 0}
-  standingImgLayout: {fileID: 0}
+  AnswerCanvas: {fileID: 3834206131347197520}
+  answerText1: {fileID: 5774132504714578548}
+  answerText2: {fileID: 7625480797777139125}
+  standingImgLayout: {fileID: 2033762012468850032}
 --- !u!114 &542670094413310124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,7 +316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 8917567243523437211, guid: 42f260626c07f1d47bb398570cce9742, type: 3}
-  parrent: {fileID: 0}
+  parrent: {fileID: 6904510179086655653}
   poolSize: 10
 --- !u!114 &1565557736858896460
 MonoBehaviour:
@@ -333,7 +332,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questSO: {fileID: 11400000, guid: fa6ed0fe88c386d4ca9456c29433959e, type: 2}
   CurrentQuestIndex: 0
-  nowQuestText: {fileID: 0}
+  nowQuestText: {fileID: 5927844744201669638}
   audioManager: {fileID: 0}
 --- !u!114 &1776522802564517765
 MonoBehaviour:
@@ -348,7 +347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   systemMsgSO: {fileID: 11400000, guid: 344f4ac832372734babf889b380091df, type: 2}
-  systemMsgCanvas: {fileID: 0}
+  systemMsgCanvas: {fileID: 722341726536125240}
   NowSystemMsgNumber: 0
   NowTipMsgNumber: 0
 --- !u!114 &2963101403854385897
@@ -390,25 +389,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ui: {fileID: 0}
---- !u!114 &2687690463132568656
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 833481111887110611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fde35e277e9e3ce409c86b7cacf7ac18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  condition: {fileID: 0}
-  NpcList:
-  - {fileID: 11400000, guid: dd76b9e7b1529874eafb72f9d1c6ccf1, type: 2}
-  - {fileID: 11400000, guid: 74c25936362ba4944a4aa5073e6219be, type: 2}
-  - {fileID: 11400000, guid: e346d186b5258824593d5c91a7ad596a, type: 2}
-  - {fileID: 11400000, guid: 9df5918bd88ed9241960bcc49edd2eb5, type: 2}
-  storyIdx: 0
 --- !u!1 &1503600934121918969
 GameObject:
   m_ObjectHideFlags: 0
@@ -1678,7 +1658,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC2A4\uD1A0\uB9AC \uAC74\uB108\uB6F0\uAE30"
+  m_text: "\uC790\uB3D9 \uC9C4\uD589"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bab49dd3f00cdd242a6d2eeb0cc39c51, type: 2}
   m_sharedMaterial: {fileID: -2427065712003195855, guid: bab49dd3f00cdd242a6d2eeb0cc39c51,
@@ -2136,3 +2116,33 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 2671870674948228945}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3834206131347197520 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1162405962582165761, guid: e2a60ae3af0ea1d40a93d1b0b6eee9c9,
+    type: 3}
+  m_PrefabInstance: {fileID: 2671870674948228945}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5774132504714578548 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8445853293894044965, guid: e2a60ae3af0ea1d40a93d1b0b6eee9c9,
+    type: 3}
+  m_PrefabInstance: {fileID: 2671870674948228945}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7625480797777139125 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5532463627250111204, guid: e2a60ae3af0ea1d40a93d1b0b6eee9c9,
+    type: 3}
+  m_PrefabInstance: {fileID: 2671870674948228945}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

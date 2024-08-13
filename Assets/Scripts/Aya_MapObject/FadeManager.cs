@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -9,12 +10,12 @@ public enum SceneEnum
 }
 public class FadeManager : MonoBehaviour
 {
-    [Header("Fade")]
+    [TitleGroup("FadeManager", "MonoBehaviour", alignment: TitleAlignments.Centered, horizontalLine: true, boldTitle: true, indent: false)]
     [SerializeField] FadeEffect fadeEffect;
 
-    [Header("SceneLoading")]
-    [SerializeField] GameObject[] sceneLoadings;
-    [SerializeField] GameObject loadingBar;
+    [TabGroup("Tab", "Scene", SdfIconType.Film, TextColor = "white")]
+    [TabGroup("Tab", "Scene")][SerializeField] GameObject[] sceneLoadings;
+    [TabGroup("Tab", "Scene")][SerializeField] GameObject loadingBar;
 
     public event Action fadeComplete;
     public void FadeStart(FadeState fadeState)
