@@ -20,7 +20,7 @@ public class Switch_Object_Toggle : InteractableObject
 
     private void Start()
     {
-        myFloor = LightInitializer.Instance.ReturnFloorPosition(transform.position);
+        myFloor = FloorInitializer.Instance.ReturnFloorPosition(transform.position);
         audioSource = GetComponent<AudioSource>();
     }
     public override void ActivateInteraction()

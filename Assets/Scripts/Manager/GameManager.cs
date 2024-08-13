@@ -65,5 +65,7 @@ public class GameManager : SingletonManager<GameManager>
         fadeManager.FadeStart(FadeState.FadeIn);
         AudioManager.Instance.PlaySound(BackGroundSound.ASceneSound);
         DialogueManager.Instance.StartStory(1);
+        yield return new WaitForSeconds(10);
+        lightManager.OffLaversAllLight();
     }
 }
