@@ -29,12 +29,12 @@ public class LightInitializer : MonoBehaviour
         if (lightPos.x > 300)
         {
             // Bµ¿
-            return (Floor)((int)Floor.BFloor1F + floor); 
+            return (Floor)((int)Floor.BFloor1F << floor); 
         }
         else
         {
             // Aµ¿
-            return (Floor)((int)Floor.AFloor1F + floor);
+            return (Floor)((int)Floor.AFloor1F << floor);
         }
     }
 }

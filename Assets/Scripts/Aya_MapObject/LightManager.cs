@@ -20,10 +20,23 @@ public enum LightName
     None_Bar_Lights
 }
 public enum Floor
-{
-    AFloor1F, AFloor2F, AFloor3F, AFloor4F, AFloor5F,
-    BFloor1F, BFloor2F, BFloor3F, BFloor4F, BFloor5F, 
-    Lobby
+{   // 비트연산자   1 << 1 만큼 뒤로 밀기
+    AFloor1F = 1 << 0, 
+    AFloor2F = 1 << 1, 
+    AFloor3F = 1 << 2, 
+    AFloor4F = 1 << 3, 
+    AFloor5F = 1 << 4,
+
+    BFloor1F = 1 << 10, 
+    BFloor2F = 1 << 11, 
+    BFloor3F = 1 << 12, 
+    BFloor4F = 1 << 13, 
+    BFloor5F = 1 << 14, 
+
+    AFloor = AFloor1F | AFloor2F | AFloor3F | AFloor4F | AFloor5F,
+    BFloor = BFloor1F | BFloor2F | BFloor3F | BFloor4F | BFloor5F,
+
+    Lobby = 1 << 31
 }
 [Serializable]
 public class FloorElements
@@ -280,21 +293,29 @@ public class LightManager : MonoBehaviour
         return LightName.Unknown;
     }
 
-    private Dictionary<Floor, bool> _floorPowerStatus = new Dictionary<Floor, bool>();
-    public Dictionary<Floor, bool> FloorPowerStatus
-    {
-        get 
-        {
-            if (_floorPowerStatus.Count == 0) InitFloorPowerStatus();
+    private int _floorPowerStatus = int.MaxValue; // 32개에 칸이 전부 1
 
-            return _floorPowerStatus; 
+    public bool isFloorPowerOn(Floor targetFloor)
+    {
+        if ((_floorPowerStatus & (int)targetFloor) == (int)targetFloor)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
-    void InitFloorPowerStatus()
+
+    public void SetFloorPowerStatus(Floor targetFloor, bool set)
     {
-        for(int i = 0; i < (int)Floor.Lobby + 1; i++)
+        if (set)
         {
-            _floorPowerStatus.Add((Floor)i, true);
+            _floorPowerStatus |= (int)targetFloor;
+        }
+        else
+        {
+            _floorPowerStatus &= ~(int)targetFloor;
         }
     }
 }

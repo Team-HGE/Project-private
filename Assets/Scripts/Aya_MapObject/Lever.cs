@@ -27,7 +27,7 @@ public class Lever : InteractableObject
 
     public void OnNowFloorAllLight()
     {
-        GameManager.Instance.lightManager.FloorPowerStatus[nowFloor] = true;
+        GameManager.Instance.lightManager.SetFloorPowerStatus(nowFloor, true);
 
         GameManager.Instance.lightManager.OnListLight(GameManager.Instance.lightManager.GetLightsForFloor(nowFloor));
 
@@ -35,7 +35,7 @@ public class Lever : InteractableObject
     }
     public void OffNowFloorAllLight()
     {
-        GameManager.Instance.lightManager.FloorPowerStatus[nowFloor] = false;
+        GameManager.Instance.lightManager.SetFloorPowerStatus(nowFloor, false);
 
         GameManager.Instance.lightManager.OffListLight(GameManager.Instance.lightManager.GetLightsForFloor(nowFloor));
 
