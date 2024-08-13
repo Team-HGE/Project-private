@@ -4,9 +4,18 @@ using System.Text;
 
 public class NPCScript : DialogueSetting, IScript
 {
-    [HideInInspector]
+    private NPC_SO npcSO;
     private ScriptSO scriptSO;
-    private NPC npc;
+
+    public void InitNPC(NpcData data, int ID)
+    {
+        npcSO = data.NpcList[ID];
+        Init(data.LoadNpcSO(ID));
+
+        // NPC 상태 대화중으로 변경, 스트레스 지수 감소
+        data.ChangeNpcState(ID, NpcState.Speaking);
+        data.StressDown(ID, 10);
+    }
 
     public void Init(ScriptSO _script)
     {
@@ -22,14 +31,16 @@ public class NPCScript : DialogueSetting, IScript
         if (isTalking) { Debug.Log("지금은 대화할 수 없습니다."); InitDialogueSetting(); return; }
         isTalking = true;
 
-        //플레이어 움직임 정지
 
         // 상호작용 중인 오브젝트 판별
-        GameObject nowInteracting = GameManager.Instance.player.curInteractableGameObject;
-        npc = nowInteracting.GetComponent<NPC>();
+        //GameObject nowInteracting = GameManager.Instance.player.curInteractableGameObject;
+        //npc = nowInteracting.GetComponent<NPC>();
 
         // npc 가 아닐 경우
-        if (npc == null) { Debug.Log("NPC가 아닙니다. 또는 NPC 컴포넌트가 없습니다."); return; }
+        //if (npc == null) { Debug.Log("NPC가 아닙니다. 또는 NPC 컴포넌트가 없습니다."); return; }
+
+        // NPC 감정 상태 초기화
+        //npc.ChangeNpcState(NpcState.Idle);
 
         ui.OpenDialogue();
         StartCoroutine(PrintScript());
@@ -37,8 +48,6 @@ public class NPCScript : DialogueSetting, IScript
 
     private IEnumerator PrintScript()
     {
-        //if (!isTalking) { Debug.Log("실행중인 코루틴을 종료합니다."); StopAllCoroutines(); InitDialogueSetting();}
-
         ui.ClearDialogue(sbTitle, sbBody);
 
         for (int i = 0; i < scriptSO.bodyTexts.Length; i++)
@@ -47,45 +56,27 @@ public class NPCScript : DialogueSetting, IScript
 
             // 말하는 NPC 이름 - 대화중
             if (scriptSO.speakers[i] != "")
-                UtilSB.SetText(ui.titleText, sbTitle, scriptSO.speakers[i] + " - " + npc.ChangeNpcState(NpcState.Speaking));
+                UtilSB.SetText(ui.titleText, sbTitle, scriptSO.speakers[i] + " - " + npcSO.state);
 
             ui.SetPortrait(ui.portrait, scriptSO.portraits[i]);
             ui.CheckNullTitle(scriptSO.speakers[i]);
 
-            //if (scriptSO.bodyTexts[i] == "PickAnswer")
-            //{
-            //    //Debug.Log("잠깐 정지하고 선택지 출력합니다.");
-
-            //    UtilSB.AppendText(ui.bodyText, sbBody, scriptSO.bodyTexts[i - 1]);
-
-            //    DialogueManager.Instance.answer.Print();
-            //    yield return new WaitUntil(() => DialogueManager.Instance.answer.answerSO.nowAnswer != 0);
-
-            //    DialogueManager.Instance.answer.answerSO.nowAnswer = 0;
-            //    continue;
-            //}
-
             curPrintLine = TextEffect.Typing(ui.bodyText, sbBody, scriptSO.bodyTexts[i]);
             yield return StartCoroutine(curPrintLine);
 
-            //Debug.Log("좌클릭으로 진행하세요");
             yield return waitLeftClick;
             yield return waitTime;
 
             ui.ClearDialogue(sbTitle, sbBody);
-            //Debug.Log(sbTitle); null 잘됨
         }
 
         ui.CloseDialogue();
         isTalking = false;
 
-        //플레이어 움직임 재개
-
-        // NPC 감정 상태 해제
-        npc.ChangeNpcState(NpcState.Idle);
-
-        //해당 NPC 대화 기회 소모 
-        npc.npcSO.isInteracted = true;
+        //해당 NPC 대화 기회 소모
+        //NPC 상태 대기중으로 변경
+        npcSO.hadInteract = true;
+        npcSO.state = NpcState.Idle;
 
         yield return null;
     }

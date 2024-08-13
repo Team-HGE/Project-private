@@ -178,6 +178,7 @@ GameObject:
   - component: {fileID: 2963101403854385897}
   - component: {fileID: 7691494589928532885}
   - component: {fileID: 1668020000572827439}
+  - component: {fileID: 3540256898474570875}
   m_Layer: 0
   m_Name: DialogueManager
   m_TagString: Untagged
@@ -219,6 +220,7 @@ MonoBehaviour:
   itemScript: {fileID: 0}
   karmaScript: {fileID: 0}
   answer: {fileID: 0}
+  npcData: {fileID: 0}
   storyList:
   - {fileID: 11400000, guid: 438d5df616f65ba4b86b0a80c1db4b79, type: 2}
   - {fileID: 11400000, guid: 32326b3131b9d4d48964c1a7bf2a27ea, type: 2}
@@ -226,6 +228,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 68448ed19a3c83b4f8c8abd6a7a33939, type: 2}
   - {fileID: 11400000, guid: f1d7d22a6353da54586744f461c77c4d, type: 2}
   - {fileID: 11400000, guid: de86a551508cfd8479940fa685762214, type: 2}
+  - {fileID: 11400000, guid: 32326b3131b9d4d48964c1a7bf2a27ea, type: 2}
   answerList:
   - {fileID: 0}
   - {fileID: 11400000, guid: 509e8c7de2b9e414f8916f07bd82fe5b, type: 2}
@@ -388,6 +391,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ui: {fileID: 0}
+--- !u!114 &3540256898474570875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 833481111887110611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fde35e277e9e3ce409c86b7cacf7ac18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  storyIdx: 0
+  NpcList:
+  - {fileID: 11400000, guid: dd76b9e7b1529874eafb72f9d1c6ccf1, type: 2}
+  - {fileID: 11400000, guid: 74c25936362ba4944a4aa5073e6219be, type: 2}
+  - {fileID: 11400000, guid: e346d186b5258824593d5c91a7ad596a, type: 2}
+  - {fileID: 11400000, guid: 9df5918bd88ed9241960bcc49edd2eb5, type: 2}
 --- !u!1 &1503600934121918969
 GameObject:
   m_ObjectHideFlags: 0
@@ -1657,7 +1678,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC2A4\uD1A0\uB9AC \uAC74\uB108\uB6F0\uAE30"
+  m_text: "\uC790\uB3D9 \uC9C4\uD589"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bab49dd3f00cdd242a6d2eeb0cc39c51, type: 2}
   m_sharedMaterial: {fileID: -2427065712003195855, guid: bab49dd3f00cdd242a6d2eeb0cc39c51,

@@ -15,6 +15,8 @@ public class DialogueManager : SingletonManager<DialogueManager>
     public KarmaScript karmaScript;
     [HideInInspector]
     public Answer answer;
+    [HideInInspector]
+    public NpcData npcData;
 
     //public bool isSceneChanged;
     public List<ScriptSO> storyList = new List<ScriptSO>();
@@ -34,6 +36,8 @@ public class DialogueManager : SingletonManager<DialogueManager>
     {
         //카르마 초기화 추후 게임매니저나 다른 곳으로 옮길 것
         //GameManager.Instance.PlayerStateMachine.Player.Karma = 0f;
+
+
         Debug.Log("현재 카르마 수치: " + GameManager.Instance.PlayerStateMachine.Player.Karma);
         
         set = GetComponent<DialogueSetting>();
@@ -48,11 +52,13 @@ public class DialogueManager : SingletonManager<DialogueManager>
         answer = GetComponent<Answer>();
         systemMsg = GetComponent<SystemMsg>();
         quest = GetComponent<Quest>();
+        npcData = GetComponent<NpcData>();
+
+        npcData.Init();
 
         systemMsg.Init();
-        //answer.Init();
-
         quest.UpdateQuest();
+        //answer.Init();
 
         systemMsg.UpdateMessage(0);
     }
@@ -62,14 +68,18 @@ public class DialogueManager : SingletonManager<DialogueManager>
     // 1번: 1일차 낮 시작시
     // 2번: 1일차 밤 시작시
     // 3번: 1일차 밤 통로 진입시
-    public void StartStory(int storyIdx)
+    public void StartStory(int _storyIdx)
     {
-        storyScript.Init(storyList[storyIdx]);
-        if (answerList[storyIdx] != null)
-            answer.InitAnswer(answerList[storyIdx]);
+        // 인댁스에 맞는 스토리 입력
+        storyScript.Init(storyList[_storyIdx]);
+        if (answerList[_storyIdx] != null)
+            answer.InitAnswer(answerList[_storyIdx]);
         else Debug.Log("이 파트엔 선택지가 없습니다. answerList[storyIdx] null");
         storyScript.Print();
-        //scriptIndex++;
+
+        // npc 정보 설정, 전체 스트레스 증가
+        npcData.storyIdx = _storyIdx -1;
+        npcData.AllStressUp(20);
     }
 
     public void FinishStory()
@@ -77,11 +87,8 @@ public class DialogueManager : SingletonManager<DialogueManager>
         storyScript.SkipEnable();
     }
 
-    public void NpcStartInteract()
+    public void NewDayInteract()
     {
-        // NPC 대화 기회 초기화
-        //isInteracted = false;
+        npcData.InitInteraction();
     }
-
-
 }
