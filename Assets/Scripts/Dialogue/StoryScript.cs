@@ -40,6 +40,7 @@ public class StoryScript : DialogueSetting, IScript
 
     public void SkipEnable()
     {
+        AudioManager.Instance.PlaySoundEffect(SoundEffect.skip);
         skipenable = true;
         Input.GetMouseButtonDown(0);
     }

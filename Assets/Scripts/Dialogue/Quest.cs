@@ -1,7 +1,8 @@
+using System.Runtime.CompilerServices;
+using System;
 using System.Text;
 using TMPro;
 using UnityEngine;
-using static AudioManager;
 
 public class Quest : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class Quest : MonoBehaviour
     public TextMeshProUGUI nowQuestText; // 협업 끝나면 UIDialogue로 대체
     private StringBuilder sb = new StringBuilder();
     public AudioManager audioManager;
+
+
 
     private void Start() 
     {
@@ -22,6 +25,7 @@ public class Quest : MonoBehaviour
     {
         CurrentQuestIndex = 0;
         UpdateQuest();
+        TutorialStart();
     }
 
     public void UpdateQuest()
@@ -42,5 +46,17 @@ public class Quest : MonoBehaviour
         CurrentQuestIndex++;
         UpdateQuest();
         AudioManager.Instance.PlaySoundEffect(SoundEffect.Quest);
+    }
+
+    public void TutorialStart()
+    {
+        if (EventManager.Instance.GetSwitch(GameSwitch.IsTutorailEnd))
+        {
+            return;
+        }
+        else
+        {
+            
+        }
     }
 }

@@ -39,7 +39,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.34
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0022290836, g: 0.0033699714, b: 0.0066406974, a: 0.34}
+  m_IndirectSpecularColor: {r: 0.0022441715, g: 0.0033833382, b: 0.006654708, a: 0.34}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4746,7 +4746,7 @@ PrefabInstance:
     - target: {fileID: 5452488164345667264, guid: 222e218f300d41c43ad53bb94982f890,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 5452488164345667264, guid: 222e218f300d41c43ad53bb94982f890,
         type: 3}
@@ -7603,37 +7603,37 @@ PrefabInstance:
     - target: {fileID: 2338931032809326582, guid: eabcc365d990c7b4db514f77c7083587,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -70
       objectReference: {fileID: 0}
     - target: {fileID: 2338931032809326582, guid: eabcc365d990c7b4db514f77c7083587,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2338931032809326582, guid: eabcc365d990c7b4db514f77c7083587,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 199
       objectReference: {fileID: 0}
     - target: {fileID: 2338931032809326582, guid: eabcc365d990c7b4db514f77c7083587,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.6238721
       objectReference: {fileID: 0}
     - target: {fileID: 2338931032809326582, guid: eabcc365d990c7b4db514f77c7083587,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0.0030488386
       objectReference: {fileID: 0}
     - target: {fileID: 2338931032809326582, guid: eabcc365d990c7b4db514f77c7083587,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.7815112
       objectReference: {fileID: 0}
     - target: {fileID: 2338931032809326582, guid: eabcc365d990c7b4db514f77c7083587,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.0038192144
       objectReference: {fileID: 0}
     - target: {fileID: 2338931032809326582, guid: eabcc365d990c7b4db514f77c7083587,
         type: 3}
@@ -7653,22 +7653,22 @@ PrefabInstance:
     - target: {fileID: 4629451357280229868, guid: eabcc365d990c7b4db514f77c7083587,
         type: 3}
       propertyPath: field of view
-      value: 40
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 4629451357280229868, guid: eabcc365d990c7b4db514f77c7083587,
         type: 3}
       propertyPath: far clip plane
-      value: 5000
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 4629451357280229868, guid: eabcc365d990c7b4db514f77c7083587,
         type: 3}
       propertyPath: near clip plane
-      value: 0.1
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4629451357280229868, guid: eabcc365d990c7b4db514f77c7083587,
         type: 3}
       propertyPath: orthographic size
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6448656794343335931, guid: eabcc365d990c7b4db514f77c7083587,
         type: 3}
@@ -20910,6 +20910,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6704845401779777863, guid: a35e4adfedca2cb4192feb00507a8833,
+        type: 3}
+      propertyPath: m_BlockingMask.m_Bits
+      value: 262135
+      objectReference: {fileID: 0}
     - target: {fileID: 8928078179102741797, guid: a35e4adfedca2cb4192feb00507a8833,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -20959,6 +20964,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9101747812963348459, guid: a35e4adfedca2cb4192feb00507a8833,
+        type: 3}
+      propertyPath: m_text
+      value: "\uC911\uC694\uBD80\uBD84\uAE4C\uC9C0 \uC2A4\uD0B5"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

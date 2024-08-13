@@ -5,6 +5,7 @@ public enum GameSwitch
     DoorUnlocked,
     BossDefeated,
     Newtype,
-    IsDaytime
+    IsDaytime,
+    IsTutorailEnd
     // 필요에 따라 더 추가
 }

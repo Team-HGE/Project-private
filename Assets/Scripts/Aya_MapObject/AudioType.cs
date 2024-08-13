@@ -13,5 +13,6 @@ public enum SoundEffect
     duck,
     Wokeup,
     DialClick,
-    systemMsg
+    systemMsg,
+    skip
 }
