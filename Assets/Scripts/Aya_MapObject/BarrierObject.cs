@@ -37,7 +37,7 @@ public class BarrierObject : InteractableObject
     }
     public override void Interact()
     {
-        if (isInteractable) return;
+        if (isInteractable || !HotelFloorScene_DataManager.Instance.controller.isCentralPowerActive) return;
         if (!isOpen)
         {
             foreach (var obj in HotelFloorScene_DataManager.Instance.controller.barrierObjects)

@@ -269,6 +269,16 @@ PrefabInstance:
         type: 3}
       propertyPath: onComplete.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 8583290490904494420}
+    - target: {fileID: 2423611029185485627, guid: 2b89ecc848a7f774c98f97d8ba23ec5d,
+        type: 3}
+      propertyPath: onComplete.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnNowFloorAllLight
+      objectReference: {fileID: 0}
+    - target: {fileID: 2423611029185485627, guid: 2b89ecc848a7f774c98f97d8ba23ec5d,
+        type: 3}
+      propertyPath: onComplete.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Lever, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2571849620934891826, guid: 2b89ecc848a7f774c98f97d8ba23ec5d,
         type: 3}
@@ -1241,6 +1251,18 @@ MeshRenderer:
     type: 3}
   m_PrefabInstance: {fileID: 3114589037706914705}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8583290490904494420 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6639650570502236869, guid: 2b89ecc848a7f774c98f97d8ba23ec5d,
+    type: 3}
+  m_PrefabInstance: {fileID: 3114589037706914705}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64117a39cc3fd834db01d610c7c21546, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!23 &8940635499753143415 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 6281037845080627174, guid: 2b89ecc848a7f774c98f97d8ba23ec5d,
@@ -1486,6 +1508,16 @@ PrefabInstance:
         type: 3}
       propertyPath: onComplete.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 5452855532091205210}
+    - target: {fileID: 4982082064333150463, guid: 2d1a9674de7f55643a5a5face2e7d050,
+        type: 3}
+      propertyPath: onComplete.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnNowFloorAllLight
+      objectReference: {fileID: 0}
+    - target: {fileID: 4982082064333150463, guid: 2d1a9674de7f55643a5a5face2e7d050,
+        type: 3}
+      propertyPath: onComplete.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Lever, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5259375824801470459, guid: 2d1a9674de7f55643a5a5face2e7d050,
         type: 3}
@@ -1697,6 +1729,18 @@ MeshRenderer:
     type: 3}
   m_PrefabInstance: {fileID: 8289196629461651291}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5452855532091205210 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4081751503671175425, guid: 2d1a9674de7f55643a5a5face2e7d050,
+    type: 3}
+  m_PrefabInstance: {fileID: 8289196629461651291}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64117a39cc3fd834db01d610c7c21546, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!23 &5486094146984007323 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 4551909857589565888, guid: 2d1a9674de7f55643a5a5face2e7d050,

@@ -1,14 +1,19 @@
 using DG.Tweening;
+using Sirenix.OdinInspector;
 using UnityEngine;
 public class Lever : InteractableObject
 {
-    [Header("OnOffLight")]
+    [Title("OnOffLight")]
     [SerializeField] Floor nowFloor;
 
-    [Header("ObjectControll")]
+    [Title("ObjectControll")]
     [SerializeField] DOTweenAnimation laverUp;
+
+    [Title("Sound")]
+    [SerializeField] private AudioSource audioSource;
     private void Start()
     {
+        if (audioSource == null) audioSource = GetComponent<AudioSource>();
         nowFloor = FloorInitializer.Instance.ReturnFloorPosition(transform.position);
         GameManager.Instance.lightManager.levers.Add(this);
     }
@@ -23,6 +28,7 @@ public class Lever : InteractableObject
     {
         if (isInteractable) return;
         laverUp.DOPlay();
+        audioSource.Play();
         isInteractable = true;
     }
 

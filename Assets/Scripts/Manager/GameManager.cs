@@ -25,6 +25,11 @@ public class GameManager : SingletonManager<GameManager>
     [TabGroup("Tab", "Manager")] public LightManager lightManager;
     [TabGroup("Tab", "Manager")] public JumpScareManager jumpScareManager;
 
+
+    [TabGroup("Tab", "GimmickCanvas", SdfIconType.ImageAlt, TextColor = "red")]
+    [TabGroup("Tab", "GimmickCanvas")] public GameObject keyPadGimmickCanvas;
+    [TabGroup("Tab", "GimmickCanvas")] public KeyPadGimmick keyPadGimmick;
+
     [TitleGroup("Time")]
     public DayNightUI dayNightUI;
 
@@ -65,7 +70,5 @@ public class GameManager : SingletonManager<GameManager>
         fadeManager.FadeStart(FadeState.FadeIn);
         AudioManager.Instance.PlaySound(BackGroundSound.ASceneSound);
         DialogueManager.Instance.StartStory(1);
-        yield return new WaitForSeconds(10);
-        lightManager.OffLaversAllLight();
     }
 }

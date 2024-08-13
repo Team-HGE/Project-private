@@ -593,7 +593,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 262135
 --- !u!1 &2778835402691566522
 GameObject:
   m_ObjectHideFlags: 0
@@ -1073,7 +1073,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 262135
 --- !u!1 &4056390089964842404
 GameObject:
   m_ObjectHideFlags: 0
@@ -1230,7 +1230,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 262135
 --- !u!1 &5179798407879905235
 GameObject:
   m_ObjectHideFlags: 0
@@ -2160,7 +2160,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 262135
 --- !u!1 &8653934603685661962
 GameObject:
   m_ObjectHideFlags: 0
@@ -2445,17 +2445,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a546d3ab4a9f5444a1b9b376f376388, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  "\uC751\uC560": {fileID: 0}
   playerInteractionCanvas: {fileID: 2536496253556539132}
   interactableText: {fileID: 2463572097684547869}
   interactionImage: {fileID: 8282584164643165967}
   fillAmountImage: {fileID: 7628347784505405866}
   player: {fileID: 0}
-  exampleBar: {fileID: 6552113285166436792}
   fadeManager: {fileID: 0}
   cinemachineManager: {fileID: 0}
   lightManager: {fileID: 0}
   jumpScareManager: {fileID: 0}
+  keyPadGimmickCanvas: {fileID: 8675022939312994615}
+  keyPadGimmick: {fileID: 7583826870675366474}
   dayNightUI: {fileID: 0}
+  exampleBar: {fileID: 6552113285166436792}
 --- !u!114 &244921895398832529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2490,6 +2493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 357f9eac22f964b4f95942d65acd4174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  toggle: 0
   dayImage: {fileID: 4734562660937044863}
   dayTexture: {fileID: 2800000, guid: c4925f2703024864aa353843bf50932c, type: 3}
   nightTexture: {fileID: 2800000, guid: e7263692f7bd0744aa2195e8748a037d, type: 3}
@@ -2505,9 +2509,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fe10286006711f4a8906d295620da7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  VCam: VCam
+  targetCamera: {fileID: 0}
   playerVC: {fileID: 0}
   mainCamera: {fileID: 0}
-  blendListCamera: {fileID: 0}
+  blendListCamera: {fileID: 2074533612846539887}
 --- !u!114 &7118870173662878522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2520,17 +2526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9aad1afa16f2aa41a9b75a23e004aa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lavers:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  levers: []
   lobbyLights: []
   lobbyObjectRenderer: []
   Use_Y_Lights: {fileID: 2100000, guid: 5eaff358a4eeb2541807f8bb867d6be9, type: 2}
