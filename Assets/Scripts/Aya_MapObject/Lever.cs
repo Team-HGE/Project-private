@@ -1,5 +1,4 @@
 using DG.Tweening;
-using System.Collections.Generic;
 using UnityEngine;
 public class Lever : InteractableObject
 {
@@ -25,8 +24,19 @@ public class Lever : InteractableObject
         laverUp.DOPlay();
         isInteractable = true;
     }
+
+    public void OnNowFloorAllLight()
+    {
+        GameManager.Instance.lightManager.FloorPowerStatus[nowFloor] = true;
+
+        GameManager.Instance.lightManager.OnListLight(GameManager.Instance.lightManager.GetLightsForFloor(nowFloor));
+
+        GameManager.Instance.lightManager.OnChangeMaterial(GameManager.Instance.lightManager.GetRenderersForFloor(nowFloor));
+    }
     public void OffNowFloorAllLight()
     {
+        GameManager.Instance.lightManager.FloorPowerStatus[nowFloor] = false;
+
         GameManager.Instance.lightManager.OffListLight(GameManager.Instance.lightManager.GetLightsForFloor(nowFloor));
 
         GameManager.Instance.lightManager.OffChangeMaterial(GameManager.Instance.lightManager.GetRenderersForFloor(nowFloor));

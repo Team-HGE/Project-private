@@ -119,6 +119,14 @@ public class LightManager : MonoBehaviour
             light.enabled = false;
         }
     }
+
+    public void OnListLight(List<Light> lights)
+    {
+        foreach (var light in lights)
+        {
+            light.enabled = true;
+        }
+    }
     public void OffChangeMaterial(MeshRenderer[] meshRenderers)
     {
         foreach (var renderer in meshRenderers)
@@ -270,5 +278,23 @@ public class LightManager : MonoBehaviour
             return materialType;
         }
         return LightName.Unknown;
+    }
+
+    private Dictionary<Floor, bool> _floorPowerStatus = new Dictionary<Floor, bool>();
+    public Dictionary<Floor, bool> FloorPowerStatus
+    {
+        get 
+        {
+            if (_floorPowerStatus.Count == 0) InitFloorPowerStatus();
+
+            return _floorPowerStatus; 
+        }
+    }
+    void InitFloorPowerStatus()
+    {
+        for(int i = 0; i < (int)Floor.Lobby + 1; i++)
+        {
+            _floorPowerStatus.Add((Floor)i, true);
+        }
     }
 }
