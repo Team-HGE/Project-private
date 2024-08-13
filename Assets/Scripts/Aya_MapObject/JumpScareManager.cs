@@ -1,102 +1,60 @@
 using UnityEngine;
-using Cinemachine;
 using UnityEngine.AI;
-using DG.Tweening;
-using UnityEngine.UI;
+using System;
+using System.Collections;
+using Sirenix.OdinInspector;
 public enum JumpScareType
 {
+    GroupTypeMonster,
     EyeTypeMonster,
     EarTypeMonster
 }
+[Serializable]
+public class MonstersJumpScare
+{
+    public JumpScareType jumpScareType;
+    public GameObject gameObject;
+    public float time;
+}
 public class JumpScareManager : MonoBehaviour
 {
-    public static JumpScareManager Instance;
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-    }
-    [Header("VC")]
-    public GameObject jumpScareObject;
-    public Transform vcFollow;
-    public CinemachineVirtualCamera monsterVC;
-    public CinemachineVirtualCamera mainCamera;
-
-
+    [TitleGroup("JumpScareManager", "MonoBehaviour", alignment: TitleAlignments.Centered, horizontalLine: true, boldTitle: true, indent: false)]
     [Header("FlashLight")]
-    public GameObject flashLight;
+    public Light flashLight;
 
-    [Header("Death")]
-    public GameObject deathCanvas;
+    [TabGroup("Tab", "Death", SdfIconType.EmojiDizzy, TextColor = "black")]
+    [TabGroup("Tab", "Death")] public GameObject playerCanvas;
+    [TabGroup("Tab", "Death")] public GameObject deathCanvas;
+    [TabGroup("Tab", "Death")] public GameObject blackBG;
 
-    [Header("Audio")]
-    [SerializeField] AudioSource jumpScareAudioSources;
-    public AudioClip[] jumpScareAudioClips;
+    [Title("MonsterControllers")]
+    public NavMeshAgent[] monstersNavMeshAgent;
 
-    [Header("MonsterControllers")]
-    [SerializeField] NavMeshAgent[] monstersNavMeshAgent;
-    public void OnJumpScare(Transform target, JumpScareType jumpScareType, Transform eyeTransform)
+    [Title("MonsterType")]
+    public MonstersJumpScare[] monstersJumpScare;
+
+
+    public void PlayJumpScare(JumpScareType jumpScareType)
     {
-        Vector3 secondTake;
-        
-        secondTake = eyeTransform.position - target.position;
-        secondTake.x = 0;
-
-        Vector3 orginPos = secondTake;
-        orginPos.z += 1f;
-
-        Vector3 firstTake = orginPos;
-        firstTake.z += 2.5f;
-
-
-        vcFollow.localPosition = orginPos;
-        
-        jumpScareObject.transform.SetParent(target);
-        jumpScareObject.transform.localPosition = Vector3.zero;
-        jumpScareObject.transform.localRotation = new Quaternion(0,0,0,0);
-        monsterVC.LookAt = eyeTransform;
-        jumpScareObject.SetActive(true);
-        mainCamera.Priority = 0;
-        monsterVC.Priority = 10;
-        flashLight.SetActive(false);
-        vcFollow.DOShakeRotation(1.2f, 15, 10);
-        vcFollow.DOLocalMove(firstTake, 1f).onComplete += () =>
+        flashLight.enabled = false;
+        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOff();
+        playerCanvas.SetActive(false);
+        blackBG.SetActive(true);
+        foreach (var mon in monstersJumpScare)
         {
-
-            vcFollow.DOLocalMove(secondTake, 0.2f).onComplete += () => 
+            if (mon.jumpScareType == jumpScareType)
             {
-                GameManager.Instance.fadeManager.FadeImmediately();
-                Invoke("DeathVideo", 3f);
-            };
-        };
-        OffMonsterController();
-        
-        switch (jumpScareType)
-        {
-            case JumpScareType.EyeTypeMonster:
-                jumpScareAudioSources.clip = jumpScareAudioClips[0];
-                jumpScareAudioSources.Play();
+                mon.gameObject.SetActive(true);
+                StartCoroutine(OnDeathCanvas(mon.time, mon.gameObject));
                 break;
-            case JumpScareType.EarTypeMonster:
-                jumpScareAudioSources.clip = jumpScareAudioClips[0];
-                jumpScareAudioSources.Play();
-                break;
-        }
-        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
-    }
-
-    void OffMonsterController()
-    {
-        foreach (var controller in monstersNavMeshAgent)
-        {
-            controller.enabled = false;
+            }
         }
     }
-    void DeathVideo()
+    IEnumerator OnDeathCanvas(float time, GameObject monsterObject)
     {
-        jumpScareAudioSources.Stop();
+        yield return new WaitForSeconds(time);
+        monsterObject.SetActive(false);
+        playerCanvas.SetActive(true);
         deathCanvas.SetActive(true);
     }
 }

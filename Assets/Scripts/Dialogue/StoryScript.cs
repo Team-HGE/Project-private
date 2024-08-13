@@ -1,19 +1,16 @@
 using System.Collections;
 using UnityEngine;
-using static AudioManager;
 
 public class StoryScript : DialogueSetting, IScript
 {
     [HideInInspector]
     public ScriptSO scriptSO; // 추후 private로 수정예정
-    public AudioManager audioManager; // 권용 수정 오디오 매니저 참고
     public GameObject waitIcon; // 기다리는 아이콘 참조
     public Quest quest;
     public SystemMsg systemMsg;
     private bool skipenable;
     public void Init(ScriptSO _script)
     {
-        audioManager = GetComponent<AudioManager>();
         quest = GetComponent<Quest>();
         systemMsg = GetComponent<SystemMsg>();
         //sbTitle = new StringBuilder();
@@ -44,6 +41,7 @@ public class StoryScript : DialogueSetting, IScript
     public void SkipEnable()
     {
         skipenable = true;
+        Input.GetMouseButtonDown(0);
     }
     private IEnumerator PrintScript()
     {
@@ -175,7 +173,13 @@ public class StoryScript : DialogueSetting, IScript
 
     private void HandlePlayerControl()
     {
-        ui.darkScreen.SetActive(false);
+        if(ui.darkScreen.activeSelf)
+        {
+            ui.darkScreen.SetActive(false);
+        }
+        else
+            ui.darkScreen.SetActive(true);
+
         Debug.Log("플레이어 이동 OnOff");
         GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
     }
@@ -210,6 +214,6 @@ public class StoryScript : DialogueSetting, IScript
     {
         ui.CloseDialogue();
         isTalking = false;
-        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
+        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOn();
     }
 }

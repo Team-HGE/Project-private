@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6872908236445730415}
   - component: {fileID: 1590101630249446192}
   - component: {fileID: 6895432761107242295}
-  - component: {fileID: 1514643531423261183}
+  - component: {fileID: 3890203397879435175}
   m_Layer: 0
   m_Name: Bed_Bass
   m_TagString: Untagged
@@ -84,8 +84,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1030745056648943905}
   m_Mesh: {fileID: 4300000, guid: bb61a7866d23c8d49b3265ee63ee175e, type: 2}
---- !u!64 &1514643531423261183
-MeshCollider:
+--- !u!65 &3890203397879435175
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -102,7 +102,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bb61a7866d23c8d49b3265ee63ee175e, type: 2}
+  serializedVersion: 3
+  m_Size: {x: 8.5, y: 4.25, z: 1}
+  m_Center: {x: -3.75, y: 2.125, z: -0.5}

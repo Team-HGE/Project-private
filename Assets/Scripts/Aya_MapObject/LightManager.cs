@@ -1,4 +1,5 @@
-using System.Collections;
+using Sirenix.OdinInspector;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,28 +19,76 @@ public enum LightName
     None_Week_Lights,
     None_Bar_Lights
 }
+public enum Floor
+{
+    AFloor1F, AFloor2F, AFloor3F, AFloor4F, AFloor5F,
+    BFloor1F, BFloor2F, BFloor3F, BFloor4F, BFloor5F, 
+    Lobby
+}
+[Serializable]
+public class FloorElements
+{
+    public List<Light> lights = new List<Light>();
+    public List<MeshRenderer> renderers = new List<MeshRenderer>();
+}
+
+[Serializable]
 public class LightManager : MonoBehaviour
 {
-    [Header("Laver")]
-    public List<Laver> lavers = new List<Laver>();
+    [TitleGroup("LightManager", "MonoBehaviour", alignment: TitleAlignments.Centered, horizontalLine: true, boldTitle: true, indent: false)]
 
-    [Header("Lobby")]
+    [Title("Lights & MeshRenderer Dictionary")]
+    [ShowInInspector, DictionaryDrawerSettings(DisplayMode = DictionaryDisplayOptions.Foldout)]
+    public Dictionary<Floor, FloorElements> elementsForFloors = new Dictionary<Floor, FloorElements>();
+    public void AddLightToFloor(Floor floor, Light light)
+    {
+        if (!elementsForFloors.ContainsKey(floor))
+        {
+            elementsForFloors[floor] = new FloorElements();
+        }
+        elementsForFloors[floor].lights.Add(light);
+    }
+
+    public void AddRendererToFloor(Floor floor, MeshRenderer renderer)
+    {
+        if (!elementsForFloors.ContainsKey(floor))
+        {
+            elementsForFloors[floor] = new FloorElements();
+        }
+        elementsForFloors[floor].renderers.Add(renderer);
+    }
+
+    public List<Light> GetLightsForFloor(Floor floor)
+    {
+        return elementsForFloors.ContainsKey(floor) ? elementsForFloors[floor].lights : new List<Light>();
+    }
+
+    public List<MeshRenderer> GetRenderersForFloor(Floor floor)
+    {
+        return elementsForFloors.ContainsKey(floor) ? elementsForFloors[floor].renderers : new List<MeshRenderer>();
+    }
+
+    
+    [Title("Laver")]
+    public List<Lever> levers = new List<Lever>();
+
+    [Title("Lobby")]
     public List<Light> lobbyLights = new List<Light>();
     public List<MeshRenderer> lobbyObjectRenderer = new List<MeshRenderer>();
 
-    [Header("UseLights")]
-    public Material Use_Y_Lights;
-    public Material Use_W_Lights;
-    public Material Use_WY_Lights;
-    public Material Use_Week_Lights;
-    public Material Use_Bar_Lights;
+    [TabGroup("Light", "UseLights", SdfIconType.Palette, TextColor = "yellow")]
+    [TabGroup("Light", "UseLights")][SerializeField] Material Use_Y_Lights;
+    [TabGroup("Light", "UseLights")][SerializeField] Material Use_W_Lights;
+    [TabGroup("Light", "UseLights")][SerializeField] Material Use_WY_Lights;
+    [TabGroup("Light", "UseLights")][SerializeField] Material Use_Week_Lights;
+    [TabGroup("Light", "UseLights")][SerializeField] Material Use_Bar_Lights;
 
-    [Header("noneLights")]
-    public Material None_Y_Lights;
-    public Material None_W_Lights;
-    public Material None_WY_Lights;
-    public Material None_Week_Lights;
-    public Material None_Bar_Lights;
+    [TabGroup("Light", "NoneLights", SdfIconType.Palette, TextColor = "white")]
+    [TabGroup("Light", "NoneLights")][SerializeField] Material None_Y_Lights;
+    [TabGroup("Light", "NoneLights")][SerializeField] Material None_W_Lights;
+    [TabGroup("Light", "NoneLights")][SerializeField] Material None_WY_Lights;
+    [TabGroup("Light", "NoneLights")][SerializeField] Material None_Week_Lights;
+    [TabGroup("Light", "NoneLights")][SerializeField] Material None_Bar_Lights;
 
     private Dictionary<string, LightName> materailLightName = new Dictionary<string, LightName>()
     {
@@ -57,9 +106,9 @@ public class LightManager : MonoBehaviour
     };
     public void OffLaversAllLight()
     {
-        foreach (var laver in lavers)
+        foreach (var lever in levers)
         {
-            laver.OffNowFloorAllLight();
+            lever.OffNowFloorAllLight();
         }
     }
 
@@ -68,6 +117,14 @@ public class LightManager : MonoBehaviour
         foreach (var light in lights)
         {
             light.enabled = false;
+        }
+    }
+
+    public void OnListLight(List<Light> lights)
+    {
+        foreach (var light in lights)
+        {
+            light.enabled = true;
         }
     }
     public void OffChangeMaterial(MeshRenderer[] meshRenderers)
@@ -178,6 +235,42 @@ public class LightManager : MonoBehaviour
             }
         }
     }
+    public void OnChangeMaterial(List<MeshRenderer> meshRenderers)
+    {
+        foreach (var renderer in meshRenderers)
+        {
+            if (renderer == null)
+            {
+                continue;
+            }
+            Material[] newMaterial = renderer.materials;
+            for (int i = 0; i < newMaterial.Length; i++)
+            {
+                string materialName = newMaterial[i].name.Replace(" (Instance)", "");
+                LightName newName = GetMaterialType(materialName);
+                switch (newName)
+                {
+                    case LightName.None_Bar_Lights:
+                        newMaterial[i] = Use_Bar_Lights;
+                        break;
+                    case LightName.None_Y_Lights:
+                        newMaterial[i] = Use_Y_Lights;
+                        break;
+                    case LightName.None_WY_Lights:
+                        newMaterial[i] = Use_WY_Lights;
+                        break;
+                    case LightName.None_W_Lights:
+                        newMaterial[i] = Use_W_Lights;
+                        break;
+                    case LightName.None_Week_Lights:
+                        newMaterial[i] = Use_Week_Lights;
+                        break;
+                    default: break;
+                }
+                renderer.materials = newMaterial;
+            }
+        }
+    }
     LightName GetMaterialType(string materialName)
     {
         if (materailLightName.TryGetValue(materialName, out LightName materialType))
@@ -186,26 +279,22 @@ public class LightManager : MonoBehaviour
         }
         return LightName.Unknown;
     }
-    float time;
-    bool lightOff;
-    private void Update()
+
+    private Dictionary<Floor, bool> _floorPowerStatus = new Dictionary<Floor, bool>();
+    public Dictionary<Floor, bool> FloorPowerStatus
     {
-        if (!lightOff)
+        get 
         {
-            time += Time.deltaTime;
-            if (time > 10)
-            {
-                lightOff = true;
-                HotelFloorScene_DataManager.Instance.controller.isCentralPowerActive = false;
-                //OffLaversAllLight();
-                OffListLight(lobbyLights);
-                OffChangeMaterial(lobbyObjectRenderer);
-                
-               // foreach (var obj in HotelFloorScene_DataManager.Instance.controller.barrierObjects)
-                //{
-                 //   obj.CloseAni();
-                //}
-            }
+            if (_floorPowerStatus.Count == 0) InitFloorPowerStatus();
+
+            return _floorPowerStatus; 
+        }
+    }
+    void InitFloorPowerStatus()
+    {
+        for(int i = 0; i < (int)Floor.Lobby + 1; i++)
+        {
+            _floorPowerStatus.Add((Floor)i, true);
         }
     }
 }

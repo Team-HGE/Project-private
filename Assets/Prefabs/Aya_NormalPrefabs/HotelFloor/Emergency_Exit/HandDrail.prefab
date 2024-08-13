@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2317353602020355671}
   - component: {fileID: 3628476517058936076}
   - component: {fileID: 1499023363279428246}
-  - component: {fileID: 7167041019726146602}
+  - component: {fileID: 6401702073350447525}
   m_Layer: 0
   m_Name: HandDrail
   m_TagString: Untagged
@@ -84,8 +84,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7047305957199150297}
   m_Mesh: {fileID: 4300000, guid: 6379e35db4ed2754599b55f4e75f37af, type: 2}
---- !u!64 &7167041019726146602
-MeshCollider:
+--- !u!65 &6401702073350447525
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -102,7 +102,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 6379e35db4ed2754599b55f4e75f37af, type: 2}
+  serializedVersion: 3
+  m_Size: {x: 4, y: 2.5399103, z: 1.4404297}
+  m_Center: {x: 0, y: 0.00000047683716, z: 0}

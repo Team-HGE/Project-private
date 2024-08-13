@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5872325828246098024}
   - component: {fileID: 4168395731575379792}
   - component: {fileID: 836971282557858681}
-  - component: {fileID: 132573734224334054}
+  - component: {fileID: 5781265237481729950}
   m_Layer: 0
   m_Name: Flower_Bed
   m_TagString: Untagged
@@ -100,8 +100,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 683605429684837554}
   m_Mesh: {fileID: 4300000, guid: 3fbc871227312bd4a87d9a419ddfb03a, type: 2}
---- !u!64 &132573734224334054
-MeshCollider:
+--- !u!65 &5781265237481729950
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -118,10 +118,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 3fbc871227312bd4a87d9a419ddfb03a, type: 2}
+  serializedVersion: 3
+  m_Size: {x: 2, y: 4, z: 29.75}
+  m_Center: {x: 1, y: 2, z: 14.875}
 --- !u!1001 &509724014113578041
 PrefabInstance:
   m_ObjectHideFlags: 0

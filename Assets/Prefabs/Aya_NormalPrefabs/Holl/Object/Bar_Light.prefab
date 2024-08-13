@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8783493218708270749}
   - component: {fileID: 3250703263959731376}
   - component: {fileID: 1609088604442306974}
-  - component: {fileID: 4374624713674945173}
   m_Layer: 0
   m_Name: Bar_Light
   m_TagString: Untagged
@@ -85,28 +84,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5604886602890742428}
   m_Mesh: {fileID: 4300000, guid: e5fdb919c3c39fe4f8693931851788cd, type: 2}
---- !u!64 &4374624713674945173
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5604886602890742428}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: e5fdb919c3c39fe4f8693931851788cd, type: 2}
 --- !u!1 &7446395515891681641
 GameObject:
   m_ObjectHideFlags: 0
@@ -118,6 +95,7 @@ GameObject:
   - component: {fileID: 5702077330138575797}
   - component: {fileID: 2376625368236601113}
   - component: {fileID: 8413966087030523557}
+  - component: {fileID: 5944029654576764351}
   m_Layer: 0
   m_Name: Spot Light
   m_TagString: Untagged
@@ -225,3 +203,19 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!114 &5944029654576764351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7446395515891681641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f13a56ce3123004f8afe4c74cb47efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisLight: {fileID: 2376625368236601113}
+  parentRenderer:
+  - {fileID: 3250703263959731376}
+  floor: 0

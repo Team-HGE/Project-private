@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 410175662934452521}
   - component: {fileID: 6787693117177521207}
   - component: {fileID: 7593976703601244983}
-  - component: {fileID: 76655061034959382}
+  - component: {fileID: 9026311952684841436}
   m_Layer: 0
   m_Name: Vent
   m_TagString: Untagged
@@ -84,8 +84,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 844759000103790186}
   m_Mesh: {fileID: 4300000, guid: 51387cad8df4eb24680690615edabc85, type: 2}
---- !u!64 &76655061034959382
-MeshCollider:
+--- !u!65 &9026311952684841436
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -102,7 +102,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 51387cad8df4eb24680690615edabc85, type: 2}
+  serializedVersion: 3
+  m_Size: {x: 5.25, y: 3, z: 7}
+  m_Center: {x: 1.625, y: 0, z: -2.5}

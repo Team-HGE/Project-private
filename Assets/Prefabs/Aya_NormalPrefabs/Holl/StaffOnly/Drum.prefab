@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8184338366656012902}
   - component: {fileID: 4225439689048895174}
   - component: {fileID: 5817064673397024547}
-  - component: {fileID: 3599195648355508025}
+  - component: {fileID: 8492371053729695239}
   m_Layer: 0
   m_Name: Drum
   m_TagString: Untagged
@@ -84,8 +84,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8755347792858659450}
   m_Mesh: {fileID: 4300000, guid: 9624992603ec398428a9d19c0d24cf0f, type: 2}
---- !u!64 &3599195648355508025
-MeshCollider:
+--- !u!65 &8492371053729695239
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -102,7 +102,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 9624992603ec398428a9d19c0d24cf0f, type: 2}
+  serializedVersion: 3
+  m_Size: {x: 2.45, y: 4, z: 2.56}
+  m_Center: {x: 0.0035423636, y: 0, z: -0.01872778}

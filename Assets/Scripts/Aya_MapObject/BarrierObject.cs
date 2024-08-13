@@ -15,11 +15,17 @@ public class BarrierObject : InteractableObject
     [SerializeField] AudioSource alarmSound;
 
     [SerializeField] Light alarmLight;
-    [SerializeField] bool isOpen { get; set; }
+
+    [Header("Bool Check")]
+    [SerializeField] bool _isOpen;
+    public bool isOpen
+    {
+        get { return _isOpen; }
+        set { _isOpen = value; } 
+    }
     float time;
     private void Start()
     {
-        isOpen = true;
         HotelFloorScene_DataManager.Instance.controller.barrierObjects.Add(this);
         alarmSound = alram.GetComponent<AudioSource>();
     }

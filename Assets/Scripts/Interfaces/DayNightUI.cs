@@ -1,12 +1,16 @@
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
-using System;
 
 public class DayNightUI : MonoBehaviour
 {
-    public RawImage dayImage;
-    public Texture2D dayTexture;
-    public Texture2D nightTexture;
+    [TitleGroup("DayNightUI", "MonoBehaviour", alignment: TitleAlignments.Centered, horizontalLine: true, boldTitle: true, indent: false)]
+    [SerializeField] bool toggle;
+
+    [TabGroup("Tab", "Day", SdfIconType.FolderFill, TextColor = "orange")]
+    [TabGroup("Tab", "Day")] public RawImage dayImage;
+    [TabGroup("Tab", "Day")] public Texture2D dayTexture;
+    [TabGroup("Tab", "Day")] public Texture2D nightTexture;
 
     void Start()
     {

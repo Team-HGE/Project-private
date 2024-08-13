@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 7061075932150141320}
   - component: {fileID: 5074647679322441608}
   - component: {fileID: 8137062989017725673}
-  - component: {fileID: 1118255577008618490}
   - component: {fileID: 6266404763318252459}
   - component: {fileID: 9097756510772253255}
+  - component: {fileID: 6245241520584701563}
   m_Layer: 0
   m_Name: EleVatorSafeDoor
   m_TagString: Untagged
@@ -85,28 +85,6 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2389598102120106080}
-  m_Mesh: {fileID: 4300000, guid: 29267837a20a30c4394cce70c4dd0f9f, type: 2}
---- !u!64 &1118255577008618490
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2389598102120106080}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 29267837a20a30c4394cce70c4dd0f9f, type: 2}
 --- !u!114 &6266404763318252459
 MonoBehaviour:
@@ -324,3 +302,24 @@ MonoBehaviour:
   optionalScrambleMode: 0
   optionalShakeRandomnessMode: 0
   optionalString: 
+--- !u!65 &6245241520584701563
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2389598102120106080}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7, y: 9.5, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}

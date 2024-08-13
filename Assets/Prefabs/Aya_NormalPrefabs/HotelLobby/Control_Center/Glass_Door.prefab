@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7222871502832723874}
   - component: {fileID: 7179870932898601733}
   - component: {fileID: 3059786280838030962}
-  - component: {fileID: 8513464418494927354}
+  - component: {fileID: 4423921330036908301}
   m_Layer: 0
   m_Name: Glass_Door
   m_TagString: Untagged
@@ -84,8 +84,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7872509478574970063}
   m_Mesh: {fileID: 4300000, guid: cbd3833707374fa48bfb7db459ea791e, type: 2}
---- !u!64 &8513464418494927354
-MeshCollider:
+--- !u!65 &4423921330036908301
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -102,7 +102,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: cbd3833707374fa48bfb7db459ea791e, type: 2}
+  serializedVersion: 3
+  m_Size: {x: 17.5, y: 2.000014, z: 9.25}
+  m_Center: {x: 0, y: 0.000007987022, z: 0}

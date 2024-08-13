@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 4749899359929002009}
   - component: {fileID: 646096494193066702}
   - component: {fileID: 157652938452145276}
-  - component: {fileID: 1248227962992013038}
   - component: {fileID: 671414912244017340}
+  - component: {fileID: 7437947468183031289}
   m_Layer: 0
   m_Name: Control_CenterDoor
   m_TagString: Untagged
@@ -84,28 +84,6 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3512647142608396868}
-  m_Mesh: {fileID: 4300000, guid: f6373501e484f5c42ad65f2d70671a73, type: 2}
---- !u!64 &1248227962992013038
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3512647142608396868}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: f6373501e484f5c42ad65f2d70671a73, type: 2}
 --- !u!114 &671414912244017340
 MonoBehaviour:
@@ -215,3 +193,24 @@ MonoBehaviour:
   optionalScrambleMode: 0
   optionalShakeRandomnessMode: 0
   optionalString: 
+--- !u!65 &7437947468183031289
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3512647142608396868}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 18.601322, y: 18.500023, z: 2.8213658}
+  m_Center: {x: -0.0000052452087, y: -0.0000038146973, z: 0.0000070929527}

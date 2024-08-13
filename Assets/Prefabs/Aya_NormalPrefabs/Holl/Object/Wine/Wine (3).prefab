@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1735889690516730992}
   - component: {fileID: 3392057873186576760}
   - component: {fileID: 5520980264699030299}
-  - component: {fileID: 1613049333900192255}
+  - component: {fileID: 6906280688166921571}
   m_Layer: 0
   m_Name: Wine (3)
   m_TagString: Untagged
@@ -86,8 +86,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7950739735573265655}
   m_Mesh: {fileID: 4300000, guid: 1d313422d98d3be4f93c5d9240b78c9b, type: 2}
---- !u!64 &1613049333900192255
-MeshCollider:
+--- !u!65 &6906280688166921571
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -104,7 +104,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 1d313422d98d3be4f93c5d9240b78c9b, type: 2}
+  serializedVersion: 3
+  m_Size: {x: 1.0546876, y: 3.6250005, z: 0.91339123}
+  m_Center: {x: -0.37500006, y: 1.6875002, z: 0.37500006}

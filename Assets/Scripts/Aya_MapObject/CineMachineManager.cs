@@ -1,20 +1,28 @@
 using Cinemachine;
+using Sirenix.OdinInspector;
 using System.Collections;
 using UnityEngine;
 
 public class CinemachineManager : MonoBehaviour
 {
-    string VCam = "VCam";
+    [TitleGroup("CinemachineManager", "MonoBehaviour", alignment: TitleAlignments.Centered, horizontalLine: true, boldTitle: true, indent: false)]
     
-    private CinemachineVirtualCamera targetCamera;
-    [Header("Cinemachine")]
-    [SerializeField] CinemachineVirtualCamera playerVC;
-    [SerializeField] CinemachineBrain mainCamera;
-    [SerializeField] CinemachineBlendListCamera blendListCamera;
+    [Header("Tag")]
+    [SerializeField] string VCam = "VCam";
 
+    [TabGroup("Tab", "Cinemachine", SdfIconType.Camera, TextColor = "red")]
+    [TabGroup("Tab", "Cinemachine")][SerializeField] CinemachineVirtualCamera targetCamera;
+    [TabGroup("Tab", "Cinemachine")] public CinemachineVirtualCamera playerVC;
+    [TabGroup("Tab", "Cinemachine")] public CinemachineBrain mainCamera;
+    [TabGroup("Tab", "Cinemachine")] public CinemachineBlendListCamera blendListCamera;
 
     Transform playerVCParent;
     Transform targetVCParent;
+
+    private void Start()
+    {
+        playerVC = HotelFloorScene_DataManager.Instance.GetPlayerVC;
+    }
     public IEnumerator LookTarget(CinemachineVirtualCamera targetCamera)
     {
         if (playerVC == null)
@@ -22,7 +30,6 @@ public class CinemachineManager : MonoBehaviour
             playerVC = GameObject.FindGameObjectWithTag(VCam).GetComponent<CinemachineVirtualCamera>();
         }
         yield return StartCoroutine(SetBlendCamera(0, targetCamera));
-        
     }
 
     IEnumerator SetBlendCamera(int index, CinemachineVirtualCamera target)

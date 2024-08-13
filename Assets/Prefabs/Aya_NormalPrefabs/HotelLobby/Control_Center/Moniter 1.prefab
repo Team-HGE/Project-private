@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8687184563699031318}
   - component: {fileID: 7762403370730531413}
   - component: {fileID: 1989949791684130690}
-  - component: {fileID: 8172592454140338035}
+  - component: {fileID: 7542240848796875747}
   m_Layer: 0
   m_Name: Moniter 1
   m_TagString: Untagged
@@ -84,8 +84,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5576837142888259273}
   m_Mesh: {fileID: 4300000, guid: c3ecd6b9fcddaeb4eb3f315d6907ee0e, type: 2}
---- !u!64 &8172592454140338035
-MeshCollider:
+--- !u!65 &7542240848796875747
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -102,7 +102,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: c3ecd6b9fcddaeb4eb3f315d6907ee0e, type: 2}
+  serializedVersion: 3
+  m_Size: {x: 1.3143921, y: 8, z: 9}
+  m_Center: {x: -0.15719604, y: -1, z: 0}

@@ -17,8 +17,7 @@ public class MonsterEarTypeAttackState : MonsterEarTypeGroundState
         Debug.Log("플레이어 사망 - 게임 오버");
         // 애니메이션 실행
         StartAnimation(stateMachine.Monster.AnimationData.AttackParameterHash);
-
-        JumpScareManager.Instance.OnJumpScare(stateMachine.Monster.monsterTransform, JumpScareType.EyeTypeMonster, stateMachine.Monster.monsterEyeTransform);        
+       
     }
 
     public override void Exit()

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9150422821644156056}
   - component: {fileID: 1666192104193941955}
   - component: {fileID: 776443071600380384}
-  - component: {fileID: 8430301196211392864}
+  - component: {fileID: 5819382422905353675}
   m_Layer: 0
   m_Name: Wood
   m_TagString: Untagged
@@ -84,8 +84,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5450211696344386359}
   m_Mesh: {fileID: 4300000, guid: 5f5d7cc4d78d54740ab544b2ece63a29, type: 2}
---- !u!64 &8430301196211392864
-MeshCollider:
+--- !u!65 &5819382422905353675
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -102,7 +102,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 5f5d7cc4d78d54740ab544b2ece63a29, type: 2}
+  serializedVersion: 3
+  m_Size: {x: 5.0000005, y: 1.0000032, z: 6.000001}
+  m_Center: {x: -0.0000004768372, y: -0.00012207031, z: -1.3006304e-20}

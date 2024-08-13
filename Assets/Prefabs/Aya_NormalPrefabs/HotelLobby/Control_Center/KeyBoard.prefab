@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6230734879086691850}
   - component: {fileID: 4059770605278873302}
   - component: {fileID: 861590269789885867}
-  - component: {fileID: 1516152883712331650}
+  - component: {fileID: 5658346338698628843}
   m_Layer: 0
   m_Name: KeyBoard
   m_TagString: Untagged
@@ -85,8 +85,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8665678018981646511}
   m_Mesh: {fileID: 4300000, guid: 3e12eaf74cbd45946ae16920f6be0537, type: 2}
---- !u!64 &1516152883712331650
-MeshCollider:
+--- !u!65 &5658346338698628843
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -103,10 +103,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 3e12eaf74cbd45946ae16920f6be0537, type: 2}
+  serializedVersion: 3
+  m_Size: {x: 3, y: 0.33078003, z: 7}
+  m_Center: {x: 0, y: 0.040390015, z: 0}
 --- !u!1001 &6796015251914409056
 PrefabInstance:
   m_ObjectHideFlags: 0

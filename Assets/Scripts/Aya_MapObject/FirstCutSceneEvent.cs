@@ -20,9 +20,8 @@ public class FirstCutSceneEvent : MonoBehaviour
     WaitForSeconds waitTime = new WaitForSeconds(1.5f);
 
     [Header("And")]
-
     [SerializeField] AudioSource audioSource;
-    public Laver floorB_Laver;
+    public Lever floorB_Laver;
     void LightOff(Light[] offLights)
     {
         foreach (Light light in offLights)

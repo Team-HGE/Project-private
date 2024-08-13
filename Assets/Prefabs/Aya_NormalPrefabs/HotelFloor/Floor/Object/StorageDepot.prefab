@@ -200,7 +200,7 @@ GameObject:
   - component: {fileID: 6441737052915001703}
   - component: {fileID: 845958519736914594}
   - component: {fileID: 1927210621516045328}
-  - component: {fileID: 6897653639177855951}
+  - component: {fileID: 3962529529425826779}
   m_Layer: 0
   m_Name: StorageDepot
   m_TagString: Untagged
@@ -274,8 +274,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8502254980474539896}
   m_Mesh: {fileID: 4300000, guid: 657e6aebed50392449cf6f7ac0a2271b, type: 2}
---- !u!64 &6897653639177855951
-MeshCollider:
+--- !u!65 &3962529529425826779
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -292,7 +292,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 657e6aebed50392449cf6f7ac0a2271b, type: 2}
+  serializedVersion: 3
+  m_Size: {x: 2, y: 0.25000012, z: 1.0000006}
+  m_Center: {x: 0.9999999, y: 0.12500006, z: 0.50000024}

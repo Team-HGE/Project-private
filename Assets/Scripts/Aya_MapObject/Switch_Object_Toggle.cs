@@ -10,6 +10,7 @@ public class Switch_Object_Toggle : InteractableObject
     [SerializeField] MeshRenderer[] lightObjectMesh;
     [SerializeField] GameObject[] lights;
     [SerializeField] bool turnLight;
+    private Floor myFloor;
 
     [Header("Material")]
     [SerializeField] Material[] materials;
@@ -19,6 +20,7 @@ public class Switch_Object_Toggle : InteractableObject
 
     private void Start()
     {
+        myFloor = LightInitializer.Instance.ReturnFloorOfLight(transform.position);
         audioSource = GetComponent<AudioSource>();
     }
     public override void ActivateInteraction()
@@ -39,7 +41,7 @@ public class Switch_Object_Toggle : InteractableObject
     {
         if (!turnLight)
         {
-            if (HotelFloorScene_DataManager.Instance.controller.isCentralPowerActive)
+            if (GameManager.Instance.lightManager.FloorPowerStatus[myFloor])
             {
                 foreach (MeshRenderer mesh in lightObjectMesh)
                 {
@@ -72,7 +74,7 @@ public class Switch_Object_Toggle : InteractableObject
         }
         else
         {
-            if (HotelFloorScene_DataManager.Instance.controller.isCentralPowerActive)
+            if (GameManager.Instance.lightManager.FloorPowerStatus[myFloor])
             {
                 foreach (MeshRenderer mesh in lightObjectMesh)
                 {

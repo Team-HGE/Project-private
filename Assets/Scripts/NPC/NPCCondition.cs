@@ -1,5 +1,5 @@
+using UnityEngine;
 
-public class NPCCondition
+public class NpcCondition : MonoBehaviour
 {
-    public float stress { get; private set; }
 }

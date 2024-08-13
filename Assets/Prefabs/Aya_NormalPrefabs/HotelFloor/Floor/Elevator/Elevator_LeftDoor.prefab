@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 269693046047628710}
   - component: {fileID: 8408855006594612850}
   - component: {fileID: 7005838920183557645}
-  - component: {fileID: 8753254004172937936}
   - component: {fileID: 1309840465889484846}
   - component: {fileID: 8130554291452767047}
+  - component: {fileID: 3015339212716970292}
   m_Layer: 0
   m_Name: Elevator_LeftDoor
   m_TagString: Untagged
@@ -85,28 +85,6 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7359529890838993413}
-  m_Mesh: {fileID: 4300000, guid: c67cd65cfe87753498a8b7d9fa945929, type: 2}
---- !u!64 &8753254004172937936
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7359529890838993413}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: c67cd65cfe87753498a8b7d9fa945929, type: 2}
 --- !u!114 &1309840465889484846
 MonoBehaviour:
@@ -324,3 +302,24 @@ MonoBehaviour:
   optionalScrambleMode: 0
   optionalShakeRandomnessMode: 0
   optionalString: 
+--- !u!65 &3015339212716970292
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7359529890838993413}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 6.6474, y: 12.51, z: 1.0000196}
+  m_Center: {x: -3.3237, y: 6.255, z: -0.5000098}
