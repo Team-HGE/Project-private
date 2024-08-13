@@ -1535,6 +1535,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bar_Light (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5944029654576764351, guid: be81d0a2ced60b84b952c9f4ebf4828c,
+        type: 3}
+      propertyPath: parentRenderer.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5944029654576764351, guid: be81d0a2ced60b84b952c9f4ebf4828c,
+        type: 3}
+      propertyPath: parentRenderer.Array.data[1]
+      value: 
+      objectReference: {fileID: 4717786649556101907}
     - target: {fileID: 8783493218708270749, guid: be81d0a2ced60b84b952c9f4ebf4828c,
         type: 3}
       propertyPath: m_LocalScale.y
@@ -2512,6 +2522,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bar_Light (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5944029654576764351, guid: be81d0a2ced60b84b952c9f4ebf4828c,
+        type: 3}
+      propertyPath: parentRenderer.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5944029654576764351, guid: be81d0a2ced60b84b952c9f4ebf4828c,
+        type: 3}
+      propertyPath: parentRenderer.Array.data[1]
+      value: 
+      objectReference: {fileID: 3686534965884245672}
     - target: {fileID: 8783493218708270749, guid: be81d0a2ced60b84b952c9f4ebf4828c,
         type: 3}
       propertyPath: m_LocalScale.y
@@ -2572,6 +2592,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be81d0a2ced60b84b952c9f4ebf4828c, type: 3}
+--- !u!23 &3686534965884245672 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3250703263959731376, guid: be81d0a2ced60b84b952c9f4ebf4828c,
+    type: 3}
+  m_PrefabInstance: {fileID: 2176898202682497560}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7480718580497724549 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8783493218708270749, guid: be81d0a2ced60b84b952c9f4ebf4828c,

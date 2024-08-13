@@ -24,7 +24,6 @@ public class Lever : InteractableObject
         if (isInteractable) return;
         laverUp.DOPlay();
         isInteractable = true;
-        OffNowFloorAllLight();
     }
     public void OffNowFloorAllLight()
     {

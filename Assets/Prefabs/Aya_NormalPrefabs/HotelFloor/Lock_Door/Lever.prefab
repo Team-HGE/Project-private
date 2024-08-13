@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 4406381821105570317}
   - component: {fileID: 2374019921822614045}
   - component: {fileID: 8698712629749174524}
+  - component: {fileID: 485282887966219699}
   m_Layer: 6
   m_Name: Lever
   m_TagString: Untagged
@@ -287,6 +288,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &485282887966219699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 936041358417600661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64117a39cc3fd834db01d610c7c21546, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nowFloor: 0
+  laverUp: {fileID: 8879603504014814285}
 --- !u!1 &4219980039464250585
 GameObject:
   m_ObjectHideFlags: 0
@@ -338,7 +353,7 @@ MonoBehaviour:
   hasOnPlay: 0
   hasOnUpdate: 0
   hasOnStepComplete: 0
-  hasOnComplete: 0
+  hasOnComplete: 1
   hasOnTweenCreated: 0
   hasOnRewind: 0
   onStart:
@@ -355,7 +370,19 @@ MonoBehaviour:
       m_Calls: []
   onComplete:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 485282887966219699}
+        m_TargetAssemblyTypeName: Lever, Assembly-CSharp
+        m_MethodName: OffNowFloorAllLight
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onTweenCreated:
     m_PersistentCalls:
       m_Calls: []
