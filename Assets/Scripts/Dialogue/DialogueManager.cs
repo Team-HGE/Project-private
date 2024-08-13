@@ -78,7 +78,7 @@ public class DialogueManager : SingletonManager<DialogueManager>
         storyScript.Print();
 
         // npc 정보 설정, 전체 스트레스 증가
-        npcData.storyIdx = _storyIdx;
+        npcData.storyIdx = _storyIdx -1;
         npcData.AllStressUp(20);
     }
 

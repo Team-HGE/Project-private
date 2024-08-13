@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class NpcData: MonoBehaviour
 {
-    [HideInInspector]
     public int storyIdx;
 
     public List<NPC_SO> NpcList = new List<NPC_SO>();
@@ -11,6 +10,8 @@ public class NpcData: MonoBehaviour
     // 게임 시작시 초기화
     public void Init()
     {
+        storyIdx = 0;
+
         for (int i = 0; i < NpcList.Count; i++)
         {
             NpcList[i].state = 0;
@@ -33,7 +34,7 @@ public class NpcData: MonoBehaviour
     // 해당 storyIdx의 상호작용 script를 불러옴
     public ScriptSO LoadNpcSO(int ID)
     {
-        return NpcList[ID].conversations[storyIdx];
+        return NpcList[ID].conversations[storyIdx]; // IndexOutOfRangeException
     }
 
     // 스트레스 관리
