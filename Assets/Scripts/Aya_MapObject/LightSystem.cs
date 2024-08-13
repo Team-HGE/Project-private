@@ -11,7 +11,8 @@ public class LightSystem : MonoBehaviour
         {
             thisLight = GetComponent<Light>();
         }
-        floor = LightInitializer.Instance.ReturnFloorOfLight(transform.position);
+        if (floor == Floor.Lobby) return;
+        floor = LightInitializer.Instance.ReturnFloorPosition(transform.position);
         GameManager.Instance.lightManager.AddLightToFloor(floor, thisLight);
         
         if (parentRenderer != null)

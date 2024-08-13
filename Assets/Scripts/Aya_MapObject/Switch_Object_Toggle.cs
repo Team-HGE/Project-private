@@ -20,7 +20,7 @@ public class Switch_Object_Toggle : InteractableObject
 
     private void Start()
     {
-        myFloor = LightInitializer.Instance.ReturnFloorOfLight(transform.position);
+        myFloor = LightInitializer.Instance.ReturnFloorPosition(transform.position);
         audioSource = GetComponent<AudioSource>();
     }
     public override void ActivateInteraction()
@@ -41,7 +41,7 @@ public class Switch_Object_Toggle : InteractableObject
     {
         if (!turnLight)
         {
-            if (GameManager.Instance.lightManager.FloorPowerStatus[myFloor])
+            if (GameManager.Instance.lightManager.isFloorPowerOn(myFloor))
             {
                 foreach (MeshRenderer mesh in lightObjectMesh)
                 {
@@ -74,7 +74,7 @@ public class Switch_Object_Toggle : InteractableObject
         }
         else
         {
-            if (GameManager.Instance.lightManager.FloorPowerStatus[myFloor])
+            if (GameManager.Instance.lightManager.isFloorPowerOn(myFloor))
             {
                 foreach (MeshRenderer mesh in lightObjectMesh)
                 {

@@ -15,26 +15,26 @@ public class LightInitializer : MonoBehaviour
     [SerializeField] private Transform[] floorTopTransforms;
     [SerializeField] private Transform[] floorBottomTransforms;
 
-    public Floor ReturnFloorOfLight(Vector3 lightPos)
+    public Floor ReturnFloorPosition(Vector3 targetPos)
     {
         int floor = 0;
         for (int i = 0; i < floorTopTransforms.Length; i++)
         {
-            if (lightPos.y >= floorBottomTransforms[i].position.y && lightPos.y <= floorTopTransforms[i].position.y)
+            if (targetPos.y >= floorBottomTransforms[i].position.y && targetPos.y <= floorTopTransforms[i].position.y)
             {
                 floor = i;
                 break;
             }
         }
-        if (lightPos.x > 300)
+        if (targetPos.x > 300)
         {
             // Bµ¿
-            return (Floor)((int)Floor.BFloor1F + floor); 
+            return (Floor)((int)Floor.BFloor1F << floor); 
         }
         else
         {
             // Aµ¿
-            return (Floor)((int)Floor.AFloor1F + floor);
+            return (Floor)((int)Floor.AFloor1F << floor);
         }
     }
 }
