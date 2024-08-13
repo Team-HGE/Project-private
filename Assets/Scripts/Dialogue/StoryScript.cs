@@ -104,6 +104,11 @@ public class StoryScript : DialogueSetting, IScript
                     skipenable = false;
                     continue;
 
+                case var text when text.StartsWith("SystemMsg"):
+                    yield return SystemMsg(text);
+                    skipenable = false;
+                    continue;
+
                 case var text when text.StartsWith("NewTip"):
                     yield return Tips(text);
                     skipenable = false;
@@ -194,6 +199,22 @@ public class StoryScript : DialogueSetting, IScript
             if (int.TryParse(TipString, out int TipsNumber))
             {
                 systemMsg.UpdateTipMessage(TipsNumber);
+            }
+        }
+
+
+        yield break;
+    }
+
+    private IEnumerator SystemMsg(string SystemMsgText)
+    {
+        Debug.Log("선택한 팁 메세지를 호출합니다.");
+        if (SystemMsgText.StartsWith("SystemMsg"))
+        {
+            string SystemMsgString = SystemMsgText.Substring(9);
+            if (int.TryParse(SystemMsgString, out int SystemMsgNumber))
+            {
+                systemMsg.UpdateMessage(SystemMsgNumber);
             }
         }
 
