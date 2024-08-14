@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 public class ObjectPool : MonoBehaviour
 {
@@ -53,20 +54,16 @@ public class ObjectPool : MonoBehaviour
         obj.SetActive(false);
     }
 
-    public void DestroyObject()
+    public GameObject ReturnObjectby(Sprite sprite)
     {
-        Destroy(pool[0]);
-    }
-
-    // Pop Standing illust 구현 중
-    public void ReturnObjectbyIndex(int index)
-    {
-        pool[0].SetActive(false);
-        for (int i = 1; i < index-1; i++)
+        for (int i = 0; i < poolSize; i++)
         {
-            pool[i] = pool[i + 1];
+            if(sprite == pool[i].GetComponent<Image>().sprite)
+            {
+                return pool[i];
+            }
         }
-        //pool[index-1].SetActive(false);
+        return null;
     }
 
     public void ReturnAllObject()
@@ -76,5 +73,27 @@ public class ObjectPool : MonoBehaviour
             pool[i].SetActive(false);
         }
         Debug.Log("풀 초기화 완료");
+    }
+
+    public GameObject ReturnByIndex(int idx)
+    {
+        return pool[idx];
+    }
+
+    public void FadeColor(Image image)
+    {
+        image.color = new Color32(255, 255, 255, 100);
+    }
+
+
+    public void SpriteInit()
+    {
+        Image image;
+
+        for (int i = 0; i < poolSize; i++)
+        {
+            image = pool[i].GetComponent<Image>();
+            image.sprite = null;
+        }
     }
 }

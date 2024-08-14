@@ -56,10 +56,10 @@ public class NPCScript : DialogueSetting, IScript
 
             // 말하는 NPC 이름 - 대화중
             if (scriptSO.speakers[i] != "")
-                UtilSB.SetText(ui.titleText, sbTitle, scriptSO.speakers[i] + " - " + npcSO.state);
+                UtilSB.SetText(ui.titleText, sbTitle, scriptSO.speakers[i] + " - " + PrintNpcState(npcSO.state));
 
             ui.SetPortrait(ui.portrait, scriptSO.portraits[i]);
-            ui.CheckNullTitle(scriptSO.speakers[i]);
+            ui.CheckNullIndex(scriptSO.speakers[i]);
 
             curPrintLine = TextEffect.Typing(ui.bodyText, sbBody, scriptSO.bodyTexts[i]);
             yield return StartCoroutine(curPrintLine);
@@ -79,5 +79,22 @@ public class NPCScript : DialogueSetting, IScript
         npcSO.state = NpcState.Idle;
 
         yield return null;
+    }
+
+    public string PrintNpcState(NpcState stateType)
+    {
+        switch (stateType)
+        {
+            case NpcState.Idle:
+                return "대기중";
+            case NpcState.Speaking:
+                return "대화중";
+            case NpcState.Calling:
+                return "무전중";
+            case NpcState.Mutated:
+                return "변이중";
+            default:
+                return "대기중";
+        }
     }
 }

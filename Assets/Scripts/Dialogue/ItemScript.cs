@@ -40,7 +40,7 @@ public class ItemScript : DialogueSetting, IScript
         {
             UtilSB.SetText(ui.titleText, sbTitle, scriptSO.speakers[i]);
             //ui.SetPortrait(ui.portrait, scriptSO.portraits[i]);
-            ui.CheckNullTitle(scriptSO.speakers[i]);
+            ui.CheckNullIndex(scriptSO.speakers[i]);
 
             //if (scriptSO.bodyTexts[i] == "PickAnswer")
             //{

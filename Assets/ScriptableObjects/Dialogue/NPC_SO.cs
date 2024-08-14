@@ -3,11 +3,11 @@ using UnityEngine;
 
 public enum NpcState
 {
-    Idle,
-    Speaking,
-    Calling,
-    Mutated,
-    Dead,
+    Idle, //대기중
+    Speaking, //대화중
+    Calling, //무전중
+    Mutated, //변이중
+    Dead, //사망
 }
 
 public enum Emotion
