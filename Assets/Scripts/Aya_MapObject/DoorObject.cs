@@ -44,11 +44,13 @@ public class DoorObject : InteractableObject
 
     public override void Interact()
     {
+        audioSource.volume = 1f;
         if (isLock)
         {
             openDoor.DOKill();
             closeDoor.DOKill();
             lockDoor.CreateTween(true);
+            audioSource.volume = 0.5f;
             targetSound = lockSound;
         }
 

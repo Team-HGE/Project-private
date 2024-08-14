@@ -23,9 +23,9 @@ public class FadeManager : MonoBehaviour
     {
         fadeComplete = null;
     }
-    public void FadeStart(FadeState fadeState)
+    public IEnumerator FadeStart(FadeState fadeState)
     {
-        StartCoroutine(Fade(fadeState));
+        yield return StartCoroutine(Fade(fadeState));
     }
 
     public void FadeImmediately() 

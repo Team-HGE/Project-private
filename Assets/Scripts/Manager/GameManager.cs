@@ -66,10 +66,10 @@ public class GameManager : SingletonManager<GameManager>
     IEnumerator ASceneLoading()
     {
         yield return new WaitForSeconds(3);
-        
-        fadeManager.FadeStart(FadeState.FadeIn);
+
+        yield return fadeManager.FadeStart(FadeState.FadeIn);
         AudioManager.Instance.PlaySound(BackGroundSound.ASceneSound);
         DialogueManager.Instance.StartStory(1);
-        HotelFloorScene_DataManager.Instance.controller.isCentralPowerActive = true;    
+        HotelFloorScene_DataManager.Instance.controller.isCentralPowerActive = true;
     }
 }

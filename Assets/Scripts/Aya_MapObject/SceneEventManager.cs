@@ -7,12 +7,6 @@ public class SceneEventManager : MonoBehaviour
     public event Action playEvent;
 
     [TabGroup("Tab", "Scripts", SdfIconType.GearFill, TextColor = "blue")]
-    [TabGroup("Tab", "Scripts" )] [SerializeField] private Day_1_Night_DoorLockEvent day_1_Night_DoorLockEvent;
-
-    private void Start()
-    {
-        if (day_1_Night_DoorLockEvent == null) day_1_Night_DoorLockEvent = GetComponent<Day_1_Night_DoorLockEvent>();
-    }
 
     public void EvnetActionClear()
     {
@@ -24,8 +18,12 @@ public class SceneEventManager : MonoBehaviour
         playEvent?.Invoke();
         playEvent = null;
     }
-    public void DestroyEvent(MonoBehaviour eventScript)
+    public void DestroyEvent(MonoBehaviour eventScript, GameObject obj)
     {
+        if (obj != null)
+        {
+            Destroy(obj);
+        }
         Destroy(eventScript);
     }
 }
