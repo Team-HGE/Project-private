@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.HighDefinition;
 
 public class NpcData: MonoBehaviour
 {
@@ -31,6 +32,31 @@ public class NpcData: MonoBehaviour
         }
     }
 
+    // 모든 NPC와 상호작용 됐는지 체크
+    public bool AllInteracted()
+    {
+        bool result = false;
+
+        for (int i = 0; i < NpcList.Count; i++)
+        {
+            if (NpcList[i].hadInteract)
+                result = true;
+            else
+            {
+                Debug.Log(NpcList[i].npcName + " 상호작용 미완료");
+                result = false;
+            }
+        }
+        return result;
+    }
+
+    // 특정 NPC 상호작용 됐는지 체크
+    public bool IsInteracted(int ID)
+    {
+        Debug.Log(NpcList[ID].npcName + " 상호작용 여부: " + NpcList[ID].hadInteract);
+        return (NpcList[ID].hadInteract) ? true : false;
+    }
+
     // 해당 storyIdx의 상호작용 script를 불러옴
     public ScriptSO LoadNpcSO(int ID)
     {
@@ -58,7 +84,6 @@ public class NpcData: MonoBehaviour
 
     // NPC 상태 제어
     // 대화중, 통화중, 변이, 사망
-
     public string ChangeNpcState(int ID, NpcState stateType)
     {
         switch (stateType)
