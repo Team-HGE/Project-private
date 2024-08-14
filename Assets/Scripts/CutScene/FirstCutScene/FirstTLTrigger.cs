@@ -41,7 +41,6 @@ public class FirstTLTrigger : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //Debug.Log("타임라인 시작" );
-        VCs.SetActive(true);
         PlayTimeline();
     }
 
@@ -49,7 +48,9 @@ public class FirstTLTrigger : MonoBehaviour
     {
         if (firstCutScene != null)
         {
+            GameManager.Instance.PlayerStateMachine.Player.VCOnOff();
             GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
+            VCs.SetActive(true);
             firstCutScene.Play();
         }
     }
@@ -57,6 +58,7 @@ public class FirstTLTrigger : MonoBehaviour
     private void OnPlayableDirectorStopped(PlayableDirector director)
     {
         VCs.SetActive(false);
+        GameManager.Instance.PlayerStateMachine.Player.VCOnOff();
         GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
 
         StartCoroutine(WaitTime(1f));        
