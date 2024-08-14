@@ -37,14 +37,14 @@ public class Day_1_Night_DoorLockEvent : MonoBehaviour
 
         foreach (var light in lightsA)
         {
-            light.intensity = 10;
+            light.intensity = 7;
         }
 
         List<Light> lightsB = GameManager.Instance.lightManager.GetLightsForFloor(Floor.BFloor1F);
 
         foreach (var light in lightsB)
         {
-            light.intensity = 10;
+            light.intensity = 5;
         }
 
         EventManager.Instance.sceneEventManager.DestroyEvent(this, triggerObj);

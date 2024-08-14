@@ -136,7 +136,7 @@ public class StoryScript : DialogueSetting, IScript
         ui.DestroyStanding();
         ui.CloseDialogue();
         isTalking = false;
-
+        yield return GameManager.Instance.fadeManager.FadeStart(FadeState.FadeOutIn);
         yield return null;
         skipenable = false;
     }

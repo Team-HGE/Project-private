@@ -55,6 +55,7 @@ public class UIDialogue : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
+        //GameManager.Instance.fadeManager.FadeStart(FadeState.FadeInOut);
         GameManager.Instance.PlayerStateMachine.Player.PlayerControllOn();
         //Debug.Log("isTalking : " + DialogueSetting.isTalking);
     }
