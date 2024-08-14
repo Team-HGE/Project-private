@@ -1,26 +1,30 @@
+using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+public struct Switch
+{
+    public GameSwitch switchType;
+    public bool state;
+}
+
 public class EventManager : SingletonManager<EventManager>
 {
-
     // 스위치 상태를 관리할 List<bool>
     public List<bool> switchStates;
     public Switch[] switches;
     public event Action<GameSwitch, bool> OnSwitchChanged;
 
+    [Title("SceneEventManager")]
+    public SceneEventManager sceneEventManager;
+
     protected override void Awake()
     {
         base.Awake();
+        InitializeSwitches();
+        if (sceneEventManager == null) sceneEventManager = GetComponent<SceneEventManager>();
     }
-
-    public struct Switch
-    {
-        public GameSwitch switchType;
-        public bool state;
-    }
-
 
     private void InitializeSwitches()
     {

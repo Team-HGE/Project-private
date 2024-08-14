@@ -33,6 +33,8 @@ public class MonsterFindState : MonsterGroundState
         base.Update();
         Rotate(GetMovementDirection());
         if (!stateMachine.Monster.IsBehavior) return;
+        //Debug.Log("MonsterFindState - 행동시작");
+
         FindCheck();
     }
 

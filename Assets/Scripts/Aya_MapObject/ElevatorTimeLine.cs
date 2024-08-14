@@ -21,7 +21,7 @@ public class ElevatorTimeLine : MonoBehaviour
         {
             triggerOn = true;
             GameManager.Instance.fadeManager.fadeComplete += ElevatorMovie;
-            GameManager.Instance.fadeManager.FadeStart(FadeState.FadeOut);
+            StartCoroutine(GameManager.Instance.fadeManager.FadeStart(FadeState.FadeOut));
         }
     }
 
@@ -52,7 +52,7 @@ public class ElevatorTimeLine : MonoBehaviour
 
     public void FadeOff()
     {
-        GameManager.Instance.fadeManager.FadeStart(FadeState.FadeIn);
+        StartCoroutine(GameManager.Instance.fadeManager.FadeStart(FadeState.FadeIn));
     }
     public void ChangeScene()
     {

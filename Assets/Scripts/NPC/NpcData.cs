@@ -40,7 +40,9 @@ public class NpcData: MonoBehaviour
         for (int i = 0; i < NpcList.Count; i++)
         {
             if (NpcList[i].hadInteract)
+            {
                 result = true;
+            }
             else
             {
                 Debug.Log(NpcList[i].npcName + " 상호작용 미완료");

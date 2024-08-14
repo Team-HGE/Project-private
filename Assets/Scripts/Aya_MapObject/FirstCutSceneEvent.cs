@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System.Collections;
 using UnityEngine;
 
@@ -20,6 +21,9 @@ public class FirstCutSceneEvent : MonoBehaviour
     [Header("And")]
     [SerializeField] AudioSource audioSource;
     public Lever floorB_Laver;
+
+    [Title("NPC")]
+    [SerializeField] private GameObject npc;
     void LightOff(Light[] offLights)
     {
         foreach (Light light in offLights)
@@ -27,6 +31,10 @@ public class FirstCutSceneEvent : MonoBehaviour
             light.enabled = false;
         }
     }
+
+    [Header("Monsters")]
+    [SerializeField] GameObject SM2;
+
 
     public void EventOn()
     {
@@ -63,6 +71,16 @@ public class FirstCutSceneEvent : MonoBehaviour
             obj.CloseAni();
             obj.isInteractable = true;
         }
+
+        JOE_Spawn();
+
+        SM2.SetActive(true);
+
         Destroy(gameObject);
+    }
+
+    void JOE_Spawn()
+    {
+        npc.SetActive(true);
     }
 }

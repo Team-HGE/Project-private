@@ -18,9 +18,14 @@ public class FadeManager : MonoBehaviour
     [TabGroup("Tab", "Scene")][SerializeField] GameObject loadingBar;
 
     public event Action fadeComplete;
-    public void FadeStart(FadeState fadeState)
+
+    public void EventActionClear()
     {
-        StartCoroutine(Fade(fadeState));
+        fadeComplete = null;
+    }
+    public IEnumerator FadeStart(FadeState fadeState)
+    {
+        yield return StartCoroutine(Fade(fadeState));
     }
 
     public void FadeImmediately() 
@@ -51,6 +56,7 @@ public class FadeManager : MonoBehaviour
                 break;
         }
         fadeComplete?.Invoke();
+        fadeComplete = null;
         fadeEffect.OffFadeObject();
     }
     public bool loadComplete;

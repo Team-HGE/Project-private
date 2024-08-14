@@ -1,3 +1,4 @@
+using UnityEngine;
 
 public class NPC : InteractableObject
 {
@@ -19,5 +20,16 @@ public class NPC : InteractableObject
 
         DialogueManager.Instance.npcScript.InitNPC(data, ID);
         DialogueManager.Instance.npcScript.Print();
+        BedInteracted();
+    }
+
+    void BedInteracted()
+    {
+        bool canSleep = DialogueManager.Instance.npcData.AllInteracted();
+        Debug.Log(canSleep);
+        if (canSleep)
+        {
+            EventManager.Instance.SetSwitch(GameSwitch.GoToBed, true);
+        }
     }
 }

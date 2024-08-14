@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerBedObject : InteractableObject
@@ -8,13 +7,14 @@ public class PlayerBedObject : InteractableObject
 
     public override void ActivateInteraction()
     {
-        if (isInteractable) return;
+        if (!EventManager.Instance.GetSwitch(GameSwitch.GoToBed)) return;
+        
         GameManager.Instance.player.playerInteraction.SetActive(true);
         GameManager.Instance.player.interactableText.text = "잠들기";
     }
     public override void Interact()
     {
-        isInteractable = true;
+        if (!EventManager.Instance.GetSwitch(GameSwitch.GoToBed)) return;
 
         DialogueManager.Instance.itemScript.Init(scriptSO);
         DialogueManager.Instance.itemScript.Print();
@@ -26,9 +26,9 @@ public class PlayerBedObject : InteractableObject
         // 스크립트 종료되면 잠들기
         yield return new WaitUntil(() => !DialogueSetting.isTalking);
 
-        GameManager.Instance.fadeManager.FadeStart(FadeState.FadeOut);
-        
-
+        yield return GameManager.Instance.fadeManager.FadeStart(FadeState.FadeOut);
+        yield return GameManager.Instance.fadeManager.FadeStart(FadeState.FadeIn);
+        EventManager.Instance.SetSwitch(GameSwitch.GoToBed, false);
         yield return null;
     }
 }

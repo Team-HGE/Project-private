@@ -34,7 +34,7 @@ public class BreakableWindow : MonoBehaviour {
 
     [Space]
     public AudioClip breakingSound;
-
+    public AudioSource breakingAudio;
 
     [HideInInspector]
     public bool isBroken = false;
@@ -49,6 +49,7 @@ public class BreakableWindow : MonoBehaviour {
 
     void Start()
     {
+        if (breakingAudio == null) breakingAudio = GetComponent<AudioSource>();
         if (preCalculate == true && allreadyCalculated == false)
         {
             bakeVertices();
@@ -58,8 +59,6 @@ public class BreakableWindow : MonoBehaviour {
 
         if (transform.rotation.eulerAngles.x != 0 || transform.rotation.eulerAngles.z != 0)
             Debug.LogWarning("Warning: Window must not be rotated around x and z!");
-
-        breakWindow();
     }
 
     private void bakeVertices(bool trianglesToo = false)
@@ -136,6 +135,7 @@ public class BreakableWindow : MonoBehaviour {
         obj.transform.rotation = transform.rotation;
         obj.layer = layer.value;
         obj.name = "Glass Splinter";
+        obj.transform.localScale *= 5f;
         if (destroySplintersTime > 0)
             Destroy(obj, destroySplintersTime);
 
@@ -228,8 +228,9 @@ public class BreakableWindow : MonoBehaviour {
 
         if (breakingSound != null)
         {
-            GetComponent<AudioSource>().clip = breakingSound;
-            GetComponent<AudioSource>().Play();
+            breakingAudio.clip = breakingSound;
+            breakingAudio.volume = 0.5f;
+            breakingAudio.Play();
         }
 
         return splinters.ToArray();

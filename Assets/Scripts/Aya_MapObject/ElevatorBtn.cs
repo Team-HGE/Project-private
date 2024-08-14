@@ -24,6 +24,7 @@ public class ElevatorBtn : InteractableObject
     }
     public override void Interact()
     {
+        if (!EventManager.Instance.GetSwitch(GameSwitch.OneFloorEndEscape)) return;
         if (isInteractable) return;
         if (HotelFloorScene_DataManager.Instance.elevatorManager.isElevatorButtonPressed) return;
         if (elevatorObject.NowFloor == myNum) return;

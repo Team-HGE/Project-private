@@ -11,7 +11,7 @@ public class FirstTLTrigger : MonoBehaviour
     public PlayableDirector firstCutScene;
     public GameObject[] doors;
     public GameObject VCs;
-    public GameObject monsters;
+    public GameObject SM1;
 
     private bool _isEnd = false;
 
@@ -74,7 +74,7 @@ public class FirstTLTrigger : MonoBehaviour
             doors[1].SetActive(true);
         }
 
-        monsters.SetActive(true);
+        SM1.SetActive(true);
         IsEnd = true;
         //Debug.Log("타임라인이 종료");
     }
