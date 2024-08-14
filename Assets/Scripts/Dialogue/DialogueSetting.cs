@@ -25,6 +25,7 @@ public class DialogueSetting: MonoBehaviour
         isTalking = false;
         //Debug.Log("DialogueSetting 초기화:" + isTalking);
         TextEffect.isSkipped = false;
+        ui.AnswerCanvas.SetActive(false);
         ui.ClearDialogue(sbTitle, sbBody);
         ui.CloseDialogue();
     }

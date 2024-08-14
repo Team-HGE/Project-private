@@ -11,10 +11,8 @@ public class StoryScript : DialogueSetting, IScript
     private bool skipenable;
     public void Init(ScriptSO _script)
     {
-        quest = GetComponent<Quest>();
-        systemMsg = GetComponent<SystemMsg>();
-        //sbTitle = new StringBuilder();
-        //sbBody = new StringBuilder();
+        quest = DialogueManager.Instance.quest;
+        systemMsg = DialogueManager.Instance.systemMsg;
         scriptSO = null;
         scriptSO = _script;
         InitUI();
@@ -31,7 +29,6 @@ public class StoryScript : DialogueSetting, IScript
         //Init(scriptSO);
         if (scriptSO == null) { Debug.Log("지금은 내보낼 스크립트가 없습니다. scriptSO null"); return; };
 
-        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
         StopAllCoroutines();
         ui.OpenBG();
         ui.OpenDialogue();
@@ -44,6 +41,9 @@ public class StoryScript : DialogueSetting, IScript
         skipenable = true;
         systemMsg.UpdateMessage(3);
         Input.GetMouseButtonDown(0);
+
+        if (!isTalking)
+            GameManager.Instance.PlayerStateMachine.Player.PlayerControllOn();
     }
     private IEnumerator PrintScript()
     {
@@ -119,17 +119,19 @@ public class StoryScript : DialogueSetting, IScript
                     curPrintLine = TextEffect.Typing(ui.bodyText, sbBody, scriptSO.bodyTexts[i]);
                     break;
             }
+
             if (!skipenable)
             {
                 yield return StartCoroutine(curPrintLine);
                 yield return HandleWaitAndSound(i);
             }
             
-
             ui.ClearDialogue(sbTitle, sbBody);
         }
+        
+        ui.CloseDialogue();
+        isTalking = false;
 
-        EndDialogue();
         yield return null;
         skipenable = false;
     }
@@ -202,8 +204,6 @@ public class StoryScript : DialogueSetting, IScript
                 systemMsg.UpdateTipMessage(TipsNumber);
             }
         }
-
-
         yield break;
     }
 
@@ -219,7 +219,6 @@ public class StoryScript : DialogueSetting, IScript
             }
         }
 
-
         yield break;
     }
 
@@ -231,12 +230,5 @@ public class StoryScript : DialogueSetting, IScript
         //AudioManager.Instance.StopDialSE(scriptSO.audioClips[index]);
         yield return waitTime;
         waitIcon.SetActive(false);
-    }
-
-    private void EndDialogue()
-    {
-        ui.CloseDialogue();
-        isTalking = false;
-        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOn();
     }
 }

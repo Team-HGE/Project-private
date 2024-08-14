@@ -36,6 +36,7 @@ public class UIDialogue : MonoBehaviour
         dialogueCanvas.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOff();
     }
     public void CloseDialogue()
     {
@@ -46,6 +47,8 @@ public class UIDialogue : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOn();
         //Debug.Log("isTalking : " + DialogueSetting.isTalking);
     }
 
