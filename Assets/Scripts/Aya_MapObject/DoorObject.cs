@@ -29,6 +29,10 @@ public class DoorObject : InteractableObject
             audioSource = gameObject.AddComponent<AudioSource>();
         }
     }
+    private void Start()
+    {
+        HotelFloorScene_DataManager.Instance.controller.doorObjects.Add(this);
+    }
 
     public override void ActivateInteraction()
     {

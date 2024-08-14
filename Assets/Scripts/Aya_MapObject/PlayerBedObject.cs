@@ -30,6 +30,7 @@ public class PlayerBedObject : InteractableObject
         GameManager.Instance.fadeManager.FadeStart(FadeState.FadeOutIn);
 
         EventManager.Instance.SetSwitch(GameSwitch.BarrierInteract, true);
+        EventManager.Instance.SetSwitch(GameSwitch.GoToBed, false);
         yield return null;
     }
 }
