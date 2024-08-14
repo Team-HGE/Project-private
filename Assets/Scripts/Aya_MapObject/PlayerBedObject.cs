@@ -7,7 +7,6 @@ public class PlayerBedObject : InteractableObject
 
     public override void ActivateInteraction()
     {
-        Debug.Log(EventManager.Instance.GetSwitch(GameSwitch.GoToBed));
         if (!EventManager.Instance.GetSwitch(GameSwitch.GoToBed)) return;
         
         GameManager.Instance.player.playerInteraction.SetActive(true);
@@ -27,9 +26,9 @@ public class PlayerBedObject : InteractableObject
         // 스크립트 종료되면 잠들기
         yield return new WaitUntil(() => !DialogueSetting.isTalking);
 
-        GameManager.Instance.fadeManager.FadeStart(FadeState.FadeOutIn);
-
-        EventManager.Instance.SetSwitch(GameSwitch.BarrierInteract, true);
+        yield return GameManager.Instance.fadeManager.FadeStart(FadeState.FadeOut);
+        yield return GameManager.Instance.fadeManager.FadeStart(FadeState.FadeIn);
+        EventManager.Instance.SetSwitch(GameSwitch.GoToBed, false);
         yield return null;
     }
 }

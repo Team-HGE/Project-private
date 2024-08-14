@@ -1,6 +1,7 @@
 
 public enum GameSwitch
 {
+    IsNight,
     HasKey,
     DoorUnlocked,
     BossDefeated,
