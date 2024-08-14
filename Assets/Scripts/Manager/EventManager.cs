@@ -10,6 +10,11 @@ public class EventManager : SingletonManager<EventManager>
     public Switch[] switches;
     public event Action<GameSwitch, bool> OnSwitchChanged;
 
+    protected override void Awake()
+    {
+        base.Awake();
+    }
+
     public struct Switch
     {
         public GameSwitch switchType;

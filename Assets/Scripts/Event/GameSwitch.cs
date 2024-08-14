@@ -6,6 +6,10 @@ public enum GameSwitch
     BossDefeated,
     Newtype,
     IsDaytime,
-    IsTutorailEnd
+    IsTutorailEnd,
+    OneFloorOpenable,
+    OneFloorStartEscape,
+    OneFloorEncountAtA,
+    OneFloorEndEscape
     // 필요에 따라 더 추가
 }
