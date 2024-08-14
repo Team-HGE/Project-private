@@ -23,9 +23,8 @@ public class Monologue : DialogueSetting, IScript
         scriptSO = null;
         text = _text;
         InitUI();
-        ui.CloseDialogue();
+        //ui.CloseDialogue();
 
-        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOff();
         StopAllCoroutines();
         ui.OpenDialogue();
         StartCoroutine(PrintMonologue());
@@ -40,9 +39,7 @@ public class Monologue : DialogueSetting, IScript
         //Init(scriptSO);
         if (scriptSO == null) { Debug.Log("지금은 내보낼 스크립트가 없습니다. scriptSO null"); return; };
 
-        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOff();
         StopAllCoroutines();
-        ui.OpenBG();
         ui.OpenDialogue();
         StartCoroutine(PrintScript());
     }
@@ -70,9 +67,6 @@ public class Monologue : DialogueSetting, IScript
         ui.CloseDialogue();
         isTalking = false;
 
-        // 플레이어 행동 가능 - 카메라 에러***
-        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOn();
-
         yield return null;
     }
 
@@ -93,9 +87,6 @@ public class Monologue : DialogueSetting, IScript
         ui.ClearDialogue(sbTitle, sbBody);
         ui.CloseDialogue();
         isTalking = false;
-
-        // 플레이어 행동 가능 - 카메라 에러***
-        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOn();
 
         yield return null;
     }

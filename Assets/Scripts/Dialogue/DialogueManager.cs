@@ -21,8 +21,8 @@ public class DialogueManager : SingletonManager<DialogueManager>
     //public bool isSceneChanged;
     public List<ScriptSO> storyList = new List<ScriptSO>();
     public List<AnswerSO> answerList = new List<AnswerSO>();
-    //private int scriptIndex;
 
+    //private int scriptIndex;
     public SystemMsg systemMsg;
     public Quest quest;
 

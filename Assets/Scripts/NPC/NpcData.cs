@@ -32,7 +32,7 @@ public class NpcData: MonoBehaviour
         }
     }
 
-    // 모든 NPC와 상호작용 됐는지 체크
+    // 모든 NPC와 상호작용 했는지 체크
     public bool AllInteracted()
     {
         bool result = false;
@@ -51,6 +51,7 @@ public class NpcData: MonoBehaviour
     }
 
     // 특정 NPC 상호작용 됐는지 체크
+    // ID: 함민석(0) 강주명(1) 표지훈(2) 표서윤(3) 
     public bool IsInteracted(int ID)
     {
         Debug.Log(NpcList[ID].npcName + " 상호작용 여부: " + NpcList[ID].hadInteract);
