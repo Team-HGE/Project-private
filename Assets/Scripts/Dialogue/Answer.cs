@@ -21,6 +21,7 @@ public class Answer : DialogueSetting
         InitUI();
         ui.answerText1.text = "";
         ui.answerText2.text = "";
+        ui.AnswerCanvas.SetActive(false);
 
         if (ui == null) { Debug.Log("answer ui null"); return; };
         //Debug.Log("선택지 초기화 완료");

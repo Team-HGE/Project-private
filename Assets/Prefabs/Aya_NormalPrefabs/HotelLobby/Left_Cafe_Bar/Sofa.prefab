@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 4690558596412230389}
   - component: {fileID: 1694563732741205217}
   - component: {fileID: 4605020067561281022}
-  m_Layer: 0
+  - component: {fileID: 8453522679362738190}
+  m_Layer: 18
   m_Name: Sofa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,6 +107,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0204315, y: 1, z: 5}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8453522679362738190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 818585614669222557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e95dc5ff2b64380880dd7ac5922847, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Size: {x: 4, y: 1.61, z: 5.47}
+  m_Center: {x: 0, y: -0.33, z: 0}
+  m_Area: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &5026882975381755027
 GameObject:
   m_ObjectHideFlags: 0
@@ -118,7 +135,7 @@ GameObject:
   - component: {fileID: 1900009883334577464}
   - component: {fileID: 3598727826505546115}
   - component: {fileID: 4756971617036963656}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}

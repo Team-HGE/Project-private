@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 7580223092498930942}
   - component: {fileID: 6926240959884937981}
   - component: {fileID: 7480560586354106956}
-  m_Layer: 0
+  - component: {fileID: 2916584234703584714}
+  m_Layer: 18
   m_Name: Cafe_Table
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,6 +108,25 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.3211145, y: 3.5315702, z: 2.3211145}
   m_Center: {x: -0.0000020861626, y: -0.00000005960464, z: 0.0000054240227}
+--- !u!114 &2916584234703584714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 908335051189225669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1001 &3122839248364841707
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -115,9 +135,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3539665390719398584}
     m_Modifications:
+    - target: {fileID: 1258816837158006, guid: a611578a4f82e3d49844455f59dbd520, type: 3}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 1269084627248912, guid: a611578a4f82e3d49844455f59dbd520, type: 3}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 1406707438423292, guid: a611578a4f82e3d49844455f59dbd520, type: 3}
       propertyPath: m_Name
       value: CandleOrnament
+      objectReference: {fileID: 0}
+    - target: {fileID: 1406707438423292, guid: a611578a4f82e3d49844455f59dbd520, type: 3}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 1742377376071226, guid: a611578a4f82e3d49844455f59dbd520, type: 3}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 1949938736465342, guid: a611578a4f82e3d49844455f59dbd520, type: 3}
+      propertyPath: m_Layer
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 4112573217520226, guid: a611578a4f82e3d49844455f59dbd520, type: 3}
       propertyPath: m_LocalScale.x

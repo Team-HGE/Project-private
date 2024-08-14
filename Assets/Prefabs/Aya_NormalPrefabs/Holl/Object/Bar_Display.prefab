@@ -49,7 +49,7 @@ GameObject:
   - component: {fileID: 4717786649556101907}
   - component: {fileID: 1960943706879338125}
   - component: {fileID: 2254001292004573018}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Wine_Display_Rack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -468,7 +468,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3990799990873550635}
-  m_Layer: 0
+  - component: {fileID: 5614471407035501749}
+  m_Layer: 18
   m_Name: Bar_Display
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -495,6 +496,25 @@ Transform:
   - {fileID: 7074386417280012540}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5614471407035501749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5006282822601413591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &5095251147803383126
 GameObject:
   m_ObjectHideFlags: 0

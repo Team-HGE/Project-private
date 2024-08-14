@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1178833617460004254}
   - component: {fileID: 4287030797022724634}
   - component: {fileID: 6632680277265929742}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Seated_Lion_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6833471795022239174}
   - component: {fileID: 1769705528230748855}
-  m_Layer: 0
+  - component: {fileID: 2610453355678752882}
+  m_Layer: 18
   m_Name: Seated Lion Copper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -168,6 +169,25 @@ LODGroup:
     renderers:
     - renderer: {fileID: 7686467830876997620}
   m_Enabled: 1
+--- !u!114 &2610453355678752882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6169525533320400764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &8428044436530428518
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,7 +200,7 @@ GameObject:
   - component: {fileID: 5880959627400268606}
   - component: {fileID: 7686467830876997620}
   - component: {fileID: 7161679459161101122}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Seated_Lion_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -286,7 +306,7 @@ GameObject:
   - component: {fileID: 5530882092502188693}
   - component: {fileID: 7034439831010172302}
   - component: {fileID: 5145380389255118206}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Seated_Lion_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

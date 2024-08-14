@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 8282170172977863628}
   - component: {fileID: 5829418816273045720}
   - component: {fileID: 965049720967462761}
-  m_Layer: 0
+  - component: {fileID: 6796462188643640921}
+  m_Layer: 18
   m_Name: Machine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,6 +108,25 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.000001, y: 9, z: 4.9999995}
   m_Center: {x: -0.00000059604645, y: 1.6682812e-21, z: -0.000009298324}
+--- !u!114 &6796462188643640921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6044840402295305499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1001 &2090980728641293791
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -184,6 +204,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PictureDeco 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2983241589968940168, guid: dcec65dc713b6ca498d3821acd6d1eb3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 6225385583644791836, guid: dcec65dc713b6ca498d3821acd6d1eb3,
         type: 3}

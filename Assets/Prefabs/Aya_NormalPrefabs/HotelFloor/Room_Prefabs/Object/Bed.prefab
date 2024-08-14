@@ -9,7 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3740903115182363986}
-  m_Layer: 0
+  - component: {fileID: 7996960632744036983}
+  m_Layer: 18
   m_Name: Bed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,6 +37,25 @@ Transform:
   - {fileID: 8039017040219956039}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7996960632744036983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3074422905249467300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1001 &2274858467566915042
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48,6 +68,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pedding
+      objectReference: {fileID: 0}
+    - target: {fileID: 3052972701244835562, guid: 19321f69ed532954bb0e35a51658bfbc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 8070935274739396261, guid: 19321f69ed532954bb0e35a51658bfbc,
         type: 3}
@@ -123,6 +148,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pillow (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1840220774615698994, guid: 21b342198f4dec9429bb2f2fa79f6496,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 1990323474487338128, guid: 21b342198f4dec9429bb2f2fa79f6496,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -196,6 +226,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pillow
+      objectReference: {fileID: 0}
+    - target: {fileID: 1840220774615698994, guid: 21b342198f4dec9429bb2f2fa79f6496,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 1990323474487338128, guid: 21b342198f4dec9429bb2f2fa79f6496,
         type: 3}
@@ -271,6 +306,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bed_Bass
       objectReference: {fileID: 0}
+    - target: {fileID: 1030745056648943905, guid: 2f41e620cb8aa554cb70f9764163455f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 6872908236445730415, guid: 2f41e620cb8aa554cb70f9764163455f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -344,6 +384,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Matress
+      objectReference: {fileID: 0}
+    - target: {fileID: 279242896386786934, guid: 32b2fb9edd6bcf64ead353bca28993be,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 5013868436544917608, guid: 32b2fb9edd6bcf64ead353bca28993be,
         type: 3}

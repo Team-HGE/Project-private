@@ -9,7 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5822722651161489204}
-  m_Layer: 0
+  - component: {fileID: 5782219675578575266}
+  m_Layer: 18
   m_Name: Sofa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,6 +37,25 @@ Transform:
   - {fileID: 7311415381768862003}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5782219675578575266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4308667440299318352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1001 &1314752109575784054
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48,6 +68,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Leg (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1770547815640083628, guid: 40a03114f74cfc742ab825b75b5ba730,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 1770547815640083628, guid: 40a03114f74cfc742ab825b75b5ba730,
         type: 3}
@@ -129,11 +154,6 @@ PrefabInstance:
       value: short_Sofa
       objectReference: {fileID: 0}
     - target: {fileID: 3886339558489476919, guid: 2c67618d54f2753448980a914bfa238a,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5268853428013446752, guid: 2c67618d54f2753448980a914bfa238a,
         type: 3}
       propertyPath: m_Mesh
       value: 
@@ -224,6 +244,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1770547815640083628, guid: 40a03114f74cfc742ab825b75b5ba730,
         type: 3}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 1770547815640083628, guid: 40a03114f74cfc742ab825b75b5ba730,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -303,6 +328,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1770547815640083628, guid: 40a03114f74cfc742ab825b75b5ba730,
         type: 3}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 1770547815640083628, guid: 40a03114f74cfc742ab825b75b5ba730,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -379,6 +409,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Leg
+      objectReference: {fileID: 0}
+    - target: {fileID: 1770547815640083628, guid: 40a03114f74cfc742ab825b75b5ba730,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 1770547815640083628, guid: 40a03114f74cfc742ab825b75b5ba730,
         type: 3}

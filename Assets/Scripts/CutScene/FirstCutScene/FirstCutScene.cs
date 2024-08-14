@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditorInternal.Profiling.Memory.Experimental;
-using UnityEngine;
-using UnityEngine.Playables;
+﻿using UnityEngine;
 
 public class FirstCutScene : MonoBehaviour
 {
@@ -24,7 +19,7 @@ public class FirstCutScene : MonoBehaviour
         item = eventObject.GetComponent<Item>();
         item.OnGetItem += HandleGetItem;
 
-        sceneEvent ??= GetComponent<FirstCutSceneEvent>();
+        sceneEvent = GetComponent<FirstCutSceneEvent>();
     }
 
     private void HandleGetItem()
@@ -37,7 +32,6 @@ public class FirstCutScene : MonoBehaviour
         if (trigger.IsEnd)
         {
             sceneEvent.EventOn();
-            Destroy(gameObject);
         }
     }
 
