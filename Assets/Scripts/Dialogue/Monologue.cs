@@ -52,7 +52,7 @@ public class Monologue : DialogueSetting, IScript
         for (int i = 0; i < scriptSO.bodyTexts.Length; i++)
         {
             UtilSB.SetText(ui.titleText, sbTitle, scriptSO.speakers[i]);
-            ui.CheckNullTitle(scriptSO.speakers[i]);
+            ui.CheckNullIndex(scriptSO.speakers[i]);
 
             curPrintLine = TextEffect.Typing(ui.bodyText, sbBody, scriptSO.bodyTexts[i]);
             yield return StartCoroutine(curPrintLine);
@@ -75,7 +75,7 @@ public class Monologue : DialogueSetting, IScript
         ui.ClearDialogue(sbTitle, sbBody);
 
         UtilSB.SetText(ui.titleText, sbTitle, null);
-        ui.CheckNullTitle(null);
+        ui.CheckNullIndex(null);
 
         TextEffect.Typing(ui.bodyText, sbBody, text);
         //yield return StartCoroutine(curPrintLine);

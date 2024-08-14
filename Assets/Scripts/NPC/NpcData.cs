@@ -45,6 +45,7 @@ public class NpcData: MonoBehaviour
             {
                 Debug.Log(NpcList[i].npcName + " 상호작용 미완료");
                 result = false;
+                break;
             }
         }
         return result;
@@ -85,22 +86,20 @@ public class NpcData: MonoBehaviour
 
     // NPC 상태 제어
     // 대화중, 통화중, 변이, 사망
-    public string ChangeNpcState(int ID, NpcState stateType)
+    public void ChangeNpcState(int ID, NpcState stateType)
     {
         switch (stateType)
         {
             case NpcState.Idle:
-                NpcList[ID].state = NpcState.Idle;
-                return "대기중";
+                NpcList[ID].state = NpcState.Idle; break;
             case NpcState.Speaking:
-                NpcList[ID].state = NpcState.Speaking;
-                return "대화중";
+                NpcList[ID].state = NpcState.Speaking; break;
             case NpcState.Calling:
-                NpcList[ID].state = NpcState.Calling;
-                return "무전중";
+                NpcList[ID].state = NpcState.Calling; break;
+            case NpcState.Dead:
+                NpcList[ID].state = NpcState.Dead; break;
             default:
-                NpcList[ID].state = NpcState.Idle;
-                return "대기중";
+                NpcList[ID].state = NpcState.Idle; break;
         }
     }
 

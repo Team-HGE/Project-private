@@ -76,6 +76,9 @@ public class StoryScript : DialogueSetting, IScript
 
             UpdateUI(scriptSO.speakers[i], scriptSO.portraits[i]);
 
+            ui.CheckEncounter(scriptSO.speakers, i, scriptSO.speakers[i]);
+            ui.PopStanding(scriptSO.standings[i]);
+
             if (scriptSO.audioClips != null && scriptSO.audioClips[i] != null && !skipenable)
             {
                 AudioManager.Instance.PlayDialSE(scriptSO.audioClips[i]); // 권용 오디오 클립 재생 버그해결완
@@ -127,8 +130,10 @@ public class StoryScript : DialogueSetting, IScript
             }
             
             ui.ClearDialogue(sbTitle, sbBody);
+            ui.FadeStanding(scriptSO.standings[i]);
         }
-        
+
+        ui.DestroyStanding();
         ui.CloseDialogue();
         isTalking = false;
 
@@ -140,8 +145,7 @@ public class StoryScript : DialogueSetting, IScript
     {
         UtilSB.SetText(ui.titleText, sbTitle, speaker);
         ui.SetPortrait(ui.portrait, portrait);
-        //ui.PopStanding(portrait);
-        ui.CheckNullTitle(speaker);
+        ui.CheckNullIndex(speaker);
     }
 
     private IEnumerator HandlePickAnswer(int index)

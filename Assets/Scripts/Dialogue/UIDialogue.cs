@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using TMPro;
 using UnityEngine;
@@ -18,12 +19,14 @@ public class UIDialogue : MonoBehaviour
     public TextMeshProUGUI answerText1;
     public TextMeshProUGUI answerText2;
 
-    private ObjectPool objectPool;
+    // 팝 스탠딩 관련 변수
     public GameObject standingImgLayout;
-    private GameObject standingImg;
-    private int standingCnt = 0;
 
-    // TODO: 캐릭터 스탠딩 이미지도 받아오기
+    private ObjectPool objectPool;
+    private GameObject standingObj;
+    private Image standingImg;
+    private Color originColor;
+    private bool firstEncounter;
 
     public void OpenBG()
     {
@@ -52,7 +55,7 @@ public class UIDialogue : MonoBehaviour
         //Debug.Log("isTalking : " + DialogueSetting.isTalking);
     }
 
-    public void CheckNullTitle(string speaker)
+    public void CheckNullIndex(string speaker)
     {
         if (portrait.sprite == null) portrait.transform.localScale = Vector3.zero;
         else
@@ -72,27 +75,6 @@ public class UIDialogue : MonoBehaviour
         image.sprite = sprite;
     }
 
-    public void ObjectPoolInit()
-    {
-        objectPool = standingImgLayout.GetComponent<ObjectPool>();
-        standingCnt = 0;
-    }
-
-    public void PopStanding(Sprite sprite)
-    {
-        if (standingCnt >= objectPool.poolSize)
-        {
-            //objectPool.ReturnObjectbyIndex(standingCnt);
-            //objectPool.ReturnAllObject();
-        }
-        //Debug.Log("Pop Standing");
-        standingImg = objectPool.GetObject();
-        Image image = standingImg.GetComponent<Image>();
-        image.sprite = sprite;
-        image.preserveAspect = true;
-        standingCnt++;
-    }
-
     public void ClearDialogue(StringBuilder _sbTitle, StringBuilder _sbBody)
     {
         titleText.text = _sbTitle.Clear().ToString();
@@ -101,5 +83,72 @@ public class UIDialogue : MonoBehaviour
         UtilSB.ClearText(titleText, _sbTitle);
         UtilSB.ClearText(bodyText, _sbBody);
         portrait.sprite = null;
+    }
+
+    // 이하 스탠딩 관련 메소드
+
+    public void ObjectPoolInit()
+    {
+        objectPool = standingImgLayout.GetComponent<ObjectPool>();
+    }
+
+    public void CheckEncounter(string[] speakers, int idx, string speaker)
+    {
+        if (firstEncounter)
+            return;
+
+        for (int i = 0; i < idx; i++)
+        {
+            if (speakers[i] == speaker)
+            {
+                firstEncounter = false;
+                return;
+            }
+
+            Debug.Log(speaker + "첫 등장입니다.");
+            firstEncounter = true;
+        }
+    }
+
+    public void PopStanding(Sprite sprite)
+    {
+        if (sprite == null) { return; }
+
+        // 첫 등장일 경우
+        // 프리팹 활성화, 이미지 넣기
+        if (firstEncounter)
+        {
+            standingObj = objectPool.GetObject();
+            standingImg = standingObj.GetComponent<Image>();
+        }
+        else
+        {
+            GameObject Obj = objectPool.ReturnObjectby(sprite);
+            standingImg = Obj.GetComponent<Image>();
+        }
+
+        originColor = standingImg.color;
+        standingImg.sprite = sprite;
+        standingImg.preserveAspect = true;
+
+        // 이미지 오퍼시티 100%
+        originColor.a = 1.0f;
+        standingImg.color = originColor;
+    }
+
+    public void FadeStanding(Sprite sprite)
+    {
+        // 본인 대사 출력 끝나면 이미지 오피시티 10%
+        originColor.a = 0.1f;
+        standingImg.color = originColor;
+    }
+
+    public void DestroyStanding()
+    {
+        // 캐릭터가 퇴장하면 해당 프리펩 비활성화
+        //objectPool.ReturnObject(standingObj);
+
+        // 대화가 끝나면 프리펩 비활성화
+        objectPool.ReturnAllObject();
     }
 }
