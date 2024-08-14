@@ -9,7 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4359352051128744703}
-  m_Layer: 0
+  - component: {fileID: 8789192568756857533}
+  m_Layer: 18
   m_Name: Bar_Chair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33,6 +34,25 @@ Transform:
   - {fileID: 6774347072054621710}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8789192568756857533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968125502049418910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &6940503958097457929
 GameObject:
   m_ObjectHideFlags: 0
@@ -45,7 +65,7 @@ GameObject:
   - component: {fileID: 4589120147993917362}
   - component: {fileID: 7262847240503333636}
   - component: {fileID: 5456156261497663753}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Chair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,7 +170,7 @@ GameObject:
   - component: {fileID: 7916525845560472811}
   - component: {fileID: 6563234136361824838}
   - component: {fileID: 8686354563129687347}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}

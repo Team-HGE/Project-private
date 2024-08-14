@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 8754146015267142754}
   - component: {fileID: 6039074875582143946}
   - component: {fileID: 5251433682911742562}
-  m_Layer: 0
+  - component: {fileID: 6833154416030226613}
+  m_Layer: 18
   m_Name: NewOneSofa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,6 +110,25 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.9629936, y: 3.1583123, z: 3.994522}
   m_Center: {x: 0.08474922, y: 0.00000017881393, z: 0.0000076293945}
+--- !u!114 &6833154416030226613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817483805721556560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1001 &1219138378845949982
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -186,6 +206,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: NewLeg (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8588515482745646369, guid: 79feb488d4ddfc14e8e44915d527d5c9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -276,6 +301,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: NewLeg
       objectReference: {fileID: 0}
+    - target: {fileID: 8588515482745646369, guid: 79feb488d4ddfc14e8e44915d527d5c9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -365,6 +395,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: NewLeg (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8588515482745646369, guid: 79feb488d4ddfc14e8e44915d527d5c9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -453,6 +488,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: NewLeg (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8588515482745646369, guid: 79feb488d4ddfc14e8e44915d527d5c9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

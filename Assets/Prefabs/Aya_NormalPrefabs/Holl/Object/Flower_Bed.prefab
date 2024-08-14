@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 4168395731575379792}
   - component: {fileID: 836971282557858681}
   - component: {fileID: 5781265237481729950}
-  m_Layer: 0
+  - component: {fileID: 9191215506760016212}
+  m_Layer: 18
   m_Name: Flower_Bed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,6 +122,25 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2, y: 4, z: 29.75}
   m_Center: {x: 1, y: 2, z: 14.875}
+--- !u!114 &9191215506760016212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 683605429684837554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1001 &509724014113578041
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -133,6 +153,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Heather_B (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 658749458356824200, guid: dd902ff2a6f685041be127af00c09664,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 3120705534441101108, guid: dd902ff2a6f685041be127af00c09664,
         type: 3}
@@ -223,6 +248,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_B (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2803505663424749585, guid: b273de0d6e5818a4cb3195ce4f376ccb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 5155919925506244918, guid: b273de0d6e5818a4cb3195ce4f376ccb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -296,6 +326,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Heather_B (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 658749458356824200, guid: dd902ff2a6f685041be127af00c09664,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 3120705534441101108, guid: dd902ff2a6f685041be127af00c09664,
         type: 3}
@@ -386,6 +421,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_A (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6011036630121576164, guid: 0ec1c69bd47ad864f96cc2b516f6cd4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 9048529922822917024, guid: 0ec1c69bd47ad864f96cc2b516f6cd4b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -459,6 +499,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fern_C (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1647502441230210415, guid: 4786e2698ac97a949a9209febfcbd49b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7140844442097323097, guid: 4786e2698ac97a949a9209febfcbd49b,
         type: 3}
@@ -534,6 +579,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fern_C (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1647502441230210415, guid: 4786e2698ac97a949a9209febfcbd49b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 7140844442097323097, guid: 4786e2698ac97a949a9209febfcbd49b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -607,6 +657,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush_A
+      objectReference: {fileID: 0}
+    - target: {fileID: 6011036630121576164, guid: 0ec1c69bd47ad864f96cc2b516f6cd4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 9048529922822917024, guid: 0ec1c69bd47ad864f96cc2b516f6cd4b,
         type: 3}
@@ -682,6 +737,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BushDry_A (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 8345125494760415452, guid: 176a42107ce66c44aa74a67424591597,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -755,6 +815,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush_B (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2803505663424749585, guid: b273de0d6e5818a4cb3195ce4f376ccb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 5155919925506244918, guid: b273de0d6e5818a4cb3195ce4f376ccb,
         type: 3}
@@ -830,6 +895,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush_A (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6011036630121576164, guid: 0ec1c69bd47ad864f96cc2b516f6cd4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 9048529922822917024, guid: 0ec1c69bd47ad864f96cc2b516f6cd4b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -903,6 +973,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush_B
+      objectReference: {fileID: 0}
+    - target: {fileID: 2803505663424749585, guid: b273de0d6e5818a4cb3195ce4f376ccb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 5155919925506244918, guid: b273de0d6e5818a4cb3195ce4f376ccb,
         type: 3}
@@ -978,6 +1053,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fern_C
       objectReference: {fileID: 0}
+    - target: {fileID: 1647502441230210415, guid: 4786e2698ac97a949a9209febfcbd49b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 7140844442097323097, guid: 4786e2698ac97a949a9209febfcbd49b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1052,6 +1132,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BushDry_A
       objectReference: {fileID: 0}
+    - target: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 8345125494760415452, guid: 176a42107ce66c44aa74a67424591597,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1125,6 +1210,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Heather_B
+      objectReference: {fileID: 0}
+    - target: {fileID: 658749458356824200, guid: dd902ff2a6f685041be127af00c09664,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 3120705534441101108, guid: dd902ff2a6f685041be127af00c09664,
         type: 3}
@@ -1214,6 +1304,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BushDry_A (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5784118704813857101, guid: 176a42107ce66c44aa74a67424591597,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 8345125494760415452, guid: 176a42107ce66c44aa74a67424591597,
         type: 3}

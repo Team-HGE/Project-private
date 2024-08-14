@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 3697248270316037220}
   - component: {fileID: 5511168634216883140}
   - component: {fileID: 3052894063361384850}
-  m_Layer: 0
+  - component: {fileID: 1948607830425900425}
+  m_Layer: 13
   m_Name: Holl_Wall_Deco 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,3 +108,22 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: ad363dbe20dbcb54b99fb0484b9e8b79, type: 2}
+--- !u!114 &1948607830425900425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9057759728130899565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
