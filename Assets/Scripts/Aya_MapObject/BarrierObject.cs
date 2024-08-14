@@ -61,6 +61,7 @@ public class BarrierObject : InteractableObject
         }
         foreach (var animation in openAni)
         {
+            animation.duration = 10;
             animation.CreateTween(true);
             alarmAni.CreateTween(true);
             alarmLight.enabled = true;
@@ -76,6 +77,7 @@ public class BarrierObject : InteractableObject
         }
         foreach (var animation in closeAni)
         {
+            animation.duration = 45;
             animation.CreateTween(true);
             alarmAni.CreateTween(true);
             alarmLight.enabled = true;
