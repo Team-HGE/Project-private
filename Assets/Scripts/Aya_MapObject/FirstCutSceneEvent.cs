@@ -32,6 +32,10 @@ public class FirstCutSceneEvent : MonoBehaviour
         }
     }
 
+    [Header("Monsters")]
+    [SerializeField] GameObject SM2;
+
+
     public void EventOn()
     {
         if (audioSource == null)
@@ -69,6 +73,8 @@ public class FirstCutSceneEvent : MonoBehaviour
         }
 
         JOE_Spawn();
+
+        SM2.SetActive(true);
 
         Destroy(gameObject);
     }

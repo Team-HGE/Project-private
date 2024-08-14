@@ -15,7 +15,9 @@ public class Monster : MonoBehaviour
 
     [field: Header("Behavior")]
     [field: SerializeField] public bool CanPatrol { get; set; } = true;
-    
+    [SerializeField][field: Range(0f, 50f)] public float patrolRange;
+
+
     [field: Header("MonsterTransform")]
     public Transform monsterTransform;
     public Transform monsterEyeTransform;
