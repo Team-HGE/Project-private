@@ -125,5 +125,8 @@ public class AudioManager : SingletonManager<AudioManager>
             }
         }
     }
-    
+    public void SetVolume(float volume)
+    {
+        AudioListener.volume = volume;
+    }
 }
