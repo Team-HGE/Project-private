@@ -31,6 +31,7 @@ public class FirstCutScene : MonoBehaviour
     {
         if (trigger.IsEnd)
         {
+            TLTrigger.SetActive(false);
             sceneEvent.EventOn();
         }
     }
