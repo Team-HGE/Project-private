@@ -70,6 +70,6 @@ public class GameManager : SingletonManager<GameManager>
         fadeManager.FadeStart(FadeState.FadeIn);
         AudioManager.Instance.PlaySound(BackGroundSound.ASceneSound);
         DialogueManager.Instance.StartStory(1);
-        HotelFloorScene_DataManager.Instance.controller.isCentralPowerActive = true;
+        HotelFloorScene_DataManager.Instance.controller.isCentralPowerActive = true;    
     }
 }

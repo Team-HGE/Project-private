@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EventManager : SingletonManager<EventManager>
 {
-
     // 스위치 상태를 관리할 List<bool>
     public List<bool> switchStates;
     public Switch[] switches;
@@ -13,6 +12,7 @@ public class EventManager : SingletonManager<EventManager>
     protected override void Awake()
     {
         base.Awake();
+        InitializeSwitches();
     }
 
     public struct Switch
