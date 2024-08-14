@@ -61,6 +61,8 @@ public class DialogueManager : SingletonManager<DialogueManager>
         //answer.Init();
 
         systemMsg.UpdateMessage(0);
+
+        NewDayInteract();
     }
 
     //씬이 바뀌면 새 스토리를 재생하고 선택지 초기화

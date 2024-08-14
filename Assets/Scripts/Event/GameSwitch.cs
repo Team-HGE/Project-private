@@ -7,6 +7,8 @@ public enum GameSwitch
     Newtype,
     IsDaytime,
     IsTutorailEnd,
+    GoToBed,
+    BarrierInteract,
     OneFloorOpenable,
     OneFloorStartEscape,
     OneFloorEncountAtA,
