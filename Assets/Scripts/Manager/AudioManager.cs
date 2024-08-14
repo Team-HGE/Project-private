@@ -109,10 +109,13 @@ public class AudioManager : SingletonManager<AudioManager>
 
     public void StopDialSE(AudioClip clip)
     {
-           playAudioSE.StopDialSE(clip);
+        if (clip != null)
+        {
+            playAudioSE.StopDialSE(clip);
+        }
     }
 
-    public void StopAllClips()
+        public void StopAllClips()
     {
         foreach (var audioSource in audioSources)
         {

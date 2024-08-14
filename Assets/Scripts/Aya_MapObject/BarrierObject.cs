@@ -31,13 +31,13 @@ public class BarrierObject : InteractableObject
     }
     public override void ActivateInteraction()
     {
-        if (isInteractable) return;
+        if (isInteractable || !HotelFloorScene_DataManager.Instance.controller.isCentralPowerActive) return;
         GameManager.Instance.player.playerInteraction.SetActive(true);
         GameManager.Instance.player.interactableText.text = "차단벽 해제";
     }
     public override void Interact()
     {
-        if (isInteractable) return;
+        if (isInteractable || !HotelFloorScene_DataManager.Instance.controller.isCentralPowerActive) return;
         if (!isOpen)
         {
             foreach (var obj in HotelFloorScene_DataManager.Instance.controller.barrierObjects)

@@ -14,6 +14,7 @@ public class HotelFloorScene_DataManager : MonoBehaviour
     }
     private void Awake()
     {
+        _instance = this;
         elevatorManager ??= GetComponent<ElevatorManager>();
 
         controller ??= GetComponent<HotelFloorScene_Controller>();

@@ -27,7 +27,6 @@ public class PlayerCrouchState : PlayerGroundState
     public override void Exit() 
     {
         base.Exit();
-        AudioManager.Instance.PlaySoundEffect(SoundEffect.Wokeup);
         stateMachine.Player.transform.localScale = new Vector3(stateMachine.Player.transform.localScale.x, stateMachine.OriginHeight, stateMachine.Player.transform.localScale.z);
         stateMachine.IsCrouch = false;
 
@@ -46,7 +45,7 @@ public class PlayerCrouchState : PlayerGroundState
         {
             stateMachine.ChangeState(stateMachine.WalkState);
             AudioManager.Instance.PlaySoundEffect(SoundEffect.duck); // 권용 수정
-            AudioManager.Instance.PlaySoundEffect(SoundEffect.Wokeup); // 권용 수정
+            
 
             return;
         }
@@ -55,7 +54,7 @@ public class PlayerCrouchState : PlayerGroundState
         {
             stateMachine.ChangeState(stateMachine.RunState);
             AudioManager.Instance.PlaySoundEffect(SoundEffect.duck); // 권용 수정
-            AudioManager.Instance.PlaySoundEffect(SoundEffect.Wokeup); // 권용 수정
+            
             return;
         }
 

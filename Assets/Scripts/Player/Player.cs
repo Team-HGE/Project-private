@@ -1,4 +1,5 @@
 ﻿using Cinemachine;
+using System.Linq;
 using Unity.Burst.Intrinsics;
 using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEditor.ShaderKeywordFilter;
@@ -28,6 +29,8 @@ public class Player : MonoBehaviour, INoise
     [field: Header("Controll")]
     // 플레이 조작 onoff
     [field: SerializeField] public bool IsPlayerControll { get; set; } = true;
+    [field: SerializeField] public bool IsPauseVC { get; set; } = false;
+
 
     [field: Header("Controll")]
     public FlashLightController flashLightController;
@@ -53,16 +56,23 @@ public class Player : MonoBehaviour, INoise
 
         _stateMachine = new PlayerStateMachine(this);
 
-        if (NoisePool.Instance != null)
+        if (NoisePool.Instance == null)
         {
-            //Debug.Log($"Player - Awake - 노이즈 풀 있음");
-            NoisePool.Instance.Initialize();
+            Debug.LogErrorFormat($"Player - Awake - NoisePool 없음");
         }
 
-        for (int i = 0; i < NoiseDatasList.noiseDatasList.Count; i++)
+        if (NoisePool.Instance.noiseDatasList.Count != NoiseDatasList.noiseDatasList.Count)
         {
-            NoisePool.Instance.noiseDatasList.Add(NoiseDatasList.noiseDatasList[i]);
+            for (int i = 0; i < NoiseDatasList.noiseDatasList.Count; i++)
+            {
+                NoisePool.Instance.noiseDatasList.Add(NoiseDatasList.noiseDatasList[i]);
+            }
         }
+        //else
+        //{
+        //    Debug.Log($"Player - Awake - noiseDatasList 있음");
+
+        //}
 
         NoisePool.Instance.FindNoise();
     }
@@ -120,9 +130,7 @@ public class Player : MonoBehaviour, INoise
     {
         //Debug.Log("Player - PlayerControllOnOff 호출됨");
         IsPlayerControll = !IsPlayerControll;
-
-        //if (IsPlayerControll) offSight.enabled = false;
-        //else offSight.enabled = true;
+        
     }
 
     public void PlayerControllOff()
@@ -133,6 +141,14 @@ public class Player : MonoBehaviour, INoise
     public void PlayerControllOn()
     {
         IsPlayerControll = true;
+    }
+
+    public void VCOnOff()
+    {
+        IsPauseVC = !IsPauseVC;
+
+        if (!IsPauseVC) offSight.enabled = false;
+        else offSight.enabled = true;
     }
 
     public Player GetPlayerReturn()

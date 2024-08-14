@@ -20,10 +20,23 @@ public enum LightName
     None_Bar_Lights
 }
 public enum Floor
-{
-    AFloor1F, AFloor2F, AFloor3F, AFloor4F, AFloor5F,
-    BFloor1F, BFloor2F, BFloor3F, BFloor4F, BFloor5F, 
-    Lobby
+{   // 비트연산자   1 << 1 만큼 뒤로 밀기
+    AFloor1F = 1 << 0, 
+    AFloor2F = 1 << 1, 
+    AFloor3F = 1 << 2, 
+    AFloor4F = 1 << 3, 
+    AFloor5F = 1 << 4,
+
+    BFloor1F = 1 << 10, 
+    BFloor2F = 1 << 11, 
+    BFloor3F = 1 << 12, 
+    BFloor4F = 1 << 13, 
+    BFloor5F = 1 << 14, 
+
+    AFloor = AFloor1F | AFloor2F | AFloor3F | AFloor4F | AFloor5F,
+    BFloor = BFloor1F | BFloor2F | BFloor3F | BFloor4F | BFloor5F,
+
+    Lobby = 1 << 31
 }
 [Serializable]
 public class FloorElements
@@ -70,7 +83,7 @@ public class LightManager : MonoBehaviour
 
     
     [Title("Laver")]
-    public List<Laver> lavers = new List<Laver>();
+    public List<Lever> levers = new List<Lever>();
 
     [Title("Lobby")]
     public List<Light> lobbyLights = new List<Light>();
@@ -106,9 +119,9 @@ public class LightManager : MonoBehaviour
     };
     public void OffLaversAllLight()
     {
-        foreach (var laver in lavers)
+        foreach (var lever in levers)
         {
-            laver.OffNowFloorAllLight();
+            lever.OffNowFloorAllLight();
         }
     }
 
@@ -117,6 +130,14 @@ public class LightManager : MonoBehaviour
         foreach (var light in lights)
         {
             light.enabled = false;
+        }
+    }
+
+    public void OnListLight(List<Light> lights)
+    {
+        foreach (var light in lights)
+        {
+            light.enabled = true;
         }
     }
     public void OffChangeMaterial(MeshRenderer[] meshRenderers)
@@ -270,5 +291,31 @@ public class LightManager : MonoBehaviour
             return materialType;
         }
         return LightName.Unknown;
+    }
+
+    private int _floorPowerStatus = int.MaxValue; // 32개에 칸이 전부 1
+
+    public bool isFloorPowerOn(Floor targetFloor)
+    {
+        if ((_floorPowerStatus & (int)targetFloor) == (int)targetFloor)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public void SetFloorPowerStatus(Floor targetFloor, bool set)
+    {
+        if (set)
+        {
+            _floorPowerStatus |= (int)targetFloor;
+        }
+        else
+        {
+            _floorPowerStatus &= ~(int)targetFloor;
+        }
     }
 }

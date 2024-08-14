@@ -3,7 +3,9 @@ using UnityEngine;
 
 public class PlayerLookRotation : MonoBehaviour
 {
-    public CinemachineVirtualCamera virtualCamera;
+    public CinemachineVirtualCamera playerVC;
+    //public CinemachineVirtualCamera pauseVC;
+
     private CinemachinePOV _pov;
     [SerializeField] Transform lookPointTr;
     [SerializeField] Transform offLookPointTr;
@@ -12,21 +14,21 @@ public class PlayerLookRotation : MonoBehaviour
 
     private void Start()
     {
-        _pov = virtualCamera.GetCinemachineComponent<CinemachinePOV>();
+        _pov = playerVC.GetCinemachineComponent<CinemachinePOV>();
         _player = GetComponent<Player>();
     }
 
     private void LateUpdate()
     {
-        //if (!_player.IsPlayerControll)
-        //{   
-        //    if(virtualCamera.enabled) virtualCamera.enabled = false;
-        //    offLookPointTr.rotation = lookPointTr.rotation;
-        //    return;
-        //}
-        //else 
+        if (_player.IsPauseVC)
+        {
+            //if (!pauseVC.enabled) pauseVC.enabled = true;
+            offLookPointTr.rotation = lookPointTr.rotation;
+            return;
+        }
+        //else
         //{
-        //    if (!virtualCamera.enabled) virtualCamera.enabled = true;
+        //    //if (pauseVC.enabled) pauseVC.enabled = false;
         //}
 
         lookPointTr.rotation = Quaternion.Euler(_pov.m_VerticalAxis.Value, 0, 0);
