@@ -40,7 +40,9 @@ public class StoryScript : DialogueSetting, IScript
 
     public void SkipEnable()
     {
+        AudioManager.Instance.PlaySoundEffect(SoundEffect.skip);
         skipenable = true;
+        systemMsg.UpdateMessage(3);
         Input.GetMouseButtonDown(0);
     }
     private IEnumerator PrintScript()
@@ -100,6 +102,11 @@ public class StoryScript : DialogueSetting, IScript
 
                 case "PlayerControl":
                     HandlePlayerControl();
+                    skipenable = false;
+                    continue;
+
+                case var text when text.StartsWith("SystemMsg"):
+                    yield return SystemMsg(text);
                     skipenable = false;
                     continue;
 
@@ -193,6 +200,22 @@ public class StoryScript : DialogueSetting, IScript
             if (int.TryParse(TipString, out int TipsNumber))
             {
                 systemMsg.UpdateTipMessage(TipsNumber);
+            }
+        }
+
+
+        yield break;
+    }
+
+    private IEnumerator SystemMsg(string SystemMsgText)
+    {
+        Debug.Log("선택한 팁 메세지를 호출합니다.");
+        if (SystemMsgText.StartsWith("SystemMsg"))
+        {
+            string SystemMsgString = SystemMsgText.Substring(9);
+            if (int.TryParse(SystemMsgString, out int SystemMsgNumber))
+            {
+                systemMsg.UpdateMessage(SystemMsgNumber);
             }
         }
 

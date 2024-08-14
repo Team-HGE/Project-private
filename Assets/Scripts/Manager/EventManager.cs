@@ -2,15 +2,18 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EventManager : MonoBehaviour
+public class EventManager : SingletonManager<EventManager>
 {
-    public static EventManager Instance { get; private set; }
 
     // 스위치 상태를 관리할 List<bool>
     public List<bool> switchStates;
     public Switch[] switches;
-
     public event Action<GameSwitch, bool> OnSwitchChanged;
+
+    protected override void Awake()
+    {
+        base.Awake();
+    }
 
     public struct Switch
     {
@@ -18,21 +21,6 @@ public class EventManager : MonoBehaviour
         public bool state;
     }
 
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-
-            InitializeSwitches();
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-        
-    }
 
     private void InitializeSwitches()
     {
