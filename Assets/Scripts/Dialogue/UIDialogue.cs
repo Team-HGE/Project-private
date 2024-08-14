@@ -1,4 +1,3 @@
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using TMPro;
 using UnityEngine;
@@ -23,10 +22,15 @@ public class UIDialogue : MonoBehaviour
     public GameObject standingImgLayout;
 
     private ObjectPool objectPool;
-    private GameObject standingObj;
+    public GameObject standingObj;
+    public RectTransform standingTransform;
     private Image standingImg;
+    private Image standingImg2;
     private Color originColor;
-    private bool firstEncounter;
+    private Color fadeColor;
+    private int standingCnt = 0;
+
+    private bool firstEncounter = true;
 
     public void OpenBG()
     {
@@ -94,59 +98,113 @@ public class UIDialogue : MonoBehaviour
 
     public void CheckEncounter(string[] speakers, int idx, string speaker)
     {
-        if (firstEncounter)
-            return;
+        if (speaker == "" || !firstEncounter) return;
 
-        for (int i = 0; i < idx; i++)
+        for (int i = 0; i <= idx; i++)
         {
-            if (speakers[i] == speaker)
+            if (speakers[i] == speaker) // idx나 idx 전에 등장한 적 있으면
             {
-                firstEncounter = false;
-                return;
+                if(i == idx)
+                {
+                    Debug.Log(speaker + " 첫 등장입니다.");
+                    firstEncounter = true;
+                    break;
+                }
+                else
+                {
+                    //Debug.Log("firstEnounter false");
+                    firstEncounter = false;
+                    break;
+                }
             }
-
-            Debug.Log(speaker + "첫 등장입니다.");
-            firstEncounter = true;
         }
+        // 전에 등장한 적 없으면
+        //Debug.Log(speaker + " 첫 등장입니다.2");
+        //firstEncounter = false;
     }
 
     public void PopStanding(Sprite sprite)
     {
-        if (sprite == null) { return; }
+        if (sprite == null) return;
 
         // 첫 등장일 경우
         // 프리팹 활성화, 이미지 넣기
         if (firstEncounter)
         {
             standingObj = objectPool.GetObject();
+            standingTransform = standingObj.GetComponent<RectTransform>();
             standingImg = standingObj.GetComponent<Image>();
+            standingImg.sprite = sprite;
         }
         else
         {
             GameObject Obj = objectPool.ReturnObjectby(sprite);
-            standingImg = Obj.GetComponent<Image>();
+            //Debug.Log(Obj);
+
+            if (Obj == null)
+            {
+                standingObj = objectPool.GetObject();
+                standingTransform = standingObj.GetComponent<RectTransform>();
+                standingImg = standingObj.GetComponent<Image>();
+                standingImg.sprite = sprite;
+                standingCnt++;
+            }
+            else 
+            {
+                standingTransform = Obj.GetComponent<RectTransform>();
+                standingImg = Obj.GetComponent<Image>();
+            }
         }
 
-        originColor = standingImg.color;
-        standingImg.sprite = sprite;
+        //standingTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 900);
+        standingTransform.sizeDelta = new Vector2(900, 900);
         standingImg.preserveAspect = true;
 
+        //originColor = standingImg.color;
+
         // 이미지 오퍼시티 100%
-        originColor.a = 1.0f;
-        standingImg.color = originColor;
+        //originColor.a = 10.0f;
+        //standingImg.color = originColor;
+        standingImg.color = new Color32(255, 255, 255, 255);
+
+        //if (standingCnt > 0 && standingImg2 == null)
+        //{
+        //    standingImg2 = objectPool.ReturnByIndex(0).GetComponent<Image>();
+        //    standingImg2.color = new Color32(255, 255, 255, 255);
+        //}
+        //else if (standingImg2 != null) 
+        //    standingImg2.color = new Color32(255, 255, 255, 255);
+
+        //Debug.Log("투명도 255");
     }
 
     public void FadeStanding(Sprite sprite)
     {
+        //if (sprite == null) { return; }
+
+        //objectPool.FadeColor(standingImg);
+
+        //if (standingImg2 != null)
+        //    objectPool.FadeColor(standingImg2);
+
         // 본인 대사 출력 끝나면 이미지 오피시티 10%
-        originColor.a = 0.1f;
-        standingImg.color = originColor;
+
+        //fadeColor = standingImg.color;
+        //fadeColor.a = 0.5f;
+        //standingImg.color = fadeColor;
+        //standingImg.color = new Color32(255, 255, 255, 100);
+        //Debug.Log("투명도 100");
     }
 
     public void DestroyStanding()
     {
         // 캐릭터가 퇴장하면 해당 프리펩 비활성화
         //objectPool.ReturnObject(standingObj);
+
+        if (standingObj == null) return;
+
+        // 모든 오브젝트 Sprite 초기화
+        objectPool.SpriteInit();
 
         // 대화가 끝나면 프리펩 비활성화
         objectPool.ReturnAllObject();

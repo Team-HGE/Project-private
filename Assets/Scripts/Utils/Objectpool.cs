@@ -74,4 +74,26 @@ public class ObjectPool : MonoBehaviour
         }
         Debug.Log("풀 초기화 완료");
     }
+
+    public GameObject ReturnByIndex(int idx)
+    {
+        return pool[idx];
+    }
+
+    public void FadeColor(Image image)
+    {
+        image.color = new Color32(255, 255, 255, 100);
+    }
+
+
+    public void SpriteInit()
+    {
+        Image image;
+
+        for (int i = 0; i < poolSize; i++)
+        {
+            image = pool[i].GetComponent<Image>();
+            image.sprite = null;
+        }
+    }
 }

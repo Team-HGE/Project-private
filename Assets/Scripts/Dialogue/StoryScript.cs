@@ -193,6 +193,7 @@ public class StoryScript : DialogueSetting, IScript
         else
             ui.darkScreen.SetActive(true);
 
+        ui.DestroyStanding();
         Debug.Log("플레이어 이동 OnOff");
         GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
     }
