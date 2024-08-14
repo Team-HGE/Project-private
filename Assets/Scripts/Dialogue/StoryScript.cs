@@ -42,6 +42,7 @@ public class StoryScript : DialogueSetting, IScript
     {
         AudioManager.Instance.PlaySoundEffect(SoundEffect.skip);
         skipenable = true;
+        systemMsg.UpdateMessage(3);
         Input.GetMouseButtonDown(0);
     }
     private IEnumerator PrintScript()
