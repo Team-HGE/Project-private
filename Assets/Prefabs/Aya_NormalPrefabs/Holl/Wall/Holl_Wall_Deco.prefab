@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 1983619957426526704}
   - component: {fileID: 7737277804044451663}
   - component: {fileID: 2084782662427262909}
-  m_Layer: 0
+  - component: {fileID: 4018422767414918469}
+  m_Layer: 18
   m_Name: Holl_Wall_Deco
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,6 +109,25 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: fa575b22f102f134bad38ef026798250, type: 2}
+--- !u!114 &4018422767414918469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1806533355212181201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &4827435352585408247
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,7 +137,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4509535018240468236}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,7 +172,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3129065926387288222}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Object
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -189,6 +209,10 @@ PrefabInstance:
     - target: {fileID: 1585116967372854, guid: 576a0bdb3b4b8e24780bf16184d70133, type: 3}
       propertyPath: m_Name
       value: Vase_b_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585116967372854, guid: 576a0bdb3b4b8e24780bf16184d70133, type: 3}
+      propertyPath: m_Layer
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 4844985011062308, guid: 576a0bdb3b4b8e24780bf16184d70133, type: 3}
       propertyPath: m_LocalScale.x
@@ -271,6 +295,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bar_Light (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5604886602890742428, guid: be81d0a2ced60b84b952c9f4ebf4828c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 5702077330138575797, guid: be81d0a2ced60b84b952c9f4ebf4828c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -320,6 +349,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 21.197
+      objectReference: {fileID: 0}
+    - target: {fileID: 7446395515891681641, guid: be81d0a2ced60b84b952c9f4ebf4828c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 8783493218708270749, guid: be81d0a2ced60b84b952c9f4ebf4828c,
         type: 3}
@@ -415,6 +449,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bar_Light
       objectReference: {fileID: 0}
+    - target: {fileID: 5604886602890742428, guid: be81d0a2ced60b84b952c9f4ebf4828c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 5702077330138575797, guid: be81d0a2ced60b84b952c9f4ebf4828c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -454,6 +493,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 39.429
+      objectReference: {fileID: 0}
+    - target: {fileID: 7446395515891681641, guid: be81d0a2ced60b84b952c9f4ebf4828c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 8783493218708270749, guid: be81d0a2ced60b84b952c9f4ebf4828c,
         type: 3}
@@ -539,9 +583,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3129065926387288222}
     m_Modifications:
+    - target: {fileID: 1164394923910854, guid: 0cabe418c53fc4e4f834ed61b237ea06, type: 3}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 1437448312348714, guid: 0cabe418c53fc4e4f834ed61b237ea06, type: 3}
       propertyPath: m_Name
       value: NightLight_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1437448312348714, guid: 0cabe418c53fc4e4f834ed61b237ea06, type: 3}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 1879019449318112, guid: 0cabe418c53fc4e4f834ed61b237ea06, type: 3}
+      propertyPath: m_Layer
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 4786096680515608, guid: 0cabe418c53fc4e4f834ed61b237ea06, type: 3}
       propertyPath: m_LocalScale.x
@@ -617,6 +673,10 @@ PrefabInstance:
     - target: {fileID: 1003962738739566, guid: eb317b2497288aa4399f30ed66e26770, type: 3}
       propertyPath: m_Name
       value: Book_b_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1003962738739566, guid: eb317b2497288aa4399f30ed66e26770, type: 3}
+      propertyPath: m_Layer
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 4933290035940052, guid: eb317b2497288aa4399f30ed66e26770, type: 3}
       propertyPath: m_LocalScale.x
@@ -699,6 +759,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bar_Light (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5604886602890742428, guid: be81d0a2ced60b84b952c9f4ebf4828c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 5702077330138575797, guid: be81d0a2ced60b84b952c9f4ebf4828c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -748,6 +813,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 17.093
+      objectReference: {fileID: 0}
+    - target: {fileID: 7446395515891681641, guid: be81d0a2ced60b84b952c9f4ebf4828c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 8783493218708270749, guid: be81d0a2ced60b84b952c9f4ebf4828c,
         type: 3}
@@ -843,6 +913,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bar_Light (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5604886602890742428, guid: be81d0a2ced60b84b952c9f4ebf4828c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 5702077330138575797, guid: be81d0a2ced60b84b952c9f4ebf4828c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -892,6 +967,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 21.197
+      objectReference: {fileID: 0}
+    - target: {fileID: 7446395515891681641, guid: be81d0a2ced60b84b952c9f4ebf4828c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 8783493218708270749, guid: be81d0a2ced60b84b952c9f4ebf4828c,
         type: 3}
@@ -980,6 +1060,10 @@ PrefabInstance:
     - target: {fileID: 1825665321019968, guid: 6ca19e331efa0c44a8d9bfd2e8f5cffb, type: 3}
       propertyPath: m_Name
       value: Vase_a_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1825665321019968, guid: 6ca19e331efa0c44a8d9bfd2e8f5cffb, type: 3}
+      propertyPath: m_Layer
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 4823809867040534, guid: 6ca19e331efa0c44a8d9bfd2e8f5cffb, type: 3}
       propertyPath: m_LocalScale.x

@@ -474,6 +474,7 @@ GameObject:
   - component: {fileID: 7028126882346793849}
   - component: {fileID: 3352949676408670237}
   - component: {fileID: 8670810345423305627}
+  - component: {fileID: 3570944453732595869}
   m_Layer: 18
   m_Name: Pedestal
   m_TagString: Untagged
@@ -568,3 +569,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5.9999995, y: 7, z: 8.000009}
   m_Center: {x: 2.9999998, y: 3.4999995, z: -3.9999962}
+--- !u!114 &3570944453732595869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2502306179179366294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4219450363825285881}
   - component: {fileID: 6467495013172920855}
   - component: {fileID: 5613116396406057862}
+  - component: {fileID: 6682682517709138868}
   m_Layer: 18
   m_Name: S_Desk
   m_TagString: Untagged
@@ -106,6 +107,25 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4, y: 32.93916, z: 4}
   m_Center: {x: 2, y: 12.46958, z: 2}
+--- !u!114 &6682682517709138868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1691479202105032559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1001 &4922403517057518400
 PrefabInstance:
   m_ObjectHideFlags: 0

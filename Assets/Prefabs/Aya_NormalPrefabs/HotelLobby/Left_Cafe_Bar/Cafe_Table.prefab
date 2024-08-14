@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 5201832859984632560}
   - component: {fileID: 7096574549021804345}
   - component: {fileID: 7020573424689736166}
-  m_Layer: 0
+  - component: {fileID: 6741236489226028577}
+  m_Layer: 18
   m_Name: Cafe_Table
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,3 +106,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.7974348, y: 10.819352, z: 2.797436}
   m_Center: {x: 0.0000050067906, y: 0, z: 0.00000065565115}
+--- !u!114 &6741236489226028577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3697058896876460608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
