@@ -2,7 +2,8 @@ public enum BackGroundSound
 {
     MainMenuSound,
     ASceneSound,
-    BSceneSound
+    BSceneSound,
+    ChaseBG
 }
 
 public enum SoundEffect

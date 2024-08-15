@@ -16,7 +16,10 @@ public abstract class StateMachine
 
     public void Update()
     {
-        currentState?.Update();
+        if (!GameManager.Instance.playerDie)
+        {
+            currentState?.Update();
+        }
     }
 
     public void PhysicsUpdate()

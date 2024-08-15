@@ -4,11 +4,11 @@ using UnityEngine;
 public class Day_1_Night_DoorLockEvent : MonoBehaviour
 {
     [SerializeField] private GameObject triggerObj;
-    [SerializeField] private bool isTrigger;
+    [SerializeField] private bool isTrigger = false;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && !isTrigger)
         {
             isTrigger = true;
             AddEvent();

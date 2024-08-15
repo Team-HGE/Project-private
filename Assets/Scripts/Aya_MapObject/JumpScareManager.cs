@@ -36,6 +36,8 @@ public class JumpScareManager : MonoBehaviour
 
     public void PlayJumpScare(JumpScareType jumpScareType)
     {
+        //AudioManager.Instance.StopAllClips();
+        GameManager.Instance.playerDie = true;
         flashLight.enabled = false;
         GameManager.Instance.PlayerStateMachine.Player.PlayerControllOff();
         playerCanvas.SetActive(false);
