@@ -8,10 +8,7 @@ public class NoiseManager : SingletonManager<NoiseManager>
 
     protected override void Awake()
     {
-        if (Instance != this)
-        {
-            //Debug.Log("노이즈 매니저 이미 있음");
-        }
+        base.Awake();
     }
 
     public SoundSource PlayNoise(AudioClip clip, string tag, float addVolume, float transitionTime, float pitch)

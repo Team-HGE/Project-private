@@ -14,6 +14,7 @@ public class FirstTLTrigger : MonoBehaviour
     public GameObject SM1;
 
     private bool _isEnd = false;
+    private bool _onTrigger = false;
 
 
     public bool IsEnd 
@@ -40,7 +41,11 @@ public class FirstTLTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (_onTrigger) return;
+
         //Debug.Log("타임라인 시작" );
+        _onTrigger = true;
+        GameManager.Instance.nowPlayCutScene = true;
         PlayTimeline();
     }
 
@@ -58,6 +63,7 @@ public class FirstTLTrigger : MonoBehaviour
     private void OnPlayableDirectorStopped(PlayableDirector director)
     {
         VCs.SetActive(false);
+        GameManager.Instance.nowPlayCutScene = false;
         GameManager.Instance.PlayerStateMachine.Player.VCOnOff();
         GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
 
@@ -77,5 +83,10 @@ public class FirstTLTrigger : MonoBehaviour
         SM1.SetActive(true);
         IsEnd = true;
         //Debug.Log("타임라인이 종료");
+    }
+
+    private void OnDestroy()
+    {
+        firstCutScene.stopped -= OnPlayableDirectorStopped;
     }
 }

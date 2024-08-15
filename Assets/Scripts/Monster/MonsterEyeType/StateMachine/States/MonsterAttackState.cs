@@ -10,12 +10,21 @@ public class MonsterAttackState : MonsterGroundState
     public override void Enter()
     {
         base.Enter();
-        // 애니메이션 실행
+
+        if (GameManager.Instance.playerDie || GameManager.Instance.nowPlayCutScene)
+        {
+            stateMachine.ChangeState(stateMachine.ChaseState);
+            return;
+        }
+
         stateMachine.IsAttack = true;
         stateMachine.Monster.Agent.isStopped = true;
+        
+        // 애니메이션 실행
         StartAnimation(stateMachine.Monster.AnimationData.AttackParameterHash);
+
         Debug.Log("플레이어 공격 - 게임 오버");
-   
+        GameManager.Instance.playerDie = true;
     }
 
     public override void Exit()

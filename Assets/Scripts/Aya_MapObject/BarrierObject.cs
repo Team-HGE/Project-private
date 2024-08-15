@@ -1,4 +1,4 @@
-using DG.Tweening;
+ï»¿using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -31,13 +31,14 @@ public class BarrierObject : InteractableObject
     }
     public override void ActivateInteraction()
     {
-        if (!EventManager.Instance.GetSwitch(GameSwitch.BarrierInteract) && !HotelFloorScene_DataManager.Instance.controller.isCentralPowerActive) return;
+        if (!EventManager.Instance.GetSwitch(GameSwitch.BarrierInteract) || !HotelFloorScene_DataManager.Instance.controller.isCentralPowerActive) return;
+
         GameManager.Instance.player.playerInteraction.SetActive(true);
-        GameManager.Instance.player.interactableText.text = "Â÷´Üº® ÇØÁ¦";
+        GameManager.Instance.player.interactableText.text = "ì°¨ë‹¨ë²½ í•´ì œ";
     }
     public override void Interact()
     {
-        if (!EventManager.Instance.GetSwitch(GameSwitch.BarrierInteract) && !HotelFloorScene_DataManager.Instance.controller.isCentralPowerActive) return;
+        if (!EventManager.Instance.GetSwitch(GameSwitch.BarrierInteract) || !HotelFloorScene_DataManager.Instance.controller.isCentralPowerActive) return;
         if (!isOpen)
         {
             foreach (var obj in HotelFloorScene_DataManager.Instance.controller.barrierObjects)
