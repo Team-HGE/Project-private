@@ -35,6 +35,7 @@ public class GameManager : SingletonManager<GameManager>
 
     [TitleGroup("Player")]
     public ExampleOfUpdatingTheBar exampleBar;
+    public bool playerDie { get; set; }
     [ShowInInspector] public PlayerStateMachine PlayerStateMachine { get; set; }
 
     protected override void Awake()
@@ -58,6 +59,8 @@ public class GameManager : SingletonManager<GameManager>
         player.interactableText = interactableText;
         player.playerInteraction = playerInteractionCanvas;
         player.interactionImage = interactionImage;
+
+        playerDie = false;
     }
     private void Start()
     {

@@ -1,3 +1,4 @@
+using System;
 using System.Text;
 using TMPro;
 using UnityEngine;
@@ -32,6 +33,8 @@ public class UIDialogue : MonoBehaviour
 
     private bool firstEncounter = true;
 
+    public event Action playEvent;
+
     public void OpenBG()
     {
         darkScreen.SetActive(true);
@@ -55,7 +58,8 @@ public class UIDialogue : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        //GameManager.Instance.fadeManager.FadeStart(FadeState.FadeInOut);
+        playEvent?.Invoke();
+        playEvent = null;
         GameManager.Instance.PlayerStateMachine.Player.PlayerControllOn();
         //Debug.Log("isTalking : " + DialogueSetting.isTalking);
     }

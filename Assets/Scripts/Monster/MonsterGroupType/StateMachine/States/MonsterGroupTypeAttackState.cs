@@ -15,10 +15,12 @@ public class MonsterGroupTypeAttackState : MonsterGroupTypeGroundState
         stateMachine.IsAttack = true;
         stateMachine.Monster.Agent.isStopped = true;
         StartAnimation(stateMachine.Monster.AnimationData.AttackParameterHash);
+
+       
         Debug.Log("플레이어 공격 - 게임 오버");
 
         // 점프스퀘어
-        //JumpScareManager.Instance.OnJumpScare(stateMachine.Monster.monsterTransform, JumpScareType.EyeTypeMonster, stateMachine.Monster.monsterEyeTransform);
+        GameManager.Instance.jumpScareManager.PlayJumpScare(JumpScareType.GroupTypeMonster);
     }
 
     public override void Exit()
