@@ -38,6 +38,13 @@ public class Day_2_SceneManager : MonoBehaviour
         GameManager.Instance.cinemachineManager.playerVC = playerVC;
         GameManager.Instance.jumpScareManager.flashLight = playerFlashLight;
         GameManager.Instance.jumpScareManager.blackBG = blackBG;
+        Invoke("OffLobbyLight", 5);
+    }
+
+    void OffLobbyLight()
+    {
+        GameManager.Instance.lightManager.OffListLight(GameManager.Instance.lightManager.GetLightsForFloor(Floor.Lobby));
+        GameManager.Instance.lightManager.OffChangeMaterial(GameManager.Instance.lightManager.GetRenderersForFloor(Floor.Lobby));
     }
 
     [Header("Cinemachine")]

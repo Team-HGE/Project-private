@@ -9,15 +9,24 @@ public class RandomEventCollider : MonoBehaviour
     [SerializeField] float delayTime = 0;
 
     [SerializeField] BreakableWindow[] glass;
+    [SerializeField] GameObject blood;
+    [SerializeField] DoorObject door;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player") && !isTrigger)
         {
             isTrigger = true;
 
+
+            if (door != null)
+            {
+                blood.SetActive(true);
+                door.isLock = true;
+                return;
+            }
             int rand = Random.RandomRange(0, 100);
 
-            if (rand > 100)
+            if (rand > 0)
             {
                 eventObject.SetActive(true);
             }
