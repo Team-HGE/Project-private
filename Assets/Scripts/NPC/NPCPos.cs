@@ -27,8 +27,8 @@ public class NPCPos : MonoBehaviour
         Transform parentTransform = dayTimePos.transform;
         int totalChildren = parentTransform.childCount;
 
-        Debug.Log($"자식수 : {totalChildren}");
-        Debug.Log($"0 : {parentTransform.GetChild(0).transform.position}");
+        //Debug.Log($"자식수 : {totalChildren}");
+        //Debug.Log($"0 : {parentTransform.GetChild(0).transform.position}");
 
         if (NPCList.Count <= 0)
         {

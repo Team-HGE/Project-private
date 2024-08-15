@@ -36,6 +36,16 @@ public class NpcData: MonoBehaviour
     public bool AllInteracted()
     {
         bool result = false;
+        int checkNum = 0;
+
+        for (int i = 0; i < NpcList.Count; i++)
+        {
+            if (NpcList[i].hadInteract)
+            {                
+                checkNum++;
+            }            
+        }
+
 
         for (int i = 0; i < NpcList.Count; i++)
         {
@@ -45,11 +55,15 @@ public class NpcData: MonoBehaviour
             }
             else
             {
-                Debug.Log(NpcList[i].npcName + " 상호작용 미완료");
+                //Debug.Log(NpcList[i].npcName + " 상호작용 미완료");
                 result = false;
                 break;
             }
         }
+
+        Debug.Log($"대화 진행도 : {checkNum} / 4");
+
+
         return result;
     }
 

@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using System.Collections;
 using System.Text;
 
@@ -12,7 +12,7 @@ public class NPCScript : DialogueSetting, IScript
         npcSO = data.NpcList[ID];
         Init(data.LoadNpcSO(ID));
 
-        // NPC »óÅÂ ´ëÈ­ÁßÀ¸·Î º¯°æ, ½ºÆ®·¹½º Áö¼ö °¨¼Ò
+        // NPC ìƒíƒœ ëŒ€í™”ì¤‘ìœ¼ë¡œ ë³€ê²½, ìŠ¤íŠ¸ë ˆìŠ¤ ì§€ìˆ˜ ê°ì†Œ
         data.ChangeNpcState(ID, NpcState.Speaking);
         data.StressDown(ID, 10);
     }
@@ -27,22 +27,26 @@ public class NPCScript : DialogueSetting, IScript
 
     public void Print()
     {
-        // ½ºÅ©¸³Æ® Ãâ·Â ÁßÀÌ¸é »õ ´ëÈ­¸¦ ½ÃÀÛÇÏÁö ¾ÊÀ½, ´ëÈ­ ³»¿ë ÃÊ±âÈ­
-        if (isTalking) { Debug.Log("Áö±İÀº ´ëÈ­ÇÒ ¼ö ¾ø½À´Ï´Ù."); InitDialogueSetting(); return; }
+        // ìŠ¤í¬ë¦½íŠ¸ ì¶œë ¥ ì¤‘ì´ë©´ ìƒˆ ëŒ€í™”ë¥¼ ì‹œì‘í•˜ì§€ ì•ŠìŒ, ëŒ€í™” ë‚´ìš© ì´ˆê¸°í™”
+        if (isTalking) { Debug.Log("ì§€ê¸ˆì€ ëŒ€í™”í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤."); InitDialogueSetting(); return; }
         isTalking = true;
 
 
-        // »óÈ£ÀÛ¿ë ÁßÀÎ ¿ÀºêÁ§Æ® ÆÇº°
+        // ìƒí˜¸ì‘ìš© ì¤‘ì¸ ì˜¤ë¸Œì íŠ¸ íŒë³„
         //GameObject nowInteracting = GameManager.Instance.player.curInteractableGameObject;
         //npc = nowInteracting.GetComponent<NPC>();
 
-        // npc °¡ ¾Æ´Ò °æ¿ì
-        //if (npc == null) { Debug.Log("NPC°¡ ¾Æ´Õ´Ï´Ù. ¶Ç´Â NPC ÄÄÆ÷³ÍÆ®°¡ ¾ø½À´Ï´Ù."); return; }
+        // npc ê°€ ì•„ë‹ ê²½ìš°
+        //if (npc == null) { Debug.Log("NPCê°€ ì•„ë‹™ë‹ˆë‹¤. ë˜ëŠ” NPC ì»´í¬ë„ŒíŠ¸ê°€ ì—†ìŠµë‹ˆë‹¤."); return; }
 
-        // NPC °¨Á¤ »óÅÂ ÃÊ±âÈ­
+        // NPC ê°ì • ìƒíƒœ ì´ˆê¸°í™”
         //npc.ChangeNpcState(NpcState.Idle);
 
         ui.OpenDialogue();
+
+        // ì½”ë£¨í‹´ì´ ì‹¤í–‰ ì „ ëŒ€í™”í–ˆìŒìœ¼ë¡œ ë³€ê²½ë¨
+        npcSO.hadInteract = true;
+
         StartCoroutine(PrintScript());
     }
 
@@ -52,9 +56,9 @@ public class NPCScript : DialogueSetting, IScript
 
         for (int i = 0; i < scriptSO.bodyTexts.Length; i++)
         {
-            if (!isTalking) { Debug.Log("½ÇÇàÁßÀÎ ÄÚ·çÆ¾À» Á¾·áÇÕ´Ï´Ù."); StopAllCoroutines(); InitDialogueSetting(); break; }
+            if (!isTalking) { Debug.Log("ì‹¤í–‰ì¤‘ì¸ ì½”ë£¨í‹´ì„ ì¢…ë£Œí•©ë‹ˆë‹¤."); StopAllCoroutines(); InitDialogueSetting(); break; }
 
-            // ¸»ÇÏ´Â NPC ÀÌ¸§ - ´ëÈ­Áß
+            // ë§í•˜ëŠ” NPC ì´ë¦„ - ëŒ€í™”ì¤‘
             if (scriptSO.speakers[i] != "")
                 UtilSB.SetText(ui.titleText, sbTitle, scriptSO.speakers[i] + " - " + PrintNpcState(npcSO.state));
 
@@ -73,9 +77,12 @@ public class NPCScript : DialogueSetting, IScript
         ui.CloseDialogue();
         isTalking = false;
 
-        //ÇØ´ç NPC ´ëÈ­ ±âÈ¸ ¼Ò¸ğ
-        //NPC »óÅÂ ´ë±âÁßÀ¸·Î º¯°æ
-        npcSO.hadInteract = true;
+        //í•´ë‹¹ NPC ëŒ€í™” ê¸°íšŒ ì†Œëª¨
+        //NPC ìƒíƒœ ëŒ€ê¸°ì¤‘ìœ¼ë¡œ ë³€ê²½
+
+        //npcSO.hadInteract = true;
+
+        Debug.Log($"{npcSO.name} ëŒ€í™”í–ˆìŒ");
         npcSO.state = NpcState.Idle;
 
         yield return null;
@@ -86,15 +93,15 @@ public class NPCScript : DialogueSetting, IScript
         switch (stateType)
         {
             case NpcState.Idle:
-                return "´ë±âÁß";
+                return "ëŒ€ê¸°ì¤‘";
             case NpcState.Speaking:
-                return "´ëÈ­Áß";
+                return "ëŒ€í™”ì¤‘";
             case NpcState.Calling:
-                return "¹«ÀüÁß";
+                return "ë¬´ì „ì¤‘";
             case NpcState.Mutated:
-                return "º¯ÀÌÁß";
+                return "ë³€ì´ì¤‘";
             default:
-                return "´ë±âÁß";
+                return "ëŒ€ê¸°ì¤‘";
         }
     }
 }
