@@ -38,6 +38,10 @@ public class GameManager : SingletonManager<GameManager>
     public bool playerDie { get; set; }
     [ShowInInspector] public PlayerStateMachine PlayerStateMachine { get; set; }
 
+    [TitleGroup("CutScene")]
+    public bool nowPlayCutScene { get; set; }
+
+
     protected override void Awake()
     {
         base.Awake();

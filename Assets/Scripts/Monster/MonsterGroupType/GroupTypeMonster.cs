@@ -42,9 +42,9 @@ public class GroupTypeMonster : MonoBehaviour
     }
 
 
-    private void FixedUpdate()
-    {
-        _stateMachine.PhysicsUpdate();
-    }
+    //private void FixedUpdate()
+    //{
+    //    _stateMachine.PhysicsUpdate();
+    //}
 
 }

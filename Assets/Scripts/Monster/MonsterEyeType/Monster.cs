@@ -62,7 +62,7 @@ public class Monster : MonoBehaviour
     }
 
     private void Update()
-    {
+    {       
         _stateMachine.Update();
 
         // 범위 체크용, 나중에 주석처리 또는 지울것    

@@ -12,12 +12,21 @@ public class MonsterEarTypeAttackState : MonsterEarTypeGroundState
     public override void Enter()
     {
         base.Enter();
+
+        if (GameManager.Instance.playerDie || GameManager.Instance.nowPlayCutScene)
+        {
+            stateMachine.ChangeState(stateMachine.ChaseState);
+            return;
+        }
+
         stateMachine.IsAttack = true;
         stateMachine.Monster.Agent.isStopped = true;
-        Debug.Log("플레이어 사망 - 게임 오버");
+        
         // 애니메이션 실행
         StartAnimation(stateMachine.Monster.AnimationData.AttackParameterHash);
-       
+
+        Debug.Log("플레이어 사망 - 게임 오버");
+        GameManager.Instance.playerDie = true;
     }
 
     public override void Exit()

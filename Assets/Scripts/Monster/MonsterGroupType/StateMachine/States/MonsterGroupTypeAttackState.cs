@@ -11,6 +11,13 @@ public class MonsterGroupTypeAttackState : MonsterGroupTypeGroundState
     public override void Enter()
     {
         base.Enter();
+
+        if (GameManager.Instance.playerDie || GameManager.Instance.nowPlayCutScene)
+        {
+            stateMachine.ChangeState(stateMachine.ChaseState);
+            return;
+        }
+
         // 애니메이션 실행
         stateMachine.IsAttack = true;
         stateMachine.Monster.Agent.isStopped = true;
@@ -18,7 +25,7 @@ public class MonsterGroupTypeAttackState : MonsterGroupTypeGroundState
 
        
         Debug.Log("플레이어 공격 - 게임 오버");
-
+        GameManager.Instance.playerDie = true;
         // 점프스퀘어
         GameManager.Instance.jumpScareManager.PlayJumpScare(JumpScareType.GroupTypeMonster);
     }

@@ -1,4 +1,4 @@
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.Playables;
 
@@ -33,6 +33,9 @@ public class ElevatorTimeLine : MonoBehaviour
         {
             go.SetActive(false);
         }
+
+        GameManager.Instance.nowPlayCutScene = true;
+
         timelineDirector.Play();
         GameManager.Instance.fadeManager.fadeComplete -= ElevatorMovie;
     }
@@ -56,6 +59,8 @@ public class ElevatorTimeLine : MonoBehaviour
     }
     public void ChangeScene()
     {
+        GameManager.Instance.nowPlayCutScene = false;
+
         GameManager.Instance.fadeManager.MoveScene(SceneEnum.Hotel_Day2);
         Invoke("SetUI", 1.5f);
     }

@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class Day_1_Night_DoorLockEvent : MonoBehaviour
@@ -11,6 +11,7 @@ public class Day_1_Night_DoorLockEvent : MonoBehaviour
         if (other.gameObject.CompareTag("Player") && !isTrigger)
         {
             isTrigger = true;
+
             AddEvent();
         }
     }
@@ -21,6 +22,9 @@ public class Day_1_Night_DoorLockEvent : MonoBehaviour
     }
     public void LockAllDoor()
     {
+        //NPC 위치 변경
+        NPCPos.Instance.SetNightNPCpos();
+
         foreach (var door in HotelFloorScene_DataManager.Instance.controller.doorObjects)
         {
             if (door.gameObject.CompareTag("NoLock")) { continue; }

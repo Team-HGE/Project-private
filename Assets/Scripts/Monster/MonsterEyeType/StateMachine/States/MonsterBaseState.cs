@@ -31,6 +31,17 @@ public class MonsterBaseState : IState
 
     public virtual void Update()
     {
+        if (GameManager.Instance.playerDie || GameManager.Instance.nowPlayCutScene)
+        {
+            if (!stateMachine.Monster.Agent.isStopped) stateMachine.Monster.Agent.isStopped = true;
+
+            return;
+        }
+        else
+        {
+            if (stateMachine.Monster.Agent.isStopped) stateMachine.Monster.Agent.isStopped = false;
+        }
+
         FindPlayerCheck();
         RotateToPlayer();
     }
