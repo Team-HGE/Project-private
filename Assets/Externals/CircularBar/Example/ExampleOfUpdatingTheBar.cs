@@ -18,12 +18,21 @@ namespace DiceNook.View
             labels = UIDocument.rootVisualElement.Query<Label>().ToList();
         }
 
+        private void OnEnable()
+        {
+            UpdateUI();
+        }
         void Update()
         {
             if (player == null) return;
+            Debug.Log("On");
+            UpdateUI();
+        }
 
+        private void UpdateUI()
+        {
             float currentNoise = player.CurNoiseAmount / player.MaxNoiseAmount;
-             
+
             UpdateBars(currentNoise);
             UpdateLabels(currentNoise);
         }

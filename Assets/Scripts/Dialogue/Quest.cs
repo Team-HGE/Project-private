@@ -11,7 +11,7 @@ public class Quest : MonoBehaviour
     public TextMeshProUGUI nowQuestText; // 협업 끝나면 UIDialogue로 대체
     private StringBuilder sb = new StringBuilder();
     public AudioManager audioManager;
-
+    public GameObject questCanvas;
 
 
     private void Start() 
