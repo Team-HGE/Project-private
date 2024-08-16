@@ -11,7 +11,7 @@ public class DayTwoStoryInit : MonoBehaviour
 
         //GameManager.Instance.Day2Loading();
 
-        StartCoroutine(GameManager.Instance.Day2Loading());
+        //StartCoroutine(GameManager.Instance.Day2Loading());
 
         //DialogueManager.Instance.StartStory(6);
     }

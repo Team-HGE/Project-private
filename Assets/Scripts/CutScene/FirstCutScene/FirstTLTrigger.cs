@@ -43,6 +43,7 @@ public class FirstTLTrigger : MonoBehaviour
     {
         if (_onTrigger) return;
 
+        GameDataSaveLoadManager.Instance.SaveGameData(0);
         //Debug.Log("타임라인 시작" );
         _onTrigger = true;
         GameManager.Instance.nowPlayCutScene = true;

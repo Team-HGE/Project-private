@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BarrierObject : InteractableObject
+public class BarrierObject : InteractableObject, IInitializeByLoadedData
 {
     [Header("Ani")]
     [SerializeField] DOTweenAnimation[] openAni;
@@ -15,7 +15,6 @@ public class BarrierObject : InteractableObject
     [SerializeField] AudioSource alarmSound;
 
     [SerializeField] Light alarmLight;
-
     [Header("Bool Check")]
     [SerializeField] bool _isOpen;
     public bool isOpen
@@ -28,6 +27,17 @@ public class BarrierObject : InteractableObject
     {
         HotelFloorScene_DataManager.Instance.controller.barrierObjects.Add(this);
         alarmSound = alram.GetComponent<AudioSource>();
+    }
+    public void InitializeByData()
+    {
+        if (EventManager.Instance.GetSwitch(GameSwitch.BarrierIsOpen))
+        {
+            OpenAni(true);
+        }
+        else
+        {
+            CloseAni(true);
+        }
     }
     public override void ActivateInteraction()
     {
@@ -43,18 +53,18 @@ public class BarrierObject : InteractableObject
         {
             foreach (var obj in HotelFloorScene_DataManager.Instance.controller.barrierObjects)
             {
-                obj.OpenAni();
+                obj.OpenAni(false);
             }
         }
         else 
         {
             foreach (var obj in HotelFloorScene_DataManager.Instance.controller.barrierObjects)
             {
-                obj.CloseAni();
+                obj.CloseAni(false);
             }
         }
     }
-    public void OpenAni()
+    public void OpenAni(bool fromInit)
     {
         foreach (var close in closeAni)
         {
@@ -64,13 +74,25 @@ public class BarrierObject : InteractableObject
         {
             animation.duration = 10;
             animation.CreateTween(true);
+        }
+        if (fromInit)
+        {
+            foreach (var animation in openAni)
+            {
+                animation.DOComplete();
+            }
+        }
+        else
+        {
             alarmAni.CreateTween(true);
             alarmLight.enabled = true;
-            isOpen = true;
+            alarmSound.Play();
         }
-        alarmSound.Play();
+        isOpen = true;
+        EventManager.Instance.SetSwitch(GameSwitch.BarrierIsOpen, true);
     }
-    public void CloseAni()
+
+    public void CloseAni(bool fromInit)
     {
         foreach (var open in openAni)
         {
@@ -80,15 +102,27 @@ public class BarrierObject : InteractableObject
         {
             animation.duration = 45;
             animation.CreateTween(true);
+        }
+        if (fromInit)
+        {
+            foreach (var animation in closeAni)
+            {
+                animation.DOComplete();
+            }
+        }
+        else
+        {
             alarmAni.CreateTween(true);
             alarmLight.enabled = true;
-            isOpen = false;
+            alarmSound.Play();
         }
-        alarmSound.Play();
+        isOpen = false;
+        EventManager.Instance.SetSwitch(GameSwitch.BarrierIsOpen, false);
     }
     public void alaramLightOff()
     {
         alarmSound.Stop();
         alarmLight.enabled = false;
     }
+
 }

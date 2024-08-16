@@ -1,17 +1,13 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-
 
 [Serializable]
 public class PlayerGameData
 {
     public PlayerGameData()
     {
-        position = new SerializableVecter3();
-        rotation = new SerializableVecter3();
+        position = new SerializableVecter3(new Vector3(9.4f, 4.79f, 196.07f));
+        rotation = new SerializableVecter3(new Vector3(0f,184.629f, 0f));
     }
     public SerializableVecter3 position; // 플레이어 위치 정보
     public SerializableVecter3 rotation; // 플레이어 회전 정보
@@ -49,8 +45,6 @@ public class PlayerGameDataManager : MonoBehaviour
     {
         PlayerGameData playerData = new PlayerGameData();
 
-        playerTransform = GameManager.Instance.player.transform;
-
         playerData.position.SetVector(playerTransform.position);
         playerData.rotation.SetVector(playerTransform.rotation.eulerAngles);
         return playerData;
@@ -58,8 +52,8 @@ public class PlayerGameDataManager : MonoBehaviour
 
     public void ApplyGameData(PlayerGameData playerData)  // 불러오기
     {
-        playerTransform = GameManager.Instance.player.transform;
-
+        Debug.Log(playerTransform);
+        Debug.Log(playerData.position.GetVector());
         playerTransform.position = playerData.position.GetVector();
         playerTransform.rotation = Quaternion.Euler(playerData.rotation.GetVector());
     }

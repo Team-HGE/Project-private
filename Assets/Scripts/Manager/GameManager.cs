@@ -1,4 +1,4 @@
-﻿using DiceNook.View;
+using DiceNook.View;
 using Sirenix.OdinInspector;
 using System.Collections;
 using TMPro;
@@ -7,10 +7,9 @@ using UnityEngine.UI;
 
 public class GameManager : SingletonManager<GameManager>
 {
-
     [TitleGroup("GameManager", "Singleton", alignment: TitleAlignments.Centered, horizontalLine: true, boldTitle: true, indent: false)]
-    [InfoBox("인스펙터 꾸미는 기능 필요한게 있으시면 말씀해주시면 됩니다.")]
-    [SerializeField] GameObject 응애;
+    [InfoBox("�ν����� �ٹ̴� ��� �ʿ��Ѱ� �����ø� �������ֽø� �˴ϴ�.")]
+    [SerializeField] GameObject ����;
 
     [TabGroup("Tab", "PlayerCanvas", SdfIconType.Image, TextColor = "lightgreen")]
     [TabGroup("Tab", "PlayerCanvas")] public GameObject playerInteractionCanvas;
@@ -66,52 +65,4 @@ public class GameManager : SingletonManager<GameManager>
 
         playerDie = false;
     }
-    private void Start()
-    {
-        //StartCoroutine(Day1Loading());
-    }
-
-    public IEnumerator Day1Loading()
-    {
-        yield return new WaitForSeconds(3);
-
-        yield return fadeManager.FadeStart(FadeState.FadeIn);
-        AudioManager.Instance.PlaySound(BackGroundSound.ASceneSound);
-
-        // 1일차 스토리 초기화
-        DialogueManager.Instance.StartStory(1);
-
-        HotelFloorScene_DataManager.Instance.controller.isCentralPowerActive = true;
-
-        yield return new WaitForSeconds(10);
-        GameDataSaveLoadManager.Instance.SaveGameData(0);
-        Debug.Log("저장완료");
-
-        yield return new WaitForSeconds(10);
-        GameDataSaveLoadManager.Instance.LoadGameData(0);
-        Debug.Log("로드완료");
-    }
-
-    public IEnumerator Day2Loading()
-    {
-        yield return new WaitForSeconds(3);
-
-        yield return fadeManager.FadeStart(FadeState.FadeIn);
-        AudioManager.Instance.PlaySound(BackGroundSound.ASceneSound);
-
-        // 2일차 스토리 초기화
-        DialogueManager.Instance.StartStory(5);
-
-        HotelFloorScene_DataManager.Instance.controller.isCentralPowerActive = true;
-
-        yield return new WaitForSeconds(10);
-        GameDataSaveLoadManager.Instance.SaveGameData(0);
-        Debug.Log("저장완료");
-
-        yield return new WaitForSeconds(10);
-        GameDataSaveLoadManager.Instance.LoadGameData(0);
-        Debug.Log("로드완료");
-    }
-
-
 }

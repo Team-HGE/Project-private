@@ -20,7 +20,7 @@ public class NPCGameDataManager : MonoBehaviour
     public List <NPCGameData> GetData() // 세이브
     {
         List<NPCGameData> npcData = new List<NPCGameData>();
-
+        npcs = HotelFloorScene_DataManager.Instance.GetNPC_Transform();
         for (int i = 0; i < npcs.Length; i++)
         {
             NPCGameData nPCGameData = new NPCGameData();
@@ -34,6 +34,7 @@ public class NPCGameDataManager : MonoBehaviour
 
     public void ApplyGameData(List<NPCGameData> npcGameData) // 불러오기
     {
+        npcs = HotelFloorScene_DataManager.Instance.GetNPC_Transform();
         for (int i = 0; i < npcGameData.Count; i++)
         {
             if (npcs.Length < i)

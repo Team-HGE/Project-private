@@ -22,18 +22,7 @@ public class EventManager : SingletonManager<EventManager>
     protected override void Awake()
     {
         base.Awake();
-        InitializeSwitches();
         if (sceneEventManager == null) sceneEventManager = GetComponent<SceneEventManager>();
-    }
-
-    private void InitializeSwitches()
-    {
-        // GameSwitch 열거형의 항목 수만큼 List<bool> 크기를 초기화
-        int switchCount = System.Enum.GetValues(typeof(GameSwitch)).Length;
-        if (switchStates == null || switchStates.Count != switchCount)
-        {
-            switchStates = new List<bool>(new bool[switchCount]);
-        }
     }
 
     public void SetSwitch(GameSwitch switchType, bool state)

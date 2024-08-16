@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public enum SceneEnum
 {
+    MainMenuScene,
     Hotel_Day1,
     Hotel_Day2
 }

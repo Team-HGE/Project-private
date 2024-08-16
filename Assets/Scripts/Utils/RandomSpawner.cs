@@ -28,12 +28,14 @@ public class RandomSpawner : MonoBehaviour
             Debug.LogError("스폰할 오브젝트 목록이 비어 있습니다.");
             return;
         }
-
-        SpawnObjects();
     }
 
-    void SpawnObjects()
+    public void SpawnObjects()
     {
+        for (int i = 0; i < objectsToSpawn.Count; i++)
+        {
+            HotelFloorScene_DataManager.Instance.npc_Transforms[i] = objectsToSpawn[i].transform;
+        }
         for (int i = 0; i < objectsToSpawn.Count; i++)
         {
             Vector3 spawnPosition = GenerateRandomPosition();
