@@ -65,21 +65,4 @@ public class GameManager : SingletonManager<GameManager>
 
         playerDie = false;
     }
-    private void Start()
-    {
-        StartCoroutine(ASceneLoading());
-    }
-    IEnumerator ASceneLoading()
-    {
-        yield return new WaitForSeconds(3);
-
-        yield return fadeManager.FadeStart(FadeState.FadeIn);
-        AudioManager.Instance.PlaySound(BackGroundSound.ASceneSound);
-        DialogueManager.Instance.StartStory(1);
-        HotelFloorScene_DataManager.Instance.controller.isCentralPowerActive = true;
-
-        yield return new WaitForSeconds(5);
-        //GameDataSaveLoadManager.Instance.LoadGameData(0);
-        Debug.Log("로드완료");
-    }
 }

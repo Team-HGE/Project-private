@@ -1,9 +1,9 @@
 public enum GameSwitch
 {
-    IsNight,
+    isCentralPowerActive, // 전체 전력
+    IsNight, 
 
     HasKey,
-
 
     DoorUnlocked,
 
@@ -15,10 +15,10 @@ public enum GameSwitch
 
     IsTutorailEnd,
 
-    GoToBed,
+    GoToBed, // 침대 상호 작용
 
-    BarrierInteract,
-    BarrierIsOpen,
+    BarrierInteract, // 바리게이트 상호작용 가능
+    BarrierIsOpen, // 바리게이트가 열려있는지
 
     OneFloorOpenable,
 

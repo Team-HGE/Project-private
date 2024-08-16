@@ -1,4 +1,5 @@
 using Cinemachine;
+using DG.Tweening.Core.Easing;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using System.Collections.Generic;
@@ -28,7 +29,10 @@ public class HotelFloorScene_DataManager : MonoBehaviour
     private void Start()
     {
         //spawner.SpawnObjects();
-       
+        GameManager.Instance.fadeManager.FadeStart(FadeState.FadeIn);
+        DialogueManager.Instance.StartStory(1);
+        HotelFloorScene_DataManager.Instance.controller.isCentralPowerActive = true;
+
     }
     public Transform player;
 
