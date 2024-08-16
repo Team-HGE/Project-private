@@ -60,7 +60,10 @@ public class UIDialogue : MonoBehaviour
 
         playEvent?.Invoke();
         playEvent = null;
-        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOn();
+        if (GameManager.Instance.PlayerStateMachine != null)
+        {
+            GameManager.Instance.PlayerStateMachine.Player.PlayerControllOn();
+        }
         //Debug.Log("isTalking : " + DialogueSetting.isTalking);
     }
 

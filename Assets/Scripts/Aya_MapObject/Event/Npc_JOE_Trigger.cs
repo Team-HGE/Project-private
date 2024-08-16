@@ -9,6 +9,7 @@ public class Npc_JOE_Trigger : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") && !isTrigger)
         {
+            EventManager.Instance.SetSwitch(GameSwitch.isMainStoryOff, false);
             isTrigger = true;
             DialogueManager.Instance.StartStory(4);
             timeLine.SetActive(true);

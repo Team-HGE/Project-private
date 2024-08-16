@@ -51,6 +51,6 @@ public class Day_1_Night_DoorLockEvent : MonoBehaviour
             light.intensity = 5;
         }
 
-        EventManager.Instance.sceneEventManager.DestroyEvent(this, triggerObj);
+        //EventManager.Instance.sceneEventManager.DestroyEvent(this, triggerObj);
     }
 }

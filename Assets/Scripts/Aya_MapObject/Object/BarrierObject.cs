@@ -49,8 +49,10 @@ public class BarrierObject : InteractableObject, IInitializeByLoadedData
     public override void Interact()
     {
         if (!EventManager.Instance.GetSwitch(GameSwitch.BarrierInteract) || !EventManager.Instance.GetSwitch(GameSwitch.isCentralPowerActive)) return;
+        EventManager.Instance.SetSwitch(GameSwitch.BarrierInteract, false);
         if (!isOpen)
         {
+
             foreach (var obj in HotelFloorScene_DataManager.Instance.controller.barrierObjects)
             {
                 obj.OpenAni(false);

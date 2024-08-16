@@ -3,6 +3,7 @@ using UnityEngine.AI;
 using System;
 using System.Collections;
 using Sirenix.OdinInspector;
+using UnityEngine.SceneManagement;
 public enum JumpScareType
 {
     GroupTypeMonster,
@@ -25,6 +26,8 @@ public class JumpScareManager : MonoBehaviour
     [TabGroup("Tab", "Death", SdfIconType.EmojiDizzy, TextColor = "black")]
     [TabGroup("Tab", "Death")] public GameObject playerCanvas;
     [TabGroup("Tab", "Death")] public GameObject deathCanvas;
+    [TabGroup("Tab", "Death")] public GameObject mainMenuBtn;
+    [TabGroup("Tab", "Death")] public GameObject retryBtn;
     [TabGroup("Tab", "Death")] public GameObject blackBG;
 
     [Title("MonsterControllers")]
@@ -40,6 +43,7 @@ public class JumpScareManager : MonoBehaviour
         GameManager.Instance.playerDie = true;
         flashLight.enabled = false;
         GameManager.Instance.PlayerStateMachine.Player.PlayerControllOff();
+        GameManager.Instance.PlayerStateMachine.Player.VCOnOff();
         playerCanvas.SetActive(false);
         blackBG.SetActive(true);
         foreach (var mon in monstersJumpScare)
@@ -54,9 +58,24 @@ public class JumpScareManager : MonoBehaviour
     }
     IEnumerator OnDeathCanvas(float time, GameObject monsterObject)
     {
-        yield return new WaitForSeconds(time);
+        yield return time;
         monsterObject.SetActive(false);
         playerCanvas.SetActive(true);
         deathCanvas.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        yield return new WaitForSeconds(3);
+        retryBtn.SetActive(true);
+        mainMenuBtn.SetActive(true);
+    }
+
+    public void ReturnMainMenu()
+    {
+        SceneManager.LoadScene((int)SceneEnum.MainMenuScene);
+    }
+
+    public void RetryGame()
+    {
+        GameManager.Instance.fadeManager.MoveScene(GameDataSaveLoadManager.Instance.ReturnSceneEnum());
     }
 }

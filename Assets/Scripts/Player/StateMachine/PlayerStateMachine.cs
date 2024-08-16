@@ -41,8 +41,6 @@ public class PlayerStateMachine : StateMachine
 
         MovementSpeed = player.Data.GroundData.BaseSpeed;
         OriginHeight = player.transform.localScale.y;
-
-        GameManager.Instance.PlayerStateMachine = this;
     }
 
     public override void ChangeState(IState state)

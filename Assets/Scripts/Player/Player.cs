@@ -159,4 +159,8 @@ public class Player : MonoBehaviour, INoise
     {
         return flashLightController;
     }
+    public PlayerStateMachine GetStateMachine()
+    {
+        return _stateMachine;
+    }
 }

@@ -127,9 +127,9 @@ public class GameDataSaveLoadManager : SingletonManager<GameDataSaveLoadManager>
         gameDataCore = new GameDataCore();
     }
 
-    public int ReturnSceneEnum()
+    public SceneEnum ReturnSceneEnum()
     {
-        return (int)gameDataCore.gameBaseInfo.sceneEnum;
+        return gameDataCore.gameBaseInfo.sceneEnum;
     }
     public void LoadGameData(int slot_Id)
     {

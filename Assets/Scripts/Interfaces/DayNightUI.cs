@@ -14,12 +14,8 @@ public class DayNightUI : MonoBehaviour
 
     void Start()
     {
-        // 텍스트 기본값임
-        UpdateDayNightUI(EventManager.Instance.GetSwitch(GameSwitch.IsDaytime));
-
         // 이벤트 구독함
         EventManager.Instance.OnSwitchChanged += OnSwitchChanged;
-        EventManager.Instance.SetSwitch(GameSwitch.IsDaytime,true);
     }
 
     void OnDestroy()
@@ -39,7 +35,7 @@ public class DayNightUI : MonoBehaviour
         }
     }
 
-    private void UpdateDayNightUI(bool isDaytime)
+    public void UpdateDayNightUI(bool isDaytime)
     {
         if (isDaytime && dayImage.texture != dayTexture)
         {
