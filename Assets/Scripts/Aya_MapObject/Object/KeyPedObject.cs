@@ -18,6 +18,12 @@ public class KeyPadObject : InteractableObject
 
     [Header("VCAM")]
     [SerializeField] CinemachineVirtualCamera keyPadCam;
+
+    [Header("SecondDayEvent")]
+    public ScriptSO scriptSO;
+    public bool isScondDayEvent = false;
+
+
     public override void ActivateInteraction()
     {
         if (isInteractable) return;
@@ -35,7 +41,7 @@ public class KeyPadObject : InteractableObject
     {
         if (isInteractable) return;
         if (unLock) return;
-        isInteractable = true;
+        //isInteractable = true;
         StartCoroutine(Init());
         keyPadGimmick.puzzleSetting(passwords, this);
         Cursor.lockState = CursorLockMode.None;
@@ -50,6 +56,7 @@ public class KeyPadObject : InteractableObject
     }
     public void GimmickSuccess()
     {
+        isInteractable = true;
         unLock = true;
         lockDoorObject.onInteract = true;
         KeyPadDecal.SetActive(false);
@@ -65,10 +72,17 @@ public class KeyPadObject : InteractableObject
 
     public void CloseKeyPad()
     {
-        KeyPadDecal.SetActive(false);
+        KeyPadDecal.SetActive(true);
         keyPadGimmickCanvas.SetActive(false);
         StartCoroutine(Success());
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+    }
+
+    public void SecondDayEventScript() 
+    {
+        DialogueManager.Instance.itemScript.Init(scriptSO);
+        DialogueManager.Instance.itemScript.Print();
+        CloseKeyPad();
     }
 }

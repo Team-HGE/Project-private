@@ -11,6 +11,11 @@ public class Lever : InteractableObject
 
     [Title("Sound")]
     [SerializeField] private AudioSource audioSource;
+
+    [Title("SecondDayEvent")]
+    public ScriptSO scriptSO;
+    public bool isScondDayEvent = false;
+
     private void Start()
     {
         if (audioSource == null) audioSource = GetComponent<AudioSource>();
@@ -30,6 +35,8 @@ public class Lever : InteractableObject
         laverUp.DOPlay();
         audioSource.Play();
         isInteractable = true;
+
+        SecondDayEventScript();
     }
 
     public void OnNowFloorAllLight()
@@ -47,5 +54,14 @@ public class Lever : InteractableObject
         GameManager.Instance.lightManager.OffListLight(GameManager.Instance.lightManager.GetLightsForFloor(nowFloor));
 
         GameManager.Instance.lightManager.OffChangeMaterial(GameManager.Instance.lightManager.GetRenderersForFloor(nowFloor));
+    }
+
+    public void SecondDayEventScript()
+    {
+        if (!isScondDayEvent || EventManager.Instance.GetSwitch(GameSwitch.Day2OnLever) || !EventManager.Instance.GetSwitch(GameSwitch.NowDay2)) return;
+
+        EventManager.Instance.SetSwitch(GameSwitch.Day2OnLever, true);
+        DialogueManager.Instance.itemScript.Init(scriptSO);
+        DialogueManager.Instance.itemScript.Print();
     }
 }

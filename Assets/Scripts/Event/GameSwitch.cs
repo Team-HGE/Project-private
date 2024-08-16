@@ -33,6 +33,8 @@
     OneFloorOpenable, OneFloorStartEscape, OneFloorEncountAtA, OneFloorEndEscape,
 
     // 필요에 따라 더 추가
-    NowDay2
+    NowDay2,
+
+    Day2OnLever
 
 }
