@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using DG.Tweening;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Day_1_Night_DoorLockEvent : MonoBehaviour
@@ -28,6 +29,8 @@ public class Day_1_Night_DoorLockEvent : MonoBehaviour
         foreach (var door in HotelFloorScene_DataManager.Instance.controller.doorObjects)
         {
             if (door.gameObject.CompareTag("NoLock")) { continue; }
+            door.CloseDoor();
+            door.DOComplete();
             door.isLock = true;
         }
 
