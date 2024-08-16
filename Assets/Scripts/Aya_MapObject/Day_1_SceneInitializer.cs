@@ -11,8 +11,8 @@ public class Day_1_SceneInitializer : MonoBehaviour
     [SerializeField] private GameObject eyeTypeMonser;
     [SerializeField] private GameObject groupTypeMonser;
 
-    [SerializeField] private CinemachineBlendListCamera blendListCamera;
-    [SerializeField] private CinemachineVirtualCamera virtualCamera;
+    [SerializeField] private CinemachineBrain mainCamera;
+    [SerializeField] private CinemachineVirtualCamera playerVC;
    
     private void Awake()
     {
@@ -23,11 +23,22 @@ public class Day_1_SceneInitializer : MonoBehaviour
         {
             GameManager.Instance.lightManager.levers.Clear();
         }
+
+     
     }
     private void Start()
     {
-        GameManager.Instance.cinemachineManager.playerVC = virtualCamera;
-        GameManager.Instance.cinemachineManager.blendListCamera = blendListCamera;  
+        // 텍스트 기본값임
+        GameManager.Instance.playerInteractionCanvas.SetActive(true);
+        GameManager.Instance.crossHairCanvas.SetActive(true);
+        GameManager.Instance.circleUI.SetActive(true);
+        GameManager.Instance.timeUI.SetActive(true);
+
+        GameManager.Instance.dayNightUI.UpdateDayNightUI(EventManager.Instance.GetSwitch(GameSwitch.IsDaytime));
+        EventManager.Instance.SetSwitch(GameSwitch.IsDaytime, true);
+
+        GameManager.Instance.cinemachineManager.playerVC = playerVC;
+        GameManager.Instance.cinemachineManager.mainCamera = mainCamera;  
 
         GameManager.Instance.jumpScareManager.blackBG = blackBG;
         GameManager.Instance.jumpScareManager.flashLight = playerLight;

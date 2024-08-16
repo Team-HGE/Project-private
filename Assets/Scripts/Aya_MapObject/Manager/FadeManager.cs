@@ -64,7 +64,11 @@ public class FadeManager : MonoBehaviour
     public int sceneIndex;
     private IEnumerator MoveSceneFade(SceneEnum sceneEnum)
     {
-        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOff();
+        if (GameManager.Instance.PlayerStateMachine != null)
+        {
+            GameManager.Instance.PlayerStateMachine.Player.PlayerControllOff();
+        }
+        
         yield return fadeEffect.UseFadeEffect(FadeState.FadeOut);
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync((int)sceneEnum);
 
@@ -77,13 +81,19 @@ public class FadeManager : MonoBehaviour
             yield return null;
         }
 
-        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOff();
+        if (GameManager.Instance.PlayerStateMachine != null)
+        {
+            GameManager.Instance.PlayerStateMachine.Player.PlayerControllOff();
+        }
         yield return new WaitForSeconds(3);
         sceneLoadings[rand].SetActive(false);
         loadingBar.SetActive(false);
         yield return fadeEffect.UseFadeEffect(FadeState.FadeIn);
 
-        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOn();
+        if (GameManager.Instance.PlayerStateMachine != null)
+        {
+            GameManager.Instance.PlayerStateMachine.Player.PlayerControllOn();
+        }
 
         fadeComplete?.Invoke();
         fadeComplete = null;

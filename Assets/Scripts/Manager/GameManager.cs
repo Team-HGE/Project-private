@@ -17,6 +17,10 @@ public class GameManager : SingletonManager<GameManager>
     [TabGroup("Tab", "PlayerCanvas")] public Image interactionImage;
     [TabGroup("Tab", "PlayerCanvas")] public Image fillAmountImage;
     [TabGroup("Tab", "PlayerCanvas")] public PlayerInteractable player;
+    [TabGroup("Tab", "PlayerCanvas")] public GameObject circleUI;
+    [TabGroup("Tab", "PlayerCanvas")] public GameObject timeUI;
+    [TabGroup("Tab", "PlayerCanvas")] public GameObject crossHairCanvas;
+
 
     [TabGroup("Tab", "Manager", SdfIconType.GearFill, TextColor = "orange")]
     [TabGroup("Tab", "Manager")] public FadeManager fadeManager;

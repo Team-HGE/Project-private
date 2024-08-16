@@ -30,8 +30,6 @@ public class HotelFloorScene_DataManager : MonoBehaviour
 
     [Title("PLAYER")]
     public Transform player;
-    [SerializeField] CinemachineVirtualCamera playerVC;
-    public CinemachineVirtualCamera GetPlayerVC { get { return playerVC; } }
 
     [Title("NPC")]
     [SerializeField] public Transform[] npc_Transforms;

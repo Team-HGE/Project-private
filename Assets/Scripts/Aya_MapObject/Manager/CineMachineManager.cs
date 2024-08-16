@@ -19,10 +19,6 @@ public class CinemachineManager : MonoBehaviour
     Transform playerVCParent;
     Transform targetVCParent;
 
-    private void Start()
-    {
-        playerVC = HotelFloorScene_DataManager.Instance.GetPlayerVC;
-    }
     public IEnumerator LookTarget(CinemachineVirtualCamera targetCamera)
     {
         if (playerVC == null)

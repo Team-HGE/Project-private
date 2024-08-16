@@ -11,13 +11,14 @@ public class MainMenuSetting : MonoBehaviour
     }
     public void NewGame()
     {
-        //AudioManager.Instance.StopSound(BackGroundSound.MainMenuSound);
         GameDataSaveLoadManager.Instance.CreatedNewData();
-        SceneManager.LoadScene((int)SceneEnum.Hotel_Day1);
+
+        GameManager.Instance.fadeManager.MoveScene(SceneEnum.Hotel_Day1);
     }
     public void LoadGame()
     {
         GameDataSaveLoadManager.Instance.LoadGameData(0);
-        SceneManager.LoadScene((int)GameDataSaveLoadManager.Instance.ReturnSceneEnum());
+
+        GameManager.Instance.fadeManager.MoveScene(GameDataSaveLoadManager.Instance.ReturnSceneEnum());
     }
 }

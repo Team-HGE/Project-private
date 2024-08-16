@@ -38,7 +38,7 @@ public class DialogueManager : SingletonManager<DialogueManager>
         //GameManager.Instance.PlayerStateMachine.Player.Karma = 0f;
 
 
-        Debug.Log("현재 카르마 수치: " + GameManager.Instance.PlayerStateMachine.Player.Karma);
+        //Debug.Log("현재 카르마 수치: " + GameManager.Instance.PlayerStateMachine.Player.Karma);
         
         set = GetComponent<DialogueSetting>();
         set.InitUI();

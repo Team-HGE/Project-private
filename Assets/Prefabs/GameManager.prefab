@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5198519263361970153
 RectTransform:
   m_ObjectHideFlags: 0
@@ -643,7 +643,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4811035386305264685
 RectTransform:
   m_ObjectHideFlags: 0
@@ -760,10 +760,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 695441652879910883}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 60, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 60, y: -50}
+  m_SizeDelta: {x: 124.48, y: 42.95}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &8371457337407379756
 CanvasRenderer:
@@ -1432,7 +1432,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &853422680498123831
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1923,7 +1923,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3956580197422404045
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2226,9 +2226,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 695441652879910883}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 25, y: -50}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8122664875065927221
@@ -3023,6 +3023,9 @@ MonoBehaviour:
   interactionImage: {fileID: 8282584164643165967}
   fillAmountImage: {fileID: 7628347784505405866}
   player: {fileID: 0}
+  circleUI: {fileID: 6581073977781654109}
+  timeUI: {fileID: 184761458476047658}
+  crossHairCanvas: {fileID: 4629688870046417753}
   fadeManager: {fileID: 0}
   cinemachineManager: {fileID: 0}
   lightManager: {fileID: 0}
