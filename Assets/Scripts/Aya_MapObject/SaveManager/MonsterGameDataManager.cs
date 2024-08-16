@@ -22,6 +22,7 @@ public class MonsterGameDataManager : MonoBehaviour
     {
         List<MonsterGameData> monsterDataList = new List<MonsterGameData>();
 
+        monsters = HotelFloorScene_DataManager.Instance.GetMonster_Transform();
         for (int i = 0; i < monsters.Length; i++)
         {
             MonsterGameData monsterGameData = new MonsterGameData();
@@ -35,6 +36,7 @@ public class MonsterGameDataManager : MonoBehaviour
 
     public void ApplyGameData(List<MonsterGameData> monsterGameData) // 불러오기
     {
+        monsters = HotelFloorScene_DataManager.Instance.GetMonster_Transform();
         for (int i = 0; i < monsterGameData.Count;i++)
         {
             if (monsters.Length < i)

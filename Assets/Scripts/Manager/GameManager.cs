@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class GameManager : SingletonManager<GameManager>
 {
-
     [TitleGroup("GameManager", "Singleton", alignment: TitleAlignments.Centered, horizontalLine: true, boldTitle: true, indent: false)]
     [InfoBox("인스펙터 꾸미는 기능 필요한게 있으시면 말씀해주시면 됩니다.")]
     [SerializeField] GameObject 응애;
@@ -79,12 +78,8 @@ public class GameManager : SingletonManager<GameManager>
         DialogueManager.Instance.StartStory(1);
         HotelFloorScene_DataManager.Instance.controller.isCentralPowerActive = true;
 
-        yield return new WaitForSeconds(10);
-        GameDataSaveLoadManager.Instance.SaveGameData(0);
-        Debug.Log("저장완료");
-
-        yield return new WaitForSeconds(10);
-        GameDataSaveLoadManager.Instance.LoadGameData(0);
+        yield return new WaitForSeconds(5);
+        //GameDataSaveLoadManager.Instance.LoadGameData(0);
         Debug.Log("로드완료");
     }
 }

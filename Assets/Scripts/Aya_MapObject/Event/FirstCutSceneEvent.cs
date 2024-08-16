@@ -68,7 +68,7 @@ public class FirstCutSceneEvent : MonoBehaviour
         floorB_Laver.OffNowFloorAllLight();
         foreach(var obj in HotelFloorScene_DataManager.Instance.controller.barrierObjects)
         {
-            obj.CloseAni();
+            obj.CloseAni(false);
             obj.isInteractable = true;
         }
 
