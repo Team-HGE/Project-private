@@ -63,6 +63,7 @@ public class GameManager : SingletonManager<GameManager>
         player.playerInteraction = playerInteractionCanvas;
         player.interactionImage = interactionImage;
 
+        this.PlayerStateMachine = _player.GetStateMachine();
         playerDie = false;
     }
 }

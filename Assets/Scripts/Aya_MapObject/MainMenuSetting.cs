@@ -7,7 +7,7 @@ public class MainMenuSetting : MonoBehaviour
 {
     private void Start()
     {
-        //AudioManager.Instance.PlaySound(BackGroundSound.MainMenuSound);
+        
     }
     public void NewGame()
     {
@@ -18,6 +18,6 @@ public class MainMenuSetting : MonoBehaviour
     public void LoadGame()
     {
         GameDataSaveLoadManager.Instance.LoadGameData(0);
-        SceneManager.LoadScene(GameDataSaveLoadManager.Instance.ReturnSceneEnum());
+        SceneManager.LoadScene((int)GameDataSaveLoadManager.Instance.ReturnSceneEnum());
     }
 }
