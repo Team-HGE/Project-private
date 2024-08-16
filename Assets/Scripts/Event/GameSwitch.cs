@@ -1,6 +1,14 @@
 ﻿public enum GameSwitch
 {
-    isCentralPowerActive, // 메인 전력
+    //스토리 관련
+    isMainStoryOff,
+
+    // 메인 전력
+    isCentralPowerActive,
+
+    // 중앙 제어실 카드
+    hasSecurityCard,
+    // 밤인지
     IsNight, 
 
     HasKey,
@@ -15,20 +23,16 @@
 
     IsTutorailEnd,
 
-    GoToBed, // 침대상호작용
+    //침대상호작용
+    GoToBed, 
 
-    BarrierInteract, // 바리게이트 상호작용
-    BarrierIsOpen, // 바리게이트 열려있는지
+    // 바리게이트
+    BarrierInteract, BarrierIsOpen,
 
-    OneFloorOpenable,
 
-    OneFloorStartEscape,
+    OneFloorOpenable, OneFloorStartEscape, OneFloorEncountAtA, OneFloorEndEscape,
 
-    OneFloorEncountAtA,
-
-    OneFloorEndEscape,
-
-   // 필요에 따라 더 추가
+    // 필요에 따라 더 추가
     NowDay2
-    
+
 }

@@ -1,7 +1,5 @@
 using Cinemachine;
-using DG.Tweening.Core.Easing;
 using Sirenix.OdinInspector;
-using Sirenix.Serialization;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -22,27 +20,21 @@ public class HotelFloorScene_DataManager : MonoBehaviour
         _instance = this;
         elevatorManager ??= GetComponent<ElevatorManager>();
         controller ??= GetComponent<HotelFloorScene_Controller>();
-        spawner ??= GetComponent<RandomSpawner>();
 
         LoadDataByInitialize();
     }
     private void Start()
     {
-        //spawner.SpawnObjects();
         GameManager.Instance.fadeManager.FadeStart(FadeState.FadeIn);
-        DialogueManager.Instance.StartStory(1);
-        HotelFloorScene_DataManager.Instance.controller.isCentralPowerActive = true;
-
     }
-    public Transform player;
+    
 
     [Title("Manager")]
     public ElevatorManager elevatorManager;
     public HotelFloorScene_Controller controller;
-    public RandomSpawner spawner;
-
 
     [Title("PLAYER")]
+    public Transform player;
     [SerializeField] CinemachineVirtualCamera playerVC;
     public CinemachineVirtualCamera GetPlayerVC { get { return playerVC; } }
 

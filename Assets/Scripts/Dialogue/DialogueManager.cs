@@ -74,6 +74,7 @@ public class DialogueManager : SingletonManager<DialogueManager>
     {
         Debug.Log($"{_storyIdx} 인덱스 스토리 초기화");
 
+        if (EventManager.Instance.GetSwitch(GameSwitch.isMainStoryOff)) return;
         // 인댁스에 맞는 스토리 입력
         storyScript.Init(storyList[_storyIdx]);
         if (answerList[_storyIdx] != null)

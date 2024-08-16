@@ -57,6 +57,8 @@ public class Item : InteractableObject
     {
         if (gameObject.tag == "FirstCutScene")
         {
+            EventManager.Instance.SetSwitch(GameSwitch.isMainStoryOff, true);
+            GameDataSaveLoadManager.Instance.SaveGameData(0);
             //Debug.Log("컷신 아이템 일때");
             IsFisrtCutScene = true;
         }
