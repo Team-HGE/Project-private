@@ -12,6 +12,8 @@ public enum GameSwitch
     OneFloorOpenable,
     OneFloorStartEscape,
     OneFloorEncountAtA,
-    OneFloorEndEscape
+    OneFloorEndEscape,
     // 필요에 따라 더 추가
+    NowDay2
+    
 }

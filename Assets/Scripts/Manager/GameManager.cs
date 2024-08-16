@@ -68,15 +68,19 @@ public class GameManager : SingletonManager<GameManager>
     }
     private void Start()
     {
-        StartCoroutine(ASceneLoading());
+        //StartCoroutine(Day1Loading());
     }
-    IEnumerator ASceneLoading()
+
+    IEnumerator Day1Loading()
     {
         yield return new WaitForSeconds(3);
 
         yield return fadeManager.FadeStart(FadeState.FadeIn);
         AudioManager.Instance.PlaySound(BackGroundSound.ASceneSound);
+
+        // 1일차 스토리 초기화
         DialogueManager.Instance.StartStory(1);
+
         HotelFloorScene_DataManager.Instance.controller.isCentralPowerActive = true;
 
         yield return new WaitForSeconds(10);
@@ -87,4 +91,27 @@ public class GameManager : SingletonManager<GameManager>
         GameDataSaveLoadManager.Instance.LoadGameData(0);
         Debug.Log("로드완료");
     }
+
+    public IEnumerator Day2Loading()
+    {
+        yield return new WaitForSeconds(3);
+
+        yield return fadeManager.FadeStart(FadeState.FadeIn);
+        AudioManager.Instance.PlaySound(BackGroundSound.ASceneSound);
+
+        // 2일차 스토리 초기화
+        DialogueManager.Instance.StartStory(5);
+
+        HotelFloorScene_DataManager.Instance.controller.isCentralPowerActive = true;
+
+        yield return new WaitForSeconds(10);
+        GameDataSaveLoadManager.Instance.SaveGameData(0);
+        Debug.Log("저장완료");
+
+        yield return new WaitForSeconds(10);
+        GameDataSaveLoadManager.Instance.LoadGameData(0);
+        Debug.Log("로드완료");
+    }
+
+
 }

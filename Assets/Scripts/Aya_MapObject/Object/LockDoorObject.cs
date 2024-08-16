@@ -10,6 +10,7 @@ public class LockDoorObject : InteractableObject
 
     [Header("DotweenAnimation")]
     [SerializeField] DOTweenAnimation doorOpen;
+
     public override void ActivateInteraction()
     {
         if (isInteractable) return;
