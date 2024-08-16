@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -76,7 +76,7 @@ public class KeyPadGimmick : MonoBehaviour
         foreach (var image in numberPic_Images)
         {
             sequence.Append(image.DOColor(checkColor, 0.2f));
-            sequence.AppendInterval(0.1f); // ���ð�
+            sequence.AppendInterval(0.1f); // 대기시간
             sequence.Append(image.DOColor(Color.white, 0.2f));
         }
         if (isNumber_Mismatch)
@@ -118,5 +118,18 @@ public class KeyPadGimmick : MonoBehaviour
         {
             btn.numBtn.enabled = true;
         }
+
+        // 키패드 입력 실패 이벤트 - 2일 이벤트에 해당하는 키패드만
+        if (keyPadObject.isScondDayEvent && !EventManager.Instance.GetSwitch(GameSwitch.Day2OnLever) && EventManager.Instance.GetSwitch(GameSwitch.NowDay2))
+        {
+            Sequence sequence = DOTween.Sequence();
+            sequence.OnComplete(keyPadObject.SecondDayEventScript);
+        }
+    }
+
+    public void CloseBtn()
+    {
+        Sequence sequence = DOTween.Sequence();
+        sequence.OnComplete(keyPadObject.CloseKeyPad);
     }
 }

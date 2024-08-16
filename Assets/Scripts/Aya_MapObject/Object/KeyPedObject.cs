@@ -1,4 +1,4 @@
-using Cinemachine;
+ï»¿using Cinemachine;
 using System.Collections;
 using UnityEngine;
 
@@ -18,12 +18,18 @@ public class KeyPadObject : InteractableObject
 
     [Header("VCAM")]
     [SerializeField] CinemachineVirtualCamera keyPadCam;
+
+    [Header("SecondDayEvent")]
+    public ScriptSO scriptSO;
+    public bool isScondDayEvent = false;
+
+
     public override void ActivateInteraction()
     {
         if (isInteractable) return;
         if (unLock) return;
         GameManager.Instance.player.playerInteraction.SetActive(true);
-        GameManager.Instance.player.interactableText.text = "ÇØÁ¦ÇÏ±â";
+        GameManager.Instance.player.interactableText.text = "í•´ì œí•˜ê¸°";
     }
 
     private void Start()
@@ -35,7 +41,7 @@ public class KeyPadObject : InteractableObject
     {
         if (isInteractable) return;
         if (unLock) return;
-        isInteractable = true;
+        //isInteractable = true;
         StartCoroutine(Init());
         keyPadGimmick.puzzleSetting(passwords, this);
         Cursor.lockState = CursorLockMode.None;
@@ -50,6 +56,7 @@ public class KeyPadObject : InteractableObject
     }
     public void GimmickSuccess()
     {
+        isInteractable = true;
         unLock = true;
         lockDoorObject.onInteract = true;
         KeyPadDecal.SetActive(false);
@@ -61,5 +68,21 @@ public class KeyPadObject : InteractableObject
     IEnumerator Success()
     {
         yield return StartCoroutine(GameManager.Instance.cinemachineManager.ReturnToMainCamera());
+    }
+
+    public void CloseKeyPad()
+    {
+        KeyPadDecal.SetActive(true);
+        keyPadGimmickCanvas.SetActive(false);
+        StartCoroutine(Success());
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
+    public void SecondDayEventScript() 
+    {
+        DialogueManager.Instance.itemScript.Init(scriptSO);
+        DialogueManager.Instance.itemScript.Print();
+        CloseKeyPad();
     }
 }
