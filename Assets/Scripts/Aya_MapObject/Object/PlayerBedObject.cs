@@ -26,8 +26,10 @@ public class PlayerBedObject : InteractableObject
         // 스크립트 종료되면 잠들기
         yield return new WaitUntil(() => !DialogueSetting.isTalking);
 
+        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOff();
         yield return GameManager.Instance.fadeManager.FadeStart(FadeState.FadeOut);
         yield return GameManager.Instance.fadeManager.FadeStart(FadeState.FadeIn);
+        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOn();
         EventManager.Instance.SetSwitch(GameSwitch.GoToBed, false);
         yield return null;
     }

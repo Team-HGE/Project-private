@@ -40,7 +40,7 @@ public class SerializableVecter3
 public class PlayerGameDataManager : MonoBehaviour
 {
     public Transform playerTransform;
-    
+
     public PlayerGameData GetData() // 세이브
     {
         PlayerGameData playerData = new PlayerGameData();
@@ -52,9 +52,13 @@ public class PlayerGameDataManager : MonoBehaviour
 
     public void ApplyGameData(PlayerGameData playerData)  // 불러오기
     {
-        Debug.Log(playerTransform);
-        Debug.Log(playerData.position.GetVector());
-        playerTransform.position = playerData.position.GetVector();
-        playerTransform.rotation = Quaternion.Euler(playerData.rotation.GetVector());
+        CharacterController controller = playerTransform.GetComponent<CharacterController>();
+        if (controller != null)
+        {
+            controller.enabled = false;
+            playerTransform.position = playerData.position.GetVector();
+            playerTransform.rotation = Quaternion.Euler(playerData.rotation.GetVector());
+            controller.enabled = true;
+        }
     }
 }

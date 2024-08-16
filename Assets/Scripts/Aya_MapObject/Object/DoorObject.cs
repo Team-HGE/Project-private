@@ -56,11 +56,12 @@ public class DoorObject : InteractableObject
 
         if (isOpen && !isLock)
         {
-            OpenDoor();
+            CloseDoor();
         }
         else if (!isOpen && !isLock)
         {
-            CloseDoor();
+           
+            OpenDoor();
         }
 
         audioSource.PlayOneShot(targetSound);
@@ -69,19 +70,19 @@ public class DoorObject : InteractableObject
     public void OpenDoor()
     {
         lockDoor.DOKill();
-        openDoor.DOKill();
-        closeDoor.CreateTween(true);
-        targetSound = closeSound;
-        isOpen = false;
+        closeDoor.DOKill();
+        openDoor.CreateTween(true);
+        targetSound = openSound;
+        isOpen = true;
     }
 
     public void CloseDoor()
     {
         lockDoor.DOKill();
-        closeDoor.DOKill();
-        openDoor.CreateTween(true);
-        targetSound = openSound;
-        isOpen = true;
+        openDoor.DOKill();
+        closeDoor.CreateTween(true);
+        targetSound = closeSound;
+        isOpen = false;
     }
 
     public void LockDoor()

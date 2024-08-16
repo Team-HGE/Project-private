@@ -76,6 +76,8 @@ public class JumpScareManager : MonoBehaviour
 
     public void RetryGame()
     {
+        GameDataSaveLoadManager.Instance.LoadGameData(0);
+
         GameManager.Instance.fadeManager.MoveScene(GameDataSaveLoadManager.Instance.ReturnSceneEnum());
     }
 }
