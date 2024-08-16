@@ -1,6 +1,6 @@
-public enum GameSwitch
+ï»¿public enum GameSwitch
 {
-    isCentralPowerActive, // ÀüÃ¼ Àü·Â
+    isCentralPowerActive, // ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½
     IsNight, 
 
     HasKey,
@@ -15,10 +15,10 @@ public enum GameSwitch
 
     IsTutorailEnd,
 
-    GoToBed, // Ä§´ë »óÈ£ ÀÛ¿ë
+    GoToBed, // Ä§ï¿½ï¿½ ï¿½ï¿½È£ ï¿½Û¿ï¿½
 
-    BarrierInteract, // ¹Ù¸®°ÔÀÌÆ® »óÈ£ÀÛ¿ë °¡´É
-    BarrierIsOpen, // ¹Ù¸®°ÔÀÌÆ®°¡ ¿­·ÁÀÖ´ÂÁö
+    BarrierInteract, // ï¿½Ù¸ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½È£ï¿½Û¿ï¿½ ï¿½ï¿½ï¿½ï¿½
+    BarrierIsOpen, // ï¿½Ù¸ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½ï¿½
 
     OneFloorOpenable,
 
@@ -27,5 +27,9 @@ public enum GameSwitch
     OneFloorEncountAtA,
 
     OneFloorEndEscape
-    // ÇÊ¿ä¿¡ µû¶ó ´õ Ãß°¡
+    // ï¿½Ê¿ä¿¡ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ß°ï¿½
+    OneFloorEndEscape,
+    // í•„ìš”ì— ë”°ë¼ ë” ì¶”ê°€
+    NowDay2
+    
 }
