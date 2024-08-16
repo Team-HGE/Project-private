@@ -41,14 +41,14 @@ public class BarrierObject : InteractableObject, IInitializeByLoadedData
     }
     public override void ActivateInteraction()
     {
-        if (!EventManager.Instance.GetSwitch(GameSwitch.BarrierInteract) || !HotelFloorScene_DataManager.Instance.controller.isCentralPowerActive) return;
+        if (!EventManager.Instance.GetSwitch(GameSwitch.BarrierInteract) || !EventManager.Instance.GetSwitch(GameSwitch.isCentralPowerActive)) return;
 
         GameManager.Instance.player.playerInteraction.SetActive(true);
         GameManager.Instance.player.interactableText.text = "차단벽 해제";
     }
     public override void Interact()
     {
-        if (!EventManager.Instance.GetSwitch(GameSwitch.BarrierInteract) || !HotelFloorScene_DataManager.Instance.controller.isCentralPowerActive) return;
+        if (!EventManager.Instance.GetSwitch(GameSwitch.BarrierInteract) || !EventManager.Instance.GetSwitch(GameSwitch.isCentralPowerActive)) return;
         if (!isOpen)
         {
             foreach (var obj in HotelFloorScene_DataManager.Instance.controller.barrierObjects)

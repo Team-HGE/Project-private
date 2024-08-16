@@ -20,6 +20,15 @@ public class Day_2_SceneInitializer : MonoBehaviour
         GameManager.Instance.cinemachineManager.playerVC = playerVC;
         GameManager.Instance.jumpScareManager.flashLight = playerFlashLight;
         GameManager.Instance.jumpScareManager.blackBG = blackBG;
+
+        GameManager.Instance.nowPlayCutScene = false;
+
+        // 2일차 게임 스위치 변경
+
+        EventManager.Instance.InitializeSwitches(); // 지워
+
+        EventManager.Instance.SetSwitch(GameSwitch.NowDay2, true);
+        DialogueManager.Instance.StartStory(5);
     }
 
     void OffLobbyLight()

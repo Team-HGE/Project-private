@@ -25,6 +25,15 @@ public class EventManager : SingletonManager<EventManager>
         if (sceneEventManager == null) sceneEventManager = GetComponent<SceneEventManager>();
     }
 
+
+    public void InitializeSwitches()
+    {
+        int switchCount = System.Enum.GetValues(typeof(GameSwitch)).Length;
+        if (switchStates == null || switchStates.Count != switchCount)
+        {
+            switchStates = new List<bool>(new bool[switchCount]);
+        }
+    }
     public void SetSwitch(GameSwitch switchType, bool state)
     {
         // 먼저 switchStates 리스트에서 해당 스위치의 상태를 업데이트

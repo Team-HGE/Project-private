@@ -24,7 +24,7 @@ public class FadeEffect : MonoBehaviour
     void Awake()
     {
         image = GetComponent<Image>();
-        this.gameObject.SetActive(true);
+        this.gameObject.SetActive(false);
     }
     public void FadeImmediately()
     {

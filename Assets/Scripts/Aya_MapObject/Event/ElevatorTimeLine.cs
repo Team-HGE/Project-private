@@ -59,8 +59,6 @@ public class ElevatorTimeLine : MonoBehaviour
     }
     public void ChangeScene()
     {
-        GameManager.Instance.nowPlayCutScene = false;
-        
         // 2일차 신 호출
         GameManager.Instance.fadeManager.MoveScene(SceneEnum.Hotel_Day2);
         Invoke("SetUI", 1.5f);
