@@ -78,6 +78,7 @@ public class NpcData: MonoBehaviour
     // 해당 storyIdx의 상호작용 script를 불러옴
     public ScriptSO LoadNpcSO(int ID)
     {
+        Debug.Log(storyIdx + "번 NPC 대화 불러오기");
         return NpcList[ID].conversations[storyIdx]; // IndexOutOfRangeException
     }
 
