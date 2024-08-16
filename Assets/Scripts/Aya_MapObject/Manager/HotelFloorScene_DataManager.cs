@@ -18,9 +18,24 @@ public class HotelFloorScene_DataManager : MonoBehaviour
         elevatorManager ??= GetComponent<ElevatorManager>();
 
         controller ??= GetComponent<HotelFloorScene_Controller>();
+
+        if (playerObj == null)
+        {
+            playerObj = GameObject.FindGameObjectWithTag("Player");
+            GameDataSaveLoadManager.Instance.playerGameDataManager.playerTransform = playerObj.transform;
+        }
+
+        //GameDataSaveLoadManager.Instance.LoadGameData(0);
     }
+    public GameObject playerObj;
     public ElevatorManager elevatorManager;
     public HotelFloorScene_Controller controller;
     [SerializeField] CinemachineVirtualCamera playerVC;
     public CinemachineVirtualCamera GetPlayerVC { get { return playerVC; } }
+
+    [SerializeField] Transform[] npc_Transforms;
+    public Transform[] GetNPC_Transform()
+    {
+        return npc_Transforms;
+    }
 }

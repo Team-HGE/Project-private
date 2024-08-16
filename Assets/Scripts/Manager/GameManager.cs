@@ -78,5 +78,13 @@ public class GameManager : SingletonManager<GameManager>
         AudioManager.Instance.PlaySound(BackGroundSound.ASceneSound);
         DialogueManager.Instance.StartStory(1);
         HotelFloorScene_DataManager.Instance.controller.isCentralPowerActive = true;
+
+        yield return new WaitForSeconds(10);
+        GameDataSaveLoadManager.Instance.SaveGameData(0);
+        Debug.Log("저장완료");
+
+        yield return new WaitForSeconds(10);
+        GameDataSaveLoadManager.Instance.LoadGameData(0);
+        Debug.Log("로드완료");
     }
 }
