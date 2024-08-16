@@ -23,11 +23,6 @@ public class HotelFloorScene_DataManager : MonoBehaviour
 
         LoadDataByInitialize();
     }
-    private void Start()
-    {
-        GameManager.Instance.fadeManager.FadeStart(FadeState.FadeIn);
-    }
-    
 
     [Title("Manager")]
     public ElevatorManager elevatorManager;
