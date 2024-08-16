@@ -1,4 +1,4 @@
-public enum GameSwitch
+ï»¿public enum GameSwitch
 {
     IsNight,
     HasKey,
@@ -13,7 +13,7 @@ public enum GameSwitch
     OneFloorStartEscape,
     OneFloorEncountAtA,
     OneFloorEndEscape,
-    // ÇÊ¿ä¿¡ µû¶ó ´õ Ãß°¡
+    // í•„ìš”ì— ë”°ë¼ ë” ì¶”ê°€
     NowDay2
     
 }

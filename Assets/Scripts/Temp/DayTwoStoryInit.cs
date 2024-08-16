@@ -1,13 +1,12 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DayTwoStoryInit : MonoBehaviour
 {
-    // Start is called before the first frame update
     void Start()
     {
-        // 2ÀÏÂ÷ °ÔÀÓ ½ºÀ§Ä¡ º¯°æ
+        // 2ì¼ì°¨ ê²Œì„ ìŠ¤ìœ„ì¹˜ ë³€ê²½
         EventManager.Instance.SetSwitch(GameSwitch.NowDay2, true);
 
         //GameManager.Instance.Day2Loading();
@@ -16,6 +15,4 @@ public class DayTwoStoryInit : MonoBehaviour
 
         //DialogueManager.Instance.StartStory(6);
     }
-
-
 }

@@ -1,4 +1,4 @@
-using DiceNook.View;
+ï»¿using DiceNook.View;
 using Sirenix.OdinInspector;
 using System.Collections;
 using TMPro;
@@ -9,8 +9,8 @@ public class GameManager : SingletonManager<GameManager>
 {
 
     [TitleGroup("GameManager", "Singleton", alignment: TitleAlignments.Centered, horizontalLine: true, boldTitle: true, indent: false)]
-    [InfoBox("ÀÎ½ºÆåÅÍ ²Ù¹Ì´Â ±â´É ÇÊ¿äÇÑ°Ô ÀÖÀ¸½Ã¸é ¸»¾¸ÇØÁÖ½Ã¸é µË´Ï´Ù.")]
-    [SerializeField] GameObject ÀÀ¾Ö;
+    [InfoBox("ì¸ìŠ¤í™í„° ê¾¸ë¯¸ëŠ” ê¸°ëŠ¥ í•„ìš”í•œê²Œ ìˆìœ¼ì‹œë©´ ë§ì”€í•´ì£¼ì‹œë©´ ë©ë‹ˆë‹¤.")]
+    [SerializeField] GameObject ì‘ì• ;
 
     [TabGroup("Tab", "PlayerCanvas", SdfIconType.Image, TextColor = "lightgreen")]
     [TabGroup("Tab", "PlayerCanvas")] public GameObject playerInteractionCanvas;
@@ -71,25 +71,25 @@ public class GameManager : SingletonManager<GameManager>
         //StartCoroutine(Day1Loading());
     }
 
-    IEnumerator Day1Loading()
+    public IEnumerator Day1Loading()
     {
         yield return new WaitForSeconds(3);
 
         yield return fadeManager.FadeStart(FadeState.FadeIn);
         AudioManager.Instance.PlaySound(BackGroundSound.ASceneSound);
 
-        // 1ÀÏÂ÷ ½ºÅä¸® ÃÊ±âÈ­
+        // 1ì¼ì°¨ ìŠ¤í† ë¦¬ ì´ˆê¸°í™”
         DialogueManager.Instance.StartStory(1);
 
         HotelFloorScene_DataManager.Instance.controller.isCentralPowerActive = true;
 
         yield return new WaitForSeconds(10);
         GameDataSaveLoadManager.Instance.SaveGameData(0);
-        Debug.Log("ÀúÀå¿Ï·á");
+        Debug.Log("ì €ì¥ì™„ë£Œ");
 
         yield return new WaitForSeconds(10);
         GameDataSaveLoadManager.Instance.LoadGameData(0);
-        Debug.Log("·Îµå¿Ï·á");
+        Debug.Log("ë¡œë“œì™„ë£Œ");
     }
 
     public IEnumerator Day2Loading()
@@ -99,18 +99,18 @@ public class GameManager : SingletonManager<GameManager>
         yield return fadeManager.FadeStart(FadeState.FadeIn);
         AudioManager.Instance.PlaySound(BackGroundSound.ASceneSound);
 
-        // 2ÀÏÂ÷ ½ºÅä¸® ÃÊ±âÈ­
+        // 2ì¼ì°¨ ìŠ¤í† ë¦¬ ì´ˆê¸°í™”
         DialogueManager.Instance.StartStory(5);
 
         HotelFloorScene_DataManager.Instance.controller.isCentralPowerActive = true;
 
         yield return new WaitForSeconds(10);
         GameDataSaveLoadManager.Instance.SaveGameData(0);
-        Debug.Log("ÀúÀå¿Ï·á");
+        Debug.Log("ì €ì¥ì™„ë£Œ");
 
         yield return new WaitForSeconds(10);
         GameDataSaveLoadManager.Instance.LoadGameData(0);
-        Debug.Log("·Îµå¿Ï·á");
+        Debug.Log("ë¡œë“œì™„ë£Œ");
     }
 
 
