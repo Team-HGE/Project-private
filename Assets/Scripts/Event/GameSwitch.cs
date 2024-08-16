@@ -1,6 +1,6 @@
 ﻿public enum GameSwitch
 {
-    isCentralPowerActive, // ��ü ����
+    isCentralPowerActive, // 메인 전력
     IsNight, 
 
     HasKey,
@@ -15,10 +15,10 @@
 
     IsTutorailEnd,
 
-    GoToBed, // ħ�� ��ȣ �ۿ�
+    GoToBed, // 침대상호작용
 
-    BarrierInteract, // �ٸ�����Ʈ ��ȣ�ۿ� ����
-    BarrierIsOpen, // �ٸ�����Ʈ�� �����ִ���
+    BarrierInteract, // 바리게이트 상호작용
+    BarrierIsOpen, // 바리게이트 열려있는지
 
     OneFloorOpenable,
 
@@ -26,10 +26,9 @@
 
     OneFloorEncountAtA,
 
-    OneFloorEndEscape
-    // �ʿ信 ���� �� �߰�
     OneFloorEndEscape,
-    // 필요에 따라 더 추가
+
+   // 필요에 따라 더 추가
     NowDay2
     
 }

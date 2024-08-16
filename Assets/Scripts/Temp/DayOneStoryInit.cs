@@ -4,9 +4,5 @@ using UnityEngine;
 
 public class DayOneStoryInit : MonoBehaviour
 {
-    void Start()
-    {
-        StartCoroutine(GameManager.Instance.Day1Loading());
 
-    }
 }
