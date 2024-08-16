@@ -1,4 +1,4 @@
-using Cinemachine;
+ï»¿using Cinemachine;
 using System.Collections;
 using UnityEngine;
 
@@ -23,7 +23,7 @@ public class KeyPadObject : InteractableObject
         if (isInteractable) return;
         if (unLock) return;
         GameManager.Instance.player.playerInteraction.SetActive(true);
-        GameManager.Instance.player.interactableText.text = "ÇØÁ¦ÇÏ±â";
+        GameManager.Instance.player.interactableText.text = "í•´ì œí•˜ê¸°";
     }
 
     private void Start()
@@ -61,5 +61,14 @@ public class KeyPadObject : InteractableObject
     IEnumerator Success()
     {
         yield return StartCoroutine(GameManager.Instance.cinemachineManager.ReturnToMainCamera());
+    }
+
+    public void CloseKeyPad()
+    {
+        KeyPadDecal.SetActive(false);
+        keyPadGimmickCanvas.SetActive(false);
+        StartCoroutine(Success());
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 }

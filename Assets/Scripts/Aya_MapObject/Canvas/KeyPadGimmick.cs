@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -76,7 +76,7 @@ public class KeyPadGimmick : MonoBehaviour
         foreach (var image in numberPic_Images)
         {
             sequence.Append(image.DOColor(checkColor, 0.2f));
-            sequence.AppendInterval(0.1f); // ´ë±â½Ã°£
+            sequence.AppendInterval(0.1f); // ëŒ€ê¸°ì‹œê°„
             sequence.Append(image.DOColor(Color.white, 0.2f));
         }
         if (isNumber_Mismatch)
@@ -118,5 +118,11 @@ public class KeyPadGimmick : MonoBehaviour
         {
             btn.numBtn.enabled = true;
         }
+    }
+
+    public void CloseBtn()
+    {
+        Sequence sequence = DOTween.Sequence();
+        sequence.OnComplete(keyPadObject.CloseKeyPad);
     }
 }
