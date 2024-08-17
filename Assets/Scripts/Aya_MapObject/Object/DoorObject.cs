@@ -32,6 +32,10 @@ public class DoorObject : InteractableObject
     private void Start()
     {
         HotelFloorScene_DataManager.Instance.controller.doorObjects.Add(this);
+        if (EventManager.Instance.GetSwitch(GameSwitch.DoorUnlocked) && !this.gameObject.CompareTag("NoLock"))
+        {
+            isLock = EventManager.Instance.GetSwitch(GameSwitch.DoorUnlocked); 
+        }
     }
 
     public override void ActivateInteraction()
@@ -47,30 +51,46 @@ public class DoorObject : InteractableObject
         audioSource.volume = 1f;
         if (isLock)
         {
-            openDoor.DOKill();
-            closeDoor.DOKill();
-            lockDoor.CreateTween(true);
-            audioSource.volume = 0.5f;
-            targetSound = lockSound;
+            LockDoor();
         }
 
         if (isOpen && !isLock)
         {
-            lockDoor.DOKill();
-            openDoor.DOKill();
-            closeDoor.CreateTween(true);
-            targetSound = closeSound;
-            isOpen = false;
+            CloseDoor();
         }
         else if (!isOpen && !isLock)
         {
-            lockDoor.DOKill();
-            closeDoor.DOKill();
-            openDoor.CreateTween(true);
-            targetSound = openSound;
-            isOpen = true;
+           
+            OpenDoor();
         }
 
         audioSource.PlayOneShot(targetSound);
+    }
+
+    public void OpenDoor()
+    {
+        lockDoor.DOKill();
+        closeDoor.DOKill();
+        openDoor.CreateTween(true);
+        targetSound = openSound;
+        isOpen = true;
+    }
+
+    public void CloseDoor()
+    {
+        lockDoor.DOKill();
+        openDoor.DOKill();
+        closeDoor.CreateTween(true);
+        targetSound = closeSound;
+        isOpen = false;
+    }
+
+    public void LockDoor()
+    {
+        openDoor.DOKill();
+        closeDoor.DOKill();
+        lockDoor.CreateTween(true);
+        audioSource.volume = 0.5f;
+        targetSound = lockSound;
     }
 }

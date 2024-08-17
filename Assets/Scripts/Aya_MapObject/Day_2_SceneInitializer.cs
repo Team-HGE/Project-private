@@ -5,6 +5,7 @@ public class Day_2_SceneInitializer : MonoBehaviour
 {
     private void Awake()
     {
+        EventManager.Instance.SetSwitch(GameSwitch.DoorUnlocked, false);
         GameManager.Instance.lightManager.elementsForFloors.Clear();
         FloorInitializer.Instance.SetInitializerNull();
 
@@ -16,6 +17,7 @@ public class Day_2_SceneInitializer : MonoBehaviour
 
     private void Start()
     {
+        GameManager.Instance.jumpScareManager.OffBtn();
         GameManager.Instance.cinemachineManager.mainCamera = mainCamera;
         GameManager.Instance.cinemachineManager.playerVC = playerVC;
         GameManager.Instance.jumpScareManager.flashLight = playerFlashLight;

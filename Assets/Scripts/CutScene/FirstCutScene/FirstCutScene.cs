@@ -31,6 +31,8 @@ public class FirstCutScene : MonoBehaviour
     {
         if (trigger.IsEnd)
         {
+            GameManager.Instance.jumpScareManager.playerCanvas.SetActive(true);
+            DialogueManager.Instance.quest.questCanvas.SetActive(true);
             TLTrigger.SetActive(false);
             sceneEvent.EventOn();
         }

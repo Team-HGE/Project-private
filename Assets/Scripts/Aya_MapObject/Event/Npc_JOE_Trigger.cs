@@ -21,5 +21,6 @@ public class Npc_JOE_Trigger : MonoBehaviour
     void MonsterSpawn()
     {
         groupTypeMonsters.SetActive(true);
+        this.gameObject.SetActive(false);
     }
 }

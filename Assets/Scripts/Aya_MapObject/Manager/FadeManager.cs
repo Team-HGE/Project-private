@@ -69,12 +69,13 @@ public class FadeManager : MonoBehaviour
             GameManager.Instance.PlayerStateMachine.Player.PlayerControllOff();
         }
         
-        yield return fadeEffect.UseFadeEffect(FadeState.FadeOut);
-        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync((int)sceneEnum);
+        yield return Fade(FadeState.FadeOut);
 
-        int rand = UnityEngine.Random.Range(0,sceneLoadings.Length);
+        int rand = UnityEngine.Random.Range(0, sceneLoadings.Length);
         sceneLoadings[rand].SetActive(true);
         loadingBar.SetActive(true);
+
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync((int)sceneEnum);
 
         while (!asyncOperation.isDone)
         {
@@ -85,18 +86,15 @@ public class FadeManager : MonoBehaviour
         {
             GameManager.Instance.PlayerStateMachine.Player.PlayerControllOff();
         }
+
         yield return new WaitForSeconds(3);
         sceneLoadings[rand].SetActive(false);
         loadingBar.SetActive(false);
-        yield return fadeEffect.UseFadeEffect(FadeState.FadeIn);
+        yield return Fade(FadeState.FadeIn);
 
         if (GameManager.Instance.PlayerStateMachine != null)
         {
             GameManager.Instance.PlayerStateMachine.Player.PlayerControllOn();
         }
-
-        fadeComplete?.Invoke();
-        fadeComplete = null;
-        fadeEffect.OffFadeObject();
     }
 }

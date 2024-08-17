@@ -13,6 +13,7 @@
 
     HasKey,
 
+    // 태그 제외 전부 Lock
     DoorUnlocked,
 
     BossDefeated,

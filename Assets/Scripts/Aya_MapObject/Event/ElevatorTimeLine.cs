@@ -7,7 +7,6 @@ public class ElevatorTimeLine : MonoBehaviour
     public bool triggerOn; 
     public PlayableDirector timelineDirector;
     public GameObject timeLineObject;
-    public GameObject[] UI;
     public Light playerLight;
 
     public TextMeshPro roomTxt101;
@@ -29,12 +28,8 @@ public class ElevatorTimeLine : MonoBehaviour
     {
         timeLineObject.SetActive(true);
         playerLight.enabled = false;
-        foreach (GameObject go in UI)
-        {
-            go.SetActive(false);
-        }
 
-        GameManager.Instance.nowPlayCutScene = true;
+        GameManager.Instance.Off_UI();
 
         timelineDirector.Play();
         GameManager.Instance.fadeManager.fadeComplete -= ElevatorMovie;
@@ -66,9 +61,6 @@ public class ElevatorTimeLine : MonoBehaviour
 
     void SetUI()
     {
-        foreach (GameObject go in UI)
-        {
-            go.SetActive(true);
-        }
+        GameManager.Instance.On_UI();
     }
 }
