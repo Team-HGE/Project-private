@@ -30,11 +30,11 @@ public class MonsterBaseState : IState
     }
 
     public virtual void Update()
-    {
-        if (GameManager.Instance.playerDie || GameManager.Instance.nowPlayCutScene)
+    {        
+        if (GameManager.Instance.nowPlayCutScene)
         {
             if (!stateMachine.Monster.Agent.isStopped) stateMachine.Monster.Agent.isStopped = true;
-
+            stateMachine.Monster.Agent.ResetPath();
             return;
         }
         else
@@ -42,29 +42,11 @@ public class MonsterBaseState : IState
             if (stateMachine.Monster.Agent.isStopped) stateMachine.Monster.Agent.isStopped = false;
         }
 
-        FindPlayerCheck();
         RotateToPlayer();
+        AttackToPlayer();
+
+        FindPlayerCheck();
     }
-
-
-    //public virtual void Move(Vector3 movementDirection)
-    //{
-    //    float movementSpeed = GetMovementSpeed();
-    //    stateMachine.Monster.Controller.Move(((movementDirection * movementSpeed) + stateMachine.Monster.ForceReceiver.Movement) * Time.deltaTime);
-    //}
-
-    // 수직, 수평 가하는 힘 
-    protected void ForceMove()
-    {
-        stateMachine.Monster.Controller.Move(stateMachine.Monster.ForceReceiver.Movement * Time.deltaTime);
-    }
-
-    //private float GetMovementSpeed()
-    //{
-    //    float movementSpeed = stateMachine.MovementSpeed * stateMachine.MovementSpeedModifier;
-    //    return movementSpeed;
-    //}
-
 
     // 애니메이션 재생
     protected void StartAnimation(int animationHash)
@@ -80,20 +62,19 @@ public class MonsterBaseState : IState
 
     protected void RotateToPlayer()
     {
-
-        //Debug.Log("돌아보기 준비");
-
-        //if (Vector3.Distance(stateMachine.Monster.transform.position, stateMachine.Target.transform.position) <= stateMachine.Monster.Data.GroundData.AttackRange)
-        //{
-        //    Debug.Log("돌아보기 성공");
-
-        //    Rotate(GetMovementDirection());
-        //}
-
-        if (IsInAttackRange())
+        if (IsInFeelRange())
         {
             Rotate(GetMovementDirection());
         }
+    }
+
+    protected void AttackToPlayer()
+    {
+        if (IsInAttackRange() && GetIsPlayerInFieldOfView())
+        {
+            stateMachine.ChangeState(stateMachine.AttackState);
+            return;
+        }            
     }
 
     protected void FindPlayerCheck()
@@ -181,6 +162,12 @@ public class MonsterBaseState : IState
         return playerDistanceSqr <= groundData.PlayerFindRange * groundData.PlayerFindRange;
     }
 
+    protected bool IsInFeelRange()
+    {
+        float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.Monster.transform.position).sqrMagnitude;
+        return playerDistanceSqr <= groundData.PlayerFeelRange * groundData.PlayerFeelRange;
+    }
+
     protected bool IsInAttackRange()
     {
         float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.Monster.transform.position).sqrMagnitude;
@@ -208,4 +195,10 @@ public class MonsterBaseState : IState
             stateMachine.Monster.transform.rotation = Quaternion.Lerp(stateMachine.Monster.transform.rotation, targetRotation, stateMachine.RotationDamping * Time.deltaTime);
         }
     }
+
+    // 수직
+    //protected void ForceMove()
+    //{
+    //    stateMachine.Monster.Controller.Move(stateMachine.Monster.ForceReceiver.Movement * Time.deltaTime);
+    //}
 }

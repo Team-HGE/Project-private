@@ -16,14 +16,8 @@ public class Monster : MonoBehaviour
     [field: Header("Behavior")]
     [field: SerializeField] public bool CanPatrol { get; set; } = true;
     [field: SerializeField] public bool CanComeBack { get; set; } = true;
-    //[field: SerializeField] public bool OnPatrolRangeLimit { get; set; } = false;
-
-
     [SerializeField][field: Range(0f, 50f)] public float patrolRangeMin = 30f;
     [SerializeField][field: Range(0f, 50f)] public float patrolRangeMax = 50f;
-
-
-
 
     [field: Header("MonsterTransform")]
     public Transform monsterTransform;
@@ -69,7 +63,13 @@ public class Monster : MonoBehaviour
     }
 
     private void Update()
-    {       
+    {
+        if (GameManager.Instance.playerDie)
+        {
+            MonsterOff();
+            return;
+        }
+
         _stateMachine.Update();
 
         // 범위 체크용, 나중에 주석처리 또는 지울것    
@@ -122,24 +122,6 @@ public class Monster : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
-    {
-        _stateMachine.PhysicsUpdate();
-    }
-    
-    //// 대기 시간
-    //public void WaitForBehavior(float time)
-    //{
-    //    StartCoroutine(ChangeBehavior(time));
-    //}
-
-    //public IEnumerator ChangeBehavior(float time)
-    //{
-    //    // n초 대기
-    //    yield return new WaitForSeconds(time);
-    //    IsBehavior = !IsBehavior;
-    //}
-
     public void WaitForBehavior(float time)
     {
         _wait = StartCoroutine(ChangeBehavior(time));
@@ -187,4 +169,14 @@ public class Monster : MonoBehaviour
         Vector3 firstPoint = center + rotation * new Vector3(Mathf.Cos(0) * radius, Mathf.Sin(0) * radius, 0);
         Debug.DrawLine(prevPoint, firstPoint, color);
     }
+
+    public void MonsterOff()
+    {
+        gameObject.SetActive(false);
+    }
+
+    //private void FixedUpdate()
+    //{
+    //    _stateMachine.PhysicsUpdate();
+    //}
 }

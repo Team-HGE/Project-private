@@ -42,7 +42,7 @@ public class MonsterPatrolState : MonsterGroundState
     {
         base.Update();
 
-        RotateToPlayer();
+        //RotateToPlayer();
 
         if (stateMachine.Monster.Agent.pathPending) return;
 

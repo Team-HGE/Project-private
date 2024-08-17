@@ -35,6 +35,8 @@ public class MonsterGroundData
 
 
     [field: Header("FindData")]
+    [field: SerializeField][field: Range(0f, 30f)] public float PlayerFeelRange { get; private set; } = 4f;
+
     [field: SerializeField][field: Range(0f, 5f)] public float FindTransitionTime { get; private set; } = 1.5f;
 
     [field: Header("ChaseData")]
