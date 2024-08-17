@@ -24,9 +24,9 @@ public class MonsterAttackState : MonsterGroundState
         StartAnimation(stateMachine.Monster.AnimationData.AttackParameterHash);
 
         Debug.Log("플레이어 공격 - 게임 오버");
-        GameManager.Instance.playerDie = true;
         // 점프스퀘어
         GameManager.Instance.jumpScareManager.PlayJumpScare(JumpScareType.EyeTypeMonster);
+        GameManager.Instance.playerDie = true;
     }
 
     public override void Exit()
