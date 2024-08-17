@@ -16,9 +16,12 @@ public class PlayerBedObject : InteractableObject
     {
         if (!EventManager.Instance.GetSwitch(GameSwitch.GoToBed)) return;
 
-        DialogueManager.Instance.itemScript.Init(scriptSO);
-        DialogueManager.Instance.itemScript.Print();
-
+        if (scriptSO != null)
+        {
+            DialogueManager.Instance.itemScript.Init(scriptSO);
+            DialogueManager.Instance.itemScript.Print();
+        }
+    
         StartCoroutine(Sleep());
     }
     IEnumerator Sleep()

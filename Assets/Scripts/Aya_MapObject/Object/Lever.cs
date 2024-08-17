@@ -27,7 +27,6 @@ public class Lever : InteractableObject
         if (isInteractable) return;
         GameManager.Instance.player.playerInteraction.SetActive(true);
         GameManager.Instance.player.interactableText.text = "¿Ã¸®±â";
-        
     }
     public override void Interact()
     {
@@ -35,8 +34,6 @@ public class Lever : InteractableObject
         laverUp.DOPlay();
         audioSource.Play();
         isInteractable = true;
-
-        SecondDayEventScript();
     }
 
     public void OnNowFloorAllLight()
@@ -58,10 +55,11 @@ public class Lever : InteractableObject
 
     public void SecondDayEventScript()
     {
-        if (!isScondDayEvent || EventManager.Instance.GetSwitch(GameSwitch.Day2OnLever) || !EventManager.Instance.GetSwitch(GameSwitch.NowDay2)) return;
+        if (!isScondDayEvent || EventManager.Instance.GetSwitch(GameSwitch.Day_2_A2F_LeverOn) || !EventManager.Instance.GetSwitch(GameSwitch.NowDay2)) return;
 
-        EventManager.Instance.SetSwitch(GameSwitch.Day2OnLever, true);
+        EventManager.Instance.SetSwitch(GameSwitch.Day_2_A2F_LeverOn, true);
         DialogueManager.Instance.itemScript.Init(scriptSO);
         DialogueManager.Instance.itemScript.Print();
+        //GameDataSaveLoadManager.Instance.SaveGameData(0);
     }
 }

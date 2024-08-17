@@ -68,7 +68,6 @@ public class GameDataSaveLoadManager : SingletonManager<GameDataSaveLoadManager>
 
     [Title("SavingCanvas")]
     public GameObject savingCanvas;
-    public DOTweenAnimation saving_Image;
 
     protected override void Awake()
     {
@@ -152,9 +151,7 @@ public class GameDataSaveLoadManager : SingletonManager<GameDataSaveLoadManager>
     }
     public void SaveGameData(int slot_Id)
     {
-        savingCanvas.SetActive(true);
-        saving_Image.DOKill();
-        saving_Image.CreateTween(true);
+        StartCoroutine(SavingCanvas());
         // UniverSal Data
         // 게임 내 씬에 관계없이 저장될 데이터 [필]
         {
@@ -205,8 +202,10 @@ public class GameDataSaveLoadManager : SingletonManager<GameDataSaveLoadManager>
         playerGameDataManager.ApplyGameData(gameDataCore.playerGameData);
     }
 
-    public void OffSavingCanvas()
+    IEnumerator SavingCanvas()
     {
+        savingCanvas.SetActive(true);
+        yield return new WaitForSeconds(3);
         savingCanvas.SetActive(false);
     }
 }

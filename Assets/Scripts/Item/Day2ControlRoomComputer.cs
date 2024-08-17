@@ -16,7 +16,7 @@ public class Day2ControlRoomComputer : InteractableObject
 
     public override void Interact()
     {
-        if (EventManager.Instance.GetSwitch(GameSwitch.Day2GetPasswordHint1) && EventManager.Instance.GetSwitch(GameSwitch.Day2GetPasswordHint2) && EventManager.Instance.GetSwitch(GameSwitch.Day2GetPasswordHint3) && EventManager.Instance.GetSwitch(GameSwitch.Day2GetPasswordHint4))
+        if (EventManager.Instance.GetSwitch(GameSwitch.Day2GetPasswordHint))
         {
             DialogueManager.Instance.itemScript.Init(scriptSOs[1]);
             DialogueManager.Instance.itemScript.Print();

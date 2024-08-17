@@ -17,9 +17,6 @@ public class Authentication_Device : InteractableObject
         if (isInteractable) return;
         GameManager.Instance.player.playerInteraction.SetActive(true);
 
-        //GameManager.Instance.player.interactableText.text = 
-        //HotelFloorScene_DataManager.Instance.controller.hasSecurityCard ? "[1/1] 보안카드" : "[0/1] 보안카드";
-
         GameManager.Instance.player.interactableText.text =
             EventManager.Instance.GetSwitch(GameSwitch.Day2GetCardKey) ? "[1/1] 보안카드" : "[0/1] 보안카드";
     }
@@ -27,13 +24,6 @@ public class Authentication_Device : InteractableObject
     public override void Interact()
     {
         if (isInteractable) return;
-
-        //if (HotelFloorScene_DataManager.Instance.controller.hasSecurityCard)
-        //{
-        //    doorOpen.CreateTween(true);
-        //    ChangeMaterial();
-        //    isInteractable = true;
-        //}
 
         if (EventManager.Instance.GetSwitch(GameSwitch.Day2GetCardKey))
         {
