@@ -44,8 +44,8 @@ public class Day_1_SceneInitializer : MonoBehaviour
         // 점프스케어 세팅
         GameManager.Instance.jumpScareManager.blackBG = blackBG;
         GameManager.Instance.jumpScareManager.flashLight = playerLight;
-        GameManager.Instance.jumpScareManager.monstersJumpScare[0].gameObject = groupTypeMonster;
-        GameManager.Instance.jumpScareManager.monstersJumpScare[1].gameObject = eyeTypeMonster;
+        GameManager.Instance.jumpScareManager.monstersJumpScare[1].gameObject = groupTypeMonster;
+        GameManager.Instance.jumpScareManager.monstersJumpScare[0].gameObject = eyeTypeMonster;
 
         // 다이얼로그 세팅
         DialogueManager.Instance.StartStory(1);
