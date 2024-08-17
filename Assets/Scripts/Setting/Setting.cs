@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameSettings : SingletonManager<GameSettings>
+public class GameSettings : MonoBehaviour
 {
     public float volume = 1f;
     public float mouseSensitivity = 100f;
@@ -11,15 +11,14 @@ public class GameSettings : SingletonManager<GameSettings>
 
     void Start()
     {
+
     }
 
-    // Update is called once per frame
-
-    public void SaveSettings()
+    public void SaveSettings() 
     {
-        PlayerPrefs.SetFloat("Volume", GameSettings.Instance.volume);
-        PlayerPrefs.SetFloat("MouseSensitivityX", GameSettings.Instance.mouseSensitivity);
-        PlayerPrefs.SetInt("FullScreen", GameSettings.Instance.isFullScreen ? 1 : 0);
+        PlayerPrefs.SetFloat("Volume", volume);
+        PlayerPrefs.SetFloat("MouseSensitivityX", mouseSensitivity);
+        PlayerPrefs.SetInt("FullScreen", isFullScreen ? 1 : 0);
         
 
         PlayerPrefs.Save(); // ¿˙¿Â

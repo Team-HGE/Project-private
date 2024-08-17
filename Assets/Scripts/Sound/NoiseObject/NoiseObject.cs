@@ -30,7 +30,6 @@ public class NoiseObject : InteractableObject, INoise
             CurNoiseAmount += 40f;
             if (CurNoiseAmount >= 100f) CurNoiseAmount = 100f;
         }
-
     }
 
     public override void ActivateInteraction()
@@ -48,11 +47,11 @@ public class NoiseObject : InteractableObject, INoise
 
         isUse = true;
 
-        if (clip == null) return;
+        //if (clip == null) return;
 
-        audioSource.clip = clip;
-        audioSource.loop = true;
-        audioSource.Play();
+       // audioSource.clip = clip;
+        //audioSource.loop = true;
+        //audioSource.Play();
 
         Invoke("TurnOff", NoiseTransitionTime);
     }
@@ -60,7 +59,7 @@ public class NoiseObject : InteractableObject, INoise
     private void TurnOff()
     {
         isUse = false;
-        audioSource.Stop();
+        //audioSource.Stop();
         CurNoiseAmount = 0f;
     }
 

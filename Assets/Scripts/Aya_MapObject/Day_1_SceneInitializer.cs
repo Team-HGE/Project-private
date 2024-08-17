@@ -13,6 +13,8 @@ public class Day_1_SceneInitializer : MonoBehaviour
 
     [SerializeField] private CinemachineBrain mainCamera;
     [SerializeField] private CinemachineVirtualCamera playerVC;
+
+    [SerializeField] private NPC[] npcs;
    
     private void Awake()
     {
@@ -47,6 +49,11 @@ public class Day_1_SceneInitializer : MonoBehaviour
 
         // 다이얼로그 세팅
         DialogueManager.Instance.StartStory(1);
+
+        foreach (var n in npcs)
+        {
+            n.npcEvent += BedInteracted;
+        }
     }
 
 
@@ -58,16 +65,30 @@ public class Day_1_SceneInitializer : MonoBehaviour
         {
             switch(mon.jumpScareType)
             {
+                
                 case JumpScareType.EarTypeMonster:
-                    
                     break;
                 case JumpScareType.EyeTypeMonster:
-                    mon.gameObject = eyeTypeMonster;
+                    Debug.Log(mon.jumpScareType);
+                    //mon.gameObject = eyeTypeMonster;
                     break;
                 case JumpScareType.GroupTypeMonster:
-                    mon.gameObject = groupTypeMonster;
+                    Debug.Log(mon.jumpScareType);
+                    //mon.gameObject = groupTypeMonster;
                     break;
             }
+        }
+    }
+
+    void BedInteracted()
+    {
+        bool canSleep = DialogueManager.Instance.npcData.AllInteracted();
+        Debug.Log(canSleep);
+        if (canSleep)
+        {
+            SystemMsg.Instance.UpdateMessage(5);
+            Quest.Instance.NextQuest(2);
+            EventManager.Instance.SetSwitch(GameSwitch.GoToBed, true);
         }
     }
 }

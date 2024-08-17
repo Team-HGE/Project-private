@@ -1,4 +1,3 @@
-using JetBrains.Annotations;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,7 +7,7 @@ public class AudioManager : SingletonManager<AudioManager>
     public List<AudioSource> audioSources;
     public int maxAudioSources;
 
-    [Header("Clips")]
+    [Header("BackGroundClips")]
     public BackGroundSoundClipMapping[] backGroundAudioClips;
 
     [Header("SEClips")]
@@ -70,14 +69,14 @@ public class AudioManager : SingletonManager<AudioManager>
             audioSources.Add(audioSource);
         }
     }
-    public void PlaySound(BackGroundSound backGroundSound)
+    public void PlayBackGroundSound(BackGroundSound backGroundSound)
     {
         if (_audioBackGroundClipDictionary.TryGetValue(backGroundSound, out AudioClip clip))
         {
             playAudio.PlayAudioClip(clip);
         }
     }
-    public void StopSound(BackGroundSound backGroundSound)
+    public void StopBackGroundSound(BackGroundSound backGroundSound)
     {
         if (_audioBackGroundClipDictionary.TryGetValue(backGroundSound, out AudioClip clip))
         {
@@ -115,7 +114,7 @@ public class AudioManager : SingletonManager<AudioManager>
         }
     }
 
-        public void StopAllClips()
+    public void StopAllClips()
     {
         foreach (var audioSource in audioSources)
         {
@@ -125,7 +124,7 @@ public class AudioManager : SingletonManager<AudioManager>
             }
         }
     }
-    public void SetVolume(float volume)
+        public void SetVolume(float volume)
     {
         AudioListener.volume = volume;
     }

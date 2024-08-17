@@ -51,8 +51,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSources:
   - {fileID: 0}
-  maxAudioSources: 0
-  backGroundAudioClips: []
+  maxAudioSources: 10
+  backGroundAudioClips:
+  - backGroundSound: 3
+    audioClip: {fileID: 8300000, guid: 3f8039ec2492db947bf1df5796f12d7d, type: 3}
+  - backGroundSound: 0
+    audioClip: {fileID: 8300000, guid: 9dc9e050c331fab4e8b3cede846ed324, type: 3}
   soundEffectClips:
   - soundEffect: 0
     audioClip: {fileID: 8300000, guid: 244edf2205df65843a6ab3a1c0cdca7e, type: 3}

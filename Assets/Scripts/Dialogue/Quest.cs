@@ -3,6 +3,7 @@ using System;
 using System.Text;
 using TMPro;
 using UnityEngine;
+using DG.Tweening;
 
 public class Quest : SingletonManager<Quest>
 {
@@ -13,6 +14,7 @@ public class Quest : SingletonManager<Quest>
     public AudioManager audioManager;
     public GameObject questCanvas;
 
+    public Transform questCanvas_Transform;
 
     private void Start() 
     {
@@ -29,6 +31,12 @@ public class Quest : SingletonManager<Quest>
 
     public void UpdateQuest()
     {
+        Sequence sequence = DOTween.Sequence();
+
+        sequence.Append(questCanvas_Transform.DOLocalMoveX(-1500 , 1.5f)).SetEase(Ease.InBack);
+        sequence.AppendInterval(0.5f);
+        sequence.Append(questCanvas_Transform.DOLocalMoveX(-935, 1.5f)).SetEase(Ease.OutBack);
+
         sb.Clear();
         sb.Append(questSO.quests[CurrentQuestIndex]);
         nowQuestText.text = "" + sb.ToString();
