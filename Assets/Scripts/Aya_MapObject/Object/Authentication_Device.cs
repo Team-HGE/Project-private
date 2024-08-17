@@ -1,4 +1,4 @@
-using DG.Tweening;
+ï»¿using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,10 +18,10 @@ public class Authentication_Device : InteractableObject
         GameManager.Instance.player.playerInteraction.SetActive(true);
 
         //GameManager.Instance.player.interactableText.text = 
-        //HotelFloorScene_DataManager.Instance.controller.hasSecurityCard ? "[1/1] º¸¾ÈÄ«µå" : "[0/1] º¸¾ÈÄ«µå";
+        //HotelFloorScene_DataManager.Instance.controller.hasSecurityCard ? "[1/1] ë³´ì•ˆì¹´ë“œ" : "[0/1] ë³´ì•ˆì¹´ë“œ";
 
         GameManager.Instance.player.interactableText.text =
-            EventManager.Instance.GetSwitch(GameSwitch.Day2GetCardKey) ? "[1/1] º¸¾ÈÄ«µå" : "[0/1] º¸¾ÈÄ«µå";
+            EventManager.Instance.GetSwitch(GameSwitch.Day2GetCardKey) ? "[1/1] ë³´ì•ˆì¹´ë“œ" : "[0/1] ë³´ì•ˆì¹´ë“œ";
     }
 
     public override void Interact()
