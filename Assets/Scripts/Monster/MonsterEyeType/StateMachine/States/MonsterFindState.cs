@@ -9,8 +9,9 @@ public class MonsterFindState : MonsterGroundState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("MonsterFindState - 플레이어 발견 주시 시작");
+        //Debug.Log("MonsterFindState - 플레이어 발견 주시 시작");
         stateMachine.IsFind = true;
+        stateMachine.Monster.Agent.ResetPath();
         stateMachine.Monster.Agent.isStopped = true;
         stateMachine.Monster.IsBehavior = false;
 
@@ -22,7 +23,7 @@ public class MonsterFindState : MonsterGroundState
     public override void Exit()
     {
         base.Exit();
-        Debug.Log("MonsterFindState - 플레이어 발견 주시 종료");
+        //Debug.Log("MonsterFindState - 플레이어 발견 주시 종료");
         stateMachine.IsFind = false;
         StopAnimation(stateMachine.Monster.AnimationData.FindParameterHash);
         stateMachine.Monster.StopWait();
@@ -40,6 +41,8 @@ public class MonsterFindState : MonsterGroundState
 
     private void FindCheck()
     {
+        Debug.Log("FindCheck");
+
         if (!stateMachine.Monster.canSeePlayer)
         {
             Debug.Log("플레이어 놓침");

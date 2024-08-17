@@ -9,11 +9,11 @@ public class MonsterLoseSightState : MonsterGroundState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("두리번두리번");
-
-        StartAnimation(stateMachine.Monster.AnimationData.LoseSightParameterHash);
+        //Debug.Log("두리번두리번");
 
         stateMachine.Monster.Agent.isStopped = true;
+        StartAnimation(stateMachine.Monster.AnimationData.LoseSightParameterHash);
+
         stateMachine.Monster.IsBehavior = false;
         stateMachine.Monster.WaitForBehavior(groundData.LoseSightTransitionTime);
     }
@@ -28,7 +28,7 @@ public class MonsterLoseSightState : MonsterGroundState
     public override void Update()
     {
         base.Update();
-        
+
         if (!stateMachine.Monster.IsBehavior) return;
         CheckLoseSight();
     }
@@ -37,9 +37,9 @@ public class MonsterLoseSightState : MonsterGroundState
     {
         if (!stateMachine.Monster.canSeePlayer)
         {
-            Debug.Log("MonsterLoseSightState - 플레이어 놓침");
+            //Debug.Log("MonsterLoseSightState - 플레이어 놓침");
 
-            if (!stateMachine.Monster.CanPatrol)
+            if (!stateMachine.Monster.CanPatrol || !stateMachine.Monster.CanComeBack)
             {
                 stateMachine.ChangeState(stateMachine.IdleState);
                 return;

@@ -61,7 +61,7 @@ public class NpcData: MonoBehaviour
             }
         }
 
-        Debug.Log($"대화 진행도 : {checkNum} / 4");
+        Debug.Log($"대화 진행도 : {checkNum} / {NpcList.Count}");
 
 
         return result;

@@ -14,7 +14,7 @@ public class MonsterChaseState : MonsterGroundState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("플레이어 추적 시작");
+        //Debug.Log("MonsterChaseState - 플레이어 추적 시작");
         stateMachine.IsChasing = true;
         stateMachine.Monster.Agent.isStopped = false;
         stateMachine.Monster.Agent.speed = groundData.ChaseSpeed;
@@ -26,7 +26,9 @@ public class MonsterChaseState : MonsterGroundState
     public override void Exit()
     {
         base.Exit();
-        Debug.Log("플레이어 추적 종료");
+        //Debug.Log("MonsterChaseState - 플레이어 추적 종료");
+        stateMachine.Monster.Agent.ResetPath();
+        stateMachine.Monster.Agent.isStopped = true;
         stateMachine.IsChasing = false;
         // 애니메이션 종료
         StopAnimation(stateMachine.Monster.AnimationData.ChaseParameterHash);
@@ -45,8 +47,10 @@ public class MonsterChaseState : MonsterGroundState
 
         if (!stateMachine.Monster.canSeePlayer)
         {
-            Debug.Log("플레이어 놓침");
+            //Debug.Log("플레이어 놓침");
+
             stateMachine.ChangeState(stateMachine.LoseSightState);
+            return;
         }
         else 
         {
