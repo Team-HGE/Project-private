@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2840230796767744085}
   - component: {fileID: 2715788313905079932}
   - component: {fileID: 6911654845692164959}
+  - component: {fileID: 2535557568374304551}
   m_Layer: 0
   m_Name: EventManager
   m_TagString: Untagged
@@ -45,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0aedd55d72336144aa8e7c8ec7c2239, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  switchStates: 000000000000000000000000000000000000
+  switchStates: 000000000000000000000000000000000000000000000000
   sceneEventManager: {fileID: 0}
 --- !u!114 &6911654845692164959
 MonoBehaviour:
@@ -59,3 +60,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a99850bfa52cfa74cb98578cbb36e8bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2535557568374304551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2260619306064354826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abea35f9291a20b4dadda9df666d6acb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMoved: 0
+  isInteracted: 0
+  isRan: 0
+  isCrouched: 0
+  quest: {fileID: 0}
+  systemMsg: {fileID: 0}
