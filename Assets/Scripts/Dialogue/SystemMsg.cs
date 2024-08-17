@@ -3,7 +3,7 @@ using System.Text;
 using TMPro;
 using UnityEngine;
 
-public class SystemMsg : MonoBehaviour
+public class SystemMsg : SingletonManager<SystemMsg>
 {
     public SystemMsgSO systemMsgSO;
     public GameObject systemMsgCanvas;

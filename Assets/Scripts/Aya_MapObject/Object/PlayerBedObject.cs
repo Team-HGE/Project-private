@@ -28,6 +28,9 @@ public class PlayerBedObject : InteractableObject
 
         yield return GameManager.Instance.fadeManager.FadeStart(FadeState.FadeOut);
         yield return GameManager.Instance.fadeManager.FadeStart(FadeState.FadeIn);
+        Quest.Instance.NextQuest(15);
+        SystemMsg.Instance.UpdateMessage(6);
+        EventManager.Instance.SetSwitch(GameSwitch.IsDaytime, false);
         EventManager.Instance.SetSwitch(GameSwitch.GoToBed, false);
         yield return null;
     }

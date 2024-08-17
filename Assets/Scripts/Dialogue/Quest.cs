@@ -4,7 +4,7 @@ using System.Text;
 using TMPro;
 using UnityEngine;
 
-public class Quest : MonoBehaviour
+public class Quest : SingletonManager<Quest>
 {
     public QuestSO questSO;
     public int CurrentQuestIndex;
@@ -25,7 +25,6 @@ public class Quest : MonoBehaviour
     {
         CurrentQuestIndex = 0;
         UpdateQuest();
-        TutorialStart();
     }
 
     public void UpdateQuest()
@@ -48,15 +47,4 @@ public class Quest : MonoBehaviour
         AudioManager.Instance.PlaySoundEffect(SoundEffect.Quest);
     }
 
-    public void TutorialStart()
-    {
-        if (EventManager.Instance.GetSwitch(GameSwitch.IsTutorailEnd))
-        {
-            return;
-        }
-        else
-        {
-            
-        }
-    }
 }
