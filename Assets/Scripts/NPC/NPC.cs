@@ -45,6 +45,8 @@ public class NPC : InteractableObject
         Debug.Log(canSleep);
         if (canSleep)
         {
+            SystemMsg.Instance.UpdateMessage(5);
+            Quest.Instance.NextQuest(2);
             EventManager.Instance.SetSwitch(GameSwitch.GoToBed, true);
         }
     }

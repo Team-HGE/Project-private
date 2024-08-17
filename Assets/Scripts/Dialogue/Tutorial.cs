@@ -2,6 +2,7 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Tutorial : MonoBehaviour
@@ -19,23 +20,13 @@ public class Tutorial : MonoBehaviour
     private bool isCrouched = false;
     
     public Quest quest; // 권용 수정
+    public SystemMsg systemMsg;
 
     public void Start()
     {
         Init();
     }
 
-    public void Update()
-    {
-        CheckTutorial();
-
-        if(isMoved && isInteracted && isRan && isCrouched)
-        {
-            Debug.Log("튜토리얼을 모두 완료했습니다.");
-            Init();
-            Destroy(gameObject);
-        }
-    }
 
     public void Init()
     {
@@ -45,39 +36,38 @@ public class Tutorial : MonoBehaviour
         isCrouched = false;
     }
 
+    public void Update()
+    {
+        CheckTutorial();
+    }
+
     public void CheckTutorial()
     {
+        
         if (!isMoved && GameManager.Instance.PlayerStateMachine.IsWalking) // null 에러 남
         {
-            Debug.Log("튜토리얼: WASD로 이동해보기 완료");
-            quest.NextQuest(0);
+            Debug.Log("튜토리얼: WASD로 이동해보기");
+            systemMsg.UpdateMessage(4);
+            quest.NextQuest(1);
+
             isMoved = true;
         }
         else if (!isInteracted && GameManager.Instance.player.tutorialSuccess && isMoved)
         {
-            Debug.Log("튜토리얼: E로 상호작용해보기 완료");
-            quest.NextQuest(1);
+            Debug.Log("튜토리얼: E로 상호작용해보기 ");
+            quest.NextQuest(2);
+            systemMsg.UpdateMessage(5);
             isInteracted = true;
         }
-        else if (!isRan && GameManager.Instance.PlayerStateMachine.IsRunning && isInteracted)
-        {
-            Debug.Log("튜토리얼: Shift로 달려보기 완료");
-            quest.NextQuest(2);
-            isRan = true;
-        }
-        else if (!isCrouched && GameManager.Instance.PlayerStateMachine.IsCrouch )
+        else if (EventManager.Instance.GetSwitch(GameSwitch.BarrierIsOpen) && GameManager.Instance.PlayerStateMachine.IsCrouch && isInteracted )
         {
             Debug.Log("튜토리얼: Ctrl로 웅크려보기 완료");
-            quest.NextQuest(3);
+            quest.NextQuest(4);
             isCrouched = true;
+            this.enabled = false;
         }
 
 
-        // 플레이어 정지 확인용(지워도 됨)** 
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            Debug.Log("플레이어 OnOff");
-            GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
-        }
+        
     }
 }

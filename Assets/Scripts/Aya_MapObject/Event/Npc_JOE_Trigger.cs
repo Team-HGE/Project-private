@@ -12,9 +12,11 @@ public class Npc_JOE_Trigger : MonoBehaviour
             EventManager.Instance.SetSwitch(GameSwitch.isMainStoryOff, false);
             isTrigger = true;
             DialogueManager.Instance.StartStory(4);
+            SystemMsg.Instance.UpdateMessage(9);
             timeLine.SetActive(true);
 
             DialogueManager.Instance.set.ui.playEvent += MonsterSpawn;
+            Quest.Instance.NextQuest(6);
         }
     }
 

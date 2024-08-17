@@ -47,6 +47,8 @@ public class FirstCutSceneEvent : MonoBehaviour
 
     IEnumerator LightSystem()
     {
+        SystemMsg.Instance.UpdateMessage(8);
+        Quest.Instance.NextQuest(5);
         LightOff(firstLight);
         GameManager.Instance.lightManager.OffChangeMaterial(firstRenderer);
         audioSource.Play();
