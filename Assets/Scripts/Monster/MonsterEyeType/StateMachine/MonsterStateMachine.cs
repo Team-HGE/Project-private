@@ -36,11 +36,11 @@ public class MonsterStateMachine : StateMachine
         // 태그로 플레어 탐색
         Target = GameObject.FindGameObjectWithTag("Player");
 
-        //if (GameManager.Instance.PlayerStateMachine.Player == null)
+        //if (HotelFloorScene_DataManager.Instance.player == null)
         //{
         //    Debug.LogError("플레이어 캐싱 실패");
         //}
-        //else Target = GameManager.Instance.PlayerStateMachine.Player.gameObject;
+        //else Target = HotelFloorScene_DataManager.Instance.player.gameObject;
 
         // 고유한 위치
         StartPosition = Monster.transform.position;

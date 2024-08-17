@@ -32,7 +32,7 @@ public class MonsterGroupTypeBaseState : IState
 
     public virtual void Update()
     { 
-        if (GameManager.Instance.nowPlayCutScene)
+        if (GameManager.Instance.NowPlayCutScene)
         {
             if (!stateMachine.Monster.Agent.isStopped) stateMachine.Monster.Agent.isStopped = true;
             stateMachine.Monster.Agent.ResetPath();

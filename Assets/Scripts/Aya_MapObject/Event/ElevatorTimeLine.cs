@@ -26,6 +26,8 @@ public class ElevatorTimeLine : MonoBehaviour
 
     private void ElevatorMovie()
     {
+        GameManager.Instance.NowPlayCutScene = true;
+
         timeLineObject.SetActive(true);
         playerLight.enabled = false;
 

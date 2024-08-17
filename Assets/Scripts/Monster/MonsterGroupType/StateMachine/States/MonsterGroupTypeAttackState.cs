@@ -12,7 +12,7 @@ public class MonsterGroupTypeAttackState : MonsterGroupTypeGroundState
     {
         base.Enter();
 
-        if (GameManager.Instance.nowPlayCutScene)
+        if (GameManager.Instance.NowPlayCutScene)
         {
             stateMachine.ChangeState(stateMachine.ChaseState);
             return;

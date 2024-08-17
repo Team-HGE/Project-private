@@ -45,7 +45,7 @@ public class FirstTLTrigger : MonoBehaviour
 
         //Debug.Log("타임라인 시작" );
         _onTrigger = true;
-        GameManager.Instance.nowPlayCutScene = true;
+        GameManager.Instance.NowPlayCutScene = true;
         PlayTimeline();
     }
 
@@ -65,7 +65,7 @@ public class FirstTLTrigger : MonoBehaviour
     private void OnPlayableDirectorStopped(PlayableDirector director)
     {
         VCs.SetActive(false);
-        GameManager.Instance.nowPlayCutScene = false;
+        GameManager.Instance.NowPlayCutScene = false;
         GameManager.Instance.PlayerStateMachine.Player.VCOnOff();
         GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
 
