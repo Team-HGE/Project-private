@@ -18,29 +18,40 @@ public class Day_2_SceneInitializer : MonoBehaviour
 
     private void Start()
     {
-        GameManager.Instance.jumpScareManager.OffBtn();
-        GameManager.Instance.cinemachineManager.mainCamera = mainCamera;
-        GameManager.Instance.cinemachineManager.playerVC = playerVC;
+        // 점프스케어 세팅
+        GameManager.Instance.jumpScareManager.OffBtn(); 
         GameManager.Instance.jumpScareManager.flashLight = playerFlashLight;
         GameManager.Instance.jumpScareManager.blackBG = blackBG;
+        GameManager.Instance.jumpScareManager.monstersJumpScare[0].gameObject = groupTypeMonster;
+        GameManager.Instance.jumpScareManager.monstersJumpScare[1].gameObject = eyeTypeMonster;
+
+        // 시네머신 세팅
+        GameManager.Instance.cinemachineManager.mainCamera = mainCamera;
+        GameManager.Instance.cinemachineManager.playerVC = playerVC;
+
 
         GameManager.Instance.nowPlayCutScene = false;
+        EventManager.Instance.InitializeSwitches(); // 지워야댐
 
         // 2일차 게임 스위치 변경
-
-        EventManager.Instance.InitializeSwitches(); // 지워
-
         EventManager.Instance.SetSwitch(GameSwitch.OneFloorEndEscape, true);
         EventManager.Instance.SetSwitch(GameSwitch.NowDay2, true);
-        DialogueManager.Instance.set.ui.playEvent += Day2Save;
+
+        //다이얼로그 세팅
         DialogueManager.Instance.StartStory(5);
+        Invoke("SaveSetting", 5);
 
         PSYNpc.npcEvent += SetDay2PasswordHint;
+    }
+    void SaveSetting()
+    {
+        DialogueManager.Instance.set.ui.playEvent += Day2Save;
     }
     void Day2Save()
     {
         Debug.Log("세이브 성공");
-        //GameDataSaveLoadManager.Instance.SaveGameData(0);
+       // GameDataSaveLoadManager.Instance.SaveGameData(0);
+        NPCPos.Instance.SetDayTimePos();
     }
     void OffLobbyLight()
     {
@@ -70,4 +81,8 @@ public class Day_2_SceneInitializer : MonoBehaviour
 
     [Title("NPC")]
     [SerializeField] private NPC PSYNpc;
+
+    [Title("Monster")]
+    [SerializeField] private GameObject groupTypeMonster;
+    [SerializeField] private GameObject eyeTypeMonster;
 }

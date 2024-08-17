@@ -1,5 +1,5 @@
-using UnityEngine;
 using DG.Tweening;
+using UnityEngine;
 
 public class DrawerObject : InteractableObject
 {
@@ -9,6 +9,7 @@ public class DrawerObject : InteractableObject
 
     [SerializeField] AudioClip openSound;
     [SerializeField] AudioClip closeSound;
+    [SerializeField] GameObject item;
 
     bool isOpen { get; set; }
 
@@ -49,6 +50,12 @@ public class DrawerObject : InteractableObject
 
     public void FalseInteracte()
     {
+        if (item != null)
+        {
+            BoxCollider boxCollider = GetComponent<BoxCollider>();
+            boxCollider.enabled = false;
+        }
+            
         isInteractable = false;
     }
 }

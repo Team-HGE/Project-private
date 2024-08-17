@@ -3622,7 +3622,7 @@ PrefabInstance:
     - target: {fileID: 1121473908795446674, guid: 9d289244898d0bd4089d19bf7c933e2b,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 40
+      value: 46
       objectReference: {fileID: 0}
     - target: {fileID: 1129878831527516616, guid: 9d289244898d0bd4089d19bf7c933e2b,
         type: 3}
@@ -14817,7 +14817,7 @@ PrefabInstance:
     - target: {fileID: 3497611692199856345, guid: 9d289244898d0bd4089d19bf7c933e2b,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 40
+      value: 46
       objectReference: {fileID: 0}
     - target: {fileID: 3498805465662094460, guid: 9d289244898d0bd4089d19bf7c933e2b,
         type: 3}
@@ -15637,7 +15637,7 @@ PrefabInstance:
     - target: {fileID: 3780905434676928693, guid: 9d289244898d0bd4089d19bf7c933e2b,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 40
+      value: 46
       objectReference: {fileID: 0}
     - target: {fileID: 3781439197119630678, guid: 9d289244898d0bd4089d19bf7c933e2b,
         type: 3}
@@ -16857,7 +16857,7 @@ PrefabInstance:
     - target: {fileID: 4168657792558609228, guid: 9d289244898d0bd4089d19bf7c933e2b,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 40
+      value: 46
       objectReference: {fileID: 0}
     - target: {fileID: 4169218762853132136, guid: 9d289244898d0bd4089d19bf7c933e2b,
         type: 3}
@@ -31571,6 +31571,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 8304030419915929141}
+    - targetCorrespondingSourceObject: {fileID: 207305642889503819, guid: 9d289244898d0bd4089d19bf7c933e2b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4581095590026386991}
   m_SourcePrefab: {fileID: 100100000, guid: 9d289244898d0bd4089d19bf7c933e2b, type: 3}
 --- !u!108 &38539640931640639 stripped
 Light:
@@ -33754,6 +33758,25 @@ Light:
     type: 3}
   m_PrefabInstance: {fileID: 4241011092395839149}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4051944973164227302 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 207305642889503819, guid: 9d289244898d0bd4089d19bf7c933e2b,
+    type: 3}
+  m_PrefabInstance: {fileID: 4241011092395839149}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4581095590026386991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4051944973164227302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a9b08d19885bc546b358d11f5150239, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptSO: {fileID: 0}
 --- !u!108 &4052522748448569006 stripped
 Light:
   m_CorrespondingSourceObject: {fileID: 208971984158701571, guid: 9d289244898d0bd4089d19bf7c933e2b,

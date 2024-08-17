@@ -1521,7 +1521,7 @@ GameObject:
   m_Icon: {fileID: 2800000, guid: 3e9aae350934e02449e499ffc79ca0f3, type: 3}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3909876707014501535
 Transform:
   m_ObjectHideFlags: 0
@@ -3283,6 +3283,9 @@ MonoBehaviour:
   - jumpScareType: 0
     gameObject: {fileID: 0}
     time: 1.5
+  - jumpScareType: 1
+    gameObject: {fileID: 0}
+    time: 2.5
 --- !u!1001 &2299845777459183427
 PrefabInstance:
   m_ObjectHideFlags: 0
