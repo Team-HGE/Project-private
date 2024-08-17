@@ -50,12 +50,12 @@ public class MonsterFindState : MonsterGroundState
         }
         else 
         {
-            // 공격 범위 안이면 공격 - 게임 오버
-            if (IsInAttackRange() && GetIsPlayerInFieldOfView())
-            {
-                stateMachine.ChangeState(stateMachine.AttackState);
-                return;
-            }
+            //// 공격 범위 안이면 공격 - 게임 오버
+            //if (IsInAttackRange() && GetIsPlayerInFieldOfView())
+            //{
+            //    stateMachine.ChangeState(stateMachine.AttackState);
+            //    return;
+            //}
 
             Debug.Log("플레이어 추적");
             stateMachine.ChangeState(stateMachine.ChaseState);

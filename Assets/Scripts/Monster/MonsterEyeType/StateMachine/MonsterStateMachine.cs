@@ -18,8 +18,7 @@ public class MonsterStateMachine : StateMachine
     public MonsterComeBackState ComBackState { get; private set; }
     public MonsterAttackState AttackState { get; private set; }
 
-
-    // 상태 전환 조건
+    // 상태
     public bool IsChasing { get; set; }
     public bool IsPatrol { get; set; }
     public bool IsIdle { get; set; }
@@ -27,19 +26,22 @@ public class MonsterStateMachine : StateMachine
     public bool IsFind { get; set; }
     public bool IsComeBack { get; set; }
 
-
     public float MovementSpeed { get; private set; }
     public float RotationDamping { get; private set; }
-    
-    //public float MovementSpeedModifier { get; set; } = 1f;
-
-    //public bool IsPlayerInFieldOfView { get; set; }
 
     public MonsterStateMachine(Monster monster)
     {
         Monster = monster;
+
         // 태그로 플레어 탐색
         Target = GameObject.FindGameObjectWithTag("Player");
+
+        //if (HotelFloorScene_DataManager.Instance.player == null)
+        //{
+        //    Debug.LogError("플레이어 캐싱 실패");
+        //}
+        //else Target = HotelFloorScene_DataManager.Instance.player.gameObject;
+
         // 고유한 위치
         StartPosition = Monster.transform.position;
 

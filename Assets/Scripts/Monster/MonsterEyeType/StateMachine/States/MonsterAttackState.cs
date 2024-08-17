@@ -11,7 +11,7 @@ public class MonsterAttackState : MonsterGroundState
     {
         base.Enter();
 
-        if (GameManager.Instance.playerDie || GameManager.Instance.nowPlayCutScene)
+        if (GameManager.Instance.NowPlayCutScene)
         {
             stateMachine.ChangeState(stateMachine.ChaseState);
             return;

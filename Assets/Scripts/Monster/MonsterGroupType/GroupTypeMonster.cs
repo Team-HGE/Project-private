@@ -38,13 +38,22 @@ public class GroupTypeMonster : MonoBehaviour
 
     private void Update()
     {
-        _stateMachine.Update();
-    }
+        if (GameManager.Instance.playerDie)
+        {
+            MonsterOff();
+            return;
+        }
 
+        _stateMachine.Update();
+    }    
+
+    public void MonsterOff()
+    {
+        gameObject.SetActive(false);
+    }
 
     //private void FixedUpdate()
     //{
     //    _stateMachine.PhysicsUpdate();
     //}
-
 }

@@ -42,7 +42,7 @@ public class GameManager : SingletonManager<GameManager>
     [ShowInInspector] public PlayerStateMachine PlayerStateMachine { get; set; }
 
     [TitleGroup("CutScene")]
-    public bool nowPlayCutScene { get; set; }
+    public bool NowPlayCutScene { get; set; }
 
 
     protected override void Awake()

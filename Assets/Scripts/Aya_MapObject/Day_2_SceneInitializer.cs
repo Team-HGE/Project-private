@@ -1,4 +1,4 @@
-using Cinemachine;
+ï»¿using Cinemachine;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -18,22 +18,22 @@ public class Day_2_SceneInitializer : MonoBehaviour
 
     private void Start()
     {
-        // Á¡ÇÁ½ºÄÉ¾î ¼¼ÆÃ
+        // ì í”„ìŠ¤ì¼€ì–´ ì„¸íŒ…
         JumpScareSetting();
 
-        // ½Ã³×¸Ó½Å ¼¼ÆÃ
+        // ì‹œë„¤ë¨¸ì‹  ì„¸íŒ…
         GameManager.Instance.cinemachineManager.mainCamera = mainCamera;
         GameManager.Instance.cinemachineManager.playerVC = playerVC;
 
 
-        GameManager.Instance.nowPlayCutScene = false;
-        EventManager.Instance.InitializeSwitches(); // Áö¿ö¾ß´ï
+        GameManager.Instance.NowPlayCutScene = false;
+        EventManager.Instance.InitializeSwitches(); // ì§€ì›Œì•¼ëŒ
 
-        // 2ÀÏÂ÷ °ÔÀÓ ½ºÀ§Ä¡ º¯°æ
+        // 2ì¼ì°¨ ê²Œì„ ìŠ¤ìœ„ì¹˜ ë³€ê²½
         EventManager.Instance.SetSwitch(GameSwitch.OneFloorEndEscape, true);
         EventManager.Instance.SetSwitch(GameSwitch.NowDay2, true);
 
-        //´ÙÀÌ¾ó·Î±× ¼¼ÆÃ
+        //ë‹¤ì´ì–¼ë¡œê·¸ ì„¸íŒ…
         DialogueManager.Instance.StartStory(5);
         Invoke("SaveSetting", 5);
 
@@ -45,7 +45,7 @@ public class Day_2_SceneInitializer : MonoBehaviour
     }
     void Day2Save()
     {
-        Debug.Log("¼¼ÀÌºê ¼º°ø");
+        Debug.Log("ì„¸ì´ë¸Œ ì„±ê³µ");
        // GameDataSaveLoadManager.Instance.SaveGameData(0);
         NPCPos.Instance.SetDayTimePos();
     }

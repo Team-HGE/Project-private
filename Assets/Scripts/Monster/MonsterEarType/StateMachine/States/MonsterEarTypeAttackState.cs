@@ -13,7 +13,7 @@ public class MonsterEarTypeAttackState : MonsterEarTypeGroundState
     {
         base.Enter();
 
-        if (GameManager.Instance.playerDie || GameManager.Instance.nowPlayCutScene)
+        if (GameManager.Instance.playerDie || GameManager.Instance.NowPlayCutScene)
         {
             stateMachine.ChangeState(stateMachine.ChaseState);
             return;
