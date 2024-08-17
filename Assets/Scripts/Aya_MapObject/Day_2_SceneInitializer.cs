@@ -29,6 +29,7 @@ public class Day_2_SceneInitializer : MonoBehaviour
 
         EventManager.Instance.InitializeSwitches(); // Áö¿ö
 
+        EventManager.Instance.SetSwitch(GameSwitch.OneFloorEndEscape, true);
         EventManager.Instance.SetSwitch(GameSwitch.NowDay2, true);
         DialogueManager.Instance.StartStory(5);
     }
