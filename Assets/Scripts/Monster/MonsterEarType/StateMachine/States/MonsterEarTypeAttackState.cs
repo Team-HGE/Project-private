@@ -13,7 +13,7 @@ public class MonsterEarTypeAttackState : MonsterEarTypeGroundState
     {
         base.Enter();
 
-        if (GameManager.Instance.playerDie || GameManager.Instance.NowPlayCutScene)
+        if (GameManager.Instance.NowPlayCutScene)
         {
             stateMachine.ChangeState(stateMachine.ChaseState);
             return;
@@ -24,6 +24,9 @@ public class MonsterEarTypeAttackState : MonsterEarTypeGroundState
         
         // 애니메이션 실행
         StartAnimation(stateMachine.Monster.AnimationData.AttackParameterHash);
+
+        // 점프 스퀘어
+
 
         Debug.Log("플레이어 사망 - 게임 오버");
         GameManager.Instance.playerDie = true;

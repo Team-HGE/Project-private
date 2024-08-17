@@ -35,6 +35,8 @@ public class MonsterPatrolState : MonsterGroundState
         if(stateMachine.IsPatrol) StopAnimation(stateMachine.Monster.AnimationData.PatrolParameterHash);
 
         //StopAnimation(stateMachine.Monster.AnimationData.PatrolParameterHash);
+        
+        stateMachine.Monster.Agent.ResetPath();
         stateMachine.IsPatrol = false;
     }
 
@@ -91,6 +93,42 @@ public class MonsterPatrolState : MonsterGroundState
         }
     }
 
+    private void StatrPatrol()
+    {
+        if (stateMachine.Monster.CanComeBack)
+        {
+            GetRandomPoint(stateMachine.StartPosition, stateMachine.Monster.patrolRangeMax);
+
+            //if (!getPosition)
+            //{
+            //    Debug.Log($"CanComeBack - 아이들 전환");
+
+            //    stateMachine.ChangeState(stateMachine.IdleState);
+            //    return;
+            //}
+
+
+            stateMachine.Monster.Agent.SetDestination(randomPos);
+        }
+        else
+        {
+            GetRandomPoint(stateMachine.Monster.transform.position, stateMachine.Monster.patrolRangeMax);
+
+            //if (!getPosition)
+            //{
+            //    Debug.Log($"아이들 전환");
+
+            //    stateMachine.ChangeState(stateMachine.IdleState);
+            //    return;
+            //}
+
+            stateMachine.Monster.Agent.SetDestination(randomPos);
+        }
+
+        StartAnimation(stateMachine.Monster.AnimationData.PatrolParameterHash);
+        stateMachine.IsPatrol = true;
+    }
+
     //private Vector3 GetRandomPoint(Vector3 center, float radius)
     //{
 
@@ -136,42 +174,6 @@ public class MonsterPatrolState : MonsterGroundState
     //    }
     //    return randomPos;
     //}
-
-    private void StatrPatrol()
-    {
-        if (stateMachine.Monster.CanComeBack)
-        {
-            GetRandomPoint(stateMachine.StartPosition, stateMachine.Monster.patrolRangeMax);
-
-            //if (!getPosition)
-            //{
-            //    Debug.Log($"CanComeBack - 아이들 전환");
-
-            //    stateMachine.ChangeState(stateMachine.IdleState);
-            //    return;
-            //}
-
-
-            stateMachine.Monster.Agent.SetDestination(randomPos);
-        }
-        else
-        {
-            GetRandomPoint(stateMachine.Monster.transform.position, stateMachine.Monster.patrolRangeMax);
-
-            //if (!getPosition)
-            //{
-            //    Debug.Log($"아이들 전환");
-
-            //    stateMachine.ChangeState(stateMachine.IdleState);
-            //    return;
-            //}
-
-            stateMachine.Monster.Agent.SetDestination(randomPos);
-        }
-
-        StartAnimation(stateMachine.Monster.AnimationData.PatrolParameterHash);
-        stateMachine.IsPatrol = true;
-    }
 
     //private void StatrPatrol()
     //{

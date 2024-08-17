@@ -23,7 +23,6 @@ public class MonsterEarTypeStateMachine : StateMachine
 
     // 현재 상태
     public bool IsPatrol { get; set; }
-    //public bool IsSearchTarget { get; set; } = false;
     public bool IsMove { get; set; }
     public bool IsFocusNoise { get; set; } = false;
     public bool IsFocusRotate { get; set; }
@@ -38,11 +37,6 @@ public class MonsterEarTypeStateMachine : StateMachine
 
     public float MovementSpeed { get; private set; }
     public float RotationDamping { get; private set; }
-
-    //public float MovementSpeedModifier { get; set; } = 1f;
-
-    //public bool IsPlayerInFieldOfView { get; set; }
-
 
     public MonsterEarTypeStateMachine(EarTypeMonster monster)
     {

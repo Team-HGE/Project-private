@@ -12,5 +12,4 @@ public interface INoise
     public float DecreaseSpeed { get; set; }
 
     public SoundSource PlayNoise(AudioClip[] audioClips, string tag, float amount, float addVolume, float transitionTime, float pitch);
-
 }

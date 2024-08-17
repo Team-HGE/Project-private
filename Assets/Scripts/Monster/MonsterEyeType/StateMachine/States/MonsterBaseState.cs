@@ -34,7 +34,7 @@ public class MonsterBaseState : IState
         if (GameManager.Instance.NowPlayCutScene)
         {
             if (!stateMachine.Monster.Agent.isStopped) stateMachine.Monster.Agent.isStopped = true;
-            stateMachine.Monster.Agent.ResetPath();
+            //stateMachine.Monster.Agent.ResetPath();
             return;
         }
         else
@@ -150,18 +150,6 @@ public class MonsterBaseState : IState
 
     }
 
-    protected bool IsInChaseRange()
-    {
-        float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.Monster.transform.position).sqrMagnitude;
-        return playerDistanceSqr <= groundData.PlayerChasingRange * groundData.PlayerChasingRange;
-    }
-
-    protected bool IsInFindRange()
-    {
-        float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.Monster.transform.position).sqrMagnitude;
-        return playerDistanceSqr <= groundData.PlayerFindRange * groundData.PlayerFindRange;
-    }
-
     protected bool IsInFeelRange()
     {
         float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.Monster.transform.position).sqrMagnitude;
@@ -200,5 +188,17 @@ public class MonsterBaseState : IState
     //protected void ForceMove()
     //{
     //    stateMachine.Monster.Controller.Move(stateMachine.Monster.ForceReceiver.Movement * Time.deltaTime);
+    //}
+
+    //protected bool IsInChaseRange()
+    //{
+    //    float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.Monster.transform.position).sqrMagnitude;
+    //    return playerDistanceSqr <= groundData.PlayerChasingRange * groundData.PlayerChasingRange;
+    //}
+
+    //protected bool IsInFindRange()
+    //{
+    //    float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.Monster.transform.position).sqrMagnitude;
+    //    return playerDistanceSqr <= groundData.PlayerFindRange * groundData.PlayerFindRange;
     //}
 }

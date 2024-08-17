@@ -11,29 +11,33 @@ public class EarTypeMonster : MonoBehaviour
     [field: Header("Animations")]
     [field: SerializeField] public MonsterEarTypeAnimationData AnimationData { get; private set; }
 
-    public CharacterController Controller { get; private set; }
-    public ForceReceiver ForceReceiver { get; private set; }
-    public Animator Animator { get; private set; }
-    // Ai Nav
-    public NavMeshAgent Agent { get; private set; }
+    [field: Header("Behavior")]
+    [field: SerializeField] public bool CanPatrol { get; set; } = true;
+    [field: SerializeField] public bool CanComeBack { get; set; } = true;
+    [SerializeField][field: Range(0f, 50f)] public float patrolRangeMin = 30f;
+    [SerializeField][field: Range(0f, 70f)] public float patrolRangeMax = 50f;
 
-    private MonsterEarTypeStateMachine _stateMachine;
+    [field: Header("Noise")]
+    public LayerMask targetLayer;
+    public List<Collider> noiseMakers;
+
+    [Header("MonsterTransform")]
+    public Transform monsterTransform;
+    public Transform monsterEyeTransform;
 
     // 행동 관리
     public bool IsBehavior { get; set; } = true;
     private bool _isWaiting = false;
     private Coroutine _wait;
     //private float _waitTiem = 0f;
-    [field: SerializeField]
-    public bool CanPatrol { get; set; } = true;
 
-    public LayerMask targetLayer;
-    //public Collider[] noiseMakers;
-    public List<Collider> noiseMakers;
+    private MonsterEarTypeStateMachine _stateMachine;
 
-    [Header("MonsterTransform")]
-    public Transform monsterTransform;
-    public Transform monsterEyeTransform;
+    public CharacterController Controller { get; private set; }
+    public ForceReceiver ForceReceiver { get; private set; }
+    public Animator Animator { get; private set; }
+    // Ai Nav
+    public NavMeshAgent Agent { get; private set; }
 
     private void Awake()
     {
@@ -51,37 +55,24 @@ public class EarTypeMonster : MonoBehaviour
     private void Start()
     {
         _stateMachine.ChangeState(_stateMachine.IdleState);
-        //_stateMachine.ChangeState(_stateMachine.MoveState);
-
     }
 
     private void Update()
     {
+        if (GameManager.Instance.playerDie)
+        {
+            MonsterOff();
+            return;
+        }
+
         _stateMachine.Update();
 
+        // 임시 코드
         DrawCircle(transform.position, 36, Data.GroundData.PlayerChasingRange, Color.green);
         DrawCircle(transform.position, 36, 50f, Color.green);
 
         DrawCircle(transform.position, 36, Data.GroundData.AttackRange, Color.red);
-
-        //if (_isWaiting)
-        //{
-        //    _waitTiem += Time.deltaTime;
-        //    Debug.Log(_waitTiem);
-        //}
-
     }
-
-    private void FixedUpdate()
-    {
-        _stateMachine.PhysicsUpdate();
-    }
-
-    // 대기 시간
-    //public void WaitForBehavior(float time)
-    //{
-    //    StartCoroutine(ChangeBehavior(time));
-    //}
 
     public void WaitForBehavior(float time)
     {
@@ -93,14 +84,6 @@ public class EarTypeMonster : MonoBehaviour
         if (!_isWaiting) return;
         StopCoroutine(_wait);
     }
-
-    //public IEnumerator ChangeBehavior(float time)
-    //{
-    //    // n초 대기
-    //    yield return new WaitForSeconds(time);
-
-    //    IsBehavior = !IsBehavior;
-    //}
 
     public IEnumerator ChangeBehavior(float time)
     {
@@ -114,6 +97,11 @@ public class EarTypeMonster : MonoBehaviour
         IsBehavior = !IsBehavior;
         //Debug.Log($"{Data.GroundData.FocusTransitionTime}초 대기 끝, {IsBehavior}");
         _isWaiting = false;
+    }
+
+    public void MonsterOff()
+    {
+        gameObject.SetActive(false);
     }
 
     private void DrawCircle(Vector3 center, int segments, float radius, Color color)
@@ -139,4 +127,9 @@ public class EarTypeMonster : MonoBehaviour
         Vector3 firstPoint = center + rotation * new Vector3(Mathf.Cos(0) * radius, Mathf.Sin(0) * radius, 0);
         Debug.DrawLine(prevPoint, firstPoint, color);
     }
+
+    //private void FixedUpdate()
+    //{
+    //    _stateMachine.PhysicsUpdate();
+    //}
 }

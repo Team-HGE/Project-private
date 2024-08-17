@@ -31,18 +31,17 @@ public class Monster : MonoBehaviour
     public Transform eye;
     public Transform findTarget;
 
-    public CharacterController Controller { get; private set; }
-    public ForceReceiver ForceReceiver { get; private set; }
-    public Animator Animator { get; private set; }
-    // Ai Nav
-    public NavMeshAgent Agent { get; private set; }
-
     private MonsterStateMachine _stateMachine;
 
     public bool IsBehavior { get; set; } = true;
     private Coroutine _wait;
     private bool _isWaiting = false;
 
+    public CharacterController Controller { get; private set; }
+    public ForceReceiver ForceReceiver { get; private set; }
+    public Animator Animator { get; private set; }
+    // Ai Nav
+    public NavMeshAgent Agent { get; private set; }
 
     private void Awake()
     {

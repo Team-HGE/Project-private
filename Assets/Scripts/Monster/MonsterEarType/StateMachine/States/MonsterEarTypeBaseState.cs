@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UIElements;
 
 public class MonsterEarTypeBaseState : IState
 {
     protected MonsterEarTypeStateMachine stateMachine;
     protected readonly MonsterGroundData groundData;
 
-    public Vector3 noisePosition;
+    //public Vector3 noisePosition;
 
     public MonsterEarTypeBaseState(MonsterEarTypeStateMachine monsterStateMachine)
     {
@@ -34,16 +35,18 @@ public class MonsterEarTypeBaseState : IState
 
     public virtual void Update()
     {
-        if (GameManager.Instance.playerDie || GameManager.Instance.NowPlayCutScene)
+        if (GameManager.Instance.NowPlayCutScene)
         {
             if (!stateMachine.Monster.Agent.isStopped) stateMachine.Monster.Agent.isStopped = true;
-            
+            //stateMachine.Monster.Agent.ResetPath();
             return;
         }
-        else 
-        { 
+        else
+        {
             if (stateMachine.Monster.Agent.isStopped) stateMachine.Monster.Agent.isStopped = false;
         }
+
+        //AttackToPlayer();
 
         SearchTarget();
     }
@@ -53,12 +56,10 @@ public class MonsterEarTypeBaseState : IState
         stateMachine.Monster.Animator.SetBool(animationHash, true);
     }
 
-    // 애니메이션 종료
     protected void StopAnimation(int animationHash)
     {
         stateMachine.Monster.Animator.SetBool(animationHash, false);
     }
-
 
     private void SearchTarget()
     {
@@ -105,7 +106,10 @@ public class MonsterEarTypeBaseState : IState
             // 이동
             if (Vector3.Distance(stateMachine.Monster.transform.position, tempPosition) <= stateMachine.Monster.Data.GroundData.PlayerChasingRange && stateMachine.BiggestNoise >= stateMachine.Monster.Data.GroundData.DetectNoiseMax)
             {
-                //Debug.Log("기본 이동 - 달리기 감지");
+                Debug.Log("기본 이동 - 달리기 감지");
+                stateMachine.Monster.Agent.ResetPath();
+                stateMachine.Monster.Agent.isStopped = true;
+
                 stateMachine.CurDestination = tempPosition;
                 stateMachine.BeforeNoise = stateMachine.BiggestNoise;
                 stateMachine.ChangeState(stateMachine.MoveState);
@@ -114,7 +118,10 @@ public class MonsterEarTypeBaseState : IState
 
             if (Vector3.Distance(stateMachine.Monster.transform.position, tempPosition) <= stateMachine.Monster.Data.GroundData.PlayerChasingRange * 0.5f && stateMachine.BiggestNoise >= stateMachine.Monster.Data.GroundData.DetectNoiseMid)
             {
-                //Debug.Log("기본 이동 - 걷기 감지");
+                Debug.Log("기본 이동 - 걷기 감지");
+                stateMachine.Monster.Agent.ResetPath();
+                stateMachine.Monster.Agent.isStopped = true;
+
                 stateMachine.CurDestination = tempPosition;
                 stateMachine.BeforeNoise = stateMachine.BiggestNoise;
                 stateMachine.ChangeState(stateMachine.MoveState);
@@ -156,6 +163,16 @@ public class MonsterEarTypeBaseState : IState
             return true;
         }
         else return false;
+    }
+
+    protected void AttackToPlayer()
+    {
+        if (IsInAttackRange())
+        {
+            Rotate(GetMovementDirection());
+            stateMachine.ChangeState(stateMachine.AttackState);
+            return;
+        }
     }
 
     protected bool IsInAttackRange()

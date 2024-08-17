@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class MonsterEarTypePatrolState : MonsterEarTypeGroundState
 {
+    private Vector3 randomPos;
+
     public MonsterEarTypePatrolState(MonsterEarTypeStateMachine monsterStateMachine) : base(monsterStateMachine)
     {
     }
@@ -12,9 +14,9 @@ public class MonsterEarTypePatrolState : MonsterEarTypeGroundState
     public override void Enter()
     {
         base.Enter();
-        if (stateMachine.Monster.Agent.isStopped) stateMachine.Monster.Agent.isStopped = false;
+        Debug.Log("패트롤 시작");
+
         stateMachine.Monster.Agent.speed = groundData.PatrolSpeed;
-        if (stateMachine.IsPatrol) return;
 
         StatrPatrol();
 
@@ -25,10 +27,13 @@ public class MonsterEarTypePatrolState : MonsterEarTypeGroundState
     public override void Exit()
     {
         base.Exit();
-        //stateMachine.Monster.Agent.enabled = false;
-        stateMachine.IsPatrol = false;
+        Debug.Log("패트롤 끝");
+
         // 애니메이션 종료
-        StopAnimation(stateMachine.Monster.AnimationData.PatrolParameterHash);
+        if (stateMachine.IsPatrol) StopAnimation(stateMachine.Monster.AnimationData.PatrolParameterHash);
+
+        stateMachine.IsPatrol = false;
+        stateMachine.Monster.Agent.ResetPath();
     }
 
     public override void Update()
@@ -43,29 +48,46 @@ public class MonsterEarTypePatrolState : MonsterEarTypeGroundState
         }
     }
 
-    private Vector3 GetRandomPoint(Vector3 center, float radius)
+    private void GetRandomPoint(Vector3 center, float radius)
     {
-        Vector3 randomPos = center;
+        //getPosition = true;
+        randomPos = center;
+
         for (int i = 0; i < 50; i++)
         {
             randomPos = Random.insideUnitSphere * radius;
             randomPos.y = 0;
             randomPos += center;
-            if (Vector3.Distance(stateMachine.Monster.transform.position, randomPos) > stateMachine.Monster.Data.GroundData.PatrolMinDistance) break;
+
+            if (Vector3.Distance(center, randomPos) > stateMachine.Monster.patrolRangeMin) break;
         }
+
+        //Debug.Log($"기준 이동 거리 : {Vector3.Distance(center, randomPos)}");
+        //Debug.Log($"총 이동 거리 : {Vector3.Distance(stateMachine.Monster.transform.position, randomPos)}");
 
         NavMeshHit hit;
         if (NavMesh.SamplePosition(randomPos, out hit, radius, NavMesh.AllAreas))
         {
-            return hit.position;
+            randomPos = hit.position;
         }
-        return randomPos;
     }
 
     private void StatrPatrol()
     {
-        Vector3 newPos = GetRandomPoint(stateMachine.StartPosition, groundData.PatrolRange);
-        stateMachine.Monster.Agent.SetDestination(newPos);
+        if (stateMachine.Monster.CanComeBack)
+        {
+            GetRandomPoint(stateMachine.StartPosition, stateMachine.Monster.patrolRangeMax);
+
+            stateMachine.Monster.Agent.SetDestination(randomPos);
+        }
+        else
+        {
+            GetRandomPoint(stateMachine.Monster.transform.position, stateMachine.Monster.patrolRangeMax);
+
+            stateMachine.Monster.Agent.SetDestination(randomPos);
+        }
+
+        StartAnimation(stateMachine.Monster.AnimationData.PatrolParameterHash);
         stateMachine.IsPatrol = true;
     }
 }
