@@ -23,8 +23,6 @@ public class Day_1_SceneInitializer : MonoBehaviour
         {
             GameManager.Instance.lightManager.levers.Clear();
         }
-
-     
     }
     private void Start()
     {

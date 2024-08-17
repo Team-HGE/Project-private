@@ -120,7 +120,7 @@ public class KeyPadGimmick : MonoBehaviour
         }
 
         // 키패드 입력 실패 이벤트 - 2일 이벤트에 해당하는 키패드만
-        if (keyPadObject.isScondDayEvent && !EventManager.Instance.GetSwitch(GameSwitch.Day2OnLever) && EventManager.Instance.GetSwitch(GameSwitch.NowDay2))
+        if (keyPadObject.isScondDayEvent && !EventManager.Instance.GetSwitch(GameSwitch.Day_2_A2F_LeverOn) && EventManager.Instance.GetSwitch(GameSwitch.NowDay2))
         {
             Sequence sequence = DOTween.Sequence();
             sequence.OnComplete(keyPadObject.SecondDayEventScript);

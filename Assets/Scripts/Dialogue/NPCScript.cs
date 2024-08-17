@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Text;
+using System;
 
 public class NPCScript : DialogueSetting, IScript
 {
     private NPC_SO npcSO;
     private ScriptSO scriptSO;
+    public event Action playEvent;
 
     public void InitNPC(NpcData data, int ID)
     {
@@ -84,9 +86,8 @@ public class NPCScript : DialogueSetting, IScript
 
         Debug.Log($"{npcSO.name} 대화했음");
 
-        // 2일차에 표서윤이랑 대화하면 비밀번호 획득 이벤트 발생
-        Day2TalkingEvent(npcSO.name);
-
+        playEvent?.Invoke();
+        playEvent = null;
         npcSO.state = NpcState.Idle;
 
         yield return null;
@@ -107,14 +108,5 @@ public class NPCScript : DialogueSetting, IScript
             default:
                 return "대기중";
         }
-    }
-
-    public void Day2TalkingEvent(string name)
-    {
-        if (EventManager.Instance.GetSwitch(GameSwitch.NowDay2) && name == "PSY")
-        {
-            EventManager.Instance.SetSwitch(GameSwitch.Day2GetPasswordHint1, true);
-            Debug.Log("패스워드 힌트1 획득");
-        }        
     }
 }

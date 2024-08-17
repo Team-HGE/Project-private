@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Day2PasswordHint4 : InteractableObject
+public class Day2PasswordHint : InteractableObject
 {
     [Header("SecondDayEvent")]
     public ScriptSO scriptSO;
@@ -19,8 +19,8 @@ public class Day2PasswordHint4 : InteractableObject
     {
         if (isInteractable) return;
         isInteractable = true;
-        EventManager.Instance.SetSwitch(GameSwitch.Day2GetPasswordHint4, true);
 
+        HotelFloorScene_DataManager.Instance.controller.ComputerPassward += 1;
         DialogueManager.Instance.itemScript.Init(scriptSO);
         DialogueManager.Instance.itemScript.Print();
 
