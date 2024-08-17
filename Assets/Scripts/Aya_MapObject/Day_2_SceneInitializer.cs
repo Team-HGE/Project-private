@@ -37,6 +37,9 @@ public class Day_2_SceneInitializer : MonoBehaviour
         DialogueManager.Instance.StartStory(5);
         Invoke("SaveSetting", 5);
 
+        //퀘스트 세팅
+        Quest.Instance.NextQuest(15);
+        SystemMsg.Instance.UpdateMessage(10);
         PSYNpc.npcEvent += SetDay2PasswordHint;
     }
     void SaveSetting()
