@@ -32,9 +32,17 @@
 
     OneFloorOpenable, OneFloorStartEscape, OneFloorEncountAtA, OneFloorEndEscape,
 
-    // 필요에 따라 더 추가
+    // 2일차인지
     NowDay2,
+    // 2일차 레버를 올려 전력 복구
+    Day2OnLever,
+    // 2일차 카드를 획득했는지
+    Day2GetCardKey,
+    // 2일차 컴퓨터 패스워드 힌트
+    Day2GetPasswordHint1,
+    Day2GetPasswordHint2,
+    Day2GetPasswordHint3,
+    Day2GetPasswordHint4
 
-    Day2OnLever
 
 }
