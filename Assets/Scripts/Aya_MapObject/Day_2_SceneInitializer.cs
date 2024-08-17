@@ -19,11 +19,7 @@ public class Day_2_SceneInitializer : MonoBehaviour
     private void Start()
     {
         // 점프스케어 세팅
-        GameManager.Instance.jumpScareManager.OffBtn(); 
-        GameManager.Instance.jumpScareManager.flashLight = playerFlashLight;
-        GameManager.Instance.jumpScareManager.blackBG = blackBG;
-        GameManager.Instance.jumpScareManager.monstersJumpScare[0].gameObject = groupTypeMonster;
-        GameManager.Instance.jumpScareManager.monstersJumpScare[1].gameObject = eyeTypeMonster;
+        JumpScareSetting();
 
         // 시네머신 세팅
         GameManager.Instance.cinemachineManager.mainCamera = mainCamera;
@@ -70,6 +66,27 @@ public class Day_2_SceneInitializer : MonoBehaviour
         HotelFloorScene_DataManager.Instance.controller.ComputerPassward += 1;
     }
 
+    void JumpScareSetting()
+    {
+        GameManager.Instance.jumpScareManager.OffBtn();
+        GameManager.Instance.jumpScareManager.blackBG = blackBG;
+        GameManager.Instance.jumpScareManager.flashLight = playerFlashLight;
+        foreach (var mon in GameManager.Instance.jumpScareManager.monstersJumpScare)
+        {
+            switch (mon.jumpScareType)
+            {
+                case JumpScareType.EarTypeMonster:
+
+                    break;
+                case JumpScareType.EyeTypeMonster:
+                    mon.gameObject = eyeTypeMonster;
+                    break;
+                case JumpScareType.GroupTypeMonster:
+                    mon.gameObject = groupTypeMonster;
+                    break;
+            }
+        }
+    }
 
     [Header("Cinemachine")]
     [SerializeField] private CinemachineVirtualCamera playerVC;

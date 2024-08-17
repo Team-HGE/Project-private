@@ -39,16 +39,35 @@ public class Day_1_SceneInitializer : MonoBehaviour
 
         // 시네머신 세팅
         GameManager.Instance.cinemachineManager.playerVC = playerVC;
-        GameManager.Instance.cinemachineManager.mainCamera = mainCamera;  
+        GameManager.Instance.cinemachineManager.mainCamera = mainCamera;
 
         // 점프스케어 세팅
-        GameManager.Instance.jumpScareManager.blackBG = blackBG;
-        GameManager.Instance.jumpScareManager.flashLight = playerLight;
-        GameManager.Instance.jumpScareManager.monstersJumpScare[1].gameObject = groupTypeMonster;
-        GameManager.Instance.jumpScareManager.monstersJumpScare[0].gameObject = eyeTypeMonster;
+        JumpScareMonsterSetting();
+
 
         // 다이얼로그 세팅
         DialogueManager.Instance.StartStory(1);
-       
+    }
+
+
+    void JumpScareMonsterSetting()
+    {
+        GameManager.Instance.jumpScareManager.blackBG = blackBG;
+        GameManager.Instance.jumpScareManager.flashLight = playerLight;
+        foreach (var mon in GameManager.Instance.jumpScareManager.monstersJumpScare)
+        {
+            switch(mon.jumpScareType)
+            {
+                case JumpScareType.EarTypeMonster:
+                    
+                    break;
+                case JumpScareType.EyeTypeMonster:
+                    mon.gameObject = eyeTypeMonster;
+                    break;
+                case JumpScareType.GroupTypeMonster:
+                    mon.gameObject = groupTypeMonster;
+                    break;
+            }
+        }
     }
 }
