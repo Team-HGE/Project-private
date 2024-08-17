@@ -17,6 +17,7 @@ public class Day_2_SceneInitializer : MonoBehaviour
 
     private void Start()
     {
+        GameManager.Instance.jumpScareManager.OffBtn();
         GameManager.Instance.cinemachineManager.mainCamera = mainCamera;
         GameManager.Instance.cinemachineManager.playerVC = playerVC;
         GameManager.Instance.jumpScareManager.flashLight = playerFlashLight;

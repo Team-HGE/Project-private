@@ -21,7 +21,6 @@ public class HotelFloorScene_DataManager : MonoBehaviour
         elevatorManager ??= GetComponent<ElevatorManager>();
         controller ??= GetComponent<HotelFloorScene_Controller>();
 
-        //if (GameManager.Instance.exampleBar.player == null) GameManager.Instance.exampleBar.player = player.GetComponent<Player>();
         LoadDataByInitialize();
     }
 

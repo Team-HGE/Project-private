@@ -70,16 +70,14 @@ public class JumpScareManager : MonoBehaviour
 
     public void ReturnMainMenu()
     {
-        retryBtn.SetActive(false);
-        mainMenuBtn.SetActive(false);
+        OffBtn();
 
         GameManager.Instance.fadeManager.MoveScene(SceneEnum.MainMenuScene);
     }
 
     public void RetryGame()
     {
-        retryBtn.SetActive(false);
-        mainMenuBtn.SetActive(false);
+        OffBtn();
         GameDataSaveLoadManager.Instance.LoadGameData(0);
 
         GameManager.Instance.fadeManager.MoveScene(GameDataSaveLoadManager.Instance.ReturnSceneEnum());
@@ -88,5 +86,11 @@ public class JumpScareManager : MonoBehaviour
     public void OffCanvas()
     {
         deathVideo.SetActive(false);
+    }
+
+    public void OffBtn()
+    {
+        retryBtn.SetActive(false);
+        mainMenuBtn.SetActive(false);
     }
 }
