@@ -5,6 +5,7 @@ public class Day_2_SceneInitializer : MonoBehaviour
 {
     private void Awake()
     {
+        EventManager.Instance.SetSwitch(GameSwitch.DoorUnlocked, false);
         GameManager.Instance.lightManager.elementsForFloors.Clear();
         FloorInitializer.Instance.SetInitializerNull();
 

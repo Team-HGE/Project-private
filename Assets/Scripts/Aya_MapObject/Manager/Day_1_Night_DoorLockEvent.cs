@@ -33,7 +33,7 @@ public class Day_1_Night_DoorLockEvent : MonoBehaviour
             door.DOComplete();
             door.isLock = true;
         }
-
+        EventManager.Instance.SetSwitch(GameSwitch.DoorUnlocked, true);
         EventManager.Instance.SetSwitch(GameSwitch.BarrierInteract, true);
         LightSetting();
     }
