@@ -15,7 +15,14 @@ public class Monster : MonoBehaviour
 
     [field: Header("Behavior")]
     [field: SerializeField] public bool CanPatrol { get; set; } = true;
-    [SerializeField][field: Range(0f, 50f)] public float patrolRange;
+    [field: SerializeField] public bool CanComeBack { get; set; } = true;
+    //[field: SerializeField] public bool OnPatrolRangeLimit { get; set; } = false;
+
+
+    [SerializeField][field: Range(0f, 50f)] public float patrolRangeMin = 30f;
+    [SerializeField][field: Range(0f, 50f)] public float patrolRangeMax = 50f;
+
+
 
 
     [field: Header("MonsterTransform")]
@@ -142,12 +149,12 @@ public class Monster : MonoBehaviour
     {
         _isWaiting = true;
         //_waitTiem = 0f;
-        //Debug.Log($"{Data.GroundData.FocusTransitionTime}초 대기");
+        //Debug.Log($"{time}초 대기");
         // n초 대기
         yield return new WaitForSeconds(time);
 
         IsBehavior = !IsBehavior;
-        //Debug.Log($"{Data.GroundData.FocusTransitionTime}초 대기 끝, {IsBehavior}");
+        //Debug.Log($"{time}초 대기 끝, {IsBehavior}");
         _isWaiting = false;
     }
 
