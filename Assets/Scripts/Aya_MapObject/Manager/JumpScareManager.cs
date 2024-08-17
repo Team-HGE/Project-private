@@ -25,17 +25,13 @@ public class JumpScareManager : MonoBehaviour
 
     [TabGroup("Tab", "Death", SdfIconType.EmojiDizzy, TextColor = "black")]
     [TabGroup("Tab", "Death")] public GameObject playerCanvas;
-    [TabGroup("Tab", "Death")] public GameObject deathCanvas;
+    [TabGroup("Tab", "Death")] public GameObject deathVideo;
     [TabGroup("Tab", "Death")] public GameObject mainMenuBtn;
     [TabGroup("Tab", "Death")] public GameObject retryBtn;
     [TabGroup("Tab", "Death")] public GameObject blackBG;
 
-    [Title("MonsterControllers")]
-    public NavMeshAgent[] monstersNavMeshAgent;
-
     [Title("MonsterType")]
     public MonstersJumpScare[] monstersJumpScare;
-
 
     public void PlayJumpScare(JumpScareType jumpScareType)
     {
@@ -58,24 +54,43 @@ public class JumpScareManager : MonoBehaviour
     }
     IEnumerator OnDeathCanvas(float time, GameObject monsterObject)
     {
-        yield return time;
+        yield return new WaitForSeconds(time);
         monsterObject.SetActive(false);
         playerCanvas.SetActive(true);
-        deathCanvas.SetActive(true);
+        deathVideo.SetActive(true);
+
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+
         yield return new WaitForSeconds(3);
         retryBtn.SetActive(true);
         mainMenuBtn.SetActive(true);
+        GameManager.Instance.fadeManager.fadeComplete += OffCanvas;
     }
 
     public void ReturnMainMenu()
     {
-        SceneManager.LoadScene((int)SceneEnum.MainMenuScene);
+        OffBtn();
+
+        GameManager.Instance.fadeManager.MoveScene(SceneEnum.MainMenuScene);
     }
 
     public void RetryGame()
     {
+        OffBtn();
+        GameDataSaveLoadManager.Instance.LoadGameData(0);
+
         GameManager.Instance.fadeManager.MoveScene(GameDataSaveLoadManager.Instance.ReturnSceneEnum());
+    }
+
+    public void OffCanvas()
+    {
+        deathVideo.SetActive(false);
+    }
+
+    public void OffBtn()
+    {
+        retryBtn.SetActive(false);
+        mainMenuBtn.SetActive(false);
     }
 }

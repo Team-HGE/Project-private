@@ -12,7 +12,7 @@ public class MonsterGroupTypeAttackState : MonsterGroupTypeGroundState
     {
         base.Enter();
 
-        if (GameManager.Instance.playerDie || GameManager.Instance.nowPlayCutScene)
+        if (GameManager.Instance.NowPlayCutScene)
         {
             stateMachine.ChangeState(stateMachine.ChaseState);
             return;
@@ -24,10 +24,12 @@ public class MonsterGroupTypeAttackState : MonsterGroupTypeGroundState
         StartAnimation(stateMachine.Monster.AnimationData.AttackParameterHash);
 
        
-        Debug.Log("플레이어 공격 - 게임 오버");
-        GameManager.Instance.playerDie = true;
+        Debug.Log("플레이어 공격 - 게임 오버");        
+
         // 점프스퀘어
         GameManager.Instance.jumpScareManager.PlayJumpScare(JumpScareType.GroupTypeMonster);
+
+        GameManager.Instance.playerDie = true;
     }
 
     public override void Exit()

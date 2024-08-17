@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Newtonsoft.Json;
 using System.Diagnostics.Contracts;
+using DG.Tweening;
 
 [Serializable]
 public class GameBaseInfo
@@ -65,6 +66,8 @@ public class GameDataSaveLoadManager : SingletonManager<GameDataSaveLoadManager>
     [TabGroup("Data", "DataManager")][HideInInspector] public SceneGameDataManager sceneGameDataManager;
     [TabGroup("Data", "DataManager")][HideInInspector] public QuestGameDataManager questGameDataManager;
 
+    [Title("SavingCanvas")]
+    public GameObject savingCanvas;
 
     protected override void Awake()
     {
@@ -148,6 +151,7 @@ public class GameDataSaveLoadManager : SingletonManager<GameDataSaveLoadManager>
     }
     public void SaveGameData(int slot_Id)
     {
+        StartCoroutine(SavingCanvas());
         // UniverSal Data
         // 게임 내 씬에 관계없이 저장될 데이터 [필]
         {
@@ -196,6 +200,13 @@ public class GameDataSaveLoadManager : SingletonManager<GameDataSaveLoadManager>
         monsterGameDataManager.ApplyGameData(gameDataCore.sceneIndividualData.monsterGameData);
 
         playerGameDataManager.ApplyGameData(gameDataCore.playerGameData);
+    }
+
+    IEnumerator SavingCanvas()
+    {
+        savingCanvas.SetActive(true);
+        yield return new WaitForSeconds(3);
+        savingCanvas.SetActive(false);
     }
 }
 

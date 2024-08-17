@@ -34,7 +34,7 @@ public class MonsterEarTypeBaseState : IState
 
     public virtual void Update()
     {
-        if (GameManager.Instance.playerDie || GameManager.Instance.nowPlayCutScene)
+        if (GameManager.Instance.playerDie || GameManager.Instance.NowPlayCutScene)
         {
             if (!stateMachine.Monster.Agent.isStopped) stateMachine.Monster.Agent.isStopped = true;
             

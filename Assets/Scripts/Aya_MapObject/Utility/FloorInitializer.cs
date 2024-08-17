@@ -21,12 +21,12 @@ public class FloorInitializer : MonoBehaviour
     }
 
     [Title("Floor")]
-    [SerializeField] private Transform[] floorTopTransforms;
-    [SerializeField] private Transform[] floorBottomTransforms;
+     public Transform[] floorTopTransforms;
+     public Transform[] floorBottomTransforms;
 
     [Title("Lobby")]
-    [SerializeField] private Transform lobbyTopTransforms;
-    [SerializeField] private Transform lobbyBottomTransforms;
+     public Transform lobbyTopTransforms;
+     public Transform lobbyBottomTransforms;
 
     public Floor ReturnFloorPosition(Vector3 targetPos)
     {

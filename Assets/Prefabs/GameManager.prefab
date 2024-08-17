@@ -3275,15 +3275,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flashLight: {fileID: 0}
   playerCanvas: {fileID: 4056390089964842404}
-  deathCanvas: {fileID: 8611472157932001912}
+  deathVideo: {fileID: 5179798407879905235}
   mainMenuBtn: {fileID: 1609798676296112477}
   retryBtn: {fileID: 7770652676978302693}
   blackBG: {fileID: 0}
-  monstersNavMeshAgent: []
   monstersJumpScare:
   - jumpScareType: 0
     gameObject: {fileID: 0}
     time: 1.5
+  - jumpScareType: 1
+    gameObject: {fileID: 0}
+    time: 2.5
 --- !u!1001 &2299845777459183427
 PrefabInstance:
   m_ObjectHideFlags: 0

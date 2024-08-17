@@ -7,8 +7,8 @@ namespace DiceNook.View
     public class ExampleOfUpdatingTheBar : MonoBehaviour
     {
         public UIDocument UIDocument;
-        private List<CircularBar> circularBars;
-        private List<Label> labels;
+        [SerializeField] private List<CircularBar> circularBars;
+        [SerializeField] private List<Label> labels;
 
         public Player player;
 
@@ -18,12 +18,21 @@ namespace DiceNook.View
             labels = UIDocument.rootVisualElement.Query<Label>().ToList();
         }
 
+        private void OnEnable()
+        {
+            UpdateUI();
+        }
         void Update()
         {
             if (player == null) return;
+            Debug.Log("On");
+            UpdateUI();
+        }
 
+        private void UpdateUI()
+        {
             float currentNoise = player.CurNoiseAmount / player.MaxNoiseAmount;
-             
+
             UpdateBars(currentNoise);
             UpdateLabels(currentNoise);
         }

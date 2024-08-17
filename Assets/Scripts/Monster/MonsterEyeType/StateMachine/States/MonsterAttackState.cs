@@ -11,7 +11,7 @@ public class MonsterAttackState : MonsterGroundState
     {
         base.Enter();
 
-        if (GameManager.Instance.playerDie || GameManager.Instance.nowPlayCutScene)
+        if (GameManager.Instance.NowPlayCutScene)
         {
             stateMachine.ChangeState(stateMachine.ChaseState);
             return;
@@ -25,6 +25,8 @@ public class MonsterAttackState : MonsterGroundState
 
         Debug.Log("플레이어 공격 - 게임 오버");
         GameManager.Instance.playerDie = true;
+        // 점프스퀘어
+        GameManager.Instance.jumpScareManager.PlayJumpScare(JumpScareType.EyeTypeMonster);
     }
 
     public override void Exit()

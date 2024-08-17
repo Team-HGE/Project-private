@@ -42,7 +42,7 @@ public class GameManager : SingletonManager<GameManager>
     [ShowInInspector] public PlayerStateMachine PlayerStateMachine { get; set; }
 
     [TitleGroup("CutScene")]
-    public bool nowPlayCutScene { get; set; }
+    public bool NowPlayCutScene { get; set; }
 
 
     protected override void Awake()
@@ -69,5 +69,32 @@ public class GameManager : SingletonManager<GameManager>
 
         this.PlayerStateMachine = _player.GetStateMachine();
         playerDie = false;
+    }
+
+
+    public void Off_UI()
+    {
+        playerInteractionCanvas.SetActive(false);
+        circleUI.SetActive(false);
+        timeUI.SetActive(false);
+        crossHairCanvas.SetActive(false);
+
+        if(DialogueManager.Instance.quest.questCanvas != null)
+        {
+            DialogueManager.Instance.quest.questCanvas.SetActive(false);
+        }
+    }
+
+    public void On_UI()
+    {
+        playerInteractionCanvas.SetActive(true);
+        circleUI.SetActive(true);
+        timeUI.SetActive(true);
+        crossHairCanvas.SetActive(true);
+
+        if (DialogueManager.Instance.quest.questCanvas != null)
+        {
+            DialogueManager.Instance.quest.questCanvas.SetActive(true);
+        }
     }
 }

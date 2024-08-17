@@ -31,18 +31,18 @@ public class MonsterGroupTypeBaseState : IState
     }
 
     public virtual void Update()
-    {
-        if (GameManager.Instance.playerDie || GameManager.Instance.nowPlayCutScene)
+    { 
+        if (GameManager.Instance.NowPlayCutScene)
         {
             if (!stateMachine.Monster.Agent.isStopped) stateMachine.Monster.Agent.isStopped = true;
-
-            return;
+            stateMachine.Monster.Agent.ResetPath();
         }
         else
         {
             if (stateMachine.Monster.Agent.isStopped) stateMachine.Monster.Agent.isStopped = false;
         }
     }
+
 
     protected bool IsInAttackRange()
     {
@@ -83,4 +83,10 @@ public class MonsterGroupTypeBaseState : IState
         float angle = Vector3.Angle(stateMachine.Monster.transform.forward, directionToPlayer);
         return angle < groundData.ViewAngle * 0.5f;
     }
+
+    //// 수직
+    //protected void ForceMove()
+    //{
+    //    stateMachine.Monster.Controller.Move(stateMachine.Monster.ForceReceiver.Movement * Time.deltaTime);
+    //}
 }

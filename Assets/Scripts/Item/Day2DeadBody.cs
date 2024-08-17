@@ -21,6 +21,7 @@ public class Day2DeadBody : InteractableObject
         isInteractable = true;
         EventManager.Instance.SetSwitch(GameSwitch.Day2GetCardKey, true);
 
+        
         DialogueManager.Instance.itemScript.Init(scriptSO);
         DialogueManager.Instance.itemScript.Print();
     }

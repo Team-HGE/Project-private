@@ -56,11 +56,11 @@ public class MonsterChaseState : MonsterGroundState
         {
             Rotate(GetMovementDirection());
 
-            if (GetIsPlayerInFieldOfView() && IsInAttackRange())
-            {
-                stateMachine.ChangeState(stateMachine.AttackState);
-                return;
-            }
+            //if (GetIsPlayerInFieldOfView() && IsInAttackRange())
+            //{
+            //    stateMachine.ChangeState(stateMachine.AttackState);
+            //    return;
+            //}
 
             if (stateMachine.Monster.Agent.pathPending) return;
             //stateMachine.Monster.Agent.SetDestination(stateMachine.Target.transform.position);

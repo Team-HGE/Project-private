@@ -30,7 +30,7 @@ public class MonsterComeBackState : MonsterGroundState
     public override void Update()
     {
         base.Update();
-        RotateToPlayer();
+        //RotateToPlayer();
 
         if (stateMachine.Monster.Agent.pathPending) return;
 

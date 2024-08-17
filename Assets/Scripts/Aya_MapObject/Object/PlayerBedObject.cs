@@ -16,9 +16,12 @@ public class PlayerBedObject : InteractableObject
     {
         if (!EventManager.Instance.GetSwitch(GameSwitch.GoToBed)) return;
 
-        DialogueManager.Instance.itemScript.Init(scriptSO);
-        DialogueManager.Instance.itemScript.Print();
-
+        if (scriptSO != null)
+        {
+            DialogueManager.Instance.itemScript.Init(scriptSO);
+            DialogueManager.Instance.itemScript.Print();
+        }
+    
         StartCoroutine(Sleep());
     }
     IEnumerator Sleep()
@@ -26,11 +29,10 @@ public class PlayerBedObject : InteractableObject
         // 스크립트 종료되면 잠들기
         yield return new WaitUntil(() => !DialogueSetting.isTalking);
 
+        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOff();
         yield return GameManager.Instance.fadeManager.FadeStart(FadeState.FadeOut);
         yield return GameManager.Instance.fadeManager.FadeStart(FadeState.FadeIn);
-        Quest.Instance.NextQuest(15);
-        SystemMsg.Instance.UpdateMessage(6);
-        EventManager.Instance.SetSwitch(GameSwitch.IsDaytime, false);
+        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOn();
         EventManager.Instance.SetSwitch(GameSwitch.GoToBed, false);
         yield return null;
     }

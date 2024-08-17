@@ -43,10 +43,9 @@ public class FirstTLTrigger : MonoBehaviour
     {
         if (_onTrigger) return;
 
-        GameDataSaveLoadManager.Instance.SaveGameData(0);
         //Debug.Log("타임라인 시작" );
         _onTrigger = true;
-        GameManager.Instance.nowPlayCutScene = true;
+        GameManager.Instance.NowPlayCutScene = true;
         PlayTimeline();
     }
 
@@ -57,6 +56,8 @@ public class FirstTLTrigger : MonoBehaviour
             GameManager.Instance.PlayerStateMachine.Player.VCOnOff();
             GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
             VCs.SetActive(true);
+            GameManager.Instance.jumpScareManager.playerCanvas.SetActive(false);
+            DialogueManager.Instance.quest.questCanvas.SetActive(false);
             firstCutScene.Play();
         }
     }
@@ -64,7 +65,7 @@ public class FirstTLTrigger : MonoBehaviour
     private void OnPlayableDirectorStopped(PlayableDirector director)
     {
         VCs.SetActive(false);
-        GameManager.Instance.nowPlayCutScene = false;
+        GameManager.Instance.NowPlayCutScene = false;
         GameManager.Instance.PlayerStateMachine.Player.VCOnOff();
         GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
 

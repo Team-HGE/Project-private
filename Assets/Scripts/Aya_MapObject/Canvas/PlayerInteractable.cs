@@ -35,12 +35,6 @@ public class PlayerInteractable : MonoBehaviour
     }
     void Update()
     {
-        //if (Time.time - lastCheckTime > checkRate)
-        //{
-        //    lastCheckTime = Time.time;
-        //    InteractWithObject();
-        //}
-
         // 플레이어 정지 - 상호작용 가능 텍스트
         if (!GameManager.Instance.PlayerStateMachine.Player.IsPlayerControll) return;
 
