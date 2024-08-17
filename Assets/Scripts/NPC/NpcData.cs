@@ -5,7 +5,7 @@ using UnityEngine.Rendering.HighDefinition;
 public class NpcData: MonoBehaviour
 {
     public int storyIdx;
-
+    public int interactCount = 0;
     public List<NPC_SO> NpcList = new List<NPC_SO>();
 
     // 게임 시작시 초기화
@@ -35,7 +35,6 @@ public class NpcData: MonoBehaviour
     // 모든 NPC와 상호작용 했는지 체크
     public bool AllInteracted()
     {
-        bool result = false;
         int checkNum = 0;
 
         for (int i = 0; i < NpcList.Count; i++)
@@ -43,28 +42,15 @@ public class NpcData: MonoBehaviour
             if (NpcList[i].hadInteract)
             {                
                 checkNum++;
+                if (checkNum == interactCount)
+                {
+                    Debug.Log($"대화 진행도 : {checkNum} / {NpcList.Count}");
+                    return true;
+                }
             }            
         }
-
-
-        for (int i = 0; i < NpcList.Count; i++)
-        {
-            if (NpcList[i].hadInteract)
-            {
-                result = true;
-            }
-            else
-            {
-                //Debug.Log(NpcList[i].npcName + " 상호작용 미완료");
-                result = false;
-                break;
-            }
-        }
-
         Debug.Log($"대화 진행도 : {checkNum} / {NpcList.Count}");
-
-
-        return result;
+        return false;
     }
 
     // 특정 NPC 상호작용 됐는지 체크
