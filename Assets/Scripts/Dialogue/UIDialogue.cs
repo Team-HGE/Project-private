@@ -19,7 +19,7 @@ public class UIDialogue : MonoBehaviour
     public TextMeshProUGUI answerText1;
     public TextMeshProUGUI answerText2;
 
-    // ÆË ½ºÅÄµù °ü·Ã º¯¼ö
+    // íŒ ìŠ¤íƒ ë”© ê´€ë ¨ ë³€ìˆ˜
     public GameObject standingImgLayout;
 
     private ObjectPool objectPool;
@@ -30,15 +30,28 @@ public class UIDialogue : MonoBehaviour
     private Color originColor;
     private Color fadeColor;
     private int standingCnt = 0;
-
     private bool firstEncounter = true;
 
     public event Action playEvent;
+
+    // ë¦¬ë‰´ì–¼ ìŠ¤íƒ ë”© ì¶œë ¥ ê´€ë ¨ ë³€ìˆ˜
+
+
 
     public void OpenBG()
     {
         darkScreen.SetActive(true);
         finishStoryBtn.SetActive(true);
+    }
+
+    public void ChangeBG(Sprite sprite)
+    {
+        darkScreen.SetActive(true);
+        Image Img = darkScreen.GetComponent<Image>();
+        if (sprite != null)
+        {
+            Img.sprite = sprite;
+        }
     }
 
     public void OpenDialogue()
@@ -97,7 +110,7 @@ public class UIDialogue : MonoBehaviour
         portrait.sprite = null;
     }
 
-    // ÀÌÇÏ ½ºÅÄµù °ü·Ã ¸Ş¼Òµå
+    // ì´í•˜ ìŠ¤íƒ ë”© ê´€ë ¨ ë©”ì†Œë“œ
 
     public void ObjectPoolInit()
     {
@@ -110,11 +123,11 @@ public class UIDialogue : MonoBehaviour
 
         for (int i = 0; i <= idx; i++)
         {
-            if (speakers[i] == speaker) // idx³ª idx Àü¿¡ µîÀåÇÑ Àû ÀÖÀ¸¸é
+            if (speakers[i] == speaker) // idxë‚˜ idx ì „ì— ë“±ì¥í•œ ì  ìˆìœ¼ë©´
             {
                 if(i == idx)
                 {
-                    Debug.Log(speaker + " Ã¹ µîÀåÀÔ´Ï´Ù.");
+                    Debug.Log(speaker + " ì²« ë“±ì¥ì…ë‹ˆë‹¤.");
                     firstEncounter = true;
                     break;
                 }
@@ -126,8 +139,8 @@ public class UIDialogue : MonoBehaviour
                 }
             }
         }
-        // Àü¿¡ µîÀåÇÑ Àû ¾øÀ¸¸é
-        //Debug.Log(speaker + " Ã¹ µîÀåÀÔ´Ï´Ù.2");
+        // ì „ì— ë“±ì¥í•œ ì  ì—†ìœ¼ë©´
+        //Debug.Log(speaker + " ì²« ë“±ì¥ì…ë‹ˆë‹¤.2");
         //firstEncounter = false;
     }
 
@@ -135,8 +148,8 @@ public class UIDialogue : MonoBehaviour
     {
         if (sprite == null) return;
 
-        // Ã¹ µîÀåÀÏ °æ¿ì
-        // ÇÁ¸®ÆÕ È°¼ºÈ­, ÀÌ¹ÌÁö ³Ö±â
+        // ì²« ë“±ì¥ì¼ ê²½ìš°
+        // í”„ë¦¬íŒ¹ í™œì„±í™”, ì´ë¯¸ì§€ ë„£ê¸°
         if (firstEncounter)
         {
             standingObj = objectPool.GetObject();
@@ -170,7 +183,7 @@ public class UIDialogue : MonoBehaviour
 
         //originColor = standingImg.color;
 
-        // ÀÌ¹ÌÁö ¿ÀÆÛ½ÃÆ¼ 100%
+        // ì´ë¯¸ì§€ ì˜¤í¼ì‹œí‹° 100%
         //originColor.a = 10.0f;
         //standingImg.color = originColor;
         standingImg.color = new Color32(255, 255, 255, 255);
@@ -183,7 +196,7 @@ public class UIDialogue : MonoBehaviour
         //else if (standingImg2 != null) 
         //    standingImg2.color = new Color32(255, 255, 255, 255);
 
-        //Debug.Log("Åõ¸íµµ 255");
+        //Debug.Log("íˆ¬ëª…ë„ 255");
     }
 
     public void FadeStanding(Sprite sprite)
@@ -195,26 +208,26 @@ public class UIDialogue : MonoBehaviour
         //if (standingImg2 != null)
         //    objectPool.FadeColor(standingImg2);
 
-        // º»ÀÎ ´ë»ç Ãâ·Â ³¡³ª¸é ÀÌ¹ÌÁö ¿ÀÇÇ½ÃÆ¼ 10%
+        // ë³¸ì¸ ëŒ€ì‚¬ ì¶œë ¥ ëë‚˜ë©´ ì´ë¯¸ì§€ ì˜¤í”¼ì‹œí‹° 10%
 
         //fadeColor = standingImg.color;
         //fadeColor.a = 0.5f;
         //standingImg.color = fadeColor;
         //standingImg.color = new Color32(255, 255, 255, 100);
-        //Debug.Log("Åõ¸íµµ 100");
+        //Debug.Log("íˆ¬ëª…ë„ 100");
     }
 
     public void DestroyStanding()
     {
-        // Ä³¸¯ÅÍ°¡ ÅğÀåÇÏ¸é ÇØ´ç ÇÁ¸®Æé ºñÈ°¼ºÈ­
+        // ìºë¦­í„°ê°€ í‡´ì¥í•˜ë©´ í•´ë‹¹ í”„ë¦¬í© ë¹„í™œì„±í™”
         //objectPool.ReturnObject(standingObj);
 
         if (standingObj == null) return;
 
-        // ¸ğµç ¿ÀºêÁ§Æ® Sprite ÃÊ±âÈ­
+        // ëª¨ë“  ì˜¤ë¸Œì íŠ¸ Sprite ì´ˆê¸°í™”
         objectPool.SpriteInit();
 
-        // ´ëÈ­°¡ ³¡³ª¸é ÇÁ¸®Æé ºñÈ°¼ºÈ­
+        // ëŒ€í™”ê°€ ëë‚˜ë©´ í”„ë¦¬í© ë¹„í™œì„±í™”
         objectPool.ReturnAllObject();
     }
 }
