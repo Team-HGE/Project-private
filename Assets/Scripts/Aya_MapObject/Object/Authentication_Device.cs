@@ -8,7 +8,7 @@ public class Authentication_Device : InteractableObject
     [SerializeField] DOTweenAnimation doorOpen;
     [SerializeField] MeshRenderer meshRenderer;
     [SerializeField] Material material;
-
+    [SerializeField] private GameObject glare;
     [Header("SecondDayEvent")]
     public ScriptSO[] scriptSOs;
 
@@ -27,6 +27,7 @@ public class Authentication_Device : InteractableObject
 
         if (EventManager.Instance.GetSwitch(GameSwitch.Day2GetCardKey))
         {
+            glare.SetActive(false);
             doorOpen.CreateTween(true);
             ChangeMaterial();
             isInteractable = true;

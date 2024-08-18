@@ -47,6 +47,7 @@ public class FirstCutSceneEvent : MonoBehaviour
 
     IEnumerator LightSystem()
     {
+        AudioManager.Instance.PlayBackGroundSound(BackGroundSound.ChaseBG, true, 0.5f);
         SystemMsg.Instance.UpdateMessage(8);
         Quest.Instance.NextQuest(5);
         LightOff(firstLight);
@@ -54,7 +55,7 @@ public class FirstCutSceneEvent : MonoBehaviour
         audioSource.Play();
 
         yield return waitTime;
-
+        
         LightOff(secondLight);
         GameManager.Instance.lightManager.OffChangeMaterial(secondRenderer);
         audioSource.Play();
@@ -75,7 +76,7 @@ public class FirstCutSceneEvent : MonoBehaviour
         }
 
         JOE_Spawn();
-        AudioManager.Instance.PlayBackGroundSound(BackGroundSound.ChaseBG);
+        
         SM2.SetActive(true);
         Destroy(gameObject);
     }

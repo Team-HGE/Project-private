@@ -97,7 +97,7 @@ public class Day_2_SceneInitializer : MonoBehaviour
     [SerializeField] private GameObject blackBG;
 
     [Header("Light")]
-    [SerializeField] private Light playerFlashLight;
+    [SerializeField] private GameObject playerFlashLight;
 
     [Title("NPC")]
     [SerializeField] private NPC PSYNpc;

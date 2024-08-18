@@ -6,7 +6,7 @@ using UnityEngine;
 public class Day_1_SceneInitializer : MonoBehaviour
 {
     [SerializeField] private GameObject blackBG;
-    [SerializeField] private Light playerLight;
+    [SerializeField] private GameObject playerLight;
 
     [SerializeField] private GameObject eyeTypeMonster;
     [SerializeField] private GameObject groupTypeMonster;
@@ -55,7 +55,6 @@ public class Day_1_SceneInitializer : MonoBehaviour
             n.npcEvent += BedInteracted;
         }
     }
-
 
     void JumpScareMonsterSetting()
     {

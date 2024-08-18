@@ -21,7 +21,7 @@ public class JumpScareManager : MonoBehaviour
 {
     [TitleGroup("JumpScareManager", "MonoBehaviour", alignment: TitleAlignments.Centered, horizontalLine: true, boldTitle: true, indent: false)]
     [Header("FlashLight")]
-    public Light flashLight;
+    public GameObject flashLight;
 
     [TabGroup("Tab", "Death", SdfIconType.EmojiDizzy, TextColor = "black")]
     [TabGroup("Tab", "Death")] public GameObject playerCanvas;
@@ -37,7 +37,7 @@ public class JumpScareManager : MonoBehaviour
     {
         //AudioManager.Instance.StopAllClips();
         GameManager.Instance.playerDie = true;
-        flashLight.enabled = false;
+        flashLight.SetActive(false);
         GameManager.Instance.PlayerStateMachine.Player.PlayerControllOff();
         GameManager.Instance.PlayerStateMachine.Player.VCOnOff();
         playerCanvas.SetActive(false);

@@ -1,16 +1,17 @@
+using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioManager : SingletonManager<AudioManager>
 {
-    [Header("AudioSources")]
+    [Title("AudioSources")]
     public List<AudioSource> audioSources;
     public int maxAudioSources;
 
-    [Header("BackGroundClips")]
+    [Title("BackGroundClips")]
     public BackGroundSoundClipMapping[] backGroundAudioClips;
 
-    [Header("SEClips")]
+    [Title("SEClips")]
     public SoundEffectClipMapping[] soundEffectClips;
 
     [System.Serializable]
@@ -19,7 +20,6 @@ public class AudioManager : SingletonManager<AudioManager>
         public SoundEffect soundEffect;
         public AudioClip audioClip;
     }
-
 
     [System.Serializable]
     public struct BackGroundSoundClipMapping
@@ -31,13 +31,14 @@ public class AudioManager : SingletonManager<AudioManager>
     public PlayAudio playAudio;
     public PlayAudioSE playAudioSE;
 
+    [ShowInInspector]
     private Dictionary<BackGroundSound, AudioClip> _audioBackGroundClipDictionary = new Dictionary<BackGroundSound, AudioClip>();
     public Dictionary<BackGroundSound, AudioClip> AudioBackGroundClipDictionary
     {
         get { return _audioBackGroundClipDictionary; }
         set { _audioBackGroundClipDictionary = value; }
     }
-
+    [ShowInInspector]
     private Dictionary<SoundEffect, AudioClip> _audioSoundEffectClipDictionary = new Dictionary<SoundEffect, AudioClip>();
     public Dictionary<SoundEffect, AudioClip> AudioSoundEffectClipDictionary
     {
@@ -45,7 +46,6 @@ public class AudioManager : SingletonManager<AudioManager>
         set { _audioSoundEffectClipDictionary = value; }
     }
 
-   
     protected override void Awake()
     {
         base.Awake();
@@ -69,18 +69,18 @@ public class AudioManager : SingletonManager<AudioManager>
             audioSources.Add(audioSource);
         }
     }
-    public void PlayBackGroundSound(BackGroundSound backGroundSound)
+    public void PlayBackGroundSound(BackGroundSound backGroundSound, bool isFade, float volume)
     {
         if (_audioBackGroundClipDictionary.TryGetValue(backGroundSound, out AudioClip clip))
         {
-            playAudio.PlayAudioClip(clip);
+            playAudio.PlayAudioClip(clip, isFade, volume);
         }
     }
-    public void StopBackGroundSound(BackGroundSound backGroundSound)
+    public void StopBackGroundSound(BackGroundSound backGroundSound, bool isFade)
     {
         if (_audioBackGroundClipDictionary.TryGetValue(backGroundSound, out AudioClip clip))
         {
-            playAudio.PlayStopClip(clip);
+            playAudio.PlayStopClip(clip, isFade);
         }
     }
 
