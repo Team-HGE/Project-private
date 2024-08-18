@@ -8,6 +8,8 @@ public class NPCScript : DialogueSetting, IScript
     private NPC_SO npcSO;
     private ScriptSO scriptSO;
     public event Action playEvent;
+    public Quest quest;
+    public SystemMsg systemMsg;
 
     public void InitNPC(NpcData data, int ID)
     {
@@ -21,6 +23,8 @@ public class NPCScript : DialogueSetting, IScript
 
     public void Init(ScriptSO _script)
     {
+        quest = DialogueManager.Instance.quest;
+        systemMsg = DialogueManager.Instance.systemMsg;
         scriptSO = null;
         scriptSO = _script;
         InitUI();
@@ -67,7 +71,25 @@ public class NPCScript : DialogueSetting, IScript
             ui.SetPortrait(ui.portrait, scriptSO.portraits[i]);
             ui.CheckNullIndex(scriptSO.speakers[i]);
 
-            curPrintLine = TextEffect.Typing(ui.bodyText, sbBody, scriptSO.bodyTexts[i]);
+            switch (scriptSO.bodyTexts[i])
+            {
+                case var text when text.StartsWith("NewQuest"):
+                    yield return HandleNewQuest(text);
+                    continue;
+
+                case var text when text.StartsWith("SystemMsg"):
+                    yield return SystemMsg(text);
+                    continue;
+
+                case var text when text.StartsWith("NewTip"):
+                    yield return Tips(text);
+                    continue;
+
+                default:
+                    curPrintLine = TextEffect.Typing(ui.bodyText, sbBody, scriptSO.bodyTexts[i]);
+                    break;
+            }
+
             yield return StartCoroutine(curPrintLine);
 
             yield return waitLeftClick;
@@ -91,6 +113,50 @@ public class NPCScript : DialogueSetting, IScript
         npcSO.state = NpcState.Idle;
 
         yield return null;
+    }
+
+    private IEnumerator HandleNewQuest(string questText)
+    {
+        Debug.Log("다음 스토리를 갱신합니다.");
+        if (questText.StartsWith("NewQuest"))
+        {
+            string questString = questText.Substring(8);
+            if (int.TryParse(questString, out int questNumber))
+            {
+                quest.NextQuest(questNumber);
+            }
+
+            yield break;
+        }
+    }
+
+    private IEnumerator Tips(string TipText)
+    {
+        Debug.Log("선택한 팁 메세지를 호출합니다.");
+        if (TipText.StartsWith("NewTip"))
+        {
+            string TipString = TipText.Substring(6);
+            if (int.TryParse(TipString, out int TipsNumber))
+            {
+                systemMsg.UpdateTipMessage(TipsNumber);
+            }
+        }
+        yield break;
+    }
+
+    private IEnumerator SystemMsg(string SystemMsgText)
+    {
+        Debug.Log("선택한 팁 메세지를 호출합니다.");
+        if (SystemMsgText.StartsWith("SystemMsg"))
+        {
+            string SystemMsgString = SystemMsgText.Substring(9);
+            if (int.TryParse(SystemMsgString, out int SystemMsgNumber))
+            {
+                systemMsg.UpdateMessage(SystemMsgNumber);
+            }
+        }
+
+        yield break;
     }
 
     public string PrintNpcState(NpcState stateType)
