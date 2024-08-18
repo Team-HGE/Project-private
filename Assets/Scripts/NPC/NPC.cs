@@ -29,25 +29,10 @@ public class NPC : InteractableObject
         // ID로 npc 정보 불러오기
         data = DialogueManager.Instance.npcData;
 
-        if (npcEvent == null)
-        {
-            Debug.Log("null");
-        }
-        npcEvent?.Invoke();
-        npcEvent = null;
         DialogueManager.Instance.npcScript.InitNPC(data, ID);
         DialogueManager.Instance.npcScript.Print();
-        BedInteracted();
-    }
-    void BedInteracted()
-    {
-        bool canSleep = DialogueManager.Instance.npcData.AllInteracted();
-        Debug.Log(canSleep);
-        if (canSleep)
-        {
-            SystemMsg.Instance.UpdateMessage(5);
-            Quest.Instance.NextQuest(2);
-            EventManager.Instance.SetSwitch(GameSwitch.GoToBed, true);
-        }
+
+        npcEvent?.Invoke();
+        npcEvent = null;
     }
 }

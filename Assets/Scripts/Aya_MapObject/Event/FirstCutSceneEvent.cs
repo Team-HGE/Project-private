@@ -75,7 +75,7 @@ public class FirstCutSceneEvent : MonoBehaviour
         }
 
         JOE_Spawn();
-        AudioManager.Instance.PlaySound(BackGroundSound.ChaseBG);
+        AudioManager.Instance.PlayBackGroundSound(BackGroundSound.ChaseBG);
         SM2.SetActive(true);
         Destroy(gameObject);
     }

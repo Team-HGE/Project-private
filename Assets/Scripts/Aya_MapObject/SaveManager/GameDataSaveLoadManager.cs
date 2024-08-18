@@ -65,6 +65,7 @@ public class GameDataSaveLoadManager : SingletonManager<GameDataSaveLoadManager>
     [TabGroup("Data", "DataManager")][HideInInspector] public MonsterGameDataManager monsterGameDataManager;
     [TabGroup("Data", "DataManager")][HideInInspector] public SceneGameDataManager sceneGameDataManager;
     [TabGroup("Data", "DataManager")][HideInInspector] public QuestGameDataManager questGameDataManager;
+    [TabGroup("Data", "DataManager")][HideInInspector] public GameSettings gameSettings;
 
     [Title("SavingCanvas")]
     public GameObject savingCanvas;
@@ -84,6 +85,8 @@ public class GameDataSaveLoadManager : SingletonManager<GameDataSaveLoadManager>
         monsterGameDataManager = GetComponent<MonsterGameDataManager>();
         sceneGameDataManager = GetComponent<SceneGameDataManager>();
         questGameDataManager = GetComponent<QuestGameDataManager>();
+
+        gameSettings = GetComponent<GameSettings>();
     }
 
     private static bool isSaveLocked = false;

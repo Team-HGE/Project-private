@@ -45,6 +45,7 @@ public class NpcData: MonoBehaviour
                 if (checkNum == interactCount)
                 {
                     Debug.Log($"대화 진행도 : {checkNum} / {NpcList.Count}");
+                    interactCount = 0;
                     return true;
                 }
             }            

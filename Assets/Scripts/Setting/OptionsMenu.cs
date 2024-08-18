@@ -14,8 +14,8 @@ public class OptionsMenu : MonoBehaviour
     void Start()
     {
         // 기존 설정값을 슬라이더와 토글에 적용
-        volumeSlider.value = GameSettings.Instance.volume;
-        sensitivitySlider.value = GameSettings.Instance.mouseSensitivity;
+        volumeSlider.value = GameDataSaveLoadManager.Instance.gameSettings.volume;
+        sensitivitySlider.value = GameDataSaveLoadManager.Instance.gameSettings.mouseSensitivity;
         fullscreenToggleButton.onClick.AddListener(ToggleFullScreen);
         
 
@@ -27,36 +27,36 @@ public class OptionsMenu : MonoBehaviour
 
     public void SetVolume(float volume)
     {
-        GameSettings.Instance.volume = volume;
+        GameDataSaveLoadManager.Instance.gameSettings.volume = volume;
         AudioListener.volume = volume; // 실제 게임 음량에 반영
-        GameSettings.Instance.SaveSettings(); // 변경 사항을 저장
+        GameDataSaveLoadManager.Instance.gameSettings.SaveSettings(); // 변경 사항을 저장
     }
 
     public void SetMouseSensitivity(float sensitivity)
     {
-        GameSettings.Instance.mouseSensitivity = sensitivity;
+        GameDataSaveLoadManager.Instance.gameSettings.mouseSensitivity = sensitivity;
 
         // 마우스 감도를 플레이어 컨트롤러에 반영 (예시)
         //playerController.mouseSensitivity = sensitivity;
-        GameSettings.Instance.SaveSettings();
+        GameDataSaveLoadManager.Instance.gameSettings.SaveSettings();
     }
 
 
     void ToggleFullScreen()
     {
-        GameSettings.Instance.isFullScreen = !GameSettings.Instance.isFullScreen;
+        GameDataSaveLoadManager.Instance.gameSettings.isFullScreen = !GameDataSaveLoadManager.Instance.gameSettings.isFullScreen;
 
-        if (GameSettings.Instance.isFullScreen)
+        if (GameDataSaveLoadManager.Instance.gameSettings.isFullScreen)
         {
             // 전체화면 모드로 전환
             Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, true);
-            GameSettings.Instance.SaveSettings();
+            GameDataSaveLoadManager.Instance.gameSettings.SaveSettings();
         }
         else
         {
             // 창 모드로 전환
             Screen.SetResolution(1920, 1080, false);
-            GameSettings.Instance.SaveSettings();
+            GameDataSaveLoadManager.Instance.gameSettings.SaveSettings();
         }
     }
 

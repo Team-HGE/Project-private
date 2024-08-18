@@ -25,7 +25,6 @@ namespace DiceNook.View
         void Update()
         {
             if (player == null) return;
-            Debug.Log("On");
             UpdateUI();
         }
 
