@@ -11,6 +11,13 @@ public class MonsterEarTypeComeBackState : MonsterEarTypeGroundState
     public override void Enter()
     {
         base.Enter();
+
+        if (!stateMachine.Monster.CanComeBack)
+        {
+            stateMachine.ChangeState(stateMachine.IdleState);
+            return;
+        }
+
         Debug.Log("컴백 시작");
         stateMachine.IsComeBack = true;
         stateMachine.Monster.Agent.speed = groundData.ComebackSpeed;

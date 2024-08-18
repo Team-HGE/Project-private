@@ -6,19 +6,25 @@ public class NoiseObject : InteractableObject, INoise
 {
     [field: Header("Noise")]
     [field: SerializeField] public NoiseData NoiseData { get; set; }
-    //[field: SerializeField] public float Duration { get; set; }
+
     // INoise
-    [field: SerializeField] public float SumNoiseAmount { get; set; }
+    public float NoiseTransitionTime { get; set; }
+    [field: SerializeField] public float CurNoiseAmount { get; set; }
+    public float SumNoiseAmount { get; set; }
     [field: SerializeField] public float DecreaseSpeed { get; set; }
-    [field: SerializeField] public float NoiseTransitionTime { get; set; }
-    [field: SerializeField] public float CurNoiseAmount { get; set; } = 0f;
+
+    public float decreaseDelay;
+    public float addVolume;
+    public float addPitch;
 
     public bool isLoop = false;
     public bool isAvailable = false;
     public string text;
 
     private bool isUse;
-    private BoxCollider collider;
+    private BoxCollider _collider;
+    private WaitForSeconds _waitTransition;
+
 
     private void Awake()
     {
@@ -29,7 +35,7 @@ public class NoiseObject : InteractableObject, INoise
         }
         else
         {
-            Debug.LogError($"노이즈 데이터있음 , {NoiseData.tag}");
+            //Debug.Log($"노이즈 데이터있음 , {NoiseData.tag}");
 
             NoiseTransitionTime = NoiseData.transitionTime;
 
@@ -44,26 +50,19 @@ public class NoiseObject : InteractableObject, INoise
             }
         }
 
+
         if (!isAvailable)
         {
-            if(gameObject.TryGetComponent<BoxCollider>(out collider)) collider.isTrigger = true;
+            if (gameObject.TryGetComponent<BoxCollider>(out _collider)) _collider.isTrigger = true;
             else Debug.LogError($"NoiseObject - Awake - 콜라이더 없음, {NoiseData.tag}");
         }
-    }
-
-    private void Update()
-    {
-        if (isUse)
+        else
         {
-            if (NoiseTransitionTime > 0)
-            {
-                CurNoiseAmount += NoiseData.volume;
-                if (CurNoiseAmount >= SumNoiseAmount) CurNoiseAmount = SumNoiseAmount;
-
-                CurNoiseAmount -= DecreaseSpeed * Time.deltaTime;
-                if (CurNoiseAmount <= 0f) CurNoiseAmount = 0f;
-            }             
+            if (gameObject.TryGetComponent<BoxCollider>(out _collider)) _collider.isTrigger = false;
+            else Debug.LogError($"NoiseObject - Awake - 콜라이더 없음, {NoiseData.tag}");
         }
+
+        _waitTransition = new WaitForSeconds(NoiseTransitionTime);
     }
 
     public override void ActivateInteraction()
@@ -86,25 +85,23 @@ public class NoiseObject : InteractableObject, INoise
         isUse = true;
 
         PlayNoise(NoiseData.noises[0], NoiseData.tag, 0, 0, NoiseTransitionTime, 0, isLoop);
-
-        if (NoiseTransitionTime <= 0) CurNoiseAmount += NoiseData.volume;
-
+        CurNoiseAmount += NoiseData.volume;
         StartCoroutine(TurnOff());
     }
 
     IEnumerator TurnOff()
     {
-        yield return new WaitForSeconds(NoiseTransitionTime);
+        yield return _waitTransition;
 
         isUse = false;
         CurNoiseAmount = 0f;
     }
 
+
     public void PlayNoise(AudioClip audioClip, string tag, float amount, float addVolume, float transitionTime, float pitch, bool isLoop)
     {
         SoundSource soundSource;
         soundSource = NoiseManager.Instance.PlayNoise(audioClip, tag, addVolume, transitionTime, pitch, isLoop);
-        //return soundSource;
     }
 
     //public SoundSource PlayNoise(AudioClip[] audioClips, string tag, float amount, float addVolume, float transitionTime, float pitch)

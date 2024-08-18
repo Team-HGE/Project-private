@@ -21,9 +21,9 @@ public class EarTypeMonster : MonoBehaviour
     public LayerMask targetLayer;
     public List<Collider> noiseMakers;
 
-    [Header("MonsterTransform")]
-    public Transform monsterTransform;
-    public Transform monsterEyeTransform;
+    //[Header("MonsterTransform")]
+    //public Transform monsterTransform;
+    //public Transform monsterEyeTransform;
 
     // 행동 관리
     public bool IsBehavior { get; set; } = true;
