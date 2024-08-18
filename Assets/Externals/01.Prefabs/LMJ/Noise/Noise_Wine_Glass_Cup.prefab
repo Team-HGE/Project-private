@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8188623750513966952}
   - component: {fileID: 1599025382420912656}
   - component: {fileID: 7920586264769707156}
-  - component: {fileID: 3874935222476528959}
+  - component: {fileID: 7147758072371095614}
   m_Layer: 0
   m_Name: Noise_Wine_Glass_Cup
   m_TagString: Untagged
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8764824398462199070}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.6200027, y: -3.7199998, z: -0.70980835}
   m_LocalScale: {x: 0.080773, y: 0.5451693, z: 0.080773}
   m_ConstrainProportionsScale: 0
@@ -84,8 +84,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8764824398462199070}
   m_Mesh: {fileID: 4300000, guid: b9e9667d9f9268649bcea66697fa60d3, type: 2}
---- !u!64 &3874935222476528959
-MeshCollider:
+--- !u!65 &7147758072371095614
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -102,7 +102,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: b9e9667d9f9268649bcea66697fa60d3, type: 2}
+  serializedVersion: 3
+  m_Size: {x: 11.29, y: 4.3, z: 14.62}
+  m_Center: {x: 0.50530267, y: 0.97868377, z: -0.49741453}

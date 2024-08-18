@@ -58,7 +58,7 @@ public class Player : MonoBehaviour, INoise
 
         if (NoisePool.Instance == null)
         {
-            Debug.LogErrorFormat($"Player - Awake - NoisePool 없음");
+            Debug.LogError($"Player - Awake - NoisePool 없음");
         }
 
         if (NoisePool.Instance.noiseDatasList.Count != NoiseDatasList.noiseDatasList.Count)
