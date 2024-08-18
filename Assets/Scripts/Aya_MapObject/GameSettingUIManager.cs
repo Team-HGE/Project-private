@@ -1,6 +1,7 @@
 using UnityEngine;
 using SlimUI.ModernMenu;
 using Sirenix.OdinInspector;
+using UnityEngine.UI;
 
 public class GameSettingUIManager : MonoBehaviour
 {
@@ -40,9 +41,23 @@ public class GameSettingUIManager : MonoBehaviour
     [Title("Canvas_Add")]
     public GameObject settingCanvas;
 
+    [BoxGroup("Box")]
+    public InfoMessageType EnumField = InfoMessageType.Info;
+
+    public Dropdown qualityDropDown;
     void Start()
     {
+        qualityDropDown.value = QualitySettings.GetQualityLevel();
         SetThemeColors();
+    }
+    public void SetQuality(int index) // 전반적인 세팅 조절
+    {
+        QualitySettings.SetQualityLevel(index);
+    }
+
+    public void SetAntiAliasing(int index) // 안티 엘리어싱
+    {
+        QualitySettings.antiAliasing = index;
     }
 
     private void Update()
@@ -106,7 +121,7 @@ public class GameSettingUIManager : MonoBehaviour
         lineVideo.SetActive(false);
         lineKeyBindings.SetActive(false);
     }
-
+    #region 판넬
     public void GamePanel()
     {
         DisablePanels();
@@ -150,7 +165,9 @@ public class GameSettingUIManager : MonoBehaviour
     {
         DisablePanels();
     }
+    #endregion
 
+    #region 소리
     public void PlayHover()
     {
         hoverSound.Play();
@@ -165,4 +182,5 @@ public class GameSettingUIManager : MonoBehaviour
     {
         swooshSound.Play();
     }
+    #endregion
 }
