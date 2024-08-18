@@ -1,4 +1,5 @@
 ﻿using Cinemachine;
+using DG.Tweening;
 using System.Collections;
 using UnityEngine;
 
@@ -46,6 +47,7 @@ public class KeyPadObject : InteractableObject
         keyPadGimmick.puzzleSetting(passwords, this);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOff();
     }
 
     IEnumerator Init()
@@ -61,28 +63,35 @@ public class KeyPadObject : InteractableObject
         lockDoorObject.onInteract = true;
         KeyPadDecal.SetActive(false);
         keyPadGimmickCanvas.SetActive(false);
-        StartCoroutine(Success());
+        StartCoroutine(ReturnToMainCamera());
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOff();
     }
-    IEnumerator Success()
+    IEnumerator ReturnToMainCamera()
     {
         yield return StartCoroutine(GameManager.Instance.cinemachineManager.ReturnToMainCamera());
     }
 
     public void CloseKeyPad()
     {
+        if (isScondDayEvent && !EventManager.Instance.GetSwitch(GameSwitch.Day_2_A2F_LeverOn) && EventManager.Instance.GetSwitch(GameSwitch.NowDay2))
+        {
+            Invoke("SecondDayEventScript", 2);
+        }
+
         KeyPadDecal.SetActive(true);
         keyPadGimmickCanvas.SetActive(false);
-        StartCoroutine(Success());
+        StartCoroutine(ReturnToMainCamera());
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOn();
     }
 
     public void SecondDayEventScript() 
     {
+        isScondDayEvent = false;
         DialogueManager.Instance.itemScript.Init(scriptSO);
         DialogueManager.Instance.itemScript.Print();
-        CloseKeyPad();
     }
 }

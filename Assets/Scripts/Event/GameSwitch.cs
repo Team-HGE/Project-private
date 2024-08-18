@@ -1,5 +1,8 @@
 ﻿public enum GameSwitch
 {
+    // 게임중인지
+    IsPlayingGame,
+
     //스토리 관련
     isMainStoryOff,
 

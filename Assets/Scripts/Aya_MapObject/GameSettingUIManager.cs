@@ -62,7 +62,7 @@ public class GameSettingUIManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && EventManager.Instance.GetSwitch(GameSwitch.IsPlayingGame))
         {
             ToggleSettingMenu();
         }
@@ -70,9 +70,17 @@ public class GameSettingUIManager : MonoBehaviour
 
     public void ReturnMainMenu()
     {
+        ToggleSettingMenu();
+        EventManager.Instance.SetSwitch(GameSwitch.IsPlayingGame, false);
         GameManager.Instance.fadeManager.MoveScene(SceneEnum.MainMenuScene);
+        GameManager.Instance.fadeManager.fadeComplete += CursorNone;
     }
 
+    public void CursorNone()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
     void ToggleSettingMenu()
     {
         settingCanvas.SetActive(!settingCanvas.activeSelf);
@@ -85,8 +93,11 @@ public class GameSettingUIManager : MonoBehaviour
         else
         {
             Time.timeScale = 1;
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            if (!DialogueManager.Instance.storyScript.ui.isPlayingStory)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
         }
         
     }

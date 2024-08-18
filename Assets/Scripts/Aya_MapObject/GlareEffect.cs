@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class GlareEffect : MonoBehaviour
@@ -34,12 +35,16 @@ public class GlareEffect : MonoBehaviour
     private MeshRenderer meshRenderer;
     private float rotateAngle = 0.0f;
 
-    private void Awake()
+    private void Start()
     {
         mainCamera = HotelFloorScene_DataManager.Instance.player.transform; // ¼öÁ¤
         meshRenderer = GetComponent<MeshRenderer>();
-    }
 
+        if (mainCamera == null)
+        {
+            mainCamera = GameObject.FindGameObjectWithTag("Player").transform;
+        }
+    }
     private void Update()
     {
         float distance = Vector3.Distance(transform.position, mainCamera.position);

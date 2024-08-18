@@ -33,6 +33,7 @@ public class UIDialogue : MonoBehaviour
 
     private bool firstEncounter = true;
 
+    public bool isPlayingStory { get; set; }
     public event Action playEvent;
 
     public void OpenBG()
@@ -44,6 +45,7 @@ public class UIDialogue : MonoBehaviour
     public void OpenDialogue()
     {
         dialogueCanvas.SetActive(true);
+        isPlayingStory = true;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         GameManager.Instance.PlayerStateMachine.Player.PlayerControllOff();
@@ -64,6 +66,8 @@ public class UIDialogue : MonoBehaviour
         {
             GameManager.Instance.PlayerStateMachine.Player.PlayerControllOn();
         }
+
+        isPlayingStory = false;
         //Debug.Log("isTalking : " + DialogueSetting.isTalking);
     }
 
