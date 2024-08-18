@@ -13,18 +13,24 @@ public class NoiseObject : InteractableObject, INoise
     [field: SerializeField] public float NoiseTransitionTime { get; set; }
     [field: SerializeField] public float CurNoiseAmount { get; set; } = 0f;
 
-    public bool loop = false;
+    public bool isLoop = false;
+    public bool isAvailable = false;
+    public string text;
+
     private bool isUse;
+    private BoxCollider collider;
 
     private void Awake()
     {
-        if (NoiseData == null)
+        if (NoiseData.tag == "")
         {
             Debug.LogError("노이즈 데이터가 없습니다");
             return;
         }
         else
         {
+            Debug.LogError($"노이즈 데이터있음 , {NoiseData.tag}");
+
             NoiseTransitionTime = NoiseData.transitionTime;
 
             if (NoisePool.Instance == null)
@@ -36,6 +42,12 @@ public class NoiseObject : InteractableObject, INoise
                 NoisePool.Instance.noiseDatasList.Add(NoiseData);
                 NoisePool.Instance.FindNoise();
             }
+        }
+
+        if (!isAvailable)
+        {
+            if(gameObject.TryGetComponent<BoxCollider>(out collider)) collider.isTrigger = true;
+            else Debug.LogError($"NoiseObject - Awake - 콜라이더 없음, {NoiseData.tag}");
         }
     }
 
@@ -56,10 +68,15 @@ public class NoiseObject : InteractableObject, INoise
 
     public override void ActivateInteraction()
     {
-        if (isUse) GameManager.Instance.player.playerInteraction.SetActive(false);
-        else GameManager.Instance.player.playerInteraction.SetActive(true);
+        if (isAvailable && !isUse) GameManager.Instance.player.playerInteraction.SetActive(true);
+        else GameManager.Instance.player.playerInteraction.SetActive(false);
 
-        GameManager.Instance.player.interactableText.text = "작동시키기";
+        if (text == "")
+        {
+            Debug.LogError($"{NoiseData.tag}, 텍스트 없음");
+        }
+
+        GameManager.Instance.player.interactableText.text = text;
     }
 
     public override void Interact()
@@ -68,7 +85,9 @@ public class NoiseObject : InteractableObject, INoise
         //Debug.Log("Interact()");
         isUse = true;
 
-        PlayNoise(NoiseData.noises[0], NoiseData.tag, 0, 0, NoiseTransitionTime, 0, loop);
+        PlayNoise(NoiseData.noises[0], NoiseData.tag, 0, 0, NoiseTransitionTime, 0, isLoop);
+
+        if (NoiseTransitionTime <= 0) CurNoiseAmount += NoiseData.volume;
 
         StartCoroutine(TurnOff());
     }
@@ -81,10 +100,10 @@ public class NoiseObject : InteractableObject, INoise
         CurNoiseAmount = 0f;
     }
 
-    public void PlayNoise(AudioClip audioClip, string tag, float amount, float addVolume, float transitionTime, float pitch, bool loop)
+    public void PlayNoise(AudioClip audioClip, string tag, float amount, float addVolume, float transitionTime, float pitch, bool isLoop)
     {
         SoundSource soundSource;
-        soundSource = NoiseManager.Instance.PlayNoise(audioClip, tag, addVolume, transitionTime, pitch, loop);
+        soundSource = NoiseManager.Instance.PlayNoise(audioClip, tag, addVolume, transitionTime, pitch, isLoop);
         //return soundSource;
     }
 
