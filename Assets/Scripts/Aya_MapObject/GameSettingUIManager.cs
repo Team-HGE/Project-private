@@ -68,6 +68,11 @@ public class GameSettingUIManager : MonoBehaviour
         }
     }
 
+    public void ReturnMainMenu()
+    {
+        GameManager.Instance.fadeManager.MoveScene(SceneEnum.MainMenuScene);
+    }
+
     void ToggleSettingMenu()
     {
         settingCanvas.SetActive(!settingCanvas.activeSelf);
