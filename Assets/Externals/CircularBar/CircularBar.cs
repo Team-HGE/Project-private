@@ -54,6 +54,7 @@ namespace DiceNook.View
         /// <param name="fill">From 0 to 1</param>
         public void UpdateBar(float fill)
         {
+            Debug.Log(fill);
             this.fill = fill;
             mat.SetFloat("_fill", fill);
             mat.SetColor("_ProgressColor", CalculateColor(fill)); // 쉐이더의 색상 설정

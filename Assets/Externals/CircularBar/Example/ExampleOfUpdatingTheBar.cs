@@ -12,14 +12,10 @@ namespace DiceNook.View
 
         public Player player;
 
-        private void Start()
+        private void OnEnable()
         {
             circularBars = UIDocument.rootVisualElement.Query<CircularBar>().ToList();
             labels = UIDocument.rootVisualElement.Query<Label>().ToList();
-        }
-
-        private void OnEnable()
-        {
             UpdateUI();
         }
         void Update()

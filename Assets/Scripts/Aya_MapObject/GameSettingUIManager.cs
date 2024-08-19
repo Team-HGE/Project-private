@@ -2,6 +2,8 @@ using UnityEngine;
 using SlimUI.ModernMenu;
 using Sirenix.OdinInspector;
 using UnityEngine.UI;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.Rendering;
 
 public class GameSettingUIManager : MonoBehaviour
 {
@@ -44,19 +46,57 @@ public class GameSettingUIManager : MonoBehaviour
     [BoxGroup("Box")]
     public InfoMessageType EnumField = InfoMessageType.Info;
 
+    [Title("Quality")]
+    [SerializeField] private GameObject[] qualityLevelCheckObjects;
+    [SerializeField] private GameObject[] antiAliasingCheckObjects;
+
     public Dropdown qualityDropDown;
     void Start()
     {
-        qualityDropDown.value = QualitySettings.GetQualityLevel();
+        //SetQuality(1);
+        SetAntiAliasing(2);
+        SetRenderScale(1);
+        //qualityDropDown.value = QualitySettings.GetQualityLevel();
         SetThemeColors();
     }
     public void SetQuality(int index) // 전반적인 세팅 조절
     {
+        foreach (var item in qualityLevelCheckObjects)
+        {
+            item.SetActive(false);
+        }
+        qualityLevelCheckObjects[index].SetActive(true);
+
         QualitySettings.SetQualityLevel(index);
+    }
+
+    public void SetRenderScale(float value)
+    {
+        UniversalRenderPipelineAsset data = GraphicsSettings.currentRenderPipeline as UniversalRenderPipelineAsset;
+        data.renderScale = value;
     }
 
     public void SetAntiAliasing(int index) // 안티 엘리어싱
     {
+        foreach (var item in antiAliasingCheckObjects)
+        {
+            item.SetActive(false);
+        }
+        antiAliasingCheckObjects[index].SetActive(true);
+
+        switch (index)
+        {
+            case 1: 
+                index = 2;
+                break;
+            case 2:
+                index = 4;
+                break;
+            case 3:
+                index = 8;
+                break;
+        }
+
         QualitySettings.antiAliasing = index;
     }
 
@@ -86,13 +126,13 @@ public class GameSettingUIManager : MonoBehaviour
         settingCanvas.SetActive(!settingCanvas.activeSelf);
         if (settingCanvas.activeSelf)
         {
-            Time.timeScale = 0;
+            Time.timeScale = 0.001f;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
         else
         {
-            Time.timeScale = 1;
+            Time.timeScale = 1; 
             if (!DialogueManager.Instance.storyScript.ui.isPlayingStory)
             {
                 Cursor.lockState = CursorLockMode.Locked;
