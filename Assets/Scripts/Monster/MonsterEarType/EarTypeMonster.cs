@@ -68,10 +68,10 @@ public class EarTypeMonster : MonoBehaviour
         _stateMachine.Update();
 
         // 임시 코드
-        DrawCircle(transform.position, 36, Data.GroundData.PlayerChasingRange, Color.green);
-        DrawCircle(transform.position, 36, 50f, Color.green);
+        //DrawCircle(transform.position, 36, Data.GroundData.PlayerChasingRange, Color.green);
+        //DrawCircle(transform.position, 36, 50f, Color.green);
 
-        DrawCircle(transform.position, 36, Data.GroundData.AttackRange, Color.red);
+        //DrawCircle(transform.position, 36, Data.GroundData.AttackRange, Color.red);
     }
 
     public void WaitForBehavior(float time)

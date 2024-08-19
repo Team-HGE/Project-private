@@ -14,6 +14,7 @@ public class Day2F3EarTypeCutScene : MonoBehaviour
     [field: Header("TimeLine")]
     public PlayableDirector cutScene;
     public GameObject TLmonster;
+    public GameObject VC;
 
     private void Start()
     {
@@ -37,6 +38,7 @@ public class Day2F3EarTypeCutScene : MonoBehaviour
 
         if (cutScene != null)
         {
+            VC.SetActive(true);
             TLmonster.SetActive(true);
 
             GameManager.Instance.NowPlayCutScene = true;
@@ -51,6 +53,7 @@ public class Day2F3EarTypeCutScene : MonoBehaviour
 
     private void OnPlayableDirectorStopped(PlayableDirector director)
     {
+        VC.SetActive(false);
         GameManager.Instance.NowPlayCutScene = false;
         GameManager.Instance.PlayerStateMachine.Player.VCOnOff();
         GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();

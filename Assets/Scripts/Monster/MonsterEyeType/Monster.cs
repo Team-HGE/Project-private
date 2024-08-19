@@ -71,10 +71,10 @@ public class Monster : MonoBehaviour
 
         _stateMachine.Update();
 
-        // 범위 체크용, 나중에 주석처리 또는 지울것    
-        DrawCircle(transform.position, 36, Data.GroundData.PlayerChasingRange, Color.yellow);
-        DrawCircle(transform.position, 36, Data.GroundData.PlayerFindRange, Color.green);
-        DrawCircle(transform.position, 36, Data.GroundData.AttackRange, Color.red);
+        //// 범위 체크용, 나중에 주석처리 또는 지울것    
+        //DrawCircle(transform.position, 36, Data.GroundData.PlayerChasingRange, Color.yellow);
+        //DrawCircle(transform.position, 36, Data.GroundData.PlayerFindRange, Color.green);
+        //DrawCircle(transform.position, 36, Data.GroundData.AttackRange, Color.red);
     }
 
     private IEnumerator FPRoutine()

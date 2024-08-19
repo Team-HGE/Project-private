@@ -18,7 +18,7 @@ public class MonsterEarTypeComeBackState : MonsterEarTypeGroundState
             return;
         }
 
-        Debug.Log("컴백 시작");
+        //Debug.Log("컴백 시작");
         stateMachine.IsComeBack = true;
         stateMachine.Monster.Agent.speed = groundData.ComebackSpeed;
         // 애니메이션 실행
@@ -44,16 +44,9 @@ public class MonsterEarTypeComeBackState : MonsterEarTypeGroundState
         if (stateMachine.Monster.Agent.remainingDistance < 0.2f)
         {
             // 목적지에 도착
-            Debug.Log("복귀 완료");
+            //Debug.Log("복귀 완료");
             stateMachine.ChangeState(stateMachine.IdleState);
             return;
         }
-
-        //if (Vector3.Distance(stateMachine.StartPosition, stateMachine.Monster.transform.position) < 3f)
-
-        //{
-        //    Debug.Log("복귀 완료");
-        //    stateMachine.ChangeState(stateMachine.IdleState);
-        //}
     }
 }
