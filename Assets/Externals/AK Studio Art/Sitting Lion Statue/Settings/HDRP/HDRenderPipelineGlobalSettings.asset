@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 781cc897cf8675041a751163b51f97dd, type: 3}
   m_Name: HDRenderPipelineGlobalSettings
   m_EditorClassIdentifier: 
-  m_DefaultVolumeProfile: {fileID: 11400000, guid: c3301ca44eeabda4c8dac5063603edc4, type: 2}
-  m_LookDevVolumeProfile: {fileID: 11400000, guid: e507c99ebea0c36468d4c1c3bad8c0b4, type: 2}
+  m_DefaultVolumeProfile: {fileID: 11400000, guid: c3301ca44eeabda4c8dac5063603edc4,
+    type: 2}
+  m_LookDevVolumeProfile: {fileID: 11400000, guid: e507c99ebea0c36468d4c1c3bad8c0b4,
+    type: 2}
   m_RenderingPathDefaultCameraFrameSettings:
     bitDatas:
       data1: 72198260625768269
@@ -59,7 +61,8 @@ MonoBehaviour:
     sssCustomSampleBudget: 20
     msaaMode: 1
     materialQuality: 0
-  m_RenderPipelineResources: {fileID: 11400000, guid: 3ce144cff5783da45aa5d4fdc2da14b7, type: 2}
+  m_RenderPipelineResources: {fileID: 11400000, guid: 3ce144cff5783da45aa5d4fdc2da14b7,
+    type: 2}
   m_RenderPipelineRayTracingResources: {fileID: 0}
   beforeTransparentCustomPostProcesses: []
   beforePostProcessCustomPostProcesses: []
@@ -82,9 +85,9 @@ MonoBehaviour:
   decalLayerName5: Decal Layer 5
   decalLayerName6: Decal Layer 6
   decalLayerName7: Decal Layer 7
-  shaderVariantLogLevel: 0
   lensAttenuationMode: 0
-  diffusionProfileSettingsList:
+  colorGradingSpace: 0
+  m_ObsoleteDiffusionProfileSettingsList:
   - {fileID: 11400000, guid: f7253009a7a9b2a4b8aea9ad915446c2, type: 2}
   - {fileID: 11400000, guid: d38f8746e07fe344788806d840bc7c09, type: 2}
   rendererListCulling: 0
@@ -92,10 +95,14 @@ MonoBehaviour:
   useDLSSCustomProjectId: 0
   supportProbeVolumes: 0
   supportRuntimeDebugDisplay: 0
+  autoRegisterDiffusionProfiles: 0
   apvScenesData:
     serializedBounds: []
     serializedHasVolumes: []
     serializedProfiles: []
     serializedBakeSettings: []
     serializedBakingSets: []
-  m_Version: 3
+    m_LightingScenario: Default
+  m_Version: 5
+  m_ShaderVariantLogLevel: 0
+  m_ExportShaderVariants: 1
