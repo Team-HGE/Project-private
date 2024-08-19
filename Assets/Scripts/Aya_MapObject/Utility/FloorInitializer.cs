@@ -1,5 +1,6 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class FloorInitializer : MonoBehaviour
 {
@@ -53,6 +54,10 @@ public class FloorInitializer : MonoBehaviour
 
     public Floor? ReturnLobbyPosition(Vector3 targetPos)
     {
+        if (lobbyBottomTransforms == null)
+        {
+            return null;
+        }
         if (targetPos.y >= lobbyBottomTransforms.position.y && targetPos.y <= lobbyTopTransforms.position.y)
         {
             return Floor.Lobby;

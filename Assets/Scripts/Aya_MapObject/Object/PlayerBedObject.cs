@@ -33,8 +33,6 @@ public class PlayerBedObject : InteractableObject
         yield return GameManager.Instance.fadeManager.FadeStart(FadeState.FadeOut);
         yield return GameManager.Instance.fadeManager.FadeStart(FadeState.FadeIn);
         GameManager.Instance.PlayerStateMachine.Player.PlayerControllOn();
-        Quest.Instance.NextQuest(4);
-        SystemMsg.Instance.UpdateTipMessage(14);
         EventManager.Instance.SetSwitch(GameSwitch.IsDaytime, false);
         EventManager.Instance.SetSwitch(GameSwitch.GoToBed, false);
         yield return null;

@@ -7,7 +7,7 @@ public class ElevatorTimeLine : MonoBehaviour
     public bool triggerOn; 
     public PlayableDirector timelineDirector;
     public GameObject timeLineObject;
-    public Light playerLight;
+    public GameObject playerLight;
 
     public TextMeshPro roomTxt101;
     public TextMeshPro roomTxt102;
@@ -30,7 +30,7 @@ public class ElevatorTimeLine : MonoBehaviour
         GameManager.Instance.NowPlayCutScene = true;
 
         timeLineObject.SetActive(true);
-        playerLight.enabled = false;
+        playerLight.SetActive(false);
 
         GameManager.Instance.Off_UI();
 

@@ -181,6 +181,7 @@ public class StoryScript : DialogueSetting, IScript
             string questString = questText.Substring(8);
             if (int.TryParse(questString, out int questNumber))
             {
+                Debug.Log(questNumber);
                 quest.NextQuest(questNumber);
             }
 

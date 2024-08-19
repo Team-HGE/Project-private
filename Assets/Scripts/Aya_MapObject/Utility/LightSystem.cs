@@ -13,16 +13,25 @@ public class LightSystem : MonoBehaviour
         }
 
         Floor? floor = FloorInitializer.Instance.ReturnLobbyPosition(transform.position);
-        if (floor.HasValue)
-        {
-            nowFloor = floor.Value;
-        }
-        else
+        if (floor == null)
         {
             floor = FloorInitializer.Instance.ReturnFloorPosition(transform.position);
             nowFloor = floor.Value;
         }
-
+        else
+        {
+            if (floor.HasValue)
+            {
+                nowFloor = floor.Value;
+            }
+            else
+            {
+                floor = FloorInitializer.Instance.ReturnFloorPosition(transform.position);
+                nowFloor = floor.Value;
+            }
+        }
+            
+        
         GameManager.Instance.lightManager.AddLightToFloor(nowFloor, thisLight);
 
         if (parentRenderer != null)
