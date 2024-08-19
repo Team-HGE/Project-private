@@ -46,7 +46,7 @@ public class BreakableWindow : MonoBehaviour {
     private bool allreadyCalculated = false;
     private GameObject splinterParent;
     int[] tris;
-
+    [SerializeField] public bool isStartBreak;
     void Awake()
     {
         if (breakingAudio == null) breakingAudio = GetComponent<AudioSource>();
@@ -56,7 +56,10 @@ public class BreakableWindow : MonoBehaviour {
             bakeSplinters();
             allreadyCalculated = true;
         }
-
+        if (isStartBreak)
+        {
+            breakWindow();
+        }
         if (transform.rotation.eulerAngles.x != 0 || transform.rotation.eulerAngles.z != 0)
             Debug.LogWarning("Warning: Window must not be rotated around x and z!");
     }
