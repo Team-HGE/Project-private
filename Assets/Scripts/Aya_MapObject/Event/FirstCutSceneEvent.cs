@@ -85,10 +85,4 @@ public class FirstCutSceneEvent : MonoBehaviour
     {
         npc.SetActive(true);
     }
-
-    public void DialogueEvent_BarrierInteract()
-    {
-        DialogueManager.Instance.StartStory(3);
-    }
-        
 }

@@ -1,28 +1,31 @@
 ﻿using Cinemachine;
+using Sirenix.OdinInspector;
 using System.Collections;
 using UnityEngine;
 
 public class KeyPadObject : InteractableObject
 {
-    [Header("Cs")]
+    [Title("Cs")]
     [SerializeField] LockDoorObject lockDoorObject;
     [SerializeField] KeyPadGimmick keyPadGimmick;
 
-    [Header("TriggerObject")]
+    [Title("TriggerObject")]
     [SerializeField] GameObject KeyPadDecal;
     [SerializeField] GameObject keyPadGimmickCanvas;
 
-    [Header("Gimmick")]
+    [Title("Gimmick")]
     [SerializeField] int[] passwords;
     [SerializeField] bool unLock;
 
-    [Header("VCAM")]
+    [Title("VCAM")]
     [SerializeField] CinemachineVirtualCamera keyPadCam;
 
-    [Header("SecondDayEvent")]
+    [Title("SecondDayEvent")]
     public ScriptSO scriptSO;
     public bool isScondDayEvent = false;
 
+    [Title("Glare")]
+    public GameObject glare;
 
     public override void ActivateInteraction()
     {
@@ -57,6 +60,7 @@ public class KeyPadObject : InteractableObject
     }
     public void GimmickSuccess()
     {
+        glare.SetActive(false);
         isInteractable = true;
         unLock = true;
         lockDoorObject.onInteract = true;

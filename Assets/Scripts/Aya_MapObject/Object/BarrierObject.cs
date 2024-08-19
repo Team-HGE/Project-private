@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class BarrierObject : InteractableObject, IInitializeByLoadedData
@@ -13,14 +14,16 @@ public class BarrierObject : InteractableObject, IInitializeByLoadedData
     [SerializeField] AudioSource alarmSound;
 
     [SerializeField] Light alarmLight;
+
     [Header("Bool Check")]
     [SerializeField] bool _isOpen;
     public bool isOpen
     {
         get { return _isOpen; }
-        set { _isOpen = value; } 
+        set { _isOpen = value; }
     }
     float time;
+    
     private void Start()
     {
         HotelFloorScene_DataManager.Instance.controller.barrierObjects.Add(this);

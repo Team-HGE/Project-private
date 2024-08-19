@@ -1580,6 +1580,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 217662829}
   m_LocalEulerAnglesHint: {x: -2.8086252, y: -0.92678595, z: 2.761065}
+--- !u!114 &170725289 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 826856521190014075, guid: 4a828d4cf092f904e8613317f39750ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 4982759101492686499}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f4d14589f353f746b171105bf2176e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &172363617
 GameObject:
   m_ObjectHideFlags: 0
@@ -19693,6 +19705,75 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 594938600}
+--- !u!1 &1158997378
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1158997381}
+  - component: {fileID: 1158997380}
+  - component: {fileID: 1158997379}
+  m_Layer: 6
+  m_Name: StoryObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1158997379
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158997378}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.77, y: 9.32, z: 21.55}
+  m_Center: {x: 0, y: 5.05, z: 0}
+--- !u!114 &1158997380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158997378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3766a8b21105e064daef693910b019c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  index: 3
+  isPlay: 0
+--- !u!4 &1158997381
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158997378}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.0000000059639724, y: -4.742529e-16, z: -0.00000007951964,
+    w: 1}
+  m_LocalPosition: {x: 260.31, y: 1, z: 199.14001}
+  m_LocalScale: {x: 0.28125, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1159828274
 GameObject:
   m_ObjectHideFlags: 0
@@ -41482,6 +41563,26 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8977558845142602959, guid: 4a828d4cf092f904e8613317f39750ee,
+        type: 3}
+      propertyPath: onComplete.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8977558845142602959, guid: 4a828d4cf092f904e8613317f39750ee,
+        type: 3}
+      propertyPath: onComplete.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 170725289}
+    - target: {fileID: 8977558845142602959, guid: 4a828d4cf092f904e8613317f39750ee,
+        type: 3}
+      propertyPath: onComplete.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DialogueEvent_BarrierInteract
+      objectReference: {fileID: 0}
+    - target: {fileID: 8977558845142602959, guid: 4a828d4cf092f904e8613317f39750ee,
+        type: 3}
+      propertyPath: onComplete.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: FirstCutSceneEvent, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 8989628294739141941, guid: 4a828d4cf092f904e8613317f39750ee,
         type: 3}
       propertyPath: timeLine
@@ -42380,6 +42481,7 @@ SceneRoots:
   - {fileID: 57406436}
   - {fileID: 707391363}
   - {fileID: 824120958}
+  - {fileID: 1158997381}
   - {fileID: 1124714650}
   - {fileID: 1501113610}
   - {fileID: 2131828146}
