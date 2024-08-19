@@ -29,6 +29,12 @@ public class StoryScript : DialogueSetting, IScript
         //Init(scriptSO);
         if (scriptSO == null) { Debug.Log("지금은 내보낼 스크립트가 없습니다. scriptSO null"); return; };
 
+        if (scriptSO.BackGrounds != null)
+        {
+            ui.ChangeBG(scriptSO.BackGrounds[0]);
+        }
+        else Debug.Log("배경 이미지가 없습니다.");
+
         StopAllCoroutines();
         ui.OpenBG();
         ui.OpenDialogue();
