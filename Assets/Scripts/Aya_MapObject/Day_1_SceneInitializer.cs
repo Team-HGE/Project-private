@@ -28,6 +28,7 @@ public class Day_1_SceneInitializer : MonoBehaviour
     }
     private void Start()
     {
+        EventManager.Instance.SetSwitch(GameSwitch.IsPlayingGame, true);
         // 플레이어 켄버스 세팅
         GameManager.Instance.playerInteractionCanvas.SetActive(true);
         GameManager.Instance.crossHairCanvas.SetActive(true);

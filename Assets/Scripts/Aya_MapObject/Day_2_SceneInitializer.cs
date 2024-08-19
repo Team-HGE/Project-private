@@ -18,6 +18,8 @@ public class Day_2_SceneInitializer : MonoBehaviour
 
     private void Start()
     {
+        EventManager.Instance.SetSwitch(GameSwitch.IsPlayingGame, true);
+
         // 점프스케어 세팅
         JumpScareSetting();
 
@@ -49,7 +51,7 @@ public class Day_2_SceneInitializer : MonoBehaviour
     void Day2Save()
     {
         Debug.Log("세이브 성공");
-       // GameDataSaveLoadManager.Instance.SaveGameData(0);
+        GameDataSaveLoadManager.Instance.SaveGameData(0);
         NPCPos.Instance.SetDayTimePos();
     }
     void OffLobbyLight()

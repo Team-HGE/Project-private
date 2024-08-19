@@ -32,6 +32,7 @@ public class UIDialogue : MonoBehaviour
     private int standingCnt = 0;
     private bool firstEncounter = true;
 
+    public bool isPlayingStory { get; set; }
     public event Action playEvent;
 
     // 리뉴얼 스탠딩 출력 관련 변수
@@ -57,6 +58,7 @@ public class UIDialogue : MonoBehaviour
     public void OpenDialogue()
     {
         dialogueCanvas.SetActive(true);
+        isPlayingStory = true;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         GameManager.Instance.PlayerStateMachine.Player.PlayerControllOff();
@@ -77,6 +79,8 @@ public class UIDialogue : MonoBehaviour
         {
             GameManager.Instance.PlayerStateMachine.Player.PlayerControllOn();
         }
+
+        isPlayingStory = false;
         //Debug.Log("isTalking : " + DialogueSetting.isTalking);
     }
 
