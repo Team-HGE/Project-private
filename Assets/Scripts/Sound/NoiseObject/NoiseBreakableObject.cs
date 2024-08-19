@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class NoiseBreakableObject : MonoBehaviour, INoise
 {
+    public event Action OnEvent;
+
     [field: Header("Noise")]
     [field: SerializeField] public NoiseData NoiseData { get; set; }
     // INoise
@@ -21,7 +24,21 @@ public class NoiseBreakableObject : MonoBehaviour, INoise
     public GameObject breackObject;
 
     [field: Header("State")]
-    public bool isBreak = false;
+    [field: SerializeField] 
+    public bool IsTrigger
+    {
+        get { return _isBreak; }
+        set
+        {
+            if (!_isBreak)
+            {
+                OnEvent?.Invoke();
+                _isBreak = value;
+            }
+            else _isBreak = value;
+        }
+    }
+    private bool _isBreak = false;
 
 
     private bool _isErr = false;
@@ -74,7 +91,7 @@ public class NoiseBreakableObject : MonoBehaviour, INoise
             return;
         }
 
-        if (isBreak || other.tag != "Player") return;
+        if (IsTrigger || other.tag != "Player") return;
 
         // ±úÁü
         Break();
@@ -99,7 +116,7 @@ public class NoiseBreakableObject : MonoBehaviour, INoise
 
         //_collider.enabled = false;
         //_collider.isTrigger = false;
-        isBreak = true;
+        IsTrigger = true;
     }
 
     public void PlayNoise(AudioClip audioClip, string tag, float addVolume, float transitionTime, float pitch)
