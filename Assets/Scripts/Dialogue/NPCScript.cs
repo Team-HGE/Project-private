@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Text;
 using System;
 
 public class NPCScript : DialogueSetting, IScript
@@ -106,7 +105,6 @@ public class NPCScript : DialogueSetting, IScript
 
         //npcSO.hadInteract = true;
 
-        Debug.Log($"{npcSO.name} 대화했음");
 
         playEvent?.Invoke();
         playEvent = null;
@@ -117,7 +115,6 @@ public class NPCScript : DialogueSetting, IScript
 
     private IEnumerator HandleNewQuest(string questText)
     {
-        Debug.Log("다음 스토리를 갱신합니다.");
         if (questText.StartsWith("NewQuest"))
         {
             string questString = questText.Substring(8);
@@ -132,7 +129,6 @@ public class NPCScript : DialogueSetting, IScript
 
     private IEnumerator Tips(string TipText)
     {
-        Debug.Log("선택한 팁 메세지를 호출합니다.");
         if (TipText.StartsWith("NewTip"))
         {
             string TipString = TipText.Substring(6);
@@ -146,7 +142,6 @@ public class NPCScript : DialogueSetting, IScript
 
     private IEnumerator SystemMsg(string SystemMsgText)
     {
-        Debug.Log("선택한 팁 메세지를 호출합니다.");
         if (SystemMsgText.StartsWith("SystemMsg"))
         {
             string SystemMsgString = SystemMsgText.Substring(9);

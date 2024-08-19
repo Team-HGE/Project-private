@@ -5,7 +5,6 @@ public class KarmaScript : DialogueSetting, IScript
 {
     [HideInInspector]
     private ScriptSO scriptSO;
-
     public void Init(ScriptSO _script)
     {
         scriptSO = _script;

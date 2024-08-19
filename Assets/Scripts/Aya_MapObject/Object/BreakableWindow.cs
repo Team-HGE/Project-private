@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 [AddComponentMenu("Breakable Windows/Breakable Window")]
@@ -61,7 +60,9 @@ public class BreakableWindow : MonoBehaviour {
             breakWindow();
         }
         if (transform.rotation.eulerAngles.x != 0 || transform.rotation.eulerAngles.z != 0)
-            Debug.LogWarning("Warning: Window must not be rotated around x and z!");
+        {
+
+        }
     }
 
     private void bakeVertices(bool trianglesToo = false)
@@ -196,10 +197,6 @@ public class BreakableWindow : MonoBehaviour {
         }
     }
 
-    /// <summary>
-    /// Breaks the window and returns an array of all splinter gameobjects.
-    /// </summary>
-    /// <returns>Returns an array of all splinter gameobjects.</returns>
     public GameObject[] breakWindow()
     {
         if (isBroken == false)
@@ -238,22 +235,4 @@ public class BreakableWindow : MonoBehaviour {
 
         return splinters.ToArray();
     }
-
-
-    /*void OnCollisionEnter(Collision col)
-    {
-        if (useCollision == true)
-        {
-            if (health > 0)
-            {
-                health -= col.impulse.magnitude;
-                if (health < 0)
-                {
-                    health = 0;
-                    breakWindow();
-                }
-            }
-            else breakWindow();
-        }      
-    }*/
 }

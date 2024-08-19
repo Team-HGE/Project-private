@@ -55,7 +55,6 @@ public class StoryScript : DialogueSetting, IScript
     {
         if (!isTalking)
         {
-            Debug.Log("실행중인 코루틴을 종료합니다.");
             InitDialogueSetting();
             yield break;
         }
@@ -66,7 +65,6 @@ public class StoryScript : DialogueSetting, IScript
 
         if (scriptSO == null)
         {
-            Debug.Log("scriptSO가 음슴");
             InitDialogueSetting();
             yield break;
         }
@@ -75,7 +73,6 @@ public class StoryScript : DialogueSetting, IScript
         {
             if (!isTalking)
             {
-                Debug.Log("실행중인 코루틴을 종료합니다.");
                 InitDialogueSetting();
                 yield break;
             }
@@ -162,26 +159,21 @@ public class StoryScript : DialogueSetting, IScript
 
     private IEnumerator HandleTryQuest(int index)
     {
-        Debug.Log("잠깐 스토리 진행을 멈추고 퀘스트가 완료될 때까지 기다립니다.");
         UtilSB.AppendText(ui.bodyText, sbBody, scriptSO.bodyTexts[index - 1]);
         quest.TryNextQuest();
 
-        Debug.Log("퀘스트 완료 대기 중입니다.");
         // yield return new WaitUntil(() => 퀘스트가 완료됐을 때의 조건식을 넣어주세요;
 
-        Debug.Log("퀘스트 완료. 다시 스토리를 진행합니다.");
         yield break;
     }
 
     private IEnumerator HandleNewQuest(string questText)
     {
-        Debug.Log("다음 스토리를 갱신합니다.");
         if (questText.StartsWith("NewQuest"))
         {
             string questString = questText.Substring(8);
             if (int.TryParse(questString, out int questNumber))
             {
-                Debug.Log(questNumber);
                 quest.NextQuest(questNumber);
             }
 
@@ -199,13 +191,11 @@ public class StoryScript : DialogueSetting, IScript
             ui.darkScreen.SetActive(true);
 
         ui.DestroyStanding();
-        Debug.Log("플레이어 이동 OnOff");
         GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
     }
 
     private IEnumerator Tips(string TipText)
     {
-        Debug.Log("선택한 팁 메세지를 호출합니다.");
         if (TipText.StartsWith("NewTip"))
         {
             string TipString = TipText.Substring(6);
@@ -219,7 +209,6 @@ public class StoryScript : DialogueSetting, IScript
 
     private IEnumerator SystemMsg(string SystemMsgText)
     {
-        Debug.Log("선택한 팁 메세지를 호출합니다.");
         if (SystemMsgText.StartsWith("SystemMsg"))
         {
             string SystemMsgString = SystemMsgText.Substring(9);

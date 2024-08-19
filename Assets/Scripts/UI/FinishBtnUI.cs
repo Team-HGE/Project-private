@@ -1,5 +1,4 @@
 using TMPro;
-using UnityEngine.EventSystems;
 using UnityEngine;
 
 public class FinishBtnUI : MonoBehaviour

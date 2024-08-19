@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.ProBuilder.MeshOperations;
 
 public class ItemScript : DialogueSetting, IScript
 {
@@ -90,14 +89,11 @@ public class ItemScript : DialogueSetting, IScript
         ui.CloseDialogue();
         isTalking = false;
 
-        Debug.Log("아이템 스크립트 종료");
-
         yield return null;
     }
 
     private IEnumerator HandleNewQuest(string questText)
     {
-        Debug.Log("다음 스토리를 갱신합니다.");
         if (questText.StartsWith("NewQuest"))
         {
             string questString = questText.Substring(8);
@@ -112,7 +108,6 @@ public class ItemScript : DialogueSetting, IScript
 
     private IEnumerator Tips(string TipText)
     {
-        Debug.Log("선택한 팁 메세지를 호출합니다.");
         if (TipText.StartsWith("NewTip"))
         {
             string TipString = TipText.Substring(6);
@@ -126,7 +121,6 @@ public class ItemScript : DialogueSetting, IScript
 
     private IEnumerator SystemMsg(string SystemMsgText)
     {
-        Debug.Log("선택한 팁 메세지를 호출합니다.");
         if (SystemMsgText.StartsWith("SystemMsg"))
         {
             string SystemMsgString = SystemMsgText.Substring(9);
@@ -135,7 +129,6 @@ public class ItemScript : DialogueSetting, IScript
                 systemMsg.UpdateMessage(SystemMsgNumber);
             }
         }
-
         yield break;
     }
 

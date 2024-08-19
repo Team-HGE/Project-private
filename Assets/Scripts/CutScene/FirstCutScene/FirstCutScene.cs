@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-
 public class FirstCutScene : MonoBehaviour
 {
     public GameObject TLTrigger;

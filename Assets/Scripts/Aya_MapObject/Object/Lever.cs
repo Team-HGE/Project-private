@@ -60,6 +60,5 @@ public class Lever : InteractableObject
         EventManager.Instance.SetSwitch(GameSwitch.Day_2_A2F_LeverOn, true);
         DialogueManager.Instance.itemScript.Init(scriptSO);
         DialogueManager.Instance.itemScript.Print();
-        //GameDataSaveLoadManager.Instance.SaveGameData(0);
     }
 }

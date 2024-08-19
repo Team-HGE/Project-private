@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
@@ -66,7 +65,6 @@ public class KeyPadGimmick : MonoBehaviour
         {
             if (puzzleNumbers[i] != interactNumbers[i])
             {
-                Debug.Log($"{puzzleNumbers[i]}/{interactNumbers[i]}");
                 isNumber_Mismatch = true;
                 break;
             }

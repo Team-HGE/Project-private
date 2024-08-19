@@ -22,14 +22,9 @@ public class Day_1_Night_DoorLockEvent : MonoBehaviour
         GameManager.Instance.fadeManager.fadeComplete += LockAllDoor;
     }
 
-    void StoryEvent()
-    {
-        
-    }
     public void LockAllDoor()
     {
         DialogueManager.Instance.StartStory(2);
-        GameManager.Instance.fadeManager.fadeComplete += StoryEvent;
         //NPC 위치 변경
         NPCPos.Instance.SetNightNPCpos();
 

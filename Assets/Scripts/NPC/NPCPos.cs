@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class NPCPos : MonoBehaviour
@@ -32,14 +31,12 @@ public class NPCPos : MonoBehaviour
 
         if (NPCList.Count <= 0)
         {
-            Debug.LogError("npc 가 없습니다.");
             return;
         }
 
 
         if (totalChildren < NPCList.Count)
         {
-            Debug.LogError("npc 를 배치할 공간이 부족합니다");
             return;
         }
 

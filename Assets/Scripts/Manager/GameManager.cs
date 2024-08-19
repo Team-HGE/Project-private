@@ -1,6 +1,5 @@
 using DiceNook.View;
 using Sirenix.OdinInspector;
-using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

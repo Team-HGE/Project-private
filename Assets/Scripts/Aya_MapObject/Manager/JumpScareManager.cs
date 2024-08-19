@@ -1,9 +1,8 @@
 using UnityEngine;
-using UnityEngine.AI;
 using System;
 using System.Collections;
 using Sirenix.OdinInspector;
-using UnityEngine.SceneManagement;
+
 public enum JumpScareType
 {
     GroupTypeMonster,

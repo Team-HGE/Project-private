@@ -1,5 +1,4 @@
 using UnityEngine;
-
 public abstract class InteractableObject : MonoBehaviour, IInteractable
 {
     public bool isInteractable { get ; set ;}

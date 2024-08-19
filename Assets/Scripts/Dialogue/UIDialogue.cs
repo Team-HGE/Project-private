@@ -35,10 +35,6 @@ public class UIDialogue : MonoBehaviour
     public bool isPlayingStory { get; set; }
     public event Action playEvent;
 
-    // 리뉴얼 스탠딩 출력 관련 변수
-
-
-
     public void OpenBG()
     {
         darkScreen.SetActive(true);
@@ -81,7 +77,6 @@ public class UIDialogue : MonoBehaviour
         }
 
         isPlayingStory = false;
-        //Debug.Log("isTalking : " + DialogueSetting.isTalking);
     }
 
     public void CheckNullIndex(string speaker)
@@ -143,9 +138,6 @@ public class UIDialogue : MonoBehaviour
                 }
             }
         }
-        // 전에 등장한 적 없으면
-        //Debug.Log(speaker + " 첫 등장입니다.2");
-        //firstEncounter = false;
     }
 
     public void PopStanding(Sprite sprite)
@@ -164,7 +156,6 @@ public class UIDialogue : MonoBehaviour
         else
         {
             GameObject Obj = objectPool.ReturnObjectby(sprite);
-            //Debug.Log(Obj);
 
             if (Obj == null)
             {

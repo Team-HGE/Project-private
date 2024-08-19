@@ -1,6 +1,5 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.Rendering.HighDefinition;
 using UnityEngine.UI;
 
 public class OptionsMenu : MonoBehaviour

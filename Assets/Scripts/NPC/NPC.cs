@@ -1,6 +1,4 @@
 using System;
-using UnityEngine;
-
 public enum NPC_Name
 {
     HMS,

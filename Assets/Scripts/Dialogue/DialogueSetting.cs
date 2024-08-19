@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Text;
 using UnityEngine;
-
 public class DialogueSetting: MonoBehaviour
 {
     public static bool isTalking { get; set; }

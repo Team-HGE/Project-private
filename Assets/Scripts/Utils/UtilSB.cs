@@ -1,6 +1,5 @@
 ﻿using System.Text;
 using TMPro;
-
 public class UtilSB
 {
     public static void ClearText(TextMeshProUGUI tmp, StringBuilder sb)
@@ -32,5 +31,4 @@ public class UtilSB
         sb.Append(newText);
         tmp.text = sb.ToString();
     }
-
 }

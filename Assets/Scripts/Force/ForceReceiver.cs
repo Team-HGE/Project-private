@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-
 public class ForceReceiver : MonoBehaviour
 {
     [SerializeField] CharacterController controller;

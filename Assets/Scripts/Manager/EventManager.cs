@@ -11,7 +11,6 @@ public struct Switch
 
 public class EventManager : SingletonManager<EventManager>
 {
-    // 스위치 상태를 관리할 List<bool>
     public List<bool> switchStates;
     public Switch[] switches;
     public event Action<GameSwitch, bool> OnSwitchChanged;
@@ -46,12 +45,9 @@ public class EventManager : SingletonManager<EventManager>
         }
         else
         {
-            Debug.LogError("Switch index out of bounds!");
+            
             return;
         }
-
-        // switches 배열에서 스위치가 이미 존재하는지 확인
-       
     }
 
     public bool GetSwitch(GameSwitch switchType)

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-
 public class DialogueManager : SingletonManager<DialogueManager>
 {
     [HideInInspector]
@@ -72,8 +71,6 @@ public class DialogueManager : SingletonManager<DialogueManager>
     // 3번: 1일차 밤 통로 진입시
     public void StartStory(int _storyIdx)
     {
-        Debug.Log($"{_storyIdx} 인덱스 스토리 초기화");
-
         if (EventManager.Instance.GetSwitch(GameSwitch.isMainStoryOff)) return;
         // 인댁스에 맞는 스토리 입력
         storyScript.Init(storyList[_storyIdx]);

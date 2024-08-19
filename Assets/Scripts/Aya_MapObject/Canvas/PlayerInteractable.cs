@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class PlayerInteractable : MonoBehaviour
@@ -22,8 +19,6 @@ public class PlayerInteractable : MonoBehaviour
     [SerializeField] Camera camera;
     
     IInteractable curInteractable;
-    float checkRate = 1.0f;
-    float lastCheckTime;
 
     public bool tutorialSuccess = false;
 
