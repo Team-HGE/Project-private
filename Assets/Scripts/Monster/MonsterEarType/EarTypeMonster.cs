@@ -21,9 +21,9 @@ public class EarTypeMonster : MonoBehaviour
     public LayerMask targetLayer;
     public List<Collider> noiseMakers;
 
-    [Header("MonsterTransform")]
-    public Transform monsterTransform;
-    public Transform monsterEyeTransform;
+    //[Header("MonsterTransform")]
+    //public Transform monsterTransform;
+    //public Transform monsterEyeTransform;
 
     // 행동 관리
     public bool IsBehavior { get; set; } = true;
@@ -68,10 +68,10 @@ public class EarTypeMonster : MonoBehaviour
         _stateMachine.Update();
 
         // 임시 코드
-        DrawCircle(transform.position, 36, Data.GroundData.PlayerChasingRange, Color.green);
-        DrawCircle(transform.position, 36, 50f, Color.green);
+        //DrawCircle(transform.position, 36, Data.GroundData.PlayerChasingRange, Color.green);
+        //DrawCircle(transform.position, 36, 50f, Color.green);
 
-        DrawCircle(transform.position, 36, Data.GroundData.AttackRange, Color.red);
+        //DrawCircle(transform.position, 36, Data.GroundData.AttackRange, Color.red);
     }
 
     public void WaitForBehavior(float time)

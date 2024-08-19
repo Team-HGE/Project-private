@@ -15,7 +15,7 @@ public class MonsterEarTypeChaseState : MonsterEarTypeGroundState
     {
         base.Enter();
 
-        Debug.Log("chace 시작");
+        //Debug.Log("chace 시작");
         //stateMachine.Monster.Agent.isStopped = true;
         stateMachine.Monster.Agent.speed = groundData.ChaseSpeed;       
         // 애니메이션 실행
@@ -30,7 +30,7 @@ public class MonsterEarTypeChaseState : MonsterEarTypeGroundState
     {
         base.Exit();
 
-        Debug.Log("chace 끝");
+        //Debug.Log("chace 끝");
         //stateMachine.IsChasing = false;
         // 애니메이션 종료
         if (!stateMachine.IsChasing) StopAnimation(stateMachine.Monster.AnimationData.ChaseParameterHash);

@@ -11,7 +11,13 @@ public class MonsterComeBackState : MonsterGroundState
     public override void Enter()
     {
         base.Enter();
-            
+
+        if (!stateMachine.Monster.CanComeBack)
+        {
+            stateMachine.ChangeState(stateMachine.IdleState);
+            return;
+        }
+
         StartAnimation(stateMachine.Monster.AnimationData.ComeBackParameterHash);
 
         stateMachine.IsComeBack = true;

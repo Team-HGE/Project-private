@@ -68,6 +68,7 @@ public class MonsterEarTypeBaseState : IState
 
         stateMachine.BiggestNoise = 0f;
         Vector3 tempPosition = Vector3.zero;
+        Collider tempCol = null;
         stateMachine.Monster.noiseMakers.Clear();
        
         Collider[] temp = Physics.OverlapSphere(stateMachine.Monster.transform.position, stateMachine.Monster.Data.GroundData.PlayerChasingRange * 2, stateMachine.Monster.targetLayer);
@@ -79,10 +80,17 @@ public class MonsterEarTypeBaseState : IState
                 stateMachine.Monster.noiseMakers.Add(col);
                 //CheckNoise(col.gameObject.GetComponent<INoise>().CurNoiseAmount);
 
+                //Debug.Log($"{col.tag}, {col.gameObject.GetComponent<INoise>().CurNoiseAmount}");
+
                 if (CheckNoise(col.gameObject.GetComponent<INoise>().CurNoiseAmount))
-                {
+                {                    
                     //stateMachine.CurDestination = col.gameObject.transform.position;
-                    if(stateMachine.BiggestNoise >= stateMachine.BeforeNoise) tempPosition = col.transform.position;
+                    if (stateMachine.BiggestNoise >= stateMachine.BeforeNoise)
+                    {
+                        tempPosition = col.transform.position;
+                        tempCol = col;                       
+                    }
+
                 }
             }
         }
@@ -92,9 +100,12 @@ public class MonsterEarTypeBaseState : IState
         if (stateMachine.IsFocusNoise || stateMachine.IsChasing)
         {
             // 추적
-            if (Vector3.Distance(stateMachine.Monster.transform.position, tempPosition) <= stateMachine.Monster.Data.GroundData.PlayerChasingRange && stateMachine.BiggestNoise >= 5.5f)
+            if (Vector3.Distance(stateMachine.Monster.transform.position, tempPosition) <= stateMachine.Monster.Data.GroundData.PlayerChasingRange && stateMachine.BiggestNoise >= stateMachine.Monster.Data.GroundData.DetectNoiseMid)
             {
-                //Debug.Log("집중 추적 - 걷기 감지");
+                //Debug.Log($"집중 추적 - 걷기 감지, {tempCol.tag}");
+                stateMachine.Monster.Agent.ResetPath();
+                stateMachine.Monster.Agent.isStopped = true;
+
                 stateMachine.CurDestination = tempPosition;
                 stateMachine.BeforeNoise = stateMachine.BiggestNoise;
                 stateMachine.ChangeState(stateMachine.ChaseState);
@@ -106,7 +117,7 @@ public class MonsterEarTypeBaseState : IState
             // 이동
             if (Vector3.Distance(stateMachine.Monster.transform.position, tempPosition) <= stateMachine.Monster.Data.GroundData.PlayerChasingRange && stateMachine.BiggestNoise >= stateMachine.Monster.Data.GroundData.DetectNoiseMax)
             {
-                Debug.Log("기본 이동 - 달리기 감지");
+                //Debug.Log($"기본 이동 - 달리기 감지, {tempCol.tag}");
                 stateMachine.Monster.Agent.ResetPath();
                 stateMachine.Monster.Agent.isStopped = true;
 
@@ -118,7 +129,7 @@ public class MonsterEarTypeBaseState : IState
 
             if (Vector3.Distance(stateMachine.Monster.transform.position, tempPosition) <= stateMachine.Monster.Data.GroundData.PlayerChasingRange * 0.5f && stateMachine.BiggestNoise >= stateMachine.Monster.Data.GroundData.DetectNoiseMid)
             {
-                Debug.Log("기본 이동 - 걷기 감지");
+                //Debug.Log($"기본 이동 - 걷기 감지, {tempCol.tag}");
                 stateMachine.Monster.Agent.ResetPath();
                 stateMachine.Monster.Agent.isStopped = true;
 
@@ -128,31 +139,6 @@ public class MonsterEarTypeBaseState : IState
                 return;
             }
         }
-
-        //// 아이템, 장비 소음 발생***
-        //if (stateMachine.BiggestNoise >= 90f)
-        //{
-        //    //Debug.Log("아이템 감지");
-        //    stateMachine.CurDestination = tempPosition;
-        //    stateMachine.ChangeState(stateMachine.MoveState);
-        //    return;
-        //}
-
-        //if (Vector3.Distance(stateMachine.Monster.transform.position, stateMachine.Target.transform.position) <= stateMachine.Monster.Data.GroundData.PlayerChasingRange && stateMachine.BiggestNoise >= 11.5f)
-        //{
-        //    //Debug.Log("달리기 감지");
-        //    stateMachine.CurDestination = tempPosition;
-        //    stateMachine.ChangeState(stateMachine.MoveState);
-        //    return;
-        //}
-
-        //if (Vector3.Distance(stateMachine.Monster.transform.position, stateMachine.Target.transform.position) <= stateMachine.Monster.Data.GroundData.PlayerChasingRange * 0.5f && stateMachine.BiggestNoise >= 5.5f)
-        //{
-        //    //Debug.Log("걷기 감지");
-        //    stateMachine.CurDestination = tempPosition;
-        //    stateMachine.ChangeState(stateMachine.MoveState);
-        //    return;
-        //}
     }
 
     protected bool CheckNoise(float curNoise)

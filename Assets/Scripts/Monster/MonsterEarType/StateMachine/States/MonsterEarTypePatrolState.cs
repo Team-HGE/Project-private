@@ -14,7 +14,7 @@ public class MonsterEarTypePatrolState : MonsterEarTypeGroundState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("패트롤 시작");
+        //Debug.Log("패트롤 시작");
 
         stateMachine.Monster.Agent.speed = groundData.PatrolSpeed;
 
@@ -27,7 +27,7 @@ public class MonsterEarTypePatrolState : MonsterEarTypeGroundState
     public override void Exit()
     {
         base.Exit();
-        Debug.Log("패트롤 끝");
+        //Debug.Log("패트롤 끝");
 
         // 애니메이션 종료
         if (stateMachine.IsPatrol) StopAnimation(stateMachine.Monster.AnimationData.PatrolParameterHash);

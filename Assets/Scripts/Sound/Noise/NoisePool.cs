@@ -56,9 +56,12 @@ public class NoisePool : MonoBehaviour
 
         for (int i = 0; i < noiseDatasList.Count; i++)
         {
-            List<GameObject> noiseDatas = new List<GameObject>();
-            poolDictionary.Add(noiseDatasList[i].tag, noiseDatas);
 
+            if (!poolDictionary.ContainsKey(noiseDatasList[i].tag))
+            {
+                List<GameObject> noiseDatas = new List<GameObject>();
+                poolDictionary.Add(noiseDatasList[i].tag, noiseDatas);
+            }            
         }
 
         //foreach (KeyValuePair<string, List<GameObject>> item in poolDictionary)

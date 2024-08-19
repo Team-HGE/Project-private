@@ -41,23 +41,16 @@ public class MonsterFindState : MonsterGroundState
 
     private void FindCheck()
     {
-        Debug.Log("FindCheck");
+        //Debug.Log("FindCheck");
 
         if (!stateMachine.Monster.canSeePlayer)
         {
-            Debug.Log("플레이어 놓침");
+            //Debug.Log("플레이어 놓침");
             stateMachine.ChangeState(stateMachine.LoseSightState);
         }
         else 
         {
-            //// 공격 범위 안이면 공격 - 게임 오버
-            //if (IsInAttackRange() && GetIsPlayerInFieldOfView())
-            //{
-            //    stateMachine.ChangeState(stateMachine.AttackState);
-            //    return;
-            //}
-
-            Debug.Log("플레이어 추적");
+            //Debug.Log("플레이어 추적");
             stateMachine.ChangeState(stateMachine.ChaseState);
         }
     }
