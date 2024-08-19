@@ -3,12 +3,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO; //파일을 생성, 수정, 삭제
-using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Newtonsoft.Json;
-using System.Diagnostics.Contracts;
-using DG.Tweening;
+
 
 [Serializable]
 public class GameBaseInfo

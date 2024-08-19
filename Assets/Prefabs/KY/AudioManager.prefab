@@ -49,14 +49,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b829682b453890943a6e7c87c93bd89f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSources:
-  - {fileID: 0}
-  maxAudioSources: 10
+  audioSources: []
+  maxAudioSources: 3
   backGroundAudioClips:
   - backGroundSound: 3
-    audioClip: {fileID: 8300000, guid: 3f8039ec2492db947bf1df5796f12d7d, type: 3}
+    audioClip: {fileID: 8300000, guid: f16cc502d81bdd34dbd9890be748dc76, type: 3}
   - backGroundSound: 0
     audioClip: {fileID: 8300000, guid: 9dc9e050c331fab4e8b3cede846ed324, type: 3}
+  - backGroundSound: 1
+    audioClip: {fileID: 8300000, guid: 3f8039ec2492db947bf1df5796f12d7d, type: 3}
   soundEffectClips:
   - soundEffect: 0
     audioClip: {fileID: 8300000, guid: 244edf2205df65843a6ab3a1c0cdca7e, type: 3}

@@ -6,7 +6,7 @@ using UnityEngine;
 public class Day_1_SceneInitializer : MonoBehaviour
 {
     [SerializeField] private GameObject blackBG;
-    [SerializeField] private Light playerLight;
+    [SerializeField] private GameObject playerLight;
 
     [SerializeField] private GameObject eyeTypeMonster;
     [SerializeField] private GameObject groupTypeMonster;
@@ -28,6 +28,7 @@ public class Day_1_SceneInitializer : MonoBehaviour
     }
     private void Start()
     {
+        EventManager.Instance.SetSwitch(GameSwitch.IsPlayingGame, true);
         // 플레이어 켄버스 세팅
         GameManager.Instance.playerInteractionCanvas.SetActive(true);
         GameManager.Instance.crossHairCanvas.SetActive(true);
@@ -55,7 +56,6 @@ public class Day_1_SceneInitializer : MonoBehaviour
             n.npcEvent += BedInteracted;
         }
     }
-
 
     void JumpScareMonsterSetting()
     {

@@ -47,7 +47,7 @@ public class BreakableWindow : MonoBehaviour {
     private GameObject splinterParent;
     int[] tris;
 
-    void Start()
+    void Awake()
     {
         if (breakingAudio == null) breakingAudio = GetComponent<AudioSource>();
         if (preCalculate == true && allreadyCalculated == false)

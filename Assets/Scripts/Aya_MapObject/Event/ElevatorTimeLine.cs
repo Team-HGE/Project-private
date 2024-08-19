@@ -19,6 +19,7 @@ public class ElevatorTimeLine : MonoBehaviour
         if (other.CompareTag("Player") && !triggerOn)
         {
             triggerOn = true;
+            AudioManager.Instance.StopBackGroundSound(BackGroundSound.ChaseBG, true);
             GameManager.Instance.fadeManager.fadeComplete += ElevatorMovie;
             StartCoroutine(GameManager.Instance.fadeManager.FadeStart(FadeState.FadeOut));
         }

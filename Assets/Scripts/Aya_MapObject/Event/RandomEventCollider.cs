@@ -26,7 +26,7 @@ public class RandomEventCollider : MonoBehaviour
             }
             int rand = Random.RandomRange(0, 100);
 
-            if (rand > 0)
+            if (rand > 100)
             {
                 eventObject.SetActive(true);
             }
