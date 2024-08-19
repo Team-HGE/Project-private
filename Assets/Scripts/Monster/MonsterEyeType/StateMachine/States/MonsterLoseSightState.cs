@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-public class MonsterLoseSightState : MonsterGroundState
+﻿public class MonsterLoseSightState : MonsterGroundState
 {
     public MonsterLoseSightState(MonsterStateMachine monsterStateMachine) : base(monsterStateMachine)
     {

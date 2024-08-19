@@ -1,5 +1,4 @@
 using UnityEngine;
-
 public class MonsterStateMachine : StateMachine
 {
     public Monster Monster { get; }

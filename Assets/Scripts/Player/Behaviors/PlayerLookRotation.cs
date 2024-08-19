@@ -1,6 +1,5 @@
 using Cinemachine;
 using UnityEngine;
-
 public class PlayerLookRotation : MonoBehaviour
 {
     public CinemachineVirtualCamera playerVC;

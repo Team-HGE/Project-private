@@ -35,10 +35,13 @@ public class ObjectPool : MonoBehaviour
     {
         foreach (GameObject obj in pool)
         {
-            if (!obj.activeInHierarchy)
+            if (obj != null)
             {
-                obj.SetActive(true);
-                return obj;
+                if (!obj.activeInHierarchy)
+                {
+                    obj.SetActive(true);
+                    return obj;
+                }
             }
         }
 

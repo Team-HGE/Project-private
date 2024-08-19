@@ -1,6 +1,4 @@
-﻿using System;
-using UnityEditor.ShaderKeywordFilter;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerBaseState : IState

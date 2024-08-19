@@ -88,12 +88,13 @@ MonoBehaviour:
     chaseParameterName: Chase
     attackParameterName: Attack
   <CanPatrol>k__BackingField: 1
+  <CanComeBack>k__BackingField: 1
+  patrolRangeMin: 30
+  patrolRangeMax: 50
   targetLayer:
     serializedVersion: 2
     m_Bits: 832
   noiseMakers: []
-  monsterTransform: {fileID: 0}
-  monsterEyeTransform: {fileID: 0}
 --- !u!114 &1778946566560032546
 MonoBehaviour:
   m_ObjectHideFlags: 0

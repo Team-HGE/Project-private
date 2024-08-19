@@ -1,6 +1,4 @@
-﻿using UnityEditor.ShaderKeywordFilter;
-using UnityEngine;
-using UnityEngine.InputSystem;
+﻿using UnityEngine.InputSystem;
 
 public class PlayerWalkState : PlayerGroundState
 {

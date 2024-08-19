@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-public class MonsterIdleState : MonsterGroundState
+﻿public class MonsterIdleState : MonsterGroundState
 {
     public MonsterIdleState(MonsterStateMachine monsterStateMachine) : base(monsterStateMachine)
     {

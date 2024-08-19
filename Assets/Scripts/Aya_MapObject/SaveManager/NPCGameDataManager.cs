@@ -36,12 +36,15 @@ public class NPCGameDataManager : MonoBehaviour
         npcs = HotelFloorScene_DataManager.Instance.GetNPC_Transform();
         for (int i = 0; i < npcGameData.Count; i++)
         {
-            if (npcs.Length < i)
+            if (npcs.Length > i)
+            {
+                npcs[i].position = npcGameData[i].position.GetVector();
+                npcs[i].rotation = Quaternion.Euler(npcGameData[i].rotation.GetVector());
+            }
+            else
             {
                 return;
             }
-            npcs[i].position = npcGameData[i].position.GetVector();
-            npcs[i].rotation = Quaternion.Euler(npcGameData[i].rotation.GetVector());
         }
     }
 }

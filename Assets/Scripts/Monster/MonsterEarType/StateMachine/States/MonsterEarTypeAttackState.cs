@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MonsterEarTypeAttackState : MonsterEarTypeGroundState
 {
@@ -27,7 +25,7 @@ public class MonsterEarTypeAttackState : MonsterEarTypeGroundState
 
         // 점프 스퀘어
 
-
+        GameManager.Instance.jumpScareManager.PlayJumpScare(JumpScareType.EarTypeMonster);
         Debug.Log("플레이어 사망 - 게임 오버");
         GameManager.Instance.playerDie = true;
     }

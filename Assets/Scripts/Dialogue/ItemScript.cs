@@ -26,7 +26,10 @@ public class ItemScript : DialogueSetting, IScript
 
         // 상호작용 중인 오브젝트 판별
         GameObject nowInteracting = GameManager.Instance.player.curInteractableGameObject;
-        item = nowInteracting.GetComponent<Item>();
+        if (nowInteracting != null )
+        {
+            item = nowInteracting.GetComponent<Item>();
+        }
 
         // item 이 아닐 경우
         if (item == null) { Debug.Log("Item이 아닙니다. 또는 Item 컴포넌트가 없습니다."); }

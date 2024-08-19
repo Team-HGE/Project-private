@@ -1,10 +1,5 @@
 ﻿using Cinemachine;
-using System.Linq;
-using Unity.Burst.Intrinsics;
-using Unity.VisualScripting.Antlr3.Runtime.Tree;
-using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour, INoise
 {

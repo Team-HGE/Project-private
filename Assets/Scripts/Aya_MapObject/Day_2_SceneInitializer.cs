@@ -54,10 +54,20 @@ public class Day_2_SceneInitializer : MonoBehaviour
         Debug.Log("세이브 성공");
         GameDataSaveLoadManager.Instance.SaveGameData(0);
         NPCPos.Instance.SetDayTimePos();
+
+        CharacterController controller = player.GetComponent<CharacterController>();
+        if (controller != null)
+        {
+            controller.enabled = false;
+            player.transform.position = playerPosition.localPosition;
+            controller.enabled = true;
+        }
+       
         OffLobbyLight();
     }
     void OffLobbyLight()
     {
+        GameManager.Instance.lightManager.OffLaversAllLight();
         GameManager.Instance.lightManager.OffListLight(GameManager.Instance.lightManager.GetLightsForFloor(Floor.Lobby));
         GameManager.Instance.lightManager.OffChangeMaterial(GameManager.Instance.lightManager.GetRenderersForFloor(Floor.Lobby));
     }
@@ -83,7 +93,7 @@ public class Day_2_SceneInitializer : MonoBehaviour
             switch (mon.jumpScareType)
             {
                 case JumpScareType.EarTypeMonster:
-
+                    mon.gameObject = earTypeMonster;
                     break;
                 case JumpScareType.EyeTypeMonster:
                     mon.gameObject = eyeTypeMonster;
@@ -109,4 +119,9 @@ public class Day_2_SceneInitializer : MonoBehaviour
     [Title("Monster")]
     [SerializeField] private GameObject groupTypeMonster;
     [SerializeField] private GameObject eyeTypeMonster;
+    [SerializeField] private GameObject earTypeMonster;
+
+    [Title("Player")]
+    [SerializeField] private Transform player;
+    [SerializeField] private Transform playerPosition;
 }

@@ -1,9 +1,6 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.ProBuilder;
-using static UnityEngine.Rendering.HableCurve;
 
 public class Monster : MonoBehaviour
 {

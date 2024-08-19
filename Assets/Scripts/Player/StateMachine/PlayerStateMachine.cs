@@ -1,9 +1,4 @@
-﻿using UnityEngine.InputSystem.LowLevel;
-using UnityEditor.ShaderKeywordFilter;
-using UnityEngine;
-using UnityEngine.InputSystem;
-
-public class PlayerStateMachine : StateMachine
+﻿public class PlayerStateMachine : StateMachine
 {
     public Player Player { get; }
 

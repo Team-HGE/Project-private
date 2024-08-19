@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
-
 public class MonsterPatrolState : MonsterGroundState
 {
     private Vector3 randomPos;

@@ -6,6 +6,7 @@ public class Day_1_SceneInitializer : MonoBehaviour
     [SerializeField] private GameObject blackBG;
     [SerializeField] private GameObject playerLight;
 
+    [SerializeField] private GameObject earTypeMonster;
     [SerializeField] private GameObject eyeTypeMonster;
     [SerializeField] private GameObject groupTypeMonster;
 
@@ -63,8 +64,8 @@ public class Day_1_SceneInitializer : MonoBehaviour
         {
             switch(mon.jumpScareType)
             {
-                
                 case JumpScareType.EarTypeMonster:
+                    mon.gameObject = earTypeMonster;
                     break;
                 case JumpScareType.EyeTypeMonster:
                     mon.gameObject = eyeTypeMonster;

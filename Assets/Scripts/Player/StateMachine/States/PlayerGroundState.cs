@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-
 public class PlayerGroundState : PlayerBaseState
 {
     public PlayerGroundState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)

@@ -33,7 +33,7 @@ public class ElevatorTimeLine : MonoBehaviour
         playerLight.SetActive(false);
 
         GameManager.Instance.Off_UI();
-
+        GameManager.Instance.playerDie = true;
         timelineDirector.Play();
         GameManager.Instance.fadeManager.fadeComplete -= ElevatorMovie;
     }
@@ -57,6 +57,7 @@ public class ElevatorTimeLine : MonoBehaviour
     }
     public void ChangeScene()
     {
+        GameManager.Instance.playerDie = false;
         // 2일차 신 호출
         GameManager.Instance.fadeManager.MoveScene(SceneEnum.Hotel_Day2);
         Invoke("SetUI", 1.5f);

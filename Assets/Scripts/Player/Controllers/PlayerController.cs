@@ -1,5 +1,4 @@
 using UnityEngine;
-
 public class PlayerController : MonoBehaviour
 {
     public PlayerInputs playerInputs { get; private set; }

@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using UnityEditor.ShaderKeywordFilter;
-using UnityEngine.InputSystem;
 using System.Collections;
 
 public class RunEffect : MonoBehaviour

@@ -29,13 +29,14 @@ public class MonsterGameDataManager : MonoBehaviour
             monsterGameData.rotation.SetVector(monsters[i].rotation.eulerAngles);
             monsterDataList.Add(monsterGameData);
         }
-
+        monsterDataList.Clear();
         return monsterDataList;
     }
 
     public void ApplyGameData(List<MonsterGameData> monsterGameData) // 불러오기
     {
         monsters = HotelFloorScene_DataManager.Instance.GetMonster_Transform();
+        return;
         for (int i = 0; i < monsterGameData.Count;i++)
         {
             if (monsters.Length < i)
