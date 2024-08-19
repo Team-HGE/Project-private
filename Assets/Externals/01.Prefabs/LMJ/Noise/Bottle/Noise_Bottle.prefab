@@ -111,7 +111,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!64 &5987405368142016913
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -245,7 +245,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!64 &3432179112689716877
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -379,7 +379,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!64 &43004209254404677
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -455,9 +455,9 @@ GameObject:
   - component: {fileID: 1687646672144869838}
   - component: {fileID: 3230210166297890950}
   - component: {fileID: 8543841912551308493}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Noise_Bottle
-  m_TagString: Untagged
+  m_TagString: NoiseMaker
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -520,16 +520,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <NoiseData>k__BackingField:
-    tag: 
+    tag: BreakBottle
     prefab: {fileID: 1947746349799581239, guid: 990b3487eb8e1c347a4b0ade1133e565,
       type: 3}
-    noises: []
-    volume: 0
+    noises:
+    - {fileID: 8300000, guid: 38348ab922e67e0469afbe2fdbd09728, type: 3}
+    volume: 40
     transitionTime: 0
     box: {fileID: 155008803372891290}
-  <NoiseTransitionTime>k__BackingField: 0
   <CurNoiseAmount>k__BackingField: 0
-  <DecreaseSpeed>k__BackingField: 0
+  <DecreaseSpeed>k__BackingField: 10
+  decreaseDelay: 0.3
   addVolume: 0
   addPitch: 0
   noiseObject: {fileID: 8589785866495469246}
@@ -667,7 +668,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!64 &3519747152575633538
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -801,7 +802,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!64 &3087901043441002583
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -935,7 +936,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!64 &471535866774073902
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1069,7 +1070,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!64 &5434491144958512754
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1203,7 +1204,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!64 &1512748069812553437
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1474,7 +1475,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!64 &5936673042095795593
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1608,7 +1609,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!64 &3844219003232695788
 MeshCollider:
   m_ObjectHideFlags: 0
