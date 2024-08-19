@@ -52,7 +52,6 @@ public class Lever : InteractableObject
 
         GameManager.Instance.lightManager.OffChangeMaterial(GameManager.Instance.lightManager.GetRenderersForFloor(nowFloor));
     }
-
     public void SecondDayEventScript()
     {
         if (!isScondDayEvent || EventManager.Instance.GetSwitch(GameSwitch.Day_2_A2F_LeverOn) || !EventManager.Instance.GetSwitch(GameSwitch.NowDay2)) return;
