@@ -69,11 +69,9 @@ public class Day_1_SceneInitializer : MonoBehaviour
                 case JumpScareType.EarTypeMonster:
                     break;
                 case JumpScareType.EyeTypeMonster:
-                    Debug.Log(mon.jumpScareType);
                     mon.gameObject = eyeTypeMonster;
                     break;
                 case JumpScareType.GroupTypeMonster:
-                    Debug.Log(mon.jumpScareType);
                     mon.gameObject = groupTypeMonster;
                     break;
             }
