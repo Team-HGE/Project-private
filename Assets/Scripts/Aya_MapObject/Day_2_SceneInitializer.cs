@@ -43,6 +43,7 @@ public class Day_2_SceneInitializer : MonoBehaviour
         Quest.Instance.NextQuest(15);
         SystemMsg.Instance.UpdateMessage(10);
         PSYNpc.npcEvent += SetDay2PasswordHint;
+    
     }
     void SaveSetting()
     {
@@ -53,6 +54,7 @@ public class Day_2_SceneInitializer : MonoBehaviour
         Debug.Log("세이브 성공");
         GameDataSaveLoadManager.Instance.SaveGameData(0);
         NPCPos.Instance.SetDayTimePos();
+        OffLobbyLight();
     }
     void OffLobbyLight()
     {
