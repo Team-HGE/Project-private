@@ -1,17 +1,23 @@
 ﻿using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
 public class Authentication_Device : InteractableObject
 {
-    [SerializeField] DOTweenAnimation doorOpen;
-    [SerializeField] MeshRenderer meshRenderer;
-    [SerializeField] Material material;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private DOTweenAnimation doorOpen;
+    [SerializeField] private MeshRenderer meshRenderer;
+    [SerializeField] private Material material;
     [SerializeField] private GameObject glare;
     [Header("SecondDayEvent")]
     public ScriptSO[] scriptSOs;
 
+    private void Start()
+    {
+        if (audioSource == null) audioSource = GetComponent<AudioSource>();    
+    }
     public override void ActivateInteraction()
     {
         if (isInteractable) return;
@@ -27,6 +33,7 @@ public class Authentication_Device : InteractableObject
 
         if (EventManager.Instance.GetSwitch(GameSwitch.Day2GetCardKey))
         {
+            audioSource.Play();
             glare.SetActive(false);
             doorOpen.CreateTween(true);
             ChangeMaterial();

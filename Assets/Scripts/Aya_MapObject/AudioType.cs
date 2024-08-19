@@ -15,5 +15,7 @@ public enum SoundEffect
     Wokeup,
     DialClick,
     systemMsg,
-    skip
+    skip,
+    KarmaDown,
+    KarmaUp
 }
