@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
 
@@ -9,7 +6,6 @@ public class Day2F3EarTypeCutScene : MonoBehaviour
     public GameObject cutSceneObject;
     private ICutSceneEvent _trigger;
     public GameObject SM;
-
 
     [field: Header("TimeLine")]
     public PlayableDirector cutScene;
@@ -23,19 +19,15 @@ public class Day2F3EarTypeCutScene : MonoBehaviour
             _trigger = cutSceneObject.gameObject.GetComponent<ICutSceneEvent>();
             _trigger.OnEvent += PlayCutScene;
         }
-        else Debug.LogError("Day2F3EarTypeCutScene - cutSceneObject가 없습니다.");
 
         if (cutScene != null)
         {
             cutScene.stopped += OnPlayableDirectorStopped;
         }
-        else Debug.LogError("Day2F3EarTypeCutScene - 타임라인이 없습니다.");
     }
 
     private void PlayCutScene()
     {
-        Debug.Log("플레이 컷신");
-
         if (cutScene != null)
         {
             VC.SetActive(true);
@@ -59,5 +51,6 @@ public class Day2F3EarTypeCutScene : MonoBehaviour
         GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
         TLmonster.SetActive(false);
         SM.SetActive(true);
+        DialogueManager.Instance.quest.questCanvas.SetActive(true);
     }
 }

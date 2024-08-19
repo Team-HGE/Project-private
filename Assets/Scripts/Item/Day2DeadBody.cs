@@ -22,5 +22,7 @@ public class Day2DeadBody : InteractableObject
         
         DialogueManager.Instance.itemScript.Init(scriptSO);
         DialogueManager.Instance.itemScript.Print();
+
+        Destroy(gameObject);
     }
 }

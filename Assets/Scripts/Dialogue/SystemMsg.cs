@@ -16,6 +16,10 @@ public class SystemMsg : SingletonManager<SystemMsg>
     public int NowTipMsgNumber;
     private bool isUpdating = false;
 
+    protected override void Awake()
+    {
+        base.Awake();
+    }
     public void Init()
     {
         objectPool = GetComponent<ObjectPool>();

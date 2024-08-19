@@ -14,12 +14,16 @@ public class Quest : SingletonManager<Quest>
 
     public Transform questCanvas_Transform;
 
+    protected override void Awake()
+    {
+        base.Awake();
+    }
+
     private void Start() 
     {
         audioManager = GetComponent<AudioManager>();
         Init();
     }
-
    
     public void Init()
     {

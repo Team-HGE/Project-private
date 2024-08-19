@@ -1,5 +1,6 @@
 using Cinemachine;
 using Sirenix.OdinInspector;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -18,6 +19,8 @@ public class CinemachineManager : MonoBehaviour
 
     Transform playerVCParent;
     Transform targetVCParent;
+
+    public event Action endEvent;
 
     public IEnumerator LookTarget(CinemachineVirtualCamera targetCamera)
     {
@@ -68,5 +71,8 @@ public class CinemachineManager : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         playerVC.transform.SetParent(playerVCParent);
         targetCamera.transform.SetParent(targetVCParent);
+
+        endEvent?.Invoke();
+        endEvent = null;
     }
 }

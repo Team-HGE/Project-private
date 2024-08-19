@@ -69,7 +69,7 @@ public class KeyPadObject : InteractableObject
         StartCoroutine(ReturnToMainCamera());
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOff();
+        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOn();
     }
     IEnumerator ReturnToMainCamera()
     {
@@ -80,7 +80,7 @@ public class KeyPadObject : InteractableObject
     {
         if (isScondDayEvent && !EventManager.Instance.GetSwitch(GameSwitch.Day_2_A2F_LeverOn) && EventManager.Instance.GetSwitch(GameSwitch.NowDay2))
         {
-            Invoke("SecondDayEventScript", 2);
+            GameManager.Instance.cinemachineManager.endEvent += SecondDayEventScript;
         }
 
         KeyPadDecal.SetActive(true);
@@ -91,7 +91,7 @@ public class KeyPadObject : InteractableObject
         GameManager.Instance.PlayerStateMachine.Player.PlayerControllOn();
     }
 
-    public void SecondDayEventScript() 
+    void SecondDayEventScript() 
     {
         isScondDayEvent = false;
         DialogueManager.Instance.itemScript.Init(scriptSO);
