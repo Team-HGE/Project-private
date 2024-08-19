@@ -12,10 +12,16 @@ public class RandomEventCollider : MonoBehaviour
     [SerializeField] DoorObject door;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player") && !isTrigger)
+        if (other.gameObject.CompareTag("Player") && !isTrigger && EventManager.Instance.GetSwitch(GameSwitch.Day2GetPasswordHint))
         {
             isTrigger = true;
 
+            eventObject.SetActive(true);
+            /*
+            if (rand > 0)
+            {
+                
+            }
 
             if (door != null)
             {
@@ -25,11 +31,8 @@ public class RandomEventCollider : MonoBehaviour
             }
             int rand = Random.RandomRange(0, 100);
 
-            if (rand > 100)
-            {
-                eventObject.SetActive(true);
-            }
-            else
+            
+            /*else
             {
                 foreach (var c in glass)
                 {
@@ -44,8 +47,8 @@ public class RandomEventCollider : MonoBehaviour
                     }
                 }
             }
-
-            StartCoroutine(EventDelay());
+            */
+            //StartCoroutine(EventDelay());
         }
     }
 
