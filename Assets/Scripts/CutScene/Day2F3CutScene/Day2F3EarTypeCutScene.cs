@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,40 +6,55 @@ using UnityEngine.Playables;
 
 public class Day2F3EarTypeCutScene : MonoBehaviour
 {
-    private static Day2F3EarTypeCutScene _instance;
+    public GameObject cutSceneObject;
+    private ICutSceneEvent _trigger;
+    public GameObject SM;
 
-    public static Day2F3EarTypeCutScene Instance
+
+    [field: Header("TimeLine")]
+    public PlayableDirector cutScene;
+    public GameObject TLmonster;
+
+    private void Start()
     {
-        get
+        if (cutSceneObject != null)
         {
-            _instance ??= FindObjectOfType<Day2F3EarTypeCutScene>();
-            return _instance;
+            _trigger = cutSceneObject.gameObject.GetComponent<ICutSceneEvent>();
+            _trigger.OnEvent += PlayCutScene;
         }
-    }
+        else Debug.LogError("Day2F3EarTypeCutScene - cutSceneObject가 없습니다.");
 
-    public GameObject Trigger;
-    public PlayableDirector firstCutScene;
-
-
-    private void Awake()
-    {
-        _instance = this;
-        
-    }
-
-    private void PlayTimeline()
-    {
-        if (firstCutScene != null)
+        if (cutScene != null)
         {
-            //GameManager.Instance.PlayerStateMachine.Player.VCOnOff();
-            //GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
-            //VCs.SetActive(true);
-            //GameManager.Instance.jumpScareManager.playerCanvas.SetActive(false);
-            //DialogueManager.Instance.quest.questCanvas.SetActive(false);
-            //firstCutScene.Play();
+            cutScene.stopped += OnPlayableDirectorStopped;
         }
+        else Debug.LogError("Day2F3EarTypeCutScene - 타임라인이 없습니다.");
     }
 
+    private void PlayCutScene()
+    {
+        Debug.Log("플레이 컷신");
 
+        if (cutScene != null)
+        {
+            TLmonster.SetActive(true);
 
+            GameManager.Instance.NowPlayCutScene = true;
+            GameManager.Instance.PlayerStateMachine.Player.VCOnOff();
+            GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
+            // 다이얼로그 가리기
+            DialogueManager.Instance.quest.questCanvas.SetActive(false);
+            cutScene.Play();
+        }
+        else Debug.LogError("Day2F3EarTypeCutScene - 타임라인이 없습니다.");
+    }
+
+    private void OnPlayableDirectorStopped(PlayableDirector director)
+    {
+        GameManager.Instance.NowPlayCutScene = false;
+        GameManager.Instance.PlayerStateMachine.Player.VCOnOff();
+        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOnOff();
+        TLmonster.SetActive(false);
+        SM.SetActive(true);
+    }
 }

@@ -80,7 +80,7 @@ public class MonsterEarTypeBaseState : IState
                 stateMachine.Monster.noiseMakers.Add(col);
                 //CheckNoise(col.gameObject.GetComponent<INoise>().CurNoiseAmount);
 
-                Debug.Log($"{col.tag}, {col.gameObject.GetComponent<INoise>().CurNoiseAmount}");
+                //Debug.Log($"{col.tag}, {col.gameObject.GetComponent<INoise>().CurNoiseAmount}");
 
                 if (CheckNoise(col.gameObject.GetComponent<INoise>().CurNoiseAmount))
                 {                    

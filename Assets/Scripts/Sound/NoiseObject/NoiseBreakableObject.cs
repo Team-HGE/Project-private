@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NoiseBreakableObject : MonoBehaviour, INoise
+public class NoiseBreakableObject : MonoBehaviour, INoise, ICutSceneEvent
 {
     public event Action OnEvent;
 
@@ -23,22 +23,23 @@ public class NoiseBreakableObject : MonoBehaviour, INoise
     public GameObject noiseObject;
     public GameObject breackObject;
 
-    [field: Header("State")]
-    [field: SerializeField] 
-    public bool IsTrigger
+    //[field: Header("State")]
+    //[field: SerializeField] 
+    private bool _isBreak = false;
+    public bool IsBreak
     {
         get { return _isBreak; }
         set
         {
             if (!_isBreak)
             {
+                Debug.Log("±úÁü - Å¸ÀÓ¶óÀÎ");
                 OnEvent?.Invoke();
                 _isBreak = value;
             }
             else _isBreak = value;
         }
     }
-    private bool _isBreak = false;
 
 
     private bool _isErr = false;
@@ -91,7 +92,7 @@ public class NoiseBreakableObject : MonoBehaviour, INoise
             return;
         }
 
-        if (IsTrigger || other.tag != "Player") return;
+        if (IsBreak || other.tag != "Player") return;
 
         // ±úÁü
         Break();
@@ -111,12 +112,14 @@ public class NoiseBreakableObject : MonoBehaviour, INoise
 
     private void Break()
     {
+        Debug.Log("±úÁü");
+
         noiseObject.SetActive(false);
         breackObject.SetActive(true);
 
         //_collider.enabled = false;
         //_collider.isTrigger = false;
-        IsTrigger = true;
+        IsBreak = true;
     }
 
     public void PlayNoise(AudioClip audioClip, string tag, float addVolume, float transitionTime, float pitch)
