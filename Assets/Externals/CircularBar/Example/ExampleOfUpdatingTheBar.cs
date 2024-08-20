@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -11,12 +12,27 @@ namespace DiceNook.View
         [SerializeField] private List<Label> labels;
 
         public Player player;
+        bool isStarted = false;
+        IEnumerator Start()
+        {
+            yield return new WaitForEndOfFrame();
+            yield return null;
+            ResetUI();
+            isStarted = true;
+        }
 
-        private void OnEnable()
+        private void ResetUI()
         {
             circularBars = UIDocument.rootVisualElement.Query<CircularBar>().ToList();
             labels = UIDocument.rootVisualElement.Query<Label>().ToList();
             UpdateUI();
+        }
+        private void OnEnable()
+        {
+            if (isStarted)
+            {
+                ResetUI();
+            }
         }
         void Update()
         {
