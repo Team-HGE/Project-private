@@ -112,6 +112,7 @@ public class GameSettingUIManager : MonoBehaviour
     {
         ToggleSettingMenu();
         EventManager.Instance.SetSwitch(GameSwitch.IsPlayingGame, false);
+        GameManager.Instance.Off_UI();
         GameManager.Instance.fadeManager.MoveScene(SceneEnum.MainMenuScene);
         GameManager.Instance.fadeManager.fadeComplete += CursorNone;
     }

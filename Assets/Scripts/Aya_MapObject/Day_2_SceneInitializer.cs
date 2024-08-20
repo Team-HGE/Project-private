@@ -29,16 +29,18 @@ public class Day_2_SceneInitializer : MonoBehaviour
 
 
         GameManager.Instance.NowPlayCutScene = false;
-        EventManager.Instance.InitializeSwitches(); // 지워야댐
+        //GameManager.Instance.On_UI();
+        //EventManager.Instance.InitializeSwitches(); // 지워야댐
 
         // 2일차 게임 스위치 변경
         EventManager.Instance.SetSwitch(GameSwitch.OneFloorEndEscape, true);
         EventManager.Instance.SetSwitch(GameSwitch.NowDay2, true);
-
+        
         //다이얼로그 세팅
         DialogueManager.Instance.StartStory(5);
         Invoke("SaveSetting", 5);
 
+        
         //퀘스트 세팅
         Quest.Instance.NextQuest(15);
         SystemMsg.Instance.UpdateMessage(10);

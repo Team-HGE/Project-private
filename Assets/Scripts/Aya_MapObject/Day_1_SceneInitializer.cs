@@ -29,11 +29,8 @@ public class Day_1_SceneInitializer : MonoBehaviour
     {
         EventManager.Instance.SetSwitch(GameSwitch.IsPlayingGame, true);
         // 플레이어 켄버스 세팅
-        GameManager.Instance.playerInteractionCanvas.SetActive(true);
-        GameManager.Instance.crossHairCanvas.SetActive(true);
-        GameManager.Instance.circleUI.SetActive(true);
-        GameManager.Instance.timeUI.SetActive(true);
 
+        GameManager.Instance.On_UI();
         // 스위치 세팅
         GameManager.Instance.dayNightUI.UpdateDayNightUI(EventManager.Instance.GetSwitch(GameSwitch.IsDaytime));
         EventManager.Instance.SetSwitch(GameSwitch.IsDaytime, true);
