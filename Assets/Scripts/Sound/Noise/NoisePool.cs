@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class NoisePool : MonoBehaviour
@@ -17,14 +14,23 @@ public class NoisePool : MonoBehaviour
                 //Debug.Log("노이즈 풀 오브젝트 널");
 
                 _instance = FindObjectOfType(typeof(NoisePool)) as NoisePool;
+                _instance.noiseDatasList = new List<NoiseData>();
+                _instance.poolDictionary = new Dictionary<string, List<GameObject>>();
             }
             return _instance;
         }
 
     }
+    private void OnDestroy()
+    {
+        if (_instance == this)
+        {
+            _instance = null;
+        }
+    }
 
     // 외부의 오브젝드에서 여기에 오디오 클립을 담은 리스트를 전달
-    public List<NoiseData> noiseDatasList;
+    public List<NoiseData> noiseDatasList { get; set; }
 
     public Dictionary<string, List<GameObject>> poolDictionary;
 
@@ -51,12 +57,8 @@ public class NoisePool : MonoBehaviour
         //}
         //Debug.Log($"노이즈 종류 갯수 : {noiseDatasList.Count}");
 
-
-        poolDictionary = new Dictionary<string, List<GameObject>>();
-
         for (int i = 0; i < noiseDatasList.Count; i++)
         {
-
             if (!poolDictionary.ContainsKey(noiseDatasList[i].tag))
             {
                 List<GameObject> noiseDatas = new List<GameObject>();
@@ -69,7 +71,6 @@ public class NoisePool : MonoBehaviour
         //    Debug.Log($"tag : {item.Key}, value : {item.Value.Count}");
         //}
     }
-
     public GameObject SpawnFromPool(string tag)
     {
         if (!poolDictionary.ContainsKey(tag)) return null;
@@ -88,7 +89,7 @@ public class NoisePool : MonoBehaviour
         }
 
         // 없을 때
-        if (!obj)
+        if (obj == null)
         {
             NoiseData temp;
 

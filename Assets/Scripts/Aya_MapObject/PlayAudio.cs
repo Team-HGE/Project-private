@@ -28,7 +28,8 @@ public class PlayAudio : MonoBehaviour
             if (isFade)
             {
                 StartCoroutine(FadeInAudio(availableSource, volume));
-            } 
+            }
+            Debug.Log($"{ clip.name}, {volume}");
         }
         else
         {
@@ -41,6 +42,7 @@ public class PlayAudio : MonoBehaviour
             {
                 StartCoroutine(FadeInAudio(newSource, volume));
             }
+            Debug.Log($"{clip.name}, {volume}");
         }
     }
 

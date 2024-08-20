@@ -57,7 +57,10 @@ public class UIDialogue : MonoBehaviour
         isPlayingStory = true;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        GameManager.Instance.PlayerStateMachine.Player.PlayerControllOff();
+        if (GameManager.Instance.PlayerStateMachine != null)
+        {
+            GameManager.Instance.PlayerStateMachine.Player.PlayerControllOff();
+        }
     }
     public void CloseDialogue()
     {

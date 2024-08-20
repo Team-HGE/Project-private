@@ -56,12 +56,9 @@ public class Player : MonoBehaviour, INoise
             Debug.LogError($"Player - Awake - NoisePool 없음");
         }
 
-        if (NoisePool.Instance.noiseDatasList.Count != NoiseDatasList.noiseDatasList.Count)
+        for (int i = 0; i < NoiseDatasList.noiseDatasList.Count; i++)
         {
-            for (int i = 0; i < NoiseDatasList.noiseDatasList.Count; i++)
-            {
-                NoisePool.Instance.noiseDatasList.Add(NoiseDatasList.noiseDatasList[i]);
-            }
+            NoisePool.Instance.noiseDatasList.Add(NoiseDatasList.noiseDatasList[i]);
         }
         //else
         //{
@@ -74,11 +71,14 @@ public class Player : MonoBehaviour, INoise
 
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        GameManager.Instance.Init(this);
+        if (EventManager.Instance.GetSwitch(GameSwitch.isMainStoryOff))
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
         _stateMachine.ChangeState(_stateMachine.IdleState);
         // 카르마 초기화
         Karma = 0f;
-        GameManager.Instance.Init(this);
     }
 
     private void Update()

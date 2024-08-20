@@ -67,7 +67,7 @@ public class FlameFlicker : MonoBehaviour
     {
         if (player == null)
         {
-            player = GameManager.Instance.exampleBar.player.transform;
+            player = GameManager.Instance.player.transform;
         }
         if (!FlameLight.enabled)
             return;

@@ -36,7 +36,6 @@ public class GameManager : SingletonManager<GameManager>
     public DayNightUI dayNightUI;
 
     [TitleGroup("Player")]
-    public ExampleOfUpdatingTheBar exampleBar;
     public bool playerDie { get; set; }
     [ShowInInspector] public PlayerStateMachine PlayerStateMachine { get; set; }
 
@@ -59,7 +58,6 @@ public class GameManager : SingletonManager<GameManager>
     }
     public void Init(Player _player)
     {
-        exampleBar.player = _player;
         player = _player.GetComponent<PlayerInteractable>();
         player.fillAmountImage = fillAmountImage;
         player.interactableText = interactableText;
