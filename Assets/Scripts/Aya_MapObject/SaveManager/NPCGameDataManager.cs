@@ -5,6 +5,7 @@ using UnityEngine;
 [Serializable]
 public class NPCGameData
 {
+    public NPC_Name myName;
     public NPCGameData()
     {
         position = new SerializableVecter3();
@@ -25,7 +26,14 @@ public class NPCGameDataManager : MonoBehaviour
             NPCGameData nPCGameData = new NPCGameData();
             nPCGameData.position.SetVector(npcs[i].position);
             nPCGameData.rotation.SetVector(npcs[i].rotation.eulerAngles);
-
+            if (npcs[i].TryGetComponent<NPC>(out NPC nowNpc))
+            {
+                nPCGameData.myName = nowNpc.nPC_Name;
+            }
+            else
+            {
+                nPCGameData.myName = NPC_Name.Unknown;
+            }
             npcData.Add(nPCGameData);
         }
         return npcData;
@@ -34,17 +42,31 @@ public class NPCGameDataManager : MonoBehaviour
     public void ApplyGameData(List<NPCGameData> npcGameData) // 불러오기
     {
         npcs = HotelFloorScene_DataManager.Instance.GetNPC_Transform();
-        for (int i = 0; i < npcGameData.Count; i++)
+        foreach(var nowNpc in npcs)
         {
-            if (npcs.Length > i)
+            NPC_Name nowNPCName;
+            if (nowNpc.TryGetComponent<NPC>(out NPC temp))
             {
-                npcs[i].position = npcGameData[i].position.GetVector();
-                npcs[i].rotation = Quaternion.Euler(npcGameData[i].rotation.GetVector());
+                nowNPCName = temp.nPC_Name;
             }
             else
             {
-                return;
+                nowNPCName = NPC_Name.Unknown;
+            }
+            foreach (var nowData in npcGameData)
+            {
+                if (nowNPCName == nowData.myName)
+                {
+                    nowNpc.position = nowData.position.GetVector();
+                    nowNpc.rotation = Quaternion.Euler(nowData.rotation.GetVector());
+                    if (nowNPCName == NPC_Name.Unknown)
+                    {
+                        npcGameData.Remove(nowData);
+                    }
+                    break;
+                }
             }
         }
+        
     }
 }

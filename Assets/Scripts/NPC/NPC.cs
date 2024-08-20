@@ -4,7 +4,8 @@ public enum NPC_Name
     HMS,
     PJH,
     PSY,
-    KJM
+    KJM,
+    Unknown
 }
 
 public class NPC : InteractableObject
