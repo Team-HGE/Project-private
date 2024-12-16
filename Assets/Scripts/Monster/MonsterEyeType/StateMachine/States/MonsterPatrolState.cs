@@ -1,10 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.AI;
-
 public class MonsterPatrolState : MonsterGroundState
 {
+    private Vector3 randomPos;
+    //private bool getPosition;
+
     public MonsterPatrolState(MonsterStateMachine monsterStateMachine) : base(monsterStateMachine)
     {
     }
@@ -14,22 +14,26 @@ public class MonsterPatrolState : MonsterGroundState
         base.Enter();
 
         stateMachine.Monster.Agent.speed = groundData.PatrolSpeed;
-        if (stateMachine.IsPatrol) return;
+        //if (stateMachine.IsPatrol) return;
 
         StatrPatrol();
 
-        //Debug.Log($"ÆĞÆ®·Ñ ½ÃÀÛ");
-        // ¾Ö´Ï¸ŞÀÌ¼Ç ½ÇÇà - ±×¶ó¿îµå ÆÄ¶ó¹ÌÅÍ ÇØ½¬·Î Á¢±Ù
-        StartAnimation(stateMachine.Monster.AnimationData.PatrolParameterHash);
+        ///Debug.Log($"íŒ¨íŠ¸ë¡¤ ì‹œì‘");
+        // ì• ë‹ˆë©”ì´ì…˜ ì‹¤í–‰
+        //StartAnimation(stateMachine.Monster.AnimationData.PatrolParameterHash);
     }
 
     public override void Exit()
     {
         base.Exit();
-        //Debug.Log($"ÆĞÆ®·Ñ ³¡");
+        //Debug.Log($"íŒ¨íŠ¸ë¡¤ ë");
 
-        // ¾Ö´Ï¸ŞÀÌ¼Ç Á¾·á - ±×¶ó¿îµå ÆÄ¶ó¹ÌÅÍ ÇØ½¬·Î Á¢±Ù
-        StopAnimation(stateMachine.Monster.AnimationData.PatrolParameterHash);
+        // ì• ë‹ˆë©”ì´ì…˜ ì¢…ë£Œ
+        if(stateMachine.IsPatrol) StopAnimation(stateMachine.Monster.AnimationData.PatrolParameterHash);
+
+        //StopAnimation(stateMachine.Monster.AnimationData.PatrolParameterHash);
+        
+        stateMachine.Monster.Agent.ResetPath();
         stateMachine.IsPatrol = false;
     }
 
@@ -37,41 +41,56 @@ public class MonsterPatrolState : MonsterGroundState
     {
         base.Update();
 
-        if (stateMachine.Monster.Agent.remainingDistance < 0.1f)
+        //RotateToPlayer();
+
+        if (stateMachine.Monster.Agent.pathPending) return;
+
+        if (stateMachine.Monster.Agent.remainingDistance < 0.2f)
         {
             stateMachine.ChangeState(stateMachine.IdleState);
         }
+    }
 
-        if (IsInFindRange() && GetIsPlayerInFieldOfView())
-        {
-            stateMachine.ChangeState(stateMachine.FindState);
-        }
-    }    
-
-    private Vector3 GetRandomPoint(Vector3 center, float radius)
+    private void GetRandomPoint(Vector3 center, float radius)
     {
+        //getPosition = true;
+        randomPos = center;
 
-        Vector3 randomPos = center;
         for (int i = 0; i < 50; i++)
         {
             randomPos = Random.insideUnitSphere * radius;
             randomPos.y = 0;
             randomPos += center;
-            if (Vector3.Distance(stateMachine.Monster.transform.position, randomPos) > stateMachine.Monster.Data.GroundData.PatrolMinDistance) break;
+
+            if (Vector3.Distance(center, randomPos) > stateMachine.Monster.patrolRangeMin) break;
         }
+
+        //Debug.Log($"ê¸°ì¤€ ì´ë™ ê±°ë¦¬ : {Vector3.Distance(center, randomPos)}");
+        //Debug.Log($"ì´ ì´ë™ ê±°ë¦¬ : {Vector3.Distance(stateMachine.Monster.transform.position, randomPos)}");
 
         NavMeshHit hit;
         if (NavMesh.SamplePosition(randomPos, out hit, radius, NavMesh.AllAreas))
         {
-            return hit.position;
+            randomPos =  hit.position;
         }
-        return randomPos;
     }
 
     private void StatrPatrol()
     {
-        Vector3 newPos = GetRandomPoint(stateMachine.StartPosition, groundData.PatrolRange);
-        stateMachine.Monster.Agent.SetDestination(newPos);
+        if (stateMachine.Monster.CanComeBack)
+        {
+            GetRandomPoint(stateMachine.StartPosition, stateMachine.Monster.patrolRangeMax);
+
+            stateMachine.Monster.Agent.SetDestination(randomPos);
+        }
+        else
+        {
+            GetRandomPoint(stateMachine.Monster.transform.position, stateMachine.Monster.patrolRangeMax);
+
+            stateMachine.Monster.Agent.SetDestination(randomPos);
+        }
+
+        StartAnimation(stateMachine.Monster.AnimationData.PatrolParameterHash);
         stateMachine.IsPatrol = true;
     }
 }

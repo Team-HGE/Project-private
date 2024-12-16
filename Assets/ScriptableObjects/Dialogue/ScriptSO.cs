@@ -3,10 +3,17 @@
 [CreateAssetMenu(fileName = "ScriptableObject", menuName = "ScriptableObject/Script", order = 0)]
 public class ScriptSO : ScriptableObject
 {
-    public Sprite[] images;
+    [Header("Image")]
+    public Sprite[] portraits;
+    public Sprite[] standings;
+    public Sprite[] BackGrounds;
+
+    [Header("Text")]
     public string[] speakers;
     [TextArea] public string[] bodyTexts;
-    public AudioClip[] audioClip;
+
+    [Header("Audio")]
+    public AudioClip[] audioClips;
 }
 
 

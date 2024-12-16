@@ -1,7 +1,5 @@
-﻿using Unity.VisualScripting.Antlr3.Runtime.Tree;
-using UnityEditor.ShaderKeywordFilter;
+﻿using Cinemachine;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour, INoise
 {
@@ -10,6 +8,30 @@ public class Player : MonoBehaviour, INoise
 
     [field: Header("Noise")]
     [field: SerializeField] public NoiseDatasList NoiseDatasList { get; private set; }
+    // INoise
+    public float NoiseTransitionTime { get; set; }
+    public float MaxNoiseAmount { get; set; } = 13f;
+    [field: SerializeField] public float CurNoiseAmount { get; set; }
+    public float SumNoiseAmount { get; set; }
+    [field: SerializeField] public float DecreaseSpeed { get; set; } = 5f;
+
+    [field: Header("Stamina")]
+    public RunEffect CurrentStamina;
+
+    [field: Header("VC")]
+    public CinemachineVirtualCamera offSight;
+
+    [field: Header("Controll")]
+    // 플레이 조작 onoff
+    [field: SerializeField] public bool IsPlayerControll { get; set; } = true;
+    [field: SerializeField] public bool IsPauseVC { get; set; } = false;
+
+
+    [field: Header("Controll")]
+    public FlashLightController flashLightController;
+
+    [field: Header("Karma")]
+    [field: SerializeField] public float Karma { get; set; }
 
     public PlayerController Input { get; private set; }
     public CharacterController Controller { get; private set; }
@@ -17,30 +39,6 @@ public class Player : MonoBehaviour, INoise
     public PlayerInputsData InputsData { get; private set; }
 
     private PlayerStateMachine _stateMachine;
-
-    public RunEffect CurrentStamina;
-
-    // INoise
-    public float NoiseTransitionTime { get; set; }
-
-    public float MaxNoiseAmount { get; set; } = 13f;
-
-    [field: SerializeField]
-    public float CurNoiseAmount { get; set; }
-    public float SumNoiseAmount { get; set; }
-    [field: SerializeField]
-    public float DecreaseSpeed { get; set; } = 5f;
-
-    // 플레이 조작 onoff
-    [field: SerializeField]
-    public bool IsPlayerControll { get; set; } = true;
-
-    public FlashLightController flashLightController;
-
-    // 카르마
-    [field: SerializeField]
-    public float Karma { get; set; }
-
 
     private void Awake()
     {
@@ -53,26 +51,34 @@ public class Player : MonoBehaviour, INoise
 
         _stateMachine = new PlayerStateMachine(this);
 
-        if (NoisePool.Instance != null)
+        if (NoisePool.Instance == null)
         {
-            //Debug.Log($"Player - Awake - 노이즈 풀 있음");
-            NoisePool.Instance.Initialize();
+            Debug.LogError($"Player - Awake - NoisePool 없음");
         }
 
         for (int i = 0; i < NoiseDatasList.noiseDatasList.Count; i++)
         {
             NoisePool.Instance.noiseDatasList.Add(NoiseDatasList.noiseDatasList[i]);
         }
+        //else
+        //{
+        //    Debug.Log($"Player - Awake - noiseDatasList 있음");
+
+        //}
 
         NoisePool.Instance.FindNoise();
     }
 
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        _stateMachine.ChangeState(_stateMachine.IdleState);
-
         GameManager.Instance.Init(this);
+        if (EventManager.Instance.GetSwitch(GameSwitch.isMainStoryOff))
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        _stateMachine.ChangeState(_stateMachine.IdleState);
+        // 카르마 초기화
+        Karma = 0f;
     }
 
     private void Update()
@@ -87,7 +93,6 @@ public class Player : MonoBehaviour, INoise
         }
 
         if (CurNoiseAmount >= MaxNoiseAmount) CurNoiseAmount = MaxNoiseAmount;
-
     }
 
     private void FixedUpdate()
@@ -118,7 +123,27 @@ public class Player : MonoBehaviour, INoise
 
     public void PlayerControllOnOff()
     {
+        //Debug.Log("Player - PlayerControllOnOff 호출됨");
         IsPlayerControll = !IsPlayerControll;
+        
+    }
+
+    public void PlayerControllOff()
+    {
+        IsPlayerControll = false;
+    }
+
+    public void PlayerControllOn()
+    {
+        IsPlayerControll = true;
+    }
+
+    public void VCOnOff()
+    {
+        IsPauseVC = !IsPauseVC;
+
+        if (!IsPauseVC) offSight.enabled = false;
+        else offSight.enabled = true;
     }
 
     public Player GetPlayerReturn()
@@ -128,5 +153,9 @@ public class Player : MonoBehaviour, INoise
     public FlashLightController GetFlashLightController()
     {
         return flashLightController;
+    }
+    public PlayerStateMachine GetStateMachine()
+    {
+        return _stateMachine;
     }
 }

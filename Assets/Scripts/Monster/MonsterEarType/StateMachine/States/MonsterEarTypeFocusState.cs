@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+ï»¿using UnityEngine;
 public class MonsterEarTypeFocusState : MonsterEarTypeGroundState
 {
     public MonsterEarTypeFocusState(MonsterEarTypeStateMachine monsterStateMachine) : base(monsterStateMachine)
@@ -11,30 +8,30 @@ public class MonsterEarTypeFocusState : MonsterEarTypeGroundState
     public override void Enter()
     {
         base.Enter();
-
-        //Debug.Log("focus ½ÃÀÛ");
-
+        //Debug.Log("focus ì‹œì‘");
+        stateMachine.BeforeNoise = 0f;
         stateMachine.IsFocusNoise = true;
         stateMachine.IsFocusRotate = true;
         stateMachine.Monster.IsBehavior = false;
+        stateMachine.Monster.Agent.isStopped = true;
         stateMachine.Monster.WaitForBehavior(stateMachine.Monster.Data.GroundData.FocusTransitionTime);
 
-        // ¾Ö´Ï¸ŞÀÌ¼Ç ½ÇÇà
+        // ì• ë‹ˆë©”ì´ì…˜ ì‹¤í–‰
         StartAnimation(stateMachine.Monster.AnimationData.FocusParameterHash);
-
     }
 
     public override void Exit()
     {
         base.Exit();
-        //Debug.Log("focus ³¡");
-
+        Debug.Log("focus ë");
         stateMachine.IsFocusNoise = false;
         stateMachine.IsFocusRotate = false;
+        stateMachine.Monster.Agent.isStopped = false;
 
-        // ¾Ö´Ï¸ŞÀÌ¼Ç Á¾·á
+        // ì• ë‹ˆë©”ì´ì…˜ ì¢…ë£Œ
         StopAnimation(stateMachine.Monster.AnimationData.FocusParameterHash);
-
+        stateMachine.Monster.StopWait();
+        //stateMachine.Monster.IsBehavior = true;
     }
 
     public override void Update()
@@ -43,46 +40,16 @@ public class MonsterEarTypeFocusState : MonsterEarTypeGroundState
 
         if (stateMachine.Monster.IsBehavior)
         {
-            //Debug.Log("º¹±Í");
+            if (!stateMachine.Monster.CanComeBack)
+            {
+                stateMachine.ChangeState(stateMachine.IdleState);
+                return;
+            }
+
+            //Debug.Log("ì§‘ì¤‘ -> ë³µê·€");
 
             stateMachine.ChangeState(stateMachine.ComeBackState);
             return;
         }
-
-        CheckNoise();
     }
-
-    private void CheckNoise()
-    {
-        if (Vector3.Distance(stateMachine.Monster.transform.position, stateMachine.Target.transform.position) > stateMachine.Monster.Data.GroundData.PlayerChasingRange) return;
-
-        for (int i = 0; i < stateMachine.Monster.noiseMakers.Count; i++)
-        {
-            if (stateMachine.Monster.noiseMakers[i].gameObject.GetComponent<INoise>().CurNoiseAmount >= 0.95f && stateMachine.Monster.noiseMakers[i].gameObject.GetComponent<INoise>().CurNoiseAmount < 5.5f)
-            {
-                stateMachine.CurDestination = stateMachine.Monster.noiseMakers[i].gameObject.transform.position;
-                Rotate(GetMovementDirection());
-            }   
-
-            if (stateMachine.Monster.noiseMakers[i].gameObject.GetComponent<INoise>().CurNoiseAmount >= 5.5f)
-            {
-                stateMachine.CurDestination = stateMachine.Monster.noiseMakers[i].gameObject.transform.position;
-
-                if (stateMachine.Monster.noiseMakers[i].tag == "Player")
-                {
-                    //Debug.Log("ÇÃ·¹ÀÌ¾î ÃßÀû");
-
-                    stateMachine.ChangeState(stateMachine.ChaseState);
-                }
-
-                if (stateMachine.Monster.noiseMakers[i].tag == "NoiseMaker")
-                {
-                    //Debug.Log("¾ÆÀÌÅÛ ÃßÀû");
-
-                    stateMachine.ChangeState(stateMachine.MoveState);
-                }
-            }
-        }
-    }
-
 }

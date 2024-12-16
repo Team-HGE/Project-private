@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -11,24 +11,34 @@ public class EarTypeMonster : MonoBehaviour
     [field: Header("Animations")]
     [field: SerializeField] public MonsterEarTypeAnimationData AnimationData { get; private set; }
 
+    [field: Header("Behavior")]
+    [field: SerializeField] public bool CanPatrol { get; set; } = true;
+    [field: SerializeField] public bool CanComeBack { get; set; } = true;
+    [SerializeField][field: Range(0f, 50f)] public float patrolRangeMin = 30f;
+    [SerializeField][field: Range(0f, 70f)] public float patrolRangeMax = 50f;
+
+    [field: Header("Noise")]
+    public LayerMask targetLayer;
+    public List<Collider> noiseMakers;
+
+    //[Header("MonsterTransform")]
+    //public Transform monsterTransform;
+    //public Transform monsterEyeTransform;
+
+    // í–‰ë™ ê´€ë¦¬
+    public bool IsBehavior { get; set; } = true;
+    private bool _isWaiting = false;
+    private Coroutine _wait;
+    //private float _waitTiem = 0f;
+
+    private MonsterEarTypeStateMachine _stateMachine;
+
     public CharacterController Controller { get; private set; }
     public ForceReceiver ForceReceiver { get; private set; }
     public Animator Animator { get; private set; }
     // Ai Nav
     public NavMeshAgent Agent { get; private set; }
 
-    private MonsterEarTypeStateMachine _stateMachine;
-
-    // Çàµ¿ °ü¸®
-    public bool IsBehavior { get; set; } = true;
-
-    public LayerMask targetLayer;
-    //public Collider[] noiseMakers;
-    public List<Collider> noiseMakers;
-
-    [Header("MonsterTransform")]
-    public Transform monsterTransform;
-    public Transform monsterEyeTransform;
     private void Awake()
     {
         AnimationData.Initialize();
@@ -44,39 +54,54 @@ public class EarTypeMonster : MonoBehaviour
 
     private void Start()
     {
-        _stateMachine.ChangeState(_stateMachine.PatrolState);
-        //_stateMachine.ChangeState(_stateMachine.MoveState);
-
+        _stateMachine.ChangeState(_stateMachine.IdleState);
     }
 
     private void Update()
     {
+        if (GameManager.Instance.playerDie)
+        {
+            MonsterOff();
+            return;
+        }
+
         _stateMachine.Update();
 
-        DrawCircle(transform.position, 36, Data.GroundData.PlayerChasingRange, Color.green);
-        DrawCircle(transform.position, 36, 50f, Color.green);
+        // ì„ì‹œ ì½”ë“œ
+        //DrawCircle(transform.position, 36, Data.GroundData.PlayerChasingRange, Color.green);
+        //DrawCircle(transform.position, 36, 50f, Color.green);
 
-        DrawCircle(transform.position, 36, Data.GroundData.AttackRange, Color.red);
-
+        //DrawCircle(transform.position, 36, Data.GroundData.AttackRange, Color.red);
     }
 
-    private void FixedUpdate()
-    {
-        _stateMachine.PhysicsUpdate();
-    }
-
-    // ´ë±â ½Ã°£
     public void WaitForBehavior(float time)
     {
-        StartCoroutine(ChangeBehavior(time));
+        _wait = StartCoroutine(ChangeBehavior(time));
+    }
+
+    public void StopWait()
+    {
+        if (!_isWaiting) return;
+        StopCoroutine(_wait);
     }
 
     public IEnumerator ChangeBehavior(float time)
     {
-        // nÃÊ ´ë±â
+        _isWaiting = true;
+        //_waitTiem = 0f;
+        //Debug.Log($"{Data.GroundData.FocusTransitionTime}ì´ˆ ëŒ€ê¸°");
+        // nì´ˆ ëŒ€ê¸°
         yield return new WaitForSeconds(time);
+        //yield return new WaitForSeconds(Data.GroundData.FocusTransitionTime);
 
         IsBehavior = !IsBehavior;
+        //Debug.Log($"{Data.GroundData.FocusTransitionTime}ì´ˆ ëŒ€ê¸° ë, {IsBehavior}");
+        _isWaiting = false;
+    }
+
+    public void MonsterOff()
+    {
+        gameObject.SetActive(false);
     }
 
     private void DrawCircle(Vector3 center, int segments, float radius, Color color)
@@ -84,7 +109,7 @@ public class EarTypeMonster : MonoBehaviour
         Vector3 normal = Vector3.up;
 
         float angleStep = 360.0f / segments;
-        Quaternion rotation = Quaternion.LookRotation(normal);  // ¹ı¼± º¤ÅÍ¸¦ ±âÁØÀ¸·Î È¸Àü
+        Quaternion rotation = Quaternion.LookRotation(normal);  // ë²•ì„  ë²¡í„°ë¥¼ ê¸°ì¤€ìœ¼ë¡œ íšŒì „
 
         Vector3 prevPoint = center + rotation * new Vector3(Mathf.Cos(0) * radius, Mathf.Sin(0) * radius, 0);
 
@@ -94,12 +119,17 @@ public class EarTypeMonster : MonoBehaviour
             Vector3 point = new Vector3(Mathf.Cos(angle) * radius, Mathf.Sin(angle) * radius, 0);
             Vector3 currentPoint = center + rotation * point;
 
-            Debug.DrawLine(prevPoint, currentPoint, color);  // ÀÌÀü Á¡°ú ÇöÀç Á¡À» ¿¬°áÇÏ¿© ¼±À» ±×¸²
+            Debug.DrawLine(prevPoint, currentPoint, color);  // ì´ì „ ì ê³¼ í˜„ì¬ ì ì„ ì—°ê²°í•˜ì—¬ ì„ ì„ ê·¸ë¦¼
             prevPoint = currentPoint;
         }
 
-        // ¸¶Áö¸· Á¡°ú Ã¹ ¹øÂ° Á¡À» ¿¬°áÇÏ¿© ¿øÀ» ¿Ï¼º
+        // ë§ˆì§€ë§‰ ì ê³¼ ì²« ë²ˆì§¸ ì ì„ ì—°ê²°í•˜ì—¬ ì›ì„ ì™„ì„±
         Vector3 firstPoint = center + rotation * new Vector3(Mathf.Cos(0) * radius, Mathf.Sin(0) * radius, 0);
         Debug.DrawLine(prevPoint, firstPoint, color);
     }
+
+    //private void FixedUpdate()
+    //{
+    //    _stateMachine.PhysicsUpdate();
+    //}
 }

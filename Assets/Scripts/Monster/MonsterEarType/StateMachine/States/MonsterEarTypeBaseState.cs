@@ -1,13 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.AI;
 
 public class MonsterEarTypeBaseState : IState
 {
     protected MonsterEarTypeStateMachine stateMachine;
     protected readonly MonsterGroundData groundData;
 
-    public Vector3 noisePosition;
+    //public Vector3 noisePosition;
 
     public MonsterEarTypeBaseState(MonsterEarTypeStateMachine monsterStateMachine)
     {
@@ -33,7 +32,20 @@ public class MonsterEarTypeBaseState : IState
 
     public virtual void Update()
     {
-        if (!stateMachine.IsSearchTarget) SearchTarget();      
+        if (GameManager.Instance.NowPlayCutScene)
+        {
+            if (!stateMachine.Monster.Agent.isStopped) stateMachine.Monster.Agent.isStopped = true;
+            //stateMachine.Monster.Agent.ResetPath();
+            return;
+        }
+        else
+        {
+            if (stateMachine.Monster.Agent.isStopped) stateMachine.Monster.Agent.isStopped = false;
+        }
+
+        //AttackToPlayer();
+
+        SearchTarget();
     }
 
     protected void StartAnimation(int animationHash)
@@ -41,44 +53,21 @@ public class MonsterEarTypeBaseState : IState
         stateMachine.Monster.Animator.SetBool(animationHash, true);
     }
 
-    // 애니메이션 종료
     protected void StopAnimation(int animationHash)
     {
         stateMachine.Monster.Animator.SetBool(animationHash, false);
     }
 
-    // 애니메이션 진행도 체크//수정 필요, 구현 예정***
-    protected float GetNormalizedTime(Animator animator, string tag)
-    {
-        AnimatorStateInfo currentInfo = animator.GetCurrentAnimatorStateInfo(0);
-        AnimatorStateInfo nextInfo = animator.GetNextAnimatorStateInfo(0);
-
-        // 전환되고 있을때 && 다음 애니메이션 tag
-        if (animator.IsInTransition(0) && nextInfo.IsTag(tag))
-        {
-            return nextInfo.normalizedTime;
-        }
-        // 전환되고 있지 않을때 && 현재 애니메이션 tag        
-        else if (!animator.IsInTransition(0) && currentInfo.IsTag(tag))
-        {
-            return currentInfo.normalizedTime;
-        }
-        else
-        {
-            return 0f;
-        }
-    }
-
     private void SearchTarget()
     {
-        if (stateMachine.IsChasing || stateMachine.IsFocusNoise || stateMachine.IsAttack) return;
+        if (stateMachine.IsAttack) return;
         //Debug.Log("SearchTarget");
 
         stateMachine.BiggestNoise = 0f;
         Vector3 tempPosition = Vector3.zero;
-
+        Collider tempCol = null;
         stateMachine.Monster.noiseMakers.Clear();
-
+       
         Collider[] temp = Physics.OverlapSphere(stateMachine.Monster.transform.position, stateMachine.Monster.Data.GroundData.PlayerChasingRange * 2, stateMachine.Monster.targetLayer);
 
         foreach (Collider col in temp)
@@ -88,38 +77,64 @@ public class MonsterEarTypeBaseState : IState
                 stateMachine.Monster.noiseMakers.Add(col);
                 //CheckNoise(col.gameObject.GetComponent<INoise>().CurNoiseAmount);
 
-                if (CheckNoise(col.gameObject.GetComponent<INoise>().CurNoiseAmount))
-                {
-                    //stateMachine.CurDestination = col.gameObject.transform.position;
-                    tempPosition = col.transform.position;
-                }
+                //Debug.Log($"{col.tag}, {col.gameObject.GetComponent<INoise>().CurNoiseAmount}");
 
+                if (CheckNoise(col.gameObject.GetComponent<INoise>().CurNoiseAmount))
+                {                    
+                    //stateMachine.CurDestination = col.gameObject.transform.position;
+                    if (stateMachine.BiggestNoise >= stateMachine.BeforeNoise)
+                    {
+                        tempPosition = col.transform.position;
+                        tempCol = col;                       
+                    }
+
+                }
             }
         }
 
-        // 아이템, 장비 소음 발생***
-        if (stateMachine.BiggestNoise >= 90f)
-        {
-            //Debug.Log("아이템 감지");
-            stateMachine.CurDestination = tempPosition;
-            stateMachine.ChangeState(stateMachine.MoveState);
-            return;
-        }
+        if (tempPosition == Vector3.zero) return;
 
-        if (Vector3.Distance(stateMachine.Monster.transform.position, stateMachine.Target.transform.position) <= stateMachine.Monster.Data.GroundData.PlayerChasingRange && stateMachine.BiggestNoise >= 11.5f)
+        if (stateMachine.IsFocusNoise || stateMachine.IsChasing)
         {
-            //Debug.Log("달리기 감지");
-            stateMachine.CurDestination = tempPosition;
-            stateMachine.ChangeState(stateMachine.MoveState);
-            return;
-        }
+            // 추적
+            if (Vector3.Distance(stateMachine.Monster.transform.position, tempPosition) <= stateMachine.Monster.Data.GroundData.PlayerChasingRange && stateMachine.BiggestNoise >= stateMachine.Monster.Data.GroundData.DetectNoiseMid)
+            {
+                //Debug.Log($"집중 추적 - 걷기 감지, {tempCol.tag}");
+                stateMachine.Monster.Agent.ResetPath();
+                stateMachine.Monster.Agent.isStopped = true;
 
-        if (Vector3.Distance(stateMachine.Monster.transform.position, stateMachine.Target.transform.position) <= stateMachine.Monster.Data.GroundData.PlayerChasingRange * 0.5f && stateMachine.BiggestNoise >= 5.5f)
+                stateMachine.CurDestination = tempPosition;
+                stateMachine.BeforeNoise = stateMachine.BiggestNoise;
+                stateMachine.ChangeState(stateMachine.ChaseState);
+                return;
+            }
+        }
+        else 
         {
-            //Debug.Log("걷기 감지");
-            stateMachine.CurDestination = tempPosition;
-            stateMachine.ChangeState(stateMachine.MoveState);
-            return;
+            // 이동
+            if (Vector3.Distance(stateMachine.Monster.transform.position, tempPosition) <= stateMachine.Monster.Data.GroundData.PlayerChasingRange && stateMachine.BiggestNoise >= stateMachine.Monster.Data.GroundData.DetectNoiseMax)
+            {
+                //Debug.Log($"기본 이동 - 달리기 감지, {tempCol.tag}");
+                stateMachine.Monster.Agent.ResetPath();
+                stateMachine.Monster.Agent.isStopped = true;
+
+                stateMachine.CurDestination = tempPosition;
+                stateMachine.BeforeNoise = stateMachine.BiggestNoise;
+                stateMachine.ChangeState(stateMachine.MoveState);
+                return;
+            }
+
+            if (Vector3.Distance(stateMachine.Monster.transform.position, tempPosition) <= stateMachine.Monster.Data.GroundData.PlayerChasingRange * 0.5f && stateMachine.BiggestNoise >= stateMachine.Monster.Data.GroundData.DetectNoiseMid)
+            {
+                //Debug.Log($"기본 이동 - 걷기 감지, {tempCol.tag}");
+                stateMachine.Monster.Agent.ResetPath();
+                stateMachine.Monster.Agent.isStopped = true;
+
+                stateMachine.CurDestination = tempPosition;
+                stateMachine.BeforeNoise = stateMachine.BiggestNoise;
+                stateMachine.ChangeState(stateMachine.MoveState);
+                return;
+            }
         }
     }
 
@@ -131,6 +146,16 @@ public class MonsterEarTypeBaseState : IState
             return true;
         }
         else return false;
+    }
+
+    protected void AttackToPlayer()
+    {
+        if (IsInAttackRange())
+        {
+            Rotate(GetMovementDirection());
+            stateMachine.ChangeState(stateMachine.AttackState);
+            return;
+        }
     }
 
     protected bool IsInAttackRange()
@@ -166,4 +191,19 @@ public class MonsterEarTypeBaseState : IState
             stateMachine.Monster.transform.rotation = Quaternion.Lerp(stateMachine.Monster.transform.rotation, targetRotation, stateMachine.RotationDamping * Time.deltaTime);
         }
     }
+
+    protected void MoveToPosition(Vector3 postion, float distance)
+    {
+        // 목표 지점 근처의 유효한 네비게이션 메쉬 위치 찾기
+        if (NavMesh.SamplePosition(postion, out NavMeshHit hit, distance, NavMesh.AllAreas))
+        {
+            stateMachine.Monster.Agent.SetDestination(hit.position);
+        }
+        else
+        {
+            Debug.LogError("이동 불가 지역");
+        }
+    }
+
+
 }

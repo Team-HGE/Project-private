@@ -3,7 +3,7 @@ using System.Text;
 using TMPro;
 using UnityEngine;
 
-public class SystemMsg : MonoBehaviour
+public class SystemMsg : SingletonManager<SystemMsg>
 {
     public SystemMsgSO systemMsgSO;
     public GameObject systemMsgCanvas;
@@ -12,42 +12,119 @@ public class SystemMsg : MonoBehaviour
     private StringBuilder sb = new StringBuilder();
     private GameObject msgPrefab;
     private TextMeshProUGUI msgText;
-
+    public int NowSystemMsgNumber;
+    public int NowTipMsgNumber;
     private bool isUpdating = false;
 
+    protected override void Awake()
+    {
+        base.Awake();
+    }
     public void Init()
     {
         objectPool = GetComponent<ObjectPool>();
+        NowSystemMsgNumber = 0;
+        NowTipMsgNumber = 0;
     }
 
-    public void UpdateMessage()
+    public void UpdateMessage(int SystemMsgNumber)
     {
         if (isUpdating) return;
         isUpdating = true;
-
+        NowSystemMsgNumber = SystemMsgNumber;
         StartCoroutine(PopMessage());
     }
 
-    private IEnumerator PopMessage()
+    public void UpdateTipMessage(int TipMsgNumber)
+    {
+        if (isUpdating) return;
+        isUpdating = true;
+        NowTipMsgNumber = TipMsgNumber;
+        StartCoroutine(PopTipMessage());
+    }
+
+    public IEnumerator PopMessage()
     {
         yield return new WaitForSeconds(1f);
 
-        for (int i = 0; i < systemMsgSO.messages.Length; i++)
-        {
-            msgPrefab = objectPool.GetObject();
-            msgText = msgPrefab.GetComponent<TextMeshProUGUI>();
+        AudioManager.Instance.PlaySoundEffect(SoundEffect.systemMsg);
+        msgPrefab = objectPool.GetObject();
+        msgText = msgPrefab.GetComponent<TextMeshProUGUI>();
+        sb.Append(systemMsgSO.messages[NowSystemMsgNumber]);
+        TextEffect.Highlight(msgText, Color.red);
+        msgText.text = sb.ToString();
 
-            sb.Append(systemMsgSO.messages[i]);
-            TextEffect.Highlight(msgText, Color.red);
-            msgText.text = "SYSTEM: " + sb.ToString();
+        StartCoroutine(TextEffect.FadeOut(msgText));
+        sb.Clear();
 
-            StartCoroutine(TextEffect.FadeOut(msgText));
-            sb.Clear();
+        //Debug.Log(msgPrefab);
 
-            //Debug.Log(msgPrefab);
+        yield return new WaitForSeconds(1f);
 
-            yield return new WaitForSeconds(1f);
-        }
+
+        //    private IEnumerator PopMessage()
+        //{
+        //    yield return new WaitForSeconds(1f);
+
+        //    for (int i = 0; i < systemMsgSO.messages.Length; i++)
+        //    {
+        //        msgPrefab = objectPool.GetObject();
+        //        msgText = msgPrefab.GetComponent<TextMeshProUGUI>();
+
+        //        sb.Append(systemMsgSO.messages[i]);
+        //        TextEffect.Highlight(msgText, Color.red);
+        //        msgText.text = "SYSTEM: " + sb.ToString();
+
+        //        StartCoroutine(TextEffect.FadeOut(msgText));
+        //        sb.Clear();
+
+        //        //Debug.Log(msgPrefab);
+
+        //        yield return new WaitForSeconds(1f);
+        //    }
+
+        //    for (int i = 0; i < systemMsgSO.tips.Length; i++)
+        //    {
+        //        msgPrefab = objectPool.GetObject();
+        //        msgText = msgPrefab.GetComponent<TextMeshProUGUI>();
+
+        //        sb.Append(systemMsgSO.tips[i]);
+        //        //TextEffect.Highlight(msgText, Color.red);
+        //        msgText.text = "TIP: " + sb.ToString();
+
+        //        StartCoroutine(TextEffect.FadeOut(msgText));
+        //        sb.Clear();
+
+        //        //Debug.Log(msgPrefab);
+
+        //        yield return new WaitForSeconds(1f);
+        //    }
+
+        isUpdating = false;
+        yield return null;
+    }
+
+    public IEnumerator PopTipMessage()
+    {
+        yield return new WaitForSeconds(1f);
+
+        //if (NowTipMsgNumber > 3)
+        //    objectPool.DestroyObject();
+
+        AudioManager.Instance.PlaySoundEffect(SoundEffect.systemMsg);
+        msgPrefab = objectPool.GetObject();
+        msgText = msgPrefab.GetComponent<TextMeshProUGUI>();
+        sb.Append(systemMsgSO.tips[NowTipMsgNumber]);
+        TextEffect.Highlight(msgText, Color.white);
+        msgText.text = sb.ToString();
+
+        StartCoroutine(TextEffect.FadeOut(msgText));
+        sb.Clear();
+
+        //Debug.Log(msgPrefab);
+
+        yield return new WaitForSeconds(1f);
+
         isUpdating = false;
         yield return null;
     }

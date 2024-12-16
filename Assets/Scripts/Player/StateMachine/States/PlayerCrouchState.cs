@@ -1,10 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerCrouchState : PlayerGroundState
 {
+    public AudioManager audioManager;
+
     public PlayerCrouchState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
     {
     }
@@ -12,12 +12,12 @@ public class PlayerCrouchState : PlayerGroundState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("�ɱ�");
-
+        //Debug.Log("앉기");
         stateMachine.Player.transform.localScale = new Vector3(stateMachine.Player.transform.localScale.x, groundData.CrouchHeight, stateMachine.Player.transform.localScale.z);
         stateMachine.MovementSpeedModifier = groundData.CrouchSpeedModifier;
         stateMachine.Player.SumNoiseAmount = 2f;
         stateMachine.IsCrouch = true;
+        AudioManager.Instance.PlaySoundEffect(SoundEffect.duck); // 권용 수정
     }
 
     public override void Exit() 
@@ -25,6 +25,7 @@ public class PlayerCrouchState : PlayerGroundState
         base.Exit();
         stateMachine.Player.transform.localScale = new Vector3(stateMachine.Player.transform.localScale.x, stateMachine.OriginHeight, stateMachine.Player.transform.localScale.z);
         stateMachine.IsCrouch = false;
+
     }
 
     public override void Update()
@@ -39,12 +40,17 @@ public class PlayerCrouchState : PlayerGroundState
         if (stateMachine.Player.InputsData.MovementInput != Vector2.zero)
         {
             stateMachine.ChangeState(stateMachine.WalkState);
+            AudioManager.Instance.PlaySoundEffect(SoundEffect.duck); // 권용 수정
+            
+
             return;
         }
 
         if (stateMachine.PressShift)
         {
             stateMachine.ChangeState(stateMachine.RunState);
+            AudioManager.Instance.PlaySoundEffect(SoundEffect.duck); // 권용 수정
+            
             return;
         }
 

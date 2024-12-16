@@ -1,6 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class MonsterAttackState : MonsterGroundState
 {
@@ -10,20 +8,31 @@ public class MonsterAttackState : MonsterGroundState
     public override void Enter()
     {
         base.Enter();
-        JumpScareManager.Instance.OnJumpScare(stateMachine.Monster.monsterTransform, JumpScareType.EyeTypeMonster, stateMachine.Monster.monsterEyeTransform);
 
-        // ¾Ö´Ï¸ŞÀÌ¼Ç ½ÇÇà
-        StartAnimation(stateMachine.Monster.AnimationData.AttackParameterHash);        
+        if (GameManager.Instance.NowPlayCutScene)
+        {
+            stateMachine.ChangeState(stateMachine.ChaseState);
+            return;
+        }
+
+        stateMachine.IsAttack = true;
         stateMachine.Monster.Agent.isStopped = true;
-        Debug.Log("ÇÃ·¹ÀÌ¾î °ø°İ - °ÔÀÓ ¿À¹ö");
+        
+        // ì• ë‹ˆë©”ì´ì…˜ ì‹¤í–‰
+        StartAnimation(stateMachine.Monster.AnimationData.AttackParameterHash);
 
+        Debug.Log("í”Œë ˆì´ì–´ ê³µê²© - ê²Œì„ ì˜¤ë²„");
+        // ì í”„ìŠ¤í€˜ì–´
+        GameManager.Instance.jumpScareManager.PlayJumpScare(JumpScareType.EyeTypeMonster);
+        GameManager.Instance.playerDie = true;
     }
 
     public override void Exit()
     {
         base.Exit();
-
-        // ¾Ö´Ï¸ŞÀÌ¼Ç Á¾·á
+        stateMachine.IsAttack = false;
+        stateMachine.Monster.Agent.isStopped = false;
+        // ì• ë‹ˆë©”ì´ì…˜ ì¢…ë£Œ
         StopAnimation(stateMachine.Monster.AnimationData.AttackParameterHash);
     }
 }

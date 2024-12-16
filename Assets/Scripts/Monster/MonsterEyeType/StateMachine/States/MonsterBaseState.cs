@@ -1,6 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class MonsterBaseState : IState
 {
@@ -30,74 +28,130 @@ public class MonsterBaseState : IState
     }
 
     public virtual void Update()
-    {
+    {        
+        if (GameManager.Instance.NowPlayCutScene)
+        {
+            if (!stateMachine.Monster.Agent.isStopped) stateMachine.Monster.Agent.isStopped = true;
+            //stateMachine.Monster.Agent.ResetPath();
+            return;
+        }
+        else
+        {
+            if (stateMachine.Monster.Agent.isStopped) stateMachine.Monster.Agent.isStopped = false;
+        }
+
+        RotateToPlayer();
+        AttackToPlayer();
+
+        FindPlayerCheck();
     }
 
-    
-    public virtual void Move(Vector3 movementDirection)
-    {
-        float movementSpeed = GetMovementSpeed();
-        stateMachine.Monster.Controller.Move(((movementDirection * movementSpeed) + stateMachine.Monster.ForceReceiver.Movement) * Time.deltaTime);
-    }
-
-    // ¼öÁ÷, ¼öÆò °¡ÇÏ´Â Èû 
-    protected void ForceMove()
-    {
-        stateMachine.Monster.Controller.Move(stateMachine.Monster.ForceReceiver.Movement * Time.deltaTime);
-    }
-
-    private float GetMovementSpeed()
-    {
-        float movementSpeed = stateMachine.MovementSpeed * stateMachine.MovementSpeedModifier;
-        return movementSpeed;
-    }
-
-
-    // ¸ğµç »óÅÂ¿¡ ÇÊ¿äÇÑ ¾Ö´Ï¸ŞÀÌ¼Ç ÀüÈ¯ ±â´É
-    // ¾Ö´Ï¸ŞÀÌ¼Ç Àç»ı
+    // ì• ë‹ˆë©”ì´ì…˜ ì¬ìƒ
     protected void StartAnimation(int animationHash)
     {
         stateMachine.Monster.Animator.SetBool(animationHash, true);
     }
 
-    // ¾Ö´Ï¸ŞÀÌ¼Ç Á¾·á
+    // ì• ë‹ˆë©”ì´ì…˜ ì¢…ë£Œ
     protected void StopAnimation(int animationHash)
     {
         stateMachine.Monster.Animator.SetBool(animationHash, false);
     }
 
-    // ¾Ö´Ï¸ŞÀÌ¼Ç ÁøÇàµµ Ã¼Å©
-    protected float GetNormalizedTime(Animator animator, string tag)
+    protected void RotateToPlayer()
     {
-        AnimatorStateInfo currentInfo = animator.GetCurrentAnimatorStateInfo(0);
-        AnimatorStateInfo nextInfo = animator.GetNextAnimatorStateInfo(0);
-
-        // ÀüÈ¯µÇ°í ÀÖÀ»¶§ && ´ÙÀ½ ¾Ö´Ï¸ŞÀÌ¼Ç tag
-        if (animator.IsInTransition(0) && nextInfo.IsTag(tag))
+        if (IsInFeelRange())
         {
-            return nextInfo.normalizedTime;
-        }
-        // ÀüÈ¯µÇ°í ÀÖÁö ¾ÊÀ»¶§ && ÇöÀç ¾Ö´Ï¸ŞÀÌ¼Ç tag        
-        else if (!animator.IsInTransition(0) && currentInfo.IsTag(tag))
-        {
-            return currentInfo.normalizedTime;
-        }
-        else
-        {
-            return 0f;
+            Rotate(GetMovementDirection());
         }
     }
 
-    protected bool IsInChaseRange()
+    protected void AttackToPlayer()
     {
-        float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.Monster.transform.position).sqrMagnitude;
-        return playerDistanceSqr <= groundData.PlayerChasingRange * groundData.PlayerChasingRange;
+        if (IsInAttackRange() && GetIsPlayerInFieldOfView())
+        {
+            stateMachine.ChangeState(stateMachine.AttackState);
+            return;
+        }            
     }
 
-    protected bool IsInFindRange()
+    protected void FindPlayerCheck()
+    {
+        if (stateMachine.IsAttack) return;
+
+        if (!stateMachine.Monster.canCheck)
+        {
+            //Debug.Log("í”Œë ˆì´ì–´ íƒì§€ ë¶ˆê°€");
+            if (stateMachine.Monster.canSeePlayer) stateMachine.Monster.canSeePlayer = false;
+            return;
+        }
+            
+        //if (stateMachine.Monster.rangeChecks.Length <= 0)
+        //{
+        //    //Debug.Log("í”Œë ˆì´ì–´ íƒì§€ ë¶ˆê°€");
+        //    if (stateMachine.Monster.canSeePlayer) stateMachine.Monster.canSeePlayer = false;
+        //    return;
+        //}
+
+        //Transform target = stateMachine.Monster.rangeChecks[0].transform;
+        Transform target = stateMachine.Monster.findTarget;
+         
+        Vector3 directionToTarget = (target.position - stateMachine.Monster.transform.position).normalized;
+        Vector3 directionToTargetEye = (new Vector3(target.position.x, stateMachine.Monster.eye.position.y, target.position.z) - stateMachine.Monster.eye.position).normalized;
+
+
+        if (Vector3.Angle(stateMachine.Monster.transform.forward, directionToTarget) < stateMachine.Monster.Data.GroundData.ViewAngle / 2)
+        {
+            float distanceToTarget = Vector3.Distance(stateMachine.Monster.transform.position, target.position);
+            float distanceToTargetEye = Vector3.Distance(stateMachine.Monster.eye.position, new Vector3(target.position.x, stateMachine.Monster.eye.position.y, target.position.z));
+
+
+            //Debug.Log($"FindPlayerCheck - ë°”ë‹¥, {Physics.Raycast(stateMachine.Monster .transform.position, directionToTarget, distanceToTarget, stateMachine.Monster.obstructionMask)}, {Physics.Raycast(stateMachine.Monster.transform.position, directionToTarget, distanceToTarget, stateMachine.Monster.playerMask)}, {stateMachine.Monster.transform.position}, {distanceToTarget} ");
+
+
+            if (!Physics.Raycast(stateMachine.Monster.transform.position, directionToTarget, distanceToTarget, stateMachine.Monster.obstructionMask))
+            {
+                stateMachine.Monster.canSeePlayer = true;
+                if (stateMachine.IsFind || stateMachine.IsChasing) return;
+                else
+                {
+                    //Debug.Log($"FindPlayerCheck - í”Œë ˆì´ì–´ ë°œê²¬ - ë°”ë‹¥, {Physics.Raycast(stateMachine.Monster.transform.position, directionToTarget, distanceToTarget, stateMachine.Monster.obstructionMask)}, {Physics.Raycast(stateMachine.Monster.transform.position, directionToTarget, distanceToTarget, stateMachine.Monster.playerMask)}, {stateMachine.Monster.transform.position} ");
+
+                    stateMachine.ChangeState(stateMachine.FindState);
+                }
+                
+                return;
+            }
+            else stateMachine.Monster.canSeePlayer = false;
+
+            //Debug.Log($"FindPlayerCheck - ëˆˆ, {Physics.Raycast(stateMachine.Monster.eye.position, directionToTargetEye, distanceToTargetEye, stateMachine.Monster.obstructionMask)}, {Physics.Raycast(stateMachine.Monster.eye.position, directionToTargetEye, distanceToTargetEye, stateMachine.Monster.playerMask)}, {stateMachine.Monster.eye.position}, {distanceToTargetEye} ");
+
+
+            if (!Physics.Raycast(stateMachine.Monster.eye.position, directionToTargetEye, distanceToTargetEye, stateMachine.Monster.obstructionMask) && Physics.Raycast(stateMachine.Monster.eye.position, directionToTargetEye, distanceToTargetEye, stateMachine.Monster.playerMask))
+            {
+                stateMachine.Monster.canSeePlayer = true;
+
+                if (stateMachine.IsFind || stateMachine.IsChasing) return;
+                else
+                {
+                    //Debug.Log($"FindPlayerCheck - í”Œë ˆì´ì–´ ë°œê²¬ - ëˆˆ, {stateMachine.Monster.eye.position}");
+                    //Debug.Log($"FindPlayerCheck - í”Œë ˆì´ì–´ ë°œê²¬ - ëˆˆ, {Physics.Raycast(stateMachine.Monster.eye.position, directionToTargetEye, distanceToTargetEye, stateMachine.Monster.obstructionMask)}, {Physics.Raycast(stateMachine.Monster.eye.position, directionToTargetEye, distanceToTargetEye, stateMachine.Monster.playerMask)}, {stateMachine.Monster.eye.position}, {distanceToTargetEye} ");
+                    stateMachine.ChangeState(stateMachine.FindState);
+                }
+
+                return;
+            }
+            else stateMachine.Monster.canSeePlayer = false;
+
+        }
+        else stateMachine.Monster.canSeePlayer = false;
+
+    }
+
+    protected bool IsInFeelRange()
     {
         float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.Monster.transform.position).sqrMagnitude;
-        return playerDistanceSqr <= groundData.PlayerFindRange * groundData.PlayerFindRange;
+        return playerDistanceSqr <= groundData.PlayerFeelRange * groundData.PlayerFeelRange;
     }
 
     protected bool IsInAttackRange()
@@ -127,4 +181,22 @@ public class MonsterBaseState : IState
             stateMachine.Monster.transform.rotation = Quaternion.Lerp(stateMachine.Monster.transform.rotation, targetRotation, stateMachine.RotationDamping * Time.deltaTime);
         }
     }
+
+    // ìˆ˜ì§
+    //protected void ForceMove()
+    //{
+    //    stateMachine.Monster.Controller.Move(stateMachine.Monster.ForceReceiver.Movement * Time.deltaTime);
+    //}
+
+    //protected bool IsInChaseRange()
+    //{
+    //    float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.Monster.transform.position).sqrMagnitude;
+    //    return playerDistanceSqr <= groundData.PlayerChasingRange * groundData.PlayerChasingRange;
+    //}
+
+    //protected bool IsInFindRange()
+    //{
+    //    float playerDistanceSqr = (stateMachine.Target.transform.position - stateMachine.Monster.transform.position).sqrMagnitude;
+    //    return playerDistanceSqr <= groundData.PlayerFindRange * groundData.PlayerFindRange;
+    //}
 }

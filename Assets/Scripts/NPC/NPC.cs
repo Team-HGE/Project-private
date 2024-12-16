@@ -1,87 +1,37 @@
-
-using UnityEngine;
+using System;
+public enum NPC_Name
+{
+    HMS,
+    PJH,
+    PSY,
+    KJM,
+    Unknown
+}
 
 public class NPC : InteractableObject
 {
-    public NPC_SO npcSO;
-
-    private void InitNPCData(NPC_SO _npc)
-    {
-        npcSO = _npc;
-    }
+    public int ID;
+    private NpcData data;
+    public NPC_Name nPC_Name;
+    public event Action npcEvent;
 
     public override void ActivateInteraction()
     {
         if (isInteractable) return;
 
         GameManager.Instance.player.playerInteraction.SetActive(true);
-        GameManager.Instance.player.interactableText.text = "´ëÈ­ÇÏ±â";
-
+        GameManager.Instance.player.interactableText.text = "ëŒ€í™”í•˜ê¸°";
     }
 
     public override void Interact()
     {
-        //ChangeState(npcState.Speaking);
+        // IDë¡œ npc ì •ë³´ ë¶ˆëŸ¬ì˜¤ê¸°
+        data = DialogueManager.Instance.npcData;
 
-        InitNPCData(npcSO);
+        DialogueManager.Instance.npcScript.InitNPC(data, ID);
+        DialogueManager.Instance.npcScript.Print();
 
-        DialogueManager.Instance.dialogue.StartDialogue();
-    }
-
-    // NPC Ç¥Á¤ ¹Ù²Ù±â
-    public void SwitchEmotion(Emotion emotion)
-    {
-        switch(emotion)
-        {
-            case Emotion.Default:
-                npcSO.emotion = Emotion.Default;
-                return;
-            case Emotion.Embarrassed:
-                npcSO.emotion = Emotion.Embarrassed;
-                return;
-            case Emotion.Rage:
-                npcSO.emotion = Emotion.Rage;
-                return;
-            default:
-                npcSO.emotion = Emotion.Default;
-                return;
-        }
-    }
-
-    public Sprite SwitchPortrait(Emotion emotion)
-    {
-        switch (emotion)
-        {
-            case Emotion.Default:
-                return npcSO.illusts[0];
-            case Emotion.Embarrassed:
-                return npcSO.illusts[1];
-            case Emotion.Rage:
-                return npcSO.illusts[2];
-            default:
-                return npcSO.illusts[0];
-        }
-    }
-
-    // NPC »óÅÂ Á¦¾î
-    // ´ëÈ­Áß, ÅëÈ­Áß, º¯ÀÌ, »ç¸Á
-
-    public string ChangeNpcState(NpcState stateType)
-    {
-        switch (stateType)
-        {
-            case NpcState.Idle:
-                npcSO.state = NpcState.Idle;
-                return "´ë±âÁß";
-            case NpcState.Speaking:
-                npcSO.state = NpcState.Speaking;
-                return "´ëÈ­Áß";
-            case NpcState.Calling:
-                npcSO.state = NpcState.Calling;
-                return "ÅëÈ­Áß";
-            default:
-                npcSO.state = NpcState.Idle;
-                return "´ë±âÁß";
-        }
+        npcEvent?.Invoke();
+        npcEvent = null;
     }
 }

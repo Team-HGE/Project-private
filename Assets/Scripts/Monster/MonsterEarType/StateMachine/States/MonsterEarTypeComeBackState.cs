@@ -1,8 +1,4 @@
-﻿    using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class MonsterEarTypeComeBackState : MonsterEarTypeGroundState
+﻿public class MonsterEarTypeComeBackState : MonsterEarTypeGroundState
 {
     public MonsterEarTypeComeBackState(MonsterEarTypeStateMachine monsterStateMachine) : base(monsterStateMachine)
     {
@@ -11,12 +7,19 @@ public class MonsterEarTypeComeBackState : MonsterEarTypeGroundState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("컴백 시작");
+
+        if (!stateMachine.Monster.CanComeBack)
+        {
+            stateMachine.ChangeState(stateMachine.IdleState);
+            return;
+        }
+
+        //Debug.Log("컴백 시작");
         stateMachine.IsComeBack = true;
         stateMachine.Monster.Agent.speed = groundData.ComebackSpeed;
-        stateMachine.Monster.Agent.SetDestination(stateMachine.StartPosition);
-        // 애니메이션 실행 - 그라운드 파라미터 해쉬로 접근
+        // 애니메이션 실행
         StartAnimation(stateMachine.Monster.AnimationData.ComeBackParameterHash);
+        stateMachine.Monster.Agent.SetDestination(stateMachine.StartPosition);
     }
 
     public override void Exit()
@@ -32,11 +35,14 @@ public class MonsterEarTypeComeBackState : MonsterEarTypeGroundState
     {
         base.Update();
 
-        if (Vector3.Distance(stateMachine.StartPosition, stateMachine.Monster.transform.position) < 3f)
+        if (stateMachine.Monster.Agent.pathPending) return;
 
+        if (stateMachine.Monster.Agent.remainingDistance < 0.2f)
         {
-            Debug.Log("복귀 완료");
+            // 목적지에 도착
+            //Debug.Log("복귀 완료");
             stateMachine.ChangeState(stateMachine.IdleState);
+            return;
         }
     }
 }

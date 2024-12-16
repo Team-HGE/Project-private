@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class MonsterEarTypeIdleState : MonsterEarTypeGroundState
+ï»¿public class MonsterEarTypeIdleState : MonsterEarTypeGroundState
 {
     public MonsterEarTypeIdleState(MonsterEarTypeStateMachine monsterStateMachine) : base(monsterStateMachine)
     {
@@ -12,26 +8,27 @@ public class MonsterEarTypeIdleState : MonsterEarTypeGroundState
     {
         base.Enter();
 
-        // ¾Ö´Ï¸ŞÀÌ¼Ç ½ÇÇà - ±×¶ó¿îµå ÆÄ¶ó¹ÌÅÍ ÇØ½¬·Î Á¢±Ù
+        // ì• ë‹ˆë©”ì´ì…˜ ì‹¤í–‰
         StartAnimation(stateMachine.Monster.AnimationData.IdleParameterHash);
-
+        stateMachine.Monster.Agent.isStopped = true;
         stateMachine.Monster.IsBehavior = false;
         stateMachine.Monster.WaitForBehavior(stateMachine.Monster.Data.GroundData.IdleTransitionTime);
-
     }
 
     public override void Exit()
     {
         base.Exit();
 
-        // ¾Ö´Ï¸ŞÀÌ¼Ç Á¾·á - ±×¶ó¿îµå ÆÄ¶ó¹ÌÅÍ ÇØ½¬·Î Á¢±Ù
+        // ì• ë‹ˆë©”ì´ì…˜ ì¢…ë£Œ
         StopAnimation(stateMachine.Monster.AnimationData.IdleParameterHash);
+        stateMachine.Monster.Agent.isStopped = false;
+        stateMachine.Monster.StopWait();
     }
 
     public override void Update()
     {
         base.Update();
-
+        if (!stateMachine.Monster.CanPatrol) return;
         if (!stateMachine.Monster.IsBehavior) return;
         stateMachine.ChangeState(stateMachine.PatrolState);
     }

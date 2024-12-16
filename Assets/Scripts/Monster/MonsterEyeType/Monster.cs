@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
+ï»¿using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.ProBuilder;
-using static UnityEngine.Rendering.HableCurve;
 
 public class Monster : MonoBehaviour
 {
@@ -13,28 +10,35 @@ public class Monster : MonoBehaviour
     [field: Header("Animations")]
     [field: SerializeField] public MonsterAnimationData AnimationData { get; private set; }
 
+    [field: Header("Behavior")]
+    [field: SerializeField] public bool CanPatrol { get; set; } = true;
+    [field: SerializeField] public bool CanComeBack { get; set; } = true;
+    [SerializeField][field: Range(0f, 50f)] public float patrolRangeMin = 30f;
+    [SerializeField][field: Range(0f, 50f)] public float patrolRangeMax = 50f;
+
+    [field: Header("MonsterTransform")]
+    public Transform monsterTransform;
+    public Transform monsterEyeTransform;
+
+    [field: Header("Find")]
+    public LayerMask playerMask;
+    public LayerMask obstructionMask;
+    public bool canSeePlayer;
+    public bool canCheck;
+    public Transform eye;
+    public Transform findTarget;
+
+    private MonsterStateMachine _stateMachine;
+
+    public bool IsBehavior { get; set; } = true;
+    private Coroutine _wait;
+    private bool _isWaiting = false;
+
     public CharacterController Controller { get; private set; }
     public ForceReceiver ForceReceiver { get; private set; }
     public Animator Animator { get; private set; }
     // Ai Nav
     public NavMeshAgent Agent { get; private set; }
-
-    private MonsterStateMachine _stateMachine;
-
-    // Çàµ¿ °ü¸®
-    public bool IsBehavior {get; set;} = true;
-
-    // INoise
-    public float NoiseTransitionTime { get; set; }
-    public float NoiseMin { get; set; }
-    public float NoiseMax { get; set; }
-    public float NoiseAmount { get; set; }
-    public float DecreaseSpeed { get; set; }
-
-    [Header("MonsterTransform")]
-    public Transform monsterTransform;
-    public Transform monsterEyeTransform;
-
 
     private void Awake()
     {
@@ -50,41 +54,92 @@ public class Monster : MonoBehaviour
 
     private void Start()
     {
-        _stateMachine.ChangeState(_stateMachine.PatrolState);
+        _stateMachine.ChangeState(_stateMachine.IdleState);
+        StartCoroutine(FPRoutine());
     }
 
     private void Update()
     {
-        //_stateMachine.HandleInput();
-        _stateMachine.Update();
-
-        if (NoiseAmount > 0)
+        if (GameManager.Instance.playerDie)
         {
-            
+            MonsterOff();
+            return;
         }
 
-        DrawCircle(transform.position, 36, Data.GroundData.PlayerChasingRange, Color.yellow);
-        DrawCircle(transform.position, 36, Data.GroundData.PlayerFindRange, Color.green);
-        DrawCircle(transform.position, 36, Data.GroundData.AttackRange, Color.red);
+        _stateMachine.Update();
 
+        //// ë²”ìœ„ ì²´í¬ìš©, ë‚˜ì¤‘ì— ì£¼ì„ì²˜ë¦¬ ë˜ëŠ” ì§€ìš¸ê²ƒ    
+        //DrawCircle(transform.position, 36, Data.GroundData.PlayerChasingRange, Color.yellow);
+        //DrawCircle(transform.position, 36, Data.GroundData.PlayerFindRange, Color.green);
+        //DrawCircle(transform.position, 36, Data.GroundData.AttackRange, Color.red);
     }
 
-    private void FixedUpdate()
+    private IEnumerator FPRoutine()
     {
-        _stateMachine.PhysicsUpdate();
+        WaitForSeconds wait = new WaitForSeconds(0.2f);
+
+        while (true) 
+        {
+            yield return wait;
+            FindPlayer();
+        }            
     }
-    
-    // ´ë±â ½Ã°£
+
+    private void FindPlayer()
+    {
+        if (_stateMachine.IsAttack) return; 
+
+        Collider[] rangeChecks = Physics.OverlapSphere(transform.position, Data.GroundData.PlayerChasingRange, playerMask);
+
+        if (rangeChecks.Length > 0)
+        {
+            if (!_stateMachine.IsPatrol && !_stateMachine.IsIdle && !_stateMachine.IsComeBack)
+            {
+                findTarget = rangeChecks[0].transform;
+                canCheck = true;
+                //if (Vector3.Distance(transform.position, rangeChecks[0].transform.position))
+            }
+            else if (_stateMachine.IsPatrol || _stateMachine.IsIdle || _stateMachine.IsComeBack)
+            {
+                if (Vector3.Distance(transform.position, rangeChecks[0].transform.position) <= Data.GroundData.PlayerFindRange)
+                {
+                    findTarget = rangeChecks[0].transform;
+                    canCheck = true;
+                }
+                else 
+                {
+                    canCheck = false;
+                }
+            }
+        }
+        else
+        {
+            canCheck = false;
+        }
+    }
+
     public void WaitForBehavior(float time)
     {
-        StartCoroutine(ChangeBehavior(time));
+        _wait = StartCoroutine(ChangeBehavior(time));
     }
 
     public IEnumerator ChangeBehavior(float time)
     {
-        // nÃÊ ´ë±â
+        _isWaiting = true;
+        //_waitTiem = 0f;
+        //Debug.Log($"{time}ì´ˆ ëŒ€ê¸°");
+        // nì´ˆ ëŒ€ê¸°
         yield return new WaitForSeconds(time);
+
         IsBehavior = !IsBehavior;
+        //Debug.Log($"{time}ì´ˆ ëŒ€ê¸° ë, {IsBehavior}");
+        _isWaiting = false;
+    }
+
+    public void StopWait()
+    {
+        if (!_isWaiting) return;
+        StopCoroutine(_wait);
     }
 
     private void DrawCircle(Vector3 center, int segments, float radius, Color color)
@@ -92,7 +147,7 @@ public class Monster : MonoBehaviour
         Vector3 normal = Vector3.up;
 
         float angleStep = 360.0f / segments;
-        Quaternion rotation = Quaternion.LookRotation(normal);  // ¹ý¼± º¤ÅÍ¸¦ ±âÁØÀ¸·Î È¸Àü
+        Quaternion rotation = Quaternion.LookRotation(normal);  // ë²•ì„  ë²¡í„°ë¥¼ ê¸°ì¤€ìœ¼ë¡œ íšŒì „
 
         Vector3 prevPoint = center + rotation * new Vector3(Mathf.Cos(0) * radius, Mathf.Sin(0) * radius, 0);
 
@@ -102,12 +157,22 @@ public class Monster : MonoBehaviour
             Vector3 point = new Vector3(Mathf.Cos(angle) * radius, Mathf.Sin(angle) * radius, 0);
             Vector3 currentPoint = center + rotation * point;
 
-            Debug.DrawLine(prevPoint, currentPoint, color);  // ÀÌÀü Á¡°ú ÇöÀç Á¡À» ¿¬°áÇÏ¿© ¼±À» ±×¸²
+            Debug.DrawLine(prevPoint, currentPoint, color);  // ì´ì „ ì ê³¼ í˜„ìž¬ ì ì„ ì—°ê²°í•˜ì—¬ ì„ ì„ ê·¸ë¦¼
             prevPoint = currentPoint;
         }
 
-        // ¸¶Áö¸· Á¡°ú Ã¹ ¹øÂ° Á¡À» ¿¬°áÇÏ¿© ¿øÀ» ¿Ï¼º
+        // ë§ˆì§€ë§‰ ì ê³¼ ì²« ë²ˆì§¸ ì ì„ ì—°ê²°í•˜ì—¬ ì›ì„ ì™„ì„±
         Vector3 firstPoint = center + rotation * new Vector3(Mathf.Cos(0) * radius, Mathf.Sin(0) * radius, 0);
         Debug.DrawLine(prevPoint, firstPoint, color);
     }
+
+    public void MonsterOff()
+    {
+        gameObject.SetActive(false);
+    }
+
+    //private void FixedUpdate()
+    //{
+    //    _stateMachine.PhysicsUpdate();
+    //}
 }

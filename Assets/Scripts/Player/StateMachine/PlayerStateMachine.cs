@@ -1,9 +1,4 @@
-﻿using UnityEngine.InputSystem.LowLevel;
-using UnityEditor.ShaderKeywordFilter;
-using UnityEngine;
-using UnityEngine.InputSystem;
-
-public class PlayerStateMachine : StateMachine
+﻿public class PlayerStateMachine : StateMachine
 {
     public Player Player { get; }
 
@@ -12,17 +7,15 @@ public class PlayerStateMachine : StateMachine
     public PlayerWalkState WalkState { get; private set; }
     public PlayerRunState RunState { get; private set; }
     public PlayerCrouchState CrouchState { get; private set; }
-    // 추가 상태들 추가 구현 사항***
 
     // 상태 전환 조건
     public bool PressShift { get; set; }
     public bool PressCtrl { get; set; }
 
+    // 현재 상태
     public bool IsRunning { get; set; }
     public bool IsCrouch { get; set; }
     public bool IsWalking { get; set; }
-
-
 
     // 상호작용
     public bool IsInteraction { get; set; }
@@ -43,17 +36,12 @@ public class PlayerStateMachine : StateMachine
 
         MovementSpeed = player.Data.GroundData.BaseSpeed;
         OriginHeight = player.transform.localScale.y;
-
-        GameManager.Instance.PlayerStateMachine = this;
     }
 
     public override void ChangeState(IState state)
     {
-
         if (!Player.IsPlayerControll) return;
 
         base.ChangeState(state);
-
     }
-
 }

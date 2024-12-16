@@ -12,9 +12,6 @@ public class MonsterEarTypeAnimationData
     [SerializeField] private string chaseParameterName = "Chase";
     [SerializeField] private string attackParameterName = "Attack";
 
-    //[SerializeField] private string findParameterName = "Find";
-    //[SerializeField] private string loseSightParameterName = "LoseSight";
-
     public int GroundParameterHash { get; private set; }
     public int IdleParameterHash { get; private set; }
     public int PatrolParameterHash { get; private set; }
@@ -23,9 +20,6 @@ public class MonsterEarTypeAnimationData
     public int ComeBackParameterHash { get; private set; }
     public int ChaseParameterHash { get; private set; }
     public int AttackParameterHash { get; private set; }
-
-    //public int FindParameterHash { get; private set; }
-    //public int LoseSightParameterHash { get; private set; }
 
     public void Initialize()
     {
@@ -37,8 +31,5 @@ public class MonsterEarTypeAnimationData
         ComeBackParameterHash = Animator.StringToHash(comeBackParameterName);
         ChaseParameterHash = Animator.StringToHash(chaseParameterName);
         AttackParameterHash = Animator.StringToHash(attackParameterName);
-
-        //FindParameterHash = Animator.StringToHash(findParameterName);
-        //LoseSightParameterHash = Animator.StringToHash(loseSightParameterName
     }
 }

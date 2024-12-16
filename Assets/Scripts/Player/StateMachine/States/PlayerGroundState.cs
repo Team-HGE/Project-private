@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-
 public class PlayerGroundState : PlayerBaseState
 {
     public PlayerGroundState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
@@ -25,6 +24,7 @@ public class PlayerGroundState : PlayerBaseState
         // E 키로 상호작용
         if (stateMachine.IsInteraction)
         {
+            // 플레이어 정지 - 상호작용
             if (!stateMachine.Player.IsPlayerControll) return;
 
             //Debug.Log("Update - E키 누르는 중");
@@ -36,16 +36,14 @@ public class PlayerGroundState : PlayerBaseState
     {
         base.PhysicsUpdate();
 
-        // ���� �پ��ִ� ���¿��ٰ� -> �߶� (�Ȱ��� �������� ������ ���)
         if (!stateMachine.Player.Controller.isGrounded
         && stateMachine.Player.Controller.velocity.y < Physics.gravity.y * Time.fixedDeltaTime)
         {
-            // �߶� ���Ŀ� ������ �߻� ���� ���� �߰� ���� ����***
             return;
         }
     }
 
-    // E Ű ��ȣ�ۿ� - Ű ������ ��
+    // E 키 누름
     protected override void OnInterationStared(InputAction.CallbackContext context)
     {
         base.OnInterationStared(context);
@@ -53,15 +51,15 @@ public class PlayerGroundState : PlayerBaseState
         //Debug.Log("E키 누름");
     }
 
-    // E Ű ��ȣ�ۿ� - Ű ������ ��
+    // E 키 누르는 중
     //protected override void OnInterationPerformed(InputAction.CallbackContext context)
     //{
     //    base.OnInterationPerformed(context);
     //
-    //    Debug.Log("EŰ ������ ��");
+    //   
     //}
 
-    // E Ű ��ȣ�ۿ� - Ű ��
+    // E 키 뗌
     protected override void OnInterationCanceled(InputAction.CallbackContext context)
     {
         base.OnInterationCanceled(context);

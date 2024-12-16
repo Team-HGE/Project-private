@@ -1,10 +1,8 @@
-﻿using UnityEditor.ShaderKeywordFilter;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerRunState : PlayerGroundState
 {
-    //private RunEffect CurrentStamina;
 
     public PlayerRunState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
     {
@@ -14,9 +12,6 @@ public class PlayerRunState : PlayerGroundState
     {
         base.Enter();
 
-
-        //CurrentStamina = stateMachine.Player.GetComponent<RunEffect>();
-
         if (stateMachine.Player.CurrentStamina.IsExhausted)
         {
             stateMachine.ChangeState(stateMachine.WalkState);
@@ -24,7 +19,6 @@ public class PlayerRunState : PlayerGroundState
         else
         {
             stateMachine.MovementSpeedModifier = groundData.RunSpeedModifier;
-           
         }
 
         //Debug.Log("달리기 시작");
@@ -33,17 +27,15 @@ public class PlayerRunState : PlayerGroundState
         stateMachine.IsRunning = true;
     }
 
-
     public override void Update()
     {
         base.Update();
-        stateMachine.Player.CurrentStamina.ConsumeStamina(18f); // 스태미나 소모
+        stateMachine.Player.CurrentStamina.ConsumeStamina(3f); // 스태미나 소모
 
         if (stateMachine.Player.CurrentStamina.IsExhausted)
         {
             stateMachine.ChangeState(stateMachine.WalkState); // 스태미나가 다 떨어지면 걷기 상태로 전환
-        }
-        
+        } 
     }
 
     public override void Exit()
@@ -70,5 +62,4 @@ public class PlayerRunState : PlayerGroundState
     {
         base.OnCrouchPerformed(context);
     }
-
 }

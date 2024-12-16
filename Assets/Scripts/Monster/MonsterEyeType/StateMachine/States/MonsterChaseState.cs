@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.ShaderGraph;
-using UnityEngine;
-using UnityEngine.AI;
+ï»¿using UnityEngine.AI;
 
 public class MonsterChaseState : MonsterGroundState
 {
@@ -14,20 +10,23 @@ public class MonsterChaseState : MonsterGroundState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("ÇÃ·¹ÀÌ¾î ÃßÀû ½ÃÀÛ");
-
+        //Debug.Log("MonsterChaseState - í”Œë ˆì´ì–´ ì¶”ì  ì‹œì‘");
+        stateMachine.IsChasing = true;
         stateMachine.Monster.Agent.isStopped = false;
-        stateMachine.Monster.Agent.speed = groundData.ChaseSpeed;             
-        
-        // ¾Ö´Ï¸ŞÀÌ¼Ç ½ÇÇà
+        stateMachine.Monster.Agent.speed = groundData.ChaseSpeed;
+
+        // ì• ë‹ˆë©”ì´ì…˜ ì‹¤í–‰
         StartAnimation(stateMachine.Monster.AnimationData.ChaseParameterHash);
     }
 
     public override void Exit()
     {
         base.Exit();
-
-        // ¾Ö´Ï¸ŞÀÌ¼Ç Á¾·á
+        //Debug.Log("MonsterChaseState - í”Œë ˆì´ì–´ ì¶”ì  ì¢…ë£Œ");
+        stateMachine.Monster.Agent.ResetPath();
+        stateMachine.Monster.Agent.isStopped = true;
+        stateMachine.IsChasing = false;
+        // ì• ë‹ˆë©”ì´ì…˜ ì¢…ë£Œ
         StopAnimation(stateMachine.Monster.AnimationData.ChaseParameterHash);
     }
 
@@ -42,23 +41,32 @@ public class MonsterChaseState : MonsterGroundState
     {
         //Debug.Log(Vector3.Distance(stateMachine.Monster.transform.position, stateMachine.Target.transform.position));
 
-        // °ø°İ °¡´É ¹üÀ§ - °ø°İ, °ÔÀÓ ¿À¹ö
-        if (GetIsPlayerInFieldOfView() && IsInAttackRange())
-        {           
-            stateMachine.ChangeState(stateMachine.AttackState);
-            return;
-        }
-
-        // Å½Áö ¹üÀ§
-        if (IsInChaseRange())
+        if (!stateMachine.Monster.canSeePlayer)
         {
-            stateMachine.Monster.Agent.SetDestination(stateMachine.Target.transform.position);
+            //Debug.Log("í”Œë ˆì´ì–´ ë†“ì¹¨");
+
+            stateMachine.ChangeState(stateMachine.LoseSightState);
+            return;
         }
         else 
         {
-            Debug.Log("ÇÃ·¹ÀÌ¾î ³õÄ§");
-            stateMachine.ChangeState(stateMachine.LoseSightState);
-            return;
+            Rotate(GetMovementDirection());
+
+            //if (GetIsPlayerInFieldOfView() && IsInAttackRange())
+            //{
+            //    stateMachine.ChangeState(stateMachine.AttackState);
+            //    return;
+            //}
+
+            if (stateMachine.Monster.Agent.pathPending) return;
+            //stateMachine.Monster.Agent.SetDestination(stateMachine.Target.transform.position);
+
+            if (NavMesh.SamplePosition(stateMachine.Target.transform.position, out NavMeshHit hit, stateMachine.Monster.Data.GroundData.PlayerChasingRange, NavMesh.AllAreas))
+            {
+                stateMachine.Monster.Agent.SetDestination(hit.position);
+
+                return;
+            }
         }
     }
 }

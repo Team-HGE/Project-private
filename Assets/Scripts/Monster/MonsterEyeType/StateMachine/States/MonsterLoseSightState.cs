@@ -1,4 +1,4 @@
-public class MonsterLoseSightState : MonsterGroundState
+﻿public class MonsterLoseSightState : MonsterGroundState
 {
     public MonsterLoseSightState(MonsterStateMachine monsterStateMachine) : base(monsterStateMachine)
     {
@@ -7,10 +7,11 @@ public class MonsterLoseSightState : MonsterGroundState
     public override void Enter()
     {
         base.Enter();
-
-        StartAnimation(stateMachine.Monster.AnimationData.LoseSightParameterHash);
+        //Debug.Log("두리번두리번");
 
         stateMachine.Monster.Agent.isStopped = true;
+        StartAnimation(stateMachine.Monster.AnimationData.LoseSightParameterHash);
+
         stateMachine.Monster.IsBehavior = false;
         stateMachine.Monster.WaitForBehavior(groundData.LoseSightTransitionTime);
     }
@@ -18,27 +19,36 @@ public class MonsterLoseSightState : MonsterGroundState
     {
         base.Exit();
         StopAnimation(stateMachine.Monster.AnimationData.LoseSightParameterHash);
-
+        stateMachine.Monster.Agent.isStopped = false;
+        stateMachine.Monster.StopWait();
     }
 
     public override void Update()
     {
         base.Update();
-        
+
         if (!stateMachine.Monster.IsBehavior) return;
         CheckLoseSight();
     }
 
     public void CheckLoseSight()
     {
-        if (IsInFindRange() && GetIsPlayerInFieldOfView())
+        if (!stateMachine.Monster.canSeePlayer)
         {
-            stateMachine.ChangeState(stateMachine.ChaseState);
+            //Debug.Log("MonsterLoseSightState - 플레이어 놓침");
+
+            if (!stateMachine.Monster.CanPatrol || !stateMachine.Monster.CanComeBack)
+            {
+                stateMachine.ChangeState(stateMachine.IdleState);
+                return;
+            }
+
+            stateMachine.ChangeState(stateMachine.ComBackState);
             return;
         }
-        else 
+        else
         {
-            stateMachine.ChangeState(stateMachine.ComBackState);
+            stateMachine.ChangeState(stateMachine.FindState);
             return;
         }
     }

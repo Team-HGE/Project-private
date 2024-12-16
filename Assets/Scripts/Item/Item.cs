@@ -1,27 +1,64 @@
+using System;
+using UnityEngine;
 public class Item : InteractableObject
 {
-    public NPC_SO npcSO;
+    public event Action OnGetItem;
 
-    private void InitNPCData(NPC_SO _npc)
+    // Ã¹³¯ ÄÆ½Å 
+    private bool _isFisrtCutScene = false;
+
+    public bool IsFisrtCutScene
     {
-        npcSO = _npc;
+        get { return _isFisrtCutScene; }
+        set
+        {
+            if (_isFisrtCutScene != value)
+            {
+                _isFisrtCutScene = value;
+                OnGetItem?.Invoke();
+            }
+            else _isFisrtCutScene = value;
+        }
     }
+
+
+    //public ItemSO itemSO;
+    public ScriptSO scriptSO;
+
+    //private void Init(ItemSO _item)
+    //{
+    //    itemSO = _item;
+    //}
 
     public override void ActivateInteraction()
     {
         if (isInteractable) return;
 
         GameManager.Instance.player.playerInteraction.SetActive(true);
-        GameManager.Instance.player.interactableText.text = "È¹µæ";
+        GameManager.Instance.player.interactableText.text = "¼öÁý";
 
     }
 
     public override void Interact()
     {
-        InitNPCData(npcSO);
+        //Init(itemSO);
 
-        DialogueManager.Instance.dialogue.StartDialogue();
+        DialogueManager.Instance.itemScript.Init(scriptSO);
+        DialogueManager.Instance.itemScript.Print();
 
-        Destroy(this.gameObject);
+        Debug.Log("¾ÆÀÌÅÛ ÆÄ±«");
+        GetEventItem();
+
+        Destroy(gameObject);
+    }
+
+    private void GetEventItem()
+    {
+        if (gameObject.tag == "FirstCutScene")
+        {
+            EventManager.Instance.SetSwitch(GameSwitch.isMainStoryOff, true);
+            GameDataSaveLoadManager.Instance.SaveGameData(0);
+            IsFisrtCutScene = true;
+        }
     }
 }

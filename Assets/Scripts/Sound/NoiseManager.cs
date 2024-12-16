@@ -1,18 +1,10 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class NoiseManager : SingletonManager<NoiseManager>
 {       
-    //public static NoiseManager Instance;//ÀÓ½Ã ÄÚµå ¼öÁ¤ ¿¹Á¤***
 
     [SerializeField][Range(0f, 5f)] private float soundEffectVolume;
     [SerializeField][Range(0f, 5f)] private float soundEffectPitchVariance;
-
-    //private void Awake()
-    //{
-    //    //Debug.Log($"NoiseManager - Awake");
-
-    //    Instance = this;//ÀÓ½Ã ÄÚµå ¼öÁ¤ ¿¹Á¤***
-    //}
 
     protected override void Awake()
     {
@@ -21,13 +13,26 @@ public class NoiseManager : SingletonManager<NoiseManager>
 
     public SoundSource PlayNoise(AudioClip clip, string tag, float addVolume, float transitionTime, float pitch)
     {
-        // ¿ÀºêÁ§Æ® Ç®ÀÇ SoundSource ¸®½ºÆ®·Î »ç¿îµå ÆÄÀÏ °ü¸®
+        // ì˜¤ë¸Œì íŠ¸ í’€ì˜ SoundSource ë¦¬ìŠ¤íŠ¸ë¡œ ì‚¬ìš´ë“œ íŒŒì¼ ê´€ë¦¬
         GameObject obj = NoisePool.Instance.SpawnFromPool(tag);
         obj.SetActive(true);
         SoundSource soundSource = obj.GetComponent<SoundSource>();
-        // effect È¿°úÀ½Àº ¸¹°í ¸î°³°¡ ³ª¿ÃÁö ¸ô¶ó¼­ ¿ÀºêÁ§Æ® Ç®¸µÀ¸·Î °ü¸®
-        // soundEffectPitchVariance ·Î »ç¿îµå¸¦ Á¶ÀıÇØ¼­ ÇÑ°¡Áö »ç¿îµå¸¦ ´Ù¾çÇÏ°Ô »ç¿ë °¡´É
+        // effect íš¨ê³¼ìŒì€ ë§ê³  ëª‡ê°œê°€ ë‚˜ì˜¬ì§€ ëª°ë¼ì„œ ì˜¤ë¸Œì íŠ¸ í’€ë§ìœ¼ë¡œ ê´€ë¦¬
+        // soundEffectPitchVariance ë¡œ ì‚¬ìš´ë“œë¥¼ ì¡°ì ˆí•´ì„œ í•œê°€ì§€ ì‚¬ìš´ë“œë¥¼ ë‹¤ì–‘í•˜ê²Œ ì‚¬ìš© ê°€ëŠ¥
         soundSource.Play(clip, soundEffectVolume, soundEffectPitchVariance, addVolume, transitionTime, pitch);
+
+        return soundSource;
+    }
+
+    public SoundSource PlayNoise(AudioClip clip, string tag, float addVolume, float transitionTime, float pitch , bool loop)
+    {
+        // ì˜¤ë¸Œì íŠ¸ í’€ì˜ SoundSource ë¦¬ìŠ¤íŠ¸ë¡œ ì‚¬ìš´ë“œ íŒŒì¼ ê´€ë¦¬
+        GameObject obj = NoisePool.Instance.SpawnFromPool(tag);
+        obj.SetActive(true);
+        SoundSource soundSource = obj.GetComponent<SoundSource>();
+        // effect íš¨ê³¼ìŒì€ ë§ê³  ëª‡ê°œê°€ ë‚˜ì˜¬ì§€ ëª°ë¼ì„œ ì˜¤ë¸Œì íŠ¸ í’€ë§ìœ¼ë¡œ ê´€ë¦¬
+        // soundEffectPitchVariance ë¡œ ì‚¬ìš´ë“œë¥¼ ì¡°ì ˆí•´ì„œ í•œê°€ì§€ ì‚¬ìš´ë“œë¥¼ ë‹¤ì–‘í•˜ê²Œ ì‚¬ìš© ê°€ëŠ¥
+        soundSource.Play(clip, soundEffectVolume, soundEffectPitchVariance, addVolume, transitionTime, pitch, loop);
 
         return soundSource;
     }

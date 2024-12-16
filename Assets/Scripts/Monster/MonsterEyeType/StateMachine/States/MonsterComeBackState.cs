@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class MonsterComeBackState : MonsterGroundState
+﻿public class MonsterComeBackState : MonsterGroundState
 {
     public MonsterComeBackState(MonsterStateMachine monsterStateMachine) : base(monsterStateMachine)
     {
@@ -12,31 +8,37 @@ public class MonsterComeBackState : MonsterGroundState
     {
         base.Enter();
 
+        if (!stateMachine.Monster.CanComeBack)
+        {
+            stateMachine.ChangeState(stateMachine.IdleState);
+            return;
+        }
+
+        StartAnimation(stateMachine.Monster.AnimationData.ComeBackParameterHash);
+
+        stateMachine.IsComeBack = true;
         stateMachine.Monster.Agent.isStopped = false;
         stateMachine.Monster.Agent.speed = groundData.PatrolSpeed;
         stateMachine.Monster.Agent.SetDestination(stateMachine.StartPosition);
-        StartAnimation(stateMachine.Monster.AnimationData.PatrolParameterHash);
     }
 
     public override void Exit()
     {
         base.Exit();
-        StopAnimation(stateMachine.Monster.AnimationData.PatrolParameterHash);
+        stateMachine.IsComeBack = false;
+        StopAnimation(stateMachine.Monster.AnimationData.ComeBackParameterHash);
     }
 
     public override void Update()
     {
         base.Update();
+        //RotateToPlayer();
 
-        if (IsInFindRange() && GetIsPlayerInFieldOfView())
-        {
-            stateMachine.ChangeState(stateMachine.FindState);
-            return;
-        }
+        if (stateMachine.Monster.Agent.pathPending) return;
 
-        if (stateMachine.Monster.Agent.remainingDistance < 0.1f)
+        if (stateMachine.Monster.Agent.remainingDistance < 0.2f)
         {
-            stateMachine.ChangeState(stateMachine.PatrolState);
+            stateMachine.ChangeState(stateMachine.IdleState);
         }
     }
 }

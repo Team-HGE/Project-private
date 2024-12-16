@@ -1,6 +1,4 @@
-using UnityEngine;
-
-public class MonsterFindState : MonsterGroundState
+ï»¿public class MonsterFindState : MonsterGroundState
 {
     public MonsterFindState(MonsterStateMachine monsterStateMachine) : base(monsterStateMachine)
     {
@@ -9,21 +7,24 @@ public class MonsterFindState : MonsterGroundState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("ÇÃ·¹ÀÌ¾î ¹ß°ß");
-
+        //Debug.Log("MonsterFindState - í”Œë ˆì´ì–´ ë°œê²¬ ì£¼ì‹œ ì‹œì‘");
+        stateMachine.IsFind = true;
+        stateMachine.Monster.Agent.ResetPath();
         stateMachine.Monster.Agent.isStopped = true;
         stateMachine.Monster.IsBehavior = false;
 
-        // ÇÃ·¹ÀÌ¾î ¹Ù¶óº¸±â
-        Rotate(GetMovementDirection());
-        stateMachine.Monster.WaitForBehavior(groundData.FindTransitionTime);
         StartAnimation(stateMachine.Monster.AnimationData.FindParameterHash);
 
+        stateMachine.Monster.WaitForBehavior(groundData.FindTransitionTime);
     }
 
     public override void Exit()
     {
         base.Exit();
+        //Debug.Log("MonsterFindState - í”Œë ˆì´ì–´ ë°œê²¬ ì£¼ì‹œ ì¢…ë£Œ");
+        stateMachine.IsFind = false;
+        StopAnimation(stateMachine.Monster.AnimationData.FindParameterHash);
+        stateMachine.Monster.StopWait();
     }
 
     public override void Update()
@@ -31,33 +32,24 @@ public class MonsterFindState : MonsterGroundState
         base.Update();
         Rotate(GetMovementDirection());
         if (!stateMachine.Monster.IsBehavior) return;
-        FindCheck();
-        StopAnimation(stateMachine.Monster.AnimationData.FindParameterHash);
+        //Debug.Log("MonsterFindState - í–‰ë™ì‹œì‘");
 
+        FindCheck();
     }
 
     private void FindCheck()
     {
-        // °ø°İ ¹üÀ§ ¾ÈÀÌ¸é °ø°İ - °ÔÀÓ ¿À¹ö
-        if (IsInAttackRange() && GetIsPlayerInFieldOfView())
-        {
-            // ÇÃ·¹ÀÌ¾î °ø°İ
-            //Debug.Log("ÇÃ·¹ÀÌ¾î °ø°İ - °ÔÀÓ ¿À¹ö");
-            //stateMachine.Monster.IsBehavior = false;// ÀÓ½ÃÄÚµå °ÔÀÓ ¿À¹ö ±¸Çö ÈÄ ¼öÁ¤ÇÒ °Í***
+        //Debug.Log("FindCheck");
 
-            stateMachine.ChangeState(stateMachine.AttackState);
-            return;
-        }
-
-        if (IsInChaseRange() && GetIsPlayerInFieldOfView())
+        if (!stateMachine.Monster.canSeePlayer)
         {
-            stateMachine.ChangeState(stateMachine.ChaseState);
-            return;
+            //Debug.Log("í”Œë ˆì´ì–´ ë†“ì¹¨");
+            stateMachine.ChangeState(stateMachine.LoseSightState);
         }
         else 
         {
-            stateMachine.ChangeState(stateMachine.LoseSightState);
-            return;
+            //Debug.Log("í”Œë ˆì´ì–´ ì¶”ì ");
+            stateMachine.ChangeState(stateMachine.ChaseState);
         }
     }
 }

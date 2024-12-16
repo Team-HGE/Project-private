@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class MonsterEarTypeGroundState : MonsterEarTypeBaseState
 {
     public MonsterEarTypeGroundState(MonsterEarTypeStateMachine monsterStateMachine) : base(monsterStateMachine)

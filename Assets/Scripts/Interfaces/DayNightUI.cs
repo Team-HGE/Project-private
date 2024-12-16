@@ -1,44 +1,50 @@
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
-using System;
 
 public class DayNightUI : MonoBehaviour
 {
-    public RawImage dayImage;
-    public Texture2D dayTexture;
-    public Texture2D nightTexture;
-    float currentTime = 1;
+    [TitleGroup("DayNightUI", "MonoBehaviour", alignment: TitleAlignments.Centered, horizontalLine: true, boldTitle: true, indent: false)]
+    [SerializeField] bool toggle;
+
+    [TabGroup("Tab", "Day", SdfIconType.FolderFill, TextColor = "orange")]
+    [TabGroup("Tab", "Day")] public RawImage dayImage;
+    [TabGroup("Tab", "Day")] public Texture2D dayTexture;
+    [TabGroup("Tab", "Day")] public Texture2D nightTexture;
 
     void Start()
     {
-
-        dayImage.texture = dayTexture;
-
-    
+        // 이벤트 구독함
+        EventManager.Instance.OnSwitchChanged += OnSwitchChanged;
     }
 
-    public void TimeUpdate()
+    void OnDestroy()
     {
-        currentTime++;
-    }
-
-    private void Update()
-    {
-        if (currentTime == 1)
+        // OnDestroy에서 이벤트 구독 해제함
+        if (EventManager.Instance != null)
         {
-            // 낮 시간대
+            EventManager.Instance.OnSwitchChanged -= OnSwitchChanged;
+        }
+    }
+
+    private void OnSwitchChanged(GameSwitch switchType, bool state)
+    {
+        if (switchType == GameSwitch.IsDaytime)
+        {
+            UpdateDayNightUI(state);
+        }
+    }
+
+    public void UpdateDayNightUI(bool isDaytime)
+    {
+        if (isDaytime && dayImage.texture != dayTexture)
+        {
             dayImage.texture = dayTexture;
         }
-        else if (currentTime % 2 == 0)
+        else if (!isDaytime && dayImage.texture != nightTexture)
         {
-            // 밤 시간대
             dayImage.texture = nightTexture;
         }
-        else if (currentTime % 2 == 1)
-        {
-            // 낮 시간대
-            dayImage.texture = dayTexture;
-        }
-        
     }
+
 }
